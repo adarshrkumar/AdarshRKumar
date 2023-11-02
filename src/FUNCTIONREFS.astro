@@ -1,0 +1,23 @@
+function gotoTop() {
+    var scrollToTop = window.setInterval(function() {
+    var pos = window.pageYOffset;
+    if ( pos > 0 ) {
+        window.scrollTo( 0, pos - 20 ); // how far to scroll on each step
+    } else {
+        window.clearInterval( scrollToTop );
+    }
+}, 16); // how fast to scroll (16 equals roughly 60 fps)
+/*
+    lower numbers for longer stories,
+    higher numbers for shorter stories.
+    range: 0.1 to 50
+    AFTER FINISHING A STORY, USE THE SCROLL TO SEE IF IT MAKES IT TO
+    THE TOP IN LESS THAN THREE SECONDS. PACE FOR LESS THAN THREE
+    SECONDS.
+    16 (2500 words)
+    10 (3500 words)
+*/
+}
+<script>
+  location.href = '/404'
+</script>
