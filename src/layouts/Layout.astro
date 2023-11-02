@@ -1,10 +1,12 @@
 ---
+var sName = 'RockGamerAK'
+
 var { title, pTitle, classItems } = Astro.props;
 
 if (!!pTitle === false) pTitle = title
-title = `${title} | RockGamerAK`
+title = `${title} | ${sName}`
 
-if (pTitle === '') pTitle = 'Home'
+if (!!pTitle === false) pTitle = 'Home'
 if (pTitle === 'Home') {
   title = title.split(' | ')[1]
 }
