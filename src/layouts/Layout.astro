@@ -1,7 +1,7 @@
 ---
-var { title } = Astro.props;
- var pTitle = title
+var { title, pTitle, classItems } = Astro.props;
 
+if (!!pTitle === false) pTitle = title
 title = `${title} | RockGamerAK`
 
 if (pTitle === '') pTitle = 'Home'
@@ -9,6 +9,7 @@ if (pTitle === 'Home') {
   title = title.split(' | ')[1]
 }
 
+if (!!classItems === false) classItems = ''
 
 ---
 
@@ -60,7 +61,7 @@ if (pTitle === 'Home') {
     </header>
     <h1 id="page-title">{pTitle}</h1>
     <main id="content" align="center">
-      <div id="main-content">
+      <div id="main-content" class={classItems}>
         <slot />
       </div>
     </main>
