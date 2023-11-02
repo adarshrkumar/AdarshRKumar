@@ -73,7 +73,7 @@ header {
   display: flex;
 /*  justify-content: center;  */
   align-items: center;
-  padding: 30px 2rem;
+  padding: 2rem 4rem;
   max-height: 100%;
 }
 
