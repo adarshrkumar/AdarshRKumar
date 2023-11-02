@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockGamerAK</title>
+    <link rel="stylesheet" href="main.css">
+    <base href="https://RockGamerAK.com" />
+    <link rel="icon" href="RockGamerAK-Favicon.png">
+    <link href="/root.css" rel="stylesheet" />
+    <link href="https://firecss.hecker40.repl.co/fire.css" rel="stylesheet" type="text/css"/>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
+  </head>
+  <body>
+    <img class="logo" id="isSoon" src="RockGamerAK.png" style="left: 0px;" onclick="location.href=location.href">
+    <main id="content" align="center" class="isSoon">
+      <hr>
+      <h1 id="page-title" style="margin: 0; padding: 0 !important;">Coming Soon</h1>
+      <hr>
+      <br>
+      <!-- ShareThis BEGIN --><div class="sharethis-inline-follow-buttons" style="display: none;"></div><!-- ShareThis END -->
+    	<p>This site is under development right now, I will put something soon!</p>
+      <p>In the meantime, you can email me at: <a href="mailto:Site@RockGamerAK.com">Site@RockGamerAK.com</a>.</p>
+      <hr>
+      <h1>Credits: </h1>
+      <p>Main Contributer: <a href="https://solo.to/RockGamerAK">RockGamerAK</a></p>
+    </main>
+    <script>
+      var img = document.querySelector('.logo')
+      var operation
+      function go() {
+        if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === 0) {
+          operation = '+'
+        }
+        else if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === (window.innerWidth - 125)) {
+          operation = '-'
+        }
+        if (operation === '+') {
+          img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])+1}px;`)
+        }
+        else if (operation === '-') {
+          img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])-1}px;`)
+        }
+      }
+      setInterval(go, 50)
+    </script>
+    <script src="/main.js"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/613695e4d6e7610a49b3f5bc/1feujj12b';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+  </body>
+</html>
