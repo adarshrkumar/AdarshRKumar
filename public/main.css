@@ -43,14 +43,6 @@ main > #main-content > sidebar {
   height: 100%;
 }
 
-sidebar {
-  display: none !important;  
-}
-
-content {
-  border: none !important;
-}
-  
 main > iframe[src='https://Blog.RockGamerAK.com'] {
   border-top: 0px !important;
   border-right: 0px !important;
@@ -74,10 +66,6 @@ body {
 body:not([header]) {
   display: flex;
   flex-direction: column;
-}
-
-iframe[src="/header.html"] {
-  height: 160px;
 }
 
 /* Styles for the Navigation Bar */
@@ -107,74 +95,51 @@ header .logo:focus {
   border-radius: 100%;
 }
 
-header nav {
+.nav {
   height: 100%;
   flex: 1;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
-}
-
-header nav ul {
-  width: 100%;
-  height: 100%;
-  list-style: none;
-  display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
   gap: 15px;
-  padding: 0;
 }
 
-header nav ul a {
-  font-weight: 500;
-  color: var(--navigation-link);
-  text-decoration: none;
-  transition: color 0.3s ease;  
-  border-radius: 25px;
-  border: none;
-  outline: none;
+.nav a {
+  padding: 0px 20px;
+
   width: 115px;
   height: 50px;
-  transition: all 250ms;
+
+  color: var(--navigation-link);
+  background-color: var(--navigation-button);
+
+  border: none;
+  border-radius: 25px;
+
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  display: grid;
+  place-items: center;
+
+  transition: color 0.3s ease all 250ms;
   transition-timing-function: ease-in-out;
 }
 
-header nav ul a:focus {
+.nav a:is(:hover, :focus) {
   margin: 0;
+
+  background-color: var(--navigaton-button-hover);
+
+  color: var(--navigation-link-hover);
+
   border-radius: 100px;
 }
 
-header nav ul a li {
-  color: var(--navigation-link);
-  background-color: var(--navigation-button);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  font-size: 1.5rem;
-  border-radius: 25px;
-  padding: 0px 20px;
-  transition: all 250ms;
-  transition-timing-function: ease-in-out;
-}
-
-header nav ul a li:hover {
-  background-color: var(--navigaton-button-hover);
-/*  width: 80px;  */
-/*  height: 55px;  */
-/*  font-size: 1.6rem;  */
-  color: var(--navigation-link-hover);
-  transition: all 250ms;
-  transition-timing-function: ease-in-out;
-}
-
-header nav ul #active-link {
-  color:var(--active-link);
+.nav #active-link {
+  color: var(--active-link);
 }
 
 .seperator {
