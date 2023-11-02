@@ -12,13 +12,14 @@
     <link href="/fire.css" rel="stylesheet" type="text/css"/>
     <link href="https://firecss.hecker40.repl.co/fire.css" rel="stylesheet" type="text/css"/>
     <script>
-      if (location.pathname.endsWith('/')) {
-        location.href = location.pathname.substring(0, location.pathname.split('').length-1)
+      var path = location.pathname
+      if (path.endsWith('/')) {
+        path = path.substring(0, path.split('').length-1)
       }
-      else if (location.pathname == '__repo') {
+      else if (path === '__repo') {
         location.href = 'https://github.com/RockGamerAK/RockGamerAK.com'
       }
-      else if (location.pathname == '__dev') {
+      else if (path === '__dev') {
         location.href = 'https://github.dev/RockGamerAK/RockGamerAK.com'
       }
     </script>
