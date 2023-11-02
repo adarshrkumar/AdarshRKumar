@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --nav-background: hsl(202, 50%, 17%);
+  --navigation-link: white;
+  --nav-color: darkorange;
+  --navigation-link-hover: hsl(209, 56%, 53%);
+  --logo-a-color: hsl(195, 12%, 94%);
+  --active-link: hsl(352, 68%, 77%);
+  --navigation-button: hsl(209, 56%, 53%);
+  --navigaton-button-hover: hsl(209, 90%, 70%);
+  --current-page: hsl(200, 90%, 50%);
+}
+
+html, body, iframe {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Styles for the Navigation Bar */
+nav {
+  height: 100%;
+/*  display: flex;  */
+  align-items: center;
+  background-color: var(--nav-background);
+  color: var(--nav-color)
+}
+
+nav ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+}
+
+nav ul a {
+  margin: 2.5px 0 2.5px 0;
+  font-weight: 500;
+  color: var(--navigation-link);
+  text-decoration: none;
+  transition: color 0.3s ease;  
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 115px;
+  height: 50px;
+  transition: all 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+nav ul a:focus {
+  margin: 0;
+  border-radius: 100px;
+  border: solid 2px gray;
+  outline: none;
+}
+
+nav ul a:hover {
+  width: 120px;
+  height: 55px;
+}
+
+nav ul a li {
+  color: var(--navigation-link);
+  background-color: var(--navigation-button);
+  width: 75px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 25px;
+  padding: 0px 20px;
+  transition: all 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+nav ul a li:hover {
+  background-color: var(--navigaton-button-hover);
+  width: 80px;
+  height: 55px;
+  font-size: 1.6rem;
+  color: var(--navigation-link-hover);
+  transition: all 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+nav ul #active-link {
+  color:var(--active-link);
+}
+
+nav ul .current-page {
+  background-color: var(--current-page);
+}
+
+.seperator {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+/* Styles for below the nav bar */
+table {
+  display: flex;
+  flex-direction: column;
+}
+
+table tr {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5%;
+}
+
+table tr .seperator {
+  flex: 0.25;
+}
+
+table tr .item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #0078D7;
+  border-radius: 25px;
+}
+
+table tr th img {
+  flex: 5;
+}
+
+table tr th h1 {
+  flex: 1;
+  margin-block-end: 0;
+}
+
+[noPadding] {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+[noPadding] li {
+  padding: 10px 0 10px 0;
+}
+
+h1, .heading-link {
+  font-size: 30px;
+  font-weight: 7500;
+  text-decoration: none
+}

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --font-family: 'Montserrat', sans-serif !important;
+  --background-primary-color: #18181a;
+  --background-secondary-color: #292929;
+  --foreground-primary-color: #b8b8b8;
+  --foreground-secondary-color: white;
+  --foreground-tertiary-color: #0078d7 !important;
+  --accent-primary-color: #0078d7 !important;
+  --accent-secondary-color: #098765 !important;
+  color: white;
+  
+}
+
+.logo#isSoon {
+  width: 125px;
+  position: absolute;
+  top: 17px;
+}
+
+.isSoon {
+  margin-top: 159px;
+}
+
+h1#page-title {
+  padding-top: 20.22px !important;
+  padding-bottom: 20.22px !important;
+  border-bottom: 1.5px solid var(--background-secondary-color);
+  border-radius: 8px;
+}
+
+main:not(.isSoon) {
+  margin: 0 !important;
+}
+
+main.isSoon {
+  text-align: center;
+}
+
+main {
+  max-width: 100% !important;
+  height: 100% !important;
+  gap: 0px !important;
+}
+
+hr[isDivider] {
+  display: none;
+  margin-top: 0;
+  background: gray;
+}
+
+main > #main-content > sidebar {
+  width: 64px;
+  height: 100%;
+}
+
+sidebar {
+  display: none !important;  
+}
+
+content {
+  border: none !important;
+}
+  
+main > iframe[src='https://Blog.RockGamerAK.com'] {
+  border-top: 0px !important;
+  border-right: 0px !important;
+  border-left: 0px !important;
+}

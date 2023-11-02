@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --navigation-link: white;
+  --navigation-link-hover: hsl(209, 56%, 53%);
+  --logo-a-color: hsl(195, 12%, 94%);
+  --active-link: hsl(352, 68%, 77%);
+  --navigation-button: hsl(209, 56%, 53%);
+  --navigaton-button-hover: hsl(209, 90%, 70%);
+  --current-page: hsl(200, 90%, 50%);
+}
+
+.logo#isSoon {
+  width: 125px;
+  position: absolute;
+  top: 17px;
+}
+
+.isSoon {
+  margin-top: 159px;
+}
+
+main:not(.isSoon) {
+  margin: 0 !important;
+}
+
+main.isSoon {
+  text-align: center;
+}
+
+hr[isDivider] {
+  display: none;
+  margin-top: 0;
+  background: gray;
+}
+
+main > #main-content > sidebar {
+  width: 64px;
+  height: 100%;
+}
+
+sidebar {
+  display: none !important;  
+}
+
+content {
+  border: none !important;
+}
+  
+main > iframe[src='https://Blog.RockGamerAK.com'] {
+  border-top: 0px !important;
+  border-right: 0px !important;
+  border-left: 0px !important;
+}
+
+html, body, iframe {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  overflow-y: hidden;
+}
+
+body {
+  margin: 0;
+  overflow-y: auto;
+}
+
+body:not([header]) {
+  display: flex;
+  flex-direction: column;
+}
+
+iframe[src="/header.html"] {
+  height: 160px;
+}
+
+/* Styles for the Navigation Bar */
+header {
+  display: flex;
+/*  justify-content: center;  */
+  align-items: center;
+  padding: 30px 2rem;
+  max-height: 100%;
+}
+
+header .logo-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--logo-a-color);
+  text-decoration: none;
+}
+
+header .logo {
+  width: 80px;
+  height: auto;
+  border-radius: 100%;
+}
+
+header .logo:focus {
+  border-radius: 100%;
+}
+
+header nav {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+header nav ul {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
+  padding: 0;
+}
+
+header nav ul a {
+  font-weight: 500;
+  color: var(--navigation-link);
+  text-decoration: none;
+  transition: color 0.3s ease;  
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 115px;
+  height: 50px;
+  transition: all 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+header nav ul a:focus {
+  margin: 0;
+  border-radius: 100px;
+}
+
+header nav ul a li {
+  color: var(--navigation-link);
+  background-color: var(--navigation-button);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 25px;
+  padding: 0px 20px;
+  transition: all 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+header nav ul a li:hover {
+  background-color: var(--navigaton-button-hover);
+/*  width: 80px;  */
+/*  height: 55px;  */
+/*  font-size: 1.6rem;  */
+  color: var(--navigation-link-hover);
+  transition: all 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+header nav ul #active-link {
+  color:var(--active-link);
+}
+
+.seperator {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+header nav ul .current-page {
+  background-color: var(--current-page);
+}
+
+/* Styles for below the nav bar */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  gap: 0px;
+/*  height: calc(100% - 160px);  */
+}
+
+main hr {
+  margin-inline: auto;
+  margin-inline: auto;
+}
+
+/*main[home] {
+  min-height: 750px;
+}
+
+main[projects] {
+  min-height: 750px;
+}*/
+
+h1#page-title {
+  margin: 0;
+  border-bottom: 1.5px solid var(--background-secondary-color);
+  border-radius: 8px;
+  padding-top: 20.22px;
+  padding-bottom: 20.22px;
+  text-align: center;
+}
+
+main > #main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+main > #main-content > sidebar {
+  width: 300px;
+  height: 100%;
+}
+
+main > #main-content > content {
+  border-left: solid 2px gray;
+  border-right: solid 2px gray;
+  padding: 8px;
+  width: 100%;
+  height: calc(100% - 16px);
+  flex: 1;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+}
+
+table > tr {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5%;
+}
+
+table > tr > .seperator {
+  flex: 0.25;
+}
+
+table > tr > .item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #0078D7;
+  border-radius: 25px;
+}
+
+table > tr > th img {
+  flex: 5;
+}
+
+table > tr > th h1 {
+  flex: 1;
+  margin-block-end: 0;
+}
+
+.about-block {
+  padding: 1rem;
+  font-size: 20px;
+  font-weight: 7500;
+  text-decoration: none
+}
+
+[noPadding] {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+[noPadding] > li {
+  padding: 10px 0 10px 0;
+}
+
+.project-description {
+  padding: 5px;
+  border: solid 1px gray;
+}
+
+li > .project-description {
+  padding: 5px;
+  border: solid 1px gray;
+}
+
+h1, .heading-link {
+  font-size: 30px;
+  font-weight: 7500;
+  text-decoration: none
+}
+
+section#videos {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25px;
+  gap: 25px;
+}
+
+section#videos > iframe {
+  background-image: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  width: calc(calc(100%/3) - 25px);
+  height: calc(calc(calc(calc(100vw/3) - 25px)/16)*9)
+}
+
+form {
+  width: fit-content;
+}
+
+fieldset {
+  width: clamp(30rem, 30vw, 40rem);
+
+  & p {
+    width: 100%;
+  }
+}
+
+section[role="list"] {
+  
+}
