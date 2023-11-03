@@ -6,7 +6,7 @@
 
 :root {
   --navigation-link: white;
-  --navigation-link-hover: black;
+  --navigation-link-hover: gray;
   --logo-a-color: hsl(195, 12%, 94%);
   --active-link: hsl(352, 68%, 77%);
   --navigation-button: hsl(209, 56%, 53%);
