@@ -109,7 +109,7 @@ header .logo:focus {
 }
 
 .nav a {
-  padding: 0px 20px;
+  padding: 10px 20px;
 
   color: var(--navigation-link);
   background-color: var(--navigation-button);
