@@ -111,9 +111,6 @@ header .logo:focus {
 .nav a {
   padding: 0px 20px;
 
-  width: 115px;
-  height: 50px;
-
   color: var(--navigation-link);
   background-color: var(--navigation-button);
 
