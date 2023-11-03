@@ -15,7 +15,7 @@ import '../styles/components/header.scss'
         <button onclick="goToUrl(this)" data-href="/videos">Videos</button>
     </nav>
 </header>
-<script>
+<script is:inline>
     function goToUrl(btn) {
         var href = btn.getAttribute('data-href')
         var target = dtn.getAttribute('data-target')
