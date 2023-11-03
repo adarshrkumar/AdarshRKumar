@@ -41,15 +41,11 @@ header {
   .nav button {
     // padding: 10px 20px;
   
-    border-radius: 25px;
+    border-radius: 100vw;
   
     font-size: 1.25rem;
     font-weight: 500;
     }
-  
-  .nav button:is(:hover, :focus) {
-    border-radius: 100px;
-  }
   
   .nav .current-page {
   }
