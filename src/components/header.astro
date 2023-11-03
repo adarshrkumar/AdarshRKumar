@@ -6,12 +6,38 @@ import '../styles/components/header.scss'
         <img class="logo" src="/Logo.png">
     </a>
     <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/projects">Projects</a>
-        <a href="https://Blog.RockGamerAK.com" target="_blank">Blog</a>
-        <a href="/sites">Sites</a>
-        <a href="/videos">Videos</a>
+        <button onclick="goToUrl(this)" data-href="/">Home</button>
+        <button onclick="goToUrl(this)" data-href="/about">About</button>
+        <button onclick="goToUrl(this)" data-href="/contact">Contact</button>
+        <button onclick="goToUrl(this)" data-href="/projects">Projects</button>
+        <button onclick="goToUrl(this)" data-data-href="https://Blog.RockGamerAK.com" data-target="_blank">Blog</button>
+        <button onclick="goToUrl(this)" data-href="/sites">Sites</button>
+        <button onclick="goToUrl(this)" data-href="/videos">Videos</button>
     </nav>
 </header>
+<script>
+    function goToUrl(btn) {
+        var href = btn.getAttribute('data-href')
+        var target = dtn.getAttribute('data-target')
+        if (target === '_blank') {
+            window.open(href)
+        }
+        else if (target === '_parent') {
+            parent.location.href = href
+        }
+        else if (target === '_top') {
+            top.location.href = href
+        }
+        else if (!!target) {
+            if (target.startsWith('_') === false) {
+                document.getElementById(target).src = href
+            }
+            else {
+                location.href = href
+            }
+        }
+        else {
+            location.href = href
+        }
+    }
+</script>
