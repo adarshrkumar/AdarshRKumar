@@ -80,3 +80,14 @@ h1, .heading-link {
     text-decoration: none
 }
 
+form {
+    width: fit-content;
+}
+  
+fieldset {
+    width: clamp(30rem, 30vw, 40rem);
+  
+    & p {
+        width: 100%;
+    }
+}

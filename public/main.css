@@ -1,31 +1,3 @@
-.about-block {
-  padding: 1rem;
-  font-size: 20px;
-  font-weight: 7500;
-  text-decoration: none
-}
-
-.project-description {
-  padding: 5px;
-  border: solid 1px gray;
-}
-
-section#videos {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 25px;
-  gap: 25px;
-}
-
-section#videos > iframe {
-  background-image: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  align-items: center;
-  width: calc(calc(100%/3) - 25px);
-  height: calc(calc(calc(calc(100vw/3) - 25px)/16)*9)
-}
-
 form {
   width: fit-content;
 }
