@@ -17,27 +17,31 @@ import '../styles/components/header.scss'
 </header>
 <script is:inline>
     function goToUrl(btn) {
-        var href = btn.getAttribute('data-href')
-        var target = btn.getAttribute('data-target')
+        var link = btn
+        var target = '_self'
+        if (typeof link !== 'string') {
+            link = btn.getAttribute('data-href')
+            target = btn.getAttribute('data-target')
+        }
         if (target === '_blank') {
-            window.open(href)
+            window.open(link)
         }
         else if (target === '_parent') {
-            parent.location.href = href
+            parent.location.href = link
         }
         else if (target === '_top') {
-            top.location.href = href
+            top.location.href = link
         }
         else if (!!target) {
             if (target.startsWith('_') === false) {
-                document.getElementById(target).src = href
+                document.getElementById(target).src = link
             }
             else {
-                location.href = href
+                location.href = link
             }
         }
         else {
-            location.href = href
+            location.href = link
         }
     }
 </script>
