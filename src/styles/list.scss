@@ -1,6 +1,8 @@
 .list.v {
-    margin-block: 15px;
+    --gap: 2rem;
+
+    margin-block: var(--gap);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--gap);
 }
