@@ -1,10 +1,10 @@
 section#videos {
     --gap: 25px;
 
-    display: flex;
-    flex-wrap: wrap;
-    padding: 25px;
-    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: var(--gap);
+    gap: var(--gap);
 }
   
 section#videos > iframe {
@@ -12,6 +12,5 @@ section#videos > iframe {
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
-    width: calc(100%/3);
     aspect-ratio: 16 / 9;
 }  
