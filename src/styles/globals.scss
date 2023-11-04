@@ -61,22 +61,21 @@ hr[isDivider] {
 }
 
 .seperator {
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
   
 h1#page-title {
     margin: 0;
-    border-bottom: 1.5px solid var(--background-secondary-color);
-    border-radius: 8px;
-    padding-top: 20.22px;
-    padding-bottom: 20.22px;
+    border-bottom: 0.09375rem solid var(--background-secondary-color);
+    border-radius: 0.5rem;
+    padding-top: 1.26375rem;
+    padding-bottom: 1.26375rem;
     text-align: center;
 }
   
 h1, .heading-link {
-    font-size: 30px;
-    font-weight: 7500;
+    font-size: 2.5rem;
     text-decoration: none
 }
 
