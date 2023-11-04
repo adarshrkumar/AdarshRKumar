@@ -120,7 +120,7 @@ li {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--foreground-tertiary-color);
-  text-shadow: 3px 1px 15px var(--accent-secondary-color);
+  text-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
 p {
@@ -176,7 +176,7 @@ a {
 }
 
 /* a:hover {
-  text-shadow: 3px 1px 15px var(--accent-secondary-color);
+  text-shadow: 0px 0px 15px var(--accent-secondary-color);
 } */
 
 button, input:is([type="button"], [type="submit"]) {
@@ -196,7 +196,7 @@ button, input:is([type="button"], [type="submit"]) {
 }
 
 :is(button, input:is([type="button"], [type="submit"])):hover {
-  box-shadow: 3px 1px 15px var(--accent-secondary-color);
+  box-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
 .btn-secondary {
@@ -217,7 +217,7 @@ button, input:is([type="button"], [type="submit"]) {
 .btn-secondary:hover {
   background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
   color: var(--foreground-secondary-color);
-  box-shadow: 3px 1px 15px var(--accent-secondary-color);
+  box-shadow: 0px 0px 15px var(--accent-secondary-color);
   border: none;
 }
 
@@ -295,7 +295,7 @@ textarea {
 
 input[type="text"]:focus, input[type="url"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="time"]:focus, input[type="date"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="search"]:focus, input[type="tel"]:focus, textarea:focus {
   outline: 1.5px solid var(--accent-primary-color);
-  box-shadow: 3px 1px 15px var(--accent-secondary-color);
+  box-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
 input[type="text"]:read-only, input[type="url"]:read-only, input[type="number"]:read-only, input[type="email"]:read-only, input[type="password"]:read-only, input[type="time"]:read-only, input[type="date"]:read-only, input[type="datetime-local"]:read-only, input[type="month"]:read-only, input[type="week"]:read-only, input[type="search"]:read-only, input[type="tel"]:read-only, textarea:read-only {
@@ -329,7 +329,7 @@ input[type="file"] {
 }
 
 .file-selector:hover {
-  box-shadow: 3px 1px 15px var(--accent-secondary-color);
+  box-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
 .file-selector:active {
@@ -563,7 +563,7 @@ table td, table th {
 table th {
   font-size: 22px;
   color: var(--accent-primary-color);
-  text-shadow: 3px 1px 15px var(--accent-secondary-color);
+  text-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
 @media (max-width: 800px) {
@@ -647,7 +647,7 @@ table th {
 
 .card:hover {
   outline: 1.5px var(--accent-primary-color) solid;
-  box-shadow: 3px 1px 15px var(--accent-secondary-color);
+  box-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
 .badge {
