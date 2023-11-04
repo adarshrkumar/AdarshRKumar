@@ -18,7 +18,7 @@ import '../styles/components/header.scss'
 <script is:inline>
     function goToUrl(btn) {
         var href = btn.getAttribute('data-href')
-        var target = dtn.getAttribute('data-target')
+        var target = btn.getAttribute('data-target')
         if (target === '_blank') {
             window.open(href)
         }
