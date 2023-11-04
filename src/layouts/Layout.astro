@@ -8,7 +8,7 @@ import Header from '../components/header.astro'
 
 var sName = 'RockGamerAK / Adarsh Kumar'
 
-var { title, pTitle, classItems } = Astro.props;
+var { title, pTitle, classItems, inlineStyles } = Astro.props;
 
 if (!!pTitle === false) pTitle = title
 title = `${title} | ${sName}`
@@ -38,7 +38,7 @@ if (!!classItems === false) classItems = ''
     <Header />
     <h1 id="page-title">{pTitle}</h1>
     <main id="content" align="center">
-      <div id="main-content" class={classItems}>
+      <div id="main-content" class={classItems} style={inlineStyles}>
         <slot />
       </div>
     </main>
