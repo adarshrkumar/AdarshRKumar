@@ -7,6 +7,7 @@ import '../styles/root.scss'
 import Header from '../components/header.astro'
 
 var sName = 'Adarsh Kumar'
+var logoSRC = '/logo.jpg'
 
 var { title, pTitle, classItems, inlineStyles } = Astro.props;
 
@@ -35,7 +36,7 @@ if (!!classItems === false) classItems = ''
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
   </head>
   <body>
-    <Header logo="/logo.jpg" />
+    <Header logo={logoSRC} />
     <h1 id="page-title">{pTitle}</h1>
     <main id="content" align="center">
       <div id="main-content" class={classItems} style={inlineStyles}>
