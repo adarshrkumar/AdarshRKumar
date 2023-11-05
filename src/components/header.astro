@@ -1,9 +1,12 @@
 ---
 import '../styles/components/header.scss'
+
+var { Logo } = Astro.props
+
 ---
 <header id="header">
     <a class="logo-link" href="/">
-        <img class="logo" src="/logo.png">
+        <img class="logo" src={logo}>
     </a>
     <nav class="nav">
         <button onclick="goToUrl(this)" data-href="/">Home</button>
