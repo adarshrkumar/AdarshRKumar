@@ -1,4 +1,5 @@
 .grid {
+    margin-inline: auto;
     padding: calc(var(--gap) - 25px);
 
     width: min(100%, 1000px);
