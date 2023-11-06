@@ -73,7 +73,7 @@ import Layout from '../layouts/Layout.astro'
       </div>
     </div> -->
   </section>
-  <script>
+  <script is:inline>
     document.querySelectorAll('.grid.portfolio .item a').forEach(function(a, i) {
       a.style.backgroundImage = `https://image.thum.io/get/maxAge/12/width/${a.clientWidth}/${a.href}`
     })
