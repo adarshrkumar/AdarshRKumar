@@ -1,0 +1,120 @@
+.grid {
+    padding: calc(var(--gap) - 25px);
+
+    width: min(100%, 1000px);
+    height: fit-content;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+}
+
+.grid .item {
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px var(--foreground-tertiary-color);
+
+    cursor: pointer;
+
+    .image-link {
+        width: 100%;
+        aspect-ratio: 1;
+
+        display: grid;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &:hover, &:focus, &:focus-visible, .hasTitle & {
+            border-bottom: solid 1px var(--foreground-tertiary-color);
+        }
+
+        &:hover, &:focus, &:focus-visible {
+            background-size: contain;
+        }
+
+        &:focus, &:focus-visible + div {
+            gap: calc(var(--gap)/2);
+
+            & .description {
+                grid-template-rows: 1fr;
+            }
+            & span {
+                height: auto;
+                visibility: unset;
+                margin-block: 0.5em;
+            }
+        }
+    }
+
+    & > div {
+        &:not([paddingOnHover]) {
+            padding: calc(var(--gap)/2);
+        }
+
+        display: flex;
+        flex-direction: column;
+
+
+        &:has(a:is(:focus, &:focus-visible)) {
+            gap: calc(var(--gap)/2);
+
+            & .description {
+                grid-template-rows: 1fr;
+            }
+            & span {
+                height: auto;
+                visibility: unset;
+                margin-block: 0.5em;
+            }
+        }
+    }
+
+    & :is(h1, h2, h3, h4, h5, h6) {
+        margin-block: 0;
+    }
+    
+    & :is(h1, h2, h3, h4, h5, h6), & span {
+        text-wrap: balance;
+        text-align: center;
+    }
+
+    & .description {
+        display: grid;
+        grid-template-rows: 0fr;
+
+        transition: grid-template-rows 100ms ease;
+    }
+
+    & span {
+        overflow-y: hidden;
+
+        visibility: hidden;
+        transition: height 1s ease;
+
+        cursor: initial;
+    }
+
+    &:is(:hover, :focus, :focus-visible, :focus-within), &:has(a:is(:focus-visible, :focus-within)) {
+        & .image-link {
+            background-size: contain;
+            border-bottom: solid 1px var(--foreground-tertiary-color);
+        }
+
+        & div {
+            gap: calc(var(--gap)/2);
+        }
+        & .description {
+            grid-template-rows: 1fr;
+        }
+        & span {
+            height: auto;
+            visibility: unset;
+            margin-block: 0.5em;
+        }
+    }
+}
