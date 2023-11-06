@@ -2,6 +2,7 @@
     --gap: 25px;
 
     margin-inline: auto;
+    box-sizing: border-box;
     padding: calc(var(--gap) - 25px);
 
     width: min(100%, 1000px);
