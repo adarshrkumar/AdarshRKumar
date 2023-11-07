@@ -121,9 +121,9 @@
     }
 
     &:is(:hover, :focus, :focus-visible, :focus-within), &:has(a:is(:focus-visible, :focus-within)) {
-        & .image-link {
+        // & .image-link {
             // background-size: contain;
-        }
+        // }
         & a:not(.image-link) {
             border-bottom: solid 1px var(--foreground-tertiary-color);
         }
