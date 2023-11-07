@@ -15,10 +15,11 @@
     &:not(:has(.item + .item + .item)):has(.item + .item) {
         grid-template-columns: repeat(2, 1fr);
     }
-    &:not(:has(.item + .item)) {
-        .item {
-            grid-column: 2 / -2;
-        }
+    &:not(:has(.item + .item)):has(.item) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    &:not(:has(.item)) {
+        grid-template-columns: repeat(0, 1fr);
     }
 }
 
