@@ -14,11 +14,11 @@
 }
 
 .grid {
-    &:not(:has(.item + .item + .item)) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    // &:not(:has(.item + .item + .item)) {
+        // grid-template-columns: repeat(2, 1fr);
+    // }
     &:not(:has(.item + .item)) {
-        grid-template-columns: repeat(3, 1fr);
+        // grid-template-columns: repeat(3, 1fr);
         .item {
             grid-column: 2 / -2;
         }
