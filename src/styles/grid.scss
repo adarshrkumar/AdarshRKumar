@@ -12,7 +12,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: var(--gap);
 
-    &:not(:has(.item + .item + .item)):not(:has(.item + .item)) {
+    &:not(:has(.item + .item + .item)):has(.item + .item) {
         grid-template-columns: repeat(2, 1fr);
     }
     &:not(:has(.item + .item)) {
