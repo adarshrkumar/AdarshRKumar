@@ -8,11 +8,11 @@ header {
 }
 
 header .logo {
+  min-height: 75px;
   height: 100%;
   aspect-ratio: 1;
 
   color: var(--logo-a-color);
-
   border-radius: 100%;
 
   display: flex;
@@ -20,9 +20,6 @@ header .logo {
   text-decoration: none;
 
   transition: border-radius 1s ease;
-}
-
-header .logo {
 }
 
 header .logo:is(:hover, :focus) {
