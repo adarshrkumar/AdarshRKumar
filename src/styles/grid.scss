@@ -50,9 +50,9 @@
         background-position: center;
         background-repeat: no-repeat;
 
-        &:hover, &:focus, &:focus-visible, .hasTitle & {
+        // &:hover, &:focus, &:focus-visible, .hasTitle & {
             border-bottom: solid 1px var(--foreground-tertiary-color);
-        }
+        // }
 
         &:hover, &:focus, &:focus-visible {
             background-size: contain;
