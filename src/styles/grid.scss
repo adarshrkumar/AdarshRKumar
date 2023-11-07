@@ -11,9 +11,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--gap);
-}
 
-.grid {
     &:not(:has(.item + .item + .item)):not(:has(.item + .item)) {
         grid-template-columns: repeat(2, 1fr);
     }
