@@ -5,9 +5,7 @@ var { logo } = Astro.props
 
 ---
 <header id="header">
-    <a class="logo-link" href="/">
-        <img class="logo" src={logo}>
-    </a>
+    <a class="logo" href="/" style={`background-image: url('${logo}');`}></a>
     <nav class="nav">
         <button onclick="goToUrl(this)" data-href="/">Home</button>
         <button onclick="goToUrl(this)" data-href="/about">About</button>

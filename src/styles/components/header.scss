@@ -7,20 +7,22 @@ header {
   border-bottom: solid 1px var(--background-secondary-color);
 }
 
-header .logo-link {
+header .logo {
   height: 100%;
+  aspect-ratio: 1;
+
+  color: var(--logo-a-color);
+
+  border-radius: 100%;
+
   display: flex;
   align-items: center;
-  color: var(--logo-a-color);
   text-decoration: none;
+
+  transition: border-radius 1s ease;
 }
 
 header .logo {
-  width: 80px;
-  height: auto;
-  border-radius: 100%;
-
-  transition: border-radius 1s ease;
 }
 
 header .logo:is(:hover, :focus) {
