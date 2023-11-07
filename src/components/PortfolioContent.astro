@@ -1,0 +1,11 @@
+---
+import '../styles/grid.scss'
+
+import Layout from '../layouts/Layout.astro'
+---
+<slot />
+<script is:inline>
+    document.querySelectorAll('.grid.portfolio .item .image-link').forEach(function(a, i) {
+        a.style.backgroundImage = `url('https://image.thum.io/get/maxAge/12/width/${a.clientWidth}/${a.href}')`
+    })
+</script>
