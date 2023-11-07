@@ -3,79 +3,77 @@ import '../styles/grid.scss'
 import '../styles/pages/portfolio.scss'
 
 import Layout from '../layouts/Layout.astro'
+import PortfolioContent from '../components/PortfolioContent.astro'
 ---
 <Layout title="Portfolio">
-  <section class="grid portfolio">
-    <div class="item">
-      <a href="https://graphics-for-good.com" target="_blank" class="image-link"></a>
-      <div>
-        <a href="projects/weather.html"target="_blank" >
-          <h3>Graphics for Good</h3>
-        </a>
-        <div class="description">
-          <span>I helped develop and am the Lead Website Designer and Manager!</span>
+  <PortfolioContent>
+    <section class="grid portfolio">
+      <div class="item">
+        <a href="https://graphics-for-good.com" target="_blank" class="image-link"></a>
+        <div>
+          <a href="projects/weather.html"target="_blank" >
+            <h3>Graphics for Good</h3>
+          </a>
+          <div class="description">
+            <span>I helped develop and am the Lead Website Designer and Manager!</span>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- <div class="item">
-      <a href="projects/CSS-practice.html" target="_blank" class="image-link"</a>
-      <div>
-        <a href="projects/CSS-practice.html" target="_blank">
-          <h3>CSS Practice</h3>
-        </a>
-        <div class="description">
-          <span>A small file that ZyBooks had us use to practice some easy CSS.</span>
+      <!-- <div class="item">
+        <a href="projects/CSS-practice.html" target="_blank" class="image-link"</a>
+        <div>
+          <a href="projects/CSS-practice.html" target="_blank">
+            <h3>CSS Practice</h3>
+          </a>
+          <div class="description">
+            <span>A small file that ZyBooks had us use to practice some easy CSS.</span>
+          </div>
         </div>
-      </div>
-    </div> -->
-    <!-- <div class="item">
-      <a href="projects/recipe-with-flexbox/oatmeal_cookies.html" target="_blank" class="image-link"</a>
-      <div>
-        <a href="projects/recipe-with-flexbox/oatmeal_cookies.html" target="_blank">
-          <h3>Recipe with Flexbox</h3>
-        </a>
-        <div class="description">
-          <span>A recipe page for oatmeal cookies that you can use to make your own.</span>
+      </div> -->
+      <!-- <div class="item">
+        <a href="projects/recipe-with-flexbox/oatmeal_cookies.html" target="_blank" class="image-link"</a>
+        <div>
+          <a href="projects/recipe-with-flexbox/oatmeal_cookies.html" target="_blank">
+            <h3>Recipe with Flexbox</h3>
+          </a>
+          <div class="description">
+            <span>A recipe page for oatmeal cookies that you can use to make your own.</span>
+          </div>
         </div>
-      </div>
-    </div> -->
-    <!-- <div class="item">
-      <a href="projects/quotes-application.html" target="_blank" class="image-link"</a>
-      <div>
-        <a href="projects/quotes-application.html" target="_blank">
-          <h3>Quotes Application</h3>
-        </a>
-        <div class="description">
-          <span>A web-app that displayed quotes from the ZyBooks Quote API.</span>
+      </div> -->
+      <!-- <div class="item">
+        <a href="projects/quotes-application.html" target="_blank" class="image-link"</a>
+        <div>
+          <a href="projects/quotes-application.html" target="_blank">
+            <h3>Quotes Application</h3>
+          </a>
+          <div class="description">
+            <span>A web-app that displayed quotes from the ZyBooks Quote API.</span>
+          </div>
         </div>
-      </div>
-    </div> -->
-    <!-- <div class="item">
-      <a href="projects/temperature-converter/" target="_blank" class="image-link"></a>
-      <div>
-        <a href="projects/temperature-converter/" target="_blank">
-          <h3>Temperature Converter</h3>
-        </a>
-        <div class="description">
-          <span>A neat web-app that converts temperature including Kelvin.</span>
+      </div> -->
+      <!-- <div class="item">
+        <a href="projects/temperature-converter/" target="_blank" class="image-link"></a>
+        <div>
+          <a href="projects/temperature-converter/" target="_blank">
+            <h3>Temperature Converter</h3>
+          </a>
+          <div class="description">
+            <span>A neat web-app that converts temperature including Kelvin.</span>
+          </div>
         </div>
-      </div>
-    </div> -->
-    <!-- <div class="item">
-      <a href="projects/rate.html" target="_blank" class="image-link"</a>
-      <div>
-        <a href="projects/rate.html" target="_blank">
-          <h3>Product Rating</h3>
-        </a>
-        <div class="description">
-          <span>A form that people can use as a way for customers rating products.</span>
+      </div> -->
+      <!-- <div class="item">
+        <a href="projects/rate.html" target="_blank" class="image-link"</a>
+        <div>
+          <a href="projects/rate.html" target="_blank">
+            <h3>Product Rating</h3>
+          </a>
+          <div class="description">
+            <span>A form that people can use as a way for customers rating products.</span>
+          </div>
         </div>
-      </div>
-    </div> -->
-  </section>
-  <script is:inline>
-    document.querySelectorAll('.grid.portfolio .item .image-link').forEach(function(a, i) {
-      a.style.backgroundImage = `url('https://image.thum.io/get/maxAge/12/width/${a.clientWidth}/${a.href}')`
-    })
-  </script>
+      </div> -->
+    </section>
+  </PortfolioContent>
 </Layout>
