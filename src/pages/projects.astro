@@ -5,66 +5,192 @@ import '../styles/pages/projects.scss'
 import Layout from '../layouts/Layout.astro'
 ---
 <Layout title="Projects">
-  <h3>Misc Projects</h3>
-  <hr width="550">
-  <section class="list v">
-    <div>
-      <a href="https://Timer.RockGamerAK.com">My Timer Application</a>: 
-      <span class="project-description">Punch in an hour minute and second value and see the timer whizz into action.</span>
-    </div>
-    <div>
-      <a href="https://Live-Clock.RockGamerAK.com">My Clock Application</a>: 
-      <span class="project-description">This clock application harnesses the datetime features of JavaScript to display your local time no matter where you are.</span>
-    </div>
-    <div>
-      <a href="https://Nearpod.RockGamerAK.com">My Nearpod Joiner</a>: 
-      <span class="project-description">Input in a code and it will join the presentation for you!</span>
-    </div>
-    <div>
-      <a href="https://Favicons.RockGamerAK.com">My Favicon Generator</a>: 
-      <span class="project-description">Input in a URL and it will generate the favicon of that URL!</span>
-    </div>
-    <!-- <div>
-      <a href="https://Image-Changer.RockGamerAK.com">My Image Changer</a>: 
-      <span class="project-description">A Random Image Changer!</span>
-    </div> -->
-    <!-- <div>
-      <a href="https://Pop-Ups.RockGamerAK.com">My Pop-Ups Machene</a>: 
-      <span class="project-description">My Version Of YouAreAnIdiot!</span>
-    </div> -->
-    <div>
-      <a href="https://Disability-Menus.RockGamerAK.com">My Disability Menus</a>: 
-      <span class="project-description">An Oculus Environment That Is Suited For Disabled People!</span>
-    </div>
-    <!-- <div>
-      <a href="https://Browser.RockGamerAK.com">My Browser</a>: 
-      <span class="project-description">A Hard-Coded "Browser" That Works!</span>
-    </div> -->
-  </section>
-  <hr width="750">
-  <h3>Games</h3>
-  <hr width="550">
-  <section class="list v">
-    <div>
-      <a href="https://uno.RockGamerAK.com">My UNO Game</a>: 
-      <span class="project-description">Play UNO Online!</span>
-    </div>
-    <div>
-      <a href="https://Tic-Tac-Toe.RockGamerAK.com">My Tic-Tac-Toe Game</a>: 
-      <span class="project-description">Play Tic-Tac-Toe Online!</span>
-    </div>
-    <div>
-      <a href="https://Magic-8-Ball.RockGamerAK.com">My Magic-8-Ball Game</a>: 
-      <span class="project-description">Play Tic-Tac-Toe Online!</span>
-    </div>
-    <div>
-      <a href="https://Rock-Paper-Scissors.RockGamerAK.com">My Rock-Paper-Scissors Game</a>: 
-      <span class="project-description">Play Rock-Paper-Scissors Online!</span>
-    </div>
-    <div>
-      <a href="https://Cookie-Clicker.RockGamerAK.com">My Cookie Clicker Game</a>: 
-      <span class="project-description">Play Cookie Clicker Online!</span>
-    </div>
-  </section>
+  <SiteGridContent>
+    <h3>Misc Projects</h3>
+    <hr width="550">
+    <section class="grid projects">
+      <div class="item">
+        <a href="https://Timer.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Timer.RockGamerAK.com"target="_blank" >
+            <h3>My Timer Application</h3>
+          </a>
+          <div class="description">
+            <span>Punch in an hour minute and second value and see the timer whizz into action.</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <a href="https://Live-Clock.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Live-Clock.RockGamerAK.com" target="_blank">
+            <h3>My Clock Application</h3>
+          </a>
+          <div class="description">
+            <span>This clock application harnesses the datetime features of JavaScript to display your local time no matter where you are.</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <a href="https://Nearpod.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Nearpod.RockGamerAK.com" target="_blank">
+            <h3>My Nearpod Joiner</h3>
+          </a>
+          <div class="description">
+            <span>Input in a code and it will join the presentation for you!</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <a href="https://Favicons.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Favicons.RockGamerAK.com" target="_blank">
+            <h3>My Favicon Generator</h3>
+          </a>
+          <div class="description">
+            <span>Input in a URL and it will generate the favicon of that URL!</span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="item">
+        <a href="https://Image-Changer.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Image-Changer.RockGamerAK.com" target="_blank">
+            <h3>My Image Changer</h3>
+          </a>
+          <div class="description">
+            <span>A Random Image Changer!</span>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="item">
+        <a href="https://Pop-Ups.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Pop-Ups.RockGamerAK.com" target="_blank">
+            <h3>My Pop-Ups Machene</h3>
+          </a>
+          <div class="description">
+            <span>My Version Of YouAreAnIdiot!</span>
+          </div>
+        </div>
+      </div> -->
+      <div class="item">
+        <a href="https://Disability-Menus.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Disability-Menus.RockGamerAK.com" target="_blank">
+            <h3>My Disability Menus</h3>
+          </a>
+          <div class="description">
+            <span>An Oculus Environment that is suited for Disabled People!</span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="item">
+        <a href="https://Browser.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Browser.RockGamerAK.com" target="_blank">
+            <h3>My Browser</h3>
+          </a>
+          <div class="description">
+            <span>A Hard-Coded "Browser" That Works!</span>
+          </div>
+        </div>
+      </div> -->
+    </section>
+    <hr width="750">
+    <h3>Games</h3>
+    <hr width="550">
+    <section class="grid games">
+      <div class="item">
+        <a href="https://Uno.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Uno.RockGamerAK.com"target="_blank" >
+            <h3>My UNO Game</h3>
+          </a>
+          <div class="description">
+            <span>Play UNO Online!</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <a href="https://Tic-Tac-Toe.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Tic-Tac-Toe.RockGamerAK.com" target="_blank">
+            <h3>My Tic-Tac-Toe Game</h3>
+          </a>
+          <div class="description">
+            <span>Play Tic-Tac-Toe Online!</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <a href="https://Magic-8-Ball.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Magic-8-Ball.RockGamerAK.com" target="_blank">
+            <h3>My Magic-8-Ball Game</h3>
+          </a>
+          <div class="description">
+            <span>Play Magic-8-Ball Online!</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <a href="https://Rock-Paper-Scissors.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Rock-Paper-Scissors.RockGamerAK.com" target="_blank">
+            <h3>My Rock-Paper-Scissors Game</h3>
+          </a>
+          <div class="description">
+            <span>Play Rock-Paper-Scissors Online!</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <a href="https://Cookie-Clicker.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Cookie-Clicker.RockGamerAK.com" target="_blank">
+            <h3>My Cookie Clicker Game</h3>
+          </a>
+          <div class="description">
+            <span>Play "Cookie Clicker" Online!</span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="item">
+        <a href="https://Pop-Ups.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Pop-Ups.RockGamerAK.com" target="_blank">
+            <h3>My Pop-Ups Machene</h3>
+          </a>
+          <div class="description">
+            <span>My Version Of YouAreAnIdiot!</span>
+          </div>
+        </div>
+      </div> -->
+      <div class="item">
+        <a href="https://Disability-Menus.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Disability-Menus.RockGamerAK.com" target="_blank">
+            <h3>My Disability Menus</h3>
+          </a>
+          <div class="description">
+            <span>An Oculus Environment that is suited for Disabled People!</span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="item">
+        <a href="https://Browser.RockGamerAK.com" target="_blank" class="image-link" />
+        <div>
+          <a href="https://Browser.RockGamerAK.com" target="_blank">
+            <h3>My Browser</h3>
+          </a>
+          <div class="description">
+            <span>A Hard-Coded "Browser" That Works!</span>
+          </div>
+        </div>
+      </div> -->
+    </section>
+  </SiteGridContent>
   <hr width="750">
 </Layout>
