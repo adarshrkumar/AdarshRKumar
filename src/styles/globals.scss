@@ -86,6 +86,9 @@ h1, .heading-link {
 
 form {
     width: fit-content;
+	display: flex;
+	flex-direction: column;
+	gap: 64px;
 }
   
 fieldset {
