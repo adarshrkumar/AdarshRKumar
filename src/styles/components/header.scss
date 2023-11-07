@@ -13,6 +13,11 @@ header .logo {
   aspect-ratio: 1;
 
   color: var(--logo-a-color);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   border-radius: 100%;
 
   display: flex;
