@@ -54,7 +54,7 @@
             border-bottom: solid 1px var(--foreground-tertiary-color);
         // }
 
-        &:hover, &:focus, &:focus-visible {
+        :not(.portfolio) &:is(:hover, :focus, :focus-visible) {
             background-size: contain;
         }
 
