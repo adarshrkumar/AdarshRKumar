@@ -18,6 +18,7 @@
         grid-template-columns: repeat(0, 1fr);
     }
     &:not(:has(.item + .item)) {
+        grid-template-columns: repeat(3, 1fr);
         .item {
             grid-column: 2 / -2;
         }
