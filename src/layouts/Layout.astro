@@ -38,7 +38,7 @@ if (className.startsWith(' ')) className = className.substring(1)
   </head>
   <body>
     <Header logo={logoSRC} />
-    <h1 id="page-title">{pTitle}</h1>
+    <h1 class="page-title">{pTitle}</h1>
     <main id="content" align="center">
       <div class={className} style={inlineStyles}>
         <slot />
