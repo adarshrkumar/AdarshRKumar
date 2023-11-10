@@ -32,6 +32,7 @@ header .logo:is(:hover, :focus) {
 }
 
 .nav {
+  flex: 1;
   height: 100%;
   
   display: grid;
