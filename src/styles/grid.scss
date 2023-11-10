@@ -13,27 +13,8 @@
     height: fit-content;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit,minmax(0px, 316.6px));
     gap: var(--gap);
-
-    &:not(:has(.item + .item + .item)):has(.item + .item) {
-        grid-template-columns: repeat(2, 1fr);
-        .item {
-            border-width: 1.5px;
-        }
-    }
-    &:not(:has(.item + .item)):has(.item) {
-        grid-template-columns: repeat(1, 1fr);
-        .item {
-            border-width: 2px;
-        }
-    }
-    &:not(:has(.item)) {
-        grid-template-columns: repeat(0, 1fr);
-        .item {
-            border: none;
-        }
-    }
 }
 
 .grid .item {
