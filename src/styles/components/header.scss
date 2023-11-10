@@ -36,7 +36,7 @@ header .logo:is(:hover, :focus) {
   height: 100%;
   
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
 
   place-items: center;
   gap: 15px;
