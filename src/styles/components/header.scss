@@ -1,8 +1,10 @@
 // Styles for the Navigation Bar
 header {
+  padding: 2rem 4rem;
+
   display: flex;
   align-items: center;
-  padding: 2rem 4rem;
+  flex-wrap: wrap;
 
   border-bottom: solid 1px var(--background-secondary-color);
 }
