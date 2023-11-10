@@ -4,7 +4,9 @@ header {
 
   display: flex;
   align-items: center;
+
   flex-wrap: wrap;
+  gap: 15px;
 
   border-bottom: solid 1px var(--background-secondary-color);
 }
@@ -37,7 +39,7 @@ header .logo:is(:hover, :focus) {
   justify-content: flex-end;
   align-items: center;
 
-  // flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
