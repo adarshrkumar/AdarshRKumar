@@ -3,7 +3,7 @@ header {
   padding: 2rem 4rem;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   flex-wrap: wrap;
@@ -35,10 +35,10 @@ header .logo:is(:hover, :focus) {
   flex: 1;
   height: 100%;
   
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
 
-  place-items: center;
+  justify-content: center;
   gap: 15px;
 }
 
