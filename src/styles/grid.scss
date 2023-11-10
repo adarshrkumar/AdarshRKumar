@@ -109,7 +109,7 @@
         // & .image-link {
             // background-size: contain;
         // }
-        & a:not(.image-link) {
+        & div:not([paddingOnHover]) {
             border-bottom: solid 1px var(--foreground-tertiary-color);
         }
 
