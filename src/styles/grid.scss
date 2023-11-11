@@ -59,7 +59,10 @@
 
     & > div {
         &:not([paddingOnHover]) {
-            padding: calc(var(--gap)/2);
+            * {
+                box-sizing: border-box;
+                padding: calc(var(--gap)/2);
+            }
         }
 
         display: flex;
@@ -109,7 +112,7 @@
         // & .image-link {
             // background-size: contain;
         // }
-        & div:not([paddingOnHover]) {
+        & a:not(.image-link) {
             border-bottom: solid 1px var(--foreground-tertiary-color);
         }
 
