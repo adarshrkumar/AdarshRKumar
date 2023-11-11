@@ -51,6 +51,7 @@ main {
 
 .main-content {
     box-sizing: border-box;
+    max-width: 100%;
     &:not(.ignorePadding) {
         padding: 8px;
     }
