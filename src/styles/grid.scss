@@ -65,10 +65,10 @@
                 padding: calc(var(--gap)/var(--val));
                 gap: 0;
                 &:first-child {
-                    padding-bottom: calc(var(--gap)/var(--val)*2);
+                    padding-bottom: calc(var(--gap)/( var(--val)*2));
                 }
                 &:last-child {
-                    padding-top: calc(var(--gap)/var(--val)*2);
+                    padding-top: calc(var(--gap)/(var(--val)*2));
                 }
             }
         }
