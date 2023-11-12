@@ -15,6 +15,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(316.6px, 1fr));
     gap: var(--gap);
+
+    @media (max-width: 1016px) and (min-width: 509px) {
+        grid-template-columns: repeat(2, minmax(316.6px, 1fr));
+    }
+    @media (max-width: 508px) {
+        grid-template-columns: repeat(1, minmax(316.6px, 1fr));
+    }
 }
 
 .grid .item {
