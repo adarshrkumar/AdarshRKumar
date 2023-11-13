@@ -30,6 +30,7 @@ cids.forEach(cid => {
             links.forEach(link => {
                 let id = link.substring(link.indexOf("=") + 1);
                 let iframe = document.createElement('iframe')
+                iframe.classList.add('item')
                 iframe.style.backgroundImage = `url('https://i.ytimg.com/vi/${id}/maxresdefault.jpg')`
                 iframe.src = `https://youtube.com/embed/${id}`;
                 vElement.appendChild(iframe)
