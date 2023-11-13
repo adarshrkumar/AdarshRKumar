@@ -6,7 +6,7 @@
 .videos > iframe {
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     align-items: center;
     aspect-ratio: 16 / 9;
 }
