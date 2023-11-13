@@ -1,12 +1,3 @@
-.videos {
-    --gap: 25px;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 1fr);
-    padding: var(--gap);
-    gap: var(--gap);
-}
-  
 .videos > iframe {
     background-position: center;
     background-repeat: no-repeat;
