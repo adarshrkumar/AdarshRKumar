@@ -1,5 +1,6 @@
 .videos {
     width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(316.6px, 1fr));
 }
 
 .videos > iframe {
