@@ -9,12 +9,15 @@
     box-sizing: border-box;
     padding: calc(var(--gap) - 25px);
 
-    width: min(100%, 1000px);
     height: fit-content;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(316.6px, 316.6px));
     gap: var(--gap);
+
+    &:not(.videos) {
+        width: min(100%, 1000px);
+    }
 
     @media (max-width: 1016px) and (min-width: 509px) {
         grid-template-columns: repeat(2, minmax(316.6px, 1fr));
