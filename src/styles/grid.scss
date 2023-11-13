@@ -13,7 +13,7 @@
     height: fit-content;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(316.6px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(316.6px, 316.6px));
     gap: var(--gap);
 
     @media (max-width: 1016px) and (min-width: 509px) {
