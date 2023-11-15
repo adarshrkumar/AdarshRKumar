@@ -15,7 +15,7 @@
     grid-template-columns: repeat(auto-fit, minmax(316.6px, 316.6px));
     gap: var(--gap);
 
-    &:not(.videos) {
+    &:not(#videos) {
         width: min(100%, 1000px);
     }
 
