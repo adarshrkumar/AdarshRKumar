@@ -19,12 +19,15 @@ var { logo } = Astro.props
 </header>
 <script is:inline>
     function goToUrl(btn) {
+        console.log(btn)
         var link = btn
         var target = '_self'
         if (typeof link !== 'string') {
             link = btn.getAttribute('data-href')
             target = btn.getAttribute('data-target')
         }
+        console.log(link)
+        console.log(target)
         if (target === '_blank') {
             window.open(link)
         }
