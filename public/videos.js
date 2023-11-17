@@ -1,7 +1,6 @@
 var modal = document.querySelector('dialog')
 var aElement = document.querySelector('a[data-video]')
 var vElement = document.getElementById('videos')
-var hasRun = false
 
 const cids = [
     'UCb35v6VAVFI8Q0aIpwPoW1g', 
