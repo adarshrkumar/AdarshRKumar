@@ -41,6 +41,7 @@ cids.forEach(cid => {
                 vids.push(id)
                 var player = document.createElement('div')
                 player.id = `player${i+1}`
+                vElement.appendChild(player)
             })
         })
         .catch(error => console.log('error', error));
