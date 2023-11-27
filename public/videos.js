@@ -39,17 +39,20 @@ cids.forEach(cid => {
             links.forEach(link => {
                 let id = link.substring(link.indexOf("=") + 1);
                 vids.push(id)
+                var player = document.createElement('div')
+                player.id = `player${i+1}`
             })
         })
         .catch(error => console.log('error', error));
 })
 
+var players = []
+
 function onYouTubeIframeAPIReady() {
     vids.forEach(function(id, i) {
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
-        var player;
-        player = new YT.Player('player', {
+        players[i] = new YT.Player(`player${i+1}`, {
             // height: '390',
             // width: '640',
             videoId: id,
