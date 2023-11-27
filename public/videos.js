@@ -52,7 +52,8 @@ function onYouTubeIframeAPIReady() {
     vids.forEach(function(id, i) {
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
-        players[i] = new YT.Player(`player${i+1}`, {
+        var player
+        player = new YT.Player(`player${i+1}`, {
             // height: '390',
             // width: '640',
             videoId: id,
@@ -64,6 +65,7 @@ function onYouTubeIframeAPIReady() {
                 'onStateChange': onPlayerStateChange
             }
         });
+        players.push(player)
     })
 }
 
