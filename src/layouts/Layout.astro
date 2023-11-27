@@ -20,6 +20,8 @@ if (pTitle === 'Home') {
   title = title.split(' | ')[1]
 }
 
+if (!!classItems === false) classItems = ''
+
 var className = `${classItems} main-content`
 if (className.startsWith(' ')) className = className.substring(1)
 
