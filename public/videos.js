@@ -21,7 +21,7 @@ var vids = []
 let vidsNum = 9
 let vidsPerChannel = vidsNum/cids.length
 
-cids.forEach(cid => {
+cids.forEach(function(cid, cI) {
     let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`)
     let reqURL = `https://api.rss2json.com/v1/api.json?rss_url=${channelURL}`
     
@@ -36,7 +36,7 @@ cids.forEach(cid => {
                     i++
                 }
             }
-            links.forEach(link => {
+            links.forEach(function(link, i) {
                 let id = link.substring(link.indexOf("=") + 1);
                 vids.push(id)
                 var player = document.createElement('div')
