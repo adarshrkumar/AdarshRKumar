@@ -55,8 +55,8 @@ function onYouTubeIframeAPIReady() {
         //    after the API code downloads.
         var player
         player = new YT.Player(`player${i+1}`, {
-            // height: '390',
-            // width: '640',
+            height: 'auto',
+            width: 'auto',
             videoId: id,
             playerVars: {
                 'playsinline': 1
