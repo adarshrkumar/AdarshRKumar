@@ -40,11 +40,9 @@ cids.forEach(function(cid, cI) {
         .catch(error => console.log('error', error));
 })
 for (let i = 0; i < vidsNum; i++) {
-    if (!!vids[i]) {
-        var player = document.createElement('div')
-        player.id = `player${(i+1)}`
-        vElement.appendChild(player)
-    }
+    var player = document.createElement('div')
+    player.id = `player${(i+1)}`
+    vElement.appendChild(player)
 }
 
 var players = []
