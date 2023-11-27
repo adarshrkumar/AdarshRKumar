@@ -12,9 +12,3 @@ channel_ids.forEach(function(cid, i) {
 
     document.querySelector('.channel-stats').appendChild(container)
 })
-
-document.querySelectorAll('iframe').forEach(function(frame) {
-    var src = frame.src
-    if (src.includes('://')) src = src.split('://')[1]
-    if (src.startsWith('accounts.google.com/o/oauth2/postmessageRelay')) frame.style.display = 'none'
-})
