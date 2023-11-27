@@ -13,7 +13,6 @@ channel_ids.forEach(function(cid, i) {
     document.querySelector('.channel-stats').appendChild(container)
 })
 
-console.log(document.querySelectorAll('iframe'))
 document.querySelectorAll('iframe').forEach(function(frame) {
     var src = frame.src
     if (src.includes('://')) src = src.split('://')[1]
