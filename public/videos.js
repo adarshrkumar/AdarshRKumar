@@ -5,8 +5,6 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var vids = []
-
 var modal = document.querySelector('dialog')
 var aElement = document.querySelector('a[data-video]')
 var vElement = document.getElementById('videos')
