@@ -29,23 +29,23 @@ cids.forEach(function(cid, cI) {
         .then(response => response.json())
         .then(result => {
             let links = []
-            let i = 0
-            while (i < vidsPerChannel) {
+            for (let i = 0; i < vidsPerChannel; i++) {
                 if (!!result.items[i].link) {
                     links.push(result.items[i].link)
-                    i++
                 }
             }
             links.forEach(function(link, i) {
                 let id = link.substring(link.indexOf("=") + 1);
                 vids.push(id)
-                var player = document.createElement('div')
-                player.id = `player${i+1}`
-                vElement.appendChild(player)
             })
         })
         .catch(error => console.log('error', error));
 })
+for (let i = 0; i < vidsPerChannel; i++) {
+    var player = document.createElement('div')
+    player.id = `player${(i+1)}`
+    vElement.appendChild(player)
+}
 
 var players = []
 
