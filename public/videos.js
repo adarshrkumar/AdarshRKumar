@@ -32,6 +32,14 @@ cids.forEach(function(cid, cI) {
                     if (!!result.items[i].link) {
                         links.push(result.items[i].link)
                     }
+                    else {
+                        console.error(`Error with: result.items[${i}].link`)
+                        console.error(result.items[i])
+                    }
+                }
+                else {
+                    console.error(`Error with: result.items[${i}]`)
+                    console.error(result.items)
                 }
             }
             links.forEach(function(link, i) {
