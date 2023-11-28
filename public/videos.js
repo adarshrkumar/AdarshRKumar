@@ -28,8 +28,10 @@ cids.forEach(function(cid, cI) {
         .then(result => {
             let links = []
             for (let i = 0; i < vidsPerChannel; i++) {
-                if (!!result.items[i].link) {
-                    links.push(result.items[i].link)
+                if (!!result.items[i]) {
+                    if (!!result.items[i].link) {
+                        links.push(result.items[i].link)
+                    }
                 }
             }
             links.forEach(function(link, i) {
