@@ -70,6 +70,14 @@ function onYouTubeIframeAPIReady() {
     })
 }
 
+addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        if (!!vElement.querySelector('iframe') === false) {
+            onYouTubeIframeAPIReady()
+        }
+    }, 1000)
+})
+
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
     // event.target.playVideo();
