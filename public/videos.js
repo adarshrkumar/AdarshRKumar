@@ -28,18 +28,24 @@ cids.forEach(function(cid, cI) {
         .then(result => {
             let links = []
             for (let i = 0; i < vidsPerChannel; i++) {
-                if (!!result.items[i]) {
-                    if (!!result.items[i].link) {
-                        links.push(result.items[i].link)
+                if (!!result.items) {
+                    if (!!result.items[i]) {
+                        if (!!result.items[i].link) {
+                            links.push(result.items[i].link)
+                        }
+                        else {
+                            console.error(`Error with: result.items[${i}].link`)
+                            console.error(result.items[i])
+                        }
                     }
                     else {
-                        console.error(`Error with: result.items[${i}].link`)
-                        console.error(result.items[i])
+                        console.error(`Error with: result.items[${i}]`)
+                        console.error(result.items)
                     }
                 }
                 else {
-                    console.error(`Error with: result.items[${i}]`)
-                    console.error(result.items)
+                    console.error(`Error with: result.items`)
+                    console.error(result)
                 }
             }
             links.forEach(function(link, i) {
