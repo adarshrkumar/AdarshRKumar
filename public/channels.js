@@ -27,12 +27,14 @@ var channels = [
         id: 'UCpgY8iFp2Nkfu0jAwk2U94g'
     }
 ]
-channels.forEach(function(c, i) {
+
+for (let i = 0; i < channels.length; i++) {
     var container = document.createElement('div')
     container.classList.add('channel-container')
+    container.setAttribute('data-i', i)
 
     statsEle.appendChild(container)
-})
+}
 
 channels.forEach(function(c, i) {
     props.forEach(function(p) {
@@ -47,4 +49,5 @@ channels.forEach(function(c, i) {
     cEle.setAttribute('data-count', c.count)
 
     container.appendChild(cEle)
+    container.removeAttribute('data-i')
 })
