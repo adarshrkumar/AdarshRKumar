@@ -35,8 +35,8 @@ channels.forEach(function(c, i) {
 })
 
 channels.forEach(function(c, i) {
-    layouts.forEach(function(l) {
-        if (!!l === false) c[l] = l.default
+    props.forEach(function(p) {
+        if (!!c[p] === false) c[p] = p.default
     })
     var container = statsEle.querySelectorAll('.channel-container')[i]
 
