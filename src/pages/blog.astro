@@ -7,7 +7,6 @@ const allPosts = await Astro.glob('../posts/*.md')
 ---
 <Layout title="Blog">
   <section class="posts">
-    {allPosts}
     {
       allPosts.map((post) => {
         <div class="post">
