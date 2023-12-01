@@ -7,10 +7,14 @@ import Layout from '../layouts/Layout.astro'
   Error Type: 404
   <script is:inline>
     let pageTitle = document.querySelector('.current-URL-not-found')
-    let aHTML = `<a href="${location.href}">${location.pathname}</a>`
+    let aHTML = `<a href="${location.href}">`
     if (location.pathname.startsWith('/404')) {
-      aHTML = `<a href="${location.href}">the requested page</a>`
+      aHTML += `the requested page`
     }
+    else {
+      aHTML += `${location.pathname}`
+    }
+    aHTML += `</a>`
     pageTitle.innerHTML = `${aHTML} Could not be found`
 
   </script>
