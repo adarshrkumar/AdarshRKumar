@@ -38,7 +38,7 @@ for (let i = 0; i < channels.length; i++) {
 
 channels.forEach(function(c, i) {
     props.forEach(function(p) {
-        if (!!c[p] === false) c[p] = p.default
+        if (!!c[p.name] === false) c[p.name] = p.default
     })
     var container = statsEle.querySelectorAll('.channel-container')[i]
 
