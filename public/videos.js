@@ -15,6 +15,7 @@ const cids = [
     'UC8cV2cdrp1ccBWzoi1R-UwQ', 
 ]
 var vids = []
+var vidsAmt = []
 
 let vidsNum = 9
 let vidsPerChannel = vidsNum/cids.length
@@ -29,6 +30,9 @@ cids.forEach(function(cid, cI) {
             let links = []
             for (let i = 0; i < vidsPerChannel; i++) {
                 if (!!result.items) {
+                    let channelVids = result.items.length
+                    if (channelVids > 3) channelVids = 3
+                    vidsAmt.push(channelVids)
                     if (!!result.items[i]) {
                         if (!!result.items[i].link) {
                             links.push(result.items[i].link)
