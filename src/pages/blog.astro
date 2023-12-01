@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+<Layout title="Contact">
+  <form action="https://getform.io/f/21a3ba30-b0e7-4e10-a5bf-6635fc7ba92f" method="POST">
+    <fieldset>
+      <legend align="center">Contact Me</legend>
+      <p>
+        <label for="your-name" align="left" width="100">
+          <b>Name: </b>
+        </label>
+        <input type="text" name="name" id="your-name" placeholder="What's your name?" required="TRUE">
+      </p>
+      <p>
+        <label for="email-address" align="left" width="100">
+          <b>Email: </b>
+        </label>
+        <input type="email" name="email" id="email-address" placeholder="you@email.tld" required="TRUE">
+      </p>
+      <p>
+        <label for="message" align="left" width="100">
+          <b>Message: </b>
+        </label>
+        <textarea rows="5" name="message" id="message" placeholder="Type here..." required="TRUE"></textarea>
+      </p>
+      <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+      <input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer;">
+    </fieldset>
+  </form>
+</Layout>
