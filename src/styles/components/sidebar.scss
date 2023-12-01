@@ -37,6 +37,7 @@
         border-radius: 5px;
 
         display: grid;
+        grid-template-rows: subgrid;
         place-items: center;
 
         overflow: hidden;
