@@ -1,3 +1,4 @@
+var statsEle = document.querySelector('.channel-stats')
 var channel_ids = [
     'UCb35v6VAVFI8Q0aIpwPoW1g', 
     'UCLK0Lj3V864AbKfutfyztYA', 
@@ -8,7 +9,10 @@ channel_ids.forEach(function(cid, i) {
     var container = document.createElement('div')
     container.classList.add('channel-container')
 
-    container.innerHTML = `<div class="g-ytsubscribe" data-channelid="${cid}" data-layout="full" data-count="default"></div>`
+    statsEle.appendChild(container)
+})
 
-    document.querySelector('.channel-stats').appendChild(container)
+channel_ids.forEach(function(cid, i) {
+    var container = statsEle.querySelectorAll('.channel-container')[i]
+    container.innerHTML = `<div class="g-ytsubscribe" data-channelid="${cid}" data-layout="full" data-count="default"></div>`
 })
