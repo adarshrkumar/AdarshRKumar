@@ -9,7 +9,7 @@
 .grid {
     --gap: 25px;
 
-    // margin-inline: auto;
+    margin-inline: auto;
     box-sizing: border-box;
     padding: calc(var(--gap) - 25px);
 
@@ -51,7 +51,7 @@
 
     cursor: pointer;
 
-    // grid-column: span 2;
+    grid-column: span 2;
     // &:not(:has( + &)) {
         // grid-coulumn: ;
     // }
