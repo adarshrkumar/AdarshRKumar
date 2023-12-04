@@ -39,7 +39,9 @@
     }
     &:not(:has( + .item + .item)) {
         grid-column-start: 2;
+        grid-column-end: 4;
         & + .item {
+            grid-column-start: -4;
             grid-column-end: -2;
         }
     }
