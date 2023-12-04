@@ -19,25 +19,29 @@ var items = [
   // }, 
 ]
 
+var itemsHTML = ''
+
+items.forEach(function(item, i) {
+  itemsHTML += `
+    <div class="item">
+      <a href={item.link.url} target={item.link.target} class="image-link" />
+      <div>
+        <a href={item.link.url} target={item.link.target} >
+          <h3>Graphics for Good</h3>
+        </a>
+        <div class="description">
+          <span set:html={item.description} />
+        </div>
+      </div>
+    </div>
+  `
+})
+
 ---
 <Layout title="Portfolio">
   <SiteGridContent>
     <section class="grid portfolio">
-      {
-        items.map((item) => {
-          <div class="item">
-            <a href={item.link.url} target={item.link.target} class="image-link" />
-            <div>
-              <a href={item.link.url} target={item.link.target} >
-                <h3>Graphics for Good</h3>
-              </a>
-              <div class="description">
-                <span set:html={item.description} />
-              </div>
-            </div>
-          </div>
-        })
-      }
+      {itemsHTML}
       <div class="item">
         <a href="https://graphics-for-good.com" target="_blank" class="image-link" />
         <div>
