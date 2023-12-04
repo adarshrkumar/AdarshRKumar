@@ -32,17 +32,11 @@
     }
 }
 
-// .grid .item {
-    // &:nth-child(3n-2) {
-        // grid-column: 1 / 3;
-    // }
-    // &:nth-child(3n-1) {
-        // grid-column: 3 / -3;
-    // }
-    // &:nth-child(3n-0) {
-        // grid-column: -3 / -1;
-    // }
-// }
+.grid .item {
+    &:not(:has( + &)) {
+        grid-column: -3 / -1;
+    }
+}
 
 .grid .item {
     // height: fit-content;
@@ -52,9 +46,6 @@
     cursor: pointer;
 
     grid-column: span 2;
-    // &:not(:has( + &)) {
-        // grid-coulumn: ;
-    // }
 
     .image-link {
         width: 100%;
