@@ -12,7 +12,7 @@
     height: fit-content;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(316.6px, 316.6px)); // 6
+    grid-template-columns: repeat(/*auto-fit*/6, minmax(316.6px, 316.6px)); // 6
     gap: var(--gap);
 
     &:not(#videos) {
