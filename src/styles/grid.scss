@@ -8,6 +8,7 @@
 
 .grid {
     --gap: 25px;
+    --minmax: 316.6px;
 
     margin-inline: auto;
     box-sizing: border-box;
@@ -17,7 +18,7 @@
     max-width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(/*auto-fit*/6, minmax(calc(316.6px/2), 316.6px)); // 6
+    grid-template-columns: repeat(/*auto-fit*/6, minmax(calc(var(--minmax)/2), var(--minmax))); // 6
     gap: var(--gap);
 
     &:not(#videos) {
