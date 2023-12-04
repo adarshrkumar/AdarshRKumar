@@ -35,24 +35,22 @@
 
 .grid .item {
     &:not(:has( + .item)) {
-        grid-column: 3 / -3;
+        grid-column: span var(--span*3);
     }
     &:not(:has( + .item + .item)) {
-        grid-column-start: 2;
-        & + .item {
-            grid-column-end: -2;
-        }
+        grid-column: span calc(--span*2);
     }
 }
 
 .grid .item {
+    --span: 2;
     // height: fit-content;
 
     border: solid 1px var(--foreground-tertiary-color);
 
     cursor: pointer;
 
-    grid-column: span 2;
+    grid-column: span var(--span);
 
     .image-link {
         width: 100%;
