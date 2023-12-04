@@ -35,7 +35,7 @@
 
 .grid .item {
     &.featured {
-        grid-column: span var(--span*2);
+        grid-column: span calc(var(--span)*2);
     }
     &:not(:has( + .item)) {
         grid-column: 3 / -3;
