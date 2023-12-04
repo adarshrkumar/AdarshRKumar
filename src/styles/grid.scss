@@ -118,7 +118,7 @@
         cursor: initial;
     }
 
-    &:is(:hover, :focus, :focus-visible, :focus-within), &:has(a:is(:focus-visible, :focus-within)) {
+    &:is(:hover, :focus, :focus-visible, :focus-within) {
         // & .image-link {
             // background-size: contain;
         // }
