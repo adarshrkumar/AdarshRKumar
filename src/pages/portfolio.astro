@@ -40,8 +40,7 @@ items.forEach(function(item, i) {
 ---
 <Layout title="Portfolio">
   <SiteGridContent>
-    <section class="grid portfolio">
-      {itemsHTML}
+    <section class="grid portfolio" set:html={itemsHTML}>
       <div class="item">
         <a href="https://graphics-for-good.com" target="_blank" class="image-link" />
         <div>
