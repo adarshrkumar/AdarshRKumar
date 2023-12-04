@@ -36,6 +36,9 @@
     &:not(:has( + .item)) {
         grid-column: -3 / -1;
     }
+    &:not(:has( + .item + .item)) {
+        grid-column: 2 / 4;
+    }
 }
 
 .grid .item {
