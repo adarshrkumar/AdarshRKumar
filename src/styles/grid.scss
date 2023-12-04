@@ -9,6 +9,7 @@
 .grid {
     --gap: 25px;
     --minmax: 316.6px;
+    --columns: 6;
 
     margin-inline: auto;
     box-sizing: border-box;
@@ -18,7 +19,7 @@
     max-width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(/*auto-fit*/6, minmax(calc(var(--minmax)/2), var(--minmax))); // 6
+    grid-template-columns: repeat(/*auto-fit*/var(--columns), minmax(calc(var(--minmax)/2), var(--minmax))); // 6
     gap: var(--gap);
 
     &:not(#videos) {
@@ -38,20 +39,20 @@
         grid-column: span calc(var(--span)*2);
     }
     &:not(:has( + .item)) {
-        grid-column: 3 / -3;
+        grid-column: calc(var(--columns)/2) / calc(-1*var(--columns)/2);
         &.featured {
-            grid-column: 5 / -5;
+            grid-column: calc(1*var(--columns)/2 - var(--span)) / calc(-1*var(--columns)/2 + var(--span));
         }
     }
     &:not(:has( + .item + .item)) {
-        --outside: 2;
-        --inside: 4;
+        --outside: calc(var(--columns)/2 - var(--span)/2);
+        --inside: calc(var(--columns)/2 + var(--span)/2);
         grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
         &.featured {
-            grid-column: calc(1*var(--outside)-var(--span)*2) / calc(1*var(--inside));
+            grid-column: calc(1*var(--outside) - var(--span)*2) / calc(1*var(--inside));
         }
         & + .item {
-            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside)+var(--span))*2;
+            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--span))*2;
         }
     }
 }
