@@ -24,13 +24,13 @@ var itemsHTML = ''
 items.forEach(function(item, i) {
   itemsHTML += `
     <div class="item">
-      <a href={item.link.url} target={item.link.target} class="image-link" />
+      <a href="${item.link.url}" target="${item.link.target}" class="image-link" />
       <div>
-        <a href={item.link.url} target={item.link.target} >
-          <h3>Graphics for Good</h3>
+        <a href="${item.link.url}" target="${item.link.target}" >
+          <h3>${item.name}</h3>
         </a>
         <div class="description">
-          <span set:html={item.description} />
+          <span>${item.description}</span>
         </div>
       </div>
     </div>
