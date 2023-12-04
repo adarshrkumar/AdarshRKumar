@@ -4,10 +4,40 @@ import '../styles/pages/portfolio.scss'
 
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
+
+var items = [
+  {
+    name: 'Graphics for Good', 
+    link: {
+      url: 'https://graphics-for-good.com', 
+      target: '_blank', 
+    }, 
+    description: 'I helped develop and am the Lead Website Designer and Manager for the Graphics for Good Club at my school.', 
+  }, 
+  {
+    name: '', 
+  }, 
+]
+
 ---
 <Layout title="Portfolio">
   <SiteGridContent>
     <section class="grid portfolio">
+      {
+        items.map(item => {
+          <div class="item">
+            <a href={item.link.url} target={items.link.target} class="image-link" />
+            <div>
+              <a href={items.link.url} target={item.link.target} >
+                <h3>Graphics for Good</h3>
+              </a>
+              <div class="description">
+                <span set:html={item.description} />
+              </div>
+            </div>
+          </div>
+        })
+      }
       <div class="item">
         <a href="https://graphics-for-good.com" target="_blank" class="image-link" />
         <div>
@@ -15,11 +45,11 @@ import SiteGridContent from '../components/SiteGridContent.astro'
             <h3>Graphics for Good</h3>
           </a>
           <div class="description">
-            <span>I helped develop and am the Lead Website Designer and Manager of the Graphics for Good Club at my school.</span>
+            <span>I helped develop and am the Lead Website Designer and Manager for the Graphics for Good Club at my school.</span>
           </div>
         </div>
       </div>
-      <div class="item">
+      <!-- <div class="item">
         <a href="https://megangillespiemezzo.com" target="_blank" class="image-link" />
         <div>
           <a href="https://megangillespiemezzo.com" target="_blank">
@@ -27,50 +57,6 @@ import SiteGridContent from '../components/SiteGridContent.astro'
           </a>
           <div class="description">
             <span>I did a two week internship through my school with the best ever Megan Gillespie, which consisted of fixing up, editing, and streamining her website.</span>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="item">
-        <a href="projects/recipe-with-flexbox/oatmeal_cookies.html" target="_blank" class="image-link" />
-        <div>
-          <a href="projects/recipe-with-flexbox/oatmeal_cookies.html" target="_blank">
-            <h3>Recipe with Flexbox</h3>
-          </a>
-          <div class="description">
-            <span>A recipe page for oatmeal cookies that you can use to make your own.</span>
-          </div>
-        </div>
-      </div> -->
-      <!-- <div class="item">
-        <a href="projects/quotes-application.html" target="_blank" class="image-link" />
-        <div>
-          <a href="projects/quotes-application.html" target="_blank">
-            <h3>Quotes Application</h3>
-          </a>
-          <div class="description">
-            <span>A web-app that displayed quotes from the ZyBooks Quote API.</span>
-          </div>
-        </div>
-      </div> -->
-      <!-- <div class="item">
-        <a href="projects/temperature-converter/" target="_blank" class="image-link" />
-        <div>
-          <a href="projects/temperature-converter/" target="_blank">
-            <h3>Temperature Converter</h3>
-          </a>
-          <div class="description">
-            <span>A neat web-app that converts temperature including Kelvin.</span>
-          </div>
-        </div>
-      </div> -->
-      <!-- <div class="item">
-        <a href="projects/rate.html" target="_blank" class="image-link" />
-        <div>
-          <a href="projects/rate.html" target="_blank">
-            <h3>Product Rating</h3>
-          </a>
-          <div class="description">
-            <span>A form that people can use as a way for customers rating products.</span>
           </div>
         </div>
       </div> -->
