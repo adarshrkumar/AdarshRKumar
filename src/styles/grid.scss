@@ -35,12 +35,12 @@
 
 .grid .item {
     &:not(:has( + .item)) {
-        grid-column-start: -3;
+        grid-column: 3 / -3;
     }
     &:not(:has( + .item + .item)) {
         grid-column-start: 2;
         & + .item {
-            grid-column-start: -4;
+            grid-column-end: -2;
         }
     }
 }
