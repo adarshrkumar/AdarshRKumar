@@ -7,12 +7,12 @@
 }
 
 .grid {
-    position: absolute;
-    left: 0;
-    
+    // position: absolute;
+    // left: 0;
+    // 
     --gap: 25px;
 
-    margin-inline: auto;
+    // margin-inline: auto;
     box-sizing: border-box;
     padding: calc(var(--gap) - 25px);
 
