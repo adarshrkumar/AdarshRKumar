@@ -38,11 +38,11 @@
         grid-column: 3 / -3;
     }
     &:not(:has( + .item + .item)) {
-        grid-column-start: 2;
-        grid-column-end: 4;
+        --outside: 2;
+        --inside: 4;
+        grid-column: calc(1*var(--outside)) / calc(1*var(--inide));
         & + .item {
-            grid-column-start: -4;
-            grid-column-end: -2;
+            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside));
         }
     }
 }
