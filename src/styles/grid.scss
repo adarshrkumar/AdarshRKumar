@@ -46,6 +46,10 @@
 
     cursor: pointer;
 
+    // &:not(:has( + &)) {
+        // grid-coulumn: ;
+    // }
+
     .image-link {
         width: 100%;
         aspect-ratio: 1;
