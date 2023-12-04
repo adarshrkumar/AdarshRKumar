@@ -10,6 +10,7 @@
     padding: calc(var(--gap) - 25px);
 
     height: fit-content;
+    max-width: 100%;
 
     display: grid;
     grid-template-columns: repeat(/*auto-fit*/6, minmax(316.6px, 316.6px)); // 6
