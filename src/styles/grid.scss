@@ -39,13 +39,19 @@
     }
     &:not(:has( + .item)) {
         grid-column: 3 / -3;
+        &.featured {
+            grid-column: 5 / -5;
+        }
     }
     &:not(:has( + .item + .item)) {
         --outside: 2;
         --inside: 4;
         grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
+        &.featured {
+            grid-column: calc(1*var(--outside)-var(--span)*2) / calc(1*var(--inside));
+        }
         & + .item {
-            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside));
+            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside)+var(--span))*2;
         }
     }
 }
