@@ -38,21 +38,24 @@
     &.featured {
         grid-column: span calc(var(--span)*2);
     }
-    &:not(:has( + .item)) {
-        grid-column: calc(var(--columns)/2) / calc(-1*var(--columns)/2);
-        &.featured {
-            grid-column: calc(1*var(--columns)/2 - var(--span)) / calc(-1*var(--columns)/2 + var(--span));
-        }
-    }
-    &:not(:has( + .item + .item)) {
+    &:not(:has( + .item + .item)), &.left {
         --outside: calc(var(--columns)/2 - var(--span)/2);
         --inside: calc(var(--columns)/2 + var(--span)/2);
         grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
         &.featured {
             grid-column: calc(1*var(--outside) - var(--span)*2) / calc(1*var(--inside));
         }
-        & + .item {
+        & + .item, .right {
             grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--span)*2);
+            &.featured {
+                grid-column: calc(1*var(--inside)) / calc(1*var(--outside) + var(--span)*2);
+            }
+        }
+    }
+    &:not(:has( + .item)), &.center {
+        grid-column: calc(var(--columns)/2) / calc(-1*var(--columns)/2);
+        &.featured {
+            grid-column: calc(1*var(--columns)/2 - var(--span)) / calc(-1*var(--columns)/2 + var(--span));
         }
     }
 }
