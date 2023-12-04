@@ -38,7 +38,7 @@
         grid-column: span calc(var(--span)*3);
     }
     &:not(:has( + .item + .item)) {
-        grid-column: span calc(var(--span)*2);
+        grid-column: span calc(var(--span)*1.5);
     }
 }
 
