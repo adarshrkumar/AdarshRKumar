@@ -20,7 +20,7 @@
     max-width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(/*auto-fit*/6, minmax(316.6px, 316.6px)); // 6
+    grid-template-columns: repeat(/*auto-fit*/6, minmax(calc(316.6px/2), 316.6px)); // 6
     gap: var(--gap);
 
     &:not(#videos) {
