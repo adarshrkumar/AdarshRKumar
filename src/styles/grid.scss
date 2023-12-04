@@ -1,8 +1,15 @@
+.site-grid {
+    position: relative;
+}
+
 .site-grid hr {
     margin-block: 0.625em;
 }
 
 .grid {
+    position: absolute;
+    left: 0;
+    
     --gap: 25px;
 
     margin-inline: auto;
