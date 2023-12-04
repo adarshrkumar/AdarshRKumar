@@ -40,7 +40,7 @@
     &:not(:has( + .item + .item)) {
         --outside: 2;
         --inside: 4;
-        grid-column: var(--outside) / var(--inide);
+        grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
         & + .item {
             grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside));
         }
