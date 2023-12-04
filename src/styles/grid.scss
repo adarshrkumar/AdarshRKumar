@@ -34,6 +34,9 @@
 }
 
 .grid .item {
+    &.featured {
+        grid-column: span var(--span*2);
+    }
     &:not(:has( + .item)) {
         grid-column: 3 / -3;
     }
@@ -48,13 +51,14 @@
 }
 
 .grid .item {
+    --span: 2;
     // height: fit-content;
 
     border: solid 1px var(--foreground-tertiary-color);
 
     cursor: pointer;
 
-    grid-column: span 2;
+    grid-column: span var(--span);
 
     .image-link {
         width: 100%;
