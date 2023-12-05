@@ -91,6 +91,7 @@
     }
 
     & > div {
+        height: fit-content;
         &:not([paddingOnHover]) {
             > * {
                 --val: 2;
