@@ -38,7 +38,7 @@
     &.featured {
         grid-column: span calc(var(--span)*2);
     }
-    &:not(:has( + .item + .item)), &.left {
+    &:not(:has( + .item + .item)):has( + .item), &.left {
         --outside: calc(var(--columns)/2 - var(--span)/2);
         --inside: calc(var(--columns)/2 + var(--span)/2);
         grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
