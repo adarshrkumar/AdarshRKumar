@@ -55,7 +55,7 @@
     &:not(:has( + .item)), &.center {
         grid-column: calc(var(--columns)/2) / calc(-1*var(--columns)/2);
         &.featured {
-            grid-column: calc(1*var(--columns)/2 - var(--span)) / calc(-1*var(--columns)/2 + var(--span));
+            grid-column: calc(1*var(--columns)/2 - var(--span)/2) / calc(-1*var(--columns)/2 + var(--span)/2);
         }
     }
 }
