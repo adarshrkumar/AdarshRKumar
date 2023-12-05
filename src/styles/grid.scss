@@ -94,14 +94,13 @@
         &:not([paddingOnHover]) {
             > * {
                 --val: 2;
-                // box-sizing: border-box;
+                box-sizing: border-box;
                 padding: calc(var(--gap)/var(--val));
                 gap: 0;
-                
-                &a > * {
-                    margin: 0;
-                    // padding: 0;
-                }
+            }
+            > a > * {
+                margin: 0;
+                // padding: 0;
             }
         }
 
