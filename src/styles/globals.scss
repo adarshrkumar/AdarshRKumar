@@ -54,6 +54,8 @@ main {
     display: grid;
     gap: 0;
 
+    max-width: auto;
+
     hr {
         margin-inline: auto;
     }
