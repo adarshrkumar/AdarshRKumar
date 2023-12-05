@@ -95,13 +95,13 @@
         &:not([paddingOnHover]) {
             > * {
                 --val: 2;
+                --pad: calc(var(--gap)/var(--val));
                 box-sizing: border-box;
-                padding: calc(var(--gap)/var(--val));
                 gap: 0;
             }
             > a > * {
                 margin: 0;
-                // padding: 0;
+                padding: var(--pad);
             }
         }
 
@@ -141,6 +141,9 @@
             border-bottom: solid 1px var(--foreground-tertiary-color);
         }
 
+        & > div:not([paddingOnHover]) > :not(a) {
+            padding: var(--pad);
+        }
         & .description {
             grid-template-rows: 1fr;
         }
