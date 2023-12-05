@@ -20,8 +20,10 @@
 
     padding: 1rem;
 
-    background-color: var(--foreground-secondary-color);
-    color: var(--background-secondary-color);
+    &, & input {
+        background-color: var(--foreground-secondary-color);
+        color: var(--background-secondary-color);
+    }
 }
 
 .contact * {
