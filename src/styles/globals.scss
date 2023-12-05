@@ -43,7 +43,7 @@ main {
     max-width: 100%;
     min-height: 100%;
 
-    display: grid;
+    display: flex;
 
     hr {
         margin-inline: auto;
@@ -57,6 +57,8 @@ main {
 }
 
 .main-content {
+    flex: 1;
+    
     box-sizing: border-box;
     max-width: 100%;
     &:not(.ignorePadding) {
