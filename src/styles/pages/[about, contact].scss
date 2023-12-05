@@ -15,4 +15,7 @@
 .contact {
     --max: 500px;
     margin-block: 0;
+
+    background-color: var(--foreground-secondary-color);
+    color: var(--background-secondary-color)
 }
