@@ -44,6 +44,10 @@ body {
     width: 100%;
 
     display: grid;
+
+    & ~ iframe {
+        display: none;
+    }
 }
 
 main {
@@ -55,9 +59,6 @@ main {
     }
     &:not(.isSoon) {
         margin: 0 !important;
-    }
-    & ~ iframe {
-        display: none;
     }
 }
 
