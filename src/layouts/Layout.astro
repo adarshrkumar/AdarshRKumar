@@ -41,13 +41,15 @@ if (className.startsWith(' ')) className = className.substring(1)
   </head>
   <body>
     <Header logo={logoSRC} />
-    <main id="content" align="center">
-      <div class={className} style={inlineStyles}>
+    <div class="wrapper">
+      <main id="content" align="center">
         <h1 class="page-title">{pTitle}</h1>
-        <slot />
-      </div>
+        <div class={className} style={inlineStyles}>
+          <slot />
+        </div>
+      </main>
       <Sidebar />
-    </main>
+    </div>
     <script src="/main.js" is:inline></script>
     <script src="/eruda.js" is:inline></script>
     <!--Start of Tawk.to Script-->
