@@ -1,8 +1,11 @@
 .wrapper {
-    grid-template-columns: 1fr 12rem;
+    // grid-template-columns: 1fr 12rem;
 }
 
 .main-sidebar {
+    position: sticky;
+    right: 0;
+    
     margin: 1rem;
 
     display: grid;
