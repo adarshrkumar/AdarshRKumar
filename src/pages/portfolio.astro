@@ -16,7 +16,13 @@ var items = [
     // class: 'featured', 
   }, 
   // {
-  //   name: '', 
+  //   name: 'Megan Gillespie', 
+  //   link: {
+  //     url: 'https://megangillespiemezzo.com', 
+  //     target: '_blank', 
+  //   }, 
+  //   description: 'I did a two week internship through my school with the best ever Megan Gillespie, which consisted of fixing up, editing, and streamining her website.', 
+  //   class: 'featured', 
   // }, 
 ]
 
@@ -25,18 +31,23 @@ var itemsHTML = ''
 items.forEach(function(item, i) {
   if (!!item.class === false) item.class = ''
   var classList = ['item']
-  if (items.class.includes(' ')) {
-    items.class.split(' ').forEach(function(i) {
+  if (item.class.includes(' ')) {
+    item.class.split(' ').forEach(function(i) {
       classList.push(i)
     })
   }
   var className = classList.join(' ')
 
+  var target = ''
+  if (!!item.link.target) {
+    target = ` target="${item.link.target}"`
+  }
+
   itemsHTML += `
     <div class="${className}">
-      <a href="${item.link.url}" target="${item.link.target}" class="image-link"></a>
+      <a href="${item.link.url}"${target} class="image-link"></a>
       <div>
-        <a href="${item.link.url}" target="${item.link.target}">
+        <a href="${item.link.url}"${target}>
           <h3>${item.name}</h3>
         </a>
         <div class="description">
@@ -52,11 +63,7 @@ items.forEach(function(item, i) {
   <SiteGridContent>
     <section class="grid portfolio" set:html={itemsHTML}>
       <!-- <div class="item">
-        <a href="https://megangillespiemezzo.com" target="_blank" class="image-link" />
         <div>
-          <a href="https://megangillespiemezzo.com" target="_blank">
-            <h3>Megan Gillespie</h3>
-          </a>
           <div class="description">
             <span>I did a two week internship through my school with the best ever Megan Gillespie, which consisted of fixing up, editing, and streamining her website.</span>
           </div>
