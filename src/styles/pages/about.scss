@@ -1,8 +1,9 @@
 .about {
-    margin-inline: auto;
-    width: min(90%, 1000px);
+    --pad: 1rem;
+    padding-inline: var(--pad);
+    width: min(calc(90% - var(--pad)), 1000px);
 
-    > p {
-        width: 100%;
+    &, & > * {
+        margin-inline: auto;
     }
 }
