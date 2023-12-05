@@ -17,9 +17,9 @@ import Layout from '../layouts/Layout.astro'
 
     var date = new Date()
     var currentDate = {
-      month: date.getFullYear() ? date.getFullYear() : 00, 
-      day: date.getMonth() ? date.getMonth() : 00, 
-      year: date.getDate() ? date.getDate() : 0000, 
+      month: date.getFullYear(), 
+      day: date.getMonth(), 
+      year: date.getDate(), 
     }
 
     let ans = ''
