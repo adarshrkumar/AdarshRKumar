@@ -14,7 +14,11 @@
 
 .contact {
     --max: 500px;
+    box-sizing: border-box;
+
     margin-block: 0;
+
+    padding: 1rem;
 
     background-color: var(--foreground-secondary-color);
     color: var(--background-secondary-color)
