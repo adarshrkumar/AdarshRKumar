@@ -13,6 +13,7 @@ var items = [
       target: '_blank', 
     }, 
     description: 'I helped develop and am the Lead Website Designer and Manager for the Graphics for Good Club at my school.', 
+    class: 'featured', 
   }, 
   // {
   //   name: '', 
@@ -22,8 +23,9 @@ var items = [
 var itemsHTML = ''
 
 items.forEach(function(item, i) {
+  if (!!item.class === false) item.class = ''
   itemsHTML += `
-    <div class="item">
+    <div class="item ${item.class}">
       <a href="${item.link.url}" target="${item.link.target}" class="image-link"></a>
       <div>
         <a href="${item.link.url}" target="${item.link.target}">
