@@ -144,5 +144,9 @@
         & .description {
             grid-template-rows: 1fr;
         }
+        & span {
+            height: auto;
+            margin-block: 0.5em;
+        }
     }
 }
