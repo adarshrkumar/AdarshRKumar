@@ -99,9 +99,11 @@
                 box-sizing: border-box;
                 gap: 0;
             }
-            > a > * {
-                margin: 0;
+            > a {
                 padding: var(--pad);
+                > * {
+                    // margin: 0;
+                }
             }
         }
 
