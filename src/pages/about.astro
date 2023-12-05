@@ -17,9 +17,9 @@ import Layout from '../layouts/Layout.astro'
 
     var date = new Date()
     var currentDate = {
-      month: date.getFullYear(), 
-      day: date.getMonth(), 
-      year: date.getDate(), 
+      month: date.getMonth(), 
+      day: date.getgetData(), 
+      year: date.getFullYear(), 
     }
 
     let ans = ''
@@ -31,8 +31,6 @@ import Layout from '../layouts/Layout.astro'
       )
     ) ans = currentDate.year - dob.year - 1
     else ans = currentDate.year - dob.year
-
-    alert(currentDate.year)
 
     document.getElementById('age').innerHTML = ans
   </script>
