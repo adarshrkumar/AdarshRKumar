@@ -13,7 +13,7 @@ var items = [
       target: '_blank', 
     }, 
     description: 'I helped develop and am the Lead Website Designer and Manager for the Graphics for Good Club at my school.', 
-    class: 'featured', 
+    // class: 'featured', 
   }, 
   // {
   //   name: '', 
@@ -24,8 +24,16 @@ var itemsHTML = ''
 
 items.forEach(function(item, i) {
   if (!!item.class === false) item.class = ''
+  var classList = ['item']
+  if (items.class.includes(' ')) {
+    items.class.split(' ').forEach(function(i) {
+      classList.push(i)
+    })
+  }
+  var className = classList.join(' ')
+
   itemsHTML += `
-    <div class="item ${item.class}">
+    <div class="${className}">
       <a href="${item.link.url}" target="${item.link.target}" class="image-link"></a>
       <div>
         <a href="${item.link.url}" target="${item.link.target}">
