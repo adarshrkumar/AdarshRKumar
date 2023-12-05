@@ -45,8 +45,8 @@ if (className.startsWith(' ')) className = className.substring(1)
     <main id="content" align="center">
       <div class={className} style={inlineStyles}>
         <slot />
-        <Sidebar />
       </div>
+      <Sidebar />
     </main>
     <script src="/main.js" is:inline></script>
     <script src="/eruda.js" is:inline></script>

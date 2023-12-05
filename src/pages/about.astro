@@ -4,19 +4,34 @@ import '../styles/pages/about.scss'
 import Layout from '../layouts/Layout.astro'
 ---
 <Layout title="About">
-  <div style="margin-inline: auto;">
+  <div>
     Hello, my name is Adarsh Kumar or RockGamerAK. I'm&nbsp;<span id="age"></span> years old, and a High School Student. <br>
     I am good with software, so if you need tech help, DM @w.web.wizards or email <a href="mailto:ww@RockGamerAK.com">ww@RockGamerAK.com</a>. I also enjoy history and geography.
   </div>
-<script>
-    let db = 2007
-    let date = new Date()
-    let year = date.getFullYear()
-    let mont = date.getMonth()
+  <script>
+    var dob = {
+      month: 03, 
+      day: 28, 
+      year: 2007, 
+    }
+
+    var date = new Date()
+    var currentDate = {
+      month: date.getFullYear() ? date.getFullYear() : 00, 
+      day: date.getMonth() ? date.getMonth() : 00, 
+      year: date.getDate() ? date.getDate() : 0000, 
+    }
+
     let ans = ''
-    if (mont === 3 && date.getDate() >= 28) ans = year - db
-    else if (mont < 3) ans = year - db - 1
-    else ans = year - db
+    if (
+      (currentDate.month < dob.month) || 
+      (
+        currentDate.month === dob.month && 
+        currentDate.day <= 28
+      )
+    ) ans = currentDate.year - dob.year - 1
+    else ans = currentDate.year - dob.year
+
     document.getElementById('age').innerHTML = ans
   </script>
 </Layout>
