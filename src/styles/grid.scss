@@ -88,30 +88,19 @@
         :not(.portfolio) &:is(:hover, :focus, :focus-visible) {
             background-size: contain;
         }
-
-        &:focus, &:focus-visible + div, 
-        div:has(a:is(:focus, &:focus-visible)) {
-            & .description {
-                grid-template-rows: 1fr;
-            }
-            & span {
-                height: auto;
-                visibility: unset;
-                margin-block: 0.5em;
-            }
-        }
     }
 
     & > div {
         &:not([paddingOnHover]) {
             > * {
                 --val: 2;
-                box-sizing: border-box;
+                // box-sizing: border-box;
                 padding: calc(var(--gap)/var(--val));
                 gap: 0;
                 
                 &a > * {
                     margin: 0;
+                    // padding: 0;
                 }
             }
         }
