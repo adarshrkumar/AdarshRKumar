@@ -1,10 +1,15 @@
 .wrapper {
-    grid-template-columns: 1fr 12rem;
+    display: flex;
+}
+
+main {
+    flex: 1;
 }
 
 .main-sidebar {
     margin: 1rem;
 
+    width: 12rem;
 
     display: grid;
     gap: 1rem;  
