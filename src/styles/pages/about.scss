@@ -1,4 +1,7 @@
 .about {
-    margin-inline: auto;
-    width: min(90%, 1000px)
+    width: min(90%, 1000px);
+
+    &, & > * {
+        margin-inline: auto;
+    }
 }
