@@ -144,9 +144,5 @@
         & .description {
             grid-template-rows: 1fr;
         }
-        :not(&) span {
-            visibility: hidden;
-            // margin-block: 0.5em;
-        }
     }
 }
