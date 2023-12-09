@@ -1,10 +1,13 @@
 ---
+import '../styles/pages/404.scss'
+
 import Layout from '../layouts/Layout.astro'
 ---
 <Layout title="404" pTitle="Not Found">
-  <span class="current-URL-not-found"></span>
-  <p></p>
-  Error Type: 404
+  <section class="error-404">
+    <span class="current-URL-not-found"></span>
+    <p>Error Type: 404</p>
+  </section>
   <script is:inline>
     let pageTitle = document.querySelector('.current-URL-not-found')
     let aHTML = `<a href="${location.href}">`
