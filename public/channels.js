@@ -15,6 +15,9 @@ var props = [
 ]
 var channels = [
     {
+        id: 'UCzhr23vdbi63nZGYqBM7Ofw', 
+    }, 
+    {
         id: 'UCb35v6VAVFI8Q0aIpwPoW1g', 
     }, 
     {
