@@ -10,6 +10,7 @@
     --gap: 25px;
     --minmax: 316.6px;
     --columns: 6;
+    --column-span: calc(var(--columns)/3);
 
     margin-inline: auto;
     box-sizing: border-box;
@@ -36,39 +37,39 @@
 
 .grid .item {
     &.featured {
-        grid-column: span calc(var(--span)*2);
+        grid-column: span var(--grid-span);
     }
     &:not(:has( + .item + .item)):has( + .item), &.left {
-        --outside: calc(var(--columns)/2 - var(--span)/2);
-        --inside: calc(var(--columns)/2 + var(--span)/2);
+        --single: var(--column-span)/2
+        --outside: calc(var(--columns)/2 - var(--single));
+        --inside: calc(var(--columns)/2 + var(--single));
         grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
         &.featured {
-            grid-column: calc(1*var(--outside) - var(--span)*2) / calc(1*var(--inside));
+            grid-column: calc(1*var(--outside) - var(--column-span)*2) / calc(1*var(--inside));
         }
         & + .item, .right {
-            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--span)*2);
+            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--column-span)*2);
             &.featured {
-                grid-column: calc(1*var(--inside)) / calc(1*var(--outside) + var(--span)*2);
+                grid-column: calc(1*var(--inside)) / calc(1*var(--outside) + var(--column-span)*2);
             }
         }
     }
     &:not(:has( + .item)), &.center {
         grid-column: calc(var(--columns)/2) / calc(-1*var(--columns)/2);
         &.featured {
-            grid-column: calc(1*var(--columns)/2 - var(--span)/2) / calc(-1*var(--columns)/2 + var(--span)/2);
+            grid-column: calc(1*var(--columns)/2 - var(--column-span)/2) / calc(-1*var(--columns)/2 + var(--column-span)/2);
         }
     }
 }
 
 .grid .item {
-    --span: 2;
     // height: fit-content;
 
     border: solid 1px var(--foreground-tertiary-color);
 
     cursor: pointer;
 
-    grid-column: span var(--span);
+    grid-column: span var(--column-span);
 
     .image-link {
         width: 100%;
