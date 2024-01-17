@@ -52,7 +52,7 @@
             }
         }
     }
-    &:not(:is(:not(:has( + .item + .item)):has( + .item), .left) + .item, .right):not(:has( + .item)), &.center {
+    &:not(:is(:has( + .item + .item):has( + .item), .left) + .item, .right):not(:has( + .item)), &.center {
         grid-column: calc(var(--columns)/2) / calc(-1*var(--columns)/2);
         &.featured {
             grid-column: calc(1*var(--columns)/2 - var(--span)/2) / calc(-1*var(--columns)/2 + var(--span)/2);
