@@ -58,7 +58,7 @@
 
             position: relative;
             &::after {
-                content: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--column-span)*2);
+                content: "(" calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--column-span)*2) ")";
                 position: absolute;
                 inset: 0;
                 display: grid;
