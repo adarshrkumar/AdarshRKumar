@@ -55,6 +55,16 @@
         & + .item, .right {
             background-color: green;
             grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--column-span)*2);
+
+            position: relative;
+            &::after {
+                content: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--column-span)*2);
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-items: center;
+            }
+
             &.featured {
                 grid-column: calc(1*var(--inside)) / calc(1*var(--outside) + var(--column-span)*2);
             }
