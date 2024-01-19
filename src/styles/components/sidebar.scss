@@ -34,7 +34,7 @@
 
         display: grid;
         grid-template-rows: subgrid;
-        place-items: center;
+        align-items: center;
 
         overflow: hidden;
     }
