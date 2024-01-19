@@ -44,7 +44,7 @@
         grid-column: span var(--grid-span);
     }
     &:not(:has( + .item + .item)):has( + .item), &.left {
-        --single: var(--column-span)/2
+        --single: calc(var(--column-span)/2)
         --outside: calc(var(--columns)/2 - var(--single));
         --inside: calc(var(--columns)/2 + var(--single));
         background-color: orangered;
