@@ -48,25 +48,13 @@
         --outside: calc(var(--columns)/2 - var(--single));
         --inside: calc(var(--columns)/2 + var(--single));
         background-color: orangered;
-        grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
+        grid-column: calc((1*var(--outside)) / calc(1*var(--inside)) - var(--column-span)*2);
         &.featured {
             grid-column: calc(1*var(--outside) - var(--column-span)*2) / calc(1*var(--inside));
         }
         & + .item, .right {
             background-color: green;
-            grid-column: calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--column-span)*2);
-
-            position: relative;
-            &::after {
-                content: "(" calc(-1*var(--inside)) / calc(-1*var(--outside) + var(--column-span)*2) ")";
-                position: absolute;
-                inset: 0;
-                display: grid;
-                place-items: center;
-                background-color: red;
-                z-index: 1000;
-            }
-
+            grid-column: calc((-1*var(--inside)) / calc(-1*var(--outside)) + var(--column-span)*2);
             &.featured {
                 grid-column: calc(1*var(--inside)) / calc(1*var(--outside) + var(--column-span)*2);
             }
