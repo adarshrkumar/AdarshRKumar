@@ -56,8 +56,9 @@
             position: absolute;
             inset: 0;
             background-color: white;
+            z-index: 2;
         }
-        
+
         &.featured {
             grid-column: calc(1*var(--outside) - var(--column-span)*2) / calc(1*var(--inside));
         }
