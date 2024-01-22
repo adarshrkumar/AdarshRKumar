@@ -47,14 +47,12 @@
         --single: calc(var(--column-span)/2);
         --center: calc(var(--columns)/2 + var(--single));
         &.left {
-            background-color: orangered;
             grid-column: calc(1*var(--center) - var(--column-span)) / calc(1*var(--center));
             &.featured {
                 grid-column: calc(1*var(--center) - var(--column-span)*2) / calc(1*var(--center));
             }
         }
         &.right {
-            background-color: green;
             grid-column: calc(-1*var(--center)) / calc(-1*var(--center) + var(--column-span));
             &.featured {
                 grid-column: calc(1*var(--inside)) / calc(1*var(--outside) + var(--column-span)*2);
