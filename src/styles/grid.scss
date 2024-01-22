@@ -44,7 +44,7 @@
         grid-column: span var(--grid-span);
     }
     &.left, &.right {
-        --single: calc(var(--column-span)/2)
+        --single: calc(var(--column-span)/2);
         --center: calc(var(--columns)/2 + var(--single));
         &.left {
             background-color: orangered;
