@@ -45,8 +45,8 @@
     }
     &.left, &.right {
         --single: calc(var(--column-span)/2)
-        --outside: calc(var(--columns)/2 - var(--single));
-        --inside: calc(var(--columns)/2 + var(--single));
+        --outside: calc((var(--columns)/2) + 1 - var(--single));
+        --inside: calc((var(--columns)/2) + 1 + var(--single));
         &.left {
             background-color: orangered;
             grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
