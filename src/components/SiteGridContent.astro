@@ -12,11 +12,11 @@ import Layout from '../layouts/Layout.astro'
         document.querySelectorAll('.site-grid .grid').forEach(function(g, i) {
             var eles = g.querySelectorAll('.item')
             var amt = eles.length
-            var % = amt % 3
-            if (% === 1) {
+            var mod = amt % 3
+            if (mod === 1) {
                 eles[0].classList.add('center')
             }
-            else if (% === 2) {
+            else if (mod === 2) {
                 eles[0].classList.add('left')
                 eles[2].classList.add('right')
             }
