@@ -13,6 +13,7 @@ import Layout from '../layouts/Layout.astro'
             var eles = g.querySelectorAll('.item')
             var amt = eles.length
             var mod = amt % 3
+            alert(`${i} : ${mod}`)
             if (mod === 1) {
                 eles[0].classList.add('center')
             }
