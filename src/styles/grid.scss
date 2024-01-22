@@ -25,7 +25,6 @@
 
     display: grid;
     grid-template-columns: repeat(/*auto-fit*/var(--columns), 1fr); // 6
-    justify-items: center;
     gap: var(--gap);
 
     &:not(#videos) {
