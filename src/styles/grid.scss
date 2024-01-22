@@ -49,6 +49,15 @@
         --inside: calc(var(--columns)/2 + var(--single));
         background-color: orangered;
         grid-column: calc(1*var(--outside)) / calc(1*var(--inside));
+
+        position: relative;
+        &::after {
+            content: "(" calc(1*var(--outside)) / calc(1*var(--inside)) ")";
+            position: absolute;
+            inset: 0;
+            background-color: white;
+        }
+        
         &.featured {
             grid-column: calc(1*var(--outside) - var(--column-span)*2) / calc(1*var(--inside));
         }
