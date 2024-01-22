@@ -48,7 +48,7 @@
         --center: calc(var(--columns)/2 + var(--single));
         &.left {
             background-color: orangered;
-            grid-column: calc(1*var(--inside) - var(--column-span)) / calc(1*var(--inside));
+            grid-column: calc(1*var(--center) - var(--column-span)) / calc(1*var(--center));
             &.featured {
                 grid-column: calc(1*var(--center) - var(--column-span)*2) / calc(1*var(--center));
             }
