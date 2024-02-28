@@ -10,6 +10,7 @@ var aElement = document.querySelector('a[data-video]')
 var vElement = document.getElementById('videos')
 
 const cids = [
+    'UCzhr23vdbi63nZGYqBM7Ofw', 
     'UCb35v6VAVFI8Q0aIpwPoW1g', 
     'UCLK0Lj3V864AbKfutfyztYA', 
     'UC8cV2cdrp1ccBWzoi1R-UwQ', 
@@ -18,7 +19,7 @@ var vids = []
 var vidsAmt = []
 
 let vidsNum = 9
-let vidsPerChannel = vidsNum/cids.length
+let vidsPerChannel = Math.round(vidsNum/cids.length)
 
 cids.forEach(function(cid, cI) {
     let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`)
