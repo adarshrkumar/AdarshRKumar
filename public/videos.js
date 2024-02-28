@@ -19,7 +19,26 @@ var vids = []
 var vidsAmt = []
 
 let vidsNum = 9
-let vidsPerChannel = Math.round(vidsNum/cids.length)
+let csAmt = cids.length
+let vidsPerChannel = Math.round(vidsNum/csAmt)
+
+cids.forEach(function(cid, cI) {
+    let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`)
+    let reqURL = `https://api.rss2json.com/v1/api.json?rss_url=${channelURL}`
+    
+    fetch(reqURL)
+        .then(response => response.json())
+        .then(result => {
+            if (!!result.items) {
+                let channelVids = result.items.length
+                if (channelVids < 1) {
+                    csAmt--
+                    cids.splice(cI, 1)
+                    vidsPerChannel = Math.round(vidsNum/csAmt)
+                }
+            }
+        })
+})
 
 cids.forEach(function(cid, cI) {
     let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`)
@@ -33,7 +52,6 @@ cids.forEach(function(cid, cI) {
                 if (!!result.items) {
                     let channelVids = result.items.length
                     if (channelVids > 3) channelVids = 3
-                    vidsAmt.push(channelVids)
                     if (!!result.items[i]) {
                         if (!!result.items[i].link) {
                             links.push(result.items[i].link)
