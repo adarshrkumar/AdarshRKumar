@@ -26,21 +26,18 @@ cids.forEach(function(cid, cI) {
     let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`)
     let reqURL = `https://api.rss2json.com/v1/api.json?rss_url=${channelURL}`
     
-    var xhr = new XMLHttpRequest()
-    xhr.open(reqURL)
-    xhr.addEventListener('load', function() {
-        var result = this.responseText
-        result= JSON.parse(body)
-        if (!!result.items) {
-            let channelVids = result.items.length
-            if (channelVids < 1) {
-                csAmt--
-                cids.splice(cI, 1)
-                vidsPerChannel = Math.round(vidsNum/csAmt)
+    fetch(reqURL)
+        .then(response => response.json())
+        .then(result => {
+            if (!!result.items) {
+                let channelVids = result.items.length
+                if (channelVids < 1) {
+                    csAmt--
+                    cids.splice(cI, 1)
+                    vidsPerChannel = Math.ciel(vidsNum/csAmt)
+                }
             }
-        }
-    })
-    xhr.send()
+        })
 })
 
 cids.forEach(function(cid, cI) {
