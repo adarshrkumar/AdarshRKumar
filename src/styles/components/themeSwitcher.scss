@@ -19,10 +19,12 @@
 [data-theme="light"] {
     --bg: var(--light-bg);
     --color: var(--light-color);
+    color-scheme: light;
 }
 [data-theme="dark"] {
     --bg: var(--dark-bg);
     --color: var(--dark-color);
+    color-scheme: dark;
 }
 
 html {
