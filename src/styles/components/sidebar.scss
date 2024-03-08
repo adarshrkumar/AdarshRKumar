@@ -32,10 +32,8 @@
     gap: 1rem;
 
     .channel-container {
+        $color: gray;
         background-image: linear-gradient(lighen($color, 10%), $color, darken($color, 10%));
-        [data-theme="system"] {
-            $color: gray;
-        }
         [data-theme="light"] {
             $color: black;
         }
