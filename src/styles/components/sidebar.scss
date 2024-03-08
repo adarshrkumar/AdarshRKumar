@@ -34,10 +34,10 @@
     .channel-container {
         $color: gray;
         background-image: linear-gradient(lighen($color, 10%), $color, darken($color, 10%));
-        [data-theme="light"] {
+        [data-theme="light"] & {
             $color: black;
         }
-        [data-theme="dark"] {
+        [data-theme="dark"] & {
             $color: white;
         }
 
