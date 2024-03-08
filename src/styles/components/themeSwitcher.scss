@@ -39,6 +39,7 @@ body {
 .theme-switcher {
     --pos: 20px;
     --padding: 5px;
+    --size: 30px;
     
     position: absolute;
     top: var(--pos);
@@ -47,7 +48,8 @@ body {
     box-sizing: border-box;
     padding: var(--padding);
 
-    width: 30px;
+    width: var(--size);
+    height: var(--size);
     aspect-ratio: 1;
 
     background-color: var(--color);
