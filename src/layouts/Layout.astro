@@ -10,7 +10,7 @@ import ThemeSwitcher from '../components/themeSwitcher.astro'
 
 var sName = 'Adarsh Kumar'
 var sURL = 'https://AdarshRKumar.dev'
-var logoSRC = '/logo.jpg'
+var logoSRC = '/assets/logo.jpg'
 
 var { title, pTitle, classItems, inlineStyles } = Astro.props;
 
@@ -37,7 +37,7 @@ if (className.startsWith(' ')) className = className.substring(1)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <base href={sURL} />
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/favicon.png">
     <link href="https://firecss.hecker40.repl.co/fire.css" rel="stylesheet" type="text/css"/>
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
   </head>
