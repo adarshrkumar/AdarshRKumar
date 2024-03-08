@@ -32,9 +32,9 @@
     gap: 1rem;
 
     .channel-container {
-        [data-theme="dark"] & {
-            background-color: var(--color);
-        }
+        box-sizing: border-box;
+
+        border: solid 1px var(--color);
         border-radius: 6px;
 
         display: grid;
@@ -42,5 +42,9 @@
         align-items: center;
 
         overflow: hidden;
+
+        [data-theme="dark"] & {
+            background-color: var(--color);
+        }
     }
 }
