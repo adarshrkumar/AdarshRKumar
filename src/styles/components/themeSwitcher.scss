@@ -19,18 +19,40 @@ body {
     color: var(--color);
 }
 
+.theme-switcher {
+    --pos: 20px;
+    --padding: 5px;
+    
+    position: absolute;
+    top: var(--pos);
+    right: var(--pos);
+
+    box-sizing: border-box;
+    padding: var(--padding);
+
+    width: 20px;
+    aspect-ratio: 1;
+
+    background-size: calc(100% - var(--padding)*2);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 50%;
+
+    z-index: calc(9 * pow(10, 10));
+}
 [data-theme="system"] {
     .theme-switcher {
-
+        background-image: url('/icons/themes/system.svg');
     }
 }
 [data-theme="light"] {
     .theme-switcher {
-
+        background-image: url('/icons/themes/light.svg');
     }
 }
 [data-theme="dark"] {
     .theme-switcher {
-
+        background-image: url('/icons/themes/dark.svg');
     }
 }
