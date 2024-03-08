@@ -32,7 +32,7 @@
     gap: 1rem;
 
     .channel-container {
-        background-image: linear-gradient(lighen(var(--color) 10%), var(--color), darken(var(--color) 10%));
+        background-image: linear-gradient(lighen(var(--color), 10%), var(--color), darken(var(--color), 10%));
 
         border-radius: 5px;
 
