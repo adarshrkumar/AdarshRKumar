@@ -27,7 +27,6 @@
 }
 
 .channel-stats {
-    $color: var(--color);
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(3rem, 1fr));
     gap: 1rem;
