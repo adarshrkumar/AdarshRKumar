@@ -1,14 +1,10 @@
 .theme-switcher {
     --pos: 20px;
-    --padding: 5px;
     --size: 30px;
     
     position: absolute;
     top: var(--pos);
     right: var(--pos);
-
-    box-sizing: border-box;
-    padding: var(--padding);
 
     width: var(--size);
     height: var(--size);
@@ -22,6 +18,11 @@
     z-index: calc(9 * pow(10, 10));
 
     & svg {
+        box-sizing: border-box;
+        padding: 20px;
+
         stroke: var(--color);
+
+        border-radius: 50%;
     }
 }
