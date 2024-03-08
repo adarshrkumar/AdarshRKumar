@@ -57,6 +57,8 @@ body {
 
     border-radius: 50%;
 
+    box-shadow: 0 0 10px 0 var(--color);
+
     z-index: calc(9 * pow(10, 10));
 }
 [data-theme="system"] .theme-switcher {
