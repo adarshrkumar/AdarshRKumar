@@ -62,11 +62,11 @@ body {
     z-index: calc(9 * pow(10, 10));
 }
 [data-theme="system"] .theme-switcher {
-    background-image: url('/icons/themes/system.svg');
+    background-image: url('/assets/icons/themes/system.svg');
 }
 [data-theme="light"] .theme-switcher {
-    background-image: url('/icons/themes/light.svg');
+    background-image: url('/assets/icons/themes/light.svg');
 }
 [data-theme="dark"] .theme-switcher {
-    background-image: url('/icons/themes/dark.svg');
+    background-image: url('/assets/icons/themes/dark.svg');
 }
