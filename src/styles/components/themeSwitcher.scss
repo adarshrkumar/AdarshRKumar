@@ -45,11 +45,12 @@ body {
     right: var(--pos);
 
     box-sizing: border-box;
-    padding: var(--padding);
+    // padding: var(--padding);
 
     width: 20px;
     aspect-ratio: 1;
 
+    background-color: var(--color);
     background-size: calc(100% - var(--padding)*2);
     background-repeat: no-repeat;
     background-position: center;
