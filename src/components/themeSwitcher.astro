@@ -1,0 +1,28 @@
+---
+import '../styles/components/themeSwitcher.scss'
+
+var { defaultTheme } = Astro.props
+
+---
+<div class="theme-switcher" ={defaultTheme}>
+    <span class="icon"></span>
+</div>
+<script>
+    var themeAttribute = 'data-theme'
+    var themes = [
+        'system', 
+        'light', 
+        'dark'
+    ]
+    var themesLength = themes.length
+    var themeSwitcher =  document.querySelector('.theme-switcher')
+    themeSwitcher.addEventListener('click', function(e) {
+        var currentTheme = e.target.getAttribute(themeAttribute)
+
+        var newIndex = themes.indexOf(currentTheme) + 1
+        if (newIndex > themesLength-1) newIndex = 0
+
+        var newTheme = themes[newIndex]
+        e.target.setAttribute(themeAttribute, newTheme)
+    })
+</script>

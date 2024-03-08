@@ -1,0 +1,36 @@
+:root {
+    --bg: #cfcfcf;
+    --color: #212121;
+}
+
+@media (preferes-color-scheme: dark) {
+    :root {
+        --bg: #212121;
+        --color: #cfcfcf;
+    }
+}
+
+html {
+    color-scheme: light dark;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--color);
+}
+
+[data-theme="system"] {
+    .theme-switcher {
+
+    }
+}
+[data-theme="light"] {
+    .theme-switcher {
+
+    }
+}
+[data-theme="dark"] {
+    .theme-switcher {
+
+    }
+}
