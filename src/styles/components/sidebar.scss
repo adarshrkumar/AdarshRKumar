@@ -8,7 +8,9 @@
     min-width: 10rem;
 
     display: grid;
-    gap: 1rem;  
+    gap: 1rem; 
+    
+    border-left: solid 1px var(--color);
 
     & > * {
         height: fit-content;
