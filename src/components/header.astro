@@ -19,7 +19,9 @@ var { logo } = Astro.props
     </nav>
 </header>
 <script is:inline>
-    function goToUrl(link='/', target='_self') {
+    function goToUrl(link, target) {
+        if (!!link === false) link = '/'
+        if (!!target === false) target = '_self'
         if (typeof link !== 'string') {
             link = link.getAttribute('url')
             target = link.getAttribute('target')
