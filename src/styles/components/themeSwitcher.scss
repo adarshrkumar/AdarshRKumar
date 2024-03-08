@@ -1,13 +1,28 @@
 :root {
-    --bg: #cfcfcf;
-    --color: #212121;
+    --dark-bg: #212121;
+    --dark-color: #cfcfcf;
+    --light-bg: #cfcfcf;
+    --light-color: #212121;
+
+    --bg: var(--light-bg);
+    --color: var(--light-color);
 }
+
 
 @media (preferes-color-scheme: dark) {
     :root {
-        --bg: #212121;
-        --color: #cfcfcf;
+        --bg: var(--dark-bg);
+        --color: var(--dark-color);
     }
+}
+
+[data-theme="light"] {
+    --bg: var(--light-bg);
+    --color: var(--light-color);
+}
+[data-theme="dark"] {
+    --bg: var(--dark-bg);
+    --color: var(--dark-color);
 }
 
 html {
@@ -41,18 +56,12 @@ body {
 
     z-index: calc(9 * pow(10, 10));
 }
-[data-theme="system"] {
-    .theme-switcher {
-        background-image: url('/icons/themes/system.svg');
-    }
+[data-theme="system"] .theme-switcher {
+    background-image: url('/icons/themes/system.svg');
 }
-[data-theme="light"] {
-    .theme-switcher {
-        background-image: url('/icons/themes/light.svg');
-    }
+[data-theme="light"] .theme-switcher {
+    background-image: url('/icons/themes/light.svg');
 }
-[data-theme="dark"] {
-    .theme-switcher {
-        background-image: url('/icons/themes/dark.svg');
-    }
+[data-theme="dark"] .theme-switcher {
+    background-image: url('/icons/themes/dark.svg');
 }
