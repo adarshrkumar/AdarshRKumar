@@ -12,26 +12,63 @@
 :root {
     --logo-a-color: hsl(195, 12%, 94%);
     --active-link: hsl(352, 68%, 77%);
-    color: white;
+
+    --dark-bg: #212121;
+    --dark-color: #cfcfcf;
+    --light-bg: #cfcfcf;
+    --light-color: #212121;
+
+    --bg: var(--light-bg);
+    --color: var(--light-color);
 }
 
 :has(:target), html {
     scroll-behavior: smooth;
 }
 
+@media (preferes-color-scheme: dark) {
+    :root {
+        --bg: var(--dark-bg);
+        --color: var(--dark-color);
+    }
+}
+
+html {
+    color-scheme: light dark;
+}
+
+[data-theme="light"] {
+    --bg: var(--light-bg);
+    --color: var(--light-color);
+    color-scheme: light;
+}
+[data-theme="dark"] {
+    --bg: var(--dark-bg);
+    --color: var(--dark-color);
+    color-scheme: dark;
+}
+
 html, iframe {
     margin: 0;
     padding: 0;
-    border: none;
-    outline: none;
-    box-shadow: none;
+
     min-width: 100%;
     min-height: 100%;
+
+    border: none;
+    outline: none;
+
+    box-shadow: none;
 }
   
 body {
     margin: 0;
+
     min-height: 100dvh;
+
+    background-color: var(--bg);
+    color: var(--color);
+
     display: flex;
     flex-direction: column;
 }
