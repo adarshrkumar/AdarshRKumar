@@ -2,5 +2,9 @@
 import Layout from '../layouts/Layout.astro'
 ---
 <Layout title="Music Taste" classItems="ignorePadding" inlineStyles="display: grid;">
-  <iframe frameborder="0" src="https://music.apple.com/profile/RockGamerAK" style="background: white;"></iframe>
+  <iframe frameborder="0" src="https://music.apple.com/profile/RockGamerAK" style="background: white;">
+    <script>
+      location.href = document.querySelectorAll('iframe').pop().src
+    </script>
+  </iframe>
 </Layout>
