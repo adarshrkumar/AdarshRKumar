@@ -32,7 +32,9 @@
     gap: 1rem;
 
     .channel-container {
-        background-color: var(--color);
+        [data-theme="dark"] & {
+            background-color: var(--color);
+        }
         border-radius: 6px;
 
         display: grid;
