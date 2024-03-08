@@ -33,15 +33,15 @@
     gap: 1rem;
 
     .channel-container {
-        background-image: var(--bg-image);
+        background-image: linear-gradient(lighen($color, 10%), $color, darken($color, 10%));
         [data-theme="system"] {
-            --bg: linear-gradient(lighen(gray, 10%), gray, darken(gray, 10%))
+            $color: gray;
         }
         [data-theme="light"] {
-            --bg: linear-gradient(lighen(black, 10%), black, darken(black, 10%))
+            $color: black;
         }
         [data-theme="dark"] {
-            --bg: linear-gradient(lighen(white, 10%), white, darken(white, 10%))
+            $color: white;
         }
 
         border-radius: 6px;
