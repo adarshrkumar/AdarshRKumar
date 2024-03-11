@@ -3,7 +3,6 @@ applySettings()
 
 function getSettings() {
     var settings = localStorage.getItem(settingsKey)
-    console.log(settings)
     settings = !!settings ? settings : '[]'
     settings = JSON.parse(settings)
     return settings
@@ -19,6 +18,7 @@ function applySettings() {
     var settings = getSettings()
     settings.forEach(function(s, i) {
         var sName = s.name
+        console.log(sName)
         var sContent = s.content
         settingFunctions[sName](sContent)
     })
