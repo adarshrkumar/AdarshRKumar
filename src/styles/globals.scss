@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+$light-bg: #fefefe;
+$light-color: #212121;
+$dark-bg: #212121;
+$dark-color: #fefefe;
+$dark-nav-btn: #f0f0f0;
+
+
 * {
     // font-family: 'Montserrat', sans-serif;
     font-family: 'Inter', sans-serif;
@@ -13,15 +20,17 @@
     --logo-a-color: hsl(195, 12%, 94%);
     --active-link: hsl(352, 68%, 77%);
 
-    --light-bg: #fefefe;
-    --light-color: #212121;
-    --dark-bg: #212121;
-    --dark-color: #fefefe;
-    --dark-nav-btn: #f0f0f0;
+    --light-bg: $light-bg;
+    --light-color: $light-color;
+    --dark-bg: $dark-bg;
+    --dark-color: $dark-color;
+    --dark-nav-btn: $dark-nav-btn;
 
     --bg: var(--light-bg);
     --color: var(--light-color);
-    --nav-btn-color: var(--light-color)
+    
+    --nav-btn-bg: var(--light-color);
+    --nav-btn-hover: darken($light-color, $change-amt);
 }
 
 :has(:target), html {
@@ -32,7 +41,8 @@
     :root {
         --bg: var(--dark-bg);
         --color: var(--dark-color);
-        --nav-btn-color: var(--dark-nav-btn)
+        --nav-btn-bg: var(--dark-nav-btn);
+        --nav-btn-hover: lighen($dark-color, $change-amt);
     }
 }
 
@@ -43,13 +53,15 @@ html {
 [data-theme="light"] {
     --bg: var(--light-bg);
     --color: var(--light-color);
-    --nav-btn-color: var(--light-color)
+    --nav-btn-bg: var(--light-color);
+    --nav-btn-hover: darken($light-color, $change-amt);
     color-scheme: light;
 }
 [data-theme="dark"] {
     --bg: var(--dark-bg);
     --color: var(--dark-color);
-    --nav-btn-color: var(--dark-nav-btn);
+    --nav-btn-bg: var(--dark-nav-btn);
+    --nav-btn-hover: lighen($dark-color, $change-amt);
     color-scheme: dark;
 }
 
