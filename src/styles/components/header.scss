@@ -52,6 +52,7 @@ header .logo:is(:hover, :focus) {
   background-color: var(--color);
   color: var(--bg);
 
+  border: none;
   border-radius: 100vw;
 
   font-size: 1.25rem;
