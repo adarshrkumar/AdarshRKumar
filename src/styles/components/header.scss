@@ -28,7 +28,7 @@ header .logo {
 
   border-radius: 100%;
 
-  box-shadow: 0 0 calc(var(--shadow-size)/2) calc(var(--shadow-size)/2) var(--color);
+  box-shadow: 0 0 var(--shadow-size) var(--color);
 
   transition: border-radius 1s ease-out;
 }
