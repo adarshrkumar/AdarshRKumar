@@ -18,7 +18,6 @@ function applySettings() {
     var settings = getSettings()
     settings.forEach(function(s, i) {
         var sName = s.name
-        console.log(sName)
         var sContent = s.content
         settingFunctions[sName](sContent)
     })
