@@ -12,6 +12,7 @@ $dark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" view
     top: var(--pos);
     right: var(--pos);
 
+    box-sizing: border-box;
     padding: var(--padding);
 
     width: var(--size);
@@ -24,4 +25,9 @@ $dark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" view
     box-shadow: 0 0 10px 0 var(--color);
 
     z-index: calc(9 * pow(10, 10));
+
+    .icon {
+        height: 100%;
+        width: 100%;
+    }
 }
