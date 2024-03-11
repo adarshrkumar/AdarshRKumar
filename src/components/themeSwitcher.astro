@@ -25,6 +25,8 @@ var { defaultTheme } = Astro.props
         var currentTheme = document.documentElement.getAttribute(themeAttribute)
         var newIndex = themes.indexOf(currentTheme) + 1
 
+        if (newIndex >= themes.length) newIndex = 0
+
         changeTheme(currentTheme)
     })
     changeTheme(0)
