@@ -33,6 +33,9 @@ var { defaultTheme } = Astro.props
 
         var newTheme = themes[newIndex]
         document.documentElement.setAttribute(themeAttribute, newTheme)
+
+        setSetting('theme', newTheme)
+
         themeSwitcher.querySelector('.icon').innerHTML = htmls[newTheme]
     }
 </script>
