@@ -1,5 +1,7 @@
 // Styles for the Navigation Bar
 header {
+  --shadow-size: 5px;
+
   padding: 2rem 4rem;
 
   display: flex;
@@ -13,8 +15,6 @@ header {
 }
 
 header .logo {
-  --shadow-size: 5px;
-
   min-height: 5rem;
   height: 100%;
   aspect-ratio: 1;
