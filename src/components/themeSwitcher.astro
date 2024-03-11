@@ -30,8 +30,8 @@ var { defaultTheme } = Astro.props
 
     function changeTheme(newTheme) {
         if (!isNaN(newTheme)) {
-            if (newIndex >= themes.length) newIndex = 0
-            themes[newIndex]
+            if (newTheme >= themes.length) newTheme = 0
+            themes[newTheme]
         }
 
         document.documentElement.setAttribute(themeAttribute, newTheme)
