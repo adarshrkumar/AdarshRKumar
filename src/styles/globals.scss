@@ -22,10 +22,10 @@ $change-amt: 10%;
     --logo-a-color: hsl(195, 12%, 94%);
     --active-link: hsl(352, 68%, 77%);
 
-    --bg: $light-bg;
-    --color: $light-color;
+    --bg: #{$light-bg};
+    --color: #{$light-color};
     
-    --nav-btn-bg: $light-color;
+    --nav-btn-bg: #{$light-color};
     --nav-btn-hover: darken($light-color, $change-amt);
 }
 
@@ -35,9 +35,9 @@ $change-amt: 10%;
 
 @media (preferes-color-scheme: dark) {
     :root {
-        --bg: $dark-bg;
-        --color: $dark-color;
-        --nav-btn-bg: $dark-nav-btn;
+        --bg: #{$dark-bg};
+        --color: #{$dark-color};
+        --nav-btn-bg: #{$dark-nav-btn};
         --nav-btn-hover: lighen($dark-color, $change-amt);
     }
 }
@@ -47,16 +47,16 @@ html {
 }
 
 [data-theme="light"] {
-    --bg: $light-bg;
-    --color: $light-color;
-    --nav-btn-bg: $light-color;
+    --bg: #{$light-bg};
+    --color: #{$light-color};
+    --nav-btn-bg: #{$light-color};
     --nav-btn-hover: darken($light-color, $change-amt);
     color-scheme: light;
 }
 [data-theme="dark"] {
-    --bg: $dark-bg;
-    --color: $dark-color;
-    --nav-btn-bg: $dark-nav-btn;
+    --bg: #{$dark-bg};
+    --color: #{$dark-color};
+    --nav-btn-bg: #{$dark-nav-btn};
     --nav-btn-hover: lighen($dark-color, $change-amt);
     color-scheme: dark;
 }
