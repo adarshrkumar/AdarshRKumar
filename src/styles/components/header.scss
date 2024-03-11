@@ -24,6 +24,9 @@ header .logo {
   background-repeat: no-repeat;
 
   border-radius: 100%;
+
+  box-shadow: 0 0 5px 0 var(--color);
+
   transition: border-radius 1s ease-out;
 }
 
