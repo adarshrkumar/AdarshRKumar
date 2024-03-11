@@ -1,4 +1,5 @@
 var settingsKey = 'settings'
+applySettings()
 
 function getSettings() {
     var settings = localStorage.getItem(settingsKey)
