@@ -5,14 +5,12 @@ $dark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" view
 .theme-switcher {
     --pos: 20px;
     --size: 30px;
-    --icon-size: 10px;
-    --padding: calc((var(--size) - var(--icon-size))/2);
+    --icon-size: calc(var(--size) - var(--padding)*2);
+    --padding: 10px;
     
     position: absolute;
     top: var(--pos);
     right: var(--pos);
-
-    padding: var(--padding);
 
     width: var(--size);
     height: var(--size);
@@ -26,7 +24,7 @@ $dark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" view
     z-index: calc(9 * pow(10, 10));
 
     background-image: var(--bg-image);
-    background-size: calc(100% - var(--padding)*2);
+    background-size: var(--icon-size);
     background-position: center;
     background-repeat: no-repeat;
 }
