@@ -5,7 +5,7 @@ function setSetting(name, value, type, key) {
     settings = !!settings ? settings : '{}'
     settings = JSON.parse(settings)
 
-    var setting = settings[setting]
+    var setting = settings[name]
     if (!!setting === false) {
         switch(type) {
             case 'object': 
