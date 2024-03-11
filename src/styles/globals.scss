@@ -13,10 +13,11 @@
     --logo-a-color: hsl(195, 12%, 94%);
     --active-link: hsl(352, 68%, 77%);
 
-    --dark-bg: #212121;
-    --dark-color: #fefefe;
     --light-bg: #fefefe;
     --light-color: #212121;
+    --dark-bg: #212121;
+    --dark-color: #fefefe;
+    --dark-nav-btn: #f0f0f0;
 
     --bg: var(--light-bg);
     --color: var(--light-color);
@@ -30,6 +31,7 @@
     :root {
         --bg: var(--dark-bg);
         --color: var(--dark-color);
+        --nav-btn-color: var(--dark-nav-btn)
     }
 }
 
@@ -45,6 +47,7 @@ html {
 [data-theme="dark"] {
     --bg: var(--dark-bg);
     --color: var(--dark-color);
+    --nav-btn-color: var(--dark-color);
     color-scheme: dark;
 }
 

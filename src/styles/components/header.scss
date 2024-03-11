@@ -51,7 +51,7 @@ header .logo:is(:hover, :focus) {
 .nav button {
   padding: 10px 20px;
 
-  background-color: var(--color);
+  background-color: var(--nav-btn-color, var(--color));
   color: var(--bg);
 
   border: none;
