@@ -21,6 +21,7 @@
 
     --bg: var(--light-bg);
     --color: var(--light-color);
+    --nav-btn-color: var(--color)
 }
 
 :has(:target), html {
@@ -42,6 +43,7 @@ html {
 [data-theme="light"] {
     --bg: var(--light-bg);
     --color: var(--light-color);
+    --nav-btn-color: var(--color)
     color-scheme: light;
 }
 [data-theme="dark"] {
