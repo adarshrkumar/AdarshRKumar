@@ -28,7 +28,7 @@
 
 .channel-stats {
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(3rem, 1fr));
+    // grid-template-rows: repeat(auto-fit, minmax(3rem, 1fr));
     gap: 1rem;
 
     .channel-container {
