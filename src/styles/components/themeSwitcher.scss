@@ -5,7 +5,7 @@ $dark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" view
 .theme-switcher {
     --pos: 20px;
     --size: 30px;
-    --icon-size: 10px;
+    --icon-size: 20px;
     --padding: calc((var(--size) - var(--icon-size))/2);
     
     position: absolute;
