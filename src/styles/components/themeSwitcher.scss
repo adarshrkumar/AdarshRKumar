@@ -1,12 +1,14 @@
 .theme-switcher {
     --pos: 20px;
     --size: 30px;
+    --padding: 20px;
     
     position: absolute;
     top: var(--pos);
     right: var(--pos);
 
     width: var(--size);
+    min-width: calc(var(--padding)*2 + var(--padding)/2);
     height: var(--size);
     aspect-ratio: 1;
 
@@ -17,9 +19,9 @@
 
     z-index: calc(9 * pow(10, 10));
 
-    & svg {
+    & .icon {
         box-sizing: border-box;
-        padding: 20px;
+        padding: var(--padding);
 
         stroke: var(--color);
 
