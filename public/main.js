@@ -9,7 +9,7 @@ function getSettings() {
 
 const settingFunctions = {
     theme: function(theme) {
-        changeTheme(theme)
+        setTheme(theme)
     }
 }
 
