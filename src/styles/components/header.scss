@@ -49,11 +49,14 @@ header .logo:is(:hover, :focus) {
 .nav button {
   padding: 10px 20px;
 
+  background-color: var(--color);
+  color: var(--bg);
+
   border-radius: 100vw;
 
   font-size: 1.25rem;
   font-weight: 500;
-  }
+}
 
 // .nav .current-page {
 // }
