@@ -27,9 +27,9 @@ var { defaultTheme } = Astro.props
 
         changeTheme(currentTheme)
     })
-    changeTheme(0, {target: themeSwitcher})
+    changeTheme(0)
 
-    function changeTheme(newIndex,) {
+    function changeTheme(newInde) {
         if (newIndex > themesLength-1) newIndex = 0
 
         var newTheme = themes[newIndex]
