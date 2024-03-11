@@ -57,7 +57,7 @@ header .logo:is(:hover, :focus) {
   border: none;
   border-radius: 100vw;
 
-  box-shadow: 0 0 var(--shadow-size) 0 var(--color);
+  box-shadow: 0 0 var(--shadow-size) var(--color);
 
   font-size: 1.25rem;
   font-weight: 500;
