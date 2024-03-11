@@ -28,16 +28,17 @@ var { defaultTheme } = Astro.props
     }
     changeTheme(0)
 
-    function changeTheme(newTheme) {
-        if (!isNaN(newTheme)) {
-            if (newTheme >= themes.length) newTheme = 0
-            themes[newTheme]
-        }
+    function changeTheme(newIndex) {
+        if (newIndex >= themes.length) newIndex = 0
+        var newTheme = themes[newTheme]
 
-        document.documentElement.setAttribute(themeAttribute, newTheme)
+        setTheme(newTheme)
+    }
+    function setTheme(theme) {
+        document.documentElement.setAttribute(themeAttribute, theme)
 
-        setSetting('theme', newTheme)
+        setSetting('theme', theme)
 
-        themeSwitcher.querySelector('.icon').innerHTML = htmls[newTheme]
+        themeSwitcher.querySelector('.icon').innerHTML = htmls[theme]
     }
 </script>
