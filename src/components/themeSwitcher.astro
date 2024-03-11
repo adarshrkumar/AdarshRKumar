@@ -23,11 +23,13 @@ var { defaultTheme } = Astro.props
     var themeSwitcher =  document.querySelector('.theme-switcher')
     themeSwitcher.addEventListener('click', function(e) {
         var currentTheme = e.target.getAttribute(themeAttribute)
+        var newIndex = themes.indexOf(currentTheme) + 1
+
         changeTheme(currentTheme, e)
     })
+    changeTheme(0, {target: themeSwitcher})
 
-    function changeTheme(currentTheme, {target: themeSwitcher}) {
-        var newIndex = themes.indexOf(currentTheme) + 1
+    function changeTheme(newIndex, e) {
         if (newIndex > themesLength-1) newIndex = 0
 
         var newTheme = themes[newIndex]
