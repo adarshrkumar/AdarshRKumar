@@ -23,12 +23,15 @@ var { defaultTheme } = Astro.props
     var themeSwitcher =  document.querySelector('.theme-switcher')
     themeSwitcher.addEventListener('click', function(e) {
         var currentTheme = e.target.getAttribute(themeAttribute)
+        changeTheme(currentTheme, e)
+    })
 
+    function changeTheme(currentTheme, {target: themeSwitcher}) {
         var newIndex = themes.indexOf(currentTheme) + 1
         if (newIndex > themesLength-1) newIndex = 0
 
         var newTheme = themes[newIndex]
         e.target.setAttribute(themeAttribute, newTheme)
         e.target.querySelector('.icon').innerHTML = htmls[newTheme]
-    })
+    }
 </script>
