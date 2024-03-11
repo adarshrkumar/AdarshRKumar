@@ -10,7 +10,6 @@ var { defaultTheme } = Astro.props
 <script is:inline>
     var themeAttribute = 'data-theme'
     var themes = [
-        'undefined'
         'system', 
         'light', 
         'dark'
@@ -27,7 +26,7 @@ var { defaultTheme } = Astro.props
 
         changeTheme(currentTheme)
     })
-    changeTheme(1)
+    changeTheme(0)
 
     function changeTheme(newIndex) {
         if (newIndex >= themes.length) newIndex = 0
