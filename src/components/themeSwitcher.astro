@@ -30,7 +30,7 @@ var { defaultTheme } = Astro.props
 
     function changeTheme(newIndex) {
         if (newIndex >= themes.length) newIndex = 0
-        var newTheme = themes[newTheme]
+        var newTheme = themes[newIndex]
 
         setTheme(newTheme)
     }
