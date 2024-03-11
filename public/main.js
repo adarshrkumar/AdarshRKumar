@@ -20,7 +20,6 @@ function applySettings() {
         var sContent = s.content
         settingFunctions[sName](sContent)
     })
-
 }
 
 function setSetting(name, value, type, key) {
