@@ -51,13 +51,13 @@ header .logo:is(:hover, :focus) {
 .nav button {
   padding: 10px 20px;
 
-  background-color: var(--nav-btn-color, var(--color));
+  background-color: var(--nav-btn-color);
   color: var(--bg);
 
   border: none;
   border-radius: 100vw;
 
-  box-shadow: 0 0 var(--shadow-size) var(--color);
+  box-shadow: 0 0 var(--shadow-size) var(--nav-btn-color);
 
   font-size: 1.25rem;
   font-weight: 500;
