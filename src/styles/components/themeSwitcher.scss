@@ -29,5 +29,7 @@ $dark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" view
     .icon {
         height: 100%;
         width: 100%;
+        
+        stroke: var(--bg);
     }
 }
