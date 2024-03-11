@@ -1,16 +1,15 @@
 .theme-switcher {
     --pos: 20px;
     --size: 30px;
-    --padding: 10px;
+    --icon-size: 10px;
+    --padding: calc((var(--size) - var(--icon-size))/2);
     
     position: absolute;
     top: var(--pos);
     right: var(--pos);
 
     width: var(--size);
-    min-width: calc(var(--padding)*2.5);
     height: var(--size);
-    min-height: calc(var(--padding)*2.5);
     aspect-ratio: 1;
 
     background-color: var(--color);
