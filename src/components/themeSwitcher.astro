@@ -28,10 +28,12 @@ var { defaultTheme } = Astro.props
     }
     changeTheme(0)
 
-    function changeTheme(newIndex) {
-        if (newIndex >= themes.length) newIndex = 0
+    function changeTheme(newTheme) {
+        if (!isNaN) {
+            if (newIndex >= themes.length) newIndex = 0
+            themes[newIndex]
+        }
 
-        var newTheme = themes[newIndex]
         document.documentElement.setAttribute(themeAttribute, newTheme)
 
         setSetting('theme', newTheme)
