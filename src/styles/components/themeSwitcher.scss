@@ -27,8 +27,8 @@ $dark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" view
     z-index: calc(9 * pow(10, 10));
 
     .icon {
-        height: 100%;
-        width: 100%;
+        height: calc(var(--size) - (var(--padding)*2));
+        aspect-ratio: 1;
         
         fill: var(--bg);
         stroke: var(--bg);
