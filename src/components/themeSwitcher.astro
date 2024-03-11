@@ -29,7 +29,7 @@ var { defaultTheme } = Astro.props
     changeTheme(0)
 
     function changeTheme(newTheme) {
-        if (!isNaN) {
+        if (!isNaN(newTheme)) {
             if (newIndex >= themes.length) newIndex = 0
             themes[newIndex]
         }
