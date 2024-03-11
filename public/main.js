@@ -1,4 +1,10 @@
 var settingsKey = 'settings'
+
+var settingFunctions = {
+    theme: function(theme) {
+        setTheme(theme)
+    }
+}
 applySettings()
 
 function getSettings() {
@@ -6,12 +12,6 @@ function getSettings() {
     settings = !!settings ? settings : '[]'
     settings = JSON.parse(settings)
     return settings
-}
-
-var settingFunctions = {
-    theme: function(theme) {
-        setTheme(theme)
-    }
 }
 
 function applySettings() {
