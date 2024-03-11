@@ -2,36 +2,34 @@
 import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
+
+var dob = {
+  month: 03, 
+  day: 28, 
+  year: 2007, 
+}
+
+var date = new Date()
+var currentDate = {
+  month: date.getMonth(), 
+  day: date.getDate(), 
+  year: date.getFullYear(), 
+}
+
+let ans = ''
+if (
+  (currentDate.month < dob.month) || 
+  (
+    currentDate.month === dob.month && 
+    currentDate.day <= 28
+  )
+) ans = currentDate.year - dob.year - 1
+else ans = currentDate.year - dob.year
+
 ---
 <Layout title="About">
   <div class="about">
-    <p>Hello, my name is Adarsh Kumar or RockGamerAK. I'm&nbsp;<span id="age"></span> years old, and a High School Student.</p>
-    <p>I am good with software, so if you need tech help, DM @w.web.wizards or email <a href="mailto:ww@RockGamerAK.com">ww@RockGamerAK.com</a>. I also enjoy history and geography.</p>
+    <p>Hello, my name is Adarsh Kumar or RockGamerAK. I'm {ans} years old, and a High School Student.</p>
+    <p>I am good with software, so if you need tech help, let me know! I also enjoy history and geography.</p>
   </div>
-  <script>
-    var dob = {
-      month: 03, 
-      day: 28, 
-      year: 2007, 
-    }
-
-    var date = new Date()
-    var currentDate = {
-      month: date.getMonth(), 
-      day: date.getDate(), 
-      year: date.getFullYear(), 
-    }
-
-    let ans = ''
-    if (
-      (currentDate.month < dob.month) || 
-      (
-        currentDate.month === dob.month && 
-        currentDate.day <= 28
-      )
-    ) ans = currentDate.year - dob.year - 1
-    else ans = currentDate.year - dob.year
-
-    document.getElementById('age').innerHTML = ans
-  </script>
 </Layout>
