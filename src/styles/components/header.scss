@@ -38,7 +38,11 @@ header .logo:is(:hover, :focus) {
 }
 
 .nav {
-  flex: 1;
+  // flex: 1;
+
+  margin-inline: auto;
+  
+  width: fit-content;
   height: 100%;
   
   display: flex;
@@ -49,9 +53,10 @@ header .logo:is(:hover, :focus) {
 }
 
 .nav-btn {
+  flex: 1;
   padding: 10px 20px;
 
-  min-width: var(--min-width, fit-content);
+  // min-width: var(--min-width, fit-content);
 
   background-color: var(--nav-btn-bg);
   color: var(--bg);
