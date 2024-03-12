@@ -3,6 +3,8 @@
 
 $light-bg: #fefefe;
 $light-color: #212121;
+$light-nav-btn: #2F2F2F;
+
 $dark-bg: #212121;
 $dark-color: #fefefe;
 $dark-nav-btn: #f0f0f0;
@@ -25,8 +27,8 @@ $change-amt: 10%;
     --bg: #{$light-bg};
     --color: #{$light-color};
     
-    --nav-btn-bg: #{$light-color};
-    --nav-btn-hover: darken($light-color, $change-amt);
+    --nav-btn-bg: #{$light-nav-btn};
+    --nav-btn-hover: darken($light-nav-btn, $change-amt);
 }
 
 :has(:target), html {
@@ -49,8 +51,8 @@ html {
 [data-theme="light"] {
     --bg: #{$light-bg};
     --color: #{$light-color};
-    --nav-btn-bg: #{$light-color};
-    --nav-btn-hover: darken($light-color, $change-amt);
+    --nav-btn-bg: #{$light-nav-btn};
+    --nav-btn-hover: darken($light-nav-btn, $change-amt);
     color-scheme: light;
 }
 [data-theme="dark"] {
