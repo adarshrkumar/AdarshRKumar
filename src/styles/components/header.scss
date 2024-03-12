@@ -44,18 +44,12 @@ header .logo:is(:hover, :focus) {
   display: flex;
   flex-wrap: wrap;
 
-  justify-content: center;
+  // justify-content: center;
+  justify-content: space-around;
   gap: 15px;
 }
 
 .nav-btn {
-  &:first-child {
-    margin-inline-start: auto;
-  }
-  &:last-child {
-    margin-inline-end: auto;
-  }
-
   flex: 1;
 
   padding: 10px 20px;
