@@ -1,6 +1,6 @@
 // Styles for the Navigation Bar
 header {
-  --shadow-size: 5px;
+  --shadow-size: 10px;
 
   padding: 2rem 4rem;
 
@@ -28,7 +28,7 @@ header .logo {
 
   border-radius: 100%;
 
-  box-shadow: 0 0 var(--shadow-size) var(--color);
+  box-shadow: 0 0 var(--shadow-size) 0 var(--color);
 
   transition: border-radius 1s ease-out;
 }
