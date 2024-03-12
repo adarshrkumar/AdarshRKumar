@@ -70,7 +70,7 @@
 .grid .item {
     // height: fit-content;
 
-    border: solid 1px var(--foreground-tertiary-color);
+    border: solid 1px var(--color);
 
     cursor: pointer;
 
@@ -90,7 +90,7 @@
         outline: none;
 
         // &:hover, &:focus, &:focus-visible, .hasTitle & {
-            border-bottom: solid 1px var(--foreground-tertiary-color);
+            border-bottom: solid 1px var(--color);
         // }
 
         :not(.portfolio) &:is(:hover, :focus, :focus-visible) {
@@ -148,7 +148,7 @@
             // background-size: contain;
         // }
         & a:not(.image-link) {
-            border-bottom: solid 1px var(--foreground-tertiary-color);
+            border-bottom: solid 1px var(--color);
         }
 
         & > div:not([paddingOnHover]) > :not(a) {
