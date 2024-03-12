@@ -2,6 +2,7 @@
     --pos: 30px;
     --size: 30px;
     --icon-size: 20px;
+    --shadow-size: 10px;
     --padding: calc((var(--size) - var(--icon-size))/2);
     
     position: fixed;
@@ -18,7 +19,9 @@
     background-color: var(--color);
     border-radius: 50%;
 
-    box-shadow: 0 0 10px 0 var(--color);
+    box-shadow: 
+        0 0 var(--shadow-size)         0 var(--color),
+        0 0 calc(var(--shadow-size)*2) 0 var(--bg);
 
     z-index: calc(9 * pow(10, 10));
 
