@@ -44,8 +44,7 @@ header .logo:is(:hover, :focus) {
   display: flex;
   flex-wrap: wrap;
 
-  // justify-content: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 15px;
 }
 
