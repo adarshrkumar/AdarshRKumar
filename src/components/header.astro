@@ -1,6 +1,8 @@
 ---
 import '../styles/components/header.scss'
 
+import ThemeSwitcher from '../components/themeSwitcher.astro'
+
 var { logo } = Astro.props
 
 ---
@@ -17,6 +19,7 @@ var { logo } = Astro.props
         <button url="/videos" class="nav-btn" onclick="goToUrl(this)">Videos</button>
    <!-- <button url="/music" class="nav-btn" onclick="goToUrl(this)">Music</button> -->
     </nav>
+    <ThemeSwitcher defaultTheme="system"/>
 </header>
 <script is:inline>
     var largestWidth = 0

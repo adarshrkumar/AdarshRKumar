@@ -6,7 +6,6 @@ import '../styles/root.scss'
 
 import Header from '../components/header.astro'
 import Sidebar from '../components/sidebar.astro'
-import ThemeSwitcher from '../components/themeSwitcher.astro'
 
 var sName = 'Adarsh Kumar'
 var sURL = 'https://AdarshRKumar.dev'
@@ -42,7 +41,6 @@ if (className.startsWith(' ')) className = className.substring(1)
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
   </head>
   <body>
-    <ThemeSwitcher defaultTheme="system"/>
     <Header logo={logoSRC} />
     <div class="wrapper">
       <main id="content">
