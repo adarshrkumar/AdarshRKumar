@@ -49,6 +49,8 @@ header .logo:is(:hover, :focus) {
 }
 
 .nav-btn {
+  flex: 1;
+  
   padding: 10px 20px;
 
   background-color: var(--nav-btn-bg);
