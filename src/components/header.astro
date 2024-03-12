@@ -31,7 +31,7 @@ var { logo } = Astro.props
     function goToUrl(btn, target) {
         var link = btn
         if (!!target === false || target == null) target = '_self'
-        console.log(!!target)
+        console.log(target)
         if (typeof link !== 'string') {
             link = btn.getAttribute('url')
             target = btn.getAttribute('target')
