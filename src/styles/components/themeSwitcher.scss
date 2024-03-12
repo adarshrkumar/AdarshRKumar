@@ -21,7 +21,7 @@
 
     box-shadow: 
         0 0 var(--shadow-size)         0 var(--color),
-        0 0 calc(var(--shadow-size)*2) 0 var(--bg);
+        0 0 calc(var(--shadow-size)*2) calc(var(--shadow-size)*2) var(--bg);
 
     z-index: calc(9 * pow(10, 10));
 
