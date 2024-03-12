@@ -1,11 +1,12 @@
 .theme-switcher {
+    --top: unset;
     --pos: 20px;
     --size: 30px;
     --icon-size: 20px;
     --padding: calc((var(--size) - var(--icon-size))/2);
     
     position: fixed;
-    // top: var(--pos);
+    top: var(--top);
     right: var(--pos);
 
     box-sizing: border-box;
