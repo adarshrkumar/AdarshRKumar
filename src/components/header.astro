@@ -7,15 +7,15 @@ var { logo } = Astro.props
 <header id="header">
     <a class="logo" href="/" style={`background-image: url('${logo}');`}></a>
     <nav class="nav">
-        <button onclick="goToUrl(this)" url="/">Home</button>
-        <button onclick="goToUrl(this)" url="/about">About</button>
-        <button onclick="goToUrl(this)" url="/contact">Contact</button>
-        <button onclick="goToUrl(this)" url="/portfolio">Portfolio</button>
-        <button onclick="goToUrl(this)" url="/projects">Projects</button>
-        <button onclick="goToUrl(this)" url="https://blog.adarshkumar.dev" target="_blank">Blog</button>
-        <!-- <button onclick="goToUrl(this)" url="/sites">Sites</button> -->
-        <button onclick="goToUrl(this)" url="/videos">Videos</button>
-        <!-- <button onclick="goToUrl(this)" url="/music">Music</button> -->
+        <button url="/" class="nav-btn" onclick="goToUrl(this)">Home</button>
+        <button url="/about" class="nav-btn" onclick="goToUrl(this)">About</button>
+        <button url="/contact" class="nav-btn" onclick="goToUrl(this)">Contact</button>
+        <button url="/portfolio" class="nav-btn" onclick="goToUrl(this)">Portfolio</button>
+        <button url="/projects" class="nav-btn" onclick="goToUrl(this)">Projects</button>
+        <button url="https://blog.adarshkumar.dev" target="_blank" class="nav-btn" onclick="goToUrl(this)">Blog</button>
+   <!-- <button url="/sites" class="nav-btn" onclick="goToUrl(this)">Sites</button> -->
+        <button url="/videos" class="nav-btn" onclick="goToUrl(this)">Videos</button>
+   <!-- <button url="/music" class="nav-btn" onclick="goToUrl(this)">Music</button> -->
     </nav>
 </header>
 <script is:inline>
