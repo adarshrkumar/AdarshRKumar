@@ -49,8 +49,15 @@ header .logo:is(:hover, :focus) {
 }
 
 .nav-btn {
+  &:first-child {
+    margin-inline-start: auto;
+  }
+  &:last-child {
+    margin-inline-end: auto;
+  }
+
   flex: 1;
-  
+
   padding: 10px 20px;
 
   background-color: var(--nav-btn-bg);
