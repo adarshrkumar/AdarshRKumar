@@ -39,6 +39,7 @@ var { logo } = Astro.props
             }
         }
         if (!!link === false) link = '/'
+        console.log(target)
         if (target === '_blank') {
             window.open(link)
         }
