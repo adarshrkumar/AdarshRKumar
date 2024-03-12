@@ -26,9 +26,6 @@ var channels = [
     {
         id: 'UC8cV2cdrp1ccBWzoi1R-UwQ', 
     }, 
-    {
-        id: 'UCpgY8iFp2Nkfu0jAwk2U94g'
-    }
 ]
 
 for (let i = 0; i < channels.length; i++) {
