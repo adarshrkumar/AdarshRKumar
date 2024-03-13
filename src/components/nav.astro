@@ -3,10 +3,10 @@ import '../styles/components/nav.scss'
 
 import ThemeSwitcher from '../components/themeSwitcher.astro'
 
-var { siteDomain, navItens, direction, varient } = Astro.props
+var { siteDomain, items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
-navItems.forEach(function(item, i) {
+items.forEach(function(item, i) {
     var name = item.name
     var url = item.url
     
@@ -33,12 +33,14 @@ navItems.forEach(function(item, i) {
     }
 
     item.url = url
+    item.target = target
+    items[i] = item
 })
 
 ---
 <nav class="nav" data-direction={direction} data-varient={varient}>
     {
-        navItems.map(item => {
+        items.map(item => {
             <button url={item.url} class="nav-btn" onclick="goToUrl(this)">{item.name}</button>
         })
     }
