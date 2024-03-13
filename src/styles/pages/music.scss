@@ -4,11 +4,13 @@
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0px, 660px));
-    gap: 10px;
+    gap: 1rem;
 
     & iframe {
         aspect-ratio: 3 / 4;
         border: none;
-        border-radius: 1rem;
+        border-radius: 10px;
+
+        overflow:hidden;
     }
 }
