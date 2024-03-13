@@ -8,13 +8,14 @@
 
     width: min(calc(90% - var(--pad)), var(--max));
 
-    & > p {
-        max-width: 100%;
-        color: var(--color);
-        font-size: 12pt;
-        line-height: 22.5px;
-        text-align: center;
-    }
+}
+
+.about > p {
+    max-width: 100%;
+    color: var(--color);
+    font-size: 12pt;
+    line-height: 22.5px;
+    text-align: center;
 }
 
 .contact {
