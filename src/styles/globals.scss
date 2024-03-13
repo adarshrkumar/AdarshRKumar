@@ -107,8 +107,9 @@ body {
 .wrapper {
     flex: 1;
 
-    max-height: 100dvh;
     width: 100%;
+
+    display: grid;
 
     & ~ iframe {
         display: none;
@@ -122,8 +123,6 @@ body {
     gap: 0;
 
     max-width: 100%;
-
-    overflow-y: visible;
 
     hr {
         margin-inline: auto;
