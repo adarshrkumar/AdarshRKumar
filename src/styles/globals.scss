@@ -148,9 +148,20 @@ hr[isDivider] {
     background: gray;
 }
 
-.seperator {
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+.divider {
+    --size: var(--s, 100%);
+    --stroke: 1px;
+
+    background-color: var(--color);
+
+    &.h {
+        width: var(--size);
+        height: var(--stroke);
+    }
+    &.v {
+        height: var(--size);
+        width: var(--stroke);
+    }
 }
   
 h1.page-title {
