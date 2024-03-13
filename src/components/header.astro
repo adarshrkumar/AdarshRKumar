@@ -4,11 +4,21 @@ import '../styles/components/header.scss'
 import Nav from '../components/nav.astro'
 import ThemeSwitcher from '../components/themeSwitcher.astro'
 
-var { logo } = Astro.props
+var { siteDomain, logo } = Astro.props
+
+var navItems = [
+    { name: 'Home' }, 
+    { name: 'About' }, 
+    { name: 'Contact' }, 
+    { name: 'Portfolio' }, 
+    { name: 'Projects' }, 
+    { name: 'Blog', url: 'https://blog.adarshrkumar.dev' }, 
+    { name: 'Videos' }, 
+]
 
 ---
 <header id="header">
     <a class="logo" href="/" style={`background-image: url('${logo}');`}></a>
-    <Nav />
+    <Nav siteDomain={siteDomain} items={navItems} />
     <ThemeSwitcher defaultTheme="system"/>
 </header>
