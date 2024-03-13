@@ -1,25 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+$change-amt: 10%;
+
 $main-bg-lightness: 100%;
 $main-color-lightness: 15%;
 $main-nav-lightness: 45.5%;
 
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
+
 $light-nav-btn: hsl(0, 0%, calc(0% - $main-nav-lightness));
+$light-nav-hover: lighten($light-nav-btn, $change-amt);
 
 $light-link-color: #0000EE;
 $light-link-visited: #551A8B;
 
 $dark-bg: hsl(0, 0%, $main-color-lightness);
 $dark-color: hsl(0, 0%, $main-bg-lightness);
+
 $dark-nav-btn: hsl(0, 0%, calc(100% - ($main-nav-lightness)/2));
+$dark-nav-hover: lighen($dark-nav-btn, $change-amt);
 
 $dark-link-color: #0000EE;
 $dark-link-visited: #551A8B;
-
-$change-amt: 10%;
 
 
 * {
@@ -38,7 +42,7 @@ $change-amt: 10%;
     --color: #{$light-color};
     
     --nav-btn-bg: #{$light-nav-btn};
-    --nav-btn-hover: darken($light-nav-btn, $change-amt);
+    --nav-btn-hover: #{$light-nav-hover};
 }
 
 :has(:target), html {
@@ -50,7 +54,7 @@ $change-amt: 10%;
         --bg: #{$dark-bg};
         --color: #{$dark-color};
         --nav-btn-bg: #{$dark-nav-btn};
-        --nav-btn-hover: lighen($dark-color, $change-amt);
+        --nav-btn-hover: #{$dark-nav-hover};
     }
 }
 
@@ -62,14 +66,14 @@ html {
     --bg: #{$light-bg};
     --color: #{$light-color};
     --nav-btn-bg: #{$light-nav-btn};
-    --nav-btn-hover: darken($light-nav-btn, $change-amt);
+    --nav-btn-hover: #{$light-nav-hover};
     color-scheme: light;
 }
 [data-theme="dark"] {
     --bg: #{$dark-bg};
     --color: #{$dark-color};
     --nav-btn-bg: #{$dark-nav-btn};
-    --nav-btn-hover: lighen($dark-color, $change-amt);
+    --nav-btn-hover: #{$dark-nav-hover};
     color-scheme: dark;
 }
 
