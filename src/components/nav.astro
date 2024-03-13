@@ -37,16 +37,13 @@ items.forEach(function(item, i) {
     items[i] = item
 })
 
-console.log(`<button url="${items[0].url}" class="nav-btn" onclick="goToUrl(this)">${items[0].name}</button>`)
+var buttonsStr = ''
+items.forEach(function(item, i) {
+    buttonsStr += `<button url=${item.url} class="nav-btn" onclick="goToUrl(this)">${item.name}</button>`
+})
 
 ---
-<nav class="nav" data-direction={direction} data-varient={varient}>
-    {
-        items.map(item => {
-            <button url={item.url} class="nav-btn" onclick="goToUrl(this)">{item.name}</button>
-        })
-    }
-</nav>
+<nav class="nav" data-direction={direction} data-varient={varient} set:html={buttonsStr}></nav>
 <script is:inline>
     var largestWidth = 0
     document.querySelectorAll('.nav-btn').forEach(function(b, i) {
