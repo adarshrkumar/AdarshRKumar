@@ -1,15 +1,21 @@
 ---
-import '../styles/components/fullAreaIframe.scss'
+import '../styles/pages/music.scss'
 
 import Layout from '../layouts/Layout.astro'
+
+var playlists = [
+  'https://embed.music.apple.com/us/playlist/on-the-road-s/pl.u-r2yBDVqsRy4JPxe', 
+  'https://embed.music.apple.com/us/playlist/daytime-hits-s/pl.u-06oxpo6tY48JWV7', 
+  'https://embed.music.apple.com/us/playlist/rise-shine-s/pl.u-MDAWkl9tANVeW83', 
+]
+
 ---
 <Layout title="Music Taste" classItems="ignorePadding" inlineStyles="display: grid;">
-  <iframe frameborder="0" src="https://music.apple.com/profile/RockGamerAK" style="background: white;">
-    <script>
-      location.href = document.querySelectorAll('iframe').pop().src
-    </script>
-    <noscript>
-      <a href="https://music.apple.com/profile/RockGamerAK" target="_blank">Go To My Profile!</a>
-    </noscript>
-  </iframe>
+  <section class="music-area">
+    {
+      playlists.map(p => {
+        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" style="overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={p}></iframe>
+      })
+    }
+  </section>
 </Layout>
