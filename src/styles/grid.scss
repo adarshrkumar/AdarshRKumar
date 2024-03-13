@@ -88,10 +88,7 @@
         background-repeat: no-repeat;
 
         outline: none;
-
-        // &:hover, &:focus, &:focus-visible, .hasTitle & {
-            border-bottom: solid 1px var(--color);
-        // }
+        border-bottom: solid 1px var(--color);
 
         :not(.portfolio) &:is(:hover, :focus, :focus-visible) {
             background-size: contain;
