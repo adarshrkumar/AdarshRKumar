@@ -36,6 +36,12 @@
         font-weight: inherit;
         // font-size: inherit;
     }
+
+    .form-field {
+        & > * {
+            display: block;
+        }
+    }
 }
 
 .contact * {
