@@ -1,5 +1,8 @@
 .nav {
-    flex: 1;
+    &:not([data-varient="sidebar"]) {
+        flex: 1;
+    }
+  
     height: 100%;
     
     display: flex;
@@ -12,10 +15,7 @@
       flex-direction: column;
     }
   
-    &:not([data-varient="sidebar"]) {
-      justify-content: center;
-    }
-  
+    justify-content: center;
     gap: 15px;
 }
   
