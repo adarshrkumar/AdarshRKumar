@@ -4,7 +4,7 @@
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0px, 660px));
-    gap: 1rem;
+    gap: 10px;
 
     & iframe {
         aspect-ratio: 3 / 4;
