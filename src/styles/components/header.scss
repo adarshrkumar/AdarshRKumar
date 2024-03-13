@@ -44,6 +44,13 @@ header .logo:is(:hover, :focus) {
   display: flex;
   flex-wrap: wrap;
 
+  [data-header="row"] {
+    flex-direction: row;
+  }
+  [data-header="column"] {
+    flex-direction: column;
+  }
+
   justify-content: center;
   gap: 15px;
 }
