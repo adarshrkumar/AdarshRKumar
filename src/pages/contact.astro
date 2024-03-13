@@ -5,24 +5,24 @@ import Layout from '../layouts/Layout.astro'
 ---
 <Layout title="Contact">
   <form action="https://getform.io/f/21a3ba30-b0e7-4e10-a5bf-6635fc7ba92f" method="POST" class="contact">
-    <p>
-      <label for="your-name" align="left" width="100">
+    <div class="form-field">
+      <label for="name">
         <b>Name: </b>
       </label>
-      <input type="text" name="name" id="your-name" placeholder="What's your name?" required="TRUE">
-    </p>
-    <p>
-      <label for="email-address" align="left" width="100">
+      <input type="text" name="name" id="name" placeholder="What's your name?" required="TRUE">
+    </div>
+    <div class="form-field">
+      <label for="email">
         <b>Email: </b>
       </label>
-      <input type="email" name="email" id="email-address" placeholder="you@email.tld" required="TRUE">
-    </p>
-    <p>
-      <label for="message" align="left" width="100">
+      <input type="email" name="email" id="email" placeholder="you@email.tld" required="TRUE">
+    </div>
+    <div class="form-field">
+      <label for="message">
         <b>Message: </b>
       </label>
       <textarea rows="5" name="message" id="message" placeholder="Type here..." required="TRUE"></textarea>
-    </p>
+    </div>
     <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
     <input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer;">
   </form>
