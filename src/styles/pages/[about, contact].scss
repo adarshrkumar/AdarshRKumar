@@ -23,11 +23,13 @@
 
     margin-block: 0;
 
-    padding: 1rem;
+    padding-block: var(--pad);
+
+    border-radius: var(--pad);
 
     & {
         background-color: var(--color);
-        color: var(--color);
+        color: var(--bg);
     }
     & :is(input, textarea) {
         font-family: inherit;
