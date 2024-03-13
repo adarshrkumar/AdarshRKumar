@@ -107,6 +107,7 @@ body {
 .wrapper {
     flex: 1;
 
+    max-height: 100%;
     width: 100%;
 
     display: grid;
@@ -116,13 +117,15 @@ body {
     }
 }
 
-main {
+.content {
     display: flex;
     flex-direction: column;
     
     gap: 0;
 
     max-width: 100%;
+
+    overflow-y: visible;
 
     hr {
         margin-inline: auto;
