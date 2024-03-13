@@ -3,6 +3,7 @@
     --max: 1000px;
 
     margin-inline: auto;
+    box-sizing: border-box;
     padding-inline: var(--pad);
 
     width: min(calc(90% - var(--pad)), var(--max));
@@ -24,9 +25,7 @@
 
     padding: 1rem;
 
-    border-radius: 100vw;
-
-    &, & input {
+    & input {
         background-color: var(--color);
         color: var(--color);
     }
