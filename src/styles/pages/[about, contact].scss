@@ -43,14 +43,14 @@
             display: block;
             &:is(input, textarea) {
                 width: 100%;
-                aspect-ratio: 16 / 9;
+                aspect-ratio: 4 / 1;
                 border-radius: var(--pad);
             }
         }
     }
 }
 
-.contact * {
+.contact :is(*, *::placeholder) {
     color: inherit;
     background-color: inherit;
 }
