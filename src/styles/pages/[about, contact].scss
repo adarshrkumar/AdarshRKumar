@@ -41,6 +41,11 @@
     .form-field {
         & > * {
             display: block;
+            &:is(input, textarea) {
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                border-radius: var(--pad);
+            }
         }
     }
 }
