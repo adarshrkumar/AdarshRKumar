@@ -3,10 +3,11 @@ import '../styles/components/header.scss'
 
 import ThemeSwitcher from '../components/themeSwitcher.astro'
 
-var { direction } = Astro.props
+var { direction, varient } = Astro.props
+if (!!varient === false) varient = 'header'
 
 ---
-<nav class="nav" data-direction={direction}">
+<nav class="nav" data-direction={direction}" data-varient={varient}>
     <button url="/" class="nav-btn" onclick="goToUrl(this)">Home</button>
     <button url="/about" class="nav-btn" onclick="goToUrl(this)">About</button>
     <button url="/contact" class="nav-btn" onclick="goToUrl(this)">Contact</button>
