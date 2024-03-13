@@ -10,7 +10,7 @@ $main-nav-lightness: 45.5%;
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
 
-$light-nav-hover: lighten($light-nav-btn, $change-amt);
+$light-nav-hover: lighten($light-color, $change-amt);
 
 $light-link-color: #0000EE;
 $light-link-visited: #551A8B;
@@ -18,7 +18,7 @@ $light-link-visited: #551A8B;
 $dark-bg: hsl(0, 0%, $main-color-lightness);
 $dark-color: hsl(0, 0%, $main-bg-lightness);
 
-$dark-nav-hover: lighen($dark-nav-btn, $change-amt);
+$dark-nav-hover: lighen($dark-color, $change-amt);
 
 $dark-link-color: #0000EE;
 $dark-link-visited: #551A8B;
