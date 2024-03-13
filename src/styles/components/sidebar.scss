@@ -19,7 +19,7 @@
 }
 
 @media (max-width: 492px) {
-    .main-content {
+    .wrapper {
         grid-template-columns: 1fr 0fr;
     }
     .main-sidebar {
