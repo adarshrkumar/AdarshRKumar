@@ -10,7 +10,6 @@ $main-nav-lightness: 45.5%;
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
 
-$light-nav-btn: hsl(0, 0%, calc(0% - $main-nav-lightness));
 $light-nav-hover: lighten($light-nav-btn, $change-amt);
 
 $light-link-color: #0000EE;
@@ -19,7 +18,6 @@ $light-link-visited: #551A8B;
 $dark-bg: hsl(0, 0%, $main-color-lightness);
 $dark-color: hsl(0, 0%, $main-bg-lightness);
 
-$dark-nav-btn: hsl(0, 0%, calc(100% - ($main-nav-lightness)/2));
 $dark-nav-hover: lighen($dark-nav-btn, $change-amt);
 
 $dark-link-color: #0000EE;
@@ -40,8 +38,6 @@ $dark-link-visited: #551A8B;
 
     --bg: #{$light-bg};
     --color: #{$light-color};
-    
-    --nav-btn-bg: #{$light-nav-btn};
     --nav-btn-hover: #{$light-nav-hover};
 }
 
@@ -53,7 +49,6 @@ $dark-link-visited: #551A8B;
     :root {
         --bg: #{$dark-bg};
         --color: #{$dark-color};
-        --nav-btn-bg: #{$dark-nav-btn};
         --nav-btn-hover: #{$dark-nav-hover};
     }
 }
@@ -65,14 +60,12 @@ html {
 [data-theme="light"] {
     --bg: #{$light-bg};
     --color: #{$light-color};
-    --nav-btn-bg: #{$light-nav-btn};
     --nav-btn-hover: #{$light-nav-hover};
     color-scheme: light;
 }
 [data-theme="dark"] {
     --bg: #{$dark-bg};
     --color: #{$dark-color};
-    --nav-btn-bg: #{$dark-nav-btn};
     --nav-btn-hover: #{$dark-nav-hover};
     color-scheme: dark;
 }
