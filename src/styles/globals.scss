@@ -162,6 +162,7 @@ hr[isDivider] {
     &.v {
         height: var(--size);
         width: var(--stroke);
+        margin-block: auto;
     }
 }
   
