@@ -44,10 +44,10 @@ header .logo:is(:hover, :focus) {
   display: flex;
   flex-wrap: wrap;
 
-  [data-header="row"] {
+  &[data-direction="row"] {
     flex-direction: row;
   }
-  [data-header="column"] {
+  &[data-direction="column"] {
     flex-direction: column;
   }
 
