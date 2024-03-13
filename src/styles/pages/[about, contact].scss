@@ -25,9 +25,14 @@
 
     padding: 1rem;
 
-    & input {
+    & {
         background-color: var(--color);
         color: var(--color);
+    }
+    & :is(input, textarea) {
+        font-family: inherit;
+        font-weight: inherit;
+        // font-size: inherit;
     }
 }
 
