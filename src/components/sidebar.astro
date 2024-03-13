@@ -1,11 +1,11 @@
 ---
 import '../styles/components/sidebar.scss'
 
-import Nav from './sidebarNav.astro'
+import Nav from './nav.astro'
 ---
 <aside class="main-sidebar">
     <section class="channel-stats"></section>
-    <Nav direction="column" />
+    <Nav direction="column" varient="sidebar" />
 </aside>
 <script src="https://apis.google.com/js/platform.js"></script>
 <script src="/channels.js" is:inline></script>

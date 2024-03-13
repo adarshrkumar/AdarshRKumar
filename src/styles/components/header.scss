@@ -51,7 +51,10 @@ header .logo:is(:hover, :focus) {
     flex-direction: column;
   }
 
-  justify-content: center;
+  &:not([data-varient="sidebar"]) {
+    justify-content: center;
+  }
+
   gap: 15px;
 }
 
