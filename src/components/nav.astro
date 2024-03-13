@@ -3,18 +3,43 @@ import '../styles/components/nav.scss'
 
 import ThemeSwitcher from '../components/themeSwitcher.astro'
 
-var { direction, varient } = Astro.props
+var { siteDomain, navItens, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
+
+navItems.forEach(function(item, i) {
+    var name = item.name
+    var url = item.url
+    
+    var target = item.target
+    if (!!target === false) {
+        target = '_self'
+    }
+
+    if (!!url) {
+        if (url.includes('://')) {
+            var domain = url.split('://')[1]
+            if (domain.includes('/')) domain = domain.split('/')[0]
+            if (domain !== siteDomain) {
+                target = '_black'
+            }
+        }
+    }
+    else if (!!url === false) {
+        url = '/'
+
+        if (name !== 'Home') {
+            url += name.toLowerCase()
+        }
+    }
+
+    item.url = url
+})
 
 ---
 <nav class="nav" data-direction={direction} data-varient={varient}>
-    <button url="/" class="nav-btn" onclick="goToUrl(this)">Home</button>
-    <button url="/about" class="nav-btn" onclick="goToUrl(this)">About</button>
-    <button url="/contact" class="nav-btn" onclick="goToUrl(this)">Contact</button>
-    <button url="/portfolio" class="nav-btn" onclick="goToUrl(this)">Portfolio</button>
-    <button url="/projects" class="nav-btn" onclick="goToUrl(this)">Projects</button>
-    <button url="https://blog.adarshkumar.dev" target="_blank" class="nav-btn" onclick="goToUrl(this)">Blog</button>
-<!-- <button url="/sites" class="nav-btn" onclick="goToUrl(this)">Sites</button> -->
-    <button url="/videos" class="nav-btn" onclick="goToUrl(this)">Videos</button>
-<!-- <button url="/music" class="nav-btn" onclick="goToUrl(this)">Music</button> -->
+    {
+        navItems.map(item => {
+            <button url={item.url} class="nav-btn" onclick="goToUrl(this)">{item.name}</button>
+        })
+    }
 </nav>

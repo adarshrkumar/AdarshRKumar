@@ -2,11 +2,22 @@
 import '../styles/components/sidebar.scss'
 
 import Nav from './nav.astro'
+
+var navItems = [
+    { name: 'Home' }, 
+    { name: 'About' }, 
+    { name: 'Contact' }, 
+    { name: 'Portfolio' }, 
+    { name: 'Projects' }, 
+    { name: 'Blog', url: 'https://blog.adarshrkumar.dev' }, 
+    { name: 'Videos' }, 
+]
+
 ---
 <aside class="main-sidebar">
     <section class="channel-stats"></section>
     <div class="divider h no-margin"></div>
-    <Nav direction="column" varient="sidebar" />
+    <Nav items={navItems} direction="column" varient="sidebar" />
 </aside>
 <script src="https://apis.google.com/js/platform.js"></script>
 <script src="/channels.js" is:inline></script>
