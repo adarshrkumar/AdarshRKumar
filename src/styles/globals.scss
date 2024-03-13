@@ -157,6 +157,7 @@ hr[isDivider] {
     &.h {
         width: var(--size);
         height: var(--stroke);
+        margin-inline: auto;
     }
     &.v {
         height: var(--size);
