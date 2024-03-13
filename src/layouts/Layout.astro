@@ -4,6 +4,7 @@
 import '../styles/globals.scss'
 import '../styles/root.scss'
 
+import NavScripts from '../components/navScripts.astro'
 import Header from '../components/header.astro'
 import Sidebar from '../components/sidebar.astro'
 
@@ -41,16 +42,18 @@ if (className.startsWith(' ')) className = className.substring(1)
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
   </head>
   <body>
-    <Header logo={logoSRC} />
-    <div class="wrapper">
-      <main id="content">
-        <h1 class="page-title">{pTitle}</h1>
-        <div class={`page-area ${className}`} style={inlineStyles}>
-          <slot />
-        </div>
-      </main>
-      <Sidebar />
-    </div>
+    <NavScripts>
+      <Header logo={logoSRC} />
+      <div class="wrapper">
+        <main id="content">
+          <h1 class="page-title">{pTitle}</h1>
+          <div class={`page-area ${className}`} style={inlineStyles}>
+            <slot />
+          </div>
+        </main>
+        <Sidebar />
+      </div>
+    </HeaderScripts>
     <script src="/main.js" is:inline></script>
     <!-- <script src="/eruda.js" is:inline></script> -->
     <!--Start of Tawk.to Script-->
