@@ -110,8 +110,6 @@ body {
     max-height: 100dvh;
     width: 100%;
 
-    display: grid;
-
     & ~ iframe {
         display: none;
     }
