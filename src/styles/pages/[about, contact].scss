@@ -45,6 +45,9 @@
                 width: 100%;
                 aspect-ratio: 4 / 1;
                 border-radius: var(--pad);
+                &:is(textarea) {
+                    resize: vertical;
+                }
             }
         }
     }
