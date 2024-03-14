@@ -44,6 +44,14 @@
             background-color: var(--bg);
             color: var(--color);
             border: none;
+            &:is(
+                ::placeholder, :placeholder-shown, 
+                :-moz-placeholder, ::-moz-placeholder, 
+                :-ms-input-placeholder, 
+                ::-webkit-input-placeholder
+                ) {
+                color: inherit;
+            }
 
             &:is(input, textarea) {
                 width: 100%;
