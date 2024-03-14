@@ -39,9 +39,11 @@
     }
 
     .form-field {
-        background-color: var(--bg);
         & > * {
             display: block;
+            background-color: var(--bg);
+            color: var(--color);
+            
             &:is(input, textarea) {
                 width: 100%;
                 aspect-ratio: 9 / 1;
