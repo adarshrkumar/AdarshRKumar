@@ -43,7 +43,8 @@
             display: block;
             background-color: var(--bg);
             color: var(--color);
-            
+            border: none;
+
             &:is(input, textarea) {
                 width: 100%;
                 aspect-ratio: 9 / 1;
