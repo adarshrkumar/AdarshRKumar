@@ -55,6 +55,9 @@
             }
 
             &:is(input, textarea) {
+                box-sizing: border-box;
+                padding: 5px 10px;
+
                 width: 100%;
                 aspect-ratio: 9 / 1;
 
