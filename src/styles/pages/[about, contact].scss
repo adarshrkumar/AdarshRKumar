@@ -39,6 +39,7 @@
     }
 
     .form-field {
+        background-color: var(--bg);
         & > * {
             display: block;
             &:is(input, textarea) {
@@ -50,6 +51,9 @@
                 }
             }
         }
+    }
+    & :is([type="submit"], [type="button"], button) {
+        background-color: var(--bg);
     }
 }
 
