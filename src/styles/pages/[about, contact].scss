@@ -53,28 +53,27 @@
                 ) {
                 color: inherit;
             }
-
-            &:is(input, textarea) {
-                // box-sizing: border-box;
-                padding: calc(var(--pad)/2);
-
-                // width: calc(100% - var(--pad)*2);
-                aspect-ratio: 9 / 1;
-
-                background-color: var(--bg);
-                color: var(--color);
-
-                border: splid 1px var(--middle-color);
-                border-radius: var(--pad);
-
-                &:is(textarea) {
-                    resize: vertical;
-                }
-            }
         }
     }
     & :is([type="submit"], [type="button"], button) {
         background-color: var(--bg);
+    }
+    .form-field :is(input, textarea), &:is([type="button"], [type="submit"]) {
+        // box-sizing: border-box;
+        padding: calc(var(--pad)/2);
+
+        // width: calc(100% - var(--pad)*2);
+        aspect-ratio: 9 / 1;
+
+        background-color: var(--bg);
+        color: var(--color);
+
+        border: splid 1px var(--middle-color);
+        border-radius: var(--pad);
+
+        &:is(textarea) {
+            resize: vertical;
+        }
     }
 }
 
