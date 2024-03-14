@@ -7,6 +7,8 @@ $main-bg-lightness: 100%;
 $main-color-lightness: 15%;
 $main-nav-lightness: 45.5%;
 
+$middle-color: hsl(0, 0%, 50%);
+
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
 
@@ -38,6 +40,7 @@ $dark-link-visited: #551A8B;
 
     --bg: #{$light-bg};
     --color: #{$light-color};
+    --middle-color: #{$middle-color};
     --nav-btn-hover: #{$light-nav-hover};
 }
 

@@ -57,7 +57,7 @@
                 background-color: var(--bg);
                 color: var(--color);
 
-                border: none;
+                border: splid 1px var(--middle-color);
                 border-radius: var(--pad);
 
                 &:is(textarea) {
