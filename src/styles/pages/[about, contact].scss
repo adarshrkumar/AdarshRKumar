@@ -74,6 +74,10 @@
         &:is(textarea) {
             resize: vertical;
         }
+        &:is([type="button"], [type="submit"]) {
+            min-width: 25%;
+            text-align: center;
+        }
     }
 }
 
