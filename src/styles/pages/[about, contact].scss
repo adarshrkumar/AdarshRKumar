@@ -55,10 +55,7 @@
             }
         }
     }
-    & :is([type="submit"], [type="button"], button) {
-        background-color: var(--bg);
-    }
-    .form-field :is(input, textarea), &:is([type="button"], [type="submit"]) {
+    .form-field :is(input, textarea), & :is([type="button"], [type="submit"], button) {
         // box-sizing: border-box;
         padding: calc(var(--pad)/2);
 
@@ -74,9 +71,10 @@
         &:is(textarea) {
             resize: vertical;
         }
-        &:is([type="button"], [type="submit"]) {
+        &:is([type="button"], [type="submit"], button) {
             min-width: 25%;
             text-align: center;
+            background-color: var(--bg);
         }
     }
 }
