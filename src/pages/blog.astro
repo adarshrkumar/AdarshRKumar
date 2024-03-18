@@ -3,7 +3,15 @@ import '../styles/pages/blog.scss'
 
 import Layout from '../layouts/Layout.astro'
 
-const allPosts = await Astro.glob('../posts/*.md')
+import fs from 'fs'
+
+var posts = []
+
+const postFiles = fs.readdirSync(`${__dirname}/../posts`)
+postFiles.forEach(function(p, i) {
+  var post = fs.readFileSync(`${__dirname}/../posts/${p}`)
+  posts.push(post)
+})
 ---
 <Layout title="Blog">
   <section class="posts">
