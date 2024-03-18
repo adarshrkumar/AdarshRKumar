@@ -3,9 +3,9 @@ import fs from 'fs'
 function getPosts() {
     var posts = []
 
-    const postFiles = fs.readdirSync(`./posts`)
+    const postFiles = fs.readdirSync(`posts`)
     postFiles.forEach(function(p, i) {
-      var post = fs.readFileSync(`./posts/${p}`)
+      var post = fs.readFileSync(`posts/${p}`)
       posts.push(post)
     })
 
