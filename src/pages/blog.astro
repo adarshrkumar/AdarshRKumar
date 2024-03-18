@@ -5,18 +5,15 @@ import Layout from '../layouts/Layout.astro'
 
 import fs from 'fs'
 
-var posts = []
+import getPosts from '../getPosts.js'
 
-const postFiles = fs.readdirSync(`./../posts`)
-postFiles.forEach(function(p, i) {
-  var post = fs.readFileSync(`./../posts/${p}`)
-  posts.push(post)
-})
+var posts = getPosts()
+
 ---
 <Layout title="Blog">
   <section class="posts">
     {
-      allPosts.map((post) => {
+      posts.map((post) => {
         <div class="post">
           <img />
           <div class="info">
