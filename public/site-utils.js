@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function(e) {
     var linkRels = document.querySelectorAll('link[rel]')
-    linkRels.forEach(function(i, i) {
+    linkRels.forEach(function(l, i) {
         let lHref = l.href
         if (lHref.startsWith('{baseDomain}')) {
             lHref = lHref.substring('{baseDomain}'.length)
