@@ -1,19 +1,8 @@
 var postsEle = document.querySelector('.posts')
 
-var xhr = new XMLHttpRequest()
-xhr.open('GET', 'https://blogfeed.adarshrkumar.dev/getAllPosts')
-xhr.addEventListener('load', function() {
-  var posts = this.responseText
-  if (
-    (posts.startsWith('[') && posts.endsWith(']')) || 
-    (posts.startsWith('{') && posts.endsWith('}'))
-  ) {
-    posts = JSON.parse(posts)
-  }
-  console.log(posts)
-  addPosts(posts)
-})
-xhr.send()
+const response = fetch("https://blogfeed.adarshrkumar.dev/getAllPosts");
+const posts = response.json();
+addPosts(posts)
 
 function addPosts(posts) {
   posts.forEach(function(post) {
