@@ -32,7 +32,7 @@ request.post(
     {
       posts.map((post) => {
         <div class="post">
-          <img />
+          { post.image ? <img src={ post.image.src }/> : '' }
           <div class="info">
             <h3>{post.title}</h3>
             <p>{post.content}</p>
