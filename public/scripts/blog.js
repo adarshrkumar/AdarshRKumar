@@ -1,7 +1,7 @@
 var postsEle = document.querySelector('.posts')
 
 var xhr = new XMLHttpRequest()
-xhr.open('POST', 'https://blogfeed.adarshrkumar.dev/getAllPosts')
+xhr.open('GET', 'https://blogfeed.adarshrkumar.dev/getAllPosts')
 xhr.addEventListener('load', function() {
   var posts = this.responseText
   if (
