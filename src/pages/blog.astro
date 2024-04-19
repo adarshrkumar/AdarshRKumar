@@ -3,8 +3,6 @@ import '../styles/pages/blog.scss'
 
 import Layout from '../layouts/Layout.astro'
 
-import fs from 'fs'
-
 import request  from 'request'
 
 var posts = []
@@ -29,6 +27,7 @@ request.post(
 ---
 <Layout title="Blog">
   <section class="posts">
+    { posts }
     {
       posts.map((post) => {
         <div class="post">
