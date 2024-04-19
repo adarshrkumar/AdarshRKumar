@@ -12,6 +12,7 @@ xhr.addEventListener('load', function() {
   }
   addPosts(posts)
 })
+xhr.send()
 
 function addPosts(posts) {
   posts.forEach(function(post) {
