@@ -12,15 +12,16 @@ request.post(
     url: 'https://blogfeed.adarshrkumar.dev/getAllPosts'
   }, 
   function(err, res, body) {
-    if (
-      (body.startsWith('[') && body.endsWith(']')) || 
-      (body.startsWith('{') && body.endsWith('}'))
-    ) {
-      body = JSON.parse(body)
-    }
-    if (typeof body === 'object') {
-      posts = body
-    }
+    posts = body
+    // if (
+    //   (body.startsWith('[') && body.endsWith(']')) || 
+    //   (body.startsWith('{') && body.endsWith('}'))
+    // ) {
+    //   body = JSON.parse(body)
+    // }
+    // if (typeof body === 'object') {
+    //   posts = body
+    // }
   }
 )
 
