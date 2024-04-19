@@ -7,6 +7,8 @@ import '../styles/root.scss'
 import Header from '../components/header.astro'
 import Sidebar from '../components/sidebar.astro'
 
+import Script from '../utils/script.astro'
+
 var sName = 'Adarsh Kumar'
 var sURL = 'https://AdarshRKumar.dev'
 var logoSRC = '/assets/logo.jpg'
@@ -51,7 +53,7 @@ if (className.startsWith(' ')) className = className.substring(1)
       </main>
       <Sidebar />
     </div>
-    <script src="/main.js" is:inline></script>
+    <Script name="main" />
     <!-- <script src="/eruda.js" is:inline></script> -->
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
