@@ -10,6 +10,7 @@ xhr.addEventListener('load', function() {
   ) {
     posts = JSON.parse(posts)
   }
+  console.log(posts)
   addPosts(posts)
 })
 xhr.send()
