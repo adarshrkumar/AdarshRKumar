@@ -6,11 +6,10 @@ const cids = [
     'UC8cV2cdrp1ccBWzoi1R-UwQ', 
 ]
 var items = []
-var vidsAmt = []
 
-let vidsNum = cids.length
+let vidsAmt = cids.length
 let csAmt = cids.length
-let vidsPerChannel = Math.ceil(vidsNum/csAmt)
+let vidsPerChannel = Math.ceil(vidsAmt/csAmt)
 
 cids.forEach(function(cid, cI) {
     let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`)
@@ -24,7 +23,7 @@ cids.forEach(function(cid, cI) {
                 if (channelVids < 1) {
                     csAmt--
                     cids.splice(cI, 1)
-                    vidsPerChannel = Math.ciel(vidsNum/csAmt)
+                    vidsPerChannel = Math.ciel(vidsAmt/csAmt)
                 }
             }
         })
