@@ -1,9 +1,9 @@
 var postsEle = document.querySelector('.posts')
 
-const response = fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
-const posts = response.json()
-console.log(posts)
-addPosts(posts)
+fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
+  .then(response => response.json())
+  .finally(json => addPosts(json))
+  .catch(err => console.err(err))
 
 function addPosts(posts) {
   posts.forEach(function(post) {
