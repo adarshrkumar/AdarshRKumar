@@ -5,7 +5,7 @@ const cids = [
     'UCLK0Lj3V864AbKfutfyztYA', 
     'UC8cV2cdrp1ccBWzoi1R-UwQ', 
 ]
-var links = []
+var items = []
 var vidsAmt = []
 
 let vidsNum = cids.length
