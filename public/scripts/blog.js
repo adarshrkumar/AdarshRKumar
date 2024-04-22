@@ -3,7 +3,7 @@ var postsEle = document.querySelector('.posts')
 fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
   .then(response => response.json())
   .finally(json => addPosts(json))
-  .catch(err => console.err(err))
+  .catch(err => console.error(err))
 
 function addPosts(posts) {
   posts.forEach(function(post) {
