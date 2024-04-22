@@ -18,13 +18,17 @@ cids.forEach(function(cid, cI) {
     fetch(reqURL)
         .then(response => response.json())
         .then(result => {
+            var isBad = true
             if (!!result.items) {
                 let channelVids = result.items.length
-                if (channelVids < 1) {
-                    csAmt--
-                    cids.splice(cI, 1)
-                    vidsPerChannel = Math.ciel(vidsAmt/csAmt)
+                if (channelVids > 0) {
+                    isBad = false
                 }
+            }
+            if (isBad) {
+                csAmt--
+                cids.splice(cI, 1)
+                vidsPerChannel = Math.ciel(vidsAmt/csAmt)
             }
         })
 })
