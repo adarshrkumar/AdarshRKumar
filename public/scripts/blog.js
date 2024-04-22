@@ -1,7 +1,8 @@
 var postsEle = document.querySelector('.posts')
 
-const response = fetch("https://blogfeed.adarshrkumar.dev/getAllPosts");
-const posts = response.json();
+const response = fetch('https://blogfeed.adarshrkumar.dev/posts.rss')
+const posts = new window.DOMParser().parseFromString(response.text(), 'text/xml');
+console.log(posts)
 addPosts(posts)
 
 function addPosts(posts) {
