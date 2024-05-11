@@ -2,6 +2,8 @@
 import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
+
+import Script from '../utils/script.astro'
 ---
 <Layout title="Contact">
   <form action="https://getform.io/f/21a3ba30-b0e7-4e10-a5bf-6635fc7ba92f" method="POST" class="contact">
@@ -26,4 +28,5 @@ import Layout from '../layouts/Layout.astro'
     <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
     <input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer;">
   </form>
+  <Script name="autosize" />
 </Layout>
