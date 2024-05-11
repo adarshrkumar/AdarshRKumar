@@ -1,5 +1,7 @@
+$min-size: 250px;
+
 .posts {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(blah(200px, 100%), 1fr));
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min($min-size, 100%), 1fr));
 }
