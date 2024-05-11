@@ -12,16 +12,18 @@ function addPosts(posts) {
       var postEle = document.createElement('div')
       postEle.classList.add('post')
       
-      if (post.image) {
-        var image = document.createElement('img')
-        image.classList.add('post__img')
-        
-        if (post.image.src) image.src = post.image.src
-        if (post.image.alt) image.alt = post.image.alt
-        
-        postEle.appendChild(image)
+      if (!post.image) {
+        post.image = `https://image.thum.io/get/maxAge/12/width/${window.innerWidth/2}/${location.protocol}//${location.host}/post/${post.slug}`
       }
+
+      var image = document.createElement('img')
+      image.classList.add('post__img')
       
+      if (post.image.src) image.src = post.image.src
+      if (post.image.alt) image.alt = post.image.alt
+      
+      postEle.appendChild(image)
+    
       if (post.title || post.content) {
         var info = document.createElement('div')
         info.classList.add('post__info')
