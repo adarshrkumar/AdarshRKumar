@@ -2,13 +2,13 @@ var postsEle = document.querySelector('.posts')
 
 fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
   .then(response => response.json())
-  .finally(json => addPosts(json))
+  .then(json => {console.log(json); addPosts(json)})
   .catch(err => console.error(err))
 
 function addPosts(posts) {
   if (posts) {
     posts.forEach(function(post) {
-      var post = document.createElememt('div')
+      var post = document.createElement('div')
       
       if (post.image) {
         var image = document.createElement('img')
