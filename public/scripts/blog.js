@@ -2,13 +2,15 @@ var postsEle = document.querySelector('.posts')
 
 fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
   .then(response => response.json())
-  .then(json => {console.log(json); addPosts(json)})
+  .then(json => {addPosts(json)})
   .catch(err => console.error(err))
 
 function addPosts(posts) {
   if (posts) {
     posts.forEach(function(post) {
-      var post = document.createElement('div')
+      console.log(post)
+      var postEle = document.createElement('div')
+      postEle.classList.add('post')
       
       if (post.image) {
         var image = document.createElement('img')
@@ -17,11 +19,12 @@ function addPosts(posts) {
         if (post.image.src) image.src = post.image.src
         if (post.image.alt) image.alt = post.image.alt
         
-        post.appendChild(image)
+        postEle.appendChild(image)
       }
       
       if (post.title || post.content) {
         var info = document.createElement('div')
+        info.classList.add('post__info')
         
         if (post.title) {
           var title = document.createElement('h3')
@@ -42,12 +45,14 @@ function addPosts(posts) {
           if (post.content.includes('\n')) post.content = post.content.split('\n').join('<br>')
           
           postContent.innerHTML = post.content
+
+          info.appendChild(postContent)
         }
         
-        post.appendChild(info)
+        postEle.appendChild(info)
       }
       
-      postsEle.appendChild(post)
+      postsEle.appendChild(postEle)
     })
   }
 }
