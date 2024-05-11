@@ -13,7 +13,9 @@ function addPosts(posts) {
       postEle.classList.add('post')
       
       if (!post.image) {
-        post.image = `https://image.thum.io/get/maxAge/12/width/${window.innerWidth/2}/${location.protocol}//${location.host}/post/${post.slug}`
+        post.image = {}
+        post.image.src = `https://image.thum.io/get/maxAge/12/width/${window.innerWidth/2}/${location.protocol}//${location.host}/post/${post.slug}`
+        post.image.alt = `Screenshot of the "${post.title}" post.`
       }
 
       var image = document.createElement('img')
