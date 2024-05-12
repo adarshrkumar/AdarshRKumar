@@ -17,6 +17,8 @@ $padding: 1rem;
 
     background: var(--middle-color);
     color: inherit;
+
+    border-radius: $gap;
     
     display: flex;
     flex-direction: column;
@@ -24,7 +26,15 @@ $padding: 1rem;
 
     text-decoration: inherit;
 
+    &__image {
+        border-radius: #{$gap + $padding*2};
+    }
+
     &__title, &__content {
         margin-block: 0;
+    }
+
+    &__title {
+        text-align: center;
     }
 }
