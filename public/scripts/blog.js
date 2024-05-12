@@ -39,6 +39,10 @@ function addPosts(posts) {
         }
         
         if (post.content) {
+          if (post.content.includes('&lt;')) post.content = post.content.split('&lt;').join('<')
+          if (post.content.includes('&gt;')) post.content = post.content.split('&gt;').join('<')
+
+
           var postContent = document.createElement('p')
           postContent.classList.add('post__content')
           
@@ -48,7 +52,7 @@ function addPosts(posts) {
           post.content = convEle.textContent
           convEle.remove()
           
-          if (post.content.includes('\n')) post.content = post.content.split('\n').join('<br>')
+          if (post.content.includes('\n')) post.content = post.content.split('\n').join('')
           
           postContent.innerHTML = post.content
 
