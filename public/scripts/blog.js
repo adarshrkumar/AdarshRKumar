@@ -15,7 +15,7 @@ function addPosts(posts) {
       
       if (!post.image) {
         post.image = {}
-        post.image.src = `https://image.thum.io/get/maxAge/12/width/${Math.round(window.innerWidth/2)}/${location.protocol}//${location.host}/post/${post.slug}`
+        post.image.src = `https://image.thum.io/get/maxAge/12/width/${250}/${location.protocol}//${location.host}/post/${post.slug}`
         post.image.alt = `Screenshot of the "${post.title}" post.`
       }
 
