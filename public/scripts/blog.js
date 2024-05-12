@@ -50,11 +50,12 @@ function addPosts(posts) {
           convEle.innerHTML = post.content
           document.body.appendChild(convEle)
           post.content = convEle.textContent
+          var firstContent = convEle.querySelector('*').textContent
           convEle.remove()
           
-          if (post.content.includes('\n')) post.content = post.content.split('\n').join('')
+          if (firstContent.includes('\n')) firstContent = firstContent.split('\n').join('')
           
-          postContent.innerHTML = post.content
+          postContent.innerHTML = firstContent
 
           info.appendChild(postContent)
         }
