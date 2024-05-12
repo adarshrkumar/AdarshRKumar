@@ -45,7 +45,7 @@ function addPosts(posts) {
           var convEle = document.createElement('span')
           convEle.innerHTML = post.content
           document.body.appendChild(convEle)
-          post.content = convEle.innerText
+          post.content = convEle.textContent
           convEle.remove()
           
           if (post.content.includes('\n')) post.content = post.content.split('\n').join('<br>')
