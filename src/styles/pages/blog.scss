@@ -23,4 +23,8 @@ $padding: 1rem;
     gap: $padding;
 
     text-decoration: inherit;
+
+    &__title {
+        margin-block: 0;
+    }
 }
