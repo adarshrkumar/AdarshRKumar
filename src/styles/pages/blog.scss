@@ -10,7 +10,7 @@ $gap: 2rem;
 
 .post {
     box-sizing: border-box;
-    padding: var(--gap);
+    padding: $gap;
 
     aspect-ratio: 3 / 4;
 
