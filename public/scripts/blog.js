@@ -40,7 +40,7 @@ function addPosts(posts) {
         
         if (post.content) {
           if (post.content.includes('&lt;')) post.content = post.content.split('&lt;').join('<')
-          if (post.content.includes('&gt;')) post.content = post.content.split('&gt;').join('<')
+          if (post.content.includes('&gt;')) post.content = post.content.split('&gt;').join('>')
 
 
           var postContent = document.createElement('p')
@@ -48,6 +48,7 @@ function addPosts(posts) {
           
           var convEle = document.createElement('span')
           convEle.innerHTML = post.content
+          console.log(post.content)
           document.body.appendChild(convEle)
           post.content = convEle.textContent
           var firstContent = convEle.querySelector('*').textContent
