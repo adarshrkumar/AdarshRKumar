@@ -1,5 +1,6 @@
 $min-size: 250px;
 $gap: 2rem;
+$padding: 1rem;
 
 .posts {
     display: grid;
@@ -10,7 +11,7 @@ $gap: 2rem;
 
 .post {
     box-sizing: border-box;
-    padding: $gap;
+    padding: $padding;
 
     aspect-ratio: 3 / 4;
 
