@@ -22,6 +22,7 @@ $padding: 1rem;
     
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: $padding;
 
     text-decoration: inherit;
@@ -36,5 +37,10 @@ $padding: 1rem;
 
     &__title {
         text-align: center;
+    }
+
+    &__content {
+        width: -moz-fit-content;
+        width: fit-content;
     }
 }
