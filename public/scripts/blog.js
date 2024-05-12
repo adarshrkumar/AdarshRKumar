@@ -40,6 +40,7 @@ function addPosts(posts) {
         
         if (post.content) {
           var postContent = document.createElement('p')
+          postContent.classList.add('post__content')
           
           var convEle = document.createElement('span')
           convEle.innerHTML = post.content
