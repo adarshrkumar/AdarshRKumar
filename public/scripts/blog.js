@@ -9,8 +9,9 @@ function addPosts(posts) {
   if (posts) {
     posts.forEach(function(post) {
       console.log(post)
-      var postEle = document.createElement('div')
+      var postEle = document.createElement('a')
       postEle.classList.add('post')
+      postEle.href = `/post/${post.slug}`
       
       if (!post.image) {
         post.image = {}
