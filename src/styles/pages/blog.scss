@@ -27,7 +27,7 @@ $padding: 1rem;
     text-decoration: inherit;
 
     &__img {
-        border-radius: #{$gap - $padding*2};
+        border-radius: #{$gap - $padding};
     }
 
     &__title, &__content {
