@@ -1,7 +1,9 @@
 $min-size: 250px;
+$gap: 2rem;
 
 .posts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
-    grid-template-columns: repeat(auto-fit, minmax(min($min-size, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
+    grid-template-columns: repeat(auto-fit, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+    gap: $gap;
 }
