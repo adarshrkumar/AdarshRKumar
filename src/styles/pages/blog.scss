@@ -16,4 +16,8 @@ $padding: 1rem;
     aspect-ratio: 3 / 4;
 
     background: var(--middle-color);
+
+    display: flex;
+    flex-direction: column;
+    gap: $padding;
 }
