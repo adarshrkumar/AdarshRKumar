@@ -17,8 +17,10 @@ $padding: 1rem;
 
     background: var(--middle-color);
     color: inherit;
-
+    
     display: flex;
     flex-direction: column;
     gap: $padding;
+
+    text-decoration: inherit;
 }
