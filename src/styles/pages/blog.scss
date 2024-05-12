@@ -9,5 +9,10 @@ $gap: 2rem;
 }
 
 .post {
+    box-sizing: border-box;
+    padding: var(--gap);
+
     aspect-ratio: 3 / 4;
+
+    background: var(--middle-color);
 }
