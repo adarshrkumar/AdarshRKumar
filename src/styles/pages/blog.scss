@@ -35,6 +35,10 @@ $padding: 1rem;
         margin-block: 0;
     }
 
+    &__info {
+        max-width: 100%;
+    }
+
     &__title {
         text-align: center;
     }
@@ -45,5 +49,6 @@ $padding: 1rem;
         
         text-wrap: nowrap;
         text-overflow: ellipsis;
+        overflow-x: hidden;
     }
 }
