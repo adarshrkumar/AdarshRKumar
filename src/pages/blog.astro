@@ -11,10 +11,10 @@ var site = Astro.site.toString()
 if (site.includes('://')) site = site.split('://')[1]
 if (site.endsWith('/')) site = site.slice(0, -1)
 
-// var location = {
-//   protocol: 'https:', 
-//   host: site, 
-// }
+var location = {
+  protocol: 'https:', 
+  host: site, 
+}
 
 await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
   .then(response => response.json())
