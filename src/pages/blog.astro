@@ -8,8 +8,8 @@ import Script from '../utils/script.astro'
 var posts = []
 
 var location = {
-  protocol: Astro.protocol, 
-  host: Astro.host, 
+  protocol: Astro.request.protocol, 
+  host: Astro.request.host, 
 }
 
 await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
