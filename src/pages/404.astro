@@ -3,14 +3,7 @@ import '../styles/pages/404.scss'
 
 import Layout from '../layouts/Layout.astro'
 
-let aHTML = `<a href="${location.href}">`
-if (location.pathname.startsWith('/404')) {
-  aHTML += `the requested page`
-}
-else {
-  aHTML += `${location.pathname}`
-}
-aHTML += `</a> Could not be found`
+let aHTML = `<a href="${location.href}"><span class="page">the requested page</span></a> Cound not be found`
 
 ---
 <Layout title="404" pTitle="Not Found">
@@ -19,6 +12,9 @@ aHTML += `</a> Could not be found`
     <p>Error Type: 404</p>
   </section>
   <script>
+    if (!location.pathname.startsWith('/404')) {
+      document.querySelector('.page').textContent = location.pathname
+    }
     var redirects = [
       {
         slug: '/posts/[path]', 
