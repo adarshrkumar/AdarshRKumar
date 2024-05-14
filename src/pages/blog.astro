@@ -7,6 +7,11 @@ import Script from '../utils/script.astro'
 
 var posts = []
 
+var location = {
+  protocol: Astro.protocol, 
+  host: Astro.host, 
+}
+
 await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
   .then(response => response.json())
   .then(json => {posts = json})
