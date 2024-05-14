@@ -15,9 +15,53 @@ var navItems = [
     // { name: 'Videos' }, 
 ]
 
+var props = [
+    {
+        name: 'id', 
+        default: '', 
+    }, 
+    {
+        name: 'layout', 
+        default: 'full', 
+    }, 
+    {
+        name: 'count', 
+        default: 'default', 
+    }, 
+]
+var channels = [
+    {
+        id: 'UCzhr23vdbi63nZGYqBM7Ofw', 
+    }, 
+    {
+        id: 'UCb35v6VAVFI8Q0aIpwPoW1g', 
+    }, 
+    {
+        id: 'UCLK0Lj3V864AbKfutfyztYA', 
+    }, 
+    {
+        id: 'UC8cV2cdrp1ccBWzoi1R-UwQ', 
+    }, 
+]
+
+channels.forEach(function(c, i) {
+})
+
 ---
 <aside class="main-sidebar">
-    <section class="channel-stats"></section>
+    <section class="channel-stats">
+        {
+            channels.map(function(channel, i) {
+                props.forEach(function(p) {
+                    if (!!c[p.name] === false) c[p.name] = p.default
+                })
+
+                return (<div className="channel-container">
+                    <div class="g-ytsubscribe" data-channelid={c.id} data-layout={c.layout} data-count={c.count}></div>
+                </div>)
+            })
+        }
+    </section>
     <div class="divider h no-margin"></div>
     <Nav items={navItems} direction="column" varient="sidebar" />
 </aside>
