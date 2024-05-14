@@ -5,7 +5,7 @@ import Script from '../utils/script.astro'
 ---
 <section class="site-grid">
     <slot />
-    <Script inline="true">
+    <!-- <Script inline="true">
         document.querySelectorAll('.site-grid .grid .item .image-link').forEach(function(a, i) {
             a.style.backgroundImage = `url(https://image.thum.io/get/maxAge/12/width/${a.clientWidth*2}/${a.href})`
         })
@@ -21,5 +21,5 @@ import Script from '../utils/script.astro'
                 eles[eles.length-1].classList.add('right')
             }
         })
-    </Script>
+    </Script> -->
 </section>
