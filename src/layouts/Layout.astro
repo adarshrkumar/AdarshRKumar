@@ -4,8 +4,8 @@
 import '../styles/globals.scss'
 import '../styles/root.scss'
 
-import Header from '../components/header.astro'
-import Sidebar from '../components/sidebar.astro'
+// import Header from '../components/header.astro'
+// import Sidebar from '../components/sidebar.astro'
 
 import Script from '../utils/script.astro'
 
@@ -44,7 +44,7 @@ if (className.startsWith(' ')) className = className.substring(1)
     <Script name="settings" />
   </head>
   <body>
-    <Header siteDomain={sURL} logo={logoSRC} />
+    <!-- <Header siteDomain={sURL} logo={logoSRC} /> -->
     <div class="wrapper">
       <main class="content" id="content">
         <h1 class="page-title">{pTitle}</h1>
@@ -52,7 +52,7 @@ if (className.startsWith(' ')) className = className.substring(1)
           <slot />
         </div>
       </main>
-      <Sidebar />
+      <!-- <Sidebar /> -->
     </div>
     <Script name="main" />
     <!-- <script src="/eruda.js" is:inline></script> -->
