@@ -31,20 +31,20 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
           post.image.src = `https://image.thum.io/get/maxAge/12/width/${256}/${location.protocol}//${location.host}/post/${post.slug}`
           post.image.alt = `Screenshot of the "${post.title}" post.`
         }
-        if (post.content) {
-          if (post.content.includes('\n')) post.content = post.content.split('\n').join(' ')
-          if (post.content.includes('  ')) post.content = post.content.split('  ').join(' ')
+        if (post.textContent) {
+          if (post.textContent.includes('\n')) post.textContent = post.textContent.split('\n').join(' ')
+          if (post.textContent.includes('  ')) post.textContent = post.textContent.split('  ').join(' ')
         }
         
         return (<a href={`/post/${post.slug}`} class="post">
           <img class="post__img" src={post.image.src} alt={post.image.alt} />
           {
-            !!(post.title || post.content) ? <div class="post__info">
+            !!(post.title || post.textContent) ? <div class="post__info">
               {
                 !!post.title ? <h3 class="post__title">{post.title}</h3> : ''
               }
               {
-                !!post.content ? <p class="post__content">{post.content.includes(' ') ? post.content.split(' ').slice(0, 10).join(' ') : post.content}</p> : ''
+                !!post.textContent ? <p class="post__content">{post.textContent.includes(' ') ? post.textContent.split(' ').slice(0, 10).join(' ') : post.textContent}</p> : ''
               }
             </div> : ''
           }
