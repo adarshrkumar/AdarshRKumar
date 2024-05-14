@@ -1,0 +1,55 @@
+---
+import '../styles/pages/404.scss'
+
+import Layout from '../layouts/Layout.astro'
+
+let aHTML = `<a href="${location.href}">`
+if (location.pathname.startsWith('/404')) {
+  aHTML += `the requested page`
+}
+else {
+  aHTML += `${location.pathname}`
+}
+aHTML += `</a> Could not be found`
+
+---
+<Layout title="404" pTitle="Not Found">
+  <section class="error-404">
+    <span class="current-URL-not-found" set:html={aHTML} />
+    <p>Error Type: 404</p>
+  </section>
+  <script>
+    var redirects = [
+      {
+        slug: '/posts/[path]', 
+        dest: '/blogPost?id=[path]', 
+      }
+    ]
+
+    redirects.forEach(function(redirect, i) {
+      if (location.pathname === redirect.slug) {
+        location.href = redirect.dest
+      }
+      else {
+        if (redirect.slug.includes('[path]')) {
+          var    parts = redirect.slug.split('[path]')
+          var begining = parts[0]
+          var      end = parts[1]
+          
+          var path = location.pathname
+          if (!redirect.slug.endsWith('/') && path.endsWith('/')) {
+            path = path.slice(0. -1)
+          }
+          if (path.startsWith(begining) && page.endsWith(end)) {
+            path = path.slice(begining.length, (
+              end.length === 0 ? path.length : -1*end.length
+            ))
+
+            redirect.slug = redirect.slug.repalce('[path]', path)
+            location.href = redirect.slug
+          }
+        }
+      }
+    })
+  </script>
+</Layout>
