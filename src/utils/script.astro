@@ -1,6 +1,14 @@
 ---
 
-var { name } = Astro.props
+var { name, inline } = Astro.props
 
 ---
-<script src={`/scripts/${name}.js`} is:inline></script>
+{
+    inline === 'true' ? (
+        <script is:inline>
+            <slot />
+        </script>
+    ) : (
+        <script src={`/scripts/${name}.js`} is:inline></script>
+    )
+}
