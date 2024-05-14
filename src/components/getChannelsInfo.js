@@ -79,3 +79,5 @@ function getInfo() {
 
     return items
 }
+
+export default getInfo
