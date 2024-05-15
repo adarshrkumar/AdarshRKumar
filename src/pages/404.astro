@@ -2,16 +2,21 @@
 import '../styles/pages/404.scss'
 
 import Layout from '../layouts/Layout.astro'
+import Script from '../utils/script.astro'
 
-let aHTML = `<a href="${location.href}"><span class="page">the requested page</span></a> Cound not be found`
+
+let aHTML = ``
 
 ---
 <Layout title="404" pTitle="Not Found">
   <section class="error-404">
-    <span class="current-URL-not-found" set:html={aHTML} />
+    <span class="current-URL-not-found">
+      <a href=""><span class="page">the requested page</span></a> Cound not be found
+    </span>
     <p>Error Type: 404</p>
   </section>
-  <script>
+  <Script inline="false">
+    document.querySelector('.page').parentNode.href = location.pathname
     if (!location.pathname.startsWith('/404')) {
       document.querySelector('.page').textContent = location.pathname
     }
@@ -47,5 +52,5 @@ let aHTML = `<a href="${location.href}"><span class="page">the requested page</s
         }
       }
     })
-  </script>
+  </Script>
 </Layout>
