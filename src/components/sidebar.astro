@@ -55,7 +55,7 @@ channels.forEach(function(c, i) {
 <aside class="main-sidebar">
     <section class="channel-stats">
         {
-            channels.map(function(channel, i) {
+            channels.map(function(c, i) {
                 props.forEach(function(p) {
                     if (!!c[p.name] === false) c[p.name] = p.default
                 })
