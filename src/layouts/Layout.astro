@@ -3,7 +3,7 @@ import '../styles/globals.scss'
 import '../styles/root.scss'
 
 import Header from '../components/header.astro'
-// import Sidebar from '../components/sidebar.astro'
+import Sidebar from '../components/sidebar.astro'
 
 import Script from '../utils/script.astro'
 
@@ -49,7 +49,7 @@ if (className.startsWith(' ')) className = className.substring(1)
           <slot />
         </div>
       </main>
-      <!-- <Sidebar /> -->
+      <Sidebar />
     </div>
     <Script name="main" />
     <!-- <script src="/eruda.js" is:inline></script> -->
