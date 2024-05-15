@@ -15,7 +15,7 @@ let aHTML = ``
     </span>
     <p>Error Type: 404</p>
   </section>
-  <Script inline="false">
+  <script>
     document.querySelector('.page').parentNode.href = location.pathname
     if (!location.pathname.startsWith('/404')) {
       document.querySelector('.page').textContent = location.pathname
@@ -52,5 +52,5 @@ let aHTML = ``
         }
       }
     })
-  </Script>
+  </script>
 </Layout>
