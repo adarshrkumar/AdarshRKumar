@@ -41,7 +41,10 @@ let aHTML = ``
             path = path.slice(0. -1)
           }
           alert(`${path} && ${end}`)
-          if (path.startsWith(begining) && path.endsWith(end)) {
+          if (
+            (path.startsWith(begining) || begining === '') && 
+            (path.endsWith(end) || end === '')
+          ) {
             path = path.slice(begining.length, (
               end.length === 0 ? path.length : -1*end.length
             ))
