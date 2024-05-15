@@ -13,6 +13,8 @@ var { name, inline } = Astro.props
             <script>
                 <slot />
             </script>
-        ) : <script src={`/scripts/${name}.js`} is:inline></script>
+        ) : (
+            <script src={`/scripts/${name}.js`} is:inline></script>
+        )
     )
 }
