@@ -27,7 +27,8 @@ let aHTML = ``
     ]
 
     redirects.forEach(function(redirect, i) {
-      if (location.pathname === redirect.slug) {
+      var path = location.pathname
+      if (path === redirect.slug) {
         location.href = redirect.dest
       }
       else {
@@ -36,7 +37,6 @@ let aHTML = ``
           var begining = parts[0]
           var      end = parts[1]
           
-          var path = location.pathname
           if (!redirect.slug.endsWith('/') && path.endsWith('/')) {
             path = path.slice(0. -1)
           }
