@@ -1,13 +1,19 @@
+.post, .page-title + .post {
+    --bor: 0.09375rem solid var(--color);
+
+    margin-inline: auto;
+    width: clamp(500px, 100%, 750px);
+
+    border-left: var(--bor);
+    border-right: var(--bor);
+}
+
+
 .post {
     display: flex;
     flex-direction: column;
 
     .content {
         flex: 1;
-    }
-
-    &, .page-title + & {
-        margin-inline: auto;
-        width: clamp(500px, 100%, 750px);
     }
 }
