@@ -27,6 +27,7 @@ import Layout from '../layouts/Layout.astro'
         if (post.code === 200) {
             var postEle = document.querySelector('.post')
             var infoEle = postEle.querySelector('.info')
+            var author = post.author
             
             document.querySelector('.page-title').textContent = post.title
             document.title = `${post.title} | ${document.title}`
