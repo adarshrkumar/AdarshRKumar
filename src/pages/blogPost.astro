@@ -6,6 +6,12 @@ import Layout from '../layouts/Layout.astro'
 
 ---
 <Layout title="Blog" pageType="post">
+    <section class="info">
+        <a href="/authors" class="author">See All Authors</a> | <span class="date">Today</span>
+    </section>
+    <article class="content">
+
+    </article>
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const postId = urlSearchParams.get('id');
