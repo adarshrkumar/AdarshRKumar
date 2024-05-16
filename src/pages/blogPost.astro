@@ -10,19 +10,19 @@ import Layout from '../layouts/Layout.astro'
         const urlSearchParams = new URLSearchParams(window.location.search);
         const postId = urlSearchParams.get('id');
 
-        var content = {}
+        var post = {}
         await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
             .then(response => response.json())
             .then(json => {
-                content = json
+                post = json
             })
         
 
         var postEle = document.querySelector('.post')
 
-        document.querySelector('.page-title').textContent = content.title
-        dcument.title = `${content.title} | ${document.title}`
+        document.querySelector('.page-title').textContent = post.title
+        dcument.title = `${post.title} | ${document.title}`
 
-        console.log(content)
+        console.log(post)
     </script>
 </Layout>
