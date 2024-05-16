@@ -29,7 +29,7 @@ function getInfo() {
                 if (isBad) {
                     csAmt--
                     cids.splice(cI, 1)
-                    vidsPerChannel = Math.ciel(vidsAmt/csAmt)
+                    vidsPerChannel = Math.ceil(vidsAmt/csAmt)
                 }
             })
     })
