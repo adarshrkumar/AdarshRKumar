@@ -11,6 +11,7 @@
 .info {
     border-bottom: var(--bor);
     padding-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .post {
@@ -19,5 +20,9 @@
 
     .content {
         flex: 1;
+
+        & :first-child {
+            margin-top: 0;
+        }
     }
 }
