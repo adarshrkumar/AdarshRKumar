@@ -26,10 +26,14 @@ import Layout from '../layouts/Layout.astro'
 
         if (post.code === 200) {
             var postEle = document.querySelector('.post')
-
+            var infoEle = postEle.querySelector('.info')
+            
             document.querySelector('.page-title').textContent = post.title
             document.title = `${post.title} | ${document.title}`
             
+            infoEle.querySelector('.author').href = `/authors/${author.username}`
+            infoEle.querySelector('.author').textContent = author.displayName
+
             postEle.querySelector('.content').innerHTML = post.content
 
             console.log(post)
