@@ -32,7 +32,7 @@ import Layout from '../layouts/Layout.astro'
             document.querySelector('.page-title').textContent = post.title
             document.title = `${post.title} | ${document.title}`
             
-            infoEle.querySelector('.author').href = `/authors/${author.username}`
+            infoEle.querySelector('.author').href = `/authorPage?username=${author.username}`
             infoEle.querySelector('.author').textContent = author.displayName
 
             postEle.querySelector('.content').innerHTML = post.content
