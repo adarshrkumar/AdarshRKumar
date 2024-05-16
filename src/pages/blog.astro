@@ -36,7 +36,7 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
           if (post.textContent.includes('  ')) post.textContent = post.textContent.split('  ').join(' ')
         }
         
-        return (<a href={`/post/${post.slug}`} class="post">
+        return (<a href={`/blogPost?id=${post.slug}`} class="post">
           <img class="post__img" src={post.image.src} alt={post.image.alt} />
           {
             !!(post.title || post.textContent) ? <div class="post__info">
