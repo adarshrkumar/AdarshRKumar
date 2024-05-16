@@ -29,6 +29,11 @@ import Layout from '../layouts/Layout.astro'
             var infoEle = postEle.querySelector('.info')
             var author = post.author
             
+            var link = document.createElement('link')
+            link.rel = 'stylesheet'
+            link.href = `https://blogfeed.adarshrkumar.dev/getStyles?path=${postId}`
+            postEle.appendChild(link)
+
             document.querySelector('.page-title').textContent = post.title
             document.title = `${post.title} | ${document.title}`
             
@@ -36,8 +41,6 @@ import Layout from '../layouts/Layout.astro'
             infoEle.querySelector('.author').textContent = author.displayName
 
             postEle.querySelector('.content').innerHTML = post.content
-
-            console.log(post)
         }
         else location.href = '/blog'
 
