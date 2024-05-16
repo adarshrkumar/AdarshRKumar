@@ -9,7 +9,6 @@ import Layout from '../layouts/Layout.astro'
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const postId = urlSearchParams.get('id');
-        alert(postId);
 
         var content = {}
         await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
@@ -17,6 +16,9 @@ import Layout from '../layouts/Layout.astro'
             .then(json => {
                 content = json
             })
+        
 
+        var postEle = document.querySelector('.post')
+        console.log(content)
     </script>
 </Layout>
