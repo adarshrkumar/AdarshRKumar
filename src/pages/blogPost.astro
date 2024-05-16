@@ -16,6 +16,6 @@ await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
 
 ---
 <Layout title="Blog Post" pageType="post">
-    {JSON.stringify(Astro.request.query)}
+    {postId}
     <!-- {JSON.stringify(content)} -->
 </Layout>
