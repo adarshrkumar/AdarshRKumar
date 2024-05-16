@@ -9,7 +9,7 @@ if (Astro.request.query) {
     if (Astro.request.query.id) postId = Astro.request.query.id
 }
 
-var content = ''
+var content = {}
 await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
     .then(response => response.json())
     .then(json => {
