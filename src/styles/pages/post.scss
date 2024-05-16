@@ -1,4 +1,4 @@
-.post, .page-title + .post {
+.post, .page-title:has(+ .post) {
     --bor: 0.09375rem solid var(--color);
 
     margin-inline: auto;
