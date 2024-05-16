@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro'
 
 var postId = null
 if (Astro.request.query) {
-    if (Astro.request.query.p) postId = Astro.request.query.p
+    if (Astro.request.query.id) postId = Astro.request.query.id
 }
 
 var content = ''
