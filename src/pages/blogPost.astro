@@ -18,11 +18,15 @@ import Layout from '../layouts/Layout.astro'
             })
         
 
-        var postEle = document.querySelector('.post')
+        if (post.code === 200) {
+            var postEle = document.querySelector('.post')
 
-        document.querySelector('.page-title').textContent = post.title
-        document.title = `${post.title} | ${document.title}`
+            document.querySelector('.page-title').textContent = post.title
+            document.title = `${post.title} | ${document.title}`
+            
+            console.log(post)
+        }
+        else location.href = '/blog'
 
-        console.log(post)
     </script>
 </Layout>
