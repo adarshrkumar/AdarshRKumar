@@ -40,6 +40,8 @@ import Layout from '../layouts/Layout.astro'
             infoEle.querySelector('.author').href = `/authorPage?username=${author.username}`
             infoEle.querySelector('.author').textContent = author.displayName
 
+            infoEle.querySelector('.date').textContent = post.date
+
             postEle.querySelector('.content').innerHTML = post.content
         }
         else location.href = '/blog'
