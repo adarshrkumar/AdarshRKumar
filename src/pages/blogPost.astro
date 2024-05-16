@@ -4,22 +4,12 @@ import '../styles/pages/post.scss'
 
 import Layout from '../layouts/Layout.astro'
 
-var postId = Astro.url.searchParams.get('id') ? Astro.url.searchParams.get('id') : ''
-
-var content = {}
-await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
-    .then(response => response.json())
-    .then(json => {
-        content = json
-    })
-
-
 ---
 <Layout title="Blog Post" pageType="post">
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
-        const id = urlSearchParams.get('id');
-        alert(id);
+        const postId = urlSearchParams.get('id');
+        alert(postId);
 
         var content = {}
         await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
