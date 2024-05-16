@@ -17,5 +17,6 @@ await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
 ---
 <Layout title="Blog Post" pageType="post">
     {postId}
-    <!-- {JSON.stringify(content)} -->
+    <br>
+    {JSON.stringify(content)}
 </Layout>
