@@ -5,7 +5,7 @@ import '../styles/pages/post.scss'
 import Layout from '../layouts/Layout.astro'
 
 ---
-<Layout title="Blog Post" pageType="post">
+<Layout title="Post" pageType="post">
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const postId = urlSearchParams.get('id');
@@ -19,6 +19,10 @@ import Layout from '../layouts/Layout.astro'
         
 
         var postEle = document.querySelector('.post')
+
+        document.querySelector('.page-title').textContent = content.title
+        dcument.title = `${content.title} | ${document.title}`
+
         console.log(content)
     </script>
 </Layout>
