@@ -30,6 +30,8 @@ import Layout from '../layouts/Layout.astro'
             document.querySelector('.page-title').textContent = post.title
             document.title = `${post.title} | ${document.title}`
             
+            postEle.querySelector('.content').innerHTML = post.content
+
             console.log(post)
         }
         else location.href = '/blog'
