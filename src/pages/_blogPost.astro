@@ -1,0 +1,14 @@
+---
+import '../styles/pages/[about, contact].scss'
+
+import Layout from '../layouts/Layout.astro'
+
+await fetch(`https://blogfeed.adarshrkumar.dev/getPost?p=`)
+    .then(response => response.json())
+    .then(json => {
+    })
+
+
+---
+<Layout title="Blog Post">
+</Layout>
