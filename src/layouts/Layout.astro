@@ -11,7 +11,7 @@ var sName = 'Adarsh Kumar'
 var sURL = 'https://AdarshRKumar.dev'
 var logoSRC = '/assets/logo.jpg'
 
-var { title, pTitle, classItems, inlineStyles } = Astro.props;
+var { title, pTitle, classItems, inlineStyles, pageType } = Astro.props;
 
 if (!!pTitle === false) pTitle = title
 title = `${title} | ${sName}`
@@ -25,6 +25,15 @@ if (!!classItems === false) classItems = ''
 
 var className = `${classItems} main-content`
 if (className.startsWith(' ')) className = className.substring(1)
+
+switch (pageType) {
+  case 'post':
+    
+    break;
+
+  default:
+    break;
+}
 
 ---
 
