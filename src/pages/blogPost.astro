@@ -16,7 +16,17 @@ await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
 
 ---
 <Layout title="Blog Post" pageType="post">
-    {postId}
-    <br>
-    {JSON.stringify(content)}
+    <script>
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const id = urlSearchParams.get('id');
+        alert(id);
+
+        var content = {}
+        await fetch(`https://blogfeed.adarshrkumar.dev/getPost?path=${postId}`)
+            .then(response => response.json())
+            .then(json => {
+                content = json
+            })
+
+    </script>
 </Layout>
