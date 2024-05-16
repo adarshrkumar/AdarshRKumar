@@ -5,4 +5,9 @@
     .content {
         flex: 1;
     }
+
+    &, .page-title + & {
+        margin-inline: auto;
+        width: clamp(500px, 100%, 750px);
+    }
 }
