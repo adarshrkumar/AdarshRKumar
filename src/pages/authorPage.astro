@@ -20,6 +20,7 @@ import Layout from '../layouts/Layout.astro'
         
 
         if (author.code === 200) {
+            author = author.author
             var authorEle = document.querySelector('.author')
             authorEle.querySelector('.displayName').textContent = author.displayName
         }
