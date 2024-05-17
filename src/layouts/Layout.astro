@@ -23,8 +23,7 @@ if (pTitle === 'Home') {
 
 if (!!classItems === false) classItems = ''
 
-var className = `${classItems} main-content`
-if (className.startsWith(' ')) className = className.substring(1)
+if (pageType) classItems += ` ${pageType}`
 
 switch (pageType) {
   case 'post':
@@ -34,8 +33,9 @@ switch (pageType) {
   default:
     break;
 }
-if (pageType) classItems += ` ${pageType}`
-
+      
+var className = `${classItems} main-content`
+if (className.startsWith(' ')) className = className.substring(1)
 ---
 
 <!DOCTYPE html>
