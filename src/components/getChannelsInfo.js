@@ -51,26 +51,26 @@ function getInfo() {
                                 item.link = result.items[i].link
                             }
                             else {
-                                console.error(`Error with: result.items[${i}].link`)
-                                console.error(result.items[i])
+                                // console.error(`Error with: result.items[${i}].link`)
+                                // console.error(result.items[i])
                             }
                             if (!!result.items[i].title) {
                                 item.title = result.items[i].title
                             }
                             else {
-                                console.error(`Error with: result.items[${i}].title`)
-                                console.error(result.items[i])
+                                // console.error(`Error with: result.items[${i}].title`)
+                                // console.error(result.items[i])
                             }
                             items.push(item)
                         }
                         else {
-                            console.error(`Error with: result.items[${i}]`)
-                            console.error(result.items)
+                            // console.error(`Error with: result.items[${i}]`)
+                            // console.error(result.items)
                         }
                     }
                     else {
-                        console.error(`Error with: result.items`)
-                        console.error(result)
+                        // console.error(`Error with: result.items`)
+                        // console.error(result)
                     }
                 }
             })
