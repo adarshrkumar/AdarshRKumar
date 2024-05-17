@@ -1,7 +1,30 @@
-.page-title:has(+ .author) {
-    display: none;
+.post, .page-title:has(+ .post) {
+    --bor: 0.09375rem solid var(--color);
+
+    margin-inline: auto;
+    width: clamp(500px, 100%, 800px);
+
+    border-left: var(--bor);
+    border-right: var(--bor);
 }
 
-.author {
-    
+.info {
+    margin: 0;
+    border-bottom: var(--bor);
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+
+    .info, .content {
+        padding: 8px;
+    }
+    .content {
+        flex: 1;
+
+        & :first-child {
+            margin-top: 0;
+        }
+    }
 }
