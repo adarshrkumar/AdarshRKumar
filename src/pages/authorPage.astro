@@ -1,0 +1,45 @@
+---
+import '../styles/pages/[about, contact].scss'
+import '../styles/pages/author.scss'
+
+import Layout from '../layouts/Layout.astro'
+
+---
+<Layout title="Blog" pageType="author" classItems="ignorePadding">
+    <section class="info">
+        <a href="/authors" class="author">See All Authors</a> | <span class="date">Today</span>
+    </section>
+    <article class="content">
+
+    </article>
+    <script>
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const username = urlSearchParams.get('username');
+
+        var author = {}
+        await fetch(`https://blogfeed.adarshrkumar.dev/getAuthor?username=${username}`)
+            .then(response => response.json())
+            .then(json => {
+                author = json
+            })
+        
+
+        if (author.code === 200) {
+            var authorEle = document.querySelector('.author')
+            // var infoEle = postEle.querySelector('.info')
+            // var author = post.author
+            
+            // document.querySelector('.page-title').textContent = post.title
+            // document.title = `${post.title} | ${document.title}`
+            
+            // infoEle.querySelector('.author').href = `/authorPage?username=${author.username}`
+            // infoEle.querySelector('.author').textContent = author.displayName
+
+            // infoEle.querySelector('.date').textContent = post.date
+
+            // postEle.querySelector('.content').innerHTML = post.content
+        }
+        else location.href = '/blog'
+
+    </script>
+</Layout>

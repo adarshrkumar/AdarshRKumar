@@ -28,12 +28,13 @@ if (className.startsWith(' ')) className = className.substring(1)
 
 switch (pageType) {
   case 'post':
-    className += ' post'
     break;
-
+  case 'author':
+    break;
   default:
     break;
 }
+if (pageType) classItems += ` ${pageType}`
 
 ---
 
