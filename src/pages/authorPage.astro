@@ -6,12 +6,12 @@ import Layout from '../layouts/Layout.astro'
 
 ---
 <Layout title="Author" pageType="author" classItems="ignorePadding">
-    <section class="info">
+    <!-- <section class="info">
         <a href="/authors" class="author">See All Authors</a> | <span class="date">Today</span>
     </section>
     <article class="content">
 
-    </article>
+    </article> -->
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const username = urlSearchParams.get('username');
