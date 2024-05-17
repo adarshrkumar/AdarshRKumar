@@ -42,7 +42,7 @@ $dark-link-visited: #551A8B;
     --color: #{$light-color};
     --middle-color: #{$middle-color};
     --nav-btn-hover: #{$light-nav-hover};
-}
+}  
 
 :has(:target), html {
     scroll-behavior: smooth;
