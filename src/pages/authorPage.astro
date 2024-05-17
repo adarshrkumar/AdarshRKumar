@@ -6,12 +6,7 @@ import Layout from '../layouts/Layout.astro'
 
 ---
 <Layout title="Author" pageType="author" classItems="ignorePadding">
-    <!-- <section class="info">
-        <a href="/authors" class="author">See All Authors</a> | <span class="date">Today</span>
-    </section>
-    <article class="content">
-
-    </article> -->
+    <h2 class="displayName"></h2>
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const username = urlSearchParams.get('username');
@@ -26,18 +21,7 @@ import Layout from '../layouts/Layout.astro'
 
         if (author.code === 200) {
             var authorEle = document.querySelector('.author')
-            // var infoEle = postEle.querySelector('.info')
-            // var author = post.author
-            
-            // document.querySelector('.page-title').textContent = post.title
-            // document.title = `${post.title} | ${document.title}`
-            
-            // infoEle.querySelector('.author').href = `/authorPage?username=${author.username}`
-            // infoEle.querySelector('.author').textContent = author.displayName
-
-            // infoEle.querySelector('.date').textContent = post.date
-
-            // postEle.querySelector('.content').innerHTML = post.content
+            authorEle.querySelector('.displayName').textContent = author.displayName
         }
         else location.href = '/blog'
 
