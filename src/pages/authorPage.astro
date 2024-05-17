@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro'
 
 ---
 <Layout title="Author" pageType="author" classItems="ignorePadding">
-    <h2 class="displayName"></h2>
+    <h2 class="name"></h2>
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const username = urlSearchParams.get('username');
@@ -22,7 +22,7 @@ import Layout from '../layouts/Layout.astro'
         if (author.code === 200) {
             author = author.author
             var authorEle = document.querySelector('.author')
-            authorEle.querySelector('.displayName').textContent = author.displayName
+            authorEle.querySelector('.name').textContent = author.displayName
         }
         else location.href = '/blog'
 
