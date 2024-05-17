@@ -3,5 +3,14 @@
 }
 
 .author {
-    
+    box-sizing: border-box;
+    margin: 16px auto;
+
+    padding: 16px;
+
+    width: clamp(500px, 100%, 800px);
+
+    background-color: var(--middle-color);
+
+    border-radius: 16px;
 }
