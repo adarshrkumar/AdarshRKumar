@@ -6,9 +6,8 @@ $change-amt: 20%;
 $main-bg-lightness: 100%;
 $main-bg-darkness: 75%;
 $main-color-lightness: 15%;
-$main-nav-lightness: 45.5%;
 
-$middle-color: hsl(0, 0%, 50%);
+$middle-color: hsl(0, 0%, #{($main-bg-darkness - $main-color-lightness)/2 + $main-color-lightness});
 
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
