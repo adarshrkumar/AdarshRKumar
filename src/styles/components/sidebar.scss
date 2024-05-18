@@ -34,17 +34,23 @@
     gap: 1rem;
 
     .channel-container {
+        --padding: 5px;
         box-sizing: border-box;
-        padding: 2px;
-
+        padding: var(--padding);
+        
         border: solid 1px var(--color);
-        border-radius: 6px;
+        border-radius: calc(var(--padding)*2);
 
         display: grid;
         grid-template-rows: subgrid;
         align-items: center;
 
         overflow: hidden;
+
+        [id*="___ytsubscribe"] {
+            border-radius: var(--padding);
+            overflow: hidden;
+        }
 
         [data-theme="dark"] & {
             background-color: var(--color);
