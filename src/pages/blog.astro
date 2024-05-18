@@ -28,7 +28,7 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
       posts.map(function(post, i) {
         if (!post.image) {
           post.image = {}
-          post.image.src = `https://image.thum.io/get/maxAge/12/width/${256}/${location.protocol}//${location.host}/post/${post.slug}`
+          post.image.src = `https://image.thum.io/get/maxAge/12/width/${256}/${location.protocol}//${location.host}/blogPost?id=${post.slug}`
           post.image.alt = `Screenshot of the "${post.title}" post.`
         }
         if (post.textContent) {
