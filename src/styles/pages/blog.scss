@@ -28,6 +28,7 @@ $padding: 1rem;
     text-decoration: inherit;
 
     &__img {
+        height: 100%;
         border-radius: #{$gap - $padding};
     }
 
