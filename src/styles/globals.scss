@@ -4,6 +4,7 @@
 $change-amt: 20%;
 
 $main-bg-lightness: 100%;
+$main-bg-darkness: 75%;
 $main-color-lightness: 15%;
 $main-nav-lightness: 45.5%;
 
@@ -18,7 +19,7 @@ $light-link-color: #0000EE;
 $light-link-visited: #551A8B;
 
 $dark-bg: hsl(0, 0%, $main-color-lightness);
-$dark-color: hsl(0, 0%, $main-bg-lightness);
+$dark-color: hsl(0, 0%, $main-bg-darkness);
 
 $dark-nav-hover: darken($dark-color, $change-amt);
 
