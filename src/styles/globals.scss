@@ -7,7 +7,7 @@ $main-bg-lightness: 100%;
 $main-bg-darkness: 75%;
 $main-color-lightness: 15%;
 
-$middle-color: hsl(0, 0%, #{($main-bg-darkness - $main-color-lightness)/2 + $main-color-lightness});
+$middle-color: hsl(0, 0%, 45%);
 
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
