@@ -25,14 +25,10 @@
     .postContent {
         flex: 1;
 
-        &, * {
-            word-wrap: break-word;
+        * {
+            text-wrap: balance;
         }
 
-        * {
-            display: grid;
-        }
-    
         & :first-child {
             margin-top: 0;
         }
