@@ -22,11 +22,11 @@
         word-wrap: break-word;
     }
 
-    .info, .content {
+    .info, .postContent {
         padding: 8px;
     }
-    
-    .content {
+
+    .postContent {
         flex: 1;
 
         & :first-child {
