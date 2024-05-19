@@ -17,6 +17,10 @@
     display: flex;
     flex-direction: column;
 
+    &, * {
+        word-wrap: break-word;
+    }
+
     .info, .content {
         padding: 8px;
     }
