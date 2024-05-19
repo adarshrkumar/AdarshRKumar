@@ -16,6 +16,7 @@
 .post {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 
     &, * {
         word-wrap: break-word;
@@ -24,6 +25,7 @@
     .info, .content {
         padding: 8px;
     }
+    
     .content {
         flex: 1;
 
