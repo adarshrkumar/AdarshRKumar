@@ -18,10 +18,6 @@
     flex-direction: column;
     overflow-x: hidden;
 
-    &, * {
-        word-wrap: break-word;
-    }
-
     .info, .postContent {
         padding: 8px;
     }
@@ -29,6 +25,14 @@
     .postContent {
         flex: 1;
 
+        &, * {
+            word-wrap: break-word;
+        }
+
+        * {
+            display: grid;
+        }
+    
         & :first-child {
             margin-top: 0;
         }
