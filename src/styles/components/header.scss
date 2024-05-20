@@ -11,7 +11,7 @@ header {
   flex-wrap: wrap;
   gap: 15px;
 
-  border-bottom: solid 1px var(--color);
+  border-bottom: solid 1px var(--bdr-clr, var(--color));
 }
 
 header .logo {

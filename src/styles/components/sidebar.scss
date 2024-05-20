@@ -16,7 +16,7 @@
 
     gap: var(--gap); 
     
-    border-left: solid 1px var(--color);
+    border-left: solid 1px var(--bdr-clr, var(--color));
 
     & > * {
         height: fit-content;
@@ -42,7 +42,7 @@
         box-sizing: border-box;
         padding: var(--padding);
         
-        border: solid 1px var(--color);
+        border: solid 1px var(--bdr-clr, var(--color));
         border-radius: calc(var(--padding)*2);
 
         display: grid;

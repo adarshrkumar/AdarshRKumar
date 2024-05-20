@@ -1,6 +1,6 @@
 .post, .page-title:has(+ .post) {
     --padding: 1rem;
-    --bor: 1px solid var(--color);
+    --bor: 1px solid var(--bdr-clr, var(--color));
     
     margin-inline: auto;
     width: clamp(500px, 100%, 800px);
