@@ -7,17 +7,19 @@
 }
 
 .author {
-    // box-sizing: border-box;
-    margin: 16px;
+    --padding: 1rem;
 
-    padding: 16px;
+    // box-sizing: border-box;
+    margin: var(--padding);
+
+    padding: var(--padding);
 
     width: clamp(400px, 100%, 600px);
 
     background-color: var(--color);
     color: var(--bg);
 
-    border-radius: 32px;
+    border-radius: calc(var(--padding)*2);
 
     & > * {
         margin-inline: auto;
