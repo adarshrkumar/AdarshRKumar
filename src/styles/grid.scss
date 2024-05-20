@@ -7,6 +7,15 @@ $padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fill, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
+
+    &:not([wrap]) .item .item__info .item__content {
+        text-wrap: nowrap;
+    }
+    &[wrap] .item .item__info .item__content {
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+    }
+
 }
 
 .item {
@@ -48,13 +57,6 @@ $padding: 1rem;
         width: -moz-fit-content;
         width: fit-content;
         
-        :not([wrap]) & {
-            text-wrap: nowrap;
-        }
-        [wrap] & {
-            text-wrap: nowrap;
-            text-overflow: ellipsis;
-        }
         overflow-x: hidden;
     }
 }
