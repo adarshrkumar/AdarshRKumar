@@ -7,15 +7,6 @@ $padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fill, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
-
-    &:not([wrap]) .item__content {
-        text-wrap: nowrap;
-    }
-    &[wrap] .item__content {
-        text-wrap: wrap;
-        background-color: white;
-    }
-
 }
 
 .item {
@@ -41,9 +32,9 @@ $padding: 1rem;
         border-radius: #{$gap - $padding};
     }
 
-    // &__info {
-    //     overflow-x: hidden;
-    // }
+    &__info {
+        overflow-x: hidden;
+    }
 
     &__title, &__content {
         margin-block: 0;
@@ -59,5 +50,12 @@ $padding: 1rem;
 
     &__content {
         text-overflow: ellipsis;
+        &:not(.wrap) & {
+            text-wrap: nowrap;
+        }
+        .wrap & {
+            text-wrap: wrap;
+            background-color: white;
+        }
     }
 }
