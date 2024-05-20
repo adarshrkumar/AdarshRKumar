@@ -46,10 +46,10 @@ $padding: 1rem;
     }
 
     &:is(:hover, :focus-visible) &__content {
-        text-wrap: nowrap;
-        text-overflow: ellipsis;
+        text-wrap: wrap;
     }
     &:not(:is(:hover, :focus-visible)) &__content {
-        text-wrap: wrap;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
     }
 }
