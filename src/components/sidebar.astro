@@ -60,9 +60,11 @@ channels.forEach(function(c, i) {
                     if (!!c[p.name] === false) c[p.name] = p.default
                 })
 
-                return (<div class="channel-container">
-                    <div class="g-ytsubscribe" data-channelid={c.id} data-layout={c.layout} data-count={c.count}></div>
-                </div>)
+                return (
+                    <div class="channel-container">
+                        <div class="g-ytsubscribe" data-channelid={c.id} data-layout={c.layout} data-count={c.count}></div>
+                    </div>
+                )
             })
         }
     </section>
