@@ -1,3 +1,4 @@
+var setTheme = function(t) {}
 var settingsKey = 'settings'
 
 var settingFunctions = {
