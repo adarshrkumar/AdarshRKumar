@@ -4,7 +4,8 @@
 $change-amt: 20%;
 
 $main-bg-lightness: 100%;
-$main-bg-darkness: 75%;
+$main-bg-darkness: 100%;
+$main-bdr-darkness: 75%;
 $main-color-lightness: 15%;
 
 $middle-color: hsl(0, 0%, 45%);
@@ -19,6 +20,7 @@ $light-link-visited: #551A8B;
 
 $dark-bg: hsl(0, 0%, $main-color-lightness);
 $dark-color: hsl(0, 0%, $main-bg-darkness);
+$dark-border: hsl(0, 0%, $main-bdr-darkness);
 
 $dark-nav-hover: darken($dark-color, $change-amt);
 
@@ -38,6 +40,7 @@ $dark-link-visited: #551A8B;
     
     --bg: #{$light-bg};
     --color: #{$light-color};
+    --bdr-clr: unset;
     --middle-color: #{$middle-color};
     --nav-btn-hover: #{$light-nav-hover};
     
@@ -53,6 +56,7 @@ $dark-link-visited: #551A8B;
     :root {
         --bg: #{$dark-bg};
         --color: #{$dark-color};
+        --bdr-clr: #{$dark-color};
         --nav-btn-hover: #{$dark-nav-hover};
     }
 }

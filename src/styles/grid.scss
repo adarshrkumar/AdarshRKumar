@@ -69,7 +69,7 @@
 
     // height: fit-content;
 
-    border: solid 1px var(--color);
+    border: solid 1px var(--bdr-clr, var(--color));
 
     cursor: pointer;
 
@@ -87,7 +87,7 @@
         background-repeat: no-repeat;
 
         outline: none;
-        border-bottom: solid 1px var(--color);
+        border-bottom: solid 1px var(--bdr-clr, var(--color));
 
         :not(.portfolio) &:is(:hover, :focus, :focus-visible) {
             background-size: contain;
@@ -144,7 +144,7 @@
             // background-size: contain;
         // }
         & a:not(.image-link) {
-            border-bottom: solid 1px var(--color);
+            border-bottom: solid 1px var(--bdr-clr, var(--color));
         }
 
         & > div:not([paddingOnHover]) > :not(a) {
