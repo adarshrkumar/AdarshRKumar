@@ -8,10 +8,10 @@ $padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
 
-    &:not([wrap]) .item .item__info .item__content {
+    &:not([wrap]) .item__content {
         text-wrap: nowrap;
     }
-    &[wrap] .item .item__info .item__content {
+    &[wrap] .item__content {
         text-wrap: wrap;
         background-color: white;
     }
@@ -41,9 +41,9 @@ $padding: 1rem;
         border-radius: #{$gap - $padding};
     }
 
-    &__info {
-        // overflow-x: hidden;
-    }
+    // &__info {
+    //     overflow-x: hidden;
+    // }
 
     &__title, &__content {
         margin-block: 0;
