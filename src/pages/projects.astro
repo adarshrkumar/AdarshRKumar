@@ -89,7 +89,7 @@ var projects = [
   }
 ]
 
-portfolio.forEach(category, i) {
+portfolio.forEach(function(category, i) {
   category.items.forEach(function(item, i) {
     if (!!item.class === false) item.class = ''
     var classList = ['item']
@@ -107,7 +107,7 @@ portfolio.forEach(category, i) {
     }
     portfolio[i].items[i2].link.target = target
   })
-}
+})
 
 ---
 <!-- <Layout title="Projects">
