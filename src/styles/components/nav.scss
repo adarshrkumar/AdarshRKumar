@@ -23,8 +23,8 @@
   
     min-width: var(--min-width, fit-content);
   
-    background-color: var(--color);
-    color: var(--bg);
+    background-color: var(--bdr-clr, var(--color));
+    color: var(--btn-clr, var(--bg));
   
     border: none;
     border-radius: 100vw;
