@@ -31,7 +31,7 @@ import Layout from '../layouts/Layout.astro'
             
             var link = document.createElement('link')
             link.rel = 'stylesheet'
-            link.href = `https://blogfeed.adarshrkumar.dev/getStyles?path=${postId}`
+            link.href = `https://blogfeed.adarshrkumar.dev/getStyles?id=${postId}`
             postEle.appendChild(link)
 
             document.querySelector('.page-title').textContent = post.title
