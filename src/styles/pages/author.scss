@@ -2,9 +2,14 @@
     display: none;
 }
 
+.content:has( > .author) {
+    justify-content: center;
+    align-items: center;
+}
+
 .author {
     // box-sizing: border-box;
-    margin: 16px auto;
+    margin: 16px;
 
     padding: 16px;
 
