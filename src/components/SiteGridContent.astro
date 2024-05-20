@@ -2,24 +2,13 @@
 import '../styles/grid.scss'
 
 import Script from '../utils/script.astro'
+
+var { classItems } = Astro.props
+
+classItems += ' grid'
+if (classItems.startsWith(' ')) classItems = classItemse.slice(1)
+
 ---
-<section class="site-grid">
+<section class={classItems}>
     <slot />
-    <script is:inline>
-        document.querySelectorAll('.site-grid .grid .item .image-link').forEach(function(a, i) {
-            a.style.backgroundImage = `url(https://image.thum.io/get/maxAge/12/width/${a.clientWidth*2}/${a.href})`
-        })
-        document.querySelectorAll('.site-grid .grid').forEach(function(g, i) {
-            var eles = g.querySelectorAll('.item')
-            var amt = eles.length
-            var mod = amt % 3
-            if (mod === 1) {
-                eles[eles.length-1].classList.add('center')
-            }
-            else if (mod === 2) {
-                eles[eles.length-2].classList.add('left')
-                eles[eles.length-1].classList.add('right')
-            }
-        })
-    </script>
 </section>

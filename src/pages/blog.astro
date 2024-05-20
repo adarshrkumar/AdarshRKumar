@@ -2,6 +2,7 @@
 import '../styles/pages/blog.scss'
 
 import Layout from '../layouts/Layout.astro'
+import SiteGridContent from '../components/SiteGridContent.astro'
 
 import Script from '../utils/script.astro'
 
@@ -23,7 +24,7 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
 
 ---
 <Layout title="Blog">
-  <section class="posts">
+  <SiteGridContent classItems="posts">
     {
       posts.map(function(post, i) {
         if (!post.image) {
@@ -36,21 +37,21 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
           if (post.textContent.includes('  ')) post.textContent = post.textContent.split('  ').join(' ')
         }
         
-        return (<a href={`/blogPost?id=${post.slug}`} class="post">
-          <img class="post__img" src={post.image.src} alt={post.image.alt} />
+        return (<a href={`/blogPost?id=${post.slug}`} class="item">
+          <img class="item__img" src={post.image.src} alt={post.image.alt} />
           {
-            !!(post.title || post.textContent) ? <div class="post__info">
+            !!(post.title || post.textContent) ? <div class="item__info">
               {
-                !!post.title ? <h3 class="post__title">{post.title}</h3> : ''
+                !!post.title ? <h3 class="item__title">{post.title}</h3> : ''
               }
               {
-                !!post.textContent ? <p class="post__content">{post.textContent.includes(' ') ? post.textContent.split(' ').slice(0, 10).join(' ') : post.textContent}</p> : ''
+                !!post.textContent ? <p class="item__content">{post.textContent.includes(' ') ? post.textContent.split(' ').slice(0, 10).join(' ') : post.textContent}</p> : ''
               }
             </div> : ''
           }
         </a>)
       })
     }
-  </section>
+  </SiteGridContent>
   <Script name="blog" />
 </Layout>
