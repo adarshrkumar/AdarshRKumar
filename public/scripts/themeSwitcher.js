@@ -24,7 +24,7 @@ function changeTheme(newIndex) {
 
     setTheme(newTheme)
 }
-function setTheme(theme) {
+var setTheme = function(theme) {
     document.documentElement.setAttribute(themeAttribute, theme)
 
     setSetting('theme', theme)
