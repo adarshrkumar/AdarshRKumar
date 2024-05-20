@@ -57,18 +57,18 @@ items.forEach(function(item, i) {
 <Layout title="Portfolio">
   <SiteGridContent classItems="portfolio">
       {
-        items.map(item, i) {
-          var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
-          return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
-            <img src={imgSrc} alt class="item__img" />
-            <div>
-              <h3 class="item__title">{item.name}</h3>
-              <p class="item__content">
-                {item.description}
-              </p>
-            </div>
-          </a>)
-        }
+        // items.map(item, i) {
+        //   var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
+        //   return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
+        //     <img src={imgSrc} alt class="item__img" />
+        //     <div>
+        //       <h3 class="item__title">{item.name}</h3>
+        //       <p class="item__content">
+        //         {item.description}
+        //       </p>
+        //     </div>
+        //   </a>)
+        // }
       }
   </SiteGridContent>
 </Layout>
