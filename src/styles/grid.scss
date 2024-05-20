@@ -50,12 +50,12 @@ $padding: 1rem;
 
     &__content {
         text-overflow: ellipsis;
-        &:not(.wrap) & {
+        .item:is(:hover, :focus-visible) & {
             text-wrap: nowrap;
+            text-overflow: ellipsis;
         }
-        .wrap & {
+        .item:not(:is(:hover, :focus-visible)) & {
             text-wrap: wrap;
-            background-color: white;
         }
     }
 }
