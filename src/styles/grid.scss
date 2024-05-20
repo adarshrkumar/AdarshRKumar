@@ -1,161 +1,55 @@
-.site-grid {
-    position: relative;
-}
-
-.site-grid :is(h1, h2, h3, h4, h5, h6) {
-    text-align: center;
-}
-
-.site-grid hr {
-    margin-block: 0.625em;
-}
+$min-size: 250px;
+$gap: 2rem;
+$padding: 1rem;
 
 .grid {
-    --gap: 25px;
-    --minmax: 316.6px;
-    --columns: 6;
-    --column-span: calc(var(--columns)/3);
-
-    margin-inline: auto;
-    box-sizing: border-box;
-    padding: calc(var(--gap) - 25px);
-
-    height: fit-content;
-    max-width: 100%;
-
     display: grid;
-    grid-template-columns: repeat(/*auto-fit*/var(--columns), 1fr); // 6
-    gap: var(--gap);
-
-    &:not(#videos) {
-        width: min(100%, 1000px);
-    }
-
-    @media (max-width: 1016px) and (min-width: 509px) {
-        grid-template-columns: repeat(2, minmax(316.6px, 1fr)); // 4
-    }
-    @media (max-width: 508px) {
-        grid-template-columns: repeat(1, minmax(316.6px, 1fr)); // 2
-    }
+    grid-template-columns: repeat(auto-fill, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
+    grid-template-columns: repeat(auto-fill, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+    gap: $gap;
 }
 
-.grid .item {
-    &.featured {
-        grid-column: span var(--grid-span);
-    }
-    &.left, &.right {
-        --single: calc(var(--column-span)/2);
-        --center: calc(var(--columns)/2 + var(--single));
-        &.left {
-            grid-column: calc(1*var(--center) - var(--column-span)) / calc(1*var(--center));
-            &.featured {
-                grid-column: calc(1*var(--center) - var(--column-span)*2) / calc(1*var(--center));
-            }
-        }
-        &.right {
-            grid-column: calc(-1*var(--center)) / calc(-1*var(--center) + var(--column-span));
-            &.featured {
-                grid-column: calc(1*var(--inside)) / calc(1*var(--outside) + var(--column-span)*2);
-            }
-        }
-    }
-    &.center {
-        grid-column: calc(var(--columns)/2) / calc(-1*var(--columns)/2);
-        &.featured {
-            grid-column: calc(1*var(--columns)/2 - var(--column-span)/2) / calc(-1*var(--columns)/2 + var(--column-span)/2);
-        }
-    }
+.item {
+    box-sizing: border-box;
+    padding: $padding;
 
+    // aspect-ratio: 3 / 4;
 
-    // height: fit-content;
+    background: var(--middle-color);
+    color: inherit;
 
-    border: solid 1px var(--bdr-clr, var(--color));
-
-    cursor: pointer;
-
-    grid-column: span var(--column-span);
-
-    .image-link {
-        width: 100%;
-        aspect-ratio: 1;
-
-        display: grid;
-
-        background-color: var(--color);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        outline: none;
-        border-bottom: solid 1px var(--bdr-clr, var(--color));
-
-        :not(.portfolio) &:is(:hover, :focus, :focus-visible) {
-            background-size: contain;
-        }
-    }
-
-    & > div {
-        height: fit-content;
-        &:not([paddingOnHover]) {
-            > * {
-                --val: 2;
-                --pad: calc(var(--gap)/var(--val));
-                box-sizing: border-box;
-                gap: 0;
-            }
-            > a {
-                padding: var(--pad);
-                // > * {
-                //     margin: 0;
-                // }
-            }
-        }
-
-        display: flex;
-        flex-direction: column;
-    }
-
-    & :is(h1, h2, h3, h4, h5, h6) {
-        margin-block: 0.25em;
-    }
+    border-radius: $gap;
     
-    & :is(h1, h2, h3, h4, h5, h6), & span {
-        text-wrap: balance;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $padding;
+
+    text-decoration: inherit;
+
+    &__img {
+        width: 100%;
+        border-radius: #{$gap - $padding};
+    }
+
+    &__title, &__content {
+        margin-block: 0;
+    }
+
+    &__info, &__content {
+        max-width: 100%;
+    }
+
+    &__title {
         text-align: center;
     }
 
-    & .description {
-        display: grid;
-        grid-template-rows: 0fr;
-
-        transition: grid-template-rows 100ms ease;
-    }
-
-    & span {
-        overflow-y: hidden;
-
-        transition: height 1s ease;
-
-        cursor: initial;
-    }
-
-    &:is(:hover, :focus, :focus-visible, :focus-within) {
-        // & .image-link {
-            // background-size: contain;
-        // }
-        & a:not(.image-link) {
-            border-bottom: solid 1px var(--bdr-clr, var(--color));
-        }
-
-        & > div:not([paddingOnHover]) > :not(a) {
-            padding: var(--pad);
-        }
-        & .description {
-            grid-template-rows: 1fr;
-        }
-        & span {
-            height: auto;
-            margin-block: 0.5em;
-        }
+    &__content {
+        width: -moz-fit-content;
+        width: fit-content;
+        
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
     }
 }

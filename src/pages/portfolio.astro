@@ -46,38 +46,31 @@ items.forEach(function(item, i) {
     })
   }
   var className = classList.join(' ')
+  item.class = className
 
-  var target = ''
+  var target = '_self'
   if (!!item.link.target) {
-    target = ` target="${item.link.target}"`
+    target = item.link.target
   }
-
-  itemsHTML += `
-    <div class="${className}">
-      <a href="${item.link.url}"${target} class="image-link"></a>
-      <div>
-        <a href="${item.link.url}"${target}>
-          <h3>${item.name}</h3>
-        </a>
-        <div class="description">
-          <span>${item.description}</span>
-        </div>
-      </div>
-    </div>
-  `
+  item.link.target = target
 })
 
 ---
 <Layout title="Portfolio">
-  <SiteGridContent>
-    <section class="grid portfolio" set:html={itemsHTML}>
-      <!-- <div class="item">
-        <div>
-          <div class="description">
-            <span>I did a two week internship through my school with the best ever Megan Gillespie, which consisted of fixing up, editing, and streamining her website.</span>
-          </div>
-        </div>
-      </div> -->
-    </section>
+  <SiteGridContent classItems="portfolio">
+      {
+        items.map(item, i) {
+          var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
+          return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
+            <img src={imgSrc} alt class="item__img" />
+            <div>
+              <h3 class="item__title">{item.name}</h3>
+              <p class="item__content">
+                {item.description}
+              </p>
+            </div>
+          </a>)
+        }
+      }
   </SiteGridContent>
 </Layout>

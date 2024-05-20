@@ -1,131 +1,113 @@
 ---
-import '../styles/grid.scss'
 import '../styles/pages/projects.scss'
 
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
+
+var projects = [
+  {
+    name: 'Misc Projects'
+    items: [
+      {
+        name: 'Timer Application', 
+        link: {
+          url: 'https://timer.adarshrkumar.dev', 
+          target: '_blank', 
+        }, 
+        description: 'Punch in an hour minute and second value and see the timer whizz into action.', 
+        // class: 'featured', 
+      }, 
+      {
+        name: 'Live Clock', 
+        link: {
+          url: 'https://live-clock.adarshrkumar.dev', 
+          target: '_blank', 
+        }, 
+        description: 'This clock application harnesses the datetime features of JavaScript to display your local time no matter where you are.', 
+        // class: 'featured', 
+      }, 
+      {
+        name: 'Nearpod Joiner', 
+        link: {
+          url: 'https://nearpod.adarshrkumar.dev', 
+          target: '_blank', 
+        }, 
+        description: 'Input a code and it will join the presentation for you!', 
+        // class: 'featured', 
+      }, 
+      {
+        name: 'Favicon Generator', 
+        link: {
+          url: 'https://favicons.adarshrkumar.dev', 
+          target: '_blank', 
+        }, 
+        description: 'Input a URL and it will display the favicon for that URL!', 
+        // class: 'featured', 
+      }, 
+      {
+        name: 'Virtural Assistant', 
+        link: {
+          url: 'https://assistant.adarshrkumar.dev', 
+          target: '_blank', 
+        }, 
+        description: 'A GPT-4 Based Full Virtual Assistant!', 
+        // class: 'featured', 
+      }, 
+    ]
+  }
+  {
+    name: 'Games',
+    items: [
+      {
+        name: 'My UNO Game', 
+        link: {
+          url: 'https://uno.adarshrkumar.dev', 
+          target: '_blank', 
+        }, 
+        description: 'Play UNO Online!', 
+        // class: 'featured', 
+      }, 
+      {
+        name: 'My Tic-Tac-Toe Game', 
+        link: {
+          url: 'https://tic-tac-toe.adarshrkumar.dev', 
+          target: '_blank', 
+        }, 
+        description: 'Play Tic-Tac-Toe Online!', 
+        // class: 'featured', 
+      }, 
+      // {
+      //   name: 'Graphics for Good', 
+      //   link: {
+      //     url: 'https://graphics-for-good.com', 
+      //     target: '_blank', 
+      //   }, 
+      //   description: '', 
+      //   // class: 'featured', 
+      // }, 
+    ]
+  }
+]
 ---
 <Layout title="Projects">
-  <SiteGridContent>
-    <div class="divider h" style="--s: 1000px;"></div>
-    <h3>Misc Projects</h3>
-    <div class="divider h" style="--s: 1000px;"></div>
-    <section class="grid projects">
-      <div class="item">
-        <a href="https://Timer.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Timer.adarshrkumar.dev" target="_blank" >
-            <h3>My Timer Application</h3>
-          </a>
-          <div class="description">
-            <span>Punch in an hour minute and second value and see the timer whizz into action.</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <a href="https://Live-Clock.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Live-Clock.adarshrkumar.dev" target="_blank">
-            <h3>My Clock Application</h3>
-          </a>
-          <div class="description">
-            <span>This clock application harnesses the datetime features of JavaScript to display your local time no matter where you are.</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <a href="https://Nearpod.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Nearpod.adarshrkumar.dev" target="_blank">
-            <h3>My Nearpod Joiner</h3>
-          </a>
-          <div class="description">
-            <span>Input in a code and it will join the presentation for you!</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <a href="https://Favicons.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Favicons.adarshrkumar.dev" target="_blank">
-            <h3>My Favicon Generator</h3>
-          </a>
-          <div class="description">
-            <span>Input in a URL and it will generate the favicon of that URL!</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <a href="https://assistant.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://assistant.adarshrkumar.dev" target="_blank">
-            <h3>Assistant</h3>
-          </a>
-          <div class="description">
-            <span>A GPT-4 Based Full Virtual Assistant!</span>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="item">
-        <a href="https://Browser.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Browser.adarshrkumar.dev" target="_blank">
-            <h3>My Browser</h3>
-          </a>
-          <div class="description">
-            <span>A Hard-Coded "Browser" That Works!</span>
-          </div>
-        </div>
-      </div> -->
-    </section>
-    <div class="divider h" style="--s: 1000px;"></div>
-    <h3>Games</h3>
-    <div class="divider h" style="--s: 1000px;"></div>
-    <section class="grid games">
-      <div class="item">
-        <a href="https://Uno.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Uno.adarshrkumar.dev"target="_blank" >
-            <h3>My UNO Game</h3>
-          </a>
-          <div class="description">
-            <span>Play UNO Online!</span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <a href="https://Tic-Tac-Toe.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Tic-Tac-Toe.adarshrkumar.dev" target="_blank">
-            <h3>My Tic-Tac-Toe Game</h3>
-          </a>
-          <div class="description">
-            <span>Play Tic-Tac-Toe Online!</span>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="item">
-        <a href="https://Rock-Paper-Scissors.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Rock-Paper-Scissors.adarshrkumar.dev" target="_blank">
-            <h3>My Rock-Paper-Scissors Game</h3>
-          </a>
-          <div class="description">
-            <span>Play Rock-Paper-Scissors Online!</span>
-          </div>
-        </div>
-      </div> -->
-      <!-- <div class="item">
-        <a href="https://Cookie-Clicker.adarshrkumar.dev" target="_blank" class="image-link" />
-        <div>
-          <a href="https://Cookie-Clicker.adarshrkumar.dev" target="_blank">
-            <h3>My Cookie Clicker Game</h3>
-          </a>
-          <div class="description">
-            <span>Play "Cookie Clicker" Online!</span>
-          </div>
-        </div>
-      </div> -->
-    </section>
-  </SiteGridContent>
+  {
+    projects.map(category, i) {
+      <SiteGridContent>
+        <h3>{project.name}</h3>
+        {
+          project.items.map(item, i2) {
+            var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
+            return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
+              <img src={imgSrc} alt class="item__img" />
+              <div>
+                <h3 class="item__title">{item.name}</h3>
+                <p class="item__content">{item.description}</p>
+              </div>
+            </a>)
+          }
+        }
+      </SiteGridContent>
+      <div class="divider h" style="--s: 1000px;"></div>
+    }
+  }
 </Layout>
