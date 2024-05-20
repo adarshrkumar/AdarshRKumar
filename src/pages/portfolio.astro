@@ -57,7 +57,7 @@ items.forEach(function(item, i) {
 <Layout title="Portfolio">
   <SiteGridContent classItems="portfolio">
       {
-        items.map(item, i) {
+        items.map((item, i) => {
         //   var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
         //   return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
         //     <img src={src} alt class="item__img" />
@@ -68,7 +68,7 @@ items.forEach(function(item, i) {
         //       </p>
         //     </div>
         //   </a>)
-        }
+        })
       }
   </SiteGridContent>
 </Layout>
