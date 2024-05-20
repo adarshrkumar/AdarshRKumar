@@ -42,6 +42,7 @@ import Layout from '../layouts/Layout.astro'
             var nameEle = document.createElement('h2')
             nameEle.classList.add('name')
             nameEle.textContent = author.displayName
+            authorEle.appendChild(nameEle)
 
             if (author.bio) {
                 var bio = author.bio
@@ -52,8 +53,6 @@ import Layout from '../layouts/Layout.astro'
                 bioEle.innerHTML = bio
                 authorEle.appendChild(bioEle)
             }
-
-            authorEle.appendChild(nameEle)
         }
         else location.href = '/blog'
     </script>
