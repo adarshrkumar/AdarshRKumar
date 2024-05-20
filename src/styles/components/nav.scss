@@ -1,7 +1,7 @@
 .nav {
     &:not([data-varient="sidebar"]) {
-        flex: 1;
-        height: 100%;
+      flex: 1;
+      height: 100%;
     }  
     
     display: flex;
@@ -32,7 +32,6 @@
     box-shadow: 0 0 var(--shadow-size) var(--nav-btn-color);
   
     font-size: 1.25rem;
-    font-weight: 500;
   
     cursor: pointer;
   
