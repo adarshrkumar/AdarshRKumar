@@ -110,13 +110,13 @@ portfolio.forEach(function(category, i) {
 })
 
 ---
-<!-- <Layout title="Projects">
+<Layout title="Projects">
   {
-    projects.map(category, i) {
+    projects.map((category, i) => {
       <SiteGridContent>
         <h3>{project.name}</h3>
         {
-          project.items.map(item, i2) {
+          project.items.map((item, i2) => {
             var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
             return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
               <img src={imgSrc} alt class="item__img" />
@@ -125,10 +125,10 @@ portfolio.forEach(function(category, i) {
                 <p class="item__content">{item.description}</p>
               </div>
             </a>)
-          }
+          })
         }
       </SiteGridContent>
       <div class="divider h" style="--s: 1000px;"></div>
-    }
+    })
   }
-</Layout> -->
+</Layout>
