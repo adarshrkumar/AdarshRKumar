@@ -38,24 +38,18 @@ $padding: 1rem;
 
     &__title, &__content {
         margin-block: 0;
+        text-align: center;
     }
 
     &__info, &__content {
         max-width: 100%;
     }
 
-    &__title {
-        text-align: center;
-    }
-
-    &__content {
+    &:is(:hover, :focus-visible) &__content {
+        text-wrap: nowrap;
         text-overflow: ellipsis;
-        .item:is(:hover, :focus-visible) & {
-            text-wrap: nowrap;
-            text-overflow: ellipsis;
-        }
-        .item:not(:is(:hover, :focus-visible)) & {
-            text-wrap: wrap;
-        }
+    }
+    &:not(:is(:hover, :focus-visible)) &__content {
+        text-wrap: wrap;
     }
 }
