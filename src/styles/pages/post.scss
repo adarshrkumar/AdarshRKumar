@@ -1,9 +1,12 @@
 .post, .page-title:has(+ .post) {
+    --pad: 1rem;
     --bor: 0.09375rem solid var(--color);
 
     margin-inline: auto;
     width: clamp(500px, 100%, 800px);
+}
 
+.page-title:has(+ .post), .post :is(.info, .content) {
     border-left: var(--bor);
     border-right: var(--bor);
 }
@@ -18,7 +21,7 @@
     flex-direction: column;
 
     .info, .content {
-        padding: 8px;
+        padding: var(--pad);
     }
     .content {
         flex: 1;
