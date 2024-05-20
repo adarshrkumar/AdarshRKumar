@@ -25,6 +25,8 @@
     }
     .postContent {
         flex: 1;
+        margin-bottom: var(--pad);
+        border-bottom: var(--bor);
 
         & :first-child {
             margin-top: 0;
