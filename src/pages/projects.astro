@@ -89,25 +89,25 @@ var projects = [
   }
 ]
 
-portfolio.forEach(category, i) {
-  category.items.forEach(function(item, i) {
-    if (!!item.class === false) item.class = ''
-    var classList = ['item']
-    if (item.class.includes(' ')) {
-      item.class.split(' ').forEach(function(i) {
-        classList.push(i)
-      })
-    }
-    var className = classList.join(' ')
-    portfolio[i].items[i2].class = className
+// portfolio.forEach(category, i) {
+//   category.items.forEach(function(item, i) {
+//     if (!!item.class === false) item.class = ''
+//     var classList = ['item']
+//     if (item.class.includes(' ')) {
+//       item.class.split(' ').forEach(function(i) {
+//         classList.push(i)
+//       })
+//     }
+//     var className = classList.join(' ')
+//     portfolio[i].items[i2].class = className
 
-    var target = '_self'
-    if (!!item.link.target) {
-      target = item.link.target
-    }
-    portfolio[i].items[i2].link.target = target
-  })
-}
+//     var target = '_self'
+//     if (!!item.link.target) {
+//       target = item.link.target
+//     }
+//     portfolio[i].items[i2].link.target = target
+//   })
+// }
 
 ---
 <!-- <Layout title="Projects">
