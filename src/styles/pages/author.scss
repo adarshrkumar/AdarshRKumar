@@ -36,17 +36,20 @@
 
         border-radius: 50%;
 
-        overflow: hidden;
-
         &::after {
             content: '';
+
             position: absolute;
             inset: 0;
+            
+            aspect-ratio: 1;
+
             background-color: var(--color);
-            opacity: 0.1;
+            opacity: 0;//.1;
         }
 
         &__inner {
+            border-radius: 50%;
             pointer-events: none;
         }
     }
