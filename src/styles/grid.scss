@@ -41,13 +41,16 @@ $padding: 1rem;
         border-radius: #{$gap - $padding};
     }
 
+    &__info {
+        overflow-x: hidden;
+    }
+
     &__title, &__content {
         margin-block: 0;
     }
 
     &__info, &__content {
         max-width: 100%;
-        overflow-x: hidden;
     }
 
     &__title {
