@@ -33,6 +33,7 @@ $padding: 1rem;
     }
 
     &__info {
+        width: 100%;
         overflow-x: hidden;
         display: grid;
     }
@@ -43,11 +44,8 @@ $padding: 1rem;
         text-align: center;
     }
 
-    &__info, &__content {
-        max-width: 100%;
-    }
-
     &__content {
+        max-width: 100%;
         flex: 1;
     }
 
