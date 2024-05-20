@@ -5,7 +5,7 @@ import '../styles/pages/post.scss'
 import Layout from '../layouts/Layout.astro'
 
 ---
-<Layout title="Blog" pageType="post" classItems="ignorePadding">
+<Layout title="Blog" pageType="post" classItems="ignorePadding" inlineStyles="display: none;">
     <section class="info">
         <a href="/authors" class="author">See All Authors</a> | <span class="date">Today</span>
     </section>
@@ -43,6 +43,7 @@ import Layout from '../layouts/Layout.astro'
             infoEle.querySelector('.date').textContent = post.date
 
             postEle.querySelector('.postContent').innerHTML = post.content
+            postEle.style.display = ''
         }
         else location.href = '/blog'
 
