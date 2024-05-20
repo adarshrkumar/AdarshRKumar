@@ -22,5 +22,7 @@
     .pfp {
         aspect-ratio: 1;
         border-radius: 50%;
+
+        width: clamp(100px, 100%, 150px);
     }
 }
