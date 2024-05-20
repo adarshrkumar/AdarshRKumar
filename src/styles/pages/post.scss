@@ -1,12 +1,9 @@
 .post, .page-title:has(+ .post) {
-    --padding: 1rem;
-    --bor: 1px solid var(--bdr-clr, var(--color));
-    
+    --bor: 0.09375rem solid var(--color);
+
     margin-inline: auto;
     width: clamp(500px, 100%, 800px);
-}
 
-.page-title:has(+ .post), .post :is(.info, .pageContent) {
     border-left: var(--bor);
     border-right: var(--bor);
 }
@@ -19,35 +16,15 @@
 .post {
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
 
-    .info, .postContent {
-        padding: var(--padding);
+    .info, .content {
+        padding: 8px;
     }
-
-    .postContent {
-        margin-bottom: var(--padding);
+    .content {
         flex: 1;
 
-        * {
-            text-wrap: wrap;
-        }
-
-        & > :first-child {
+        & :first-child {
             margin-top: 0;
         }
-        & > :last-child {
-            margin-bottom: 0;
-        }
     }
 }
-<<<<<<< HEAD
-
-=======
-
-.post .postContent {
-    code {
-        display: inline-block;
-    }
-}
->>>>>>> b13ac2a4a8216d078b5dc18a7ffdddbd1889fe2a
