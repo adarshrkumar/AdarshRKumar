@@ -38,10 +38,13 @@ items.forEach(function(item, i) {
 })
 
 var buttonsStr = ''
-items.forEach(function(item, i) {
-    buttonsStr += `<button url=${item.url} class="nav-btn" onclick="goToUrl(this)">${item.name}</button>`
-})
 
 ---
-<nav class="nav" data-direction={direction} data-varient={varient} set:html={buttonsStr}></nav>
+<nav class="nav" data-direction={direction} data-varient={varient}>
+    {
+        items.map((item, i) => {
+            <button url={item.url} class="nav-btn" onclick="goToUrl(this)">{item.name}</button>
+        })
+    }
+</nav>
 <Script name="nav">
