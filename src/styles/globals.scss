@@ -68,7 +68,7 @@ html {
 
 [data-theme="light"] {
     --bg: #{$light-bg};
-    --color: #{$light-border};
+    --color: #{$light-color};
     --nav-btn-hover: #{$light-nav-hover};
     color-scheme: light;
 }
