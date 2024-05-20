@@ -89,7 +89,7 @@ var projects = [
   }
 ]
 
-portfolio.forEach(function(category, i) {
+projects.forEach(function(category, i) {
   category.items.forEach(function(item, i) {
     if (!!item.class === false) item.class = ''
     var classList = ['item']
@@ -99,13 +99,13 @@ portfolio.forEach(function(category, i) {
       })
     }
     var className = classList.join(' ')
-    portfolio[i].items[i2].class = className
+    projects[i].items[i2].class = className
 
     var target = '_self'
     if (!!item.link.target) {
       target = item.link.target
     }
-    portfolio[i].items[i2].link.target = target
+    projects[i].items[i2].link.target = target
   })
 })
 
