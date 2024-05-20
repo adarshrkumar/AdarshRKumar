@@ -43,6 +43,16 @@ import Layout from '../layouts/Layout.astro'
             nameEle.classList.add('name')
             nameEle.textContent = author.displayName
 
+            if (author.bio) {
+                var bio = author.bio
+                if (bio.includes('\n')) bio = bio.split('\n').join('<br>')
+
+                var bioEle = document.createElement('div')
+                bioEle.classList.add('bio')
+                bioEle.innerHTML = bio
+                authorEle.appendChild(bioEle)
+            }
+
             authorEle.appendChild(nameEle)
         }
         else location.href = '/blog'
