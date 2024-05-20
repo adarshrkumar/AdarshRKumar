@@ -20,9 +20,11 @@
     }
 
     .pfp {
-        aspect-ratio: 1;
-        border-radius: 50%;
-
         width: clamp(100px, 25%, 150px);
+        aspect-ratio: 1;
+        
+        border-radius: 50%;
+        overflow: hidden;
+
     }
 }
