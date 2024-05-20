@@ -179,15 +179,9 @@ hr[isDivider] {
     text-align: center;
 }
 
-h1, .heading-link {
-    font-size: 2.5rem;
-    text-decoration: none
-}
-
-h2 {
-    font-size: 2.5rem;
+h1, h2, h3, h4, h5, h6, .heading-link {
+    // font-size: 2.5rem;
     text-decoration: none;
-    margin-block: 1.1rem;
 }
 
 form {
