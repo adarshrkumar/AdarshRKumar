@@ -27,8 +27,6 @@ $dark-link-visited: #551A8B;
 
 
 * {
-    font-family: 'Montserrat', sans-serif;
-    // font-family: 'Inter', sans-serif;
     :not(nav *) {
         box-sizing: border-box;
     }
@@ -37,11 +35,14 @@ $dark-link-visited: #551A8B;
 :root {
     --logo-a-color: hsl(195, 12%, 94%);
     --active-link: hsl(352, 68%, 77%);
-
+    
     --bg: #{$light-bg};
     --color: #{$light-color};
     --middle-color: #{$middle-color};
     --nav-btn-hover: #{$light-nav-hover};
+    
+    font-family: 'Montserrat', sans-serif;
+    // font-family: 'Inter', sans-serif;
 }  
 
 :has(:target), html {
