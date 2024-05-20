@@ -28,6 +28,10 @@
         margin-bottom: var(--pad);
         border-bottom: var(--bor);
 
+        > * {
+            text-wrap: wrap;
+        }
+
         & :first-child {
             margin-top: 0;
         }
