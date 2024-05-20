@@ -1,9 +1,14 @@
 .post, .page-title:has(+ .post) {
     --padding: 1rem;
     --bor: 1px solid var(--color);
-
+    
     margin-inline: auto;
     width: clamp(500px, 100%, 800px);
+}
+
+.page-title:has(+ .post), .post :is(.info, .pageContent) {
+    border-left: var(--bor);
+    border-right: var(--bor);
 }
 
 .info {
@@ -18,8 +23,6 @@
 
     .info, .postContent {
         padding: var(--padding);
-        border-left: var(--bor);
-        border-right: var(--bor);
     }
 
     .postContent {
