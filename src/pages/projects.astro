@@ -90,12 +90,12 @@ var projects = [
 ]
 
 projects.forEach(function(category, i) {
-  category.items.forEach(function(item, i) {
+  category.items.forEach(function(item, i2) {
     if (!!item.class === false) item.class = ''
     var classList = ['item']
     if (item.class.includes(' ')) {
-      item.class.split(' ').forEach(function(i) {
-        classList.push(i)
+      item.class.split(' ').forEach(function(classItem) {
+        classList.push(classItem)
       })
     }
     var className = classList.join(' ')
