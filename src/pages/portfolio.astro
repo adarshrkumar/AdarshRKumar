@@ -35,23 +35,23 @@ var items = [
   // }, 
 ]
 
-items.forEach(function(item, i) {
-  if (!!item.class === false) item.class = ''
-  var classList = ['item']
-  if (item.class.includes(' ')) {
-    item.class.split(' ').forEach(function(i) {
-      classList.push(i)
-    })
-  }
-  var className = classList.join(' ')
-  item.class = className
+// items.forEach(function(item, i) {
+//   if (!!item.class === false) item.class = ''
+//   var classList = ['item']
+//   if (item.class.includes(' ')) {
+//     item.class.split(' ').forEach(function(i) {
+//       classList.push(i)
+//     })
+//   }
+//   var className = classList.join(' ')
+//   item.class = className
 
-  var target = '_self'
-  if (!!item.link.target) {
-    target = item.link.target
-  }
-  item.link.target = target
-})
+//   var target = '_self'
+//   if (!!item.link.target) {
+//     target = item.link.target
+//   }
+//   item.link.target = target
+// })
 
 ---
 <!-- <Layout title="Portfolio">
