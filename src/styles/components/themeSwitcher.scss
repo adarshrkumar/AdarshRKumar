@@ -6,8 +6,8 @@
     --padding: calc((var(--size) - var(--icon-size))/2);
     
     position: fixed;
-    top: var(--pos);
-    right: var(--pos);
+    bottom: var(--pos);
+    left: var(--pos);
 
     box-sizing: border-box;
     padding: var(--padding);
