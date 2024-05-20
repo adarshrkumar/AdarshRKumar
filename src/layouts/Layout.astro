@@ -54,7 +54,9 @@ if (className.startsWith(' ')) className = className.substring(1)
     <Header siteDomain={sURL} logo={logoSRC} />
     <div class="wrapper">
       <main class="content" id="content">
-        <h1 class="page-title">{pTitle}</h1>
+        {
+          pageType !== 'home' ? <h1 class="page-title">{pTitle}</h1> : ''
+        }
         <div class={`page-area ${className}`} style={inlineStyles}>
           <slot />
         </div>
