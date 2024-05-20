@@ -25,11 +25,18 @@
     }
 
     .pfp {
+        position: relative;
+
         width: clamp(50px, 25%, 100px);
         aspect-ratio: 1;
 
         border-radius: 50%;
         overflow: hidden;
 
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
     }
 }
