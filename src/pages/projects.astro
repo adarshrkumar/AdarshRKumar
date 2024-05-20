@@ -114,9 +114,9 @@ projects.forEach(function(category, i) {
   {
     projects.map((category, i) => {
       <SiteGridContent>
-        <h3>{project.name}</h3>
+        <h3>{category.name}</h3>
         {
-          project.items.map((item, i2) => {
+          category.items.map((item, i2) => {
             var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
             return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
               <img src={imgSrc} alt class="item__img" />
