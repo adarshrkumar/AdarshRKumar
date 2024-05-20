@@ -119,7 +119,7 @@ projects.forEach(function(category, i) {
           category.items.map((item, i2) => {
             var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
             return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
-              <img src={imgSrc} alt class="item__img" />
+              <img src={src} alt class="item__img" />
               <div>
                 <h3 class="item__title">{item.name}</h3>
                 <p class="item__content">{item.description}</p>
