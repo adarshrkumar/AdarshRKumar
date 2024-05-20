@@ -7,7 +7,7 @@
     position: sticky;
     top: 0;
 
-    padding: var(--gap);
+    padding-block: var(--gap);
 
     max-height: 100dvh;
 
@@ -18,7 +18,8 @@
     
     border-left: solid 1px var(--bdr-clr, var(--color));
 
-    & > * {
+    & > *:not(.divider) {
+        padding-inline: var(--gap);
         height: fit-content;
     }
 }
