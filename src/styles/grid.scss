@@ -47,6 +47,7 @@ $padding: 1rem;
 
     &__info, &__content {
         max-width: 100%;
+        overflow-x: hidden;
     }
 
     &__title {
@@ -56,7 +57,5 @@ $padding: 1rem;
     &__content {
         width: -moz-fit-content;
         width: fit-content;
-        
-        overflow-x: hidden;
     }
 }
