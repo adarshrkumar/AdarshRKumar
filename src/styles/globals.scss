@@ -74,6 +74,7 @@ html {
 [data-theme="dark"] {
     --bg: #{$dark-bg};
     --color: #{$dark-color};
+    --bdr-clr: #{$dark-color};
     --nav-btn-hover: #{$dark-nav-hover};
     color-scheme: dark;
 }
