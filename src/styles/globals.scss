@@ -55,8 +55,9 @@ $dark-link-visited: #551A8B;
 @media (preferes-color-scheme: dark) {
     :root {
         --bg: #{$dark-bg};
+        --btn-clr: #{$dark-color};
         --color: #{$dark-color};
-        --bdr-clr: #{$dark-color};
+        --bdr-clr: #{$dark-border};
         --nav-btn-hover: #{$dark-nav-hover};
     }
 }
@@ -67,14 +68,15 @@ html {
 
 [data-theme="light"] {
     --bg: #{$light-bg};
-    --color: #{$light-color};
+    --color: #{$light-border};
     --nav-btn-hover: #{$light-nav-hover};
     color-scheme: light;
 }
 [data-theme="dark"] {
     --bg: #{$dark-bg};
+    --btn-clr: #{$dark-color};
     --color: #{$dark-color};
-    --bdr-clr: #{$dark-color};
+    --bdr-clr: #{$dark-border};
     --nav-btn-hover: #{$dark-nav-hover};
     color-scheme: dark;
 }
