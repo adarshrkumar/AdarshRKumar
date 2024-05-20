@@ -34,8 +34,9 @@ switch (pageType) {
     break;
 }
       
-var className = `${classItems} main-content`
+var className = `page-area main-content ${classItems}`
 if (className.startsWith(' ')) className = className.substring(1)
+if (className.endsWith(' ')) className = className.substring(-1)
 ---
 
 <!DOCTYPE html>
@@ -57,7 +58,7 @@ if (className.startsWith(' ')) className = className.substring(1)
         {
           pageType !== 'home' ? <h1 class="page-title">{pTitle}</h1> : ''
         }
-        <div class={`page-area ${className}`} style={inlineStyles}>
+        <div class={className} style={inlineStyles}>
           <slot />
         </div>
       </main>
