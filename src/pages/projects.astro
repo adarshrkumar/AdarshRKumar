@@ -113,7 +113,7 @@ projects.forEach(function(category, i) {
 <Layout title="Projects">
   {
     projects.map((category, i) => {
-      <SiteGridContent>
+      <SiteGridContent classItems="wrap">
         <h3>{category.name}</h3>
         {
           category.items.map((item, i2) => {

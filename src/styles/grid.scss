@@ -48,8 +48,13 @@ $padding: 1rem;
         width: -moz-fit-content;
         width: fit-content;
         
-        text-wrap: nowrap;
-        text-overflow: ellipsis;
+        :not([wrap]) & {
+            text-wrap: nowrap;
+        }
+        [wrap] & {
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+        }
         overflow-x: hidden;
     }
 }
