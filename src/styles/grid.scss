@@ -12,7 +12,7 @@ $padding: 1rem;
         text-wrap: nowrap;
     }
     &[wrap] .item .item__info .item__content {
-        text-wrap: nowrap;
+        text-wrap: wrap;
         text-overflow: ellipsis;
     }
 
