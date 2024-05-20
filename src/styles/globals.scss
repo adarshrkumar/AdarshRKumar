@@ -26,11 +26,11 @@ $dark-link-color: #0000EE;
 $dark-link-visited: #551A8B;
 
 
-* {
+// * {
     :not(nav *) {
         box-sizing: border-box;
     }
-}
+// }
 
 :root {
     --logo-a-color: hsl(195, 12%, 94%);
