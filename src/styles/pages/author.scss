@@ -15,6 +15,11 @@
 
     border-radius: 32px;
 
+    & > * {
+        margin-inline: auto;
+        width: fit-content;
+    }
+
     .name {
         text-align: center;
     }
@@ -22,7 +27,7 @@
     .pfp {
         width: clamp(100px, 25%, 150px);
         aspect-ratio: 1;
-        
+
         border-radius: 50%;
         overflow: hidden;
 
