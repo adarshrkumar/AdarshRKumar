@@ -1,0 +1,6 @@
+.hero {
+    & > * {
+        width: fit-content;
+        margin-inline: auto;
+    }
+}
