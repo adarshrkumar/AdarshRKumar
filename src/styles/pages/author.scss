@@ -37,7 +37,6 @@
         border-radius: 50%;
 
         overflow: hidden;
-        pointer-events: none;
 
         &::after {
             content: '';
@@ -45,6 +44,10 @@
             inset: 0;
             background-color: var(--color);
             opacity: 0.1;
+        }
+
+        &__inner {
+            pointer-events: none;
         }
     }
 }
