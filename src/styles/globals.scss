@@ -138,7 +138,9 @@ img {
 }
 
 .main-content {
-    flex: 1;
+    &:not(.author) {
+        flex: 1;
+    }
 
     box-sizing: border-box;
     max-width: 100%;
