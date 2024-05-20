@@ -54,6 +54,7 @@ import Layout from '../layouts/Layout.astro'
                 authorEle.appendChild(bioEle)
             }
             
+            document.title = `${author.displayName} | ${document.title}`
             authorEle.style.display = ''
         }
         else location.href = '/blog'
