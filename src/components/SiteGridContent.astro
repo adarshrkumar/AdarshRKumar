@@ -5,10 +5,7 @@ import Script from '../utils/script.astro'
 
 var { classItems } = Astro.props
 
-classItems += ' grid'
-if (classItems.startsWith(' ')) classItems = classItemse.slice(1)
-
 ---
-<section class={classItems}>
+<section class={`grid ${classItem}`}>
     <slot />
 </section>
