@@ -33,9 +33,12 @@ $padding: 1rem;
     }
 
     &__info {
-        width: 100%;
         overflow-x: hidden;
         display: grid;
+    }
+
+    &__info, &__content {
+        width: 100%;
     }
 
     &__title, &__content {
@@ -45,8 +48,7 @@ $padding: 1rem;
     }
 
     &__content {
-        max-width: 100%;
-        flex: 1;
+        // flex: 1;
     }
 
     &:is(:hover, :focus-visible) &__content {
