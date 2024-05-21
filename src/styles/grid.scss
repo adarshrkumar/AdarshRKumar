@@ -47,9 +47,9 @@ $padding: 1rem;
         text-align: center;
     }
 
-    &__content {
-        // flex: 1;
-    }
+    // &__content {
+    //     flex: 1;
+    // }
 
     &:is(:hover, :focus-visible) &__content {
         text-wrap: wrap;
