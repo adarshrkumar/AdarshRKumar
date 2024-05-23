@@ -43,6 +43,7 @@ $padding: 1rem;
 
     &__title, &__content {
         margin-block: 0;
+        max-width: 100%;
         height: fit-content;
         text-align: center;
     }
