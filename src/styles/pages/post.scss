@@ -7,10 +7,9 @@
 }
 
 .page-title:has(+ .post), .post :is(.info, .postContent) {
-    border-left: var(--bor);
-
     @media (width > 1012px) {
         & {
+            border-left: var(--bor);
             border-right: var(--bor);
         }
     }
