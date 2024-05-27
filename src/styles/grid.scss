@@ -47,15 +47,8 @@ $padding: 1rem;
         text-align: center;
     }
 
-    // &__content {
-    //     flex: 1;
-    // }
-
-    &:is(:hover, :focus-visible) &__content {
+    &__content {
         text-wrap: wrap;
-    }
-    &:not(:is(:hover, :focus-visible)) &__content {
-        text-wrap: nowrap;
         text-overflow: ellipsis;
     }
 }
