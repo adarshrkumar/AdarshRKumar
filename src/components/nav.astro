@@ -7,34 +7,6 @@ var { siteDomain, items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
 items.forEach(function(item, i) {
-    var name = item.name
-    var url = item.url
-    
-    var target = item.target
-    if (!!target === false) {
-        target = '_self'
-    }
-
-    if (!!url) {
-        if (url.includes('://')) {
-            var domain = url.split('://')[1]
-            if (domain.includes('/')) domain = domain.split('/')[0]
-            if (domain !== siteDomain) {
-                target = '_black'
-            }
-        }
-    }
-    else if (!!url === false) {
-        url = '/'
-
-        if (name !== 'Home') {
-            url += name.toLowerCase()
-        }
-    }
-
-    item.url = url
-    item.target = target
-    items[i] = item
 })
 
 var buttonsStr = ''
@@ -42,8 +14,39 @@ var buttonsStr = ''
 ---
 <nav class="nav" data-direction={direction} data-varient={varient}>
     {
+        JSON.stringify(items)
+    }
+    {
         items.map((item, i) => {
-            <a href={item.url} class="nav-btn" target={item.target || '_self'}>{item.name}</a>
+            var name = item.name
+            var url = item.url
+            
+            var target = item.target
+            if (!!target === false) {
+                target = '_self'
+            }
+
+            if (!!url) {
+                if (url.includes('://')) {
+                    var domain = url.split('://')[1]
+                    if (domain.includes('/')) domain = domain.split('/')[0]
+                    if (domain !== siteDomain) {
+                        target = '_black'
+                    }
+                }
+            }
+            else if (!!url === false) {
+                url = '/'
+
+                if (name !== 'Home') {
+                    url += name.toLowerCase()
+                }
+            }
+
+            item.url = url
+            item.target = target
+            
+            return <a href={item.url} class="nav-btn" target={item.target || '_self'}>{item.name}</a>
         })
     }
 </nav>
