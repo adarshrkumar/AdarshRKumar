@@ -3,6 +3,9 @@
     flex: 1;
     height: 100%;
   }  
+  &:not([data-varient="header"]) {
+    justify-content: center;
+  }
   
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +17,6 @@
     flex-direction: column;
   }
 
-  justify-content: center;
   gap: 15px;
 }
   
