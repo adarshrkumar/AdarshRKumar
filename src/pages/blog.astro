@@ -24,9 +24,6 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
 <Layout title="Blog">
   <SiteGridContent classItems="posts">
     {
-      posts
-    }
-    {
       posts.map(function(post, i) {
         if (!post.image) {
           post.image = {}
