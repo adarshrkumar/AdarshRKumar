@@ -17,7 +17,7 @@ var location = {
 
 await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
   .then(response => response.json())
-  .then(json => console.log(json); posts = json)
+  .then(json => {console.log(json); posts = json})
 //   .catch(err => console.error(err))
 
 ---
