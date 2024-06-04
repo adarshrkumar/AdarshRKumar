@@ -10,7 +10,7 @@ html {
     width: clamp(500px, 100%, 800px);
 }
 
-.page-title:has(+ .post), .post :is(.info, .postContent) {
+.page-title:has(+ .post), .post :is(.info, .scroll-percentage, .postContent) {
     @media (width > 1012px) {
         & {
             border-left: var(--bor);
@@ -19,17 +19,20 @@ html {
     }
 }
 
-.info {
-    margin: 0;
-    border-bottom: var(--bor);
-}
-
 .post {
     display: flex;
     flex-direction: column;
 
-    .info, .postContent {
+    .info, .scroll-percentage, .postContent {
         padding: var(--pad);
+    }
+
+    .info {
+        margin: 0;
+    }
+    
+    .info, .scroll-percentage {
+        border-bottom: var(--bor);
     }
 
     .scroll-percentage {
