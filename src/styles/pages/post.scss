@@ -1,3 +1,7 @@
+html {
+	scroll-timeline: --page-scroll block;
+}
+
 .post, .page-title:has(+ .post) {
     --pad: 1rem;
     --bor: 0.09375rem solid var(--color);
@@ -27,6 +31,43 @@
     .info, .postContent {
         padding: var(--pad);
     }
+
+    .scroll-percentage {
+        --w: 0;
+    
+        position: sticky;
+        top: 0;
+        left: 0;
+    
+        box-sizing: border-box;
+    
+        height: 10px;
+    
+        background-color: lightgray;
+    
+        border-radius: 100dvw;
+    
+        overflow: hidden;
+        isolation: isolate;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+    
+            /* width: 0; */
+            scale: 0 1;
+            transform-origin: left;
+            height: 100%;
+    
+            background-color: gray;
+    
+            animation: position auto linear;
+            animation-timeline: --page-scroll;
+            animation-range: normal; /* Equivalent to normal normal */
+        }
+    }
+    
     .postContent {
         flex: 1;
         margin-bottom: var(--pad);
@@ -46,5 +87,14 @@
                 margin-bottom: 0;
             }
         }
+    }
+}
+    
+@keyframes position {
+    from {
+        scale: 0 1;
+    }
+    to {
+        scale: 1 1;
     }
 }
