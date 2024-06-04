@@ -10,7 +10,7 @@ html {
     width: clamp(500px, 100%, 800px);
 }
 
-.page-title:has(+ .post), .post :is(.info, .postContent) {
+.page-title:has(+ .post), .post :is(.info, .post-area) {
     @media (width > 1012px) {
         & {
             border-left: var(--bor);
@@ -23,7 +23,7 @@ html {
     display: flex;
     flex-direction: column;
 
-    .info, .postContent {
+    .info, .post-area {
         padding: var(--pad);
     }
 
