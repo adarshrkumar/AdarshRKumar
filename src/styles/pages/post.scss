@@ -38,30 +38,28 @@ html {
     .scroll-percentage {
         --w: 0;
     
-        position: sticky;
-        top: 0;
-        left: 0;
+        position: relative;
     
-        box-sizing: border-box;
+        // box-sizing: border-box;
     
         height: 10px;
-    
-        background-color: lightgray;
     
         border-radius: 100dvw;
     
         overflow: hidden;
         isolation: isolate;
     
-        &::after {
+        &::before, &::after {
             content: '';
             position: absolute;
             inset: 0;
-    
-            /* width: 0; */
+        }
+        &::before {
+            background-color: lightgray;
+        }
+        &::after {
             scale: 0 1;
             transform-origin: left;
-            height: 100%;
     
             background-color: gray;
     
