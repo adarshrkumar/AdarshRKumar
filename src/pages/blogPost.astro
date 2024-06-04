@@ -6,12 +6,11 @@ import Layout from '../layouts/Layout.astro'
 
 ---
 <Layout title="Blog" pageType="post" classItems="ignorePadding" inlineStyles="display: none;">
-    <div class="scroll-percentage"></div>
     <section class="info">
         <a href="/authors" class="author">See All Authors</a> | <span class="date">Today</span>
     </section>
     <article class="postContent">
-
+        <div class="scroll-percentage"></div>
     </article>
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
@@ -43,7 +42,7 @@ import Layout from '../layouts/Layout.astro'
 
             infoEle.querySelector('.date').textContent = post.date
 
-            postEle.querySelector('.postContent').innerHTML = post.content
+            postEle.querySelector('.postContent').innerHTML += post.content
             postEle.style.display = ''
         }
         else location.href = '/blog'

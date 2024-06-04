@@ -44,9 +44,6 @@ html {
     
         height: 10px;
     
-        overflow: hidden;
-        isolation: isolate;
-    
         &::before, &::after {
             content: '';
             position: absolute;
