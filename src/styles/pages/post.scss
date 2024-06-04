@@ -29,12 +29,9 @@ html {
 
     .info {
         margin: 0;
-    }
-    
-    .info, .scroll-percentage {
         border-bottom: var(--bor);
     }
-
+    
     .scroll-percentage {
         --w: 0;
     
