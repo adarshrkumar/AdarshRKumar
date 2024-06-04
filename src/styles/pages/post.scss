@@ -53,6 +53,8 @@ html {
         }
         &::before {
             background-color: lightgray;
+
+            box-shadow: 0 calc(var(--h)/2) calc(var(--h)/2) 0 white;
         }
         &::after {
             scale: 0 1;
