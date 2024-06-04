@@ -34,22 +34,27 @@ html {
     
     .scroll-percentage {
         --w: 0;
+        --h: 10px;
     
-        position: relative;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
     
-        margin-bottom: var(--pad);
-        height: 10px;
+        height: calc(var(--h)*2);
     
-        background-color: lightgray;
-
-        border-radius: 100dvw;
-        overflow: hidden;
-        
-        &::after {
+        &::before, &::after {
             content: '';
             position: absolute;
             inset: 0;
 
+            height: var(--h);
+            border-radius: 100dvw;
+        }
+        &::before {
+            background-color: lightgray;
+        }
+        &::after {
             scale: 0 1;
             transform-origin: left;
     
@@ -61,23 +66,25 @@ html {
         }
     }
     
-    .postContent {
+    .post-area {
         flex: 1;
         margin-bottom: var(--pad);
         border-bottom: var(--bor);
 
-        > * {
-            text-wrap: wrap;
-        }
-
-        > :first-child {
-            &, > :first-child {
-                margin-top: 0;
+        .post-content {
+            > * {
+                text-wrap: wrap;
             }
-        }
-        > :last-child {
-            &, > :last-child {
-                margin-bottom: 0;
+    
+            > :first-child {
+                &, > :first-child {
+                    margin-top: 0;
+                }
+            }
+            > :last-child {
+                &, > :last-child {
+                    margin-bottom: 0;
+                }
             }
         }
     }
