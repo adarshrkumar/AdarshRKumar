@@ -9,9 +9,12 @@ import Layout from '../layouts/Layout.astro'
     <section class="info">
         <a href="/authors" class="author">See All Authors</a> | <span class="date">Today</span>
     </section>
-    <article class="postContent">
+    <section class="post-area">
         <div class="scroll-percentage"></div>
-    </article>
+        <article class="post-content">
+
+        </article>
+    </section>
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const postId = urlSearchParams.get('id');
@@ -42,7 +45,7 @@ import Layout from '../layouts/Layout.astro'
 
             infoEle.querySelector('.date').textContent = post.date
 
-            postEle.querySelector('.postContent').innerHTML += post.content
+            postEle.querySelector('.post-content').innerHTML = post.content
             postEle.style.display = ''
         }
         else location.href = '/blog'
