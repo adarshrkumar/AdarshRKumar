@@ -1,11 +1,9 @@
 .nav {
-  &:not([data-varient="sidebar"]) {
+  &[data-varient="sidebar"] {
     flex: 1;
     height: 100%;
-  }  
-  &:not([data-varient="header"]) {
     justify-content: center;
-  }
+  }  
   
   display: flex;
   flex-wrap: wrap;
