@@ -57,7 +57,7 @@ html {
             box-shadow: 0 calc(var(--h)/2) calc(var(--h)/2) 0 white;
         }
         &::after {
-            scale: 0 1;
+            width: 0;
             transform-origin: left;
     
             background-color: gray;
@@ -94,9 +94,9 @@ html {
     
 @keyframes position {
     from {
-        scale: 0 1;
+        width: 0;
     }
     to {
-        scale: 1 1;
+        width: 100%;
     }
 }
