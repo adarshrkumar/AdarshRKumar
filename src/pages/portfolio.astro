@@ -58,7 +58,7 @@ items.forEach(function(item, i) {
   <SiteGridContent classItems="portfolio wrap">
       {
         items.map((item, i) => {
-          var src = `https://image.thum.io/get/maxAge/12/width/${512}/${item.link.url}`
+          var src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(item.link.url)}&viewport_width=${512}&viewport_height=${512}`
           return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
             <img src={src} alt class="item__img" />
             <div class="item__info">
