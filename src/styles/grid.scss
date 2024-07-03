@@ -29,6 +29,7 @@ $padding: 1rem;
 
     &__img {
         width: 100%;
+        aspect-ratio: 1;
         border-radius: #{$gap - $padding};
     }
 
