@@ -17,8 +17,12 @@ var navItems = [
 ]
 
 ---
-<header id="header">
+<header id="header" class="header">
     <a class="logo" href="/" style={`background-image: url('${logo}');`}></a>
     <Nav siteDomain={siteDomain} items={navItems} varient="header" />
     <ThemeSwitcher defaultTheme="system"/>
 </header>
+<script>
+    var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true' ? true : false
+    if (hideHeader) document.querySelector('.header').style.display = 'none'
+</script>
