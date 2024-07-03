@@ -35,6 +35,17 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
         if (post.textContent) {
           if (post.textContent.includes('\n')) post.textContent = post.textContent.split('\n').join(' ')
           if (post.textContent.includes('  ')) post.textContent = post.textContent.split('  ').join(' ')
+          
+          post.previewContent = post.textContent
+          if (post.previewContent.length > 50) post.previewContent = post.previewContent.slice(0, 50)
+          while (
+            post.previewContent.endsWith(' ') || 
+            post.previewContent.endsWith(',') || 
+            post.previewContent.endsWith(':') || 
+            post.previewContent.endsWith('(') || 
+            post.previewContent.endsWith('[') || 
+            post.previewContent.endsWith('{')
+          ) post.previewContent = post.previewContent.slice(0, -1)
         }
         
         return (<a href={`/blogPost?id=${post.slug}`} class="item">
@@ -45,7 +56,7 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
                 !!post.title ? <h3 class="item__title">{post.title}</h3> : ''
               }
               {
-                !!post.textContent ? <p class="item__content">{post.textContent.includes(' ') ? post.textContent.split(' ').slice(0, 10).join(' ') : post.textContent}</p> : ''
+                !!post.textContent ? <p class="item__content">{post.previewContent}</p> : ''
               }
             </div> : ''
           }
