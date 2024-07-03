@@ -27,8 +27,9 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
       posts.map(function(post, i) {
         if (!post.image) {
           post.image = {}
-          var postUrl = `${location.protocol}//${location.host}/blogPost?id=${post.slug}`
-          post.image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${512}&viewport_height=${512}`
+          var postUrl = `${location.protocol}//${location.host}/blogPost?id=${post.slug}&hideHeader=true`
+          var imageSize = 512
+          post.image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
           post.image.alt = `Screenshot of the "${post.title}" post.`
         }
         if (post.textContent) {
