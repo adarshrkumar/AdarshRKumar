@@ -56,7 +56,7 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
                 !!post.title ? <h3 class="item__title">{post.title}</h3> : ''
               }
               {
-                !!post.textContent ? <p class="item__content">{post.previewContent}</p> : ''
+                !!post.previewContent ? <p class="item__content">{post.previewContent}</p> : ''
               }
             </div> : ''
           }
