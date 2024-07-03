@@ -49,7 +49,7 @@ await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
         }
         
         return (<a href={`/blogPost?id=${post.slug}`} class="item">
-          <img class="item__img" src={post.image.src} alt={post.image.alt} />
+          <img class="item__img" src={post.image.src} alt={post.image.alt} style={`--placeholder: url('${post.image.src}&image_quality=${50}')`} />
           {
             !!(post.title || post.textContent) ? <div class="item__info">
               {

@@ -31,7 +31,7 @@ $padding: 1rem;
         width: 100%;
         aspect-ratio: 1;
 
-        background-image: url('/assets/placeholder.svg');
+        background-image: var(--placeholder, url('/assets/placeholder.svg'));
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
