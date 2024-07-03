@@ -30,6 +30,12 @@ $padding: 1rem;
     &__img {
         width: 100%;
         aspect-ratio: 1;
+
+        background-image: url('/assets/placeholder.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
         border-radius: #{$gap - $padding};
     }
 
