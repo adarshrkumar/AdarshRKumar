@@ -22,7 +22,7 @@ var posts = await Astro.glob('../../blog/posts/*.md')
     {
       posts.map(function(post, i) {
         var image = {}
-        var postUrl = `${location.protocol}//${location.host}/post.url?hideHeader=true`
+        var postUrl = `${location.protocol}//${location.host}/${post.url}?hideHeader=true`
         var imageSize = 512
         image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
         image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
