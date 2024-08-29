@@ -27,7 +27,7 @@ var posts = await Astro.glob('../../blog/posts/*.md')
         image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
         image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
 
-        var content = post.compiledContent()
+        var html = post.compiledContent()
         var textContent = htmlToPlainText(html)
         
         if (textContent.includes('\n')) textContent = textContent.split('\n').join(' ')
