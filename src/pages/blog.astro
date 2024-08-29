@@ -2,8 +2,6 @@
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
 
-import htmlToPlainText from '../../blog/htmlToPlainText.js'
-
 import Script from '../utils/script.astro'
 
 var site = Astro.site.toString()
@@ -27,9 +25,7 @@ var posts = await Astro.glob('../../blog/posts/*.md')
         image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
         image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
 
-        var html = post.compiledContent()
-        var textContent = htmlToPlainText(html)
-        
+        var textContent = post.rawContent()
         if (textContent.includes('\n')) textContent = textContent.split('\n').join(' ')
         if (textContent.includes('  ')) textContent = textContent.split('  ').join(' ')
         
