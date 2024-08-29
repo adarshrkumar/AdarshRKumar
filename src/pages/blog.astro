@@ -56,9 +56,9 @@ var posts = await Astro.glob('../../blog/posts/*.md')
         return (<a href={post.url} class="item">
           <img class="item__img" src={image.src} alt={image.alt} style={`--placeholder: url('${image.src}&image_quality=${50}')`} />
           {
-            !!(post.fromtmatter.title || textContent) ? <div class="item__info">
+            !!(post.frontmatter.title || textContent) ? <div class="item__info">
               {
-                !!post.fromtmatter.title ? <h3 class="item__title">{post.fromtmatter.title}</h3> : ''
+                !!post.frontmatter.title ? <h3 class="item__title">{post.frontmatter.title}</h3> : ''
               }
               {
                 !!previewContent ? <p class="item__content">{previewContent}</p> : ''
