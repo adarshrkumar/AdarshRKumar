@@ -1,0 +1,10 @@
+{
+    "general": {
+        "displayName": "General", 
+        "description": "All blog posts will go here!"
+    }, 
+    "projects": {
+        "displayName": "Projects", 
+        "description": "Any posts relates to my projects will be added to this category."
+    }
+}

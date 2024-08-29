@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
 
-import Script from '../utils/script.astro'
+import htmlToPlainText from '../../blog/htmlToPlainText.js'
 
-var posts = []
+import Script from '../utils/script.astro'
 
 var site = Astro.site.toString()
 if (site.includes('://')) site = site.split('://')[1]
@@ -15,48 +15,53 @@ var location = {
   host: site, 
 }
 
-await fetch('https://blogfeed.adarshrkumar.dev/getAllPosts')
-  .then(response => response.json())
-  .then(json => posts = json)
-  .catch(err => console.error(err))
-
+var posts = Astro.glob('../../blog/posts/*.md')
 ---
 <Layout title="Blog">
   <SiteGridContent classItems="posts">
     {
       posts.map(function(post, i) {
-        if (!post.image) {
-          post.image = {}
-          var postUrl = `${location.protocol}//${location.host}/blogPost?id=${post.slug}&hideHeader=true`
-          var imageSize = 512
-          post.image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-          post.image.alt = `Screenshot of the "${post.title}" post.`
-        }
-        if (post.textContent) {
-          if (post.textContent.includes('\n')) post.textContent = post.textContent.split('\n').join(' ')
-          if (post.textContent.includes('  ')) post.textContent = post.textContent.split('  ').join(' ')
-          
-          post.previewContent = post.textContent
-          if (post.previewContent.length > 50) post.previewContent = post.previewContent.slice(0, 50)
-          while (
-            post.previewContent.endsWith(' ') || 
-            post.previewContent.endsWith(',') || 
-            post.previewContent.endsWith(':') || 
-            post.previewContent.endsWith('(') || 
-            post.previewContent.endsWith('[') || 
-            post.previewContent.endsWith('{')
-          ) post.previewContent = post.previewContent.slice(0, -1)
-        }
+        var image = {}
+        var postUrl = `${location.protocol}//${location.host}/post.url?hideHeader=true`
+        var imageSize = 512
+        image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+        image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
+
+        var content = post.compiledContent()
+        var textContent = htmlToPlainText(html)
         
-        return (<a href={`/blogPost?id=${post.slug}`} class="item">
-          <img class="item__img" src={post.image.src} alt={post.image.alt} style={`--placeholder: url('${post.image.src}&image_quality=${50}')`} />
+        if (textContent.includes('\n')) textContent = textContent.split('\n').join(' ')
+        if (textContent.includes('  ')) textContent = textContent.split('  ').join(' ')
+        
+        var previewContent = textContent
+        if (previewContent.length > 50) previewContent = previewContent.slice(0, 50)
+        while (
+          previewContent.endsWith(' ') || 
+          previewContent.endsWith(',') || 
+          previewContent.endsWith(':') || 
+          previewContent.endsWith('(') || 
+          previewContent.endsWith('[') || 
+          previewContent.endsWith('{') || 
+          previewContent.endsWith('[') || 
+          previewContent.endsWith('|') || 
+          previewContent.endsWith('~') || 
+          previewContent.endsWith('@') || 
+          previewContent.endsWith('*') || 
+          previewContent.endsWith('+') || 
+          previewContent.endsWith('=') || 
+          previewContent.endsWith('-') || 
+          previewContent.endsWith('^')
+        ) previewContent = previewContent.slice(0, -1)
+        
+        return (<a href={post.url} class="item">
+          <img class="item__img" src={image.src} alt={image.alt} style={`--placeholder: url('${image.src}&image_quality=${50}')`} />
           {
-            !!(post.title || post.textContent) ? <div class="item__info">
+            !!(post.fromtmatter.title || textContent) ? <div class="item__info">
               {
-                !!post.title ? <h3 class="item__title">{post.title}</h3> : ''
+                !!post.fromtmatter.title ? <h3 class="item__title">{post.fromtmatter.title}</h3> : ''
               }
               {
-                !!post.previewContent ? <p class="item__content">{post.previewContent}</p> : ''
+                !!previewContent ? <p class="item__content">{previewContent}</p> : ''
               }
             </div> : ''
           }
