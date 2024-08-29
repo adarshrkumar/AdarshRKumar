@@ -15,8 +15,7 @@ var location = {
   host: site, 
 }
 
-var posts = Astro.glob('../../blog/posts/*.md')
-console.log(posts)
+var posts = await Astro.glob('../../blog/posts/*.md')
 ---
 <Layout title="Blog">
   <SiteGridContent classItems="posts">
