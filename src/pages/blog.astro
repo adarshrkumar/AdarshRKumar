@@ -25,7 +25,7 @@ var posts = await Astro.glob('../../blog/posts/*.md')
 
         var sRepls = ['`', '~', '!', '@', '#', '$', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '\\', '|', ';', ':', "'", '"', ',', '.', '<', '>', '/', '?']
         sRepls.forEach(r => {
-          if (slug.includes(r)) slug = slug.split(s).join('')
+          if (slug.includes(r)) slug = slug.split(r).join('')
         })
 
         if (slug.includes(' ')) slug = slug.split(' ').join('-')
