@@ -28,7 +28,7 @@ if (bio.includes('\n')) bio = bio.split('\n').join('<br>')
         </div>
      : '' }
     <h2 class="name">{author.displayName}</h2>
-    { !!author.bio : 
+    { !!author.bio ? 
         <div class="bio" set:html={bio}></div>
      : '' }
 </Layout>
