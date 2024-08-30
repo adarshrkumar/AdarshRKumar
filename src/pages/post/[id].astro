@@ -17,7 +17,7 @@ const { id } = Astro.params;
 import authors from '../../blog/authors.js'
 
 var posts = await Astro.glob('../../blog/posts/*.md')
-var post = const myFeaturedPost = posts.find(post => post.file.includes(id))
+var post = posts.find(post => post.file.includes(id))
 
 var author = post.frontmatter.author
 author = authors[author]
