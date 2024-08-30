@@ -26,7 +26,7 @@ author.username = authorUsername
 ---
 <Layout title={`${post.frontmatter.title} | Blog`} pageType="post" classItems="ignorePadding">
     <section class="info">
-        <a href=`/authorPage?id=${author.username}` class="author">{author.displayName}</a> | <span class="date">{post.frontmatter.date}</span>
+        <a href=`/author/${author.username}` class="author">{author.displayName}</a> | <span class="date">{post.frontmatter.date}</span>
     </section>
     <section class="post-area">
         <div class="scroll-percentage"></div>
