@@ -60,7 +60,7 @@ var posts = await Astro.glob('../../blog/posts/*.md')
           previewContent.endsWith('^')
         ) previewContent = previewContent.slice(0, -1)
         
-        return (<a href={`/post/${slug}`} class="item">
+        return (<a href={`/blogPost?id=${slug}`} class="item">
           <img class="item__img" src={image.src} alt={image.alt} style={`--placeholder: url('${image.src}&image_quality=${50}')`} />
           {
             !!(post.frontmatter.title || textContent) ? <div class="item__info">
