@@ -31,7 +31,7 @@ var posts = await Astro.glob('../../blog/posts/*.md')
         if (slug.includes(' ')) slug = slug.split(' ').join('-')
 
 
-        var postUrl = `${location.protocol}//${location.host}/post/${slug}?hideHeader=true`
+        var postUrl = `${location.protocol}//${location.host}/blogPost?id=${slug}&hideHeader=true`
         var imageSize = 512
         image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
         image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
