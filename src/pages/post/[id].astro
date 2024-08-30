@@ -2,7 +2,7 @@
 import '../styles/pages/[about, contact].scss'
 import '../styles/pages/post.scss'
 
-// import Layout from '../layouts/Layout.astro'
+import Layout from '../layouts/Layout.astro'
 
 export function getStaticPaths() {
     return [
@@ -14,13 +14,13 @@ export function getStaticPaths() {
 
 const { id } = Astro.params;
 
-import authors from '../../blog/authors.js'
+// import authors from '../../blog/authors.js'
 
-var posts = await Astro.glob('../../blog/posts/*.md')
-var post = posts.find(post => post.file.includes(id))
+// var posts = await Astro.glob('../../blog/posts/*.md')
+// var post = posts.find(post => post.file.includes(id))
 
-var author = post.frontmatter.author
-author = authors[author]
+// var author = post.frontmatter.author
+// author = authors[author]
 
 ---
 <!-- <Layout title={`${post.frontmatter.title} | Blog`} pageType="post" classItems="ignorePadding">
