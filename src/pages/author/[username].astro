@@ -1,0 +1,34 @@
+---
+import '../styles/pages/[about, contact].scss'
+import '../styles/pages/author.scss'
+
+import Layout from '../layouts/Layout.astro'
+
+export function getStaticPaths() {
+    return [
+        {params: {author: 'adarshrkumar'}}, 
+    ];
+}
+
+const { authorUsername } = Astro.params;
+
+import authors from '../../../blog/authors.js'
+
+var author = authors[author]
+author.username = authorUsername
+
+var bio = author.bio
+if (bio.includes('\n')) bio = bio.split('\n').join('<br>')
+
+---
+<Layout title={author.displayName} pageType="author" classItems="ignorePadding">
+    { !!author.hasPfp ? 
+        <div class="pfp">
+            <img class="pfp__inner" src={`${bfUrl}/author/${username}/pfp`} alt={`${username}'s Profile Picture`} />
+        </div>
+     : '' }
+    <h2 class="name">{author.displayName}</h2>
+    { !!author.bio : 
+        <div class="bio" set:html={bio}></div>
+     : '' }
+</Layout>
