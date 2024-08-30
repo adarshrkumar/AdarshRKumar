@@ -7,7 +7,7 @@ import Sidebar from '../components/sidebar.astro'
 import Script from '../utils/script.astro'
 
 var sName = 'Adarsh Kumar'
-var sURL = 'https://AdarshRKumar.dev'
+var sURL = Astro.site
 var logoSRC = '/assets/logo.jpg'
 
 var { title, pTitle, classItems, inlineStyles, pageType } = Astro.props;
@@ -55,7 +55,7 @@ if (className.endsWith(' ')) className = className.substring(-1)
     <div class="wrapper">
       <main class="content" id="content">
         {
-          pageType !== 'home' ? <h1 class="page-title">{pTitle}</h1> : ''
+          pageType === 'home' ? '' : <h1 class="page-title">{pTitle}</h1>
         }
         <div class={className} style={inlineStyles}>
           <slot />
