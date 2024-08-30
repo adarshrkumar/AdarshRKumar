@@ -4,6 +4,7 @@ import '../styles/pages/post.scss'
 
 import Layout from '../layouts/Layout.astro'
 
+var posts = await Astro.glob('../../blog/posts/*.md')
 ---
 <Layout title="Blog" pageType="post" classItems="ignorePadding" inlineStyles="display: none;">
     <section class="info">
@@ -17,11 +18,13 @@ import Layout from '../layouts/Layout.astro'
     </section>
     <script is:inline src="/eruda.js"></script>
     <script>
+        var posts = {posts}
+        console.log(posts)
+
         const urlSearchParams = new URLSearchParams(window.location.search);
         const postId = urlSearchParams.get('id');
 
-        var post = await Astro.glob(`../../blog/posts/${postId}.md`)
-
+        var post = [{}]
         if (post) {
             post = post[0]
             console.log(post)
