@@ -24,7 +24,7 @@ if (bio.includes('\n')) bio = bio.split('\n').join('<br>')
 <Layout title={author.displayName} pageType="author" classItems="ignorePadding">
     { !!author.hasPfp ? 
         <div class="pfp">
-            <img class="pfp__inner" src={`${bfUrl}/author/${username}/pfp`} alt={`${username}'s Profile Picture`} />
+            <img class="pfp__inner" src={`/profiles/${username}/imgs/${author.pfp.filename}`} alt={`${username}'s Profile Picture`} />
         </div>
      : '' }
     <h2 class="name">{author.displayName}</h2>
