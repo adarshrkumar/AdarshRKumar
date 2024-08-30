@@ -6,16 +6,16 @@ import Layout from '../../layouts/Layout.astro'
 
 export function getStaticPaths() {
     return [
-        {params: {author: 'adarshrkumar'}}, 
+        {params: {username: 'adarshrkumar'}}, 
     ];
 }
 
-const { authorUsername } = Astro.params;
+const { username } = Astro.params;
 
 import authors from '../../../blog/authors.js'
 
-var author = authors[author]
-author.username = authorUsername
+var author = authors[username]
+author.username = username
 
 var bio = author.bio
 if (bio.includes('\n')) bio = bio.split('\n').join('<br>')
