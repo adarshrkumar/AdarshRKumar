@@ -14,17 +14,17 @@ export function getStaticPaths() {
 
 const { id } = Astro.params;
 
-import authors from '../../blog/authors.js'
+// import authors from '../../blog/authors.js'
 
-var posts = await Astro.glob('../../blog/posts/*.md')
-var post = posts.find(post => post.file.includes(id))
+// var posts = await Astro.glob('../../blog/posts/*.md')
+// var post = posts.find(post => post.file.includes(id))
 
-var author = post.frontmatter.author
-author = authors[author]
+// var author = post.frontmatter.author
+// author = authors[author]
 
 
 ---
-<Layout title={`${post.frontmatter.title} | Blog`} pageType="post" classItems="ignorePadding">
+<!-- <Layout title={`${post.frontmatter.title} | Blog`} pageType="post" classItems="ignorePadding">
     <section class="info">
         <a href=`/authorPage?id=${author.id}` class="author">{author.displayName}</a> | <span class="date">{post.frontmatter.date}</span>
     </section>
@@ -32,4 +32,4 @@ author = authors[author]
         <div class="scroll-percentage"></div>
         <article class="post-content" set:html={post.compiledContent()}></article>
     </section>
-</Layout>
+</Layout> -->
