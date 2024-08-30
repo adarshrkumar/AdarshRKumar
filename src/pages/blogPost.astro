@@ -15,6 +15,7 @@ import Layout from '../layouts/Layout.astro'
 
         </article>
     </section>
+    <script is:inline src="/eruda.js"></script>
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const postId = urlSearchParams.get('id');
@@ -23,7 +24,7 @@ import Layout from '../layouts/Layout.astro'
 
         if (post) {
             post = post[0]
-            
+
             var postEle = document.querySelector('.post')
             var infoEle = postEle.querySelector('.info')
             var author = postFile.frontmatter.author
@@ -45,6 +46,5 @@ import Layout from '../layouts/Layout.astro'
             postEle.style.display = ''
         }
         else location.href = '/blog'
-
     </script>
 </Layout>
