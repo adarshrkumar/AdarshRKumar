@@ -16,6 +16,15 @@ $padding: 1rem;
         ) {
             grid-template-columns: repeat(#{$i + 2}, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
             grid-template-columns: repeat(#{$i + 2}, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+
+            .item {
+                &:first-child {
+                    grid-column: 2 / 3;
+                }
+                &:last-child {
+                    grid-column: -3 / -2;
+                }
+            }
         }
     }
 }
