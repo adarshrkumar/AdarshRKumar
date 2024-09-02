@@ -189,6 +189,18 @@ hr[isDivider] {
     text-align: center;
 }
 
+.section-title {
+    --bor: 1px solid var(--color);
+
+    margin: 0;
+    padding-block: 0.83rem;
+
+    border-top: var(--bor);
+    border-bottom: var(--bor);
+
+    text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6, .heading-link {
     // font-size: 2.5rem;
     text-decoration: none;
