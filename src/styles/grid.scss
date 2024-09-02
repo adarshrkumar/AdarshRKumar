@@ -8,7 +8,7 @@ $padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
 
-    @for $i from 1 through 2 {
+    @for $i from 1 through 3 {
         /* Only $i */
         &:has(
             .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child,
@@ -18,10 +18,16 @@ $padding: 1rem;
             grid-template-columns: repeat(#{$i + 2}, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
 
             .item {
-                &:first-child {
+                &:first-child:last-child {
+                    grid-column: 2 / -2;
+                }
+                &:first-child:not(:last-child) {
                     grid-column: 2 / 3;
                 }
-                &:last-child {
+                &:nth-child(2):not(:last-child) {
+                    grid-column: 2 / 3;
+                }
+                &:last-child:not(:first-child) {
                     grid-column: -3 / -2;
                 }
             }
