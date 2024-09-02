@@ -6,7 +6,7 @@ categories: ["general","projects"]
 ---
 Hello everyone,
 
-I was just wasting time, fiddling with [node.js](https://nodejs.org), and I thought i'd make a notebook application.  
+I was just wasting time, fiddling with [node.js](https://nodejs.org), and I thought I'd make a notebook application.  
 
 ## Process
 
