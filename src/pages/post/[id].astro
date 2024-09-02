@@ -20,7 +20,7 @@ var posts = await Astro.glob('../../../blog/posts/*.md')
 var post = posts.find(post => post.file.includes(id))
 
 var authorUsername = post.frontmatter.author
-var author = authors[author]
+var author = authors[authorUsername]
 author.username = authorUsername
 
 ---
