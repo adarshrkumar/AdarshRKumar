@@ -14,8 +14,8 @@ $padding: 1rem;
             .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child,
             .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child ~ .item
         ) {
-            grid-template-columns: repeat($i, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
-            grid-template-columns: repeat($i, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+            grid-template-columns: repeat(#{$i + 2}, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
+            grid-template-columns: repeat(#{$i + 2}, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
         }
     }
 }
