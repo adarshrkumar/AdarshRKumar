@@ -90,7 +90,7 @@ html {
             }
 
             pre.astro-code:has( > code) {
-                padding: 0.25rem;
+                padding: var(--pad);
             }
         }
     }
