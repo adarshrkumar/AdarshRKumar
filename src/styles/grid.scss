@@ -24,7 +24,7 @@ $padding: 1rem;
                 &:first-child:not(:last-child) {
                     grid-column: 2 / 3;
                 }
-                &:nth-child(2):not(:last-child) {
+                &:nth-child(2):not(:first-child, :last-child) {
                     grid-column: 2 / 3;
                 }
                 &:last-child:not(:first-child) {
