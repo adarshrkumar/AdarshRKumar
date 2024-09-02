@@ -5,17 +5,28 @@ import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
 
 var categories = [
-  { id: 'games', name: 'Title' },
-  { id: 'largeScale', name: 'Large Scale' },
-  { id: 'utilities', name: 'Utilities' },
 ]
-var projects = {}
+var projects = []
 
 var allProjects = await Astro.glob('../../work/projects/*/*.md')
 
-projects.games = await Astro.glob('../../work/projects/games/*.md')
-projects.largeScale = await Astro.glob('../../work/projects/large-scale/*.md')
-projects.utilities = await Astro.glob('../../work/projects/utilities/*.md')
+projects.push({
+  id: 'games', 
+  name: 'Title',
+  items: await Astro.glob('../../work/projects/games/*.md')
+})
+
+projects.push({
+  id: 'largeScale', 
+  name: 'Large Scale',
+  items: await Astro.glob('../../work/projects/large-scale/*.md')
+})
+
+projects.push({
+  id: 'utilities', 
+  name: 'Utilities',
+  items: await Astro.glob('../../work/projects/utilities/*.md')
+})
 
 ---
 <Layout title="Projects">
