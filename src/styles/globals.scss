@@ -145,6 +145,7 @@ img {
 }
 
 .main-content {
+    --pad: 1rem;
     &:not(.author) {
         flex: 1;
     }
@@ -152,7 +153,16 @@ img {
     box-sizing: border-box;
     max-width: 100%;
     &:not(.ignorePadding) {
-        padding: 8px;
+        padding: var(--pad);
+    }
+}
+
+.section {
+    &:not(.ignorePadding) {
+        padding: 0 var(--pad) var(--pad);
+        &:not(.section-title):first-of-type {
+            padding-top: var(--pad);
+        }
     }
 }
 
