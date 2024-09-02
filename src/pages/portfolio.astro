@@ -4,7 +4,7 @@ import '../styles/pages/portfolio.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
 
-var items = await Astro.Astro.glob('../../work/portfolio/*.md')
+var items = await Astro.glob('../../work/portfolio/*.md')
 ---
 <Layout title="Portfolio">
   <SiteGridContent classItems="portfolio wrap">
