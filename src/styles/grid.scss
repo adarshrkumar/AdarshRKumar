@@ -4,8 +4,8 @@ $padding: 1rem;
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
-    grid-template-columns: repeat(auto-fill, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+    grid-template-columns: repeat(auto-fill, minmax(0, 1fr)); /* Old Browsers (no "min()") */
+    grid-template-columns: repeat(auto-fill, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
 
     @for $i from 1 through 2 {
@@ -14,8 +14,8 @@ $padding: 1rem;
             .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child,
             .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child ~ .item
         ) {
-            grid-template-columns: repeat(#{$i + 2}, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
-            grid-template-columns: repeat(#{$i + 2}, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+            grid-template-columns: repeat(#{$i + 2}, minmax(0, 1fr)); /* Old Browsers (no "min()") */
+            grid-template-columns: repeat(#{$i + 2}, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
 
             .item {
                 &:first-child {
