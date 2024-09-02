@@ -11,8 +11,14 @@ import FeaturedArticles from '../components/featuredArticles.astro'
 ---
 <Layout title="" pageType="home">
     <Hero />
-    <PortfolioHighlights />
-    <FeaturedArticles />
+    <section class="section pHighlights">
+        <h2 class="section-title">Featured Portfolio Items</h2>
+        <PortfolioHighlights />
+    </section>
+    <section class="section bFeatures">
+        <h2 class="section-title">Featured Blog Posts</h2>
+        <FeaturedArticles />
+    </section>
     <!-- Latest Blog Posts -->
     <!-- Photography Showcase -->
     <!-- Skills Overview -->
