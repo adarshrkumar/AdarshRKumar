@@ -7,6 +7,23 @@ $padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fill, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
+
+    /* Only 2 */
+    &:has(
+        .item:nth-last-child(n + 2):nth-last-child(-n + 2):first-child,
+        .item:nth-last-child(n + 2):nth-last-child(-n + 2):first-child ~ .item
+    ) {
+        grid-template-columns: repeat(2, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
+        grid-template-columns: repeat(2, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+    }
+    /* Only 1 */
+    &:has(
+        .item:nth-last-child(n + 1):nth-last-child(-n + 1):first-child,
+        .item:nth-last-child(n + 1):nth-last-child(-n + 1):first-child ~ .item
+    ) {
+        grid-template-columns: repeat(1, minmax($min-size, 1fr)); /* Old Browsers (no "min()") */
+        grid-template-columns: repeat(1, minmax(min($min-size, 100%), 1fr)); /* New Browser (yes "min()")*/
+    }
 }
 
 .item {
