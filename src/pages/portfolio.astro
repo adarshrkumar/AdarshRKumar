@@ -5,68 +5,33 @@ import '../styles/pages/portfolio.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
 
-var items = [
-  {
-    name: 'Graphics for Good', 
-    link: {
-      url: 'https://graphics-for-good.com', 
-      target: '_blank', 
-    }, 
-    description: 'I helped develop and am the Lead Website Designer and Manager for the Graphics for Good Club at my school.', 
-    // class: 'featured', 
-  }, 
-  {
-    name: 'San Mateo County Astronomical Society', 
-    link: {
-      url: 'https://smcas.net', 
-      target: '_blank', 
-    }, 
-    description: 'My dad is on the SMCAS board, and they had been talking about creating a new accessible website for a while, so he asked me if I would be willing to help. I said that I would and spent my winter break working on copying content to a WordPress site.', 
-    // class: 'featured', 
-  }, 
-  // {
-  //   name: 'Megan Gillespie', 
-  //   link: {
-  //     url: 'https://megangillespiemezzo.com', 
-  //     target: '_blank', 
-  //   }, 
-  //   description: 'I did a two week internship through my school with the best ever Megan Gillespie, which consisted of fixing up, editing, and streamining her website.', 
-  //   // class: 'featured', 
-  // }, 
-]
-
-items.forEach(function(item, i) {
-  if (!!item.class === false) item.class = ''
-  var classList = ['item']
-  if (item.class.includes(' ')) {
-    item.class.split(' ').forEach(function(i) {
-      classList.push(i)
-    })
-  }
-  var className = classList.join(' ')
-  item.class = className
-
-  var target = '_self'
-  if (!!item.link.target) {
-    target = item.link.target
-  }
-  item.link.target = target
-})
-
+var items = await Astro.Astro.glob('../../work/portfolio/*.md')
 ---
 <Layout title="Portfolio">
   <SiteGridContent classItems="portfolio wrap">
       {
-        items.map((item, i) => {
+        items.map((item, i2) => {
+          var target = '_blank'
+          var url = item.frontmatter.url
+          if (url.startsWith('//')) url = `https:${url}`
+
+          var domain = url
+          if (domain.includes('://')) {
+            domain = domain.split('://')[1]
+            if (domain.includes('/')) domain = domain.split('/')[0]
+            if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
+            domain = `https://${domain}`
+          }
+          
+          if (!url.includes(':') || domain === Astro.site) target = 'self'
+
           var imageSize = 512
-          var src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(item.link.url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-          return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
-            <img src={src} alt class="item__img" style={`--placeholder: url('${src}&image_quality=${50}')`} />
+          var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+          return (<a href={url} target={target} class="item">
+            <img src={image_url} alt class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
             <div class="item__info">
-              <h3 class="item__title">{item.name}</h3>
-              <p class="item__content">
-                {item.description}
-              </p>
+              <h3 class="item__title">{item.frontmatter.name}</h3>
+              <p class="item__content">{item.rawContent()}</p>
             </div>
           </a>)
         })

@@ -4,110 +4,18 @@ import '../styles/pages/projects.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
 
-var projects = [
-  {
-    name: 'Misc Projects', 
-    items: [
-      {
-        name: 'Timer Application', 
-        link: {
-          url: 'https://timer.adarshrkumar.dev', 
-          target: '_blank', 
-        }, 
-        description: 'Punch in an hour minute and second value and see the timer whizz into action.', 
-        // class: 'featured', 
-      }, 
-      {
-        name: 'Live Clock', 
-        link: {
-          url: 'https://live-clock.adarshrkumar.dev', 
-          target: '_blank', 
-        }, 
-        description: 'This clock application harnesses the datetime features of JavaScript to display your local time no matter where you are.', 
-        // class: 'featured', 
-      }, 
-      {
-        name: 'Nearpod Joiner', 
-        link: {
-          url: 'https://nearpod.adarshrkumar.dev', 
-          target: '_blank', 
-        }, 
-        description: 'Input a code and it will join the presentation for you!', 
-        // class: 'featured', 
-      }, 
-      {
-        name: 'Favicon Generator', 
-        link: {
-          url: 'https://favicons.adarshrkumar.dev', 
-          target: '_blank', 
-        }, 
-        description: 'Input a URL and it will display the favicon for that URL!', 
-        // class: 'featured', 
-      }, 
-      {
-        name: 'Virtural Assistant', 
-        link: {
-          url: 'https://assistant.adarshrkumar.dev', 
-          target: '_blank', 
-        }, 
-        description: 'A GPT-4 Based Full Virtual Assistant!', 
-        // class: 'featured', 
-      }, 
-    ]
-  }, 
-  {
-    name: 'Games',
-    items: [
-      {
-        name: 'My UNO Game', 
-        link: {
-          url: 'https://uno.adarshrkumar.dev', 
-          target: '_blank', 
-        }, 
-        description: 'Play UNO Online!', 
-        // class: 'featured', 
-      }, 
-      {
-        name: 'My Tic-Tac-Toe Game', 
-        link: {
-          url: 'https://tic-tac-toe.adarshrkumar.dev', 
-          target: '_blank', 
-        }, 
-        description: 'Play Tic-Tac-Toe Online!', 
-        // class: 'featured', 
-      }, 
-      // {
-      //   name: 'Graphics for Good', 
-      //   link: {
-      //     url: 'https://graphics-for-good.com', 
-      //     target: '_blank', 
-      //   }, 
-      //   description: '', 
-      //   // class: 'featured', 
-      // }, 
-    ]
-  }
+var categories = [
+  { id: 'games', name: 'Title' },
+  { id: 'largeScale', name: 'Large Scale' },
+  { id: 'utilities', name: 'Utilities' },
 ]
+var projects = {}
 
-projects.forEach(function(category, i) {
-  category.items.forEach(function(item, i2) {
-    if (!!item.class === false) item.class = ''
-    var classList = ['item']
-    if (item.class.includes(' ')) {
-      item.class.split(' ').forEach(function(classItem) {
-        classList.push(classItem)
-      })
-    }
-    var className = classList.join(' ')
-    projects[i].items[i2].class = className
+var allProjects = await Astro.glob('../../work/projects/*/*.md')
 
-    var target = '_self'
-    if (!!item.link.target) {
-      target = item.link.target
-    }
-    projects[i].items[i2].link.target = target
-  })
-})
+projects.games = await Astro.glob('../../work/projects/games/*.md')
+projects.largeScale = await Astro.glob('../../work/projects/large-scale/*.md')
+projects.utilities = await Astro.glob('../../work/projects/utilities/*.md')
 
 ---
 <Layout title="Projects">
@@ -117,13 +25,27 @@ projects.forEach(function(category, i) {
         <h3>{category.name}</h3>
         {
           category.items.map((item, i2) => {
+            var target = '_blank'
+            var url = item.frontmatter.url
+            if (url.startsWith('//')) url = `https:${url}`
+
+            var domain = url
+            if (domain.includes('://')) {
+              domain = domain.split('://')[1]
+              if (domain.includes('/')) domain = domain.split('/')[0]
+              if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
+              domain = `https://${domain}`
+            }
+            
+            if (!url.includes(':') || domain === Astro.site) target = 'self'
+
             var imageSize = 512
-            var src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(item.link.url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-            return (<a href={item.link.url} target={item.link.target} class={`item ${item.class}`}>
-              <img src={src} alt class="item__img" style={`--placeholder: url('${src}&image_quality=${50}')`} />
+            var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+            return (<a href={url} target={target} class="item">
+              <img src={image_url} alt class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
               <div class="item__info">
-                <h3 class="item__title">{item.name}</h3>
-                <p class="item__content">{item.description}</p>
+                <h3 class="item__title">{item.frontmatter.name}</h3>
+                <p class="item__content">{item.rawContent()}</p>
               </div>
             </a>)
           })
