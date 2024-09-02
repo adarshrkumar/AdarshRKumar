@@ -4,7 +4,7 @@ import '../styles/pages/portfolio.scss'
 import SiteGridContent from './SiteGridContent.astro'
 
 var highlights = ['Graphics for Good', 'San Mateo County Astronomical Society']
-var allItems = await Astro.Astro.glob('../../work/portfolio/*.md')
+var allItems = await Astro.glob('../../work/portfolio/*.md')
 var items = []
 
 highlights.forEach(name => {
