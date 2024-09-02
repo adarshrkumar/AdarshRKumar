@@ -3,7 +3,7 @@ import '../styles/components/nav.scss'
 
 import Script from '../utils/script.astro'
 
-var { siteDomain, items, direction, varient } = Astro.props
+var { items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
 items.forEach(function(item, i) {
@@ -27,7 +27,7 @@ var buttonsStr = ''
                 if (url.includes('://')) {
                     var domain = url.split('://')[1]
                     if (domain.includes('/')) domain = domain.split('/')[0]
-                    if (domain !== siteDomain) {
+                    if (domain !== Astro.site) {
                         target = '_black'
                     }
                 }

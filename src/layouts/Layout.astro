@@ -7,7 +7,6 @@ import Sidebar from '../components/sidebar.astro'
 import Script from '../utils/script.astro'
 
 var sName = 'Adarsh Kumar'
-var sURL = Astro.site
 var logoSRC = '/assets/logo.jpg'
 
 var { title, pTitle, classItems, inlineStyles, pageType } = Astro.props;
@@ -45,13 +44,13 @@ if (className.endsWith(' ')) className = className.substring(-1)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <base href={sURL} />
+    <base href={Astro.site} />
     <link rel="icon" href="/assets/favicon.png">
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
     <Script name="settings" />
   </head>
   <body>
-    <Header siteDomain={sURL} logo={logoSRC} />
+    <Header logo={logoSRC} />
     <div class="wrapper">
       <main class="content" id="content">
         { pageType === 'home' ? '' : <h1 class="page-title">{pTitle}</h1> }
