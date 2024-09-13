@@ -15,44 +15,11 @@ let aHTML = ``
     <p>Error Type: 404</p>
   </section>
   <script>
-    document.querySelector('.page').parentNode.href = location.pathname
-    if (!location.pathname.startsWith('/404')) {
-      document.querySelector('.page').textContent = location.pathname
+    if (document.querySelector('.page')) {
+      document.querySelector('.page').parentNode.href = location.pathname
+      if (!location.pathname.startsWith('/404')) {
+        document.querySelector('.page').textContent = location.pathname
+      }
     }
-    var redirects = [
-      {
-        slug: '/post/[path]', 
-        dest: '/blogPost?id=[path]', 
-      }
-    ]
-
-    redirects.forEach(function(redirect, i) {
-      var path = location.pathname
-      if (path === redirect.slug) {
-        location.href = redirect.dest
-      }
-      else {
-        if (redirect.slug.includes('[path]')) {
-          var    parts = redirect.slug.split('[path]')
-          var begining = parts[0]
-          var      end = parts[1]
-          
-          if (!redirect.slug.endsWith('/') && path.endsWith('/')) {
-            path = path.slice(0. -1)
-          }
-          if (
-            (path.startsWith(begining) || begining === '') && 
-            (path.endsWith(end) || end === '')
-          ) {
-            path = path.slice(begining.length, (
-              end.length === 0 ? path.length : -1*end.length
-            ))
-
-            redirect.slug = redirect.slug.repalce('[path]', path)
-            location.href = redirect.slug
-          }
-        }
-      }
-    })
   </script>
 </Layout>
