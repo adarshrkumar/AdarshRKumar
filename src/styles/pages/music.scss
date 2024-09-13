@@ -5,9 +5,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0px, 660px));
     gap: 1rem;
+    justify-content: center;
 
     & iframe {
-        aspect-ratio: 3 / 4;
         border: none;
         border-radius: 10px;
 
