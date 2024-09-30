@@ -1,5 +1,13 @@
-.category__title {
-    text-align: center;
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.category {
+    &__title {
+        text-align: center;
+    }
 }
 
 
