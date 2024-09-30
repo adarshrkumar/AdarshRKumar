@@ -28,7 +28,7 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
 
 ---
 <Layout title="Projects">
-  { JSON.stringify(projects) }
+  { <pre set:html={JSON.stringify(projects)} /> }
   {
     projects.map((category, i) => {
       <SiteGridContent classItems="wrap">
