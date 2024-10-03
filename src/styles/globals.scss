@@ -160,7 +160,7 @@ img {
 .section {
     &:not(.ignorePadding) {
         padding-bottom: var(--pad);
-        :not(.section-title):first-of-type {
+        :not(.section-title):first-of-type:not(.item__img) {
             padding-top: var(--pad);
         }
     }
