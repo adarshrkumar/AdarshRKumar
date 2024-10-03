@@ -175,6 +175,7 @@ hr[isDivider] {
 .divider {
     --size: var(--s, 100%);
     --stroke: 1px;
+    --mar: 1rem;
 
     background-color: var(--color);
 
@@ -182,11 +183,13 @@ hr[isDivider] {
         width: var(--size);
         height: var(--stroke);
         margin-inline: auto;
+        margin-block: var(--mar);
     }
     &.v {
         height: var(--size);
         width: var(--stroke);
         margin-block: auto;
+        margin-inline: var(--mar);
     }
 }
   
