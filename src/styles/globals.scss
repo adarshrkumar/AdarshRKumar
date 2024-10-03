@@ -234,3 +234,12 @@ fieldset {
         width: 100%;
     }
 }
+
+address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hgroup, li, menu, ol, p, pre, table, tbody, tfoot, thead, ul {
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
