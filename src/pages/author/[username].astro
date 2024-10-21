@@ -12,7 +12,7 @@ export function getStaticPaths() {
 
 const { username } = Astro.params;
 
-import authors from '../../../blog/authors.js'
+import authors from '../../../content/blog/authors.js'
 
 var author = authors[username]
 author.username = username
