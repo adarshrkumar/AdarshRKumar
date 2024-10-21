@@ -3,12 +3,14 @@ import '../styles/pages/portfolio.scss'
 
 import SiteGridContent from './SiteGridContent.astro'
 
-var highlights = ['TransTrack', 'Graphics for Good', 'San Mateo County Astronomical Society']
+import getFName from '../../content/getFName.js'
+
+var highlights = ['TransTrack', 'graphics-for-good', 'SMCAS']
 var allItems = await Astro.glob('../../content/work/portfolio/*.md')
 var items = []
 
 highlights.forEach(name => {
-  var res = allItems.filter(i => i.frontmatter.name === name)
+  var res = allItems.filter(i => getFName(i.file) === name)
   if (res) {
     if (res.length > 0) {
       res.forEach(r => items.push(r))
