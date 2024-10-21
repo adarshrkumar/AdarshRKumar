@@ -14,7 +14,7 @@ export function getStaticPaths() {
 
 const { id } = Astro.params;
 
-import authors from '../../../blog/authors.js'
+import authors from '../../../content/blog/authors.js'
 
 var posts = await Astro.glob('../../../blog/posts/*.md')
 var post = posts.find(post => post.file.includes(id))
