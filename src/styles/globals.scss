@@ -157,7 +157,7 @@ img {
     }
 }
 
-.section {
+.section, .hero {
     &:not(.ignorePadding) {
         padding-bottom: var(--pad);
         > :not(.section-title):first-of-type {
