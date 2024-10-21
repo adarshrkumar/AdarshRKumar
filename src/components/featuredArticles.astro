@@ -14,12 +14,12 @@ var location = {
   host: site, 
 }
 
-var highlights = ['Hello World!', 'Introducing NodeBooks']
+var highlights = ['hello-world', 'nodebooks']
 var allItems = await Astro.glob('../../content/blog/posts/*.md')
 var posts = []
 
-highlights.forEach(title => {
-  var res = allItems.filter(item => getFName(item.file) === title)
+highlights.forEach(slug => {
+  var res = allItems.filter(item => getFName(item.file) === slug)
   if (res.length > 0) {
     res.forEach(r => posts.push(r))
   }
