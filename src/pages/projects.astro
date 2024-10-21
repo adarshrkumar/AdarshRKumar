@@ -10,21 +10,21 @@ var projects = [
   {
     id: 'games', 
     name: 'Games',
-    items: await Astro.glob('../../work/projects/games/*.md')
+    items: await Astro.glob('../../content/work/projects/games/*.md')
   },
   {
     id: 'large-scale', 
     name: 'Large Scale',
-    items: await Astro.glob('../../work/projects/large-scale/*.md')
+    items: await Astro.glob('../../content/work/projects/large-scale/*.md')
   },
   {
     id: 'utilities', 
     name: 'Utilities',
-    items: await Astro.glob('../../work/projects/utilities/*.md')
+    items: await Astro.glob('../../content/work/projects/utilities/*.md')
   }
 ]
 
-var allProjects = await Astro.glob('../../work/projects/*/*.md')
+var allProjects = await Astro.glob('../../content/work/projects/*/*.md')
 
 ---
 <Layout title="Projects">
@@ -38,7 +38,7 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
               category.items.map((item, i2) => {
                 var repoName = 'AdarshRKumar.dev'
                 var name = item.file
-                var sw = `/home/runner/work/${repoName}/${repoName}/work/projects/${category.id}/`
+                var sw = `/home/runner/work/${repoName}/${repoName}/content/work/projects/${category.id}/`
                 if (name.startsWith(sw)) name = name.slice(sw.length)
                 if (name.endsWith('.md')) name = name.slice(0, -1*'.md'.length)
                 if (name.startsWith('_')) return ''
