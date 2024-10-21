@@ -13,7 +13,7 @@ var location = {
   host: site, 
 }
 
-var posts = await Astro.glob('../../blog/posts/*.md')
+var posts = await Astro.glob('../../content/blog/posts/*.md')
 ---
 <Layout title="Blog">
   <SiteGridContent classItems="posts">
@@ -22,7 +22,7 @@ var posts = await Astro.glob('../../blog/posts/*.md')
         var repoName = 'AdarshRKumar.dev'
 
         var slug = post.file
-        var sw = `/home/runner/work/${repoName}/${repoName}/blog/posts/`
+        var sw = `/home/runner/work/${repoName}/${repoName}/content/blog/posts/`
         if (slug.startsWith(sw)) slug = slug.slice(sw.length)
         if (slug.endsWith('.md')) slug = slug.slice(0, -1*'.md'.length)
 
