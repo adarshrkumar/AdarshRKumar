@@ -37,7 +37,7 @@ var allProjects = await Astro.glob('../../content/work/projects/*/*.md')
           <SiteGridContent classItems="wrap">
             {
               category.items.map((item, i2) => {
-                var name = getFName(item.file)
+                var name = getFName(item.file, 'prof')
                 if (name.startsWith('_')) return ''
 
                 var target = '_blank'
