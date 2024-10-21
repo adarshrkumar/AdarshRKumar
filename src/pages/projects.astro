@@ -42,7 +42,7 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
                 if (name.startsWith(sw)) name = name.slice(sw.length)
                 if (name.endsWith('.md')) name = name.slice(0, -1*'.md'.length)
 
-                if (i === 0) return (name)
+                if (i === 0) return (<span class="item">{name}</span>)
                 else return ''
                 var target = '_blank'
                 var url = item.frontmatter.url
