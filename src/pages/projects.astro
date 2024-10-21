@@ -36,6 +36,8 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
           <SiteGridContent classItems="wrap">
             {
               category.items.map((item, i2) => {
+                if (i === 0) return (JSON.stringify(item, null, 4))
+                else return ''
                 var target = '_blank'
                 var url = item.frontmatter.url
                 if (url.startsWith('//')) url = `https:${url}`
@@ -52,15 +54,15 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
 
                 var imageSize = 512
                 var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-                return (
-                  <a href={url} target={target} class="item">
-                    <img src={image_url} alt class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
-                    <div class="item__info">
-                      <h3 class="item__title">{item.frontmatter.name}</h3>
-                      <p class="item__content">{item.rawContent()}</p>
-                    </div>
-                  </a>
-                )
+                // return (
+                //   <a href={url} target={target} class="item">
+                //     <img src={image_url} alt class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
+                //     <div class="item__info">
+                //       <h3 class="item__title">{item.frontmatter.name}</h3>
+                //       <p class="item__content">{item.rawContent()}</p>
+                //     </div>
+                //   </a>
+                // )
               })
             }
           </SiteGridContent>
