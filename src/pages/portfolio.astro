@@ -4,18 +4,15 @@ import '../styles/pages/portfolio.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/SiteGridContent.astro'
 
+import getFName from '../../content/getFName.js'
+
 var items = await Astro.glob('../../content/work/portfolio/*.md')
 ---
 <Layout title="Portfolio">
   <SiteGridContent classItems="portfolio wrap">
       {
         items.map((item, i2) => {
-          var repoName = 'AdarshRKumar.dev'
-          var name = item.file
-          var sw = `/home/runner/work/${repoName}/${repoName}/content/work/portfolio/`
-          if (name.startsWith(sw)) name = name.slice(sw.length)
-          if (name.endsWith('.md')) name = name.slice(0, -1*'.md'.length)
-
+          var name = getFName(item.file)
           if (name.startsWith('_')) return ''
 
           var target = '_blank'
