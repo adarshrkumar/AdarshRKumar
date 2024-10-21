@@ -38,12 +38,11 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
               category.items.map((item, i2) => {
                 var repoName = 'AdarshRKumar.dev'
                 var name = item.file
-                var sw = `/home/runner/work/${repoName}/${repoName}/work/projects/${category.id}`
+                var sw = `/home/runner/work/${repoName}/${repoName}/work/projects/${category.id}/`
                 if (name.startsWith(sw)) name = name.slice(sw.length)
                 if (name.endsWith('.md')) name = name.slice(0, -1*'.md'.length)
+                if (name.startsWith('_')) return ''
 
-                if (i === 0) return (<span class="item">{name}</span>)
-                else return ''
                 var target = '_blank'
                 var url = item.frontmatter.url
                 if (url.startsWith('//')) url = `https:${url}`
@@ -60,15 +59,15 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
 
                 var imageSize = 512
                 var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-                // return (
-                //   <a href={url} target={target} class="item">
-                //     <img src={image_url} alt class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
-                //     <div class="item__info">
-                //       <h3 class="item__title">{item.frontmatter.name}</h3>
-                //       <p class="item__content">{item.rawContent()}</p>
-                //     </div>
-                //   </a>
-                // )
+                return (
+                  <a href={url} target={target} class="item">
+                    <img src={image_url} alt class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
+                    <div class="item__info">
+                      <h3 class="item__title">{item.frontmatter.name}</h3>
+                      <p class="item__content">{item.rawContent()}</p>
+                    </div>
+                  </a>
+                )
               })
             }
           </SiteGridContent>
