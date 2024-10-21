@@ -18,10 +18,8 @@ var posts = []
 
 highlights.forEach(name => {
   var res = allItems.filter(i => i.frontmatter.name === name)
-  if (res) {
-    if (res.length > 0) {
-      res.forEach(r => posts.push(r))
-    }
+  if (res.length > 0) {
+    res.forEach(r => posts.push(r))
   }
 });
 
