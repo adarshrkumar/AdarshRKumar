@@ -27,6 +27,13 @@ highlights.forEach(name => {
 ---
 <SiteGridContent classItems="posts">
   {
+    <pre>
+      {
+        JSON.stringify(posts, null, 4)
+      }
+    </pre>
+  }
+  {
     posts.map(function(post, i) {
       var repoName = 'AdarshRKumar.dev'
 
