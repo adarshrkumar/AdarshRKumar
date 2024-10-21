@@ -36,7 +36,13 @@ var allProjects = await Astro.glob('../../work/projects/*/*.md')
           <SiteGridContent classItems="wrap">
             {
               category.items.map((item, i2) => {
-                if (i === 0) return (JSON.stringify(item, null, 4))
+                var repoName = 'AdarshRKumar.dev'
+                var name = post.file
+                var sw = `/home/runner/work/${repoName}/${repoName}/work/`
+                if (name.startsWith(sw)) name = name.slice(sw.length)
+                if (name.endsWith('.md')) name = name.slice(0, -1*'.md'.length)
+
+                if (i === 0) return (name)
                 else return ''
                 var target = '_blank'
                 var url = item.frontmatter.url
