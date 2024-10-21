@@ -10,7 +10,7 @@ var allItems = await Astro.glob('../../content/work/portfolio/*.md')
 var items = []
 
 highlights.forEach(name => {
-  var res = allItems.filter(i => getFName(i.file) === name)
+  var res = allItems.filter(item => getFName(item.file, 'pFfM') === name)
   if (res) {
     if (res.length > 0) {
       res.forEach(r => items.push(r))

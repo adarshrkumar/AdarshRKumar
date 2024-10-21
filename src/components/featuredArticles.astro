@@ -19,7 +19,7 @@ var allItems = await Astro.glob('../../content/blog/posts/*.md')
 var posts = []
 
 highlights.forEach(title => {
-  var res = allItems.filter(item => getFName(item.title) === title)
+  var res = allItems.filter(item => getFName(item.title, 'fAfM') === title)
   if (res.length > 0) {
     res.forEach(r => posts.push(r))
   }
@@ -29,7 +29,7 @@ highlights.forEach(title => {
 <SiteGridContent classItems="posts">
   {
     posts.map(function(post, i) {
-      var slug = getFName(post.file)
+      var slug = getFName(post.file, 'fAB')
 
       var image = {}
       var postUrl = `${location.protocol}//${location.host}/post/${slug}?hideHeader=true`

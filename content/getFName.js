@@ -1,4 +1,4 @@
-function getFName(path) {
+function getFName(pathm, loc) {
     console.log(path)
 
     if (path.startsWith('/')) path - path.slice(1)
