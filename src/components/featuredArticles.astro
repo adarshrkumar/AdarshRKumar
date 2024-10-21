@@ -19,7 +19,7 @@ var allItems = await Astro.glob('../../content/blog/posts/*.md')
 var posts = []
 
 highlights.forEach(title => {
-  var res = allItems.filter(item => getFName(item.title, 'fAfM') === title)
+  var res = allItems.filter(item => getFName(item.file, 'fAfM') === title)
   if (res.length > 0) {
     res.forEach(r => posts.push(r))
   }
