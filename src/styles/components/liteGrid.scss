@@ -1,0 +1,89 @@
+$min-size: 250px;
+$gap: 2rem;
+$padding: 1rem;
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(0, 1fr)); /* Old Browsers (no "min()") */
+    grid-template-columns: repeat(auto-fill, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
+    gap: $gap;
+
+    @for $i from 1 through 3 {
+        /* Only $i */
+        &:has(
+            .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child,
+            .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child ~ .item
+        ) {
+            grid-template-columns: repeat(#{$i + 2}, minmax(0, 1fr)); /* Old Browsers (no "min()") */
+            grid-template-columns: repeat(#{$i + 2}, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
+
+            .item {
+                &:first-child:not(:last-child) {
+                    grid-column: 2 / 3;
+                }
+                &:last-child:not(:first-child) {
+                    grid-column: -3 / -2;
+                }
+                &:first-child:last-child {
+                    grid-column: 2 / -2;
+                }
+                &:nth-child(2):not(:first-child, :last-child) {
+                    grid-column: 3 / -3;
+                }
+            }
+        }
+    }
+}
+
+.item {
+    box-sizing: border-box;
+    padding: $padding;
+
+    // aspect-ratio: 3 / 4;
+
+    background: var(--middle-color);
+    color: inherit;
+
+    border-radius: $gap;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $padding;
+
+    text-decoration: inherit;
+
+    &__img {
+        width: 100%;
+        aspect-ratio: 1;
+
+        background-image: var(--placeholder, url('/assets/placeholder.svg'));
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        border-radius: #{$gap - $padding};
+    }
+
+    &__info {
+        overflow-x: hidden;
+        display: grid;
+        gap: $padding;
+    }
+
+    &__info, &__title, &__content {
+        max-width: 100%;
+    }
+
+    &__title, &__content {
+        margin-block: 0;
+        margin-inline: auto;
+        height: fit-content;
+        text-align: center;
+    }
+
+    &__content {
+        text-wrap: wrap;
+        text-overflow: ellipsis;
+    }
+}

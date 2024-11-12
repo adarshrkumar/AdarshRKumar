@@ -4,9 +4,11 @@ import '../styles/pages/videos.scss'
 
 import Layout from '../layouts/Layout.astro'
 
+import SiteGridContent from '../components/siteGridContent.astro'
+
 import Script from '../utils/script.astro'
 ---
 <Layout title="Videos">
-  <section id="videos" class="grid"></section>
+  <SiteGridContent id="videos" />
   <Script name="videos" />
 </Layout>
