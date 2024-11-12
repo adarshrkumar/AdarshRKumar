@@ -8,9 +8,9 @@ const categories = fs.readdirSync(`${directoryPath}/photos`);
 
 if (!fs.existsSync(`${directoryPath}/allPhotos`)) {
     fs.mkdirSync(`${directoryPath}/allPhotos`);
-  }
+}
 
-  const memberUrls = []
+const memberUrls = []
 categories.forEach((category, i) => {
     var isDir = fs.lstatSync(`${directoryPath}/photos/${category}`).isDirectory()
     if (isDir) {
