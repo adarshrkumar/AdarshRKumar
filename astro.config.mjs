@@ -8,7 +8,7 @@ const categories = fs.readdirSync(`${directoryPath}/photos`);
 
 const memberUrls = []
 categories.forEach((category, i) => {
-    var isDir = fs.lstatSync(`${directoryPath}/${file}`).isDirectory()
+    var isDir = fs.lstatSync(`${directoryPath}/${category}`).isDirectory()
     if (isDir) {
         var files = fs.readdirSync(`${directoryPath}/${category}`)
         files.forEach(file => {
