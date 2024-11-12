@@ -12,10 +12,7 @@ categories.forEach((category, i) => {
     if (isDir) {
         var files = fs.readdirSync(`${directoryPath}/${category}`)
         files.forEach(file => {
-            try {
-                fs.copyFileSync(`${directoryPath}/${category}/${file}`, `${directoryPath}/allPhotos/${file}`, fs.constants.COPYFILE_EXCL)
-            }
-            catch (err) {  }
+            fs.copyFileSync(`${directoryPath}/${category}/${file}`, `${directoryPath}/allPhotos/${file}`, fs.constants.COPYFILE_EXCL)
         })
     }
 });
