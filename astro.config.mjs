@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import path from 'path';
 import fs from 'fs';
 
-const directoryPath = path.join('./', 'content');
+const directoryPath = './content';
 const categories = fs.readdirSync(`${directoryPath}/photos`);
 
 const memberUrls = []
