@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SiteGridContent from '../components/SiteGridContent.astro'
+
+import Script from '../utils/script.astro'
+
+var site = Astro.site.toString()
+if (site.includes('://')) site = site.split('://')[1]
+if (site.endsWith('/')) site = site.slice(0, -1)
+
+var location = {
+  protocol: 'https:', 
+  host: site, 
+}
+
+var posts = await Astro.glob('../../content/allPhotos/*')
+---
+<Layout title="Photos">
+  <SiteGridContent classItems="photos">
+    {
+      -photos.map(function(post, i) {
+        return <img class="item" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}')`} />
+      })
+    }
+  </SiteGridContent>
+</Layout>
