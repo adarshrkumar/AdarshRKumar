@@ -3,16 +3,16 @@ import sitemap from '@astrojs/sitemap';
 import path from 'path';
 import fs from 'fs';
 
-const directoryPath = './content';
+const directoryPath = path.join('./', 'content');
 const categories = fs.readdirSync(`${directoryPath}/photos`);
 
 const memberUrls = []
 categories.forEach((category, i) => {
-    var isDir = fs.lstatSync(`${directoryPath}/${category}`).isDirectory()
+    var isDir = fs.lstatSync(`${directoryPath}/photos/${category}`).isDirectory()
     if (isDir) {
-        var files = fs.readdirSync(`${directoryPath}/${category}`)
+        var files = fs.readdirSync(`${directoryPath}/photos/${category}`)
         files.forEach(file => {
-            fs.copyFileSync(`${directoryPath}/${category}/${file}`, `${directoryPath}/allPhotos/${file}`, fs.constants.COPYFILE_EXCL)
+            fs.copyFileSync(`${directoryPath}/photos/${category}/${file}`, `${directoryPath}/allPhotos/${file}`, fs.constants.COPYFILE_EXCL)
         })
     }
 });
