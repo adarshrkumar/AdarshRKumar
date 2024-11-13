@@ -20,7 +20,7 @@ var photos = await Astro.glob('../../content/allPhotos/*/*')
     {
       -photos.map(function(image, i) {
         image = image.default
-        if (!img.src) {
+        if (!image.src) {
           return ''
         }
         return <img class="item" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}')`} />
