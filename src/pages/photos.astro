@@ -13,13 +13,15 @@ var location = {
   host: site, 
 }
 
-var photos = await Astro.glob('../../content/allPhotos/*')
+var photos = await Astro.glob('../../content/allPhotos/*/*')
 ---
 <Layout title="Photos">
   <SiteGridContent classItems="photos">
     {
       -photos.map(function(image, i) {
-        return <img class="item" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}')`} />
+        console.log(image)
+        return <pre>{JSON.stringify(image, null, 4)}</pre>
+        // return <img class="item" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}')`} />
       })
     }
   </SiteGridContent>
