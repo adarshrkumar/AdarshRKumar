@@ -15,8 +15,8 @@ categories.forEach((category, i) => {
     if (isDir) {
         var folders = fs.readdirSync(`${directoryPath}/photos/${category}`)
         folders.forEach(folder => {
-            if (!fs.existsSync(`${directoryPath}/photos/${category}/${folder}`)) {
-                fs.mkdirSync(`${directoryPath}/photos/${category}/${folder}`);
+            if (!fs.existsSync(`${directoryPath}/allPhotos/${folder}`)) {
+                fs.mkdirSync(`${directoryPath}/allPhotos/${folder}`);
             }
 
             var files = fs.readdirSync(`${directoryPath}/photos/${category}/${folder}`)
