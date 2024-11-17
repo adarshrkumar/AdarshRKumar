@@ -40,10 +40,16 @@ function getFName(name) {
           return ''
         }
         var data = []
-        console.log(data)
+        // console.log(data)
         return (
-          <div class="item" data-title={image.title || ''} data-location={image.location || ''}>
+          <div class="item">
             <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}'); --img-width: ${image.width}px; --img-height: ${image.height}px`} />
+            {
+              !!image.title ? <h3 class="item__title">{image.title}</h3> : ''
+            }
+            {
+              !!image.location ? <span class="item__content">{image.location}</span> : ''
+            }
           </div>
         )
       })

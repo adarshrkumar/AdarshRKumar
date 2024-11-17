@@ -8,25 +8,6 @@ $textSpace: 5%;
         position: relative;
         pointer-events: all;
         
-        &::before, &::after {
-            position: absolute;
-            top: 50%;
-            left: $textSpace;
-            right: $textSpace;
-
-            height: #{50% - $textSpace};
-
-            text-align: center;
-        }
-
-        &::before {
-            content: attr(data-title);
-            translate: 0 -100%;
-        }
-        &::after {
-            content: '📍 ' attr(data-location);
-        }
-
         &__image {
             -webkit-user-select: none;
             -moz-user-select: none;
