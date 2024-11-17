@@ -10,13 +10,14 @@ if (site.endsWith('/')) site = site.slice(0, -1)
 
 var photos = await Astro.glob('../../content/allPhotos/*/*')
 
-photos.map(image => {
+photos.map((image, i) => {
   image = image.default
   if (!image.src) {
   return ''
   }
+
   var data = photos.find(f => f.default.name = getFName(image.src))
-  console.log(data)
+  // console.log(data)
 })
 
 function getFName(name) {
