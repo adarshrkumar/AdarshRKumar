@@ -45,5 +45,5 @@ if (!!varient === false) varient = 'header'
     document.querySelectorAll('.nav-btn').forEach(function(b, i) {
         if (b.clientWidth > largestWidth) largestWidth = b.clientWidth
     })
-    document.querySelector('.nav-btn').parentNode.style.setProperty('--min-width', `${largestWidth/16}rem`)
+    document.querySelector('.nav-btn').parentNode.style.setProperty('--min-width', `${largestWidth}px`)
 </script>
