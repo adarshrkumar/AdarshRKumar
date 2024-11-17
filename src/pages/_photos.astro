@@ -2,8 +2,6 @@
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 
-import Script from '../utils/script.astro'
-
 var site = Astro.site.toString()
 if (site.includes('://')) site = site.split('://')[1]
 if (site.endsWith('/')) site = site.slice(0, -1)
