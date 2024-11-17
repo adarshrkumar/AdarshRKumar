@@ -6,15 +6,10 @@ import Script from '../utils/script.astro'
 var { items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
-items.forEach(function(item, i) {
-})
-
-var buttonsStr = ''
-
 ---
 <nav class="nav" data-direction={direction} data-varient={varient}>
     {
-        items.map((item, i) => {
+        items.map((item: { name: string; url: string; target: any }, i: any) => {
             var name = item.name
             var url = item.url
             

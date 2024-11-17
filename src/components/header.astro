@@ -3,6 +3,7 @@ import '../styles/components/header.scss'
 
 import Nav from '../components/nav.astro'
 import ThemeSwitcher from '../components/themeSwitcher.astro'
+import { object } from 'astro:schema'
 
 var { navItems, logo } = Astro.props
 
@@ -14,13 +15,13 @@ if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length-1)
 var pages = await Astro.glob('../pages/*.astro')
 
 var links = []
-pages.map(page => {
+pages.map((page: any) => {
   var link = getLink(page)
   if (link.name === 'Home') {
     links.push(link)
   }
 })
-pages.map(page => {
+pages.map((page: any) => {
   var link = getLink(page)
   if (link.name !== 'Home') {
     if (link.path) {
@@ -29,7 +30,7 @@ pages.map(page => {
   }
 })
 
-function getLink(link) {
+function getLink(link: any) {
   var lPath = link.url
   var hasHome = false
   
@@ -52,7 +53,6 @@ function getLink(link) {
   })
 
   var name = nameParts.join(' ')
-  var extraClasses = ''
 
   if (lPath.startsWith('//')) lPath = `https:${lPath}`
   else if (lPath === 'home') lPath = '/'
@@ -61,10 +61,11 @@ function getLink(link) {
   if (lPath.endsWith('//')) lPath = lPath.slice(0, -1)
   if (lPath.startsWith('//')) lPath = lPath.slice(1)
 
-  return {
+  var obj: object = {
     path: lPath,
     name: name
   }
+  return obj as any
 }
 
 ---

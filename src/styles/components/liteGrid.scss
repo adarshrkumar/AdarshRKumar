@@ -2,7 +2,7 @@ $min-size: 250px;
 $gap: 2rem;
 $padding: 1rem;
 
-.grid {
+.grid.lite {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(0, 1fr)); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fill, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
