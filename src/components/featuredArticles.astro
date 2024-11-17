@@ -31,7 +31,7 @@ highlights.forEach(slug => {
     posts.map(function(post, i) {
       var slug = getFName(post.file)
 
-      var image = {}
+      var image = {src: '', alt: ''}
       var postUrl = `${location.protocol}//${location.host}/post/${slug}?hideHeader=true`
       var imageSize = 512
       image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`

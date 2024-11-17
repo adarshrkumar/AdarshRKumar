@@ -1,16 +1,11 @@
 ---
 import '../styles/components/grid.scss'
+import '../styles/components/liteGrid.scss'
 import Script from '../utils/script.astro'
 
 var { id, classItems, mode } = Astro.props
 
-switch (mode) {
-    case 'lite': 
-        import '../styles/components/liteGrid.scss'
-        break
-}
-
 ---
-<section id={id || ''} class={`grid ${classItems}`}>
+<section id={id || ''} class={`grid ${mode === 'lite' ? ' lite' : ''}${classItems}`}>
     <slot />
 </section>

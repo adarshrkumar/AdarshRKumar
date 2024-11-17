@@ -62,7 +62,7 @@ channels.forEach(function(c, i) {
 
                 return (
                     <div class="channel-container">
-                        <div class="g-ytsubscribe" data-channelid={c.id} data-layout={c.layout} data-count={c.count}></div>
+                        <div class="g-ytsubscribe" data-channelid={c.id} data-layout={c.layout || ''} data-count={c.count || ''}></div>
                     </div>
                 )
             })

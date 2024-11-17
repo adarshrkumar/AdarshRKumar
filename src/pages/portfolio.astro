@@ -32,7 +32,7 @@ var items = await Astro.glob('../../content/work/portfolio/*.md')
           var imageSize = 512
           var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
           return (<a href={url} target={target} class="item">
-            <img src={image_url} alt class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
+            <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
             <div class="item__info">
               <h3 class="item__title">{item.frontmatter.name}</h3>
               <p class="item__content">{item.rawContent()}</p>
