@@ -17,6 +17,7 @@
 }
   
 .nav-btn {
+  box-sizing: border-box;
   padding: 10px 20px;
 
   min-width: var(--min-width, fit-content);

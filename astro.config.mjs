@@ -21,7 +21,15 @@ categories.forEach((category, i) => {
 
             var files = fs.readdirSync(`${directoryPath}/photos/${category}/${folder}`)
             files.forEach(file => {
-                fs.copyFileSync(`./${directoryPath}/photos/${category}/${folder}/${file}`, `./${directoryPath}/allPhotos/${folder}/${file}`)
+                if (file.endsWith('.json')) {
+                    var nFName = file.split('.json').join('.js')
+                    var content = fs.readFileSync(`./${directoryPath}/photos/${category}/${folder}/${file}`, 'utf-8')
+                    content = `var data = ${content}\n\nexport default data`
+                    fs.writeFileSync(`./${directoryPath}/allPhotos/${folder}/${nFName}`, content)
+                }
+                else {
+                    fs.copyFileSync(`./${directoryPath}/photos/${category}/${folder}/${file}`, `./${directoryPath}/allPhotos/${folder}/${file}`)
+                }
             })
         })
     }

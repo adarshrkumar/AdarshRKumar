@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SiteGridContent from '../components/siteGridContent.astro'
+
+import '../styles/pages/photos.scss'
+
+var site = Astro.site.toString()
+if (site.includes('://')) site = site.split('://')[1]
+if (site.endsWith('/')) site = site.slice(0, -1)
+
+var photos = await Astro.glob('../../content/allPhotos/*/*')
+
+photos.map(image => {
+  image = image.default
+  if (!image.src) {
+  return ''
+  }
+  var data = photos.find(f => f.default.name = getFName(image.src))
+  console.log(data)
+})
+
+function getFName(name) {
+  if (name.includes('/')) {
+    name = name.split('/').slice(-1)
+    if (name.includes('.')) {
+      if (name.split('.').length > 2) {
+        name = `${name.slice(0, -2).join('.')}${name.slice(-1)}`
+      }
+    }
+  }
+  return name
+}
+---
+<Layout title="Photos">
+  <SiteGridContent classItems="photos" mode="lite">
+    {
+      photos.map(function(image, i) {
+        image = image.default
+        if (!image.src) {
+          return ''
+        }
+        var data = []
+        console.log(data)
+        return (
+          <div class="item" data-title={image.title || ''} data-location={image.location || ''}>
+            <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}'); --img-width: ${image.width}px; --img-height: ${image.height}px`} />
+          </div>
+        )
+      })
+    }
+  </SiteGridContent>
+</Layout>
