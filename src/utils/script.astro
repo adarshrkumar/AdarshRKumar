@@ -1,20 +1,18 @@
 ---
+import '../styles/scriptImg.scss'
 
-var { name, inline } = Astro.props
+var { name, code } = Astro.props
 
+function cleanCode(code) {
+    if (code.includes('\n')) code = code.split('\n').join('  ')
+    if (code.includes('\t')) code = code.split('\t').join('  ')
+    return code
+}
 ---
 {
-    inline === 'true' ? (
-        <script is:inline>
-            <slot />
-        </script>
+    !!name ? (
+        <script src={`/scripts/${name}.js`} is:inline></script>
     ) : (
-        inline === 'false' ? (
-            <script>
-                <slot />
-            </script>
-        ) : (
-            <script src={`/scripts/${name}.js`} is:inline></script>
-        )
+        <img class="script__img" src="there-is-no-image-here-haha" alt="" onerror={!!code ? cleanCode(code) : `console.log('There is a "<Script />" custom Astro component that you have called somewhere or another without specifying a code attribute to indicate what JS should run, hehe! ')`} />
     )
 }

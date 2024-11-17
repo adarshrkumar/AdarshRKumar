@@ -1,0 +1,18 @@
+.script__img {
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+
+    visibility: hidden;
+
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    width: 0;
+    height: 0;
+    font-size: 0;
+
+    background: transparent;
+    box-shadow: none;
+}
