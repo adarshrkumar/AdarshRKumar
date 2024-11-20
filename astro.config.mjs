@@ -3,6 +3,9 @@ import sitemap from '@astrojs/sitemap';
 import path from 'path';
 import fs from 'fs';
 
+import updateImages from './update.js';
+updateImages()
+
 const directoryPath = path.join('./', 'content');
 const categories = fs.readdirSync(`${directoryPath}/photos`);
 
