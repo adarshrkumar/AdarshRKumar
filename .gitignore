@@ -23,6 +23,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# vs code things
+.vscode/
+.hintrc
+
 # other content
 content/allPhotos
-.hintrc
