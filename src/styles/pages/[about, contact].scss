@@ -28,13 +28,8 @@
 
     border-radius: var(--pad);
 
-    & {
-        background-color: var(--color);
-        color: var(--bg);
-    }
-    & :is(input, textarea) {
-        // font-size: inherit;
-    }
+    background-color: var(--color);
+    color: var(--bg);
 
     .form-field {
         display: flex;
