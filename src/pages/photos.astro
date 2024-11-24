@@ -55,7 +55,7 @@ function getFName(name) {
         // console.log(data)
         return (
           <div class="item">
-            <img class="item__img Sirv" data-src={`https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src)}`} src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}'); --img-width: ${image.width}px; --img-height: ${image.height}px`} />
+            <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=50%25'); --img-width: ${image.width}px; --img-height: ${image.height}px`} />
             {
               !!image.title ? <h3 class="item__title">{image.title}</h3> : ''
             }
@@ -67,6 +67,4 @@ function getFName(name) {
       })
     }
   </SiteGridContent>
-  <img class="Sirv" data-src="https://imgs.adarshrkumar.dev/Photos/Places/IMG_2235.jpg" alt="">
-  <script is:inline ="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 </Layout>
