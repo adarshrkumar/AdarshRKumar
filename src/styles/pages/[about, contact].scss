@@ -45,14 +45,6 @@
 
         & > * {
             display: block;
-            &:is(
-                ::placeholder, :placeholder-shown, 
-                :-moz-placeholder, ::-moz-placeholder, 
-                :-ms-input-placeholder, 
-                ::-webkit-input-placeholder
-                ) {
-                color: inherit;
-            }
         }
     }
     .form-field :is(input, textarea), & :is([type="button"], [type="submit"], button) {
@@ -79,7 +71,12 @@
     }
 }
 
-.contact :is(*, *::placeholder) {
+.contact .form-field :is(
+    ::placeholder, :placeholder-shown, 
+    :-moz-placeholder, ::-moz-placeholder, 
+    :-ms-input-placeholder, 
+    ::-webkit-input-placeholder
+) {
     color: inherit;
     background-color: inherit;
 }
