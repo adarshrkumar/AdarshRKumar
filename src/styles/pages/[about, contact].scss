@@ -65,7 +65,7 @@
 }
 
 .contact .form-field {
-    &:is(input, label, select, textarea, button, input[type="button"], input[type="submit"], fieldset, legend, datalist, output, option, optgroup) {
+    :is(input, label, select, textarea, button, input[type="button"], input[type="submit"], fieldset, legend, datalist, output, option, optgroup) {
         appearance: inherit;
 
         font: inherit;
@@ -97,7 +97,7 @@
 
         -webkit-rtl-ordering: inherit;
     }
-    &:is(
+    :is(
         ::placeholder, :placeholder-shown, 
         :-moz-placeholder, ::-moz-placeholder, 
         :-ms-input-placeholder, 
