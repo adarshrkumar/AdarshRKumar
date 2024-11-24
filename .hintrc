@@ -11,7 +11,10 @@
           "text-wrap: wrap",
           "min-width: fit-content",
           "min-width: var(--min-width, fit-content)",
-          "user-select"
+          "user-select",
+          "-webkit-rtl-ordering",
+          "text-align-last",
+          "font-size-adjust"
         ]
       }
     ]
