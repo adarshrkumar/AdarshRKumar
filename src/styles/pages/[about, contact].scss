@@ -33,8 +33,6 @@
         color: var(--bg);
     }
     & :is(input, textarea) {
-        font-family: inherit;
-        font-weight: inherit;
         // font-size: inherit;
     }
 
@@ -47,7 +45,7 @@
             display: block;
         }
     }
-    .form-field :is(input, textarea), & :is([type="button"], [type="submit"], button) {
+    .form-field :is(input, textarea), :is([type="button"], [type="submit"], button) {
         // box-sizing: border-box;
         padding: calc(var(--pad)/2);
 
@@ -71,12 +69,45 @@
     }
 }
 
-.contact .form-field :is(
-    ::placeholder, :placeholder-shown, 
-    :-moz-placeholder, ::-moz-placeholder, 
-    :-ms-input-placeholder, 
-    ::-webkit-input-placeholder
-) {
-    color: inherit;
-    background-color: inherit;
+.contact .form-field {
+    &:is(input, label, select, textarea, button, input[type="button"], input[type="submit"], fieldset, legend, datalist, output, option, optgroup) {
+        appearance: inherit;
+
+        font: inherit;
+        font-stretch: inherit;
+        font-optical-sizing: inherit;
+        font-size-adjust: inherit;
+        font-kerning: inherit;
+        font-feature-settings: inherit;
+        font-variation-settings: inherit;
+        
+        text-decoration: inherit;
+        text-transform: inherit;
+        text-rendering: auto;
+
+        text-align: inherit;
+        text-align-last: inherit;
+
+        direction: inherit;
+        vertical-align: inherit;
+
+        unicode-bidi: inherit;
+        unicode-range: inherit;
+
+        text-indent: inherit;
+        letter-spacing: inherit;
+        line-height: inherit;
+        word-spacing: inherit;
+        white-space: inherit;
+
+        -webkit-rtl-ordering: inherit;
+    }
+    &:is(
+        ::placeholder, :placeholder-shown, 
+        :-moz-placeholder, ::-moz-placeholder, 
+        :-ms-input-placeholder, 
+        ::-webkit-input-placeholder
+    ) {
+        color: inherit;
+    }
 }
