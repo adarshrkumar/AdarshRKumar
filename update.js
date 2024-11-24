@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 
 function getFName(path) {
@@ -29,7 +29,10 @@ function update() {
                     if (!fs.existsSync(`./${directoryPath}/photos/${category}/${getFName(file)}`)) {
                         fs.mkdirSync(`./${directoryPath}/photos/${category}/${getFName(file)}`);
                     }
-                    fs.copyFileSync(`./${directoryPath}/photos/${category}/${file}`, `./${directoryPath}/photos/${category}/${getFName(file)}/${file}`)
+                    if (fs.existsSync(`./${directoryPath}/photos/${category}/${getFName(file)}/${file}`)) {
+                        fs.unlinkSync(`./${directoryPath}/photos/${category}/${getFName(file)}/${file}`);
+                    }
+                    fs.moveSync(`./${directoryPath}/photos/${category}/${file}`, `./${directoryPath}/photos/${category}/${getFName(file)}/${file}`)
                     fs.writeFileSync(`./${directoryPath}/photos/${category}/${getFName(file)}/info.json`, JSON.stringify(obj, null, 4))
                 }
             })
