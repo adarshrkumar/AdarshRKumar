@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 
 import '../styles/pages/photos.scss'
+import data from '../../content/allPhotos/APC_0131/APC_0131'
 
 var site = Astro.site.toString()
 if (site.includes('://')) site = site.split('://')[1]
@@ -10,13 +11,23 @@ if (site.endsWith('/')) site = site.slice(0, -1)
 
 var photos = await Astro.glob('../../content/allPhotos/*/*')
 
+var datas = []
+photos.map((data, i) => {
+  data = data.default
+  if (data.src) {
+    return ''
+  }
+
+  datas.push(data)
+})
+
 photos.map((image, i) => {
   image = image.default
   if (!image.src) {
-  return ''
+    return ''
   }
 
-  var data = photos.find(f => f.default.name = getFName(image.src))
+  var data = datas.find(f => f.name = getFName(image.src))
   // console.log(data)
 })
 
@@ -44,7 +55,7 @@ function getFName(name) {
         // console.log(data)
         return (
           <div class="item">
-            <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}'); --img-width: ${image.width}px; --img-height: ${image.height}px`} />
+            <img class="item__img Sirv" data-src={`https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src)}`} src={image.src || ''} alt={image.alt || ''} style={`--bg: url('${image.src || ''}'); --img-width: ${image.width}px; --img-height: ${image.height}px`} />
             {
               !!image.title ? <h3 class="item__title">{image.title}</h3> : ''
             }
@@ -56,4 +67,6 @@ function getFName(name) {
       })
     }
   </SiteGridContent>
+  <img class="Sirv" data-src="https://imgs.adarshrkumar.dev/Photos/Places/IMG_2235.jpg" alt="">
+  <script is:inline ="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 </Layout>
