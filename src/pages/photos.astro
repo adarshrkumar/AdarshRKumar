@@ -72,7 +72,7 @@ var options = {
               (!!data.title || !!data.info) ? (
                 <div class="item__info">
                   {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
-                  {!!data.location ? <span class="item__content">{data.location}</span> : ''}
+                  {!!data.location ? <span class="item__content">📍 {data.location}</span> : ''}
                 </div>
               )
                : ''
