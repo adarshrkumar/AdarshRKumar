@@ -1,9 +1,12 @@
 $gap: 2rem;
-$borderRadius : 1rem;
+$borderRadius: 1rem;
 $padding: 0.5rem;
 $min: 12rem;
 
 .grid.lite {
+    --padding: #{$padding};
+    --borderRadius: #{$borderRadius};
+
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr)); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr)); /* New Browser (yes "min()")*/
@@ -50,13 +53,20 @@ $min: 12rem;
         &__title, &__content {
             margin-block: 0;
             margin-inline: auto;
-            height: fit-content;
             text-align: center;
         }
 
         &__content {
             text-wrap: wrap;
             text-overflow: ellipsis;
+        }
+    }
+
+    &:not(.photos) {
+        .item {
+            &__title {
+                height: fit-content;
+            }
         }
     }
 }

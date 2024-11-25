@@ -1,17 +1,105 @@
 $textSpace: 5%;
 
+@property --size-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@keyframes z-index-fix {
+    0%, 100% {
+        z-index: 1;
+    }
+}
+
+@keyframes shadow-in {
+    from {
+        --size-opacity: 0;
+    }
+    to {
+        --size-opacity: 1;
+    }
+}
+
+@keyframes shadow-out {
+    from {
+        --size-opacity: 1;
+    }
+    to {
+        --size-opacity: 0;
+    }
+}
+
 .photos {
     margin-inline: auto;
     width: clamp(500px, 100%, 1000px);
+    z-index: 1;
 
     .item {
+        $time: 750ms;
+        $shadow: 0 0 var(--padding) hsla(0, 0%, var(--color-lightness), var(--size-opacity, 1));
         position: relative;
         pointer-events: all;
+        overflow: clip;
 
+        transition: scale $time;
+        animation: 
+            z-index-fix $time ease,
+            shadow-out $time ease;
         // &:nth-child(5n-3) {
         //     grid-column: span 2;
         //     grid-row: span 2;
         // }
+        box-shadow: $shadow;
+
+        cursor: pointer;
+
+
+        &:hover {
+            --size-opacity: 1;
+
+            position: relative;
+            scale: 1.25;
+            z-index: 2;
+            animation: shadow-in $time ease;
+
+            .item__info {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+        
+        &__info {
+            position: absolute;
+            inset: var(--padding);
+
+            background-color: hsla(0, 0%, var(--bg-lightness), 0.25);
+            
+            border-radius: calc(var(--borderRadius) - var(--padding));
+            gap: 2rem;
+
+            transition: opacity $time;
+
+        }
+        &__title, &__content {
+            padding: var(--padding) calc(var(--padding) * 1.5);
+
+            background-color: var(--middle-color);
+            border-radius: 100dvw;
+
+            align-self: center;
+            
+            box-shadow: $shadow;
+            text-shadow: $shadow;
+        }
+        &__title {
+            &:has(+ .item__content) {
+                align-self: end;
+            }
+            + .item__content {
+                align-self: start;
+            }
+        }
         
         &__image {
             -webkit-user-select: none;

@@ -9,7 +9,21 @@ updateImages()
 const directoryPath = path.join('./', 'content');
 const categories = fs.readdirSync(`${directoryPath}/photos`);
 
-if (!fs.existsSync(`${directoryPath}/allPhotos`)) {
+if (fs.existsSync(`${directoryPath}/allPhotos`)) {
+    var folders = fs.readdirSync(`${directoryPath}/allPhotos`)
+    folders.forEach(folder => {
+        if (fs.lstatSync(`${directoryPath}/allPhotos/${folder}`).isDirectory()) {
+            var files = fs.readdirSync(`${directoryPath}/allPhotos/${folder}`)
+            files.forEach(file => {
+                fs.unlinkSync(`${directoryPath}/allPhotos/${folder}/${file}`)
+            })
+        }
+        else {
+            fs.unlinkSync(`${directoryPath}/allPhotos/${folder}`)
+        }
+    })
+}
+else {
     fs.mkdirSync(`${directoryPath}/allPhotos`);
 }
 
