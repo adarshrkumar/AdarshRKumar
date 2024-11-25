@@ -3,8 +3,6 @@ import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 
 import '../styles/pages/photos.scss'
-import data from '../../content/allPhotos/APC_0131/APC_0131'
-import type { createSlotValueFromString } from 'astro/runtime/server/render/slot.js'
 
 var site = Astro.site.toString()
 if (site.includes('://')) site = site.split('://')[1]
@@ -22,24 +20,25 @@ photos.map((data, i) => {
   datas.push(data)
 })
 
-console.log(datas)
-
 photos.map((image, i) => {
   image = image.default
   if (!image.src) {
     return ''
   }
 
-  var data = datas.find(f => f.name = getFNameNoExt(image.src))
-  // console.log(data)
+  var data = datas.find(f => f.fullname === getFName(image.src))
+  image.data = data
+  
+  photos[i] = image
 })
 
 function getFName(name) {
   if (name.includes('/')) {
-    name = name.split('/').slice(-1)
+    name = name.split('/').slice(-1)[0]
+    if (name.includes('?')) name = name.split('?')[0]
     if (name.includes('.')) {
       if (name.split('.').length > 2) {
-        name = `${name.slice(0, -2).join('.')}${name.slice(-1)}`
+        name = `${name.slice(0, -2).join('.')}${name.slice(-1).join('.')}`
       }
     }
   }
@@ -59,20 +58,24 @@ var options = {
   <SiteGridContent classItems="photos" options={options} mode="lite">
     {
       photos.map(function(image, i) {
-        image = image.default
+        if (image.default) image = image.default
         if (!image.src) {
           return ''
         }
-        var data = []
-        // console.log(data)
+        
+        var data = image.data
+
         return (
           <div class="item">
             <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25'); --img-width: ${image.width}px; --img-height: ${image.height}px`} loading="lazy" decoding="async" />
             {
-              !!data.title ? <h3 class="item__title">{data.title}</h3> : ''
-            }
-            {
-              !!data.location ? <span class="item__content">{data.location}</span> : ''
+              (!!data.title || !!data.info) ? (
+                <div class="item__info">
+                  {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
+                  {!!data.location ? <span class="item__content">{data.location}</span> : ''}
+                </div>
+              )
+               : ''
             }
           </div>
         )

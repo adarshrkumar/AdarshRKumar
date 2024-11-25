@@ -14,7 +14,8 @@
           "user-select",
           "-webkit-rtl-ordering",
           "text-align-last",
-          "font-size-adjust"
+          "font-size-adjust",
+          "overflow: clip"
         ]
       }
     ]
