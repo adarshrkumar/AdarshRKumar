@@ -2,9 +2,20 @@
 import '../styles/components/grid.scss'
 import '../styles/components/liteGrid.scss'
 
-var { id, classItems, mode } = Astro.props
+var { id, classItems, mode, options } = Astro.props
+
+var styleStr = ''
+if (options) {
+    if (typeof options === 'object') {
+        options.keys.forEach((k, i) => {
+            if (i !== 0) styleStr += ' '
+            var value = options.values[k]
+            styleStr += `--${k}: ${value}`
+        })
+    }
+}
 
 ---
-<section id={id || ''} class={`grid ${mode === 'lite' ? 'lite ' : ''}${classItems}`}>
+<section id={id || ''} class={`grid ${mode === 'lite' ? 'lite ' : ''}${classItems}`} style={styleStr}>
     <slot />
 </section>

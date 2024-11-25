@@ -4,6 +4,7 @@ import SiteGridContent from '../components/siteGridContent.astro'
 
 import '../styles/pages/photos.scss'
 import data from '../../content/allPhotos/APC_0131/APC_0131'
+import type { createSlotValueFromString } from 'astro/runtime/server/render/slot.js'
 
 var site = Astro.site.toString()
 if (site.includes('://')) site = site.split('://')[1]
@@ -42,9 +43,18 @@ function getFName(name) {
   }
   return name
 }
+
+var options = {
+  keys: [
+    'min', 
+  ], 
+  values: {
+    min: '24rem', 
+  }, 
+}
 ---
 <Layout title="Photos">
-  <SiteGridContent classItems="photos" mode="lite">
+  <SiteGridContent classItems="photos" options={options} mode="lite">
     {
       photos.map(function(image, i) {
         image = image.default
