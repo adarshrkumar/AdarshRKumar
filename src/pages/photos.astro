@@ -55,7 +55,7 @@ function getFName(name) {
         // console.log(data)
         return (
           <div class="item">
-            <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--bg: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=50%25'); --img-width: ${image.width}px; --img-height: ${image.height}px`} />
+            <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25'); --img-width: ${image.width}px; --img-height: ${image.height}px`} loading="lazy" decoding="async" />
             {
               !!image.title ? <h3 class="item__title">{image.title}</h3> : ''
             }

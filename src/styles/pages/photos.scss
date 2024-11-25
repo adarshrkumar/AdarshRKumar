@@ -2,11 +2,16 @@ $textSpace: 5%;
 
 .photos {
     margin-inline: auto;
-    width: clamp(250px, 100%, 1000px);
+    width: clamp(500px, 100%, 1000px);
 
     .item {
         position: relative;
         pointer-events: all;
+
+        &:nth-child(12n) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
         
         &__image {
             -webkit-user-select: none;
