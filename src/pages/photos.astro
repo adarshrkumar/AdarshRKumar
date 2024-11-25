@@ -22,13 +22,15 @@ photos.map((data, i) => {
   datas.push(data)
 })
 
+console.log(datas)
+
 photos.map((image, i) => {
   image = image.default
   if (!image.src) {
     return ''
   }
 
-  var data = datas.find(f => f.name = getFName(image.src))
+  var data = datas.find(f => f.name = getFNameNoExt(image.src))
   // console.log(data)
 })
 
@@ -67,10 +69,10 @@ var options = {
           <div class="item">
             <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25'); --img-width: ${image.width}px; --img-height: ${image.height}px`} loading="lazy" decoding="async" />
             {
-              !!image.title ? <h3 class="item__title">{image.title}</h3> : ''
+              !!data.title ? <h3 class="item__title">{data.title}</h3> : ''
             }
             {
-              !!image.location ? <span class="item__content">{image.location}</span> : ''
+              !!data.location ? <span class="item__content">{data.location}</span> : ''
             }
           </div>
         )
