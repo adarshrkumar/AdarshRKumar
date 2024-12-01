@@ -1,7 +1,18 @@
 ---
+import '../styles/pages/videos.scss'
 import '../styles/pages/music.scss'
 
 import Layout from '../layouts/Layout.astro'
+
+import SiteGridContent from '../components/siteGridContent.astro'
+
+const vids = [
+    'UCzhr23vdbi63nZGYqBM7Ofw', 
+    'UCb35v6VAVFI8Q0aIpwPoW1g', 
+    'UCLK0Lj3V864AbKfutfyztYA', 
+    'UC8cV2cdrp1ccBWzoi1R-UwQ', 
+    'UCHUWd3IuPu3P21XkDW8vSuQ', 
+]
 
 var playlists = [
   'https://embed.music.apple.com/us/playlist/on-the-road-s/pl.u-r2yBDVqsRy4JPxe', 
@@ -10,12 +21,21 @@ var playlists = [
 ]
 
 ---
-<Layout title="Music Taste" inlineStyles="display: grid;">
-  <section class="music-area">
-    {
-      playlists.map(p => {
-        return (<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={p}></iframe>)
-      })
-    }
-  </section>
+<Layout title="My Music">
+    <SiteGridContent id="videos">
+        {
+            vids.map((vid, i) => {
+                <div>
+                    <iframe src={`https://youtube-nocookie.com/embed/${vid}`} />
+                </div>
+            })
+        }
+    </SiteGridContent>
+    <section class="music-area">
+        {
+          playlists.map(p => {
+            return (<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={p}></iframe>)
+          })
+        }
+      </section>
 </Layout>
