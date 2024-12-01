@@ -9,22 +9,27 @@ if (site.includes('://')) site = site.split('://')[1]
 if (site.endsWith('/')) site = site.slice(0, -1)
 
 var photos = await Astro.glob('../../content/allPhotos/*/*')
+var datas = await Astro.glob('../../content/allPhotos/*/info.js')
 
-var datas = []
-photos.map((data, i) => {
-  data = data.default
-  if (data.src) {
-    return ''
+datas.map((data, i) => {
+  if (data.default) {
+    datas[i] = data.default
   }
-
-  datas.push(data)
+})
+photos.map((image, i) => {
+  if (image.default) photos[i] = image.default
 })
 
 photos.map((image, i) => {
   if (!image.src) return
+  image.fullname = getFName(image.src)
+  datas.map(f => {
+    // console.log(f.fullname === getFName(image.src))
+  })
 
   var data = datas.find(f => f.fullname === getFName(image.src))
-  photos[i].data = data
+  image.data = data
+  photos[i] = image
 })
 
 function getFName(name) {
@@ -59,24 +64,24 @@ var options = {
           return ''
         }
         
-        return <pre>{getFName(image.src)}</pre>
-
+        // return <pre>{getFName(image.src)}</pre>
+        
         var data = image.data
 
-        // return (
-        //   <div class="item">
-        //     <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25'); --img-width: ${image.width}px; --img-height: ${image.height}px`} loading="lazy" decoding="async" />
-        //     {
-        //       (!!data.title || !!data.info) ? (
-        //         <div class="item__info">
-        //           {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
-        //           {!!data.location ? <span class="item__content">📍 {data.location}</span> : ''}
-        //         </div>
-        //       )
-        //        : ''
-        //     }
-        //   </div>
-        // )
+        return (
+          <div class="item">
+            <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25'); --img-width: ${image.width}px; --img-height: ${image.height}px`} loading="lazy" decoding="async" />
+            {
+              (!!data.title || !!data.info) ? (
+                <div class="item__info">
+                  {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
+                  {!!data.location ? <span class="item__content">📍 {data.location}</span> : ''}
+                </div>
+              )
+               : ''
+            }
+          </div>
+        )
       })
     }
   </SiteGridContent>
