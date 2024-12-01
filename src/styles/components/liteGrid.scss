@@ -4,6 +4,7 @@ $padding: 0.5rem;
 $min: 12rem;
 
 .grid.lite {
+    --paddingTrans: #{$padding};
     --padding: #{$padding};
     --borderRadius: #{$borderRadius};
 
@@ -14,7 +15,7 @@ $min: 12rem;
 
     .item {
         box-sizing: border-box;
-        padding: $padding;
+        padding: var(--paddingTrans, var(--padding, $padding));
 
         // aspect-ratio: 3 / 4;
 
