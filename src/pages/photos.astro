@@ -38,6 +38,7 @@ function getFName(name) {
     if (name.includes('?')) name = name.split('?')[0]
     if (name.includes('.')) {
       if (name.split('.').length > 2) {
+        name = name.split('.')
         name = `${name.slice(0, -2).join('.')}${name.slice(-1).join('.')}`
       }
     }
