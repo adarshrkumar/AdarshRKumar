@@ -6,6 +6,18 @@ $textSpace: 5%;
     initial-value: 0;
 }
 
+@property --item-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --info-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
 @property --paddingTrans {
     syntax: "<length>";
     inherits: true;
@@ -20,22 +32,26 @@ $textSpace: 5%;
 
 @keyframes shadow-in {
     from {
-        --size-opacity: 0;
+        --item-opacity: 0;
+        --info-opacity: 1;
         --paddingTrans: var(--padding);
     }
     to {
-        --size-opacity: 1;
+        --item-opacity: 1;
+        --info-opacity: 0;
         --paddingTrans: calc(var(--padding)*1.25);
     }
 }
 
 @keyframes shadow-out {
     from {
-        --size-opacity: 1;
+        --item-opacity: 1;
+        --info-opacity: 0;
         --paddingTrans: calc(var(--padding)*1.25);
     }
     to {
-        --size-opacity: 0;
+        --item-opacity: 0;
+        --info-opacity: 1;
         --paddingTrans: var(--padding);
     }
 }
@@ -46,6 +62,8 @@ $textSpace: 5%;
     z-index: 1;
 
     .item {
+        --size-opacity: var(--item-opacity);
+
         $time: 750ms;
         $shadow: 0 0 var(--padding) hsla(0, 0%, var(--color-lightness), var(--size-opacity, 1));
         position: relative;
@@ -66,7 +84,7 @@ $textSpace: 5%;
 
 
         &:hover {
-            --size-opacity: 1;
+            --item-opacity: 1;
             --paddingTrans: calc(var(--padding)*1.25);
 
             position: relative;
@@ -81,10 +99,13 @@ $textSpace: 5%;
         }
         
         &__info {
+            --info-opacity: 1;
+            --size-opacity: var(--info-opacity);
+
             position: absolute;
             inset: var(--padding);
 
-            background-color: hsla(0, 0%, var(--bg-lightness), 0.25);
+            background-color: hsla(0, 0%, var(--bg-lightness), 0.125);
             
             border-radius: calc(var(--borderRadius) - var(--padding));
             gap: 2rem;
@@ -101,7 +122,6 @@ $textSpace: 5%;
             align-self: center;
             
             box-shadow: $shadow;
-            text-shadow: $shadow;
         }
         &__title {
             &:has(+ .item__content) {
