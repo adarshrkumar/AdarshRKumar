@@ -4,6 +4,9 @@ import '../styles/components/liteGrid.scss'
 
 var { id, classItems, mode, options } = Astro.props
 
+if (classItems) classItems = ` ${classItems}`
+else classItems = ''
+
 var styleStr = ''
 if (options) {
     if (typeof options === 'object') {
@@ -16,6 +19,6 @@ if (options) {
 }
 
 ---
-<section id={id || ''} class={`grid ${mode === 'lite' ? 'lite ' : ''}${classItems}`} style={styleStr}>
+<section id={id || ''} class={`grid${mode === 'lite' ? ' lite' : ''}${classItems}`} style={styleStr}>
     <slot />
 </section>
