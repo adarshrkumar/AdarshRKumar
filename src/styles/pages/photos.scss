@@ -6,6 +6,12 @@ $textSpace: 5%;
     initial-value: 0;
 }
 
+@property --paddingTrans {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+}
+
 @keyframes z-index-fix {
     0%, 100% {
         z-index: 1;
@@ -15,18 +21,22 @@ $textSpace: 5%;
 @keyframes shadow-in {
     from {
         --size-opacity: 0;
+        --paddingTrans: var(--padding);
     }
     to {
         --size-opacity: 1;
+        --paddingTrans: calc(var(--padding)*1.25);
     }
 }
 
 @keyframes shadow-out {
     from {
         --size-opacity: 1;
+        --paddingTrans: calc(var(--padding)*1.25);
     }
     to {
         --size-opacity: 0;
+        --paddingTrans: var(--padding);
     }
 }
 
@@ -57,6 +67,7 @@ $textSpace: 5%;
 
         &:hover {
             --size-opacity: 1;
+            --paddingTrans: calc(var(--padding)*1.25);
 
             position: relative;
             scale: 1.25;
