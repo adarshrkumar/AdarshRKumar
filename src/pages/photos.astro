@@ -20,18 +20,6 @@ photos.map((data, i) => {
   datas.push(data)
 })
 
-photos.map((image, i) => {
-  image = image.default
-  if (!image.src) {
-    return ''
-  }
-
-  var data = datas.find(f => f.fullname === getFName(image.src))
-  image.data = data
-  
-  photos[i] = image
-})
-
 function getFName(name) {
   if (name.includes('/')) {
     name = name.split('/').slice(-1)[0]
@@ -64,7 +52,11 @@ var options = {
           return ''
         }
         
-        return <pre>{JSON.stringify(image, null, 4)}</pre>
+        var logs = []
+        var data = datas.find(f => {logs.push(`${f.fullname} === ${getFName(image.src)}`); return f.fullname === getFName(image.src)})
+
+        return <pre>{JSON.stringify(logs, null, 4)}</pre>
+
         // var data = image.data
 
         // return (
