@@ -28,11 +28,4 @@ I believe in the power of community engagement, so I encourage you to get involv
 Thank you for joining me on this new adventure. Stay tuned for upcoming posts, and feel free to reach out if there's anything specific you would like me to cover.
 
 Best regards,  
-[Your Name]
-
-I was lazy this time and asked GPT-4o to write me a post, but I promise I won't be lazy next time.  
--- Adarsh
-
-```
-Write me the markdown content for my first blog post using my new custom blog service/setup/interface. My website is a personal website, where I'll make blog posts on topics I like, including web development, programming in general, technology, and photography.
-```
+Adarsh
