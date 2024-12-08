@@ -29,7 +29,7 @@ else {
 
 categories.forEach((category, i) => {
     var isDir = fs.lstatSync(`${directoryPath}/photos/${category}`).isDirectory()
-    if (isDir) {
+    if (isDir && category.toLowerCase() !== 'hide') {
         var folders = fs.readdirSync(`${directoryPath}/photos/${category}`)
         folders.forEach(folder => {
             if (!fs.existsSync(`${directoryPath}/allPhotos/${folder}`)) {
