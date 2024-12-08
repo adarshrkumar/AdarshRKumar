@@ -105,6 +105,8 @@ $textSpace: 5%;
             position: absolute;
             inset: var(--padding);
 
+            padding: calc(var(--padding)*2);
+
             background-color: hsla(0, 0%, var(--bg-lightness), 0.125);
             
             border-radius: calc(var(--borderRadius) - var(--padding));
