@@ -19,11 +19,17 @@ function update() {
             files.forEach(file => {
                 var isDir2 = fs.lstatSync(`${directoryPath}/photos/${category}/${file}`).isDirectory()
                 if (!isDir2) {
+                    var title = getFName(file)
+                    if (title.startsWith('IMG_')) title = ''
+                    if (title.includes('_')) title = title.replaceAll('_', ' ')
+                    if (title.includes('-')) title = title.replaceAll('-', ' ')
+
                     var obj = {
                         name: getFName(file), 
                         fullname: file, 
                         extention: file.replaceAll(getFName(file), ''), 
                         category: category, 
+                        title: title,
                         uploader: 'adarshrkumar',
                     }
                     if (!fs.existsSync(`./${directoryPath}/photos/${category}/${getFName(file)}`)) {
