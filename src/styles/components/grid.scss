@@ -2,6 +2,16 @@ $gap: 2rem;
 $padding: 1rem;
 $min: 12rem;
 
+.grid .frame {
+    $ar: 2;
+    max-width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-items: center;
+    aspect-ratio: var(--ar, $ar);
+}
+
 .grid:not(.lite) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), 1fr)); /* Old Browsers (no "min()") */
