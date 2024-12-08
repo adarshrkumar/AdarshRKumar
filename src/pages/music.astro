@@ -1,5 +1,4 @@
 ---
-import '../styles/pages/videos.scss'
 import '../styles/pages/music.scss'
 
 import Layout from '../layouts/Layout.astro'
@@ -21,10 +20,10 @@ var playlists = [
 
 ---
 <Layout title="My Music">
-    <SiteGridContent id="videos">
+    <SiteGridContent id="videos" options={{keys: ['min'], values: {min: '12rem'}}}>
         {
             vids.map((vid, i) => {
-                return <iframe src={`https://www.youtube-nocookie.com/embed/${vid}`} />
+                return <iframe class="frame" src={`https://www.youtube-nocookie.com/embed/${vid}`} />
             })
         }
     </SiteGridContent>
