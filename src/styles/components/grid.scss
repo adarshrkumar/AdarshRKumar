@@ -4,19 +4,27 @@ $min: 12rem;
 
 .grid .frame {
     $ar: 2;
+    box-sizing: border-box;
+
     max-width: 100%;
+    aspect-ratio: var(--ar, $ar);
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    align-items: center;
-    aspect-ratio: var(--ar, $ar);
+
+    border: solid 1px var(--color);
+    border-radius: 1rem;
 }
 
 .grid:not(.lite) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), 1fr)); /* Old Browsers (no "min()") */
-    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
+
+    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); /* Old Browsers (no "min()") */
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); /* New Browser (yes "min()")*/
+
+    justify-content: center;
 
     @for $i from 1 through 3 {
         /* Only $i */
