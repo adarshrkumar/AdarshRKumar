@@ -1,12 +1,9 @@
 ---
-import '../styles/pages/videos.scss'
-
 import Layout from '../layouts/Layout.astro'
 
 import SiteGridContent from '../components/siteGridContent.astro'
 
 import Script from '../utils/script.astro'
-import { isRenderTemplateResult } from 'astro/runtime/server/render/astro/render-template.js'
 
 const cids = [
     'UCzhr23vdbi63nZGYqBM7Ofw', 
@@ -79,6 +76,7 @@ console.log(vids)
         {
             vids.map((vid, i) => {
                 return <pre>{JSON.stringify(vid, null, 4)}</pre>
+                // <iframe class="frame" />
 
                 // var player = document.createElement('div')
                 // player.id = `player${(i+1)}`
