@@ -6,10 +6,10 @@ import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 
 const vids = [
-    'PiruxQ5s-aw', 
+    // 'PiruxQ5s-aw', 
     'lmmfbstDWjQ', 
+    '1go0R7GrNkE',
     'vqzBSyL_3-c', 
-    'eNV7s5V1gW0',
 ]
 
 var playlists = [
@@ -20,7 +20,7 @@ var playlists = [
 
 ---
 <Layout title="My Music">
-    <h2 class="section-title">My Performences</h2>
+    <h2 class="section-title">My Performances</h2>
     <SiteGridContent classItems="videos" options={{keys: ['min', 'max'], values: {min: '4rem', max: '495px'}}}>
         {
             vids.map((vid, i) => {
