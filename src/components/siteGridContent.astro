@@ -13,7 +13,7 @@ if (options) {
         options.keys.forEach((k, i) => {
             if (i !== 0) styleStr += ' '
             var value = options.values[k]
-            styleStr += `--${k}: ${value}`
+            styleStr += `--${k}: ${value};`
         })
     }
 }
