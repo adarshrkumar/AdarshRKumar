@@ -15,7 +15,11 @@
           "-webkit-rtl-ordering",
           "text-align-last",
           "font-size-adjust",
-          "overflow: clip"
+          "overflow: clip",
+          "scroll-timeline",
+          "animation-timeline",
+          "animation-range",
+          "grid-template-rows: subgrid"
         ]
       }
     ]
