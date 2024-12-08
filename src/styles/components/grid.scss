@@ -4,8 +4,8 @@ $min: 12rem;
 
 .grid:not(.lite) {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr)); /* Old Browsers (no "min()") */
-    grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr)); /* New Browser (yes "min()")*/
+    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), 1fr)); /* Old Browsers (no "min()") */
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), 100%), 1fr)); /* New Browser (yes "min()")*/
     gap: $gap;
 
     @for $i from 1 through 3 {
