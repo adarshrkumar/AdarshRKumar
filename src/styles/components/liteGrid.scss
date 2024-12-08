@@ -9,9 +9,12 @@ $min: 12rem;
     --borderRadius: #{$borderRadius};
 
     display: grid;
+    gap: $gap;
+
     grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr)); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr)); /* New Browser (yes "min()")*/
-    gap: $gap;
+
+    justify-content: center;
 
     .item {
         box-sizing: border-box;
