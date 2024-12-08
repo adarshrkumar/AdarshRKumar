@@ -24,9 +24,7 @@ var playlists = [
     <SiteGridContent id="videos">
         {
             vids.map((vid, i) => {
-                return <div>
-                    <iframe src={`https://youtube-nocookie.com/embed/${vid}`} />
-                </div>
+                return <iframe src={`https://www.youtube-nocookie.com/embed/${vid}`} />
             })
         }
     </SiteGridContent>
