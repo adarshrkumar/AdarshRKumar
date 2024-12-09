@@ -8,9 +8,10 @@ html {
 
     margin-inline: auto;
     width: clamp(500px, 100%, 800px);
+    gap: 0;
 }
 
-.page-title:has(+ .post), .post :is(.info, .post-area) {
+.page-title:has(+ .post), .post {
     @media (width > 1012px) {
         & {
             border-left: var(--bor);
