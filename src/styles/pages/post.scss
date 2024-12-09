@@ -8,7 +8,6 @@ html {
 
     margin-inline: auto;
     width: clamp(500px, 100%, 800px);
-    gap: 0;
 }
 
 .page-title:has(+ .post), .post {
@@ -21,8 +20,7 @@ html {
 }
 
 .post {
-    display: flex;
-    flex-direction: column;
+    gap: 0;
 
     .info, .post-area {
         padding: var(--pad);
@@ -71,6 +69,7 @@ html {
     
     .post-area {
         flex: 1;
+        padding-block-start: 0;
         margin-bottom: var(--pad);
         border-bottom: var(--bor);
 
