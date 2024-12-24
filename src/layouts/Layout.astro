@@ -12,12 +12,9 @@ var logoSRC = '/assets/logo.jpg'
 var { title, pTitle, classItems, inlineStyles, pageType } = Astro.props;
 
 if (!!pTitle === false) pTitle = title
-title = `${title} | ${sName}`
-
 if (!!pTitle === false) pTitle = 'Home'
-if (pTitle === 'Home') {
-  title = title.split(' | ')[1]
-}
+
+
 
 if (!!classItems === false) classItems = ''
 
@@ -25,13 +22,18 @@ if (pageType) classItems += ` ${pageType}`
 
 switch (pageType) {
   case 'post':
+    title = `${title} | Blog`
     break;
   case 'author':
+    title = `${title} | Author`
     break;
   default:
     break;
 }
       
+if (pTitle === 'Home') title = sName
+else title = `${title} | ${sName}`
+
 var className = `page-area main-content ${classItems}`
 if (className.startsWith(' ')) className = className.substring(1)
 if (className.endsWith(' ')) className = className.substring(-1)
