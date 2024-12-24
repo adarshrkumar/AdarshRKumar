@@ -1,0 +1,24 @@
+---
+import '../styles/pages/largeFrame.scss'
+
+const { video } = Astro.props
+
+var vidGuId = video.guid
+var vidId = vidGuId.substring(vidGuId.lastIndexOf(':')+1)
+
+var img = `https://i.ytimg.com/vi/${vidId}`
+var imgAlt = `YouTube Video Thumbnail for "${video.title}" uploaded by "${video.author}"`
+
+var src = `https://www.youtube-nocookie.com/embed/${vidId}`
+var frameTitle = `"${video.title}" uploaded by "${video.author}"`
+
+---
+<label class="large-frame">
+    <input type="checkbox" class="checker" />
+    <img class="img" src={`${img}/maxresdefault.jpg`} style={`--bg: url('${img}/hqdefault.jpg')`} alt={imgAlt} />
+    <div class="info">
+        <h2 class="title">{video.title}</h2>
+        <p class="author">by {video.author}</p>
+    </div>
+    <iframe class="frame" src={src} title={frameTitle} />
+</div>
