@@ -4,13 +4,8 @@ import '../styles/pages/music.scss'
 import Layout from '../layouts/Layout.astro'
 
 import SiteGridContent from '../components/siteGridContent.astro'
+import ChannelVideos from '../components/channelVideos.astro'
 
-const vids = [
-    // 'PiruxQ5s-aw', 
-    'lmmfbstDWjQ', 
-    '1go0R7GrNkE',
-    'vqzBSyL_3-c', 
-]
 
 var playlists = [
     'https://embed.music.apple.com/us/playlist/on-the-road-s/pl.u-r2yBDVqsRy4JPxe', 
@@ -23,9 +18,7 @@ var playlists = [
     <h2 class="section-title">My Performances</h2>
     <SiteGridContent classItems="videos" options={{keys: ['min', 'max'], values: {min: '4rem', max: '495px'}}}>
         {
-            vids.map((vid, i) => {
-                return <iframe class="frame" src={`https://www.youtube-nocookie.com/embed/${vid}`} />
-            })
+            <ChannelVideos id="UCHUWd3IuPu3P21XkDW8vSuQ" vidsPerChannel={3} />
         }
     </SiteGridContent>
     <h2 class="section-title">My Music Taste</h2>
