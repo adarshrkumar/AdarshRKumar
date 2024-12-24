@@ -1,0 +1,105 @@
+.large-frame {
+    position: relative;
+
+    $ar: 2;
+    box-sizing: border-box;
+
+    max-width: 100%;
+    aspect-ratio: var(--ar, $ar);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    border: solid 1px var(--color);
+    border-radius: 1rem;
+
+    overflow: hidden;
+    overflow: clip;
+    
+    > *, &::after {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
+
+    .checker {
+        appearance: none;
+        // visibility: hidden;
+    }
+    &:has(.checker:not(:checked)) {
+        cursor: pointer;
+    }
+    &:has(.checker:checked) {
+        pointer-events: none;
+    }
+    .checker:checked ~ :not(.checker):not(.frame), &:has(.checker:checked)::after {
+        display: none;
+    }
+    .checker:not(:checked) ~ .frame {
+        display: none;
+    }
+
+    .img {
+        display: block;
+        width: 100%;
+
+        background-image: var(--bg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .info {
+        padding: 1rem;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: hsla(0, 0%, var(--bg-lightness), 0.5);
+
+        opacity: 0;
+
+        user-select: none;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        transition: opacity 0.5s;
+
+        > * {
+            margin-block: 0;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .frame {
+        box-sizing: inherit;
+    
+        max-width: unset;
+        aspect-ratio: unset;
+    
+        background-color: #000000;
+
+        background-position: unset;
+        background-repeat: unset;
+        background-size: unset;
+    
+        border: none;
+        border-radius: 0;
+
+        pointer-events: all;
+    }
+
+    &::after {
+        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><path d="M10 0, 10 100, 90 50" fill="black" /><path d="M11 2, 11 98, 88 50" fill="white" /><path d="M12 4, 12 96, 86 50" fill="black" /></svg>');
+
+        height: 25%;
+        aspect-ratio: 1;
+    }
+    
+}
