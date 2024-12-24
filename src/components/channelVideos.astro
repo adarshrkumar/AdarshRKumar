@@ -3,7 +3,9 @@ import LargeFrame from '../components/largeFrame.astro'
 
 import '../styles/pages/videos.scss'
 
-const {id, vidsNum, csAmt, vidsPerChannel} = Astro.props
+var {id, vidsPerChannel} = Astro.props
+
+if (!vidsPerChannel) vidsPerChannel = 'all'
 
 var vids = []
 
@@ -20,12 +22,6 @@ await fetch(reqURL)
                     if (result.items) {
                         if (result.items.length > 0) {
                             vids = result.items
-                            // result.items.map((item, i) => {
-                            //     if (i+1 <= vidsPerChannel) {
-                            //         console.dir(vids)
-                            //         vids.push(item)
-                            //         }
-                            // })
                         }
                     }
                 }
@@ -37,7 +33,9 @@ await fetch(reqURL)
 ---
 {
     vids.map((vid, i) => {
-        if (i+1 > vidsPerChannel) return
+        if (!isNaN(vidsPerChannel)) {
+            if (i+1 > vidsPerChannel) return
+        }
         return <LargeFrame video={vid} />
 
         // var player = document.createElement('div')
