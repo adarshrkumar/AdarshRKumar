@@ -1,0 +1,47 @@
+---
+import LargeFrame from '../components/largeFrame.astro'
+
+import '../styles/pages/videos.scss'
+
+const {id, vidsNum, csAmt, vidsPerChannel} = Astro.props
+
+var vids = []
+
+let apeKEEE = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
+let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${id}`)
+let reqURL = `https://api.rss2json.com/v1/api.json?api_key=${atob(apeKEEE)}&rss_url=${channelURL}`
+
+await fetch(reqURL)
+    .then(response => response.json())
+    .then(result => {
+        if (result) {
+            if (result.status) {
+                if (result.status === 'ok') {
+                    if (result.items) {
+                        if (result.items.length > 0) {
+                            vids = result.items
+                            // result.items.map((item, i) => {
+                            //     if (i+1 <= vidsPerChannel) {
+                            //         console.dir(vids)
+                            //         vids.push(item)
+                            //         }
+                            // })
+                        }
+                    }
+                }
+            }
+        }
+    })
+    .catch(error => console.error(error));
+
+---
+{
+    vids.map((vid, i) => {
+        if (i+1 > vidsPerChannel) return
+        return <LargeFrame video={vid} />
+
+        // var player = document.createElement('div')
+        // player.id = `player${(i+1)}`
+        // vElement.appendChild(player)
+    })
+}
