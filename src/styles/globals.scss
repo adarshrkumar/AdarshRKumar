@@ -29,11 +29,9 @@ $dark-link-color: #0000EE;
 $dark-link-visited: #551A8B;
 
 
-// * {
-    :not(nav *) {
-        box-sizing: border-box;
-    }
-// }
+:not(nav *):not([class*="-title"]) {
+    box-sizing: border-box;
+}
 
 :root {
     --logo-a-color: hsl(195, 12%, 94%);
@@ -213,8 +211,7 @@ hr[isDivider] {
     margin: 0;
     padding-block: 0.83rem;
 
-    border-top: var(--bor);
-    border-bottom: var(--bor);
+    border: var(--bor);
 
     text-align: center;
 }
