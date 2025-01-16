@@ -40,7 +40,7 @@ if (!!varient === false) varient = 'header'
             item.target = target
             item.primaryCls = primaryCls
 
-            return <a href={item.url} class={`nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
+            return <a href={item.url} class={`btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
         })
     }
 </nav>
@@ -49,5 +49,5 @@ if (!!varient === false) varient = 'header'
     document.querySelectorAll('.nav-btn').forEach(function(b, i) {
         if (b.clientWidth > largestWidth) largestWidth = b.clientWidth
     })
-    document.querySelector('.nav-btn').parentNode.style.setProperty('--min-width', `${largestWidth}px`)
+    document.querySelector('.nav').style.setProperty('--min-width', `${largestWidth}px`)
 </script>

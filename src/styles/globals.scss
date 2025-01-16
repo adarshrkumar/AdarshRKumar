@@ -169,13 +169,37 @@ img {
     }
 }
 
-hr[isDivider] {
-    display: none;
-    margin-top: 0;
-    background: gray;
-}
+.btn {
+    box-sizing: border-box;
+    padding: 10px 20px;
+  
+    min-width: var(--min-width, fit-content);
+  
+    background-color: var(--color);
+    color: var(--bg);
+  
+    border: solid 1px var(--bg);
+    border-radius: 100vw;
+  
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+  
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--nav-btn-hover);
+    }
 
-.divider {
+    &.primary {
+        background-color: var(--bg);
+        color: var(--color);
+      
+        border: solid 1px var(--color);
+    }
+  }
+    
+hr[isDivider], .divider {
     --size: var(--s, 100%);
     --stroke: 1px;
     --mar: 1rem;

@@ -15,29 +15,3 @@
 
   gap: 15px;
 }
-  
-.nav-btn {
-  box-sizing: border-box;
-  padding: 10px 20px;
-
-  min-width: var(--min-width, fit-content);
-
-  background-color: var(--bdr-clr, var(--color));
-  color: var(--btn-clr, var(--bg));
-
-  border: none;
-  border-radius: 100vw;
-
-  font-size: 1.25rem;
-  text-align: center;
-  text-decoration: none;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--nav-btn-hover);
-  }
-}
-  
-// .nav .current-page {
-// }
