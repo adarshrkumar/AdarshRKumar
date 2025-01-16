@@ -178,7 +178,7 @@ img {
     background-color: var(--bg);
     color: var(--color);
   
-    border: solid 1px var(--bg);
+    border: solid 1px var(--color);
     border-radius: 100vw;
   
     font-size: 1.25rem;
@@ -191,14 +191,14 @@ img {
         background-color: var(--color);
         color: var(--bg);
         
-        border: solid 1px var(--color);
+        border: solid 1px var(--bg);
     }
   
     &:hover {
-      background-color: var(--nav-btn-hover);
+        background-color: var(--nav-btn-hover);
     }
-  }
-    
+}
+
 hr[isDivider], .divider {
     --size: var(--s, 100%);
     --stroke: 1px;
