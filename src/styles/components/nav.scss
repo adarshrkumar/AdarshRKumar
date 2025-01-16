@@ -23,8 +23,8 @@
     
         border: solid 1px transparent;
 
-        text-decoration: underline;
-        text-underline-offset: 10px;
+        text-decoration: currentColor underline;
+        text-underline-offset: 5px;
     }
     
     &.primary {
