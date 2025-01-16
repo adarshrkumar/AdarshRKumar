@@ -17,10 +17,14 @@
 }
 
 .nav-btn {
-  background-color: var(--bg);
-  color: var(--color);
+  &:not(.primary) {
+    background-color: var(--bg);
+    color: var(--color);
+  
+    border: solid 1px transparent;
 
-  border: solid 1px var(--color);
+    text-decoration: underline;
+  }
   
   &.primary {
       background-color: var(--color);
