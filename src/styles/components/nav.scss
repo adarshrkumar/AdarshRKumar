@@ -15,3 +15,22 @@
 
   gap: 15px;
 }
+
+.nav-btn {
+  background-color: var(--bg);
+  color: var(--color);
+
+  border: solid 1px var(--color);
+  
+  &.primary {
+      background-color: var(--color);
+      color: var(--bg);
+      
+      border: solid 1px var(--bg);
+  }
+
+  &:hover {
+      background-color: var(--nav-btn-hover);
+      color: var(--bg)
+  }
+}
