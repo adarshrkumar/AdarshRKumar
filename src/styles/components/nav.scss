@@ -18,7 +18,7 @@
 
 .nav-btn {
     &:not(.primary) {
-        background-color: var(--bg);
+        background-color: transparent;
         color: var(--color);
     
         border: solid 1px transparent;
