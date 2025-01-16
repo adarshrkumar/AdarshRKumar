@@ -4,6 +4,8 @@ import '../styles/components/nav.scss'
 var { items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
+var currentPath = Astro.url.pathname
+
 ---
 <nav class="nav" data-direction={direction} data-varient={varient}>
     {
