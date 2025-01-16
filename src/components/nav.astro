@@ -33,10 +33,14 @@ if (!!varient === false) varient = 'header'
                 }
             }
 
+            var primaryCls = ''
+            if (url === currentPath) primaryCls = ' primary'
+
             item.url = url
             item.target = target
+            item.primaryCls = primaryCls
 
-            return <a href={item.url} class="nav-btn" target={item.target || '_self'}>{item.name}</a>
+            return <a href={item.url} class={`nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
         })
     }
 </nav>
