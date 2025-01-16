@@ -186,16 +186,16 @@ img {
     text-decoration: none;
   
     cursor: pointer;
-  
-    &:hover {
-      background-color: var(--nav-btn-hover);
-    }
-
+    
     &.primary {
         background-color: var(--bg);
         color: var(--color);
-      
+        
         border: solid 1px var(--color);
+    }
+  
+    &:hover {
+      background-color: var(--nav-btn-hover);
     }
   }
     
