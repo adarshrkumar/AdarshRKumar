@@ -175,8 +175,8 @@ img {
   
     min-width: var(--min-width, fit-content);
   
-    background-color: var(--color);
-    color: var(--bg);
+    background-color: var(--bg);
+    color: var(--color);
   
     border: solid 1px var(--bg);
     border-radius: 100vw;
@@ -188,8 +188,8 @@ img {
     cursor: pointer;
     
     &.primary {
-        background-color: var(--bg);
-        color: var(--color);
+        background-color: var(--color);
+        color: var(--bg);
         
         border: solid 1px var(--color);
     }
