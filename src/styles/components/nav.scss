@@ -1,40 +1,44 @@
 .nav {
-  &[data-varient="sidebar"] {
-    justify-content: center;
-  }  
-  
-  display: flex;
-  flex-wrap: wrap;
+    &[data-varient="sidebar"] {
+        justify-content: center;
+    }  
+    
+    display: flex;
+    flex-wrap: wrap;
 
-  &[data-direction="row"] {
-    flex-direction: row;
-  }
-  &[data-direction="column"] {
-    flex-direction: column;
-  }
+    &[data-direction="row"] {
+        flex-direction: row;
+    }
+    &[data-direction="column"] {
+        flex-direction: column;
+    }
 
-  gap: 15px;
+    gap: 15px;
 }
 
 .nav-btn {
-  &:not(.primary, :hover) {
-    background-color: var(--bg);
-    color: var(--color);
-  
-    border: solid 1px transparent;
+    &:not(.primary) {
+        background-color: var(--bg);
+        color: var(--color);
+    
+        border: solid 1px transparent;
 
-    text-decoration: underline;
-  }
-  
-  &.primary {
-      background-color: var(--color);
-      color: var(--bg);
-      
-      border: solid 1px var(--bg);
-  }
+        text-decoration: underline;
+    }
+    
+    &.primary {
+        background-color: var(--color);
+        color: var(--bg);
+        
+        border: solid 1px var(--bg);
 
-  &:hover {
-      background-color: var(--nav-btn-hover);
-      color: var(--bg)
-  }
+        &:hover {
+            background-color: var(--nav-btn-hover);
+            color: var(--bg)
+        }
+    }
+
+    &:hover {
+        color: var(--nav-btn-hover)
+    }
 }
