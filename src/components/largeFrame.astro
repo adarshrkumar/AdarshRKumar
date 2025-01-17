@@ -29,5 +29,5 @@ var frameTitle = `"${video.title}" uploaded by "${video.author}"`
         <h2 class="title">{video.title}</h2>
         <p class="author">by <a target="_blank" href={channelLink}>{feed.title}</a></p>
     </div>
-    <iframe class="frame" allow="autoplay; fullscreen;" src={frameSrc} title={frameTitle} />
+    <iframe class="frame" allow="autoplay; fullscreen;" allowfullscreen loading="lazy" src={frameSrc} title={frameTitle} />
 </div>
