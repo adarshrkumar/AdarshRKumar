@@ -80,6 +80,9 @@ $t-time: 0.5s;
 
         > * {
             margin-block: 0;
+            white-space: nowrap;
+            overflow-x: hidden;
+            overflow-x: clip;
             text-overflow: ellipsis;
         }
     }
