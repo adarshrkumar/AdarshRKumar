@@ -15,9 +15,7 @@ const cids = [
     'UCHUWd3IuPu3P21XkDW8vSuQ', 
 ]
 
-let vidsNum = 15
-let csAmt = cids.length
-let vidsPerChannel = Math.ceil(vidsNum/csAmt)
+let vidsPerChannel = 3
 
 cids.forEach((cid, cI) => {
     let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`)
