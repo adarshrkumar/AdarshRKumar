@@ -7,6 +7,7 @@ var {id, vidsPerChannel} = Astro.props
 
 if (!vidsPerChannel) vidsPerChannel = 'all'
 
+var feed = {}
 var vids = []
 
 let apeKEEE = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
@@ -19,10 +20,9 @@ await fetch(reqURL)
         if (result) {
             if (result.status) {
                 if (result.status === 'ok') {
+                    if (result.feed) feed = result.feed
                     if (result.items) {
-                        if (result.items.length > 0) {
-                            vids = result.items
-                        }
+                        if (result.items.length > 0) vids = result.items
                     }
                 }
             }
@@ -36,7 +36,7 @@ await fetch(reqURL)
         if (!isNaN(vidsPerChannel)) {
             if (i+1 > vidsPerChannel) return
         }
-        return <LargeFrame video={vid} />
+        return <LargeFrame video={vid} feed={feed} />
 
         // var player = document.createElement('div')
         // player.id = `player${(i+1)}`

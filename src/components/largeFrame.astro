@@ -1,7 +1,11 @@
 ---
 import '../styles/components/largeFrame.scss'
 
-const { video } = Astro.props
+const { video, feed } = Astro.props
+
+var fLink = feed.link
+var cId = fLink
+if (cId.includes('/')) cId = cId.split('/').pop()
 
 var vidGuId = video.guid
 var vidId = vidGuId.substring(vidGuId.lastIndexOf(':')+1)
@@ -18,7 +22,7 @@ var frameTitle = `"${video.title}" uploaded by "${video.author}"`
     <img class="img" src={`${img}/maxresdefault.jpg`} style={`--bg: url('${img}/hqdefault.jpg')`} alt={imgAlt} />
     <div class="info">
         <h2 class="title">{video.title}</h2>
-        <p class="author">by {video.author}</p>
+        <p class="author">by <a href={`https://youtube.com/channel/${cId}`}>{feed.title}</a></p>
     </div>
     <iframe class="frame" src={src} title={frameTitle} />
 </div>
