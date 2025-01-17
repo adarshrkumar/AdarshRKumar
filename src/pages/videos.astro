@@ -40,7 +40,7 @@ cids.forEach((cid, cI) => {
 
 ---
 <Layout title="Videos">
-    <SiteGridContent classItems="videos" options={{min: '12rem'}}>
+    <SiteGridContent classItems="videos">
         {
             cids.map(id => {
                 return <ChannelVideos id={id} vidsPerChannel={vidsPerChannel} />
