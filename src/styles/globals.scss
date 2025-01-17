@@ -1,41 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-$change-amt: 20%;
-
-$main-bg-lightness: 100%;
-$main-bg-darkness: 100%;
-$main-bdr-darkness: 75%;
-$main-color-lightness: 15%;
-
-$middle-lightness: 45%;
-$middle-color: hsl(0, 0%, $middle-lightness);
-
-$light-bg: hsl(0, 0%, $main-bg-lightness);
-$light-color: hsl(0, 0%, $main-color-lightness);
-
-$light-nav-hover: lighten($light-color, $change-amt);
-
-$light-link-color: #0000EE;
-$light-link-visited: #551A8B;
-
-$dark-bg: hsl(0, 0%, $main-color-lightness);
-$dark-color: hsl(0, 0%, $main-bg-darkness);
-$dark-border: hsl(0, 0%, $main-bdr-darkness);
-
-$dark-nav-hover: darken($dark-color, $change-amt);
-
-$dark-link-color: #0000EE;
-$dark-link-visited: #551A8B;
-
+@import './variables.scss';
 
 :not(nav *):not([class*="-title"]) {
     box-sizing: border-box;
 }
 
 :root {
-    --logo-a-color: hsl(195, 12%, 94%);
-    --active-link: hsl(352, 68%, 77%);
+    --logo-a-color: #{$logo-a-color};
     
     --bg: #{$light-bg};
     --bg-lightness: #{$main-bg-lightness};
@@ -44,6 +17,7 @@ $dark-link-visited: #551A8B;
     --bdr-clr: unset;
     --middle-lightness: #{$middle-lightness};
     --middle-color: #{$middle-color};
+    --primary-btn-clr: #{$primary-btn-clr};
     --nav-btn-hover: #{$light-nav-hover};
     
     font-family: 'Montserrat', sans-serif;
