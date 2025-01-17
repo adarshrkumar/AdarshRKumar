@@ -22,7 +22,7 @@ var playlists = [
         }
     </SiteGridContent>
     <h2 class="section-title">My Music Taste</h2>
-    <SiteGridContent classItems="music" options={{keys: ['min', 'max'], values: {min: '4rem', max: '660px'}}}>
+    <SiteGridContent classItems="music" options={{min: '4rem', max: '660px'}}>
         {
           playlists.map(p => {
             return <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={p}></iframe>
