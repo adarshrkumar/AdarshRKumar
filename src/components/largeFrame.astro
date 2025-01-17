@@ -24,5 +24,5 @@ var frameTitle = `"${video.title}" uploaded by "${video.author}"`
         <h2 class="title">{video.title}</h2>
         <p class="author">by <a target="_blank" href={`https://youtube.com/channel/${cId}`}>{feed.title}</a></p>
     </div>
-    <iframe class="frame" allow="autoplay" src={`https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1`} title={frameTitle} />
+    <iframe class="frame" allow="autoplay; fullscreen;" src={`https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1`} title={frameTitle} />
 </div>
