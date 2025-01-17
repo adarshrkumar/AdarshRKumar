@@ -149,10 +149,6 @@ img {
   
     min-width: var(--min-width, fit-content);
   
-    background-color: var(--bg);
-    color: var(--color);
-  
-    border: solid 1px var(--color);
     border-radius: 100vw;
   
     font-size: 1.25rem;
@@ -161,11 +157,23 @@ img {
   
     cursor: pointer;
     
+    &:not(.primary) {
+        background-color: transparent;
+        color: var(--color);
+    
+        border: solid 1px var(--color);    
+    }
+
     &.primary {
         background-color: var(--color);
         color: var(--bg);
         
         border: solid 1px var(--bg);
+
+        &:hover {
+            background-color: var(--nav-btn-hover);
+            color: var(--bg)
+        }
     }
   
     &:hover {

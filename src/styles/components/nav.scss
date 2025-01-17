@@ -18,28 +18,14 @@
 
 .nav-btn {
     &:not(.primary) {
-        background-color: transparent;
-        color: var(--color);
-    
         border: solid 1px transparent;
 
         text-decoration: currentColor underline;
         text-underline-offset: 5px;
     }
     
-    &.primary {
-        background-color: var(--color);
-        color: var(--bg);
-        
-        border: solid 1px var(--bg);
-
-        &:hover {
-            background-color: var(--nav-btn-hover);
-            color: var(--bg)
-        }
-    }
-
     &:hover {
+        background-color: transparent;
         color: var(--nav-btn-hover)
     }
 }
