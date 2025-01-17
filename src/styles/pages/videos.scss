@@ -1,9 +1,5 @@
 .videos.grid {
-    --ar: 16 / 9;
-    --min: 500px;
-
-    pre.frame {
-        margin-block: 0;
-    }
+    margin-inline: auto;
+    width: clamp(250px, 100%, 750px);
 }
 
