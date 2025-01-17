@@ -34,7 +34,7 @@ await fetch(reqURL)
 {
     vids.map((vid, i) => {
         if (!isNaN(vidsPerChannel)) {
-            if (i+1 > vidsPerChannel) return
+            if (i > vidsPerChannel) return
         }
         return <LargeFrame video={vid} feed={feed} />
 
