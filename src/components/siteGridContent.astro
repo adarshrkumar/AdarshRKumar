@@ -10,7 +10,7 @@ else classItems = ''
 var styleStr = ''
 if (options) {
     if (typeof options === 'object') {
-        Object.keys(object).forEach((k, i) => {
+        Object.keys(options).forEach((k, i) => {
             if (i !== 0) styleStr += ' '
             var value = options[k]
             styleStr += `--${k}: ${value};`
