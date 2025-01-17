@@ -1,5 +1,5 @@
 .videos.grid {
     margin-inline: auto;
-    width: clamp(250px, 100%, 750px);
+    width: min(100%, 1000px);
 }
 
