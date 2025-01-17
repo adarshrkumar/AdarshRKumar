@@ -13,7 +13,7 @@ var vidId = vidGuId.substring(vidGuId.lastIndexOf(':')+1)
 var img = `https://i.ytimg.com/vi/${vidId}`
 var imgAlt = `YouTube Video Thumbnail for "${video.title}" uploaded by "${video.author}"`
 
-var src = `https://www.youtube-nocookie.com/embed/${vidId}`
+var src = `https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1`
 var frameTitle = `"${video.title}" uploaded by "${video.author}"`
 
 ---
@@ -24,5 +24,5 @@ var frameTitle = `"${video.title}" uploaded by "${video.author}"`
         <h2 class="title">{video.title}</h2>
         <p class="author">by <a target="_blank" href={`https://youtube.com/channel/${cId}`}>{feed.title}</a></p>
     </div>
-    <iframe class="frame" src={src} title={frameTitle} />
+    <iframe class="frame" allow="autoplay" src={`https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1`} title={frameTitle} />
 </div>
