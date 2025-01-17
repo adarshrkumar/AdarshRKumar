@@ -26,6 +26,7 @@ var currentPath = Astro.url.pathname
                         target = '_black'
                     }
                 }
+                if (url.endsWith('/')) url = url.slice(0, -1)
             }
             else if (!!url === false) {
                 url = '/'
