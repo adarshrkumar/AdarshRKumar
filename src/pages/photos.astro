@@ -46,17 +46,9 @@ function getFName(name) {
   return name
 }
 
-var options = {
-  keys: [
-    'min', 
-  ], 
-  values: {
-    min: '24rem', 
-  }, 
-}
 ---
 <Layout title="Photos">
-  <SiteGridContent classItems="photos" options={options} mode="lite">
+  <SiteGridContent classItems="photos" options={{min: '24rem'}} mode="lite">
     {
       photos.map(function(image, i) {
         if (image.default) image = image.default
