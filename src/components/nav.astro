@@ -5,6 +5,7 @@ var { items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
 var currentPath = Astro.url.pathname
+if (currentPath.endsWith('/')) currentPath = currentPath.slice(0, -1)
 
 ---
 <nav class="nav" data-direction={direction} data-varient={varient}>
