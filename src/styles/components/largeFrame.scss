@@ -16,8 +16,10 @@
 
     overflow: hidden;
     overflow: clip;
-    
-    > *, &::after {
+
+    isolation: isolate;
+
+    > *, &::before, &::after {
         position: absolute;
         inset: 0;
         margin: auto;
@@ -33,8 +35,10 @@
     &:has(.checker:checked) {
         pointer-events: none;
     }
-    .checker:checked ~ :not(.checker):not(.frame), &:has(.checker:checked)::after {
-        display: none;
+    .checker:checked ~ :not(.checker):not(.frame), &:has(.checker:checked) {
+        &::before, &::after {
+            display: none;
+        }
     }
     .checker:not(:checked) ~ .frame {
         display: none;
@@ -48,6 +52,8 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+
+        z-index: 1;
     }
 
     .info {
@@ -68,11 +74,10 @@
 
         transition: opacity 0.5s;
 
+        z-index: 2;
+
         > * {
             margin-block: 0;
-        }
-        &:hover {
-            opacity: 1;
         }
     }
 
@@ -92,17 +97,36 @@
         border-radius: 0;
 
         pointer-events: all;
+
+        z-index: 4;
     }
 
-    &:has(::after:hover) .info, .info:hover {
-        opacity: 1;
+    &:hover {
+        .info {
+            opacity: 1;
+        }
+        &::after {
+            opacity: 0.5;
+        }
     }
 
-    &::after {
-        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><path d="M10 0, 10 100, 90 50" fill="black" /><path d="M11 2, 11 98, 88 50" fill="white" /><path d="M12 4, 12 96, 86 50" fill="black" /></svg>');
+    &::before, &::after {
+        content: '';
 
         height: 25%;
         aspect-ratio: 1;
+
+        clip-path: polygon(10% 0, 90% 50%, 10% 100%);
+
+        z-index: 3;
     }
-    
+
+    &::before {
+        background-color: darkred;
+
+    }
+    &::after {
+        opacity: 0;
+        background-color: var(--bg);
+    }    
 }
