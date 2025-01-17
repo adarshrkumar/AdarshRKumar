@@ -71,6 +71,9 @@
         > * {
             margin-block: 0;
         }
+        &:hover {
+            opacity: 1;
+        }
     }
 
     .frame {
