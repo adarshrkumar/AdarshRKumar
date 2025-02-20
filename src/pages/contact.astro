@@ -3,31 +3,18 @@ import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
 
-import Script from '../utils/script.astro'
+
+import Input from '../defaultComponents/Input.astro'
+import TextArea from '../defaultComponents/TextArea.astro'
+import { escapeHTML } from 'astro/runtime/server/escape.js'
 
 ---
 <Layout title="Contact">
   <form action="https://getform.io/f/qalorpyb" method="POST" class="contact">
-    <div class="form-field">
-      <label for="name">
-        <b>Name: </b>
-      </label>
-      <input type="text" name="name" id="name" placeholder="What's your name?" required="TRUE">
-    </div>
-    <div class="form-field">
-      <label for="email">
-        <b>Email: </b>
-      </label>
-      <input type="email" name="email" id="email" placeholder="you@email.tld" required="TRUE">
-    </div>
-    <div class="form-field">
-      <label for="message">
-        <b>Message: </b>
-      </label>
-      <textarea autosize rows="1" name="message" id="message" placeholder="Type here..." required="TRUE"></textarea>
-    </div>
-    <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-    <input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer;">
+    <Input type="text" name="name" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
+    <Input type="email" name="email" id="email" placeholder="you@email.tld" required="TRUE" align="left">Email: </Input>
+    <TextArea label="Message:" autosize rows="1" name="message" id="message" placeholder="Type here..." required="TRUE" />
+    <Input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission" />
+    <Input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer;" />
   </form>
-  <Script name="autosize" />
 </Layout>

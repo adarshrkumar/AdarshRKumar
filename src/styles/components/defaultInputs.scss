@@ -1,0 +1,210 @@
+@use 'sass:math';
+
+$pad: 1rem;
+
+@mixin defaultStyles() {
+    -webkit-appearance: none;
+    appearance: none;
+
+    font: inherit;
+    
+    text-decoration: inherit;
+    text-transform: inherit;
+    text-rendering: auto;
+
+    text-align: inherit;
+    text-align-last: inherit;
+
+    direction: inherit;
+    vertical-align: inherit;
+
+    unicode-bidi: inherit;
+    unicode-range: inherit;
+
+    text-indent: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    white-space: inherit;
+
+    -webkit-rtl-ordering: inherit;
+}
+
+::placeholder, :placeholder-shown, 
+:-moz-placeholder, ::-moz-placeholder, 
+:-ms-input-placeholder, 
+::-webkit-input-placeholder {
+    color: inherit;
+}
+
+@mixin mainStyles() {
+    flex: 1;
+
+    // box-sizing: border-box;
+    padding: math.div($pad, 2);
+
+    // width: calc(100% - #{$pad*2});
+    // min-height: 50px;
+
+    background-color: var(--bg);
+    color: var(--color);
+
+    border: solid 1px var(--middle-color);
+    border-radius: $pad;
+
+    text-align: center;
+}
+
+@mixin textStyles() {
+    min-width: 200px;
+    &:is(textarea) {
+        resize: vertical;
+    }
+}
+
+@mixin buttonStyles() {
+    min-width: 100px;
+    cursor: pointer;
+}
+
+@mixin checkboxRadio() {
+    border: solid 1px gray;
+    aspect-ratio: 1;
+    min-height: 1em;
+
+    &:checked {
+        appearance: auto;
+        border-radius: inherit;
+        border-style: solid;
+    }
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    // gap: $pad;
+
+    > label:not(.file label) {
+        @include mainStyles();
+
+        box-sizing: border-box;
+        padding: 0 $pad;
+
+        width: fit-content;
+
+        translate: 1em 0;
+
+        text-align: left;
+
+        + * {
+            margin-top: -5%;
+        }
+    }
+}
+
+// label, 
+fieldset, 
+legend, 
+datalist, 
+output, 
+select, 
+option, 
+optgroup {
+    @include defaultStyles()
+}
+
+input {
+    &[type="checkbox"] {
+        @include defaultStyles();
+        @include checkboxRadio();
+        border-radius: 0.15em;
+    }
+    &[type="radio"] {
+        @include defaultStyles();
+        @include checkboxRadio();
+        border-radius: 50%
+    }
+    
+    &[type="image"] {
+        @include defaultStyles();
+    }
+
+    // &[type="range"] {
+    //     @include defaultStyles();
+    //     background: transparent;
+    //     &::-webkit-slider-thumb {
+    //         -webkit-appearance: none;
+    //         appearance: none;
+    //         width: 1em;
+    //         aspect-ratio: 1;
+    //         background: green;
+    //         border-radius: 50%;
+    //     }
+    //     &::-webkit-slider-container, &::-webkit-slider-runnable-track, &::-moz-range-track, &::-ms-track {
+    //         // -webkit-appearance: inherit;
+    //         // appearance: inherit;
+    //         background: green;
+    //         height: 0.5rem;
+    //     }
+    // }
+    &[type="date"], 
+    &[type="datetime-local"], 
+    &[type="month"], 
+    &[type="time"], 
+    &[type="week"], 
+    &[type="email"], 
+    &[type="number"], 
+    &[type="password"], 
+    &[type="search"], 
+    &[type="tel"], 
+    &[type="text"], 
+    &[type="url"] {
+        @include defaultStyles();
+        @include mainStyles();
+        @include textStyles();
+    }
+}
+
+
+
+// label {}
+textarea {
+    @include defaultStyles();
+    @include mainStyles();
+    @include textStyles();
+}
+
+button,
+input[type="button"],
+input[type="submit"], 
+input[type="reset"],
+input[type="color"],
+label:has(+ input[type="file"]) {
+    @include defaultStyles();
+    @include mainStyles();
+    @include buttonStyles();
+}
+
+.formGroup .file {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.file input[type="file"] {
+    display: none;
+}
+input[type="file"] {
+    @include defaultStyles()
+}
+
+input[type="color"] {
+    min-height: 40px;
+    min-width: 10px;
+}
+
+fieldset {}
+legend {}
+datalist {}
+output {}
+
+select {}
+option {}
+optgroup {}

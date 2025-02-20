@@ -1,0 +1,40 @@
+---
+import '../styles/components/defaultInputs.scss'
+
+import type { HTMLAttributes } from 'astro/types';
+import type { HTMLString } from 'astro/runtime/server/escape.js';
+
+export interface Props extends HTMLAttributes<'input'> {
+    align?: 'left' | 'center' | 'right';
+    label?: HTMLString | String;
+}
+
+const { 
+    id, type, label
+} = Astro.props
+
+const { ...attrs } = Astro.props
+
+const valueInputs = [
+    'button',
+    'submit', 
+    'reset', 
+    'color'
+]
+
+---
+{
+    (((await Astro.slots.render('default') && !valueInputs.includes(type ?? '')) || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
+     ? <div class="formGroup">
+        {valueInputs.includes(type ?? '') ? <label for={id} set:html={label} /> : <label for={id}><slot /></label>}
+        {
+            type === 'file'
+             ? <div class="file">
+                <label for={id} class="customInput">Choose File</label><input {...attrs} />
+            </div>
+             : <>{async () => valueInputs.includes(type ?? '') ? <input value={await Astro.slots.render('default')} {...attrs} /> : <input {...attrs} />}</>
+        }
+    </div>
+     : <>{async () => valueInputs.includes(type ?? '') ? <input value={await Astro.slots.render('default')} {...attrs} /> : <input {...attrs} />}</>
+
+}

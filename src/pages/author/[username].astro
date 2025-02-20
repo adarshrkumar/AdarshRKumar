@@ -12,10 +12,30 @@ export function getStaticPaths() {
 
 const { username } = Astro.params;
 
-import authors from '../../../content/blog/authors.js'
+import regAuthors from '../../../content/blog/authors.js'
 
-var author = authors[username]
-author.username = username
+type Authors = {
+    [key: string]: Author;
+};
+
+const authors: Authors = regAuthors;
+
+type Author = {
+    username: string;
+    displayName: string;
+    bio: string;
+    hasPfp: boolean;
+    pfp: {
+        filename: String;
+    };
+};
+
+var author;
+if (username && authors[username]) {
+    author = authors[username];
+} else {
+    throw new Error('Author not found');
+}
 
 var bio = author.bio
 if (bio.includes('\n')) bio = bio.split('\n').join('<br>')
