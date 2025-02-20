@@ -7,8 +7,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  flex-wrap: wrap;
   gap: 15px;
 
   border-bottom: solid 1px var(--bdr-clr, var(--color));
