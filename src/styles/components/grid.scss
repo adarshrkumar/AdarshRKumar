@@ -21,36 +21,39 @@ $min: 12rem;
     display: grid;
     gap: $gap;
 
+    margin-inline: auto;
+    max-width: max(75%, var(--min, 1000px));
+
     grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); /* New Browser (yes "min()")*/
 
     justify-content: center;
 
-    @for $i from 1 through 3 {
-        /* Only $i */
-        &:has(
-            .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child,
-            .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child ~ .item
-        ) {
-            grid-template-columns: repeat(#{$i + 2}, minmax(0, 1fr)); /* Old Browsers (no "min()") */
-            grid-template-columns: repeat(#{$i + 2}, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
+    // @for $i from 1 through 3 {
+    //     /* Only $i */
+    //     &:has(
+    //         .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child,
+    //         .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child ~ .item
+    //     ) {
+    //         grid-template-columns: repeat(#{$i + 2}, minmax(0, 1fr)); /* Old Browsers (no "min()") */
+    //         grid-template-columns: repeat(#{$i + 2}, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
 
-            .item {
-                &:first-child:not(:last-child) {
-                    grid-column: 2 / 3;
-                }
-                &:last-child:not(:first-child) {
-                    grid-column: -3 / -2;
-                }
-                &:first-child:last-child {
-                    grid-column: 2 / -2;
-                }
-                &:nth-child(2):not(:first-child, :last-child) {
-                    grid-column: 3 / -3;
-                }
-            }
-        }
-    }
+    //         .item {
+    //             &:first-child:not(:last-child) {
+    //                 grid-column: 2 / 3;
+    //             }
+    //             &:last-child:not(:first-child) {
+    //                 grid-column: -3 / -2;
+    //             }
+    //             &:first-child:last-child {
+    //                 grid-column: 2 / -2;
+    //             }
+    //             &:nth-child(2):not(:first-child, :last-child) {
+    //                 grid-column: 3 / -3;
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 .item {
