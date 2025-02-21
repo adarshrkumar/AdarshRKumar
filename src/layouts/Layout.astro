@@ -9,7 +9,7 @@ import Script from '../utils/script.astro'
 var sName = 'Adarsh Kumar'
 var logoSRC = '/assets/logo.jpg'
 
-var { title, pTitle, classItems, inlineStyles, pageType } = Astro.props;
+var { title, pTitle, classItems, inlineStyles, pageType, author } = Astro.props;
 
 if (!!pTitle === false) pTitle = title
 if (!!pTitle === false) pTitle = 'Home'
@@ -37,6 +37,20 @@ else title = `${title} | ${sName}`
 var className = `page-area main-content ${classItems}`
 if (className.startsWith(' ')) className = className.substring(1)
 if (className.endsWith(' ')) className = className.substring(-1)
+
+import age from '../../content/getAge.js'
+
+const aboutFile = await import('../../content/aboutContent.md')
+var aboutContent = aboutFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
+while (aboutContent.startsWith(' ')) aboutContent = aboutContent.slice(1)
+while (aboutContent.endsWith(' ')) aboutContent = aboutContent.slice(0, -1)
+
+const keywordsFile = await import('../../content/aboutContent.md')
+var keywords = keywordsFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  \n', ',').replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
+while (keywords.startsWith(' ')) keywords = keywords.slice(1)
+while (keywords.endsWith(' ')) keywords = keywords.slice(0, -1)
+var keywordsArr = keywords.split(',')
+keywords = keywordsArr.join(', ')
 ---
 
 <!DOCTYPE html>
@@ -45,6 +59,9 @@ if (className.endsWith(' ')) className = className.substring(-1)
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={aboutContent} />
+    <meta name="keywords" content={keywords} />
+    {author ? <meta name="author" content={author} /> : ''}
     <title>{title}</title>
     <!-- <base href={Astro.site} /> -->
     <link rel="icon" href="/assets/favicon.png" />
