@@ -13,11 +13,22 @@ var location = {
 }
 
 var highlights = ['hello-world', 'nodebooks']
-var allItems = await Astro.glob('../../content/blog/posts/*.md')
-var posts = []
+
+const items = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
+const keys = Object.keys(items)
+const allItems: Post[] = Object.values(items) as Post[];
+
+interface Post {
+  file: string;
+  frontmatter: {
+  };
+  rawContent: () => string;
+}
+
+var posts: Post[] = []
 
 highlights.forEach(slug => {
-  var res = allItems.filter(item => getFName(item.file) === slug)
+  var res = allItems.filter((item: Post) => getFName(item.file) === slug)
   if (res.length > 0) {
     res.forEach(r => posts.push(r))
   }
