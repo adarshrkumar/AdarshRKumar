@@ -6,11 +6,23 @@ import SiteGridContent from './siteGridContent.astro'
 import getFName from '../../content/getFName.js'
 
 var highlights = ['TransTrack', 'graphics-for-good', 'SMCAS']
-var allItems = await Astro.glob('../../content/work/portfolio/*.md')
-var items = []
+const ports = import.meta.glob('../../content/work/portfolio/**/*.md', { eager: true })
+const keys = Object.keys(ports)
+const allItems = Object.values(ports) as Item[];
+
+interface Item {
+  file: string;
+  frontmatter: {
+    url: string;
+    name: string;
+  };
+  rawContent: () => string;
+}
+
+var items: Item[] = []
 
 highlights.forEach(name => {
-  var res = allItems.filter(item => getFName(item.file) === name)
+  var res = allItems.filter((item: Item) => getFName(item.file) === name)
   if (res) {
     if (res.length > 0) {
       res.forEach(r => items.push(r))
@@ -33,7 +45,7 @@ highlights.forEach(name => {
         domain = `https://${domain}`
       }
       
-      if (!url.includes(':') || domain === Astro.site) target = 'self'
+      if (!url.includes(':') || domain === String(Astro.site)) target = 'self'
 
       var imageSize = 512
       var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
