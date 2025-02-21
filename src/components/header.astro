@@ -12,9 +12,12 @@ var domain = Astro.url.origin
 if (path.startsWith('/') && path !== '/') path = path.slice(1)
 if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length-1)
 
-var pages = await Astro.glob('../pages/*.astro')
+const items = import.meta.glob('../pages/*.astro', { eager: true })
+const keys = Object.keys(items)
+const pages = Object.values(items);
 
-var links = []
+
+var links: { path: string; name: string }[] = []
 pages.map((page: any) => {
   var link = getLink(page)
   if (link.name === 'Home') {
@@ -44,11 +47,11 @@ function getLink(link: any) {
   else if (fileName.startsWith('[') && fileName.wndsWith(']')) return ''
   else if (parseInt(fileName)) return ''
 
-  var nameParts = []
+  var nameParts: any[] = []
   if (fileName.includes('-')) nameParts = fileName.split('-')
   else nameParts = [fileName]
 
-  nameParts.forEach((p, i) => {
+  nameParts.forEach((p: string, i: number) => {
     nameParts[i] = `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`
   })
 
@@ -76,5 +79,10 @@ function getLink(link: any) {
 </header>
 <script>
     var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true' ? true : false
-    if (hideHeader) document.querySelector('.header').style.display = 'none'
+    if (hideHeader) {
+        const headerElement = document.querySelector('.header') as HTMLElement;
+        if (headerElement) {
+            headerElement.style.display = 'none';
+        }
+    }
 </script>
