@@ -13,9 +13,15 @@ import Layout from '../layouts/Layout.astro'
   </section>
   <script>
     if (document.querySelector('.page')) {
-      document.querySelector('.page').parentNode.href = location.pathname
+      const pageElement = document.querySelector('.page');
+      if (pageElement && pageElement.parentNode) {
+        (pageElement.parentNode as HTMLAnchorElement).href = location.pathname;
+      }
       if (!location.pathname.startsWith('/404')) {
-        document.querySelector('.page').textContent = location.pathname
+        const pageElement = document.querySelector('.page');
+        if (pageElement) {
+          pageElement.textContent = location.pathname;
+        }
       }
     }
   </script>
