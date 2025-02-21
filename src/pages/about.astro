@@ -3,36 +3,12 @@ import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
 
-var dob = {
-  month: 3, 
-  day: 28, 
-  year: 2007, 
-}
+import age from '../../content/getAge.js'
 
-var date = new Date()
-var currentDate = {
-  month: date.getMonth(), 
-  day: date.getDate(), 
-  year: date.getFullYear(), 
-}
-
-let age = 0
-if (
-  (currentDate.month < dob.month) || 
-  (
-    currentDate.month === dob.month && 
-    currentDate.day <= 28
-  )
-) age = currentDate.year - dob.year - 1
-else age = currentDate.year - dob.year
+const aboutFile = await import('../../content/aboutContent.md')
+var aboutContent = aboutFile.compiledContent().replaceAll('{ age }', age.toString())
 
 ---
 <Layout title="About">
-  <div class="about">
-    <p>Hi, I'm Adarsh Kumar, {age} years old, and a High School Student.</p>
-    <p>I am a web developer, programmer, tech enthusiast, photographer, and history enthusiast.</p>
-    <p>I created this site to share my journey, showcase my projects, and other things alike.</p>
-    <p>Explore my work, learn from my mistakes, and join me as I explore technology and photography.</p>
-    <p>I am good with software, so if you need tech help, let me know! I also enjoy history and geography.</p>
-  </div>
+  <div class="about" set:html={aboutContent} />
 </Layout>
