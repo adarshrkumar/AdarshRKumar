@@ -23,3 +23,8 @@ const { ...attrs } = Astro.props
     <label for={id} set:html={label} />
     <select {...attrs}><slot /></select>
 </div>
+<style>
+    ::picker(select) {
+        appearance: base-select;
+    }
+</style>
