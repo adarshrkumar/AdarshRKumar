@@ -1,0 +1,25 @@
+---
+import '../styles/components/defaultInputs.scss'
+
+import Script from '../utils/script.astro'
+
+import type { HTMLAttributes } from 'astro/types';
+import type { HTMLString } from 'astro/runtime/server/escape.js';
+
+export interface Props extends HTMLAttributes<'select'> {
+    align?: 'left' | 'center' | 'right';
+    label?: HTMLString | String;
+    autosize?: Boolean;
+}
+
+const { 
+    id, label
+} = Astro.props
+
+const { ...attrs } = Astro.props
+
+---
+<div class="formGroup">
+    <label for={id} set:html={label} />
+    <select {...attrs}><slot /></select>
+</div>
