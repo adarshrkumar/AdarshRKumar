@@ -11,7 +11,18 @@ var location = {
   host: site, 
 }
 
-var posts = await Astro.glob('../../content/blog/posts/*.md')
+const items = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
+const keys = Object.keys(items)
+interface Post {
+  frontmatter: {
+    title: string;
+  };
+  file: string;
+  rawContent: () => string;
+}
+
+const posts: Post[] = Object.values(items) as Post[];
+
 ---
 <Layout title="Blog">
   <SiteGridContent classItems="posts">
