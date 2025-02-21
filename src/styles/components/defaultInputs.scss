@@ -37,13 +37,13 @@ $pad: 1rem;
 }
 
 @mixin mainStyles() {
-    flex: 1;
-
     // box-sizing: border-box;
     padding: math.div($pad, 2);
 
     // width: calc(100% - #{$pad*2});
     // min-height: 50px;
+    max-height: 100%;
+    width: fit-content;
 
     background-color: var(--bg);
     color: var(--color);
@@ -79,6 +79,9 @@ $pad: 1rem;
 }
 
 .formGroup {
+    position: relative;
+    padding-top: 0.5lh;
+
     display: flex;
     flex-direction: column;
     // gap: $pad;
@@ -86,18 +89,15 @@ $pad: 1rem;
     > label:not(.file label) {
         @include mainStyles();
 
+        position: absolute;
+        translate: 1em -0.5lh;
+
         box-sizing: border-box;
         padding: 0 $pad;
 
         width: fit-content;
 
-        translate: 1em 0;
-
         text-align: left;
-
-        + * {
-            margin-top: -5%;
-        }
     }
 }
 
@@ -106,7 +106,6 @@ fieldset,
 legend, 
 datalist, 
 output, 
-select, 
 option, 
 optgroup {
     @include defaultStyles()
@@ -205,6 +204,19 @@ legend {}
 datalist {}
 output {}
 
-select {}
-option {}
-optgroup {}
+select {
+    @include defaultStyles();
+    @include mainStyles();
+    @include textStyles();
+    appearance: base-select;
+}
+option {
+    @include defaultStyles();
+    @include mainStyles();
+    @include textStyles();
+}
+optgroup {
+    @include defaultStyles();
+    @include mainStyles();
+    @include textStyles();
+}
