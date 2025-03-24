@@ -11,10 +11,23 @@ import { escapeHTML } from 'astro/runtime/server/escape.js'
 ---
 <Layout title="Contact">
   <form action="https://getform.io/f/qalorpyb" method="POST" class="contact">
-    <Input type="text" name="name" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
-    <Input type="email" name="email" id="email" placeholder="you@email.tld" required="TRUE" align="left">Email: </Input>
+    <Input type="text" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
+    <input hidden type="text" name="FromFull" id="from" align="left" />
+    <Input type="email" name="From" id="email" placeholder="you@email.tld" required="TRUE" align="left">Email: </Input>
     <TextArea label="Message:" autosize rows="1" name="message" id="message" placeholder="Type here..." required="TRUE" />
-    <Input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission" />
+    <Input type="hidden" name="Subject" id="email-subject" value="Contact Form Submission" />
     <Input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer;" />
   </form>
 </Layout>
+<script>
+  var nEle = document.querySelector('#name')
+  var eEle = document.querySelector('#email')
+  var fEle = document.querySelector('#from')
+
+  nEle.addEventListener('keypress', updateFrom)
+  eEle.addEventListener('keypress', updateFrom)
+
+  fuction updateFrom() {
+    fEle.value = JSON.stringify({{ "Email": eEle.value, "Name": nEle.value, "MailboxHash": null }})
+  }
+</script>
