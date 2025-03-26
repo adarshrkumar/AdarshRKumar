@@ -5,8 +5,7 @@ header {
   padding: 2rem 4rem;
 
   display: grid;
-  grid-auto-flow: row;
-  // grid-template-columns: 1fr repeat(auto-fit, minmax(0, auto));
+  grid-template-columns: 1fr repeat(auto-fit, minmax(0, auto));
   
   justify-items: space-between;
   align-items: center;
