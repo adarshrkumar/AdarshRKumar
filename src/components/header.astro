@@ -77,6 +77,7 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
 ---
 <header id="header" class="header" role="nav">
     <a class="logo" href="/" style={`background-image: url('${logo}');`}></a>
+    <div class="flex-spacer"></div>
     {
       links.map((item: { name: string; url: string; target: any }, i: any) => {
           var name = item.name
