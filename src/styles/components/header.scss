@@ -5,7 +5,7 @@ header {
   padding: 2rem 4rem;
 
   display: grid;
-  grid-template-columns: 1fr repeat(auto-fit, minmax(5rem, auto));
+  grid-template-columns: repeat(auto-fit, minmax(5rem, auto));
   
   justify-items: space-between;
   align-items: center;
