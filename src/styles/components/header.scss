@@ -4,10 +4,10 @@ header {
 
   padding: 2rem 4rem;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(5rem, 100%), auto));
+  display: flex;
+  flex-wrap: wrap;
   
-  justify-items: space-between;
+  // justify-content: space-between;
   align-items: center;
   gap: 15px;
 
@@ -15,7 +15,7 @@ header {
 }
 
 header .logo {
-  // min-height: 5 rem;
+  min-height: 5rem;
   height: 100%;
   aspect-ratio: 1;
 
