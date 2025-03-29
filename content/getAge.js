@@ -25,6 +25,6 @@ console.log((currentDate.month < dob.month) ||
     (
         currentDate.month === dob.month && 
         currentDate.day < 28
-    ), currentDate.year + ' - ' + dob.year + ' = ', age)
+    ), age)
   
 export default age
