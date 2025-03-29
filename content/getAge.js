@@ -21,10 +21,6 @@ if (
 ) age = currentDate.year - dob.year - 1
 else age = currentDate.year - dob.year
 
-console.log((currentDate.month < dob.month) || 
-    (
-        currentDate.month === dob.month && 
-        currentDate.day < 28
-    ), age)
+console.log(currentDate.month, currentDate.month < dob.month, age)
   
 export default age
