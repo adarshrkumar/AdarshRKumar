@@ -4,12 +4,12 @@ header {
 
   padding: 2rem 4rem;
 
-  display: grid;
-  grid-template-columns: 1fr repeat(auto-fit, minmax(5rem, auto));
+  display: flex;
+  flex-wrap: wrap;
   
-  justify-items: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 1rem;
 
   border-bottom: solid 1px var(--bdr-clr, var(--color));
 }
