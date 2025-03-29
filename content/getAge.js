@@ -16,7 +16,7 @@ if (
     (currentDate.month < dob.month) || 
     (
         currentDate.month === dob.month && 
-        currentDate.day <= 28
+        currentDate.day < 28
     )
 ) age = currentDate.year - dob.year - 1
 else age = currentDate.year - dob.year
