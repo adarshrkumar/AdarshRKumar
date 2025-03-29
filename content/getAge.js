@@ -6,7 +6,7 @@ var dob = {
   
 var date = new Date()
 var currentDate = {
-    month: date.getMonth(), 
+    month: date.getMonth()+1, 
     day: date.getDate(), 
     year: date.getFullYear(), 
 }
@@ -20,7 +20,5 @@ if (
     )
 ) age = currentDate.year - dob.year - 1
 else age = currentDate.year - dob.year
-
-console.log(currentDate.month, currentDate.month < dob.month, age)
   
 export default age
