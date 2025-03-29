@@ -20,5 +20,7 @@ if (
     )
 ) age = currentDate.year - dob.year - 1
 else age = currentDate.year - dob.year
+
+console.log(age)
   
 export default age
