@@ -43,7 +43,6 @@ $pad: 1rem;
     // width: calc(100% - #{$pad*2});
     // min-height: 50px;
     max-height: 100%;
-    width: fit-content;
 
     background-color: var(--bg);
     color: var(--color);
@@ -63,6 +62,7 @@ $pad: 1rem;
 
 @mixin buttonStyles() {
     min-width: 100px;
+    width: fit-content;
     cursor: pointer;
 }
 
@@ -199,10 +199,10 @@ input[type="color"] {
     min-width: 10px;
 }
 
-fieldset {}
-legend {}
-datalist {}
-output {}
+// fieldset {}
+// legend {}
+// datalist {}
+// output {}
 
 select {
     @include defaultStyles();
