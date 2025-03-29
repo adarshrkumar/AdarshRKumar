@@ -20,14 +20,14 @@ import { escapeHTML } from 'astro/runtime/server/escape.js'
   </form>
 </Layout>
 <script is:inline>
-  var nEle = document.querySelector('#name')
-  var eEle = document.querySelector('#email')
-  var fEle = document.querySelector('#from')
+  // var nEle = document.querySelector('#name')
+  // var eEle = document.querySelector('#email')
+  // var fEle = document.querySelector('#FromFull')
 
-  nEle.addEventListener('keypress', updateFrom)
-  eEle.addEventListener('keypress', updateFrom)
+  // nEle.addEventListener('keypress', updateFrom)
+  // eEle.addEventListener('keypress', updateFrom)
 
-  fuction updateFrom() {
-    fEle.value = JSON.stringify({{ "Email": eEle.value, "Name": nEle.value, "MailboxHash": null }})
-  }
+  // function updateFrom() {
+  //   fEle.value = JSON.stringify({ "Email": eEle.value, "Name": nEle.value, "MailboxHash": null })
+  // }
 </script>
