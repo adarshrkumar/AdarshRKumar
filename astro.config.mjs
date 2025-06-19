@@ -56,5 +56,7 @@ categories.forEach((category, i) => {
 // https://astro.build/config
 export default defineConfig({
     site: 'https://adarshrkumar.dev',
-    integrations: [seevea()]
-}); eve
+    base: '/',
+    trailingSlash: 'always',
+    integrations: [sitemap()]
+}); 
