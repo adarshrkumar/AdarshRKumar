@@ -10,7 +10,7 @@ import TextArea from '../defaultComponents/TextArea.astro'
 ---
 <Layout title="Contact">
   <form action="https://getform.io/f/qalorpyb" method="POST" class="contact">
-    <Input type="text" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
+    <Input type="text" name="FromName" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
     <input hidden type="text" name="FromFull" id="from" />
     <Input type="email" name="From" id="email" placeholder="you@email.tld" required="TRUE" align="left">Email: </Input>
     <TextArea label="Message:" autosize rows="1" name="TextBody" id="message" placeholder="Type here..." required="TRUE" />
