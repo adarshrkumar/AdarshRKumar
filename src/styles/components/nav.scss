@@ -21,6 +21,7 @@
 
 .nav-btn {
     // min-width: 100%;
+    
     &:not(.primary) {
         border: solid 1px transparent;
 
@@ -29,7 +30,6 @@
     }
     
     &:hover {
-        background-color: transparent;
-        color: var(--nav-btn-hover)
+        background-color: var(--nav-btn-hover);
     }
 }

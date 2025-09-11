@@ -40,6 +40,7 @@ function getLink(link: any): Link {
     
     var fileName = lPath
     if (fileName.startsWith('/')) fileName = fileName.slice(1)
+    if (fileName.endsWith('/')) fileName = fileName.slice(0, -1)
     if (fileName === '' && !hasHome) {
         fileName = 'home'
         hasHome = true
@@ -47,13 +48,13 @@ function getLink(link: any): Link {
     else if (fileName.startsWith('_')) return { name: '', url: '', target: '' }
     else if (fileName.startsWith('[') && fileName.wndsWith(']')) return { name: '', url: '', target: '' }
     else if (parseInt(fileName)) return { name: '', url: '', target: '' }
-
+    
     var nameParts: any[] = []
     if (fileName.includes('-')) nameParts = fileName.split('-')
     else nameParts = [fileName]
 
-    nameParts.forEach((p: string, i: number) => {
-        nameParts[i] = `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`
+    nameParts = nameParts.filter(p => p !== '').map((p: string, i: number) => {
+        return `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`
     })
 
     var name = nameParts.join(' ')
@@ -64,6 +65,7 @@ function getLink(link: any): Link {
 
     if (lPath.endsWith('//')) lPath = lPath.slice(0, -1)
     if (lPath.startsWith('//')) lPath = lPath.slice(1)
+
 
     var obj: Link = {
         url: lPath,
