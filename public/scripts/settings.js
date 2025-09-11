@@ -1,8 +1,8 @@
-var setTheme = function(t) {}
+var setTheme = t => {}
 var settingsKey = 'settings'
 
 var settingFunctions = {
-    theme: function(theme) {
+    theme: theme => {
         setTheme(theme)
     }
 }
@@ -17,7 +17,7 @@ function getSettings() {
 
 function applySettings() {
     var settings = getSettings()
-    settings.forEach(function(s, i) {
+    settings.forEach(s => {
         var sName = s.name
         var sContent = s.content
         settingFunctions[sName](sContent)
@@ -28,7 +28,7 @@ function setSetting(name, value, type, key) {
     var settings = getSettings()
 
     var sIndex = 'nothing'
-    settings.forEach(function(s, i) {
+    settings.forEach((s, i) => {
         var sName = s.name
         if (sName === name) sIndex = i
     })

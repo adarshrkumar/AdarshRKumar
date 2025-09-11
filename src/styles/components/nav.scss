@@ -3,7 +3,10 @@
         justify-content: center;
     }  
 
-    display: flex;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
     flex-wrap: wrap;
 
     &[data-direction="row"] {
@@ -17,7 +20,7 @@
 }
 
 .nav-btn {
-    min-width: 100%;
+    // min-width: 100%;
     &:not(.primary) {
         border: solid 1px transparent;
 

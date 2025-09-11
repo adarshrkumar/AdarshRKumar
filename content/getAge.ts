@@ -1,14 +1,14 @@
-var dob = {
+const dob = {
     month: 3, 
     day: 28, 
-    year: 2007, 
+    year: 2007,
 }
   
-var date = new Date()
-var currentDate = {
+const date = new Date()
+const currentDate = {
     month: date.getMonth()+1, 
     day: date.getDate(), 
-    year: date.getFullYear(), 
+    year: date.getFullYear(),
 }
   
 let age = 0

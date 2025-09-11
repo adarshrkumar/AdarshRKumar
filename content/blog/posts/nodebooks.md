@@ -30,6 +30,6 @@ At first, this application was simply titled `Notebook Application`, but one tim
 
 ## Download
 
-You can download NodeBooks [here](https://downloads.adarshrkumar.dev/zip/NodeBooks).  
+You can [download NodeBooks here](https://downloads.adarshrkumar.dev/zip/NodeBooks).  
 
 -- Adarsh

@@ -1,9 +1,29 @@
 ---
 import '../styles/components/sidebar.scss'
 
-import getChannelsInfo from './getChannelsInfo'
+var channels: { id: string, layout?: string, count?: string }[] = [
+    {
+        id: 'UCzhr23vdbi63nZGYqBM7Ofw', 
+    },
+    {
+        id: 'UCb35v6VAVFI8Q0aIpwPoW1g', 
+    },
+    {
+        id: 'UCLK0Lj3V864AbKfutfyztYA', 
+    },
+    {
+        id: 'UCHUWd3IuPu3P21XkDW8vSuQ', 
+    },
+    {
+        id: 'UC8cV2cdrp1ccBWzoi1R-UwQ', 
+    },
+]
 
-var channelsInfo = getChannelsInfo()
+const cids = channels.map(c => c.id)
+    
+import { getChannelsInfo } from './getChannelsInfo'
+
+var channelsInfo = getChannelsInfo(cids)
 
 import Nav from './nav.astro'
 
@@ -31,31 +51,14 @@ var props = [
         default: 'default', 
     }, 
 ]
-var channels = [
-    {
-        id: 'UCzhr23vdbi63nZGYqBM7Ofw', 
-    }, 
-    {
-        id: 'UCb35v6VAVFI8Q0aIpwPoW1g', 
-    }, 
-    {
-        id: 'UCLK0Lj3V864AbKfutfyztYA', 
-    }, 
-    {
-        id: 'UC8cV2cdrp1ccBWzoi1R-UwQ', 
-    }, 
-]
-
-channels.forEach(function(c, i) {
-})
 
 ---
 <aside class="main-sidebar">
     <section class="channel-stats">
         {
-            channels.map(function(c, i) {
-                props.forEach(function(p) {
-                    if (!!c[p.name] === false) c[p.name] = p.default
+            channels.map(c => {
+                props.forEach(p => {
+                    if (!!c[p.name as keyof typeof c] === false) c[p.name as keyof typeof c] = p.default
                 })
 
                 return (

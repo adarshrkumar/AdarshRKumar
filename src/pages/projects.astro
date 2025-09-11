@@ -4,73 +4,73 @@ import '../styles/pages/projects.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 
-import getFName from '../../content/getFName.js'
+import getFName from '../../content/getFName'
 
 var categories = []
 var projects = [
-  {
-    id: 'games', 
-    name: 'Games',
-    items: await Astro.glob('../../content/work/projects/games/*.md')
-  },
-  {
-    id: 'large-scale', 
-    name: 'Large Scale',
-    items: await Astro.glob('../../content/work/projects/large-scale/*.md')
-  },
-  {
-    id: 'utilities', 
-    name: 'Utilities',
-    items: await Astro.glob('../../content/work/projects/utilities/*.md')
-  }
+    {
+        id: 'games', 
+        name: 'Games',
+        items: await Astro.glob('../../content/work/projects/games/*.md')
+    },
+    {
+        id: 'large-scale', 
+        name: 'Large Scale',
+        items: await Astro.glob('../../content/work/projects/large-scale/*.md')
+    },
+    {
+        id: 'utilities', 
+        name: 'Utilities',
+        items: await Astro.glob('../../content/work/projects/utilities/*.md')
+    }
 ]
 
 var allProjects = await Astro.glob('../../content/work/projects/*/*.md')
 
 ---
 <Layout title="Projects">
-  {
-    projects.map((category, i) => {
-      return (
-        <section class="category">
-          <h3 class="category__title">{category.name}</h3>
-          <SiteGridContent classItems="wrap">
-            {
-              category.items.map((item, i2) => {
-                var name = getFName(item.file)
-                if (name.startsWith('_')) return ''
+    {
+        projects.map((category, i) => {
+            return (
+                <section class="category">
+                    <h3 class="category__title">{category.name}</h3>
+                    <SiteGridContent classItems="wrap">
+                        {
+                            category.items.map((item, i2) => {
+                                var name = getFName(item.file)
+                                if (name.startsWith('_')) return ''
 
-                var target = '_blank'
-                var url = item.frontmatter.url
-                if (url.startsWith('//')) url = `https:${url}`
+                                var target = '_blank'
+                                var url = item.frontmatter.url
+                                if (url.startsWith('//')) url = `https:${url}`
 
-                var domain = url
-                if (domain.includes('://')) {
-                  domain = domain.split('://')[1]
-                  if (domain.includes('/')) domain = domain.split('/')[0]
-                  if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
-                  domain = `https://${domain}`
-                }
-                
-                if (!url.includes(':') || domain === Astro.site) target = 'self'
+                                var domain = url
+                                if (domain.includes('://')) {
+                                    domain = domain.split('://')[1]
+                                    if (domain.includes('/')) domain = domain.split('/')[0]
+                                    if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
+                                    domain = `https://${domain}`
+                                }
+                                
+                                if (!url.includes(':') || domain === Astro.site) target = 'self'
 
-                var imageSize = 512
-                var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-                return (
-                  <a href={url} target={target} class="item">
-                    <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
-                    <div class="item__info">
-                      <h3 class="item__title">{item.frontmatter.name}</h3>
-                      <p class="item__content">{item.rawContent()}</p>
-                    </div>
-                  </a>
-                )
-              })
-            }
-          </SiteGridContent>
-        </section>
-        <div class="divider h" style="--s: 1000px;"></div>
-      )
-    })
-  }
+                                var imageSize = 512
+                                var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+                                return (
+                                    <a href={url} target={target} class="item">
+                                        <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
+                                        <div class="item__info">
+                                            <h3 class="item__title">{item.frontmatter.name}</h3>
+                                            <p class="item__content">{item.rawContent()}</p>
+                                        </div>
+                                    </a>
+                                )
+                            })
+                        }
+                    </SiteGridContent>
+                </section>
+                <div class="divider h" style="--s: 1000px;"></div>
+            )
+        })
+    }
 </Layout>

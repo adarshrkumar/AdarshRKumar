@@ -4,28 +4,28 @@ import '../styles/pages/soon.scss'
 import Layout from '../layouts/Layout.astro'
 ---
 <Layout title="Coming Soon" classItems="isSoon">
-  <p>This site is under development right now, I will put something here soon!</p>
-  <p>In the meantime, you can email me at: <a href="mailto:adarshrkumar+site@aol.com">adarshrkumar+site@aol.com</a>.</p>
-  <!-- <hr> -->
-  <!-- <h1>Credits: </h1> -->
-  <!-- <p>Main Contributer: <a href="https://solo.to/adarshrkumar">adarshrkumar</a></p> -->
-  <script is:inline>
-    var img = document.querySelector('.logo')
-    var operation
-    function go() {
-      if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === 0) {
-        operation = '+'
-      }
-      else if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === (window.innerWidth - 125)) {
-        operation = '-'
-      }
-      if (operation === '+') {
-        img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])+1}px;`)
-      }
-      else if (operation === '-') {
-        img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])-1}px;`)
-      }
-    }
-    setInterval(go, 50)
-  </script>
+    <p>This site is under development right now, I will put something here soon!</p>
+    <p>In the meantime, you can email me at: <a href="mailto:adarshrkumar+site@aol.com">adarshrkumar+site@aol.com</a>.</p>
+    <!-- <hr> -->
+    <!-- <h1>Credits: </h1> -->
+    <!-- <p>Main Contributer: <a href="https://solo.to/adarshrkumar">adarshrkumar</a></p> -->
+    <script is:inline>
+        var img = document.querySelector('.logo')
+        var operation
+        function go() {
+            if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === 0) {
+                operation = '+'
+            }
+            else if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === (window.innerWidth - 125)) {
+                operation = '-'
+            }
+            if (operation === '+') {
+                img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])+1}px;`)
+            }
+            else if (operation === '-') {
+                img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])-1}px;`)
+            }
+        }
+        setInterval(go, 50)
+    </script>
 </Layout>

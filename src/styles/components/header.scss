@@ -1,38 +1,54 @@
+@property --small-container {
+    syntax: '<boolean>';
+    initial-value: false;
+}
+
 // Styles for the Navigation Bar
-header {
-  --shadow-size: 10px;
+.header {
+    --shadow-size: 10px;
 
-  padding: 2rem 4rem;
+    padding: 2rem 4rem;
 
-  display: flex;
-  flex-wrap: wrap;
-  
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    
+    place-items: center;
+    gap: 1rem;
 
-  border-bottom: solid 1px var(--bdr-clr, var(--color));
-}
+    border-bottom: solid 1px var(--bdr-clr, var(--color));
 
-header .logo {
-  min-height: 5rem;
-  // height: 100%;
-  aspect-ratio: 1;
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
 
-  color: var(--logo-a-color);
+    .logo-link {
+        display: block;
 
-  background-color: var(--color);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+        width: 5rem;
+        // height: 100%;
+        aspect-ratio: 1;
 
-  border-radius: 100%;
+        color: var(--logo-a-color);
 
-  box-shadow: 0 0 var(--shadow-size) 0 var(--color);
+        background-color: var(--color);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
 
-  transition: border-radius 1s ease-out;
-}
+        border-radius: 100%;
 
-header .logo:is(:hover, :focus) {
-  border-radius: 25%;
+        box-shadow: 0 0 var(--shadow-size) 0 var(--color);
+
+        transition: border-radius 1s ease-out;
+
+        .logo {
+            display: inherit;
+            border-radius: inherit;
+        }
+
+        &:is(:hover, :focus) {
+            border-radius: 25%;
+            outline: solid 1px var(--color);
+        }
+    }
 }

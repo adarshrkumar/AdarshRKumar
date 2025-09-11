@@ -5,24 +5,24 @@ import Layout from '../layouts/Layout.astro'
 
 ---
 <Layout title="404" pTitle="Not Found">
-  <section class="error-404">
-    <span class="current-URL-not-found">
-      <a href=""><span class="page">the requested page</span></a> Cound not be found
-    </span>
-    <p>Error Type: 404</p>
-  </section>
-  <script>
-    if (document.querySelector('.page')) {
-      const pageElement = document.querySelector('.page');
-      if (pageElement && pageElement.parentNode) {
-        (pageElement.parentNode as HTMLAnchorElement).href = location.pathname;
-      }
-      if (!location.pathname.startsWith('/404')) {
-        const pageElement = document.querySelector('.page');
-        if (pageElement) {
-          pageElement.textContent = location.pathname;
+    <section class="error-404">
+        <span class="current-URL-not-found">
+            <a href=""><span class="page">the requested page</span></a> Cound not be found
+        </span>
+        <p>Error Type: 404</p>
+    </section>
+    <script>
+        if (document.querySelector('.page')) {
+            const pageElement = document.querySelector('.page');
+            if (pageElement && pageElement.parentNode) {
+                (pageElement.parentNode as HTMLAnchorElement).href = location.pathname;
+            }
+            if (!location.pathname.startsWith('/404')) {
+                const pageElement = document.querySelector('.page');
+                if (pageElement) {
+                    pageElement.textContent = location.pathname;
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 </Layout>

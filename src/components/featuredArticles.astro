@@ -1,15 +1,15 @@
 ---
 import SiteGridContent from '../components/siteGridContent.astro'
 
-import getFName from '../../content/getFName.js'
+import getFName from '../../content/getFName'
 
-var site = Astro.site.toString()
+var site = Astro.site?.toString() || 'https://adarshrkumar.dev'
 if (site.includes('://')) site = site.split('://')[1]
 if (site.endsWith('/')) site = site.slice(0, -1)
 
 var location = {
-  protocol: 'https:', 
-  host: site, 
+    protocol: 'https:', 
+    host: site, 
 }
 
 var highlights = ['hello-world', 'nodebooks']
@@ -19,25 +19,26 @@ const keys = Object.keys(items)
 const allItems: Post[] = Object.values(items) as Post[];
 
 interface Post {
-  file: string;
-  frontmatter: {
-  };
-  rawContent: () => string;
+    file: string;
+    frontmatter: {
+        title?: string;
+    };
+    rawContent: () => string;
 }
 
 var posts: Post[] = []
 
 highlights.forEach(slug => {
-  var res = allItems.filter((item: Post) => getFName(item.file) === slug)
-  if (res.length > 0) {
-    res.forEach(r => posts.push(r))
-  }
+    var res = allItems.filter(item => getFName(item.file) === slug)
+    if (res.length > 0) {
+        res.forEach(r => posts.push(r))
+    }
 });
 
 ---
 <SiteGridContent classItems="posts">
   {
-    posts.map(function(post, i) {
+    posts.map(post => {
       var slug = getFName(post.file)
 
       var image = {src: '', alt: ''}

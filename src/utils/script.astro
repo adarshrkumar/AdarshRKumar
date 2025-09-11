@@ -3,7 +3,7 @@ import '../styles/scriptImg.scss'
 
 var { name, code } = Astro.props
 
-function cleanCode(code) {
+function cleanCode(code: string) {
     if (code.includes('\n')) code = code.split('\n').join('  ')
     if (code.includes('\t')) code = code.split('\t').join('  ')
     return code

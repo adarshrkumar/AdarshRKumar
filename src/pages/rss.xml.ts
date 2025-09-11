@@ -1,25 +1,24 @@
-import rss from '@astrojs/rss';
+import rss from '@astrojs/rss'
 
 const items = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
 const keys = Object.keys(items)
-const posts = Object.values(items);
+const posts = Object.values(items)
 
-import age from '../../content/getAge.js'
+import age from '../../content/getAge'
 
 const aboutFile = await import('../../content/aboutContent.md')
-var aboutContent = aboutFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
+let aboutContent = aboutFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
 while (aboutContent.startsWith(' ')) aboutContent = aboutContent.slice(1)
 while (aboutContent.endsWith(' ')) aboutContent = aboutContent.slice(0, -1)
 
-
-export async function GET(context) {
+export async function GET(context: any) {
     return rss({
         title: 'Buzz\'s Blog',
         description: aboutContent,
         site: context.site,
         trailingSlash: context.trailingSlash,
-        items: posts.map((post, i) => {
-            var id = keys[i]
+        items: posts.map((post: any, i: number) => {
+            let id = keys[i]
             const sw = `../../content/blog/posts/`
             if (id) if (id.startsWith(sw)) id = id.slice(sw.length)
             return {
@@ -31,5 +30,5 @@ export async function GET(context) {
                 link: `/post/${id}/`,
             }
         }),
-    });
+    })
 }

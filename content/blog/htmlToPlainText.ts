@@ -1,4 +1,4 @@
-function htmlToPlainText(content) {
+function htmlToPlainText(content: string): string {
     content = content
         .replace(/\n/ig, '')
         .replace(/<style[^>]*>[\s\S]*?<\/style[^>]*>/ig, '')
