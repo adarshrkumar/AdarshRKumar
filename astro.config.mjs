@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import path from 'path';
 import fs from 'fs';
 
-import updateImages from './update.js';
+import updateImages from './update';
 updateImages()
 
 const directoryPath = path.join('./', 'content');

@@ -10,7 +10,7 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
 ---
 <nav class="nav" data-direction={direction} data-varient={varient}>
     {
-        items.map((item: { name: string; url: string; target: any }, i: any) => {
+        items.map((item: { name: string; url: string; target: any; primaryCls?: string }, i: any) => {
             var name = item.name
             var url = item.url
             
@@ -23,7 +23,7 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
                 if (url.includes('://')) {
                     var domain = url.split('://')[1]
                     if (domain.includes('/')) domain = domain.split('/')[0]
-                    if (domain !== Astro.site) {
+                    if (new URL(`https://${domain}`) !== Astro.site) {
                         target = '_black'
                     }
                 }
@@ -48,10 +48,3 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
         })
     }
 </nav>
-<script>
-    var largestWidth = 0
-    document.querySelectorAll('.nav-btn').forEach(function(b, i) {
-        if (b.clientWidth > largestWidth) largestWidth = b.clientWidth
-    })
-    document.querySelector('.nav').style.setProperty('--min-width', `${largestWidth}px`)
-</script>

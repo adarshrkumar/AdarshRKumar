@@ -4,7 +4,7 @@ import SiteGridContent from '../components/siteGridContent.astro'
 
 import '../styles/pages/photos.scss'
 
-var site = Astro.site.toString()
+var site = Astro.site?.toString() || 'https://adarshrkumar.dev'
 if (site.includes('://')) site = site.split('://')[1]
 if (site.endsWith('/')) site = site.slice(0, -1)
 
@@ -12,69 +12,69 @@ var photos = await Astro.glob('../../content/allPhotos/*/*')
 var datas = await Astro.glob('../../content/allPhotos/*/info.js')
 
 datas.map((data, i) => {
-  if (data.default) {
-    datas[i] = data.default
-  }
-})
-photos.map((image, i) => {
-  if (image.default) photos[i] = image.default
-})
-
-photos.map((image, i) => {
-  if (!image.src) return
-  image.fullname = getFName(image.src)
-  datas.map(f => {
-    // console.log(f.fullname === getFName(image.src))
-  })
-
-  var data = datas.find(f => f.fullname === getFName(image.src))
-  image.data = data
-  photos[i] = image
-})
-
-function getFName(name) {
-  if (name.includes('/')) {
-    name = name.split('/').slice(-1)[0]
-    if (name.includes('?')) name = name.split('?')[0]
-    if (name.includes('.')) {
-      if (name.split('.').length > 2) {
-        name = name.split('.')
-        name = `${name.slice(0, -2).join('.')}.${name.slice(-1).join('.')}`
-      }
+    if (data.default) {
+        datas[i] = data.default
     }
-  }
-  return name
+})
+photos.map((image, i) => {
+    if (image.default) photos[i] = image.default
+})
+
+photos.map((image, i) => {
+    if (!image.src) return
+    image.fullname = getFName(image.src)
+    datas.map(f => {
+        // console.log(f.fullname === getFName(image.src))
+    })
+
+    var data = datas.find(f => f.fullname === getFName(image.src))
+    image.data = data
+    photos[i] = image
+})
+
+function getFName(name: string) {
+    if (name.includes('/')) {
+        name = name.split('/').slice(-1)[0]
+        if (name.includes('?')) name = name.split('?')[0]
+        if (name.includes('.')) {
+            if (name.split('.').length > 2) {
+                const nameParts = name.split('.')
+                name = `${nameParts.slice(0, -2).join('.')}.${nameParts.slice(-1).join('.')}`
+            }
+        }
+    }
+    return name
 }
 
 ---
 <Layout title="Photos">
   <SiteGridContent classItems="photos" options={{min: '24rem'}} mode="lite">
     {
-      photos.map(function(image, i) {
-        if (image.default) image = image.default
-        if (!image.src) {
-          return ''
-        }
-        
-        // return <pre>{getFName(image.src)}</pre>
-        
-        var data = image.data
-
-        return (
-          <div class="item">
-            <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25');`} loading="lazy" decoding="async" />
-            {
-              (!!data.title || !!data.info) ? (
-                <div class="item__info">
-                  {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
-                  {!!data.location ? <span class="item__content">📍 {data.location}</span> : ''}
-                </div>
-              )
-               : ''
+        photos.map(image => {
+            if (image.default) image = image.default
+            if (!image.src) {
+                return ''
             }
-          </div>
-        )
-      })
+            
+            // return <pre>{getFName(image.src)}</pre>
+            
+            var data = image.data
+
+            return (
+                <div class="item">
+                    <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25');`} loading="lazy" decoding="async" />
+                    {
+                        (!!data.title || !!data.info) ? (
+                            <div class="item__info">
+                                {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
+                                {!!data.location ? <span class="item__content">📍 {data.location}</span> : ''}
+                            </div>
+                        )
+                         : ''
+                    }
+                </div>
+            )
+        })
     }
   </SiteGridContent>
 </Layout>

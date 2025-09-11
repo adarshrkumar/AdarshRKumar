@@ -14,86 +14,81 @@ var { title, pTitle, classItems, inlineStyles, pageType, author } = Astro.props;
 if (!!pTitle === false) pTitle = title
 if (!!pTitle === false) pTitle = 'Home'
 
-
-
 if (!!classItems === false) classItems = ''
 
 if (pageType) classItems += ` ${pageType}`
 
 switch (pageType) {
-  case 'post':
-    title = `${title} | Blog`
-    break;
-  case 'author':
-    title = `${title} | Author`
-    break;
-  default:
-    break;
+    case 'post':
+        title = `${title} | Blog`
+        break;
+    case 'author':
+        title = `${title} | Author`
+        break;
+    default:
+        break;
 }
-      
+
 if (pTitle === 'Home') title = sName
 else title = `${title} | ${sName}`
 
 var className = `page-area main-content ${classItems}`
 if (className.startsWith(' ')) className = className.substring(1)
-if (className.endsWith(' ')) className = className.substring(-1)
+if (className.endsWith(' ')) className = className.substring(0, className.length - 1)
 
-import age from '../../content/getAge.js'
+import age from '../../content/getAge'
 
 const aboutFile = await import('../../content/aboutContent.md')
 var aboutContent = aboutFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
 while (aboutContent.startsWith(' ')) aboutContent = aboutContent.slice(1)
 while (aboutContent.endsWith(' ')) aboutContent = aboutContent.slice(0, -1)
 
-const keywordsFile = await import('../../content/aboutContent.md')
-var keywords = keywordsFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  \n', ',').replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
-while (keywords.startsWith(' ')) keywords = keywords.slice(1)
-while (keywords.endsWith(' ')) keywords = keywords.slice(0, -1)
-var keywordsArr = keywords.split(',')
-keywords = keywordsArr.join(', ')
+const keywordsData = await import('../../content/siteKeywords.json')
+var keywordsArr = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
+var keywords = keywordsArr.join(', ')
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={aboutContent} />
-    <meta name="keywords" content={keywords} />
-    {author ? <meta name="author" content={author} /> : ''}
-    <title>{title}</title>
-    <!-- <base href={Astro.site} /> -->
-    <link rel="icon" href="/assets/favicon.png" />
-    <link rel="preload" as="image" href="/assets/placeholder.svg" />
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
-    <Script name="settings" />
-  </head>
-  <body>
-    <Header logo={logoSRC} />
-    <div class="wrapper">
-      <main class="content" id="content">
-        { pageType === 'home' ? '' : <h1 class="page-title">{pTitle}</h1> }
-        <div class={className} style={inlineStyles}>
-          <slot />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={aboutContent} />
+        <meta name="keywords" content={keywords} />
+        {author ? <meta name="author" content={author} /> : ''}
+        <title>{title}</title>
+        <!-- <base href={Astro.site} /> -->
+        <link rel="icon" href="/assets/favicon.png" />
+        <link rel="preload" as="image" href="/assets/placeholder.svg" />
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>
+        <Script name="settings" />
+    </head>
+    <body>
+        <Header logo={logoSRC} />
+        <div class="wrapper">
+            <main class="content" id="content">
+                { pageType === 'home' ? '' : <h1 class="page-title">{pTitle}</h1> }
+                <div class={className} style={inlineStyles}>
+                    <slot />
+                </div>
+            </main>
+            <!-- <Sidebar /> -->
         </div>
-      </main>
-      <!-- <Sidebar /> -->
-    </div>
-    <Script name="main" />
-    <!-- <script src="/eruda.js" is:inline></script> -->
-    <!--Start of Tawk.to Script-->
-    <!-- <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/613695e4d6e7610a49b3f5bc/1feujj12b';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-      })();
-    </script> -->
-    <!--End of Tawk.to Script-->
-  </body>
+        <Script name="main" />
+        <!-- <script src="/eruda.js" is:inline></script> -->
+        <!--Start of Tawk.to Script-->
+        <!-- <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/613695e4d6e7610a49b3f5bc/1feujj12b';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script> -->
+        <!--End of Tawk.to Script-->
+    </body>
 </html>

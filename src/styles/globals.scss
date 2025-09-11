@@ -81,6 +81,10 @@ body {
 
     display: flex;
     flex-direction: column;
+
+    @supports(container-type: inline-size) {
+        container-type: inline-size;
+    }
 }
 
 // [aria-hidden="true"] {

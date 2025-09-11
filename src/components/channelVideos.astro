@@ -7,8 +7,8 @@ var {id, vidsPerChannel} = Astro.props
 
 if (!vidsPerChannel) vidsPerChannel = 'all'
 
-var feed = {}
-var vids = []
+var feed: any = {}
+var vids: any[] = []
 
 let apeKEEE = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
 let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${id}`)

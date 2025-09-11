@@ -16,107 +16,73 @@ const items = import.meta.glob('../pages/*.astro', { eager: true })
 const keys = Object.keys(items)
 const pages = Object.values(items);
 
+interface Link { name: string; url: string; target: string; primaryCls?: string }
 
-var links: { path: string; name: string }[] = []
-pages.map((page: any) => {
-  var link = getLink(page)
-  if (link.name === 'Home') {
-    links.push(link)
-  }
-})
-pages.map((page: any) => {
-  var link = getLink(page)
-  if (link.name !== 'Home') {
-    if (link.path) {
-      links.push(link)
+var links: Link[] = []
+pages.map(page => {
+    var link = getLink(page)
+    if (link.name === 'Home') {
+        links.push(link)
     }
-  }
+})
+pages.map(page => {
+    var link = getLink(page)
+    if (link.name !== 'Home') {
+        if (link.url) {
+            links.push(link)
+        }
+    }
 })
 
-function getLink(link: any) {
-  var lPath = link.url
-  var hasHome = false
-  
-  var fileName = lPath
-  if (fileName.startsWith('/')) fileName = fileName.slice(1)
-  if (fileName === '' && !hasHome) {
-    fileName = 'home'
-    hasHome = true
-  }
-  else if (fileName.startsWith('_')) return ''
-  else if (fileName.startsWith('[') && fileName.wndsWith(']')) return ''
-  else if (parseInt(fileName)) return ''
+function getLink(link: any): Link {
+    var lPath = link.url
+    var hasHome = false
+    
+    var fileName = lPath
+    if (fileName.startsWith('/')) fileName = fileName.slice(1)
+    if (fileName === '' && !hasHome) {
+        fileName = 'home'
+        hasHome = true
+    }
+    else if (fileName.startsWith('_')) return { name: '', url: '', target: '' }
+    else if (fileName.startsWith('[') && fileName.wndsWith(']')) return { name: '', url: '', target: '' }
+    else if (parseInt(fileName)) return { name: '', url: '', target: '' }
 
-  var nameParts: any[] = []
-  if (fileName.includes('-')) nameParts = fileName.split('-')
-  else nameParts = [fileName]
+    var nameParts: any[] = []
+    if (fileName.includes('-')) nameParts = fileName.split('-')
+    else nameParts = [fileName]
 
-  nameParts.forEach((p: string, i: number) => {
-    nameParts[i] = `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`
-  })
+    nameParts.forEach((p: string, i: number) => {
+        nameParts[i] = `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`
+    })
 
-  var name = nameParts.join(' ')
+    var name = nameParts.join(' ')
 
-  if (lPath.startsWith('//')) lPath = `https:${lPath}`
-  else if (lPath === 'home') lPath = '/'
-  else if (!lPath.includes('://')) lPath = `/${lPath}/`
+    if (lPath.startsWith('//')) lPath = `https:${lPath}`
+    else if (lPath === 'home') lPath = '/'
+    else if (!lPath.includes('://')) lPath = `/${lPath}/`
 
-  if (lPath.endsWith('//')) lPath = lPath.slice(0, -1)
-  if (lPath.startsWith('//')) lPath = lPath.slice(1)
+    if (lPath.endsWith('//')) lPath = lPath.slice(0, -1)
+    if (lPath.startsWith('//')) lPath = lPath.slice(1)
 
-  var obj: object = {
-    path: lPath,
-    name: name
-  }
-  return obj as any
+    var obj: Link = {
+        url: lPath,
+        name: name,
+        target: '_self'
+    }
+    return obj
 }
 
 var currentPath = Astro.url.pathname
 if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
 
 ---
-<header id="header" class="header" role="nav">
-    <a class="logo" href="/" style={`background-image: url('${logo}');`}></a>
-    <div class="flex-spacer"></div>
-    {
-      links.map((item: { name: string; url: string; target: any }, i: any) => {
-          var name = item.name
-          var url = item.url
-          
-          var target = item.target
-          if (!!target === false) {
-              target = '_self'
-          }
-
-          if (!!url) {
-              if (url.includes('://')) {
-                  var domain = url.split('://')[1]
-                  if (domain.includes('/')) domain = domain.split('/')[0]
-                  if (domain !== Astro.site) {
-                      target = '_black'
-                  }
-              }
-              if (url.endsWith('/')) url = url.slice(0, -1)
-          }
-          else if (!!url === false) {
-              url = '/'
-
-              if (name !== 'Home') {
-                  url += name.toLowerCase()
-              }
-          }
-
-          var primaryCls = ''
-          if (url === currentPath) primaryCls = ' primary'
-
-          item.url = url
-          item.target = target
-          item.primaryCls = primaryCls
-
-          return <a href={item.url} class={`btn nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
-      })
-    }
-  <ThemeSwitcher defaultTheme="system"/>
+<header id="header" class="header" role="banner">
+    <a class="logo-link" href="/">
+        <img class="logo" src={logo} alt="Logo" />
+    </a>
+    <Nav items={links} direction="horizontal" varient="header" />
+    <ThemeSwitcher defaultTheme="system"/>
 </header>
 <script>
     var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true' ? true : false

@@ -4,7 +4,7 @@ import '../styles/pages/portfolio.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 
-import getFName from '../../content/getFName.js'
+import getFName from '../../content/getFName'
 
 var items = await Astro.glob('../../content/work/portfolio/*.md')
 ---
@@ -12,33 +12,33 @@ var items = await Astro.glob('../../content/work/portfolio/*.md')
   <SiteGridContent classItems="portfolio wrap">
       {
         items.map((item, i2) => {
-          var name = getFName(item.file)
-          if (name.startsWith('_')) return ''
+            var name = getFName(item.file)
+            if (name.startsWith('_')) return ''
 
-          var target = '_blank'
-          var url = item.frontmatter.url
-          if (url.startsWith('//')) url = `https:${url}`
+            var target = '_blank'
+            var url = item.frontmatter.url
+            if (url.startsWith('//')) url = `https:${url}`
 
-          var domain = url
-          if (domain.includes('://')) {
-            domain = domain.split('://')[1]
-            if (domain.includes('/')) domain = domain.split('/')[0]
-            if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
-            domain = `https://${domain}`
-          }
-          
-          if (!url.includes(':') || domain === Astro.site) target = 'self'
+            var domain = url
+            if (domain.includes('://')) {
+                domain = domain.split('://')[1]
+                if (domain.includes('/')) domain = domain.split('/')[0]
+                if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
+                domain = `https://${domain}`
+            }
+            
+            if (!url.includes(':') || domain === Astro.site) target = 'self'
 
-          var imageSize = 512
-          var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-          return (<a href={url} target={target} class="item">
-            <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
-            <div class="item__info">
-              <h3 class="item__title">{item.frontmatter.name}</h3>
-              <p class="item__content">{item.rawContent()}</p>
-            </div>
-          </a>)
+            var imageSize = 512
+            var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+            return (<a href={url} target={target} class="item">
+                <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
+                <div class="item__info">
+                    <h3 class="item__title">{item.frontmatter.name}</h3>
+                    <p class="item__content">{item.rawContent()}</p>
+                </div>
+            </a>)
         })
-      }
+    }
   </SiteGridContent>
 </Layout>

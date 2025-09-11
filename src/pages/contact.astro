@@ -3,30 +3,29 @@ import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
 
-
 import Input from '../defaultComponents/Input.astro'
 import TextArea from '../defaultComponents/TextArea.astro'
 
 ---
 <Layout title="Contact">
-  <form action="https://getform.io/f/qalorpyb" method="POST" class="contact">
-    <Input type="text" name="FromName" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
-    <input hidden type="text" name="FromFull" id="from" />
-    <Input type="email" name="From" id="email" placeholder="you@email.tld" required="TRUE" align="left">Email: </Input>
-    <TextArea label="Message:" autosize rows="1" name="TextBody" id="message" placeholder="Type here..." required="TRUE" />
-    <Input type="hidden" name="Subject" id="email-subject" value="Contact Form Submission" />
-    <Input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer; margin-left: auto;" />
-  </form>
+    <form action="https://getform.io/f/qalorpyb" method="POST" class="contact">
+        <Input type="text" name="FromName" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
+        <input hidden type="text" name="FromFull" id="from" />
+        <Input type="email" name="From" id="email" placeholder="you@email.tld" required="TRUE" align="left">Email: </Input>
+        <TextArea label="Message:" autosize rows="1" name="TextBody" id="message" placeholder="Type here..." required="TRUE" />
+        <Input type="hidden" name="Subject" id="email-subject" value="Contact Form Submission" />
+        <Input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer; margin-left: auto;" />
+    </form>
 </Layout>
 <script is:inline>
-  // var nEle = document.querySelector('#name')
-  // var eEle = document.querySelector('#email')
-  // var fEle = document.querySelector('#FromFull')
+    // var nEle = document.querySelector('#name')
+    // var eEle = document.querySelector('#email')
+    // var fEle = document.querySelector('#FromFull')
 
-  // nEle.addEventListener('keypress', updateFrom)
-  // eEle.addEventListener('keypress', updateFrom)
+    // nEle.addEventListener('keypress', updateFrom)
+    // eEle.addEventListener('keypress', updateFrom)
 
-  // function updateFrom() {
-  //   fEle.value = JSON.stringify({ "Email": eEle.value, "Name": nEle.value, "MailboxHash": null })
-  // }
+    // function updateFrom() {
+    //     fEle.value = JSON.stringify({ "Email": eEle.value, "Name": nEle.value, "MailboxHash": null })
+    // }
 </script>
