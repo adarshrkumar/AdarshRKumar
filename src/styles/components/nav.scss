@@ -3,10 +3,7 @@
         justify-content: center;
     }  
 
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    display: flex;
     flex-wrap: wrap;
 
     &[data-direction="row"] {
@@ -20,8 +17,7 @@
 }
 
 .nav-btn {
-    // min-width: 100%;
-    
+    min-width: 100%;
     &:not(.primary) {
         border: solid 1px transparent;
 
@@ -30,6 +26,7 @@
     }
     
     &:hover {
-        background-color: var(--nav-btn-hover);
+        background-color: transparent;
+        color: var(--nav-btn-hover)
     }
 }
