@@ -21,7 +21,7 @@ interface Post {
     rawContent: () => string;
 }
 
-const posts: Post[] = Object.values(items) as Post[];
+const posts: Post[] = Object.values(items).filter(item => !(item as Post).file.startsWith('_')) as Post[];
 
 ---
 <Layout title="Blog">
