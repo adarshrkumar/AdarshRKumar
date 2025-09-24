@@ -2,24 +2,15 @@
 import '../styles/pages/portfolio.scss'
 
 import SiteGridContent from './siteGridContent.astro'
-
 import getFName from '../../content/getFName'
+import type { PortfolioItem } from '../lib/types'
 
 var highlights = ['TransTrack', 'graphics-for-good', 'SMCAS']
 const ports = import.meta.glob('../../content/work/portfolio/**/*.md', { eager: true })
 const keys = Object.keys(ports)
-const allItems = Object.values(ports) as Item[];
+const allItems = Object.values(ports) as PortfolioItem[];
 
-interface Item {
-    file: string;
-    frontmatter: {
-        url: string;
-        name: string;
-    };
-    rawContent: () => string;
-}
-
-var items: Item[] = []
+var items: PortfolioItem[] = []
 
 highlights.forEach(name => {
     var res = allItems.filter(item => getFName(item.file) === name)

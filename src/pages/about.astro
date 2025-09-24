@@ -3,10 +3,18 @@ import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
 
-import age from '../../content/getAge'
+// Helper function to load and process about content
+async function loadAboutContent(): Promise<string> {
+    const aboutFile = await import('../../content/aboutContent.md')
+    const rawContent = aboutFile.compiledContent()
+    
+    // Replace age placeholder with actual age
+    return rawContent.replaceAll('{ age }', age.toString())
+}
 
-const aboutFile = await import('../../content/aboutContent.md')
-var aboutContent = aboutFile.compiledContent().replaceAll('{ age }', age.toString())
+// Load age and about content
+import age from '../../content/getAge'
+const aboutContent = await loadAboutContent()
 
 ---
 <Layout title="About">

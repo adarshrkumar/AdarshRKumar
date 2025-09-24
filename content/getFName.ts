@@ -1,15 +1,32 @@
+/**
+ * Extracts a clean filename from a file path
+ * Handles complex extensions and query parameters
+ * 
+ * @param name - The file path or filename to process
+ * @returns Clean filename without path, query params, or complex extensions
+ */
 function getFName(name: string): string {
-    if (name.includes('/')) {
-        name = name.split('/').slice(-1)[0]
-        if (name.includes('?')) name = name.split('?')[0]
-        if (name.includes('.')) {
-            if (name.split('.').length > 2) {
-                const nameParts = name.split('.')
-                name = `${nameParts.slice(0, -2).join('.')}.${nameParts.slice(-1).join('.')}`
+    let fileName = name
+    
+    // Extract filename from path if it contains directory separators
+    if (fileName.includes('/')) {
+        fileName = fileName.split('/').slice(-1)[0]
+        
+        // Remove query parameters if present
+        if (fileName.includes('?')) {
+            fileName = fileName.split('?')[0]
+        }
+        
+        // Handle complex file extensions (e.g., file.name.jpg -> file.jpg)
+        if (fileName.includes('.')) {
+            const nameParts = fileName.split('.')
+            if (nameParts.length > 2) {
+                fileName = `${nameParts.slice(0, -2).join('.')}.${nameParts.slice(-1).join('.')}`
             }
         }
     }
-    return name
+    
+    return fileName
 }
 
 export default getFName

@@ -1,83 +1,138 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
+import type { Post } from '../lib/types'
 
-var site = Astro.site ? Astro.site.toString() : ''
-if (site.includes('://')) site = site.split('://')[1]
-if (site.endsWith('/')) site = site.slice(0, -1)
+// Helper function to extract clean site URL
+function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
+    let cleanUrl = siteUrl ? siteUrl.toString() : ''
+    if (cleanUrl.includes('://')) {
+        cleanUrl = cleanUrl.split('://')[1]
+    }
+    if (cleanUrl.endsWith('/')) {
+        cleanUrl = cleanUrl.slice(0, -1)
+    }
+    return cleanUrl
+}
 
-var location = {
+const cleanSiteUrl = getCleanSiteUrl(Astro.site)
+const siteLocation = {
     protocol: 'https:', 
-    host: site, 
+    host: cleanSiteUrl, 
 }
 
-const items = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
-const keys = Object.keys(items)
-interface Post {
-    frontmatter: {
-        title: string;
-    };
-    file: string;
-    rawContent: () => string;
+// Helper function to extract slug from file path
+function extractSlugFromFilePath(filePath: string): string {
+    const pathPrefix = 'AdarshRKumar.dev/content/blog/posts/'
+    let slug = filePath
+    
+    const prefixIndex = slug.indexOf(pathPrefix)
+    if (prefixIndex !== -1) {
+        slug = slug.slice(prefixIndex + pathPrefix.length)
+    }
+    
+    if (slug.endsWith('.md')) {
+        slug = slug.slice(0, -'.md'.length)
+    }
+    
+    return slug
 }
 
-const posts: Post[] = Object.values(items).filter(item => !(item as Post).file.startsWith('_')) as Post[];
+// Load and filter blog posts
+const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
+const blogPostKeys = Object.keys(blogPostItems)
+
+const publishedPosts: Post[] = Object.values(blogPostItems)
+    .filter(item => !(item as Post).file.startsWith('_')) as Post[]
+
+// Helper function to clean and normalize text content
+function cleanTextContent(text: string): string {
+    let cleanText = text
+    
+    // Replace line breaks with spaces
+    if (cleanText.includes('\n')) {
+        cleanText = cleanText.split('\n').join(' ')
+    }
+    
+    // Replace double spaces with single spaces
+    if (cleanText.includes('  ')) {
+        cleanText = cleanText.split('  ').join(' ')
+    }
+    
+    return cleanText
+}
+
+// Helper function to create preview content with trimming
+function createPreviewContent(text: string, maxLength: number = 50): string {
+    let preview = text
+    
+    if (preview.length > maxLength) {
+        preview = preview.slice(0, maxLength)
+    }
+    
+    // Characters to trim from the end
+    const trimChars = [' ', ',', ':', '(', '[', '{', '|', '~', '@', '*', '+', '=', '-', '^']
+    
+    while (trimChars.some(char => preview.endsWith(char))) {
+        preview = preview.slice(0, -1)
+    }
+    
+    return preview
+}
+
+// Helper function to generate screenshot image data
+function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512) {
+    const screenshotUrl = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+    
+    return {
+        src: screenshotUrl,
+        alt: `Screenshot of the "${title}" post.`,
+        placeholder: `${screenshotUrl}&image_quality=50`
+    }
+}
 
 ---
 <Layout title="Blog">
     <SiteGridContent classItems="posts">
         {
-            posts.map(post => {
-                var startingString = 'AdarshRKumar.dev/content/blog/posts/'
-
-                var slug = post.file
-                var index = slug.indexOf(startingString)
-                slug = slug.slice(index + startingString.length)
-                if (slug.endsWith('.md')) slug = slug.slice(0, -1*'.md'.length)
-
-                var image = {src: '', alt: ''}
-                var postUrl = `${location.protocol}//${location.host}/post/${slug}?hideHeader=true`
-                var imageSize = 512
-                image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-                image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
-
-                var textContent = post.rawContent()
-                if (textContent.includes('\n')) textContent = textContent.split('\n').join(' ')
-                if (textContent.includes('  ')) textContent = textContent.split('  ').join(' ')
+            publishedPosts.map(post => {
+                // Extract clean slug from file path
+                const postSlug = extractSlugFromFilePath(post.file)
                 
-                var previewContent = textContent
-                if (previewContent.length > 50) previewContent = previewContent.slice(0, 50)
-                while (
-                    previewContent.endsWith(' ') || 
-                    previewContent.endsWith(',') || 
-                    previewContent.endsWith(':') || 
-                    previewContent.endsWith('(') || 
-                    previewContent.endsWith('[') || 
-                    previewContent.endsWith('{') || 
-                    previewContent.endsWith('[') || 
-                    previewContent.endsWith('|') || 
-                    previewContent.endsWith('~') || 
-                    previewContent.endsWith('@') || 
-                    previewContent.endsWith('*') || 
-                    previewContent.endsWith('+') || 
-                    previewContent.endsWith('=') || 
-                    previewContent.endsWith('-') || 
-                    previewContent.endsWith('^')
-                ) previewContent = previewContent.slice(0, -1)
+                // Generate post URL and screenshot image
+                const postUrl = `${siteLocation.protocol}//${siteLocation.host}/post/${postSlug}?hideHeader=true`
+                const screenshotImage = generateScreenshotImage(postUrl, post.frontmatter.title || 'Untitled Post')
                 
-                return (<a href={`/post/${slug}`} class="item">
-                    <img class="item__img" src={image.src} alt={image.alt} style={`--placeholder: url('${image.src}&image_quality=${50}')`} />
-                    {
-                        !!(post.frontmatter.title || textContent) ? <div class="item__info">
-                            {
-                                !!post.frontmatter.title ? <h3 class="item__title">{post.frontmatter.title}</h3> : ''
-                            }
-                            {
-                                !!previewContent ? <p class="item__content">{previewContent}</p> : ''
-                            }
-                        </div> : ''
-                    }
-                </a>)
+                // Process text content for preview
+                const rawTextContent = post.rawContent()
+                const cleanedTextContent = cleanTextContent(rawTextContent)
+                const previewContent = createPreviewContent(cleanedTextContent)
+                
+                // Check if we have content to display
+                const hasContent = !!(post.frontmatter.title || cleanedTextContent)
+                const hasTitle = !!post.frontmatter.title
+                const hasPreview = !!previewContent
+                
+                return (
+                    <a href={`/post/${postSlug}`} class="item">
+                        <img 
+                            class="item__img" 
+                            src={screenshotImage.src} 
+                            alt={screenshotImage.alt} 
+                            style={`--placeholder: url('${screenshotImage.placeholder}')`} 
+                        />
+                        {hasContent && (
+                            <div class="item__info">
+                                {hasTitle && (
+                                    <h3 class="item__title">{post.frontmatter.title}</h3>
+                                )}
+                                {hasPreview && (
+                                    <p class="item__content">{previewContent}</p>
+                                )}
+                            </div>
+                        )}
+                    </a>
+                )
             })
         }
     </SiteGridContent>

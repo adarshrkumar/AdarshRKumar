@@ -4,6 +4,20 @@ import '../../styles/pages/post.scss'
 
 import Layout from '../../layouts/Layout.astro'
 
+// Helper function to find post by ID
+function findPostById(posts: any[], postId: string | undefined): any {
+    return posts.find(post => 
+        !post.file.startsWith('_') && 
+        post.file.includes(postId || '')
+    )
+}
+
+// Helper function to get author information
+function getAuthorInfo(authors: any, authorUsername: string) {
+    return authors[authorUsername as keyof typeof authors]
+}
+
+// Static paths for blog posts
 export function getStaticPaths() {
     return [
         {params: {id: 'hello-world'}}, 
@@ -12,30 +26,37 @@ export function getStaticPaths() {
     ];
 }
 
-const { id } = Astro.params;
+// Get post ID from URL parameters
+const { id: postId } = Astro.params;
 
+// Load authors and posts
 import authors from '../../../content/blog/authors'
 
-var posts = await Astro.glob('../../../content/blog/posts/**/*.md')
-var post = posts.find(post => !post.file.startsWith('_') && post.file.includes(id || ''))
+const postModules = import.meta.glob('../../../content/blog/posts/**/*.md', { eager: true });
+const allPosts = Object.values(postModules);
 
-if (post) {
-    var authorUsername = post.frontmatter.author
-    var author = authors[authorUsername as keyof typeof authors]
-} else {
-    throw new Error(`Post with id '${id}' not found`);
+// Find the specific post
+const currentPost = findPostById(allPosts, postId);
+
+if (!currentPost) {
+    throw new Error(`Post with id '${postId}' not found`);
 }
 
+// Get author information
+const authorUsername = currentPost.frontmatter.author;
+const authorInfo = getAuthorInfo(authors, authorUsername);
+
 ---
-<Layout title={post.frontmatter.title} pageType="post" author={author.displayName} classItems="ignorePadding">
+<Layout title={currentPost.frontmatter.title} pageType="post" author={authorInfo.displayName} classItems="ignorePadding">
     <section class="info">
-        <a href=`/author/${post.frontmatter.author}` class="author">{author.displayName}</a> | <span class="date">{post.frontmatter.date}</span>
+        <a href={`/author/${authorUsername}`} class="author">{authorInfo.displayName}</a> | <span class="date">{currentPost.frontmatter.date}</span>
     </section>
     <section class="post-area">
         <div class="scroll-percentage"></div>
-        <article class="post-content" set:html={post.compiledContent()}></article>
+        <article class="post-content" set:html={currentPost.compiledContent()}></article>
         <section class="giscus" />
-        <script src="https://giscus.app/client.js"
+        <script 
+            src="https://giscus.app/client.js"
             data-repo="adarshrkumar/blog-comments"
             data-repo-id="R_kgDOONF60Q"
             data-category="Announcements"

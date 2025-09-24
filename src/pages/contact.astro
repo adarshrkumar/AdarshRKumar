@@ -2,19 +2,106 @@
 import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
-
 import Input from '../defaultComponents/Input.astro'
 import TextArea from '../defaultComponents/TextArea.astro'
+import type { FormConfig, FormField } from '../lib/types'
+
+// Form configuration
+const formConfig: FormConfig = {
+    action: "https://getform.io/f/qalorpyb",
+    method: "POST",
+    className: "contact"
+}
+
+// Form field configurations
+const formFields: Record<string, FormField> = {
+    name: {
+        type: "text",
+        name: "FromName",
+        id: "name",
+        placeholder: "What's your name?",
+        required: "TRUE",
+        align: "left",
+        label: "Name: "
+    },
+    email: {
+        type: "email",
+        name: "From",
+        id: "email",
+        placeholder: "you@email.tld",
+        required: "TRUE",
+        align: "left",
+        label: "Email: "
+    },
+    message: {
+        label: "Message:",
+        autosize: true,
+        rows: "1",
+        name: "TextBody",
+        id: "message",
+        placeholder: "Type here...",
+        required: "TRUE"
+    },
+    submit: {
+        type: "submit",
+        value: "Send",
+        className: "contact-button",
+        align: "right",
+        style: "cursor: pointer; margin-left: auto;"
+    }
+}
 
 ---
 <Layout title="Contact">
-    <form action="https://getform.io/f/qalorpyb" method="POST" class="contact">
-        <Input type="text" name="FromName" id="name" placeholder="What's your name?" required="TRUE" align="left">Name: </Input>
+    <form action={formConfig.action} method={formConfig.method} class={formConfig.className}>
+        <Input 
+            type={formFields.name.type} 
+            name={formFields.name.name} 
+            id={formFields.name.id} 
+            placeholder={formFields.name.placeholder} 
+            required={formFields.name.required} 
+            align={formFields.name.align}
+        >
+            {formFields.name.label}
+        </Input>
+        
         <input hidden type="text" name="FromFull" id="from" />
-        <Input type="email" name="From" id="email" placeholder="you@email.tld" required="TRUE" align="left">Email: </Input>
-        <TextArea label="Message:" autosize rows="1" name="TextBody" id="message" placeholder="Type here..." required="TRUE" />
-        <Input type="hidden" name="Subject" id="email-subject" value="Contact Form Submission" />
-        <Input type="submit" value="Send" class="contact-button" align="right" style="cursor: pointer; margin-left: auto;" />
+        
+        <Input 
+            type={formFields.email.type} 
+            name={formFields.email.name} 
+            id={formFields.email.id} 
+            placeholder={formFields.email.placeholder} 
+            required={formFields.email.required} 
+            align={formFields.email.align}
+        >
+            {formFields.email.label}
+        </Input>
+        
+        <TextArea 
+            label={formFields.message.label}
+            autosize={formFields.message.autosize}
+            rows={formFields.message.rows}
+            name={formFields.message.name}
+            id={formFields.message.id}
+            placeholder={formFields.message.placeholder}
+            required={formFields.message.required}
+        />
+        
+        <Input 
+            type="hidden" 
+            name="Subject" 
+            id="email-subject" 
+            value="Contact Form Submission" 
+        />
+        
+        <Input 
+            type={formFields.submit.type} 
+            value={formFields.submit.value} 
+            class={formFields.submit.className} 
+            align={formFields.submit.align} 
+            style={formFields.submit.style}
+        />
     </form>
 </Layout>
 <script is:inline>

@@ -1,45 +1,68 @@
 ---
 import LargeFrame from '../components/largeFrame.astro'
-
 import '../styles/pages/videos.scss'
+import type { VideoItem, RSSResponse, ChannelVideosProps } from '../lib/types'
 
-var {id, vidsPerChannel} = Astro.props
+// Helper function to build RSS URL for YouTube channel
+function buildYouTubeRSSUrl(channelId: string): string {
+    const apiKey = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
+    const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+    return `https://api.rss2json.com/v1/api.json?api_key=${atob(apiKey)}&rss_url=${encodeURIComponent(channelURL)}`
+}
 
-if (!vidsPerChannel) vidsPerChannel = 'all'
+// Helper function to validate RSS response
+function isValidRSSResponse(result: any): boolean {
+    return result && 
+           result.status && 
+           result.status === 'ok' && 
+           result.feed && 
+           result.items && 
+           result.items.length > 0
+}
 
-var feed: any = {}
-var vids: any[] = []
+// Helper function to limit videos based on count
+function shouldIncludeVideo(index: number, maxVideos: number | string): boolean {
+    if (typeof maxVideos === 'string') return true
+    return index < maxVideos
+}
 
-let apeKEEE = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
-let channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${id}`)
-let reqURL = `https://api.rss2json.com/v1/api.json?api_key=${atob(apeKEEE)}&rss_url=${channelURL}`
+// Get component props
+const { id: channelId, vidsPerChannel } = Astro.props as ChannelVideosProps
 
-await fetch(reqURL)
-    .then(response => response.json())
-    .then(result => {
-        if (result) {
-            if (result.status) {
-                if (result.status === 'ok') {
-                    if (result.feed) feed = result.feed
-                    if (result.items) {
-                        if (result.items.length > 0) vids = result.items
-                    }
-                }
-            }
-        }
-    })
-    .catch(error => console.error(error));
+// Set default videos per channel
+const maxVideosPerChannel = vidsPerChannel || 'all'
+
+// Fetch channel data
+let channelFeed: any = {}
+let channelVideos: any[] = []
+
+try {
+    const rssUrl = buildYouTubeRSSUrl(channelId)
+    const response = await fetch(rssUrl)
+    const result = await response.json()
+    
+    if (isValidRSSResponse(result)) {
+        channelFeed = result.feed
+        channelVideos = result.items
+    } else {
+        console.warn(`No valid videos found for channel: ${channelId}`)
+    }
+} catch (error) {
+    console.error(`Error fetching videos for channel ${channelId}:`, error)
+}
 
 ---
 {
-    vids.map((vid, i) => {
-        if (!isNaN(vidsPerChannel)) {
-            if (i > vidsPerChannel) return
+    channelVideos.map((video, videoIndex) => {
+        if (!shouldIncludeVideo(videoIndex, maxVideosPerChannel)) {
+            return ''
         }
-        return <LargeFrame video={vid} feed={feed} />
-
-        // var player = document.createElement('div')
-        // player.id = `player${(i+1)}`
-        // vElement.appendChild(player)
+        
+        return (
+            <LargeFrame 
+                video={video} 
+                feed={channelFeed} 
+            />
+        )
     })
 }
