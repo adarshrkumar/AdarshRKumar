@@ -9,8 +9,8 @@
 
     padding: 2rem 4rem;
 
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-wrap: wrap;
     
     place-items: center;
     gap: 1rem;
@@ -50,5 +50,14 @@
             border-radius: 25%;
             outline: solid 1px var(--color);
         }
+    }
+
+    .nav {
+        flex: 1;
+        align-self: end;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+        gap: inherit;
     }
 }

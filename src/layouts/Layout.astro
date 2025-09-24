@@ -4,6 +4,7 @@ import '../styles/globals.scss'
 import Header from '../components/header.astro'
 import Sidebar from '../components/sidebar.astro'
 import Script from '../utils/script.astro'
+import sanitizeMD from '../lib/sanitizeMD'
 import type { SiteConfig, PageType, LayoutProps } from '../lib/types'
 
 // Site configuration
@@ -80,7 +81,7 @@ const cssClassName = cleanCSSClass(`page-area main-content ${finalClassItems}`)
 import age from '../../content/getAge'
 
 const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(aboutFile.rawContent())
+const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 
 const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))

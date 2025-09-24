@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
+import sanitizeMD from '../lib/sanitizeMD'
 import type { Post } from '../lib/types'
 
 // Helper function to extract clean site URL
@@ -104,7 +105,7 @@ function generateScreenshotImage(postUrl: string, title: string, imageSize: numb
                 const screenshotImage = generateScreenshotImage(postUrl, post.frontmatter.title || 'Untitled Post')
                 
                 // Process text content for preview
-                const rawTextContent = post.rawContent()
+                const rawTextContent = sanitizeMD(post.rawContent())
                 const cleanedTextContent = cleanTextContent(rawTextContent)
                 const previewContent = createPreviewContent(cleanedTextContent)
                 

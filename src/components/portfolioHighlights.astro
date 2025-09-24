@@ -3,6 +3,7 @@ import '../styles/pages/portfolio.scss'
 
 import SiteGridContent from './siteGridContent.astro'
 import getFName from '../../content/getFName'
+import sanitizeMD from '../lib/sanitizeMD'
 import type { PortfolioItem } from '../lib/types'
 
 var highlights = ['TransTrack', 'graphics-for-good', 'SMCAS']
@@ -13,7 +14,9 @@ const allItems = Object.values(ports) as PortfolioItem[];
 var items: PortfolioItem[] = []
 
 highlights.forEach(name => {
-    var res = allItems.filter(item => getFName(item.file) === name)
+    // Add .md extension if not already present
+    const filename = name.endsWith('.md') ? name : `${name}.md`
+    var res = allItems.filter(item => getFName(item.file) === filename)
     if (res) {
         if (res.length > 0) {
             res.forEach(r => items.push(r))
@@ -36,7 +39,7 @@ highlights.forEach(name => {
                 domain = `https://${domain}`
             }
             
-            if (!url.includes(':') || domain === String(Astro.site)) target = 'self'
+            if (!url.includes(':') || domain === Astro.site?.toString()) target = '_self'
 
             var imageSize = 512
             var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
@@ -45,7 +48,7 @@ highlights.forEach(name => {
                     <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
                     <div class="item__info">
                         <h3 class="item__title">{item.frontmatter.name}</h3>
-                        <p class="item__content">{item.rawContent()}</p>
+                        <p class="item__content">{sanitizeMD(item.rawContent())}</p>
                     </div>
                 </a>
             )

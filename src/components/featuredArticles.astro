@@ -1,6 +1,7 @@
 ---
 import SiteGridContent from '../components/siteGridContent.astro'
 import getFName from '../../content/getFName'
+import sanitizeMD from '../lib/sanitizeMD'
 import type { Post } from '../lib/types'
 
 // Helper function to extract clean site URL
@@ -23,8 +24,10 @@ function getFeaturedPosts(allPosts: Post[], featuredSlugs: string[]): Post[] {
     const featuredPosts: Post[] = []
     
     featuredSlugs.forEach(targetSlug => {
+        // Add .md extension if not already present
+        const filename = targetSlug.endsWith('.md') ? targetSlug : `${targetSlug}.md`
         const matchingPosts = allPosts.filter(post => 
-            getFName(post.file) === targetSlug
+            getFName(post.file) === filename
         )
         featuredPosts.push(...matchingPosts)
     })
@@ -106,7 +109,7 @@ function generateScreenshotImage(postUrl: string, title: string, imageSize: numb
                 const screenshotImage = generateScreenshotImage(postUrl, post.frontmatter.title || 'Untitled Post')
                 
                 // Process text content for preview
-                const rawTextContent = post.rawContent()
+                const rawTextContent = sanitizeMD(post.rawContent())
                 const cleanedTextContent = cleanTextContent(rawTextContent)
                 const previewContent = createPreviewContent(cleanedTextContent)
                 

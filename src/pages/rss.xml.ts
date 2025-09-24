@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss'
 import age from '../../content/getAge'
+import sanitizeMD from '../lib/sanitizeMD'
 import type { Post, RSSItem } from '../lib/types'
 
 // Helper function to clean and normalize about content
@@ -39,7 +40,7 @@ const postKeys = Object.keys(postItems)
 const allPosts: Post[] = Object.values(postItems) as Post[]
 
 const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(aboutFile.rawContent())
+const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 
 export async function GET(context: any) {
     return rss({
