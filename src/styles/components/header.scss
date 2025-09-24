@@ -55,9 +55,5 @@
     .nav {
         flex: 1;
         align-self: end;
-
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
-        gap: inherit;
     }
 }

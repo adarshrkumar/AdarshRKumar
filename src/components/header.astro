@@ -1,7 +1,7 @@
 ---
 import '../styles/components/header.scss'
 
-import Nav from '../components/nav.astro'
+import NavContent from '../components/navContent.astro'
 import ThemeSwitcher from '../components/themeSwitcher.astro'
 
 var { navItems, logo } = Astro.props
@@ -59,45 +59,8 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
     <a class="logo-link" href="/">
         <img class="logo" src={logo} alt="Site logo" />
     </a>
-    <nav class="nav">
-        {
-            links.map((item: { url: string; name: string; target?: string, primaryCls?: string }, i: any) => {
-                var name = item.name
-                var url = item.url
-
-                
-                var target = item.target || '_self'
-
-                if (url) {
-                    if (url.includes('://')) {
-                        var domain = url.split('://')[1]
-                        if (domain.includes('/')) domain = domain.split('/')[0]
-                        if (Astro.site && domain !== Astro.site.toString()) {
-                            target = '_blank'
-                        }
-                    }
-                    if (url.endsWith('/')) url = url.slice(0, -1)
-                }
-                else if (!url) {
-                    url = '/'
-
-                    if (name !== 'Home') {
-                        url += name.toLowerCase()
-                    }
-                }
-
-                var primaryCls = ''
-                if (url === currentPath) primaryCls = ' primary'
-
-                item.url = url
-                item.target = target
-                item.primaryCls = primaryCls
-
-                return <a href={item.url} class={`btn nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
-            })
-        }
-    </nav>
-    <ThemeSwitcher defaultTheme="system"/>
+    <NavContent items={links} />
+    <ThemeSwitcher defaultTheme="system" />
 </header>
 <script>
     var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true';
