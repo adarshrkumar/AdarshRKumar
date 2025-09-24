@@ -1,23 +1,5 @@
 $textSpace: 5%;
 
-@property --size-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-}
-
-@property --item-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-}
-
-@property --info-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-}
-
 @property --paddingTrans {
     syntax: "<length>";
     inherits: true;
@@ -32,45 +14,80 @@ $textSpace: 5%;
 
 @keyframes shadow-in {
     from {
-        --item-opacity: 0;
-        --info-opacity: 1;
         --paddingTrans: var(--padding);
     }
     to {
-        --item-opacity: 1;
-        --info-opacity: 0;
         --paddingTrans: calc(var(--padding)*1.25);
     }
 }
 
 @keyframes shadow-out {
     from {
-        --item-opacity: 1;
-        --info-opacity: 0;
         --paddingTrans: calc(var(--padding)*1.25);
     }
     to {
-        --item-opacity: 0;
-        --info-opacity: 1;
         --paddingTrans: var(--padding);
     }
 }
 
 .photos {
+    $time: 750ms;
+
+
     margin-inline: auto;
     width: clamp(500px, 100%, 1000px);
-    z-index: 1;
+
+    &::before {
+        content: '';
+        position: fixed;    
+        inset: 0;
+
+        display: block;
+        opacity: 0;
+        
+        transition: opacity $time $time;
+        @supports(transition-behavior: allow-discrete) {
+            transition-behavior: allow-discrete;
+        }
+
+        z-index: -1;
+
+        pointer-events: none;
+    }
+
+    &:has(.item .item__checkbox:checked) {
+        --pad: 1rem;
+        position: fixed;
+        inset: var(--pad);
+        margin: auto;
+        aspect-ratio: 1;
+        max-height: calc(100dvh - var(--pad)*2);
+        z-index: 999;
+
+        &::before {
+            opacity: 1;
+            background-color: rgb(from var(--bg) r g b / 0.75);
+            pointer-events: all;
+            z-index: 998;
+        }
+    }
+
+
 
     .item {
-        --size-opacity: var(--item-opacity);
+        $main-shadow: 0 0 var(--padding);
 
-        $time: 750ms;
-        $shadow: 0 0 var(--padding) hsla(0, 0%, var(--color-lightness), var(--size-opacity, 1));
         position: relative;
         pointer-events: all;
         overflow: clip;
 
-        transition: scale $time;
+        transition: 
+            position $time,
+            inset $time,
+            margin $time,
+            box-shadow $time,
+            scale $time;
+            
         animation: 
             z-index-fix $time ease,
             shadow-out $time ease;
@@ -78,18 +95,41 @@ $textSpace: 5%;
         //     grid-column: span 2;
         //     grid-row: span 2;
         // }
-        box-shadow: $shadow;
+        box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 0);
 
         cursor: pointer;
 
+        &__checkbox {
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: -10px;
+            left: -10px;
+            visibility: hidden;
+        }
 
-        &:hover {
-            --item-opacity: 1;
+        body:has(.photos .item .item__checkbox:checked) {
+            overflow-y: clip;
+        }
+
+        &:has(.item__checkbox:checked) {
+            --pad: 1rem;
+            position: fixed;
+            inset: var(--pad);
+            margin: auto;
+            aspect-ratio: 1;
+            max-height: calc(100dvh - var(--pad)*2);
+            z-index: 999;
+        }
+
+        &:not(:has(.item__checkbox:checked)):hover {
             --paddingTrans: calc(var(--padding)*1.25);
 
             position: relative;
-            scale: 1.25;
+            scale: 1.125;
             z-index: 2;
+            box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 1);
+
             animation: shadow-in $time ease;
 
             .item__info {
@@ -99,9 +139,6 @@ $textSpace: 5%;
         }
         
         &__info {
-            --info-opacity: 1;
-            --size-opacity: var(--info-opacity);
-
             position: absolute;
             inset: var(--padding);
 
@@ -123,7 +160,7 @@ $textSpace: 5%;
 
             align-self: center;
             
-            box-shadow: $shadow;
+            box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 1);
         }
         &__title {
             &:has(+ .item__content) {

@@ -17,22 +17,13 @@ $min: 12rem;
     justify-content: center;
 
     .item {
-        box-sizing: border-box;
         padding: var(--paddingTrans, var(--padding, $padding));
 
         // aspect-ratio: 3 / 4;
 
-        background: var(--middle-color);
-        color: inherit;
-
         border-radius: $borderRadius;
         
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: $padding;
-
-        text-decoration: inherit;
 
         &__img {
             inline-size: 100%;

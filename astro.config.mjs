@@ -58,5 +58,8 @@ export default defineConfig({
     site: 'https://adarshrkumar.dev',
     base: '/',
     trailingSlash: 'always',
-    integrations: [sitemap()]
+    integrations: [sitemap()],
+    experimental: {
+        assets: true
+    }
 }); 

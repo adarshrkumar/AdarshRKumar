@@ -132,3 +132,18 @@ const keywords = keywordsArray.join(', ')
         <!--End of Tawk.to Script-->
     </body>
 </html>
+
+<style>
+    @supports (color: if(media(print): red; blue)) {
+        :root {
+            --bg: if(
+                style(--scheme: dark): hsl(0, 0%, 15%);
+                else: lightdark(hsl(0, 0%, 100%), hsl(0, 0%, 15%));
+            );
+            --color: if(
+                style(--scheme: dark): hsl(0, 0%, 100%);
+                else: lightdark(hsl(0, 0%, 15%), hsl(0, 0%, 100%));
+            );
+        }
+    }
+</style>

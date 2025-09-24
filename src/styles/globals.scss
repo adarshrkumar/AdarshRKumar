@@ -8,11 +8,13 @@
 }
 
 :root {
-    --logo-a-color: #{$logo-a-color};
+    --data-theme: attr(data-theme);
     
-    --bg: #{$light-bg};
+    --bg: light-dark(#{$light-bg}, #{$dark-bg});
+    --color: light-dark(#{$light-color}, #{$dark-color});
+    
+    --logo-a-color: #{$logo-a-color};
     --bg-lightness: #{$main-bg-lightness};
-    --color: #{$light-color};
     --color-lightness: #{$main-color-lightness};
     --bdr-clr: unset;
     --middle-lightness: #{$middle-lightness};
@@ -22,22 +24,11 @@
     
     font-family: 'Montserrat', sans-serif;
     // font-family: 'Inter', sans-serif;
-}  
+}
+
 
 :has(:target), html {
     scroll-behavior: smooth;
-}
-
-@media (preferes-color-scheme: dark) {
-    :root {
-        --bg: #{$dark-bg};
-        --bg-lightness: #{$main-color-lightness};
-        --btn-clr: #{$dark-color};
-        --color: #{$dark-color};
-        --color-lightness: #{$main-bg-lightness};
-        --bdr-clr: #{$dark-border};
-        --nav-btn-hover: #{$dark-nav-hover};
-    }
 }
 
 html {
@@ -48,13 +39,6 @@ html {
     color-scheme: light;
 }
 [data-theme="dark"] {
-    --bg: #{$dark-bg};
-    --bg-lightness: #{$main-color-lightness};
-    --btn-clr: #{$dark-color};
-    --color: #{$dark-color};
-    --color-lightness: #{$main-bg-lightness};
-    --bdr-clr: #{$dark-border};
-    --nav-btn-hover: #{$dark-nav-hover};
     color-scheme: dark;
 }
 

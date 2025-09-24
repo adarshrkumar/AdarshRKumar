@@ -28,6 +28,7 @@ pages.forEach((page: any) => {
 
 function getLink(link: any) {
     var lPath = link.url
+    if (!lPath) return null
     var fileName = lPath
     if (fileName.startsWith('/')) fileName = fileName.slice(1)
     if (fileName === '') fileName = 'home'

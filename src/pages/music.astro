@@ -19,17 +19,17 @@ const musicConfig: MusicPlaylistConfig = {
 
 // Grid options for different sections
 const videoGridOptions: GridOptions = {
-    keys: ['min', 'max'], 
-    values: {min: '4rem', max: '495px'}
+    min: '4rem', 
+    max: '16rem'
 }
 
 const musicGridOptions: GridOptions = {
     min: '4rem', 
-    max: '660px'
+    max: '34rem'
 }
 
 ---
-<Layout title="My Music">
+<Layout title="My Music" classItems="music-area">
     <h2 class="section-title">My Performances</h2>
     <SiteGridContent classItems="videos" options={videoGridOptions}>
         <ChannelVideos id={musicConfig.channelId} vidsPerChannel={musicConfig.videosPerChannel} />
