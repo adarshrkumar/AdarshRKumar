@@ -16,14 +16,14 @@ const items = import.meta.glob('../pages/*.astro', { eager: true })
 const pages = Object.values(items);
 
 
-var links: { path: string; name: string }[] = []
+var links: { url: string; name: string, target?: string, primaryCls?: string }[] = []
 pages.forEach((page: any) => {
     var link = getLink(page)
     if (link && link.name === 'Home') links.push(link)
 })
 pages.forEach((page: any) => {
     var link = getLink(page)
-    if (link && link.name !== 'Home' && link.path) links.push(link)
+    if (link && link.name !== 'Home' && link.url) links.push(link)
 })
 
 function getLink(link: any) {
@@ -46,7 +46,7 @@ function getLink(link: any) {
     if (lPath.endsWith('//')) lPath = lPath.slice(0, -1)
     if (lPath.startsWith('//')) lPath = lPath.slice(1)
 
-    return { path: lPath, name }
+    return { url: lPath, name }
 }
 
 var currentPath = Astro.url.pathname
@@ -57,26 +57,23 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
     <a class="logo" href="/" style={`background-image: url('${logo}');`}></a>
     <div class="flex-spacer"></div>
     {
-        links.map((item: { path: string; name: string }, i: any) => {
+        links.map((item: { url: string; name: string; target?: string, primaryCls?: string }, i: any) => {
             var name = item.name
-            var url = item.path
+            var url = item.url
             
-            var target = item.target
-            if (!!target === false) {
-                target = '_self'
-            }
+            var target = item.target || '_self'
 
-            if (!!url) {
+            if (url) {
                 if (url.includes('://')) {
                     var domain = url.split('://')[1]
                     if (domain.includes('/')) domain = domain.split('/')[0]
-                    if (domain !== Astro.site) {
-                        target = '_black'
+                    if (Astro.site && domain !== Astro.site.toString()) {
+                        target = '_blank'
                     }
                 }
                 if (url.endsWith('/')) url = url.slice(0, -1)
             }
-            else if (!!url === false) {
+            else if (!url) {
                 url = '/'
 
                 if (name !== 'Home') {
