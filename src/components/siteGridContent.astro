@@ -1,24 +1,47 @@
 ---
 import '../styles/components/grid.scss'
 import '../styles/components/liteGrid.scss'
+import type { SiteGridContentProps } from '../lib/types'
 
-var { id, classItems, mode, options } = Astro.props
-
-if (classItems) classItems = ` ${classItems}`
-else classItems = ''
-
-var styleStr = ''
-if (options) {
-    if (typeof options === 'object') {
-        Object.keys(options).forEach((k, i) => {
-            if (i !== 0) styleStr += ' '
-            var value = options[k]
-            styleStr += `--${k}: ${value};`
-        })
-    }
+// Helper function to format class items
+function formatClassItems(classItems: string | undefined): string {
+    return classItems ? ` ${classItems}` : ''
 }
 
+// Helper function to generate CSS custom properties from options
+function generateCustomProperties(options: any): string {
+    if (!options || typeof options !== 'object') {
+        return ''
+    }
+    
+    let customProperties = ''
+    const optionKeys = Object.keys(options)
+    
+    optionKeys.forEach((key, index) => {
+        if (index !== 0) customProperties += ' '
+        const value = options[key]
+        customProperties += `--${key}: ${value};`
+    })
+    
+    return customProperties
+}
+
+// Helper function to build CSS class string
+function buildCSSClass(mode: string | undefined, classItems: string): string {
+    const baseClass = 'grid'
+    const liteClass = mode === 'lite' ? ' lite' : ''
+    return `${baseClass}${liteClass}${classItems}`
+}
+
+// Get component props
+const { id, classItems, mode, options }: SiteGridContentProps = Astro.props
+
+// Process props
+const formattedClassItems = formatClassItems(classItems)
+const customProperties = generateCustomProperties(options)
+const cssClass = buildCSSClass(mode, formattedClassItems)
+
 ---
-<section id={id || ''} class={`grid${mode === 'lite' ? ' lite' : ''}${classItems}`} style={styleStr}>
+<section id={id || ''} class={cssClass} style={customProperties}>
     <slot />
 </section>

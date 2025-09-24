@@ -1,15 +1,45 @@
 import rss from '@astrojs/rss'
-
-const items = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
-const keys = Object.keys(items)
-const posts = Object.values(items)
-
 import age from '../../content/getAge'
+import type { Post, RSSItem } from '../lib/types'
+
+// Helper function to clean and normalize about content
+function cleanAboutContent(content: string): string {
+    let cleanedContent = content
+        .replaceAll('{ age }', age.toString())
+        .replaceAll('  ', ' ')
+        .replaceAll(' \n', ' ')
+        .replaceAll('\n', ' ')
+    
+    // Remove leading and trailing spaces
+    while (cleanedContent.startsWith(' ')) {
+        cleanedContent = cleanedContent.slice(1)
+    }
+    while (cleanedContent.endsWith(' ')) {
+        cleanedContent = cleanedContent.slice(0, -1)
+    }
+    
+    return cleanedContent
+}
+
+// Helper function to extract post ID from file path
+function extractPostId(filePath: string): string {
+    const pathPrefix = '../../content/blog/posts/'
+    let postId = filePath
+    
+    if (postId.startsWith(pathPrefix)) {
+        postId = postId.slice(pathPrefix.length)
+    }
+    
+    return postId
+}
+
+// Load posts and about content
+const postItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
+const postKeys = Object.keys(postItems)
+const allPosts: Post[] = Object.values(postItems) as Post[]
 
 const aboutFile = await import('../../content/aboutContent.md')
-let aboutContent = aboutFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
-while (aboutContent.startsWith(' ')) aboutContent = aboutContent.slice(1)
-while (aboutContent.endsWith(' ')) aboutContent = aboutContent.slice(0, -1)
+const aboutContent = cleanAboutContent(aboutFile.rawContent())
 
 export async function GET(context: any) {
     return rss({
@@ -17,17 +47,14 @@ export async function GET(context: any) {
         description: aboutContent,
         site: context.site,
         trailingSlash: context.trailingSlash,
-        items: posts.map((post: any, i: number) => {
-            let id = keys[i]
-            const sw = `../../content/blog/posts/`
-            if (id) if (id.startsWith(sw)) id = id.slice(sw.length)
+        items: allPosts.map((post: Post, index: number) => {
+            const postId = extractPostId(postKeys[index])
+            
             return {
-                title: post.frontmatter.title,
-                pubDate: post.frontmatter.pubDate,
-                description: post.frontmatter.description,
-                // Compute RSS link from post `id`
-                // This example assumes all posts are rendered as `/blog/[id]` routes
-                link: `/post/${id}/`,
+                title: post.frontmatter.title || 'Untitled',
+                pubDate: post.frontmatter.pubDate ? new Date(post.frontmatter.pubDate) : new Date(),
+                description: post.frontmatter.description || '',
+                link: `/post/${postId}/`,
             }
         }),
     })

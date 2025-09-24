@@ -1,43 +1,82 @@
 ---
 import '../styles/pages/portfolio.scss'
-
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
-
 import getFName from '../../content/getFName'
+import type { PortfolioItem } from '../lib/types'
 
-var items = await Astro.glob('../../content/work/portfolio/*.md')
+// Helper function to determine link target based on URL
+function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
+    let target = '_blank'
+    
+    // Handle protocol-relative URLs
+    if (url.startsWith('//')) {
+        url = `https:${url}`
+    }
+    
+    // Extract domain from URL
+    let domain = url
+    if (domain.includes('://')) {
+        domain = domain.split('://')[1]
+        if (domain.includes('/')) {
+            domain = domain.split('/')[0]
+        }
+        if (domain.startsWith('www.')) {
+            domain = domain.slice('www.'.length)
+        }
+        domain = `https://${domain}`
+    }
+    
+    // Check if it's an internal link
+    if (!url.includes(':') || domain === siteUrl?.toString()) {
+        target = '_self'
+    }
+    
+    return target
+}
+
+// Helper function to generate screenshot image URL
+function generateScreenshotUrl(url: string, imageSize: number = 512): string {
+    return `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+}
+
+// Helper function to filter out hidden items
+function filterVisibleItems(items: any[]): any[] {
+    return items.filter(item => {
+        const name = getFName(item.file)
+        return !name.startsWith('_')
+    })
+}
+
+// Load and filter portfolio items
+const portfolioItemsObj = import.meta.glob('../../content/work/portfolio/*.md', { eager: true })
+const allPortfolioItems: PortfolioItem[] = Object.values(portfolioItemsObj) as PortfolioItem[]
+const visiblePortfolioItems = filterVisibleItems(allPortfolioItems)
 ---
 <Layout title="Portfolio">
     <SiteGridContent classItems="portfolio wrap">
         {
-            items.map((item, i2) => {
-                var name = getFName(item.file)
-                if (name.startsWith('_')) return ''
-
-                var target = '_blank'
-                var url = item.frontmatter.url
-                if (url.startsWith('//')) url = `https:${url}`
-
-                var domain = url
-                if (domain.includes('://')) {
-                    domain = domain.split('://')[1]
-                    if (domain.includes('/')) domain = domain.split('/')[0]
-                    if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
-                    domain = `https://${domain}`
-                }
+            visiblePortfolioItems.map((item, itemIndex) => {
+                const portfolioName = getFName(item.file)
+                const portfolioUrl = item.frontmatter.url
+                const linkTarget = determineLinkTarget(portfolioUrl, Astro.site)
+                const screenshotUrl = generateScreenshotUrl(portfolioUrl)
+                const placeholderUrl = `${screenshotUrl}&image_quality=50`
                 
-                if (!url.includes(':') || domain === Astro.site) target = 'self'
-
-                var imageSize = 512
-                var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-                return (<a href={url} target={target} class="item">
-                    <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
-                    <div class="item__info">
-                        <h3 class="item__title">{item.frontmatter.name}</h3>
-                        <p class="item__content">{item.rawContent()}</p>
-                    </div>
-                </a>)
+                return (
+                    <a href={portfolioUrl} target={linkTarget} class="item">
+                        <img 
+                            src={screenshotUrl} 
+                            alt={`Screenshot of ${item.frontmatter.name}`} 
+                            class="item__img" 
+                            style={`--placeholder: url('${placeholderUrl}')`} 
+                        />
+                        <div class="item__info">
+                            <h3 class="item__title">{item.frontmatter.name}</h3>
+                            <p class="item__content">{item.rawContent()}</p>
+                        </div>
+                    </a>
+                )
             })
         }
     </SiteGridContent>

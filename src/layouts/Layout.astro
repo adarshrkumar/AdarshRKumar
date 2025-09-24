@@ -3,49 +3,88 @@ import '../styles/globals.scss'
 
 import Header from '../components/header.astro'
 import Sidebar from '../components/sidebar.astro'
-
 import Script from '../utils/script.astro'
+import type { SiteConfig, PageType, LayoutProps } from '../lib/types'
 
-var sName = 'Adarsh Kumar'
-var logoSRC = '/assets/logo.jpg'
-
-var { title, pTitle, classItems, inlineStyles, pageType, author } = Astro.props;
-
-if (!!pTitle === false) pTitle = title
-if (!!pTitle === false) pTitle = 'Home'
-
-if (!!classItems === false) classItems = ''
-
-if (pageType) classItems += ` ${pageType}`
-
-switch (pageType) {
-    case 'post':
-        title = `${title} | Blog`
-        break;
-    case 'author':
-        title = `${title} | Author`
-        break;
-    default:
-        break;
+// Site configuration
+const siteConfig: SiteConfig = {
+    name: 'Adarsh Kumar',
+    logo: '/assets/logo.jpg',
+    favicon: '/assets/favicon.png',
+    placeholder: '/assets/placeholder.svg'
 }
 
-if (pTitle === 'Home') title = sName
-else title = `${title} | ${sName}`
+// Helper function to clean and normalize about content
+function cleanAboutContent(content: string): string {
+    let cleanedContent = content
+        .replaceAll('{ age }', age.toString())
+        .replaceAll('  ', ' ')
+        .replaceAll(' \n', ' ')
+        .replaceAll('\n', ' ')
+    
+    // Remove leading and trailing spaces
+    while (cleanedContent.startsWith(' ')) {
+        cleanedContent = cleanedContent.slice(1)
+    }
+    while (cleanedContent.endsWith(' ')) {
+        cleanedContent = cleanedContent.slice(0, -1)
+    }
+    
+    return cleanedContent
+}
 
-var className = `page-area main-content ${classItems}`
-if (className.startsWith(' ')) className = className.substring(1)
-if (className.endsWith(' ')) className = className.substring(0, className.length - 1)
+// Helper function to process page title based on page type
+function processPageTitle(title: string, pageType: PageType): string {
+    switch (pageType) {
+        case 'post':
+            return `${title} | Blog`
+        case 'author':
+            return `${title} | Author`
+        default:
+            return title
+    }
+}
 
+// Helper function to build final page title
+function buildFinalTitle(processedTitle: string, pageTitle: string): string {
+    if (pageTitle === 'Home') {
+        return siteConfig.name
+    }
+    return `${processedTitle} | ${siteConfig.name}`
+}
+
+// Helper function to clean CSS class string
+function cleanCSSClass(classString: string): string {
+    let cleaned = classString
+    if (cleaned.startsWith(' ')) {
+        cleaned = cleaned.substring(1)
+    }
+    if (cleaned.endsWith(' ')) {
+        cleaned = cleaned.substring(0, cleaned.length - 1)
+    }
+    return cleaned
+}
+
+// Get component props
+const { title, pTitle, classItems, inlineStyles, pageType, author }: LayoutProps = Astro.props
+
+// Process props
+const pageTitle = pTitle || title || 'Home'
+const baseClassItems = classItems || ''
+const finalClassItems = pageType ? `${baseClassItems} ${pageType}` : baseClassItems
+const processedTitle = processPageTitle(title || '', pageType)
+const finalTitle = buildFinalTitle(processedTitle, pageTitle)
+const cssClassName = cleanCSSClass(`page-area main-content ${finalClassItems}`)
+
+// Load and process content
 import age from '../../content/getAge'
 
 const aboutFile = await import('../../content/aboutContent.md')
-var aboutContent = aboutFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
-while (aboutContent.startsWith(' ')) aboutContent = aboutContent.slice(1)
-while (aboutContent.endsWith(' ')) aboutContent = aboutContent.slice(0, -1)
+const aboutContent = cleanAboutContent(aboutFile.rawContent())
 
 const keywordsData = await import('../../content/siteKeywords.json')
-var keywordsArr = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
-var keywords = keywordsArr.join(', ')
+const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
+const keywords = keywordsArray.join(', ')
 ---
 
 <!DOCTYPE html>
@@ -57,7 +96,7 @@ var keywords = keywordsArr.join(', ')
         <meta name="description" content={aboutContent} />
         <meta name="keywords" content={keywords} />
         {author ? <meta name="author" content={author} /> : ''}
-        <title>{title}</title>
+        <title>{finalTitle}</title>
         <!-- <base href={Astro.site} /> -->
         <link rel="icon" href="/assets/favicon.png" />
         <link rel="preload" as="image" href="/assets/placeholder.svg" />
@@ -65,11 +104,11 @@ var keywords = keywordsArr.join(', ')
         <Script name="settings" />
     </head>
     <body>
-        <Header logo={logoSRC} />
+        <Header logo={siteConfig.logo} />
         <div class="wrapper">
             <main class="content" id="content">
                 { pageType === 'home' ? '' : <h1 class="page-title">{pTitle}</h1> }
-                <div class={className} style={inlineStyles}>
+                <div class={cssClassName} style={inlineStyles}>
                     <slot />
                 </div>
             </main>

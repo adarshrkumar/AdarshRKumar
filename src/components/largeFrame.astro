@@ -1,33 +1,73 @@
 ---
 import '../styles/components/largeFrame.scss'
+import type { YouTubeVideo, YouTubeFeed, LargeFrameProps } from '../lib/types'
 
-const { video, feed } = Astro.props
+// Helper function to extract channel ID from feed link
+function extractChannelId(feedLink: string): string {
+    let channelId = feedLink
+    if (channelId.includes('/')) {
+        channelId = channelId.split('/').pop() || ''
+    }
+    return channelId
+}
 
-var fLink = feed.link
-var cId = fLink
-if (cId.includes('/')) cId = cId.split('/').pop()
+// Helper function to extract video ID from GUID
+function extractVideoId(videoGuid: string): string {
+    return videoGuid.substring(videoGuid.lastIndexOf(':') + 1)
+}
 
-var vidGuId = video.guid
-var vidId = vidGuId.substring(vidGuId.lastIndexOf(':')+1)
+// Helper function to generate YouTube image URLs
+function generateYouTubeImageUrls(videoId: string) {
+    const baseImageUrl = `https://i.ytimg.com/vi/${videoId}`
+    
+    return {
+        highRes: `${baseImageUrl}/maxresdefault.jpg`,
+        background: `${baseImageUrl}/hqdefault.jpg`
+    }
+}
 
-var img = `https://i.ytimg.com/vi/${vidId}`
+// Helper function to generate YouTube URLs
+function generateYouTubeUrls(videoId: string, channelId: string) {
+    return {
+        channel: `https://youtube.com/channel/${channelId}`,
+        embed: `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`
+    }
+}
 
-var imgSrc = `${img}/maxresdefault.jpg`
-var imgBgStyle = `${img}/hqdefault.jpg`
-var imgAlt = `YouTube Video Thumbnail for "${video.title}" uploaded by "${video.author}"`
+// Get component props
+const { video, feed } = Astro.props as LargeFrameProps
 
-var channelLink = `https://youtube.com/channel/${cId}`
+// Extract IDs and generate URLs
+const channelId = extractChannelId(feed.link)
+const videoId = extractVideoId(video.guid)
+const imageUrls = generateYouTubeImageUrls(videoId)
+const youtubeUrls = generateYouTubeUrls(videoId, channelId)
 
-var frameSrc = `https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1`
-var frameTitle = `"${video.title}" uploaded by "${video.author}"`
+// Generate alt text and titles
+const imageAlt = `YouTube Video Thumbnail for "${video.title}" uploaded by "${video.author}"`
+const frameTitle = `"${video.title}" uploaded by "${video.author}"`
 
 ---
 <label class="large-frame">
     <input type="checkbox" class="checker" />
-    <img class="img" src={imgSrc} style={`--bg: url('${imgBgStyle}')`} alt={imgAlt} />
+    <img 
+        class="img" 
+        src={imageUrls.highRes} 
+        style={`--bg: url('${imageUrls.background}')`} 
+        alt={imageAlt} 
+    />
     <div class="info">
         <h2 class="title">{video.title}</h2>
-        <p class="author">by <a target="_blank" href={channelLink}>{feed.title}</a></p>
+        <p class="author">
+            by <a target="_blank" href={youtubeUrls.channel}>{feed.title}</a>
+        </p>
     </div>
-    <iframe class="frame" allow="autoplay; fullscreen;" allowfullscreen loading="lazy" src={frameSrc} title={frameTitle} />
-</div>
+    <iframe 
+        class="frame" 
+        allow="autoplay; fullscreen;" 
+        allowfullscreen 
+        loading="lazy" 
+        src={youtubeUrls.embed} 
+        title={frameTitle} 
+    />
+</label>
