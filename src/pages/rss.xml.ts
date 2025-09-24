@@ -1,7 +1,8 @@
 import rss from '@astrojs/rss'
-import age from '../../content/getAge'
+import age from '../lib/getAge'
 import sanitizeMD from '../lib/sanitizeMD'
-import type { Post, RSSItem } from '../lib/types'
+import { getPostsForRSS } from '../lib/getPosts'
+import type { PostForRSS } from '../lib/types'
 
 // Helper function to clean and normalize about content
 function cleanAboutContent(content: string): string {
@@ -22,25 +23,12 @@ function cleanAboutContent(content: string): string {
     return cleanedContent
 }
 
-// Helper function to extract post ID from file path
-function extractPostId(filePath: string): string {
-    const pathPrefix = '../../content/blog/posts/'
-    let postId = filePath
-    
-    if (postId.startsWith(pathPrefix)) {
-        postId = postId.slice(pathPrefix.length)
-    }
-    
-    return postId
-}
-
-// Load posts and about content
-const postItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
-const postKeys = Object.keys(postItems)
-const allPosts: Post[] = Object.values(postItems) as Post[]
-
+// Load about content
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
+
+// Get posts for RSS
+const postsForRSS = getPostsForRSS()
 
 export async function GET(context: any) {
     return rss({
@@ -48,14 +36,12 @@ export async function GET(context: any) {
         description: aboutContent,
         site: context.site,
         trailingSlash: context.trailingSlash,
-        items: allPosts.map((post: Post, index: number) => {
-            const postId = extractPostId(postKeys[index])
-            
+        items: postsForRSS.map((post: PostForRSS) => {
             return {
                 title: post.frontmatter.title || 'Untitled',
                 pubDate: post.frontmatter.pubDate ? new Date(post.frontmatter.pubDate) : new Date(),
                 description: post.frontmatter.description || '',
-                link: `/post/${postId}/`,
+                link: post.link,
             }
         }),
     })

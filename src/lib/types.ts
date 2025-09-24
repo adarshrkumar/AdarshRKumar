@@ -17,6 +17,26 @@ export interface Post {
     compiledContent?: () => string;
 }
 
+// Enhanced Post Types for different use cases
+export interface PostWithSlug extends Post {
+    slug: string;
+}
+
+export interface PostWithDisplay extends Post {
+    slug: string;
+    url: string;
+    screenshotImage: {
+        src: string;
+        alt: string;
+        placeholder: string;
+    };
+}
+
+export interface PostForRSS extends Post {
+    id: string;
+    link: string;
+}
+
 // Author Types
 export interface Author {
     displayName: string;
@@ -220,35 +240,3 @@ export interface ScreenshotConfig {
     title: string;
     imageSize?: number;
 }
-
-// Export all types for easy importing
-export type {
-    Post,
-    Author,
-    Authors,
-    PortfolioItem,
-    VideoItem,
-    RSSResponse,
-    YouTubeVideo,
-    YouTubeFeed,
-    PhotoItem,
-    FormField,
-    FormConfig,
-    SiteConfig,
-    GridOptions,
-    PageSection,
-    RSSItem,
-    PageType,
-    LayoutProps,
-    SiteGridContentProps,
-    ChannelVideosProps,
-    LargeFrameProps,
-    MusicPlaylistConfig,
-    VideoChannelConfig,
-    ProjectCategoryConfig,
-    ErrorInfo,
-    APIResponse,
-    ContentProcessor,
-    ImageConfig,
-    ScreenshotConfig
-};

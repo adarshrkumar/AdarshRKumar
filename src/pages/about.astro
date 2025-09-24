@@ -4,7 +4,7 @@ import '../styles/pages/[about, contact].scss'
 import Layout from '../layouts/Layout.astro'
 
 // Load age first
-import age from '../../content/getAge'
+import age from '../lib/getAge'
 
 // Helper function to load and process about content
 async function loadAboutContent(): Promise<string> {

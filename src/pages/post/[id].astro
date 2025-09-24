@@ -3,14 +3,7 @@
 import '../../styles/pages/post.scss'
 
 import Layout from '../../layouts/Layout.astro'
-
-// Helper function to find post by ID
-function findPostById(posts: any[], postId: string | undefined): any {
-    return posts.find(post => 
-        !post.file.startsWith('_') && 
-        post.file.includes(postId || '')
-    )
-}
+import { findPostById } from '../../lib/getPosts'
 
 // Helper function to get author information
 function getAuthorInfo(authors: any, authorUsername: string) {
@@ -29,14 +22,11 @@ export function getStaticPaths() {
 // Get post ID from URL parameters
 const { id: postId } = Astro.params;
 
-// Load authors and posts
-import authors from '../../../content/blog/authors'
-
-const postModules = import.meta.glob('../../../content/blog/posts/**/*.md', { eager: true });
-const allPosts = Object.values(postModules);
+// Load authors
+import authors from '../../lib/authors'
 
 // Find the specific post
-const currentPost = findPostById(allPosts, postId);
+const currentPost = findPostById(postId);
 
 if (!currentPost) {
     throw new Error(`Post with id '${postId}' not found`);
@@ -44,7 +34,7 @@ if (!currentPost) {
 
 // Get author information
 const authorUsername = currentPost.frontmatter.author;
-const authorInfo = getAuthorInfo(authors, authorUsername);
+const authorInfo = getAuthorInfo(authors, authorUsername || '');
 
 ---
 <Layout title={currentPost.frontmatter.title} pageType="post" author={authorInfo.displayName} classItems="ignorePadding">
@@ -53,7 +43,7 @@ const authorInfo = getAuthorInfo(authors, authorUsername);
     </section>
     <section class="post-area">
         <div class="scroll-percentage"></div>
-        <article class="post-content" set:html={currentPost.compiledContent()}></article>
+        <article class="post-content" set:html={currentPost.compiledContent?.() || ''}></article>
         <section class="giscus" />
         <script 
             src="https://giscus.app/client.js"

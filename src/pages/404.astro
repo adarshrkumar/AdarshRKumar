@@ -3,6 +3,11 @@ import '../styles/pages/404.scss'
 
 import Layout from '../layouts/Layout.astro'
 
+const currentPath = Astro.url.pathname
+const lastPath = currentPath?.split('/').pop() || ''
+if (lastPath) {
+    if (!lastPath.includes('.') && !lastPath.endsWith('/')) return Astro.redirect(`${currentPath}/`)
+}
 ---
 <Layout title="404" pTitle="Not Found">
     <section class="error-404">

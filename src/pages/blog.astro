@@ -2,108 +2,17 @@
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import sanitizeMD from '../lib/sanitizeMD'
+import { getPostsForDisplay, cleanTextContent, createPreviewContent } from '../lib/getPosts'
 import type { Post } from '../lib/types'
 
-// Helper function to extract clean site URL
-function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
-    let cleanUrl = siteUrl ? siteUrl.toString() : ''
-    if (cleanUrl.includes('://')) {
-        cleanUrl = cleanUrl.split('://')[1]
-    }
-    if (cleanUrl.endsWith('/')) {
-        cleanUrl = cleanUrl.slice(0, -1)
-    }
-    return cleanUrl
-}
-
-const cleanSiteUrl = getCleanSiteUrl(Astro.site)
-const siteLocation = {
-    protocol: 'https:', 
-    host: cleanSiteUrl, 
-}
-
-// Helper function to extract slug from file path
-function extractSlugFromFilePath(filePath: string): string {
-    const pathPrefix = 'AdarshRKumar.dev/content/blog/posts/'
-    let slug = filePath
-    
-    const prefixIndex = slug.indexOf(pathPrefix)
-    if (prefixIndex !== -1) {
-        slug = slug.slice(prefixIndex + pathPrefix.length)
-    }
-    
-    if (slug.endsWith('.md')) {
-        slug = slug.slice(0, -'.md'.length)
-    }
-    
-    return slug
-}
-
-// Load and filter blog posts
-const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
-const blogPostKeys = Object.keys(blogPostItems)
-
-const publishedPosts: Post[] = Object.values(blogPostItems)
-    .filter(item => !(item as Post).file.startsWith('_')) as Post[]
-
-// Helper function to clean and normalize text content
-function cleanTextContent(text: string): string {
-    let cleanText = text
-    
-    // Replace line breaks with spaces
-    if (cleanText.includes('\n')) {
-        cleanText = cleanText.split('\n').join(' ')
-    }
-    
-    // Replace double spaces with single spaces
-    if (cleanText.includes('  ')) {
-        cleanText = cleanText.split('  ').join(' ')
-    }
-    
-    return cleanText
-}
-
-// Helper function to create preview content with trimming
-function createPreviewContent(text: string, maxLength: number = 50): string {
-    let preview = text
-    
-    if (preview.length > maxLength) {
-        preview = preview.slice(0, maxLength)
-    }
-    
-    // Characters to trim from the end
-    const trimChars = [' ', ',', ':', '(', '[', '{', '|', '~', '@', '*', '+', '=', '-', '^']
-    
-    while (trimChars.some(char => preview.endsWith(char))) {
-        preview = preview.slice(0, -1)
-    }
-    
-    return preview
-}
-
-// Helper function to generate screenshot image data
-function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512) {
-    const screenshotUrl = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-    
-    return {
-        src: screenshotUrl,
-        alt: `Screenshot of the "${title}" post.`,
-        placeholder: `${screenshotUrl}&image_quality=50`
-    }
-}
+// Get posts with all processing done
+const postsWithMetadata = getPostsForDisplay(Astro.site)
 
 ---
 <Layout title="Blog">
     <SiteGridContent classItems="posts">
         {
-            publishedPosts.map(post => {
-                // Extract clean slug from file path
-                const postSlug = extractSlugFromFilePath(post.file)
-                
-                // Generate post URL and screenshot image
-                const postUrl = `${siteLocation.protocol}//${siteLocation.host}/post/${postSlug}?hideHeader=true`
-                const screenshotImage = generateScreenshotImage(postUrl, post.frontmatter.title || 'Untitled Post')
-                
+            postsWithMetadata.map(post => {
                 // Process text content for preview
                 const rawTextContent = sanitizeMD(post.rawContent())
                 const cleanedTextContent = cleanTextContent(rawTextContent)
@@ -115,12 +24,12 @@ function generateScreenshotImage(postUrl: string, title: string, imageSize: numb
                 const hasPreview = !!previewContent
                 
                 return (
-                    <a href={`/post/${postSlug}`} class="item">
+                    <a href={`/post/${post.slug}`} class="item">
                         <img 
                             class="item__img" 
-                            src={screenshotImage.src} 
-                            alt={screenshotImage.alt} 
-                            style={`--placeholder: url('${screenshotImage.placeholder}')`} 
+                            src={post.screenshotImage.src} 
+                            alt={post.screenshotImage.alt} 
+                            style={`--placeholder: url('${post.screenshotImage.placeholder}')`} 
                         />
                         {hasContent && (
                             <div class="item__info">

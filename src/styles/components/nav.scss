@@ -1,23 +1,19 @@
 .nav {
     &[data-varient="sidebar"] {
         justify-content: center;
-    }  
+    }
+
+    --data-direction: attr(data-direction, type(<custom-ident>));
 
     display: flex;
     flex-wrap: wrap;
-
-    &[data-direction="row"] {
-        flex-direction: row;
-    }
-    &[data-direction="column"] {
-        flex-direction: column;
-    }
+    flex-direction: var(--data-direction, row);
 
     gap: 1rem;
 }
 
 .nav-btn {
-    min-width: 100%;
+    // min-width: 100%;
     &:not(.primary) {
         border: solid 1px transparent;
 

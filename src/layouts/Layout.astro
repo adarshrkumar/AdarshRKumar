@@ -78,7 +78,7 @@ const finalTitle = buildFinalTitle(processedTitle, pageTitle)
 const cssClassName = cleanCSSClass(`page-area main-content ${finalClassItems}`)
 
 // Load and process content
-import age from '../../content/getAge'
+import age from '../lib/getAge'
 
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
@@ -97,7 +97,7 @@ const keywords = keywordsArray.join(', ')
         <meta name="description" content={aboutContent} />
         <meta name="keywords" content={keywords} />
         {author ? <meta name="author" content={author} /> : ''}
-        <title>{finalTitle}</title>
+        <title>{title}</title>
         <!-- <base href={Astro.site} /> -->
         <link rel="icon" href="/assets/favicon.png" />
         <link rel="preload" as="image" href="/assets/placeholder.svg" />
@@ -108,7 +108,7 @@ const keywords = keywordsArray.join(', ')
         <Header logo={siteConfig.logo} />
         <div class="wrapper">
             <main class="content" id="content">
-                { pageType === 'home' ? '' : <h1 class="page-title">{pTitle}</h1> }
+                { pageType === 'home' ? '' : <h1 class="page-title">{pTitle || title}</h1> }
                 <div class={cssClassName} style={inlineStyles}>
                     <slot />
                 </div>
