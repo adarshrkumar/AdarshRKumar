@@ -14,7 +14,7 @@ if (fs.existsSync(`${directoryPath}/allPhotos`)) {
     var folders = fs.readdirSync(`${directoryPath}/allPhotos`)
     folders.forEach(folder => {
         if (fs.lstatSync(`${directoryPath}/allPhotos/${folder}`).isDirectory()) {
-            var files = fs.readdirSync(`${directoryPath}/allPhotos/${folder}`)
+            var files = fs.readdirSync(`${directoryPath}/allPhotos/${folder}`).filter(file => file !== '.DS_Store')
             files.forEach(file => {
                 fs.unlinkSync(`${directoryPath}/allPhotos/${folder}/${file}`)
             })
@@ -37,7 +37,7 @@ categories.forEach((category, i) => {
                 fs.mkdirSync(`${directoryPath}/allPhotos/${folder}`);
             }
 
-            var files = fs.readdirSync(`${directoryPath}/photos/${category}/${folder}`)
+            var files = fs.readdirSync(`${directoryPath}/photos/${category}/${folder}`).filter(file => file !== '.DS_Store')
             files.forEach(file => {
                 if (file.endsWith('.json')) {
                     var nFName = file.split('.json').join('.js')
