@@ -3,6 +3,7 @@ import '../styles/pages/portfolio.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import getFName from '../../content/getFName'
+import sanitizeMD from '../lib/sanitizeMD'
 import type { PortfolioItem } from '../lib/types'
 
 // Helper function to determine link target based on URL
@@ -73,7 +74,7 @@ const visiblePortfolioItems = filterVisibleItems(allPortfolioItems)
                         />
                         <div class="item__info">
                             <h3 class="item__title">{item.frontmatter.name}</h3>
-                            <p class="item__content">{item.rawContent()}</p>
+                            <p class="item__content">{sanitizeMD(item.rawContent())}</p>
                         </div>
                     </a>
                 )
