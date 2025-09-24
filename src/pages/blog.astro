@@ -25,60 +25,60 @@ const posts: Post[] = Object.values(items).filter(item => !(item as Post).file.s
 
 ---
 <Layout title="Blog">
-  <SiteGridContent classItems="posts">
-    {
-        posts.map(post => {
-            var startingString = 'AdarshRKumar.dev/content/blog/posts/'
+    <SiteGridContent classItems="posts">
+        {
+            posts.map(post => {
+                var startingString = 'AdarshRKumar.dev/content/blog/posts/'
 
-            var slug = post.file
-            var index = slug.indexOf(startingString)
-            slug = slug.slice(index + startingString.length)
-            if (slug.endsWith('.md')) slug = slug.slice(0, -1*'.md'.length)
+                var slug = post.file
+                var index = slug.indexOf(startingString)
+                slug = slug.slice(index + startingString.length)
+                if (slug.endsWith('.md')) slug = slug.slice(0, -1*'.md'.length)
 
-            var image = {src: '', alt: ''}
-            var postUrl = `${location.protocol}//${location.host}/post/${slug}?hideHeader=true`
-            var imageSize = 512
-            image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-            image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
+                var image = {src: '', alt: ''}
+                var postUrl = `${location.protocol}//${location.host}/post/${slug}?hideHeader=true`
+                var imageSize = 512
+                image.src = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+                image.alt = `Screenshot of the "${post.frontmatter.title}" post.`
 
-            var textContent = post.rawContent()
-            if (textContent.includes('\n')) textContent = textContent.split('\n').join(' ')
-            if (textContent.includes('  ')) textContent = textContent.split('  ').join(' ')
-            
-            var previewContent = textContent
-            if (previewContent.length > 50) previewContent = previewContent.slice(0, 50)
-            while (
-                previewContent.endsWith(' ') || 
-                previewContent.endsWith(',') || 
-                previewContent.endsWith(':') || 
-                previewContent.endsWith('(') || 
-                previewContent.endsWith('[') || 
-                previewContent.endsWith('{') || 
-                previewContent.endsWith('[') || 
-                previewContent.endsWith('|') || 
-                previewContent.endsWith('~') || 
-                previewContent.endsWith('@') || 
-                previewContent.endsWith('*') || 
-                previewContent.endsWith('+') || 
-                previewContent.endsWith('=') || 
-                previewContent.endsWith('-') || 
-                previewContent.endsWith('^')
-            ) previewContent = previewContent.slice(0, -1)
-            
-            return (<a href={`/post/${slug}`} class="item">
-                <img class="item__img" src={image.src} alt={image.alt} style={`--placeholder: url('${image.src}&image_quality=${50}')`} />
-                {
-                    !!(post.frontmatter.title || textContent) ? <div class="item__info">
-                        {
-                            !!post.frontmatter.title ? <h3 class="item__title">{post.frontmatter.title}</h3> : ''
-                        }
-                        {
-                            !!previewContent ? <p class="item__content">{previewContent}</p> : ''
-                        }
-                    </div> : ''
-                }
-            </a>)
-        })
-    }
-  </SiteGridContent>
+                var textContent = post.rawContent()
+                if (textContent.includes('\n')) textContent = textContent.split('\n').join(' ')
+                if (textContent.includes('  ')) textContent = textContent.split('  ').join(' ')
+                
+                var previewContent = textContent
+                if (previewContent.length > 50) previewContent = previewContent.slice(0, 50)
+                while (
+                    previewContent.endsWith(' ') || 
+                    previewContent.endsWith(',') || 
+                    previewContent.endsWith(':') || 
+                    previewContent.endsWith('(') || 
+                    previewContent.endsWith('[') || 
+                    previewContent.endsWith('{') || 
+                    previewContent.endsWith('[') || 
+                    previewContent.endsWith('|') || 
+                    previewContent.endsWith('~') || 
+                    previewContent.endsWith('@') || 
+                    previewContent.endsWith('*') || 
+                    previewContent.endsWith('+') || 
+                    previewContent.endsWith('=') || 
+                    previewContent.endsWith('-') || 
+                    previewContent.endsWith('^')
+                ) previewContent = previewContent.slice(0, -1)
+                
+                return (<a href={`/post/${slug}`} class="item">
+                    <img class="item__img" src={image.src} alt={image.alt} style={`--placeholder: url('${image.src}&image_quality=${50}')`} />
+                    {
+                        !!(post.frontmatter.title || textContent) ? <div class="item__info">
+                            {
+                                !!post.frontmatter.title ? <h3 class="item__title">{post.frontmatter.title}</h3> : ''
+                            }
+                            {
+                                !!previewContent ? <p class="item__content">{previewContent}</p> : ''
+                            }
+                        </div> : ''
+                    }
+                </a>)
+            })
+        }
+    </SiteGridContent>
 </Layout>

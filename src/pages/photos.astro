@@ -48,33 +48,33 @@ function getFName(name: string) {
 
 ---
 <Layout title="Photos">
-  <SiteGridContent classItems="photos" options={{min: '24rem'}} mode="lite">
-    {
-        photos.map(image => {
-            if (image.default) image = image.default
-            if (!image.src) {
-                return ''
-            }
-            
-            // return <pre>{getFName(image.src)}</pre>
-            
-            var data = image.data
+    <SiteGridContent classItems="photos" options={{min: '24rem'}} mode="lite">
+        {
+            photos.map(image => {
+                if (image.default) image = image.default
+                if (!image.src) {
+                    return ''
+                }
+                
+                // return <pre>{getFName(image.src)}</pre>
+                
+                var data = image.data
 
-            return (
-                <div class="item">
-                    <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25');`} loading="lazy" decoding="async" />
-                    {
-                        (!!data.title || !!data.info) ? (
-                            <div class="item__info">
-                                {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
-                                {!!data.location ? <span class="item__content">📍 {data.location}</span> : ''}
-                            </div>
-                        )
-                         : ''
-                    }
-                </div>
-            )
-        })
-    }
-  </SiteGridContent>
+                return (
+                    <div class="item">
+                        <img class="item__img" src={image.src || ''} alt={image.alt || ''} style={`--placeholder: url('https://imgs.adarshrkumar.dev/Photos/Places/${getFName(image.src || '') ||''}?w=25%25');`} loading="lazy" decoding="async" />
+                        {
+                            (!!data.title || !!data.info) ? (
+                                <div class="item__info">
+                                    {!!data.title ? <h3 class="item__title">{data.title}</h3> : ''}
+                                    {!!data.location ? <span class="item__content">📍 {data.location}</span> : ''}
+                                </div>
+                            )
+                            : ''
+                        }
+                    </div>
+                )
+            })
+        }
+    </SiteGridContent>
 </Layout>
