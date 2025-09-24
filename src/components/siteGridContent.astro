@@ -20,7 +20,16 @@ function generateCustomProperties(options: any): string {
     optionKeys.forEach((key, index) => {
         if (index !== 0) customProperties += ' '
         const value = options[key]
-        customProperties += `--${key}: ${value};`
+        
+        // Handle nested objects (like values: {min: '4rem', max: '495px'})
+        if (typeof value === 'object' && value !== null) {
+            const nestedKeys = Object.keys(value)
+            nestedKeys.forEach(nestedKey => {
+                customProperties += `--${key}-${nestedKey}: ${value[nestedKey]}; `
+            })
+        } else {
+            customProperties += `--${key}: ${value};`
+        }
     })
     
     return customProperties

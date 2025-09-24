@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
+import { getImage } from 'astro:assets'
 import '../styles/pages/photos.scss'
 import type { PhotoItem } from '../lib/types'
 
@@ -71,34 +72,58 @@ function enrichPhotosWithMetadata(photos: any[], metadataList: any[]): any[] {
 const cleanSiteUrl = getCleanSiteUrl(Astro.site)
 
 // Load photos and metadata
-const photoModules = import.meta.glob('../../content/allPhotos/*/*', { eager: true })
+const photoModules = import.meta.glob('../../content/allPhotos/*/*')
 const metadataModules = import.meta.glob('../../content/allPhotos/*/info.js', { eager: true })
 
 // Normalize imported data (handle .default exports)
-const normalizedPhotos: PhotoItem[] = normalizeImportedData(Object.values(photoModules))
 const normalizedMetadata: any[] = normalizeImportedData(Object.values(metadataModules))
 
-// Enrich photos with their metadata
-const photosWithMetadata: PhotoItem[] = enrichPhotosWithMetadata(normalizedPhotos, normalizedMetadata)
+// Process photos with async imports
+const photosWithMetadata: PhotoItem[] = []
+for (const [path, importFn] of Object.entries(photoModules)) {
+    const photoModule = await importFn() as any
+    const photo = photoModule.default || photoModule
+    
+    // Extract filename for metadata matching
+    const photoFileName = extractFileName(path)
+    const matchingMetadata = normalizedMetadata.find(metadata => 
+        metadata.fullname === photoFileName
+    )
+    
+    photosWithMetadata.push({
+        src: photo.src,
+        import: photo,
+        alt: photoFileName,
+        fullname: photoFileName,
+        data: matchingMetadata
+    })
+}
 
 // Re-export getFName for compatibility
 const getFName = extractFileName
 
 ---
 <Layout title="Photos">
-    <SiteGridContent classItems="photos" options={{min: '24rem'}} mode="lite">
+    <SiteGridContent classItems="photos" options={{min: '18rem'}} mode="lite">
         {
-            photosWithMetadata.map(photo => {
+            photosWithMetadata.map(async photo => {
                 // Skip photos without source
                 if (!photo.src) {
                     return ''
                 }
                 
                 const photoData = photo.data
-                const photoFileName = getFName(photo.src || '')
                 
-                // Generate placeholder image URL
-                const placeholderUrl = `https://imgs.adarshrkumar.dev/Photos/Places/${photoFileName}?w=25%25`
+                // Generate Astro's native resized image URL
+                const optimizedImage = await getImage({
+                    src: photo.import,
+                    width: 400,
+                    height: 400,
+                    format: 'webp',
+                    quality: 85
+                })
+
+                console.log(photo.src)
                 
                 // Check if we have metadata to display
                 const hasMetadata = !!(photoData?.title || photoData?.info)
@@ -106,14 +131,15 @@ const getFName = extractFileName
                 const hasLocation = !!photoData?.location
                 
                 return (
-                    <div class="item">
+                    <label class="item">
+                        <input type="checkbox" class="item__checkbox" />
                         <img 
                             class="item__img" 
                             src={photo.src || ''} 
                             alt={photo.alt || ''} 
-                            style={`--placeholder: url('${placeholderUrl}');`} 
                             loading="lazy" 
-                            decoding="async" 
+                            decoding="async"
+                            style={`--placeholder: url('${optimizedImage.src}');`}
                         />
                         {hasMetadata && (
                             <div class="item__info">
@@ -125,7 +151,7 @@ const getFName = extractFileName
                                 )}
                             </div>
                         )}
-                    </div>
+                    </label>
                 )
             })
         }

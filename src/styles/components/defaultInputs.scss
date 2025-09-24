@@ -40,7 +40,7 @@ $pad: 1rem;
     // box-sizing: border-box;
     padding: math.div($pad, 2);
 
-    // width: calc(100% - #{$pad*2});
+    // width: calc(100% - $pad*2);
     // min-height: 50px;
     max-height: 100%;
 

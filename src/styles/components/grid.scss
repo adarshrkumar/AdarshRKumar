@@ -22,7 +22,7 @@ $min: 12rem;
     gap: $gap;
 
     margin-inline: auto;
-    max-width: max(75%, var(--min, 1000px));
+    max-width: max(100%, var(--min, 1000px));
 
     grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); /* Old Browsers (no "min()") */
     grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); /* New Browser (yes "min()")*/
@@ -32,11 +32,11 @@ $min: 12rem;
     // @for $i from 1 through 3 {
     //     /* Only $i */
     //     &:has(
-    //         .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child,
-    //         .item:nth-last-child(n + #{$i}):nth-last-child(-n + #{$i}):first-child ~ .item
+    //         .item:nth-last-child(n + $i):nth-last-child(-n + $i):first-child,
+    //         .item:nth-last-child(n + $i):nth-last-child(-n + $i):first-child ~ .item
     //     ) {
-    //         grid-template-columns: repeat(#{$i + 2}, minmax(0, 1fr)); /* Old Browsers (no "min()") */
-    //         grid-template-columns: repeat(#{$i + 2}, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
+    //         grid-template-columns: repeat($i + 2, minmax(0, 1fr)); /* Old Browsers (no "min()") */
+    //         grid-template-columns: repeat($i + 2, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
 
     //         .item {
     //             &:first-child:not(:last-child) {
@@ -83,7 +83,7 @@ $min: 12rem;
         background-position: center;
         background-repeat: no-repeat;
 
-        border-radius: #{$gap - $padding};
+        border-radius: $gap - $padding;
     }
 
     &__info {

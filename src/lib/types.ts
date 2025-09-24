@@ -97,6 +97,7 @@ export interface PhotoItem {
     src?: string;
     alt?: string;
     fullname?: string;
+    import?: any;
     data?: {
         title?: string;
         location?: string;

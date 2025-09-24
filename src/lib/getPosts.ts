@@ -79,7 +79,10 @@ export function generateScreenshotImage(postUrl: string, title: string, imageSiz
 export function getPosts(): Post[] {
     const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
     const publishedPosts: Post[] = Object.values(blogPostItems)
-        .filter(item => !(item as Post).file.startsWith('_')) as Post[]
+        .filter(item => {
+            const fileName = (item as Post).file.split('/').pop() || ''
+            return !fileName.startsWith('_')
+        }) as Post[]
     
     return publishedPosts
 }
