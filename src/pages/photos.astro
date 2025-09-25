@@ -1,10 +1,12 @@
 ---
+// Imports
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import { getImage } from 'astro:assets'
 import '../styles/pages/photos.scss'
 import type { PhotoItem } from '../lib/types'
 
+// Helper functions
 // Helper function to extract clean site URL
 function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
     const defaultUrl = 'https://adarshrkumar.dev'
@@ -103,6 +105,8 @@ for (const [path, importFn] of Object.entries(photoModules)) {
 const getFName = extractFileName
 
 ---
+
+<!-- Photos Page -->
 <Layout title="Photos">
     <SiteGridContent classItems="photos" options={{min: '18rem'}} mode="lite">
         {

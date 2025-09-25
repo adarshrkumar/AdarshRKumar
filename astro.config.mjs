@@ -69,7 +69,4 @@ export default defineConfig({
     base: '/',
     trailingSlash: 'always',
     integrations: [sitemap()],
-    experimental: {
-        assets: true
-    }
 }); 

@@ -1,4 +1,5 @@
 ---
+// Imports
 // import '../../styles/pages/[about, contact].scss'
 import '../../styles/pages/post.scss'
 
@@ -6,11 +7,13 @@ import Layout from '../../layouts/Layout.astro'
 import { findPostById, getPosts } from '../../lib/getPosts'
 import { extractSlugFromFilePath } from '../../lib/getPosts'
 
+// Helper functions
 // Helper function to get author information
 function getAuthorInfo(authors: any, authorUsername: string) {
     return authors[authorUsername as keyof typeof authors]
 }
 
+// Static path generation
 // Dynamically generate static paths from published posts
 export function getStaticPaths() {
     const posts = getPosts()
@@ -19,6 +22,7 @@ export function getStaticPaths() {
     }))
 }
 
+// Data loading and processing
 // Get post ID from URL parameters
 const { id: postId } = Astro.params;
 
@@ -37,6 +41,8 @@ const authorUsername = currentPost.frontmatter.author;
 const authorInfo = getAuthorInfo(authors, authorUsername || '');
 
 ---
+
+<!-- Individual Post Page -->
 <Layout title={currentPost.frontmatter.title} pageType="post" author={authorInfo.displayName} classItems="ignorePadding">
     <section class="info">
         <a href={`/author/${authorUsername}`} class="author">{authorInfo.displayName}</a> | <span class="date">{currentPost.frontmatter.date}</span>

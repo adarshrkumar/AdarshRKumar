@@ -25,6 +25,7 @@ function cleanAboutContent(content: string): string {
     return cleanedContent
 }
 
+// Data loading and processing
 // Load about content
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
@@ -32,6 +33,7 @@ const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 // Get posts for RSS
 const postsForRSS = getPostsForRSS()
 
+// RSS feed generation
 export async function GET(context: any) {
     return rss({
         title: 'Buzz\'s Blog',

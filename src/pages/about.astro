@@ -1,8 +1,10 @@
 ---
+// Imports
 import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
 
+// Helper functions
 // Load age first
 import age from '../lib/getAge'
 
@@ -15,10 +17,13 @@ async function loadAboutContent(): Promise<string> {
     return rawContent.replaceAll('{ age }', age.toString())
 }
 
+// Data loading
 // Load about content
 const aboutContent = await loadAboutContent()
 
 ---
+
+<!-- About Page -->
 <Layout title="About">
     <div class="about" set:html={aboutContent} />
 </Layout>

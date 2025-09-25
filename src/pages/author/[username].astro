@@ -1,10 +1,12 @@
 ---
+// Imports
 import '../../styles/pages/[about, contact].scss'
 import '../../styles/pages/author.scss'
 
 import Layout from '../../layouts/Layout.astro'
 import type { Author, Authors } from '../../lib/types'
 
+// Helper functions
 // Helper function to get author by username
 function getAuthorByUsername(authors: Authors, username: string | undefined): Author {
     if (!username || !authors[username]) {
@@ -18,6 +20,7 @@ function formatBioText(bio: string): string {
     return bio.includes('\n') ? bio.split('\n').join('<br>') : bio;
 }
 
+// Static path generation
 // Static paths for authors
 export function getStaticPaths() {
     return [
@@ -25,6 +28,7 @@ export function getStaticPaths() {
     ];
 }
 
+// Data loading and processing
 // Get username from URL parameters
 const { username } = Astro.params;
 
@@ -37,6 +41,8 @@ const author = getAuthorByUsername(authors, username);
 const formattedBio = formatBioText(author.bio);
 
 ---
+
+<!-- Author Profile Page -->
 <Layout title={author.displayName} pageType="author" classItems="ignorePadding">
     {author.hasPfp && (
         <div class="pfp">

@@ -1,31 +1,41 @@
-/*
-fire.css
-By @hecker40
-Copyright 2022, All Rights Reserved
-*/
+// Fire CSS library
+// By @hecker40
+// Copyright 2022, All Rights Reserved
 
+// Font imports
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+// CSS custom properties
 :root {
+    // Font family
     --font-family: 'Inter', sans-serif;
+    
+    // Background colors
     --background-primary-color: #18181a;
     --background-secondary-color: #292929;
+    
+    // Foreground colors
     --foreground-primary-color: #b8b8b8;
     --foreground-secondary-color: white;
     --foreground-tertiary-color: orange;
+    
+    // Accent colors
     --accent-primary-color: orange;
     --accent-secondary-color: #ff4405;
 }
 
+// Base HTML styling
 html {
     scroll-behavior: smooth;
 }
 
+// Body styling
 body {
     font-family: Inter, sans-serif;
     background-color: var(--background-primary-color);
 }
 
+// Main layout containers
 main, form {
     display: flex;
     flex-direction: column;
@@ -34,16 +44,19 @@ main, form {
     max-width: 1000px;
 }
 
+// Global reset
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+// List styling
 li {
     list-style: none;
 }
 
+// Navigation bar
 .navbar {
     display: flex;
     align-items: center;
@@ -54,14 +67,17 @@ li {
     box-shadow: var(--accent-secondary-color) 0px 1px 15px;
 }
 
+// Navigation links
 .nav-links a {
     color: var(--foreground-secondary-color);
 }
 
+// Logo styling
 .logo img {
     border: none;
 }
 
+// Menu styling
 .menu {
     display: flex;
     gap: 1em;
@@ -72,6 +88,7 @@ li {
     padding: 5px 14px;
 }
 
+// Dropdown navigation
 .nav-dropdown {
     position: relative;
 }
@@ -104,6 +121,7 @@ li {
     display: block;
 }
 
+// Mobile navigation
 .navbar input[type=checkbox] {
     display: none;
 }
@@ -118,11 +136,14 @@ li {
     cursor: pointer;
 }
 
+// Typography
+// Headings
 h1, h2, h3, h4, h5, h6 {
     color: var(--foreground-tertiary-color);
     text-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
+// Paragraph styling
 p {
     font-size: 18px;
     color: var(--foreground-primary-color);
@@ -130,15 +151,18 @@ p {
     max-width: 80%;
 }
 
+// Text formatting elements
 b, u, i, s {
     color: var(--foreground-secondary-color);
     font-size: 18px;
 }
 
+// Horizontal rule
 hr {
     border: 1px solid var(--background-secondary-color);
 }
 
+// Heading sizes
 h1 {
     font-size: 45px;
 }
@@ -163,11 +187,13 @@ h6 {
     font-size: 17px;
 }
 
+// Media elements
 img, iframe {
     border: 1.5px solid var(--background-secondary-color);
     border-radius: 8px;
 }
 
+// Links
 a {
     color: var(--foreground-tertiary-color);
     text-decoration: none;
@@ -175,10 +201,12 @@ a {
     transition: 0.3s;
 }
 
-/* a:hover {
-    text-shadow: 0px 0px 15px var(--accent-secondary-color);
-} */
+// Commented out hover effect
+// a:hover {
+//     text-shadow: 0px 0px 15px var(--accent-secondary-color);
+// }
 
+// Buttons
 button, input:is([type="button"], [type="submit"]) {
     font-family: var(--font-family);
     background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
@@ -195,10 +223,12 @@ button, input:is([type="button"], [type="submit"]) {
     cursor: pointer;
 }
 
+// Button hover effects
 :is(button, input:is([type="button"], [type="submit"])):hover {
     box-shadow: 0px 0px 15px var(--accent-secondary-color);
 }
 
+// Secondary button styling
 .btn-secondary {
     background: var(--background-primary-color);
     color: var(--accent-primary-color);
@@ -221,6 +251,7 @@ button, input:is([type="button"], [type="submit"]) {
     border: none;
 }
 
+// Button size variants
 .btn-large {
     min-width: 350px;
     height: 70px;
@@ -234,6 +265,7 @@ button, input:is([type="button"], [type="submit"]) {
     border-radius: 10px;
 }
 
+// Disabled button states
 :is(button, input:is([type="button"], [type="submit"])):disabled, .btn-secondary:disabled {
     opacity: 0.3;
     cursor: auto;
@@ -251,6 +283,7 @@ button, input:is([type="button"], [type="submit"]) {
     opacity: 0.7;
 }
 
+// Active button states
 :is(button, input:is([type="button"], [type="submit"])):active, .btn-secondary:active {
     transform: scale(1.02);
 }
@@ -259,6 +292,7 @@ button, input:is([type="button"], [type="submit"]) {
     transform: none;
 }
 
+// Block button
 .btn-block {
     min-width: 100%;
 }

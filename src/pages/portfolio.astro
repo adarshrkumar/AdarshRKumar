@@ -1,4 +1,5 @@
 ---
+// Imports
 import '../styles/pages/portfolio.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
@@ -6,6 +7,7 @@ import getFName from '../lib/getFName'
 import sanitizeMD from '../lib/sanitizeMD'
 import type { PortfolioItem } from '../lib/types'
 
+// Helper functions
 // Helper function to determine link target based on URL
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
     let target = '_blank'
@@ -49,11 +51,15 @@ function filterVisibleItems(items: any[]): any[] {
     })
 }
 
+// Data loading and processing
 // Load and filter portfolio items
 const portfolioItemsObj = import.meta.glob('../../content/work/portfolio/*.md', { eager: true })
 const allPortfolioItems: PortfolioItem[] = Object.values(portfolioItemsObj) as PortfolioItem[]
 const visiblePortfolioItems = filterVisibleItems(allPortfolioItems)
+
 ---
+
+<!-- Portfolio Page -->
 <Layout title="Portfolio">
     <SiteGridContent classItems="portfolio wrap">
         {

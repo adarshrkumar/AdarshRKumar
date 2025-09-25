@@ -8,38 +8,42 @@ $min: 12rem;
     $ar: 2;
     box-sizing: border-box;
 
+    // Size and aspect ratio
     max-width: 100%;
     aspect-ratio: var(--ar, $ar);
 
+    // Background properties
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 
+    // Border styling
     border: solid 1px var(--color);
     border-radius: 1rem;
 }
 
 // Main grid layout
 .grid:not(.lite) {
+    // Grid properties
     display: grid;
     gap: $gap;
-
     margin-inline: auto;
     max-width: max(100%, var(--min, 1000px));
-
-    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); // Old Browsers (no "min()")
-    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); // New Browser (yes "min()")
-
     justify-content: center;
 
+    // Grid template columns with browser compatibility
+    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); // Old browsers (no "min()")
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); // New browsers (yes "min()")
+
+    // Commented out advanced grid logic for specific item counts
     // @for $i from 1 through 3 {
     //     // Only $i
     //     &:has(
     //         .item:nth-last-child(n + $i):nth-last-child(-n + $i):first-child,
     //         .item:nth-last-child(n + $i):nth-last-child(-n + $i):first-child ~ .item
     //     ) {
-    //         grid-template-columns: repeat($i + 2, minmax(0, 1fr)); // Old Browsers (no "min()")
-    //         grid-template-columns: repeat($i + 2, minmax(min(0, 100%), 1fr)); // New Browser (yes "min()")
+    //         grid-template-columns: repeat($i + 2, minmax(0, 1fr)); // Old browsers (no "min()")
+    //         grid-template-columns: repeat($i + 2, minmax(min(0, 100%), 1fr)); // New browsers (yes "min()")
 
     //         .item {
     //             &:first-child:not(:last-child) {
@@ -61,47 +65,46 @@ $min: 12rem;
 
 // Grid items
 .item {
+    // Layout properties
     box-sizing: border-box;
     padding: $padding;
-
-    // aspect-ratio: 3 / 4;
-
-    background: var(--middle-color);
-    color: inherit;
-
-    border-radius: $gap;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: $padding;
 
+    // Visual properties
+    background: var(--middle-color);
+    color: inherit;
+    border-radius: $gap;
     text-decoration: inherit;
 
     // Item image
     &__img {
         width: 100%;
         aspect-ratio: 1;
+        border-radius: $gap - $padding;
 
+        // Background image properties
         background-image: var(--placeholder, url('/assets/placeholder.svg'));
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
-        border-radius: $gap - $padding;
     }
 
-    // Item info
+    // Item info container
     &__info {
         overflow-x: hidden;
         display: grid;
         gap: $padding;
     }
 
+    // Common properties for info, title, and content
     &__info, &__title, &__content {
         max-width: 100%;
     }
 
+    // Title and content styling
     &__title, &__content {
         margin-block: 0;
         margin-inline: auto;
@@ -109,6 +112,7 @@ $min: 12rem;
         text-align: center;
     }
 
+    // Content-specific styling
     &__content {
         text-wrap: wrap;
         text-overflow: ellipsis;
