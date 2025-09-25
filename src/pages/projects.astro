@@ -1,4 +1,5 @@
 ---
+// Imports
 import '../styles/pages/projects.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
@@ -6,6 +7,7 @@ import getFName from '../lib/getFName'
 import sanitizeMD from '../lib/sanitizeMD'
 import type { ProjectCategoryConfig, PortfolioItem } from '../lib/types'
 
+// Helper functions
 // Helper function to determine link target based on URL
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
     let target = '_blank'
@@ -49,6 +51,7 @@ function filterVisibleItems(items: any[]): any[] {
     })
 }
 
+// Configuration and data loading
 // Project categories configuration
 const projectCategories: ProjectCategoryConfig[] = [
     {
@@ -73,6 +76,8 @@ const allProjectsObj = import.meta.glob('../../content/work/projects/*/*.md', { 
 const allProjects: PortfolioItem[] = Object.values(allProjectsObj) as PortfolioItem[]
 
 ---
+
+<!-- Projects Page -->
 <Layout title="Projects">
     {
         projectCategories.map((category, categoryIndex) => {

@@ -1,14 +1,18 @@
 ---
+// Imports
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import sanitizeMD from '../lib/sanitizeMD'
 import { getPostsForDisplay, cleanTextContent, createPreviewContent } from '../lib/getPosts'
 import type { Post } from '../lib/types'
 
+// Data processing
 // Get posts with all processing done
 const postsWithMetadata = getPostsForDisplay(Astro.site)
 
 ---
+
+<!-- Blog Page -->
 <Layout title="Blog">
     <SiteGridContent classItems="posts">
         {

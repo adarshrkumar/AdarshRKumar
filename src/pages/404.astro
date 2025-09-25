@@ -1,14 +1,19 @@
 ---
+// Imports
 import '../styles/pages/404.scss'
 
 import Layout from '../layouts/Layout.astro'
 
+// URL processing and redirect logic
 const currentPath = Astro.url.pathname
 const lastPath = currentPath?.split('/').pop() || ''
 if (lastPath) {
     if (!lastPath.includes('.') && !lastPath.endsWith('/')) return Astro.redirect(`${currentPath}/`)
 }
+
 ---
+
+<!-- 404 Error Page -->
 <Layout title="404" pTitle="Not Found">
     <section class="error-404">
         <span class="current-URL-not-found">

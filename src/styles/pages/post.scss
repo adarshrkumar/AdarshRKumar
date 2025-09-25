@@ -27,10 +27,12 @@ html {
 .post {
     gap: 0;
 
+    // Info and post area padding
     .info, .post-area {
         padding: var(--pad);
     }
 
+    // Post info section
     .info {
         margin: 0;
         border-bottom: var(--bor);
@@ -45,57 +47,62 @@ html {
         top: 0;
         left: 0;
         right: 0;
-    
         height: calc(var(--h)*2);
     
+        // Progress bar pseudo-elements
         &::before, &::after {
             content: '';
             position: absolute;
             inset: 0;
-
             height: var(--h);
             border-radius: 100dvw;
         }
+        
+        // Background bar
         &::before {
             background-color: lightgray;
-
             box-shadow: 0 calc(var(--h)/2) calc(var(--h)/2) 0 white;
         }
+        
+        // Progress bar
         &::after {
             width: 0;
             transform-origin: left;
-    
             background-color: gray;
-    
             animation: position auto linear;
             animation-timeline: --page-scroll;
-            animation-range: normal; // Equivalent to normal normal
+            animation-range: normal;
         }
     }
     
     // Post content area
     .post-area {
         flex: 1;
-        // padding-block-start: 0;
         margin-bottom: var(--pad);
         border-bottom: var(--bor);
 
+        // Post content styling
         .post-content {
+            // Text wrapping
             > * {
                 text-wrap: wrap;
             }
     
+            // First child margin reset
             > :first-child {
                 &, > :first-child {
                     margin-top: 0;
                 }
             }
+            
+            // Last child margin reset
             > :last-child {
                 &, > :last-child {
                     margin-bottom: 0;
                 }
             }
 
+            // Code block padding
             pre.astro-code:has( > code) {
                 padding: var(--pad);
             }

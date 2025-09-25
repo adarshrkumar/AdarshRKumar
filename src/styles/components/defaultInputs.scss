@@ -1,55 +1,52 @@
 @use 'sass:math';
 
 // Variables
-
 $pad: 1rem;
 
 // Mixins
-
+// Default styles for form elements
 @mixin defaultStyles() {
     -webkit-appearance: none;
     appearance: none;
 
+    // Font properties
     font: inherit;
     
+    // Text properties
     text-decoration: inherit;
     text-transform: inherit;
     text-rendering: auto;
-
     text-align: inherit;
     text-align-last: inherit;
 
+    // Layout properties
     direction: inherit;
     vertical-align: inherit;
 
+    // Advanced text properties
     unicode-bidi: inherit;
     unicode-range: inherit;
-
     text-indent: inherit;
     letter-spacing: inherit;
     word-spacing: inherit;
     white-space: inherit;
-
     -webkit-rtl-ordering: inherit;
 }
 
+// Main styling for form elements
 @mixin mainStyles() {
-    // box-sizing: border-box;
     padding: math.div($pad, 2);
-
-    // width: calc(100% - $pad*2);
-    // min-height: 50px;
     max-height: 100%;
 
+    // Visual properties
     background-color: var(--bg);
     color: var(--color);
-
     border: solid 1px var(--middle-color);
     border-radius: $pad;
-
     text-align: center;
 }
 
+// Text input styling
 @mixin textStyles() {
     min-width: 200px;
     
@@ -58,12 +55,14 @@ $pad: 1rem;
     }
 }
 
+// Button styling
 @mixin buttonStyles() {
     min-width: 100px;
     width: fit-content;
     cursor: pointer;
 }
 
+// Checkbox and radio styling
 @mixin checkboxRadio() {
     border: solid 1px gray;
     aspect-ratio: 1;
@@ -77,7 +76,6 @@ $pad: 1rem;
 }
 
 // Placeholder styles
-
 ::placeholder, 
 :placeholder-shown, 
 :-moz-placeholder, 
@@ -88,32 +86,26 @@ $pad: 1rem;
 }
 
 // Form components
-
 .formGroup {
     position: relative;
     padding-top: 0.5lh;
-
     display: flex;
     flex-direction: column;
-    // gap: $pad;
 
+    // Label styling
     > label:not(.file label) {
         @include mainStyles();
 
         position: absolute;
         translate: 1em -0.5lh;
-
         box-sizing: border-box;
         padding: 0 $pad;
-
         width: fit-content;
-
         text-align: left;
     }
 }
 
 // Form elements
-
 label, 
 fieldset, 
 legend, 
@@ -125,43 +117,27 @@ optgroup {
 }
 
 // Input types
-
 input {
+    // Checkbox styling
     &[type="checkbox"] {
         @include defaultStyles();
         @include checkboxRadio();
         border-radius: 0.15em;
     }
     
+    // Radio button styling
     &[type="radio"] {
         @include defaultStyles();
         @include checkboxRadio();
         border-radius: 50%;
     }
     
+    // Image input styling
     &[type="image"] {
         @include defaultStyles();
     }
 
-    // &[type="range"] {
-    //     @include defaultStyles();
-    //     background: transparent;
-    //     &::-webkit-slider-thumb {
-    //         -webkit-appearance: none;
-    //         appearance: none;
-    //         width: 1em;
-    //         aspect-ratio: 1;
-    //         background: green;
-    //         border-radius: 50%;
-    //     }
-    //     &::-webkit-slider-container, &::-webkit-slider-runnable-track, &::-moz-range-track, &::-ms-track {
-    //         // -webkit-appearance: inherit;
-    //         // appearance: inherit;
-    //         background: green;
-    //         height: 0.5rem;
-    //     }
-    // }
-    
+    // Text-based inputs
     &[type="date"], 
     &[type="datetime-local"], 
     &[type="month"], 
@@ -180,8 +156,7 @@ input {
     }
 }
 
-// Textarea
-
+// Textarea styling
 textarea {
     @include defaultStyles();
     @include mainStyles();
@@ -189,7 +164,6 @@ textarea {
 }
 
 // Buttons
-
 button,
 input[type="button"],
 input[type="submit"], 
@@ -202,7 +176,6 @@ label:has(+ input[type="file"]) {
 }
 
 // File input
-
 .formGroup .file {
     display: flex;
     flex-direction: row-reverse;
@@ -222,7 +195,6 @@ input[type="color"] {
 }
 
 // Select elements
-
 select {
     @include defaultStyles();
     @include mainStyles();

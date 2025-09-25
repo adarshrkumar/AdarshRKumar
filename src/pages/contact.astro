@@ -1,11 +1,17 @@
 ---
+// Imports
 import '../styles/pages/[about, contact].scss'
 
 import Layout from '../layouts/Layout.astro'
 import Input from '../defaultComponents/Input.astro'
 import TextArea from '../defaultComponents/TextArea.astro'
 import type { FormConfig, FormField } from '../lib/types'
+import type { HTMLAttributes } from 'astro/types'
 
+// Extract input type from HTMLAttributes
+type HTMLInputTypeAttribute = HTMLAttributes<'input'>['type']
+
+// Configuration
 // Form configuration
 const formConfig: FormConfig = {
     action: "https://getform.io/f/qalorpyb",
@@ -16,7 +22,7 @@ const formConfig: FormConfig = {
 // Form field configurations
 const formFields: Record<string, FormField> = {
     name: {
-        type: "text",
+        type: "text" as const,
         name: "FromName",
         id: "name",
         placeholder: "What's your name?",
@@ -25,7 +31,7 @@ const formFields: Record<string, FormField> = {
         label: "Name: "
     },
     email: {
-        type: "email",
+        type: "email" as const,
         name: "From",
         id: "email",
         placeholder: "you@email.tld",
@@ -34,16 +40,17 @@ const formFields: Record<string, FormField> = {
         label: "Email: "
     },
     message: {
+        type: "textarea" as const,
         label: "Message:",
-        autosize: true,
-        rows: "1",
         name: "TextBody",
         id: "message",
         placeholder: "Type here...",
         required: "TRUE"
     },
     submit: {
-        type: "submit",
+        type: "submit" as const,
+        name: "submit",
+        id: "submit",
         value: "Send",
         className: "contact-button",
         align: "right",
@@ -52,15 +59,17 @@ const formFields: Record<string, FormField> = {
 }
 
 ---
+
+<!-- Contact Page -->
 <Layout title="Contact">
     <form action={formConfig.action} method={formConfig.method} class={formConfig.className}>
-        <Input 
-            type={formFields.name.type} 
+        <Input
+            type={formFields.name.type as HTMLInputTypeAttribute} 
             name={formFields.name.name} 
             id={formFields.name.id} 
             placeholder={formFields.name.placeholder} 
             required={formFields.name.required} 
-            align={formFields.name.align}
+            align={formFields.name.align as "left" | "right" | "center" | undefined}
         >
             {formFields.name.label}
         </Input>
@@ -68,20 +77,20 @@ const formFields: Record<string, FormField> = {
         <input hidden type="text" name="FromFull" id="from" />
         
         <Input 
-            type={formFields.email.type} 
+            type={formFields.email.type as HTMLInputTypeAttribute} 
             name={formFields.email.name} 
             id={formFields.email.id} 
             placeholder={formFields.email.placeholder} 
             required={formFields.email.required} 
-            align={formFields.email.align}
+            align={formFields.email.align as "left" | "right" | "center" | undefined}
         >
             {formFields.email.label}
         </Input>
         
         <TextArea 
             label={formFields.message.label}
-            autosize={formFields.message.autosize}
-            rows={formFields.message.rows}
+            autosize={true}
+            rows="1"
             name={formFields.message.name}
             id={formFields.message.id}
             placeholder={formFields.message.placeholder}
@@ -96,10 +105,10 @@ const formFields: Record<string, FormField> = {
         />
         
         <Input 
-            type={formFields.submit.type} 
+            type={formFields.submit.type as HTMLInputTypeAttribute} 
             value={formFields.submit.value} 
             class={formFields.submit.className} 
-            align={formFields.submit.align} 
+            align={formFields.submit.align as "left" | "right" | "center" | undefined} 
             style={formFields.submit.style}
         />
     </form>

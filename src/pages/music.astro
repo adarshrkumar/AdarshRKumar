@@ -1,11 +1,12 @@
 ---
+// Imports
 import '../styles/pages/music.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import ChannelVideos from '../components/channelVideos.astro'
 import type { MusicPlaylistConfig, GridOptions } from '../lib/types'
 
-
+// Configuration
 // Music playlist configuration
 const musicConfig: MusicPlaylistConfig = {
     playlists: [
@@ -29,6 +30,8 @@ const musicGridOptions: GridOptions = {
 }
 
 ---
+
+<!-- Music Page -->
 <Layout title="My Music" classItems="music-area">
     <h2 class="section-title">My Performances</h2>
     <SiteGridContent classItems="videos" options={videoGridOptions}>

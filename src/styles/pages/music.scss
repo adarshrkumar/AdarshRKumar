@@ -1,8 +1,9 @@
+// Music page styling
 .music-area {
+    // Iframe styling for music embeds
     iframe {
         border: solid 1px var(--color);
         border-radius: 10px;
-
         overflow: hidden;
         aspect-ratio: 16 / 9;
     }

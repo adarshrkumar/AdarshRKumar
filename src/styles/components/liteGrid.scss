@@ -1,62 +1,68 @@
+// Lite grid variables
 $gap: 2rem;
 $borderRadius: 1rem;
 $padding: 0.5rem;
 $min: 12rem;
 
+// Lite grid layout
 .grid.lite {
+    // Custom properties
     --paddingTrans: #{$padding};
     --padding: #{$padding};
     --borderRadius: #{$borderRadius};
 
+    // Grid properties
     display: grid;
     gap: $gap;
-
-    grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr)); /* Old Browsers (no "min()") */
-    grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr)); /* New Browser (yes "min()")*/
-
     justify-content: center;
 
+    // Grid template columns with browser compatibility
+    grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr)); // Old browsers (no "min()")
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr)); // New browsers (yes "min()")
+
+    // Grid items
     .item {
+        // Layout properties
         padding: var(--paddingTrans, var(--padding, $padding));
-
-        // aspect-ratio: 3 / 4;
-
         border-radius: $borderRadius;
-        
         gap: $padding;
 
+        // Item image
         &__img {
             inline-size: 100%;
-            // block-size: 100%;
-            // aspect-ratio: 1;
+            border-radius: #{$borderRadius - $padding};
 
+            // Background image properties
             background-image: var(--placeholder, url('/assets/placeholder.svg'));
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
 
+            // Object properties
             object-fit: cover;
             object-position: center;
-
-            border-radius: #{$borderRadius - $padding};
         }
 
+        // Common properties for info, title, and content
         &__info, &__title, &__content {
             max-width: 100%;
         }
 
+        // Title and content styling
         &__title, &__content {
             margin-block: 0;
             margin-inline: auto;
             text-align: center;
         }
 
+        // Content-specific styling
         &__content {
             text-wrap: wrap;
             text-overflow: ellipsis;
         }
     }
 
+    // Photos-specific styling
     &:not(.photos) {
         .item {
             &__title {
