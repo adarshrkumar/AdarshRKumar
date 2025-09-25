@@ -1,8 +1,10 @@
 ---
+// Imports
 import '../styles/components/grid.scss'
 import '../styles/components/liteGrid.scss'
 import type { SiteGridContentProps } from '../lib/types'
 
+// Helper functions
 // Helper function to format class items
 function formatClassItems(classItems: string | undefined): string {
     return classItems ? ` ${classItems}` : ''
@@ -42,6 +44,7 @@ function buildCSSClass(mode: string | undefined, classItems: string): string {
     return `${baseClass}${liteClass}${classItems}`
 }
 
+// Component props and processing
 // Get component props
 const { id, classItems, mode, options }: SiteGridContentProps = Astro.props
 
@@ -51,6 +54,8 @@ const customProperties = generateCustomProperties(options)
 const cssClass = buildCSSClass(mode, formattedClassItems)
 
 ---
+
+<!-- Site grid content component -->
 <section id={id || ''} class={cssClass} style={customProperties}>
     <slot />
 </section>

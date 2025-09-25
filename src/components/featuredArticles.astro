@@ -1,4 +1,5 @@
 ---
+// Imports
 import SiteGridContent from '../components/siteGridContent.astro'
 import sanitizeMD from '../lib/sanitizeMD'
 import { getFeaturedPostsForDisplay, cleanTextContent, createPreviewContent } from '../lib/getPosts'
@@ -7,10 +8,13 @@ import type { Post } from '../lib/types'
 // Configuration
 const featuredPostSlugs = ['hello-world', 'nodebooks']
 
+// Data processing
 // Get featured posts with all processing done
 const featuredPosts = getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)
 
 ---
+
+<!-- Featured articles component -->
 <SiteGridContent classItems="posts">
     {
         featuredPosts.map(post => {

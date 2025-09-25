@@ -1,5 +1,7 @@
+// Imports
 import type { VideoItem, RSSResponse } from '../lib/types'
 
+// Helper functions
 // Helper function to build RSS URL for a channel
 function buildChannelRSSUrl(channelId: string): string {
     const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`

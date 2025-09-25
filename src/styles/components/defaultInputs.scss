@@ -1,6 +1,10 @@
 @use 'sass:math';
 
+// Variables
+
 $pad: 1rem;
+
+// Mixins
 
 @mixin defaultStyles() {
     -webkit-appearance: none;
@@ -29,13 +33,6 @@ $pad: 1rem;
     -webkit-rtl-ordering: inherit;
 }
 
-::placeholder, :placeholder-shown, 
-:-moz-placeholder, ::-moz-placeholder, 
-:-ms-input-placeholder, 
-::-webkit-input-placeholder {
-    color: inherit;
-}
-
 @mixin mainStyles() {
     // box-sizing: border-box;
     padding: math.div($pad, 2);
@@ -55,6 +52,7 @@ $pad: 1rem;
 
 @mixin textStyles() {
     min-width: 200px;
+    
     &:is(textarea) {
         resize: vertical;
     }
@@ -77,6 +75,19 @@ $pad: 1rem;
         border-style: solid;
     }
 }
+
+// Placeholder styles
+
+::placeholder, 
+:placeholder-shown, 
+:-moz-placeholder, 
+::-moz-placeholder, 
+:-ms-input-placeholder, 
+::-webkit-input-placeholder {
+    color: inherit;
+}
+
+// Form components
 
 .formGroup {
     position: relative;
@@ -101,15 +112,19 @@ $pad: 1rem;
     }
 }
 
-// label, 
+// Form elements
+
+label, 
 fieldset, 
 legend, 
 datalist, 
 output, 
 option, 
 optgroup {
-    @include defaultStyles()
+    @include defaultStyles();
 }
+
+// Input types
 
 input {
     &[type="checkbox"] {
@@ -117,10 +132,11 @@ input {
         @include checkboxRadio();
         border-radius: 0.15em;
     }
+    
     &[type="radio"] {
         @include defaultStyles();
         @include checkboxRadio();
-        border-radius: 50%
+        border-radius: 50%;
     }
     
     &[type="image"] {
@@ -145,6 +161,7 @@ input {
     //         height: 0.5rem;
     //     }
     // }
+    
     &[type="date"], 
     &[type="datetime-local"], 
     &[type="month"], 
@@ -163,14 +180,15 @@ input {
     }
 }
 
+// Textarea
 
-
-// label {}
 textarea {
     @include defaultStyles();
     @include mainStyles();
     @include textStyles();
 }
+
+// Buttons
 
 button,
 input[type="button"],
@@ -183,15 +201,19 @@ label:has(+ input[type="file"]) {
     @include buttonStyles();
 }
 
+// File input
+
 .formGroup .file {
     display: flex;
     flex-direction: row-reverse;
 }
+
 .file input[type="file"] {
     display: none;
 }
+
 input[type="file"] {
-    @include defaultStyles()
+    @include defaultStyles();
 }
 
 input[type="color"] {
@@ -199,10 +221,7 @@ input[type="color"] {
     min-width: 10px;
 }
 
-// fieldset {}
-// legend {}
-// datalist {}
-// output {}
+// Select elements
 
 select {
     @include defaultStyles();
@@ -210,11 +229,13 @@ select {
     @include textStyles();
     appearance: base-select;
 }
+
 option {
     @include defaultStyles();
     @include mainStyles();
     @include textStyles();
 }
+
 optgroup {
     @include defaultStyles();
     @include mainStyles();

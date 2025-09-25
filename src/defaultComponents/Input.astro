@@ -1,14 +1,17 @@
 ---
+// Imports
 import '../styles/components/defaultInputs.scss'
 
 import type { HTMLAttributes } from 'astro/types';
 import type { HTMLString } from 'astro/runtime/server/escape.js';
 
+// Type definitions
 export interface Props extends HTMLAttributes<'input'> {
     align?: 'left' | 'center' | 'right';
     label?: HTMLString | String;
 }
 
+// Component props and configuration
 const { 
     id, type, label
 } = Astro.props
@@ -23,6 +26,8 @@ const valueInputs = [
 ]
 
 ---
+
+<!-- Input component -->
 {
     (((await Astro.slots.render('default') && !valueInputs.includes(type ?? '')) || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
      ? <div class="formGroup">

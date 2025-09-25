@@ -1,29 +1,35 @@
+// Color variables
 $change-amt: 25%;
 
+// Main lightness values
 $main-bg-lightness: 100%;
 $main-bg-darkness: 100%;
 $main-bdr-darkness: 75%;
 $main-color-lightness: 15%;
 
+// Middle color
 $middle-lightness: 45%;
 $middle-color: hsl(0, 0%, $middle-lightness);
 
+// Light theme colors
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
-
 $light-nav-hover: lighten($light-color, $change-amt);
 
+// Light theme link colors
 $light-link-color: #0000EE;
 $light-link-visited: #551A8B;
 
+// Dark theme colors
 $dark-bg: hsl(0, 0%, $main-color-lightness);
 $dark-color: hsl(0, 0%, $main-bg-darkness);
 $dark-border: hsl(0, 0%, $main-bdr-darkness);
-
 $dark-nav-hover: darken($dark-color, $change-amt);
 
+// Dark theme link colors
 $dark-link-color: #0000EE;
 $dark-link-visited: #551A8B;
 
+// Special colors
 $logo-a-color: hsl(195 12% 94%);
 $primary-btn-clr: hsl(352 68% 77%);

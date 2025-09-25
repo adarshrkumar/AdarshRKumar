@@ -1,7 +1,9 @@
+// Grid variables
 $gap: 2rem;
 $padding: 1rem;
 $min: 12rem;
 
+// Grid frame styles
 .grid .frame {
     $ar: 2;
     box-sizing: border-box;
@@ -17,6 +19,7 @@ $min: 12rem;
     border-radius: 1rem;
 }
 
+// Main grid layout
 .grid:not(.lite) {
     display: grid;
     gap: $gap;
@@ -24,19 +27,19 @@ $min: 12rem;
     margin-inline: auto;
     max-width: max(100%, var(--min, 1000px));
 
-    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); /* Old Browsers (no "min()") */
-    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); /* New Browser (yes "min()")*/
+    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); // Old Browsers (no "min()")
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); // New Browser (yes "min()")
 
     justify-content: center;
 
     // @for $i from 1 through 3 {
-    //     /* Only $i */
+    //     // Only $i
     //     &:has(
     //         .item:nth-last-child(n + $i):nth-last-child(-n + $i):first-child,
     //         .item:nth-last-child(n + $i):nth-last-child(-n + $i):first-child ~ .item
     //     ) {
-    //         grid-template-columns: repeat($i + 2, minmax(0, 1fr)); /* Old Browsers (no "min()") */
-    //         grid-template-columns: repeat($i + 2, minmax(min(0, 100%), 1fr)); /* New Browser (yes "min()")*/
+    //         grid-template-columns: repeat($i + 2, minmax(0, 1fr)); // Old Browsers (no "min()")
+    //         grid-template-columns: repeat($i + 2, minmax(min(0, 100%), 1fr)); // New Browser (yes "min()")
 
     //         .item {
     //             &:first-child:not(:last-child) {
@@ -56,6 +59,7 @@ $min: 12rem;
     // }
 }
 
+// Grid items
 .item {
     box-sizing: border-box;
     padding: $padding;
@@ -74,6 +78,7 @@ $min: 12rem;
 
     text-decoration: inherit;
 
+    // Item image
     &__img {
         width: 100%;
         aspect-ratio: 1;
@@ -86,6 +91,7 @@ $min: 12rem;
         border-radius: $gap - $padding;
     }
 
+    // Item info
     &__info {
         overflow-x: hidden;
         display: grid;

@@ -1,8 +1,10 @@
 ---
+// Imports
 import LargeFrame from '../components/largeFrame.astro'
 import '../styles/pages/videos.scss'
 import type { VideoItem, RSSResponse, ChannelVideosProps } from '../lib/types'
 
+// Helper functions
 // Helper function to build RSS URL for YouTube channel
 function buildYouTubeRSSUrl(channelId: string): string {
     const apiKey = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
@@ -26,12 +28,14 @@ function shouldIncludeVideo(index: number, maxVideos: number | string): boolean 
     return index < maxVideos
 }
 
+// Component props and configuration
 // Get component props
 const { id: channelId, vidsPerChannel } = Astro.props as ChannelVideosProps
 
 // Set default videos per channel
 const maxVideosPerChannel = vidsPerChannel || 'all'
 
+// Data fetching
 // Fetch channel data
 let channelFeed: any = {}
 let channelVideos: any[] = []
@@ -52,6 +56,8 @@ try {
 }
 
 ---
+
+<!-- Channel videos component -->
 {
     channelVideos.map((video, videoIndex) => {
         if (!shouldIncludeVideo(videoIndex, maxVideosPerChannel)) {

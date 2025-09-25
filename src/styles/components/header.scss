@@ -1,9 +1,10 @@
+// Custom property for small container
 @property --small-container {
     syntax: '<boolean>';
     initial-value: false;
 }
 
-// Styles for the Navigation Bar
+// Header navigation bar
 .header {
     --shadow-size: 10px;
 
@@ -22,6 +23,7 @@
         grid-template-columns: 1fr;
     }
 
+    // Logo link
     .logo-link {
         display: block;
 
@@ -53,6 +55,7 @@
         }
     }
 
+    // Navigation
     .nav {
         flex: 1;
         align-self: end;

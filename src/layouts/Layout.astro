@@ -1,4 +1,5 @@
 ---
+// Imports
 import '../styles/globals.scss'
 
 import Header from '../components/header.astro'
@@ -15,6 +16,7 @@ const siteConfig: SiteConfig = {
     placeholder: '/assets/placeholder.svg'
 }
 
+// Helper functions
 // Helper function to clean and normalize about content
 function cleanAboutContent(content: string): string {
     let cleanedContent = content

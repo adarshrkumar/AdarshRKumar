@@ -1,18 +1,27 @@
 import type { Post } from './types'
 
-// Helper function to extract clean site URL
+// Helper functions
+
+/**
+ * Helper function to extract clean site URL
+ */
 export function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
     let cleanUrl = siteUrl ? siteUrl.toString() : ''
+    
     if (cleanUrl.includes('://')) {
         cleanUrl = cleanUrl.split('://')[1]
     }
+    
     if (cleanUrl.endsWith('/')) {
         cleanUrl = cleanUrl.slice(0, -1)
     }
+    
     return cleanUrl
 }
 
-// Helper function to extract slug from file path
+/**
+ * Helper function to extract slug from file path
+ */
 export function extractSlugFromFilePath(filePath: string): string {
     const pathPrefix = 'AdarshRKumar.dev/content/blog/posts/'
     let slug = filePath
@@ -29,7 +38,9 @@ export function extractSlugFromFilePath(filePath: string): string {
     return slug
 }
 
-// Helper function to clean and normalize text content
+/**
+ * Helper function to clean and normalize text content
+ */
 export function cleanTextContent(text: string): string {
     let cleanText = text
     
@@ -46,7 +57,9 @@ export function cleanTextContent(text: string): string {
     return cleanText
 }
 
-// Helper function to create preview content with trimming
+/**
+ * Helper function to create preview content with trimming
+ */
 export function createPreviewContent(text: string, maxLength: number = 50): string {
     let preview = text
     
@@ -64,7 +77,9 @@ export function createPreviewContent(text: string, maxLength: number = 50): stri
     return preview
 }
 
-// Helper function to generate screenshot image data
+/**
+ * Helper function to generate screenshot image data
+ */
 export function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512) {
     const screenshotUrl = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
     
@@ -75,7 +90,11 @@ export function generateScreenshotImage(postUrl: string, title: string, imageSiz
     }
 }
 
-// Main function to get all published blog posts
+// Main post functions
+
+/**
+ * Main function to get all published blog posts
+ */
 export function getPosts(): Post[] {
     const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
     const publishedPosts: Post[] = Object.values(blogPostItems)
@@ -87,7 +106,9 @@ export function getPosts(): Post[] {
     return publishedPosts
 }
 
-// Helper function to add display metadata to posts
+/**
+ * Helper function to add display metadata to posts
+ */
 function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     const cleanSiteUrl = getCleanSiteUrl(siteUrl)
     const siteLocation = {
@@ -109,12 +130,16 @@ function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     })
 }
 
-// Function to get posts with additional processing for display
+/**
+ * Function to get posts with additional processing for display
+ */
 export function getPostsForDisplay(siteUrl?: string | URL) {
     return addDisplayMetadata(getPosts(), siteUrl)
 }
 
-// Function to get featured posts by slug
+/**
+ * Function to get featured posts by slug
+ */
 export function getFeaturedPosts(featuredSlugs: string[]) {
     const allPosts = getPosts()
     const featuredPosts: Post[] = []
@@ -131,12 +156,16 @@ export function getFeaturedPosts(featuredSlugs: string[]) {
     return featuredPosts
 }
 
-// Function to get featured posts with display metadata
+/**
+ * Function to get featured posts with display metadata
+ */
 export function getFeaturedPostsForDisplay(featuredSlugs: string[], siteUrl?: string | URL) {
     return addDisplayMetadata(getFeaturedPosts(featuredSlugs), siteUrl)
 }
 
-// Function to find a specific post by ID/slug
+/**
+ * Function to find a specific post by ID/slug
+ */
 export function findPostById(postId: string | undefined): Post | undefined {
     return getPosts().find(post => 
         !post.file.startsWith('_') && 
@@ -144,7 +173,9 @@ export function findPostById(postId: string | undefined): Post | undefined {
     )
 }
 
-// Function to get posts for RSS feed
+/**
+ * Function to get posts for RSS feed
+ */
 export function getPostsForRSS() {
     return getPosts().map(post => {
         const postId = extractSlugFromFilePath(post.file)
