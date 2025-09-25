@@ -1,9 +1,11 @@
+// Imports
 import rss from '@astrojs/rss'
 import age from '../lib/getAge'
 import sanitizeMD from '../lib/sanitizeMD'
 import { getPostsForRSS } from '../lib/getPosts'
 import type { PostForRSS } from '../lib/types'
 
+// Helper functions
 // Helper function to clean and normalize about content
 function cleanAboutContent(content: string): string {
     let cleanedContent = content

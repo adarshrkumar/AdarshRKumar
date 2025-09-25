@@ -1,34 +1,44 @@
 ---
-import '../styles/components/header.scss'
+// Imports
 
+import '../styles/components/header.scss'
 import NavContent from '../components/navContent.astro'
 import ThemeSwitcher from '../components/themeSwitcher.astro'
 
-var { navItems, logo } = Astro.props
+// Props and data
 
+var { navItems, logo } = Astro.props
 var path = Astro.url.pathname
-// var domain = Astro.url.origin
+
+// Clean up path
 if (path.startsWith('/') && path !== '/') path = path.slice(1)
 if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length - 1)
 
+// Page generation
+
 const items = import.meta.glob('../pages/*.astro', { eager: true })
-// const keys = Object.keys(items)
 const pages = Object.values(items);
 
-
 var links: { url: string; name: string, target?: string, primaryCls?: string }[] = []
+
+// Add Home page first
 pages.forEach((page: any) => {
     var link = getLink(page)
     if (link && link.name === 'Home') links.push(link)
 })
+
+// Add other pages
 pages.forEach((page: any) => {
     var link = getLink(page)
     if (link && link.name !== 'Home' && link.url) links.push(link)
 })
 
+// Helper functions
+
 function getLink(link: any) {
     var lPath = link.url
     if (!lPath) return null
+    
     var fileName = lPath
     if (fileName.startsWith('/')) fileName = fileName.slice(1)
     if (fileName === '') fileName = 'home'
@@ -37,6 +47,7 @@ function getLink(link: any) {
     else if (parseInt(fileName)) return null
 
     if (fileName.endsWith('/')) fileName = fileName.slice(0, -1)
+    
     var nameParts = fileName.includes('-') ? fileName.split('-') : [fileName]
     nameParts = nameParts.map((p: string) => `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`)
     var name = nameParts.join(' ')
@@ -46,16 +57,19 @@ function getLink(link: any) {
     else if (lPath && !lPath.includes('://') && !lPath.startsWith('/') && !lPath.endsWith('/')) lPath = `/${lPath}/`
     
     if (lPath.endsWith('/')) lPath = lPath.slice(0, -1)
-    // if (lPath.startsWith('/')) lPath = lPath.slice(1)
     
-
     return { url: lPath, name }
 }
+
+// Current path processing
 
 var currentPath = Astro.url.pathname
 if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
 
 ---
+
+<!-- Header Component -->
+
 <header id="header" class="header" aria-label="Site navigation">
     <a class="logo-link" href="/">
         <img class="logo" src={logo} alt="Site logo" />
@@ -63,6 +77,9 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
     <NavContent items={links} />
     <ThemeSwitcher defaultTheme="system" />
 </header>
+
+<!-- Header Script -->
+
 <script>
     var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true';
     if (hideHeader) {

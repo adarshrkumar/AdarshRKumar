@@ -1,6 +1,8 @@
 ---
+// Imports
 import '../styles/components/sidebar.scss'
 
+// Channel configuration
 var channels: { id: string, layout?: string, count?: string }[] = [
     {
         id: 'UCzhr23vdbi63nZGYqBM7Ofw', 
@@ -27,6 +29,7 @@ var channelsInfo = getChannelsInfo(cids)
 
 import Nav from './nav.astro'
 
+// Navigation configuration
 var navItems = [
     // { name: 'Home' }, 
     { name: 'About' }, 
@@ -37,6 +40,7 @@ var navItems = [
     // { name: 'Videos' }, 
 ]
 
+// Component props configuration
 var props = [
     {
         name: 'id', 
@@ -53,6 +57,8 @@ var props = [
 ]
 
 ---
+
+<!-- Sidebar component -->
 <aside class="main-sidebar">
     <section class="channel-stats">
         {

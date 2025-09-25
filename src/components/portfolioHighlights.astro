@@ -1,4 +1,5 @@
 ---
+// Imports
 import '../styles/pages/portfolio.scss'
 
 import SiteGridContent from './siteGridContent.astro'
@@ -6,11 +7,13 @@ import getFName from '../lib/getFName'
 import sanitizeMD from '../lib/sanitizeMD'
 import type { PortfolioItem } from '../lib/types'
 
+// Configuration
 var highlights = ['TransTrack', 'graphics-for-good', 'SMCAS']
 const ports = import.meta.glob('../../content/work/portfolio/**/*.md', { eager: true })
 const keys = Object.keys(ports)
 const allItems = Object.values(ports) as PortfolioItem[];
 
+// Data processing
 var items: PortfolioItem[] = []
 
 highlights.forEach(name => {
@@ -23,7 +26,10 @@ highlights.forEach(name => {
         }
     }
 });
+
 ---
+
+<!-- Portfolio highlights component -->
 <SiteGridContent classItems="portfolio wrap">
     {
         items.map((item, i2) => {

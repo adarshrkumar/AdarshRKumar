@@ -1,10 +1,14 @@
 ---
+// Imports
+
 import '../styles/components/fullAreaIframe.scss'
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/hero.astro'
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
 import type { PageSection } from '../lib/types'
+
+// Page configuration
 
 // Page sections configuration
 const pageSections: Record<string, PageSection> = {
@@ -29,6 +33,9 @@ const futureSections = [
 ]
 
 ---
+
+<!-- Home Page Layout -->
+
 <Layout title="" pageType="home">
     <Hero />
     

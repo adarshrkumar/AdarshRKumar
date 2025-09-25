@@ -1,7 +1,9 @@
+// Scroll timeline
 html {
     scroll-timeline: --page-scroll block;
 }
 
+// Post layout variables
 .post, .page-title:has(+ .post) {
     --pad: 1rem;
     --bor: 0.09375rem solid var(--color);
@@ -11,6 +13,7 @@ html {
     width: clamp(500px, 100%, 800px);
 }
 
+// Post borders
 .page-title:has(+ .post), .post {
     @media (width > 1012px) {
         & {
@@ -20,6 +23,7 @@ html {
     }
 }
 
+// Post content
 .post {
     gap: 0;
 
@@ -32,6 +36,7 @@ html {
         border-bottom: var(--bor);
     }
     
+    // Scroll progress indicator
     .scroll-percentage {
         --w: 0;
         --h: 10px;
@@ -64,10 +69,11 @@ html {
     
             animation: position auto linear;
             animation-timeline: --page-scroll;
-            animation-range: normal; /* Equivalent to normal normal */
+            animation-range: normal; // Equivalent to normal normal
         }
     }
     
+    // Post content area
     .post-area {
         flex: 1;
         // padding-block-start: 0;
@@ -96,7 +102,8 @@ html {
         }
     }
 }
-    
+
+// Scroll animation
 @keyframes position {
     from {
         width: 0;

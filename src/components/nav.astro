@@ -1,11 +1,15 @@
 ---
+// Imports
 import '../styles/components/nav.scss'
 import NavContent from './navContent.astro'
 
+// Component props and configuration
 var { items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
 ---
+
+<!-- Navigation component -->
 {varient !== 'header' ? (
     <nav class="nav" data-direction={direction} data-varient={varient}>
         <NavContent items={items} />

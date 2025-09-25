@@ -10,6 +10,7 @@ const dateOfBirth = {
     year: 2007
 }
 
+// Current date processing
 // Get current date
 const currentDate = new Date()
 const currentDateInfo = {
@@ -18,6 +19,7 @@ const currentDateInfo = {
     year: currentDate.getFullYear()
 }
 
+// Age calculation
 /**
  * Calculate age based on whether birthday has occurred this year
  */
@@ -31,6 +33,7 @@ function calculateAge(): number {
         : currentDateInfo.year - dateOfBirth.year - 1
 }
 
+// Export calculated age
 const age = calculateAge()
 
 export default age

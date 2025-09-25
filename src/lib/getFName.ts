@@ -5,6 +5,8 @@
  * @param name - The file path or filename to process
  * @returns Clean filename without path, query params, or complex extensions
  */
+
+// Main filename processing function
 function getFName(name: string): string {
     let fileName = name
     

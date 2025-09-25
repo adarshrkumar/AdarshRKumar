@@ -1,7 +1,9 @@
 ---
+// Imports
 import '../styles/components/largeFrame.scss'
 import type { YouTubeVideo, YouTubeFeed, LargeFrameProps } from '../lib/types'
 
+// Helper functions
 // Helper function to extract channel ID from feed link
 function extractChannelId(feedLink: string): string {
     let channelId = feedLink
@@ -34,6 +36,7 @@ function generateYouTubeUrls(videoId: string, channelId: string) {
     }
 }
 
+// Component props and data processing
 // Get component props
 const { video, feed } = Astro.props as LargeFrameProps
 
@@ -48,6 +51,8 @@ const imageAlt = `YouTube Video Thumbnail for "${video.title}" uploaded by "${vi
 const frameTitle = `"${video.title}" uploaded by "${video.author}"`
 
 ---
+
+<!-- Large frame component -->
 <label class="large-frame">
     <input type="checkbox" class="checker" />
     <img 

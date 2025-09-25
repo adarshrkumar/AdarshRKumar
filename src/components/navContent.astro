@@ -1,9 +1,11 @@
 ---
+// Component props and data
 var { items } = Astro.props
 
 var currentPath = Astro.url.pathname
 if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
 
+// Helper functions
 function processNavItem(item: { name: string; url: string; target: any; primaryCls?: string }) {
     var name = item.name
     var url = item.url    
@@ -38,9 +40,12 @@ function processNavItem(item: { name: string; url: string; target: any; primaryC
     return { url, target, primaryCls, name }
 }
 
+// Data processing
 var processedItems = items.map(processNavItem)
 
 ---
+
+<!-- Navigation content component -->
 {
     processedItems.map((item: { url: string; target: string; primaryCls: string; name: string }) => 
         <a href={item.url} class={`btn nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>

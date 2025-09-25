@@ -1,4 +1,6 @@
 <!-- markdownlint-disable MD041 -->
+
+<!-- About page content -->
 Hi, I'm Adarsh Kumar, { age } years old, and a High School Student.  
 I am a web developer, programmer, tech enthusiast, photographer, and history enthusiast.  
 I created this site to share my journey, showcase my projects, and other things alike.  

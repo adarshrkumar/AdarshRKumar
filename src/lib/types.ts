@@ -3,7 +3,7 @@
  * All interfaces and types used across the application
  */
 
-// Blog and Content Types
+// Blog and content types
 export interface Post {
     file: string;
     frontmatter: {
@@ -17,7 +17,7 @@ export interface Post {
     compiledContent?: () => string;
 }
 
-// Enhanced Post Types for different use cases
+// Enhanced post types for different use cases
 export interface PostWithSlug extends Post {
     slug: string;
 }
@@ -37,7 +37,7 @@ export interface PostForRSS extends Post {
     link: string;
 }
 
-// Author Types
+// Author types
 export interface Author {
     displayName: string;
     bio: string;
@@ -51,7 +51,7 @@ export interface Authors {
     [key: string]: Author;
 }
 
-// Portfolio Types
+// Portfolio types
 export interface PortfolioItem {
     file: string;
     frontmatter: {
@@ -61,7 +61,7 @@ export interface PortfolioItem {
     rawContent: () => string;
 }
 
-// Video and Media Types
+// Video and media types
 export interface VideoItem {
     link?: string;
     title?: string;
@@ -79,7 +79,7 @@ export interface RSSResponse {
     };
 }
 
-// YouTube Types
+// YouTube types
 export interface YouTubeVideo {
     guid: string;
     title: string;
@@ -92,7 +92,7 @@ export interface YouTubeFeed {
     title: string;
 }
 
-// Photo Types
+// Photo types
 export interface PhotoItem {
     src?: string;
     alt?: string;
@@ -105,7 +105,7 @@ export interface PhotoItem {
     };
 }
 
-// Form Types
+// Form types
 export interface FormField {
     type: string;
     name: string;
@@ -125,7 +125,7 @@ export interface FormConfig {
     className: string;
 }
 
-// Site Configuration Types
+// Site configuration types
 export interface SiteConfig {
     name: string;
     logo: string;
@@ -133,7 +133,7 @@ export interface SiteConfig {
     placeholder: string;
 }
 
-// Grid and Layout Types
+// Grid and layout types
 export interface GridOptions {
     min?: string;
     max?: string;
@@ -144,13 +144,12 @@ export interface GridOptions {
     };
 }
 
-// Page Section Types
 export interface PageSection {
     title: string;
     className: string;
 }
 
-// RSS Feed Types
+// RSS feed types
 export interface RSSItem {
     title: string;
     pubDate: string;
@@ -158,7 +157,7 @@ export interface RSSItem {
     link: string;
 }
 
-// Utility Types
+// Utility types
 export type PageType = 'home' | 'post' | 'author' | undefined;
 
 export interface LayoutProps {
@@ -170,7 +169,7 @@ export interface LayoutProps {
     author?: string;
 }
 
-// Component Props Types
+// Component props types
 export interface SiteGridContentProps {
     id?: string;
     classItems?: string;
@@ -188,7 +187,7 @@ export interface LargeFrameProps {
     feed: YouTubeFeed;
 }
 
-// Configuration Types
+// Configuration types
 export interface MusicPlaylistConfig {
     playlists: string[];
     channelId: string;
@@ -207,28 +206,28 @@ export interface ProjectCategoryConfig {
     items: PortfolioItem[];
 }
 
-// Error Types
+// Error types
 export interface ErrorInfo {
     type: string;
     message: string;
     code?: number;
 }
 
-// API Response Types
+// API response types
 export interface APIResponse<T = any> {
     status: 'ok' | 'error';
     data?: T;
     error?: string;
 }
 
-// Content Processing Types
+// Content processing types
 export interface ContentProcessor {
     cleanText: (text: string) => string;
     extractSlug: (filePath: string) => string;
     generatePreview: (text: string, maxLength?: number) => string;
 }
 
-// Image Processing Types
+// Image processing types
 export interface ImageConfig {
     src: string;
     alt: string;

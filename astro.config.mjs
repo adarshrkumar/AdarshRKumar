@@ -1,15 +1,22 @@
+// Imports
+
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-
 import path from 'path';
 import fs from 'fs';
-
 import updateImages from './update';
+
+// Image processing
+
+// Run image update process
 updateImages()
+
+// Content processing
 
 const directoryPath = path.join('./', 'content');
 const categories = fs.readdirSync(`${directoryPath}/photos`);
 
+// Clean up existing allPhotos directory
 if (fs.existsSync(`${directoryPath}/allPhotos`)) {
     var folders = fs.readdirSync(`${directoryPath}/allPhotos`)
     folders.forEach(folder => {
@@ -28,6 +35,7 @@ else {
     fs.mkdirSync(`${directoryPath}/allPhotos`);
 }
 
+// Process photo categories
 categories.forEach((category, i) => {
     var isDir = fs.lstatSync(`${directoryPath}/photos/${category}`).isDirectory()
     if (isDir && category.toLowerCase() !== 'hide') {
@@ -52,6 +60,8 @@ categories.forEach((category, i) => {
         })
     }
 });
+
+// Astro configuration
 
 // https://astro.build/config
 export default defineConfig({
