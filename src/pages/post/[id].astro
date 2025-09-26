@@ -6,10 +6,11 @@ import '../../styles/pages/post.scss'
 import Layout from '../../layouts/Layout.astro'
 import { findPostById, getPosts } from '../../lib/getPosts'
 import { extractSlugFromFilePath } from '../../lib/getPosts'
+import type { Authors } from '../../lib/types'
 
 // Helper functions
 // Helper function to get author information
-function getAuthorInfo(authors: any, authorUsername: string) {
+function getAuthorInfo(authors: Authors, authorUsername: string) {
     return authors[authorUsername as keyof typeof authors]
 }
 

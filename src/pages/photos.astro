@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import { getImage } from 'astro:assets'
 import '../styles/pages/photos.scss'
-import type { PhotoItem } from '../lib/types'
+import type { PhotoItem, PhotoMetadata, PhotoImport } from '../lib/types'
 
 // Helper functions
 // Helper function to extract clean site URL
@@ -48,12 +48,12 @@ function extractFileName(filePath: string): string {
 }
 
 // Helper function to normalize imported data
-function normalizeImportedData<T>(items: any[]): T[] {
-    return items.map(item => item.default || item) as T[]
+function normalizeImportedData<T>(items: T[]): T[] {
+    return items.map(item => (item as { default?: T }).default || item) as T[]
 }
 
 // Helper function to match photos with their metadata
-function enrichPhotosWithMetadata(photos: any[], metadataList: any[]): any[] {
+function enrichPhotosWithMetadata(photos: PhotoImport[], metadataList: PhotoMetadata[]): PhotoItem[] {
     return photos.map(photo => {
         if (!photo.src) return photo
         
@@ -78,13 +78,13 @@ const photoModules = import.meta.glob('../../content/allPhotos/*/*')
 const metadataModules = import.meta.glob('../../content/allPhotos/*/info.js', { eager: true })
 
 // Normalize imported data (handle .default exports)
-const normalizedMetadata: any[] = normalizeImportedData(Object.values(metadataModules))
+const normalizedMetadata: PhotoMetadata[] = normalizeImportedData(Object.values(metadataModules) as PhotoMetadata[])
 
 // Process photos with async imports
 const photosWithMetadata: PhotoItem[] = []
 for (const [path, importFn] of Object.entries(photoModules)) {
-    const photoModule = await importFn() as any
-    const photo = photoModule.default || photoModule
+    const photoModule = await importFn() as { default?: PhotoImport } | PhotoImport
+    const photo = (photoModule as { default?: PhotoImport }).default || photoModule as PhotoImport
     
     // Extract filename for metadata matching
     const photoFileName = extractFileName(path)
@@ -120,14 +120,13 @@ const getFName = extractFileName
                 
                 // Generate Astro's native resized image URL
                 const optimizedImage = await getImage({
-                    src: photo.import,
+                    src: photo.import?.src || photo.src || '',
                     width: 400,
                     height: 400,
                     format: 'webp',
                     quality: 85
                 })
 
-                console.log(photo.src)
                 
                 // Check if we have metadata to display
                 const hasMetadata = !!(photoData?.title || photoData?.info)
@@ -140,7 +139,7 @@ const getFName = extractFileName
                         <img 
                             class="item__img" 
                             src={photo.src || ''} 
-                            alt={photo.alt || ''} 
+                            alt={photo.alt || photoData?.title || `Photo: ${photo.fullname}`} 
                             loading="lazy" 
                             decoding="async"
                             style={`--placeholder: url('${optimizedImage.src}');`}

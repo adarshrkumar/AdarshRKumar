@@ -67,17 +67,6 @@ export interface VideoItem {
     title?: string;
 }
 
-export interface RSSResponse {
-    items?: Array<{
-        link?: string;
-        title?: string;
-    }>;
-    status?: string;
-    feed?: {
-        link?: string;
-        title?: string;
-    };
-}
 
 // YouTube types
 export interface YouTubeVideo {
@@ -93,16 +82,24 @@ export interface YouTubeFeed {
 }
 
 // Photo types
+export interface PhotoMetadata {
+    title?: string;
+    location?: string;
+    info?: string;
+    fullname?: string;
+}
+
+export interface PhotoImport {
+    src: string;
+    [key: string]: string | undefined;
+}
+
 export interface PhotoItem {
     src?: string;
     alt?: string;
     fullname?: string;
-    import?: any;
-    data?: {
-        title?: string;
-        location?: string;
-        info?: string;
-    };
+    import?: PhotoImport;
+    data?: PhotoMetadata;
 }
 
 // Form types
@@ -142,6 +139,40 @@ export interface GridOptions {
         min?: string;
         max?: string;
     };
+}
+
+// Navigation types
+export interface NavItem {
+    name: string;
+    url: string;
+    target?: string;
+    primaryCls?: string;
+}
+
+// Page import types
+export interface PageImport {
+    url: string;
+    [key: string]: string | undefined;
+}
+
+// RSS response types
+export interface RSSResponse {
+    status: string;
+    items?: Array<{
+        link?: string;
+        title?: string;
+    }>;
+    feed?: {
+        link?: string;
+        title?: string;
+    };
+}
+
+// Context types
+export interface AstroContext {
+    site: string | URL;
+    trailingSlash: boolean;
+    [key: string]: URL | string | boolean | undefined;
 }
 
 export interface PageSection {
@@ -214,7 +245,7 @@ export interface ErrorInfo {
 }
 
 // API response types
-export interface APIResponse<T = any> {
+export interface APIResponse<T> {
     status: 'ok' | 'error';
     data?: T;
     error?: string;

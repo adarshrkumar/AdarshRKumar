@@ -2,7 +2,7 @@
 // Imports
 import LargeFrame from '../components/largeFrame.astro'
 import '../styles/pages/videos.scss'
-import type { VideoItem, RSSResponse, ChannelVideosProps } from '../lib/types'
+import type { RSSResponse, ChannelVideosProps } from '../lib/types'
 
 // Helper functions
 // Helper function to build RSS URL for YouTube channel
@@ -13,13 +13,14 @@ function buildYouTubeRSSUrl(channelId: string): string {
 }
 
 // Helper function to validate RSS response
-function isValidRSSResponse(result: any): boolean {
-    return result && 
-           result.status && 
-           result.status === 'ok' && 
-           result.feed && 
-           result.items && 
-           result.items.length > 0
+function isValidRSSResponse(result: RSSResponse): boolean {
+    return !!(
+        result && 
+        result.status === 'ok' && 
+        result.feed && 
+        result.items && 
+        result.items.length > 0
+    )
 }
 
 // Helper function to limit videos based on count
@@ -37,8 +38,8 @@ const maxVideosPerChannel = vidsPerChannel || 'all'
 
 // Data fetching
 // Fetch channel data
-let channelFeed: any = {}
-let channelVideos: any[] = []
+let channelFeed: RSSResponse = { status: 'error' }
+let channelVideos: Array<{ link?: string; title?: string }> = []
 
 try {
     const rssUrl = buildYouTubeRSSUrl(channelId)

@@ -44,7 +44,7 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
 }
 
 // Helper function to filter out hidden items
-function filterVisibleItems(items: any[]): any[] {
+function filterVisibleItems(items: PortfolioItem[]): PortfolioItem[] {
     return items.filter(item => {
         const name = getFName(item.file)
         return !name.startsWith('_')
