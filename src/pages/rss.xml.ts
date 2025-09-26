@@ -3,7 +3,7 @@ import rss from '@astrojs/rss'
 import age from '../lib/getAge'
 import sanitizeMD from '../lib/sanitizeMD'
 import { getPostsForRSS } from '../lib/getPosts'
-import type { PostForRSS } from '../lib/types'
+import type { PostForRSS, AstroContext } from '../lib/types'
 
 // Helper functions
 // Helper function to clean and normalize about content
@@ -34,7 +34,7 @@ const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 const postsForRSS = getPostsForRSS()
 
 // RSS feed generation
-export async function GET(context: any) {
+export async function GET(context: AstroContext) {
     return rss({
         title: 'Buzz\'s Blog',
         description: aboutContent,

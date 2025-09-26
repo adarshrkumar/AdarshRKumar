@@ -2,7 +2,7 @@
 // Imports
 import '../styles/components/grid.scss'
 import '../styles/components/liteGrid.scss'
-import type { SiteGridContentProps } from '../lib/types'
+import type { SiteGridContentProps, GridOptions } from '../lib/types'
 
 // Helper functions
 // Helper function to format class items
@@ -11,7 +11,7 @@ function formatClassItems(classItems: string | undefined): string {
 }
 
 // Helper function to generate CSS custom properties from options
-function generateCustomProperties(options: any): string {
+function generateCustomProperties(options: GridOptions | undefined): string {
     if (!options || typeof options !== 'object') {
         return ''
     }
@@ -21,13 +21,13 @@ function generateCustomProperties(options: any): string {
     
     optionKeys.forEach((key, index) => {
         if (index !== 0) customProperties += ' '
-        const value = options[key]
+        const value = options[key as keyof GridOptions]
         
         // Handle nested objects (like values: {min: '4rem', max: '495px'})
-        if (typeof value === 'object' && value !== null) {
+        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
             const nestedKeys = Object.keys(value)
             nestedKeys.forEach(nestedKey => {
-                customProperties += `--${key}-${nestedKey}: ${value[nestedKey]}; `
+                customProperties += `--${key}-${nestedKey}: ${(value as Record<string, string>)[nestedKey]}; `
             })
         } else {
             customProperties += `--${key}: ${value};`

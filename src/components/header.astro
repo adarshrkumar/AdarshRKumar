@@ -4,6 +4,7 @@
 import '../styles/components/header.scss'
 import NavContent from '../components/navContent.astro'
 import ThemeSwitcher from '../components/themeSwitcher.astro'
+import type { PageImport } from '../lib/types'
 
 // Props and data
 
@@ -17,25 +18,25 @@ if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length - 1)
 // Page generation
 
 const items = import.meta.glob('../pages/*.astro', { eager: true })
-const pages = Object.values(items);
+const pages = Object.values(items) as PageImport[];
 
 var links: { url: string; name: string, target?: string, primaryCls?: string }[] = []
 
 // Add Home page first
-pages.forEach((page: any) => {
+pages.forEach(page => {
     var link = getLink(page)
     if (link && link.name === 'Home') links.push(link)
 })
 
 // Add other pages
-pages.forEach((page: any) => {
+pages.forEach(page => {
     var link = getLink(page)
     if (link && link.name !== 'Home' && link.url) links.push(link)
 })
 
 // Helper functions
 
-function getLink(link: any) {
+function getLink(link: PageImport) {
     var lPath = link.url
     if (!lPath) return null
     

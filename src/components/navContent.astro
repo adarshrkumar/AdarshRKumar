@@ -1,4 +1,6 @@
 ---
+import type { NavItem } from '../lib/types'
+
 // Component props and data
 var { items } = Astro.props
 
@@ -6,7 +8,7 @@ var currentPath = Astro.url.pathname
 if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
 
 // Helper functions
-function processNavItem(item: { name: string; url: string; target: any; primaryCls?: string }) {
+function processNavItem(item: NavItem) {
     var name = item.name
     var url = item.url    
     var target = item.target
