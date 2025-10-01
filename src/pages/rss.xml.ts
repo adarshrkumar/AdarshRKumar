@@ -28,7 +28,7 @@ function cleanAboutContent(content: string): string {
 // Data loading and processing
 // Load about content
 const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
+const aboutContent = cleanAboutContent(sanitizeMD(await aboutFile.rawContent()))
 
 // Get posts for RSS
 const postsForRSS = getPostsForRSS()

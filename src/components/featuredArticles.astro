@@ -17,9 +17,9 @@ const featuredPosts = getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)
 <!-- Featured articles component -->
 <SiteGridContent classItems="posts">
     {
-        featuredPosts.map(post => {
+        featuredPosts.map(async post => {
             // Process text content for preview
-            const rawTextContent = sanitizeMD(post.rawContent())
+            const rawTextContent = sanitizeMD(await post.rawContent())
             const cleanedTextContent = cleanTextContent(rawTextContent)
             const previewContent = createPreviewContent(cleanedTextContent)
             

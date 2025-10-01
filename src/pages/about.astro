@@ -10,8 +10,8 @@ import age from '../lib/getAge'
 
 // Helper function to load and process about content
 async function loadAboutContent(): Promise<string> {
-    const aboutFile = (await import('../../content/aboutContent.md')).default
-    const rawContent = aboutFile.compiledContent()
+    const aboutFile = (await import('../../content/aboutContent.md'))
+    const rawContent = await aboutFile.compiledContent()
     
     // Replace age placeholder with actual age
     return rawContent.replaceAll('{ age }', age.toString())
