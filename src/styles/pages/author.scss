@@ -1,3 +1,4 @@
+// Author page styling
 .page-title:has(+ .author) {
     display: none;
 }
@@ -7,51 +8,49 @@
 }
 
 .author {
+    // Custom properties
     --padding: 1rem;
 
-    // box-sizing: border-box;
+    // Layout properties
     margin: var(--padding);
-
     padding: var(--padding);
-
     width: clamp(400px, 100%, 600px);
 
+    // Visual properties
     background-color: var(--color);
     color: var(--bg);
-
     border-radius: calc(var(--padding)*2);
 
+    // Child element styling
     & > * {
         margin-inline: auto;
         text-align: center;
     }
 
+    // Author name styling
     .name {
         text-align: center;
     }
 
+    // Profile picture styling
     .pfp {
         position: relative;
-
         width: clamp(50px, 25%, 100px);
         aspect-ratio: 1;
-
         border-radius: 50%;
 
+        // Overlay effect
         &::after {
             content: '';
-
             position: absolute;
             inset: 0;
-            
             aspect-ratio: 1;
-
             background-color: var(--color);
-            opacity: 0;//.1;
-
+            opacity: 0;
             border-radius: 50%;
         }
 
+        // Inner image styling
         &__inner {
             border-radius: 50%;
             pointer-events: none;

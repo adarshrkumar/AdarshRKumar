@@ -1,29 +1,14 @@
+// Photos page variables
 $textSpace: 5%;
 
-@property --size-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-}
-
-@property --item-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-}
-
-@property --info-opacity {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-}
-
+// Custom property for padding transition
 @property --paddingTrans {
     syntax: "<length>";
     inherits: true;
     initial-value: 0;
 }
 
+// Animation keyframes
 @keyframes z-index-fix {
     0%, 100% {
         z-index: 1;
@@ -32,64 +17,127 @@ $textSpace: 5%;
 
 @keyframes shadow-in {
     from {
-        --item-opacity: 0;
-        --info-opacity: 1;
         --paddingTrans: var(--padding);
     }
     to {
-        --item-opacity: 1;
-        --info-opacity: 0;
         --paddingTrans: calc(var(--padding)*1.25);
     }
 }
 
 @keyframes shadow-out {
     from {
-        --item-opacity: 1;
-        --info-opacity: 0;
         --paddingTrans: calc(var(--padding)*1.25);
     }
     to {
-        --item-opacity: 0;
-        --info-opacity: 1;
         --paddingTrans: var(--padding);
     }
 }
 
+// Photos container
 .photos {
+    $time: 750ms;
+
+    // Layout properties
     margin-inline: auto;
     width: clamp(500px, 100%, 1000px);
-    z-index: 1;
 
+    // Background overlay
+    &::before {
+        content: '';
+        position: fixed;    
+        inset: 0;
+        display: block;
+        opacity: 0;
+        
+        transition: opacity $time $time;
+        @supports(transition-behavior: allow-discrete) {
+            transition-behavior: allow-discrete;
+        }
+
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    // Fullscreen mode when item is checked
+    &:has(.item .item__checkbox:checked) {
+        --pad: 1rem;
+        position: fixed;
+        inset: var(--pad);
+        margin: auto;
+        aspect-ratio: 1;
+        max-height: calc(100dvh - var(--pad)*2);
+        z-index: 999;
+
+        &::before {
+            opacity: 1;
+            background-color: rgb(from var(--bg) r g b / 0.75);
+            pointer-events: all;
+            z-index: 998;
+        }
+    }
+
+
+
+    // Photo items
     .item {
-        --size-opacity: var(--item-opacity);
+        $main-shadow: 0 0 var(--padding);
 
-        $time: 750ms;
-        $shadow: 0 0 var(--padding) hsla(0, 0%, var(--color-lightness), var(--size-opacity, 1));
+        // Layout properties
         position: relative;
         pointer-events: all;
         overflow: clip;
 
-        transition: scale $time;
+        // Transitions and animations
+        transition: 
+            position $time,
+            inset $time,
+            margin $time,
+            box-shadow $time,
+            scale $time;
+            
         animation: 
             z-index-fix $time ease,
             shadow-out $time ease;
-        // &:nth-child(5n-3) {
-        //     grid-column: span 2;
-        //     grid-row: span 2;
-        // }
-        box-shadow: $shadow;
 
+        // Visual properties
+        box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 0);
         cursor: pointer;
 
+        // Hidden checkbox for interaction
+        &__checkbox {
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: -10px;
+            left: -10px;
+            visibility: hidden;
+        }
 
-        &:hover {
-            --item-opacity: 1;
+        // Body overflow control
+        body:has(.photos .item .item__checkbox:checked) {
+            overflow-y: clip;
+        }
+
+        // Fullscreen mode when checked
+        &:has(.item__checkbox:checked) {
+            --pad: 1rem;
+            position: fixed;
+            inset: var(--pad);
+            margin: auto;
+            aspect-ratio: 1;
+            max-height: calc(100dvh - var(--pad)*2);
+            z-index: 999;
+        }
+
+        // Hover effects
+        &:not(:has(.item__checkbox:checked)):hover {
             --paddingTrans: calc(var(--padding)*1.25);
 
             position: relative;
-            scale: 1.25;
+            scale: 1.125;
             z-index: 2;
+            box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 1);
+
             animation: shadow-in $time ease;
 
             .item__info {
@@ -98,33 +146,27 @@ $textSpace: 5%;
             }
         }
         
+        // Item info overlay
         &__info {
-            --info-opacity: 1;
-            --size-opacity: var(--info-opacity);
-
             position: absolute;
             inset: var(--padding);
-
             padding: calc(var(--padding)*2);
-
             background-color: hsla(0, 0%, var(--bg-lightness), 0.125);
-            
             border-radius: calc(var(--borderRadius) - var(--padding));
             gap: 2rem;
-
             transition: opacity $time;
-
         }
+        
+        // Title and content styling
         &__title, &__content {
             padding: var(--padding) calc(var(--padding) * 1.5);
-
             background-color: var(--middle-color);
             border-radius: 100dvw;
-
             align-self: center;
-            
-            box-shadow: $shadow;
+            box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 1);
         }
+        
+        // Title positioning
         &__title {
             &:has(+ .item__content) {
                 align-self: end;
@@ -134,6 +176,7 @@ $textSpace: 5%;
             }
         }
         
+        // Image styling
         &__image {
             -webkit-user-select: none;
             -moz-user-select: none;

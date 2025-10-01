@@ -1,14 +1,18 @@
+// Imports
 import fs from 'fs-extra'
 import path from 'path'
 
+// Helper functions
 function getFName(filePath: string): string {
     if (filePath.includes('.')) filePath = filePath.split('.').slice(0, -1).join('.')
     return filePath
 }
 
+// Configuration
 const directoryPath = path.join('./', 'content')
 const categories = fs.readdirSync(`${directoryPath}/photos`)
 
+// Main update function
 function update(): void {
     categories.forEach((category, i) => {
         const isDir = fs.lstatSync(`${directoryPath}/photos/${category}`).isDirectory()
@@ -44,6 +48,7 @@ function update(): void {
     })
 }
 
+// Execute update and export
 update()
 
 export default update

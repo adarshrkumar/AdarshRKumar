@@ -1,53 +1,62 @@
 ---
+// Imports
 import '../../styles/pages/[about, contact].scss'
 import '../../styles/pages/author.scss'
 
 import Layout from '../../layouts/Layout.astro'
+import type { Author, Authors } from '../../lib/types'
 
+// Helper functions
+// Helper function to get author by username
+function getAuthorByUsername(authors: Authors, username: string | undefined): Author {
+    if (!username || !authors[username]) {
+        throw new Error('Author not found');
+    }
+    return authors[username];
+}
+
+// Helper function to format bio text
+function formatBioText(bio: string): string {
+    return bio.includes('\n') ? bio.split('\n').join('<br>') : bio;
+}
+
+// Static path generation
+// Static paths for authors
 export function getStaticPaths() {
     return [
         {params: {username: 'adarshrkumar'}}, 
     ];
 }
 
+// Data loading and processing
+// Get username from URL parameters
 const { username } = Astro.params;
 
-import regAuthors from '../../../content/blog/authors'
-
-type Authors = {
-    [key: string]: Author;
-};
-
+// Load authors data
+import regAuthors from '../../lib/authors'
 const authors: Authors = regAuthors;
 
-type Author = {
-    displayName: string;
-    bio: string;
-    hasPfp: boolean;
-    pfp: {
-        filename: String;
-    };
-};
-
-var author;
-if (username && authors[username]) {
-    author = authors[username];
-} else {
-    throw new Error('Author not found');
-}
-
-var bio = author.bio
-if (bio.includes('\n')) bio = bio.split('\n').join('<br>')
+// Get author information
+const author = getAuthorByUsername(authors, username);
+const formattedBio = formatBioText(author.bio);
 
 ---
+
+<!-- Author Profile Page -->
 <Layout title={author.displayName} pageType="author" classItems="ignorePadding">
-    { !!author.hasPfp ? 
+    {author.hasPfp && (
         <div class="pfp">
-            <img class="pfp__inner" src={`/profiles/${username}/imgs/${author.pfp.filename}`} alt={`${username}'s Profile Picture`} />
+            <img 
+                class="pfp__inner" 
+                src={`/profiles/${username}/imgs/${author.pfp.filename}`} 
+                alt={`${username}'s Profile Picture`} 
+            />
         </div>
-     : '' }
+    )}
+    
     <h2 class="name">{author.displayName}</h2>
-    { !!author.bio ? 
-        <div class="bio" set:html={bio}></div>
-     : '' }
+    
+    {author.bio && (
+        <div class="bio" set:html={formattedBio}></div>
+    )}
 </Layout>

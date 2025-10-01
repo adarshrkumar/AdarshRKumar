@@ -1,27 +1,38 @@
 ---
+// Imports
 import Layout from '../layouts/Layout.astro'
-
 import SiteGridContent from '../components/siteGridContent.astro'
-
 import ChannelVideos from '../components/channelVideos.astro'
-
 import '../styles/pages/videos.scss'
+import type { VideoChannelConfig, GridOptions } from '../lib/types'
 
-const cids = [
-    'UCzhr23vdbi63nZGYqBM7Ofw', 
-    'UCb35v6VAVFI8Q0aIpwPoW1g', 
-    'UCLK0Lj3V864AbKfutfyztYA', 
-    'UC8cV2cdrp1ccBWzoi1R-UwQ', 
-    'UCHUWd3IuPu3P21XkDW8vSuQ', 
-]
+// Configuration
+// Video channel configuration
+const videoConfig: VideoChannelConfig = {
+    channelIds: [
+        'UCzhr23vdbi63nZGYqBM7Ofw', 
+        'UCb35v6VAVFI8Q0aIpwPoW1g', 
+        'UCLK0Lj3V864AbKfutfyztYA', 
+        'UC8cV2cdrp1ccBWzoi1R-UwQ', 
+        'UCHUWd3IuPu3P21XkDW8vSuQ', 
+    ],
+    videosPerChannel: 3,
+    gridOptions: { min: '24rem' }
+}
 
-let vidsPerChannel = 3
 ---
+
+<!-- Videos Page -->
 <Layout title="Videos">
-    <SiteGridContent classItems="videos" options={{min: '24rem'}}>
+    <SiteGridContent classItems="videos" options={videoConfig.gridOptions}>
         {
-            cids.map(id => {
-                return <ChannelVideos id={id} vidsPerChannel={vidsPerChannel} />
+            videoConfig.channelIds.map(channelId => {
+                return (
+                    <ChannelVideos 
+                        id={channelId} 
+                        vidsPerChannel={videoConfig.videosPerChannel} 
+                    />
+                )
             })
         }
     </SiteGridContent>

@@ -1,54 +1,65 @@
+// Custom property for small container
 @property --small-container {
     syntax: '<boolean>';
     initial-value: false;
 }
 
-// Styles for the Navigation Bar
+// Header navigation bar
 .header {
+    // Custom properties
     --shadow-size: 10px;
 
+    // Layout properties
     padding: 2rem 4rem;
-
-    display: grid;
-    grid-template-columns: auto 1fr;
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     place-items: center;
     gap: 1rem;
 
+    // Border styling
     border-bottom: solid 1px var(--bdr-clr, var(--color));
 
+    // Responsive design
     @media (max-width: 640px) {
         grid-template-columns: 1fr;
     }
 
+    // Logo link
     .logo-link {
+        // Layout properties
         display: block;
-
         width: 5rem;
-        // height: 100%;
         aspect-ratio: 1;
 
+        // Visual properties
         color: var(--logo-a-color);
-
         background-color: var(--color);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
         border-radius: 100%;
-
         box-shadow: 0 0 var(--shadow-size) 0 var(--color);
 
+        // Transitions
         transition: border-radius 1s ease-out;
 
+        // Logo styling
         .logo {
             display: inherit;
             border-radius: inherit;
         }
 
+        // Interactive states
         &:is(:hover, :focus) {
             border-radius: 25%;
             outline: solid 1px var(--color);
         }
+    }
+
+    // Navigation
+    .nav {
+        flex: 1;
+        align-self: end;
     }
 }

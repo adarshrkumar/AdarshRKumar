@@ -1,14 +1,19 @@
 ---
+// Imports
 import '../styles/scriptImg.scss'
 
+// Props
 var { name, code } = Astro.props
 
+// Helper functions
 function cleanCode(code: string) {
     if (code.includes('\n')) code = code.split('\n').join('  ')
     if (code.includes('\t')) code = code.split('\t').join('  ')
     return code
 }
 ---
+
+<!-- Script component -->
 {
     !!name ? (
         <script src={`/scripts/${name}.js`} is:inline></script>
