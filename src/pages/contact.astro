@@ -2,12 +2,15 @@
 // Imports
 import '../styles/pages/[about, contact].scss'
 
+import { nanoid } from 'nanoid'
+
 import Layout from '../layouts/Layout.astro'
+
 import Input from '../defaultComponents/Input.astro'
 import TextArea from '../defaultComponents/TextArea.astro'
+
 import type { FormConfig, FormField } from '../lib/types'
 import type { HTMLAttributes } from 'astro/types'
-import { nanoid } from 'nanoid'
 
 // Extract input type from HTMLAttributes
 type HTMLInputTypeAttribute = HTMLAttributes<'input'>['type']
@@ -19,6 +22,16 @@ const formConfig: FormConfig = {
     method: "POST",
     className: "contact"
 }
+
+// Generate current date/time and random ID
+const now = new Date()
+const year = now.getFullYear()
+const month = String(now.getMonth() + 1).padStart(2, '0')
+const day = String(now.getDate()).padStart(2, '0')
+const hours = String(now.getHours()).padStart(2, '0')
+const minutes = String(now.getMinutes()).padStart(2, '0')
+const dateString = `${year}-${month}-${day}+${hours}:${minutes}`
+const randomId = nanoid()
 
 
 // Form field configurations
@@ -59,14 +72,11 @@ const formFields: Record<string, FormField> = {
         style: "cursor: pointer; margin-left: auto;"
     }
 }
-
-const randomId = nanoid()
-
 ---
-
 <!-- Contact Page -->
 <Layout title="Contact">
-    <form action={formConfig.action} method={formConfig.method} class={formConfig.className}>
+    <iframe name="hidden_iframe" style="display: none;"></iframe>
+    <form action={formConfig.action} method={formConfig.method} class={formConfig.className} target="hidden_iframe">
         <Input
             type={formFields.name.type as HTMLInputTypeAttribute} 
             name={formFields.name.name} 
@@ -99,18 +109,28 @@ const randomId = nanoid()
             required={formFields.message.required}
         />
         
-        <Input 
-            type="hidden" 
+        <input 
+            type="text" 
             name="entry.1290678673" 
             id="email-subject" 
             value="Contact Form Submission" 
+            readonly
         />
         
-        <Input 
-            type="hidden" 
+        <input 
+            type="text" 
             name="entry.352902831" 
-            id="email-subject" 
+            id="random-id" 
             value={randomId} 
+            readonly
+        />
+        
+        <input 
+            type="text" 
+            name="entry.1741855386" 
+            id="date-time" 
+            value={dateString} 
+            readonly
         />
         
         <Input 
@@ -122,91 +142,3 @@ const randomId = nanoid()
         />
     </form>
 </Layout>
-<script define:vars={{ randomId }}>
-    const form = document.querySelector('.contact')
-
-    form.addEventListener('submit', handleFormSubmission)
-
-    async function handleFormSubmission(e) {
-        e.preventDefault()
-
-        // Get all form values with proper handling for multiple checkboxes/radios
-        const formData = new FormData(form)
-        const formValues = {}
-
-        for (let [key, value] of formData.entries()) {
-            if (formValues[key]) {
-                // If key already exists, convert to array
-                if (Array.isArray(formValues[key])) {
-                    formValues[key].push(value)
-                } else {
-                    formValues[key] = [formValues[key], value]
-                }
-            } else {
-                formValues[key] = value
-            }
-        }
-
-        // Handle checkboxes that weren't checked (they don't appear in FormData)
-        const checkboxes = form.querySelectorAll('input[type="checkbox"]')
-        checkboxes.forEach((checkbox) => {
-            const input = checkbox
-            if (input.name && !formData.has(input.name)) {
-                formValues[input.name] = false
-            }
-        })
-
-        // Handle radio buttons that weren't selected
-        const radioGroups = {}
-        const radios = form.querySelectorAll('input[type="radio"]')
-        radios.forEach((radio) => {
-            const input = radio
-            if (input.name) {
-                radioGroups[input.name] = true
-            }
-        })
-        
-        Object.keys(radioGroups).forEach(groupName => {
-            if (!formData.has(groupName)) {
-                formValues[groupName] = null
-            }
-        })
-
-        // Add current date to form data
-        const now = new Date()
-        const year = now.getFullYear()
-        const month = String(now.getMonth() + 1).padStart(2, '0')
-        const day = String(now.getDate()).padStart(2, '0')
-        const hours = String(now.getHours()).padStart(2, '0')
-        const minutes = String(now.getMinutes()).padStart(2, '0')
-        const dateString = `${year}-${month}-${day}+${hours}:${minutes}`
-        
-        formData.append('entry.1741855386', dateString)
-        
-        // Submit form data to the endpoint using hidden iframe
-        console.log('Submitting form to:', form.action)
-        console.log('Form data:', Object.fromEntries(formData))
-        
-        // Create hidden iframe for submission
-        const iframe = document.createElement('iframe')
-        iframe.style.display = 'none'
-        iframe.name = 'hidden_iframe'
-        document.body.appendChild(iframe)
-        
-        // Set form target to iframe
-        form.target = 'hidden_iframe'
-        
-        // Handle iframe load event
-        iframe.onload = () => {
-            console.log('Form submitted successfully')
-            setTimeout(() => {
-                form.reset()
-                document.body.removeChild(iframe)
-            }, 10000)
-        }
-        
-        // Submit the form
-
-        form.submit()
-    }
-</script>
