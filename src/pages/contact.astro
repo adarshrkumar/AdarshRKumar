@@ -7,6 +7,7 @@ import Input from '../defaultComponents/Input.astro'
 import TextArea from '../defaultComponents/TextArea.astro'
 import type { FormConfig, FormField } from '../lib/types'
 import type { HTMLAttributes } from 'astro/types'
+import { nanoid } from 'nanoid'
 
 // Extract input type from HTMLAttributes
 type HTMLInputTypeAttribute = HTMLAttributes<'input'>['type']
@@ -58,6 +59,8 @@ const formFields: Record<string, FormField> = {
         style: "cursor: pointer; margin-left: auto;"
     }
 }
+
+const randomId = nanoid()
 
 ---
 
@@ -114,8 +117,8 @@ const formFields: Record<string, FormField> = {
         />
     </form>
 </Layout>
-<script>
-    const form = document.querySelector('.contact') as HTMLFormElement
+<script define:vars={{ randomId }}>
+    const form = document.querySelector('.contact')
 
     form.addEventListener('submit', handleFormSubmission)
 
@@ -164,6 +167,18 @@ const formFields: Record<string, FormField> = {
             }
         })
 
+        // Add current date to form data
+        const now = new Date()
+        const year = now.getFullYear()
+        const month = String(now.getMonth() + 1).padStart(2, '0')
+        const day = String(now.getDate()).padStart(2, '0')
+        const hours = String(now.getHours()).padStart(2, '0')
+        const minutes = String(now.getMinutes()).padStart(2, '0')
+        const dateString = `${year}-${month}-${day}+${hours}:${minutes}`
+        
+        formData.append('entry.1741855386', dateString)
+        formData.append('entry.352902831', randomId)
+        
         // Submit form data to the endpoint using hidden iframe
         console.log('Submitting form to:', form.action)
         console.log('Form data:', Object.fromEntries(formData))
