@@ -1,50 +1,19 @@
 ---
+// Imports
 import '../styles/components/nav.scss'
+import NavContent from './navContent.astro'
 
+// Component props and configuration
 var { items, direction, varient } = Astro.props
 if (!!varient === false) varient = 'header'
 
-var currentPath = Astro.url.pathname
-if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
-
 ---
-<nav class="nav" data-direction={direction} data-varient={varient}>
-    {
-        items.map((item: { name: string; url: string; target: any; primaryCls?: string }, i: any) => {
-            var name = item.name
-            var url = item.url
-            
-            var target = item.target
-            if (!!target === false) {
-                target = '_self'
-            }
 
-            if (!!url) {
-                if (url.includes('://')) {
-                    var domain = url.split('://')[1]
-                    if (domain.includes('/')) domain = domain.split('/')[0]
-                    if (new URL(`https://${domain}`) !== Astro.site) {
-                        target = '_black'
-                    }
-                }
-                if (url.endsWith('/')) url = url.slice(0, -1)
-            }
-            else if (!!url === false) {
-                url = '/'
-
-                if (name !== 'Home') {
-                    url += name.toLowerCase()
-                }
-            }
-
-            var primaryCls = ''
-            if (url === currentPath) primaryCls = ' primary'
-
-            item.url = url
-            item.target = target
-            item.primaryCls = primaryCls
-
-            return <a href={item.url} class={`btn nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
-        })
-    }
-</nav>
+<!-- Navigation component -->
+{varient !== 'header' ? (
+    <nav class="nav" data-direction={direction} data-varient={varient}>
+        <NavContent items={items} />
+    </nav>
+) : (
+    <NavContent items={items} />
+)}

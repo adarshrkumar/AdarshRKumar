@@ -1,0 +1,55 @@
+---
+import type { NavItem } from '../lib/types'
+
+// Component props and data
+var { items } = Astro.props
+
+var currentPath = Astro.url.pathname
+if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
+
+// Helper functions
+function processNavItem(item: NavItem) {
+    var name = item.name
+    var url = item.url    
+    var target = item.target
+    if (!!target === false) {
+        target = '_self'
+    }
+
+    if (!!url) {
+        if (url.includes('://')) {
+            var domain = url.split('://')[1]
+            if (domain.includes('/')) domain = domain.split('/')[0]
+            if (new URL(`https://${domain}`) !== Astro.site) {
+                target = '_black'
+            }
+        }
+        else if (!url.endsWith('/')) url += '/'
+        // if (url.endsWith('/')) url = url.slice(0, -1)
+    }
+    else if (!!url === false) {
+        url = '/'
+
+        if (name !== 'Home') {
+            url += name.toLowerCase()
+        }
+    }
+
+    var primaryCls = ''
+    if (url === currentPath) primaryCls = ' primary'
+
+
+    return { url, target, primaryCls, name }
+}
+
+// Data processing
+var processedItems = items.map(processNavItem)
+
+---
+
+<!-- Navigation content component -->
+{
+    processedItems.map((item: { url: string; target: string; primaryCls: string; name: string }) => 
+        <a href={item.url} class={`btn nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
+    )
+}

@@ -1,67 +1,112 @@
 ---
+// Imports
 import '../styles/pages/projects.scss'
-
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
+import getFName from '../lib/getFName'
+import sanitizeMD from '../lib/sanitizeMD'
+import type { ProjectCategoryConfig, PortfolioItem } from '../lib/types'
 
-import getFName from '../../content/getFName'
+// Helper functions
+// Helper function to determine link target based on URL
+function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
+    let target = '_blank'
+    
+    // Handle protocol-relative URLs
+    if (url.startsWith('//')) {
+        url = `https:${url}`
+    }
+    
+    // Extract domain from URL
+    let domain = url
+    if (domain.includes('://')) {
+        domain = domain.split('://')[1]
+        if (domain.includes('/')) {
+            domain = domain.split('/')[0]
+        }
+        if (domain.startsWith('www.')) {
+            domain = domain.slice('www.'.length)
+        }
+        domain = `https://${domain}`
+    }
+    
+    // Check if it's an internal link
+    if (!url.includes(':') || domain === siteUrl?.toString()) {
+        target = '_self'
+    }
+    
+    return target
+}
 
-var categories = []
-var projects = [
+// Helper function to generate screenshot image URL
+function generateScreenshotUrl(url: string, imageSize: number = 512): string {
+    return `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+}
+
+// Helper function to filter out hidden items
+function filterVisibleItems(items: PortfolioItem[]): PortfolioItem[] {
+    return items.filter(item => {
+        const name = getFName(item.file)
+        return !name.startsWith('_')
+    })
+}
+
+// Configuration and data loading
+// Project categories configuration
+const projectCategories: ProjectCategoryConfig[] = [
     {
         id: 'games', 
         name: 'Games',
-        items: await Astro.glob('../../content/work/projects/games/*.md')
+        items: Object.values(import.meta.glob('../../content/work/projects/games/*.md', { eager: true })) as PortfolioItem[]
     },
     {
         id: 'large-scale', 
         name: 'Large Scale',
-        items: await Astro.glob('../../content/work/projects/large-scale/*.md')
+        items: Object.values(import.meta.glob('../../content/work/projects/large-scale/*.md', { eager: true })) as PortfolioItem[]
     },
     {
         id: 'utilities', 
         name: 'Utilities',
-        items: await Astro.glob('../../content/work/projects/utilities/*.md')
+        items: Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })) as PortfolioItem[]
     }
 ]
 
-var allProjects = await Astro.glob('../../content/work/projects/*/*.md')
+// Load all projects for reference
+const allProjectsObj = import.meta.glob('../../content/work/projects/*/*.md', { eager: true })
+const allProjects: PortfolioItem[] = Object.values(allProjectsObj) as PortfolioItem[]
 
 ---
+
+<!-- Projects Page -->
 <Layout title="Projects">
     {
-        projects.map((category, i) => {
+        projectCategories.map((category, categoryIndex) => {
+            // Filter out hidden items for this category
+            const visibleItems = filterVisibleItems(category.items)
+            
             return (
                 <section class="category">
                     <h3 class="category__title">{category.name}</h3>
                     <SiteGridContent classItems="wrap">
                         {
-                            category.items.map((item, i2) => {
-                                var name = getFName(item.file)
-                                if (name.startsWith('_')) return ''
-
-                                var target = '_blank'
-                                var url = item.frontmatter.url
-                                if (url.startsWith('//')) url = `https:${url}`
-
-                                var domain = url
-                                if (domain.includes('://')) {
-                                    domain = domain.split('://')[1]
-                                    if (domain.includes('/')) domain = domain.split('/')[0]
-                                    if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
-                                    domain = `https://${domain}`
-                                }
+                            visibleItems.map((item, itemIndex) => {
+                                const projectName = getFName(item.file)
+                                const projectUrl = item.frontmatter.url
+                                const linkTarget = determineLinkTarget(projectUrl, Astro.site)
+                                const screenshotUrl = generateScreenshotUrl(projectUrl)
+                                const placeholderUrl = `${screenshotUrl}&image_quality=50`
                                 
-                                if (!url.includes(':') || domain === Astro.site) target = 'self'
-
-                                var imageSize = 512
-                                var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
                                 return (
-                                    <a href={url} target={target} class="item">
-                                        <img src={image_url} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
+                                    <a href={projectUrl} target={linkTarget} class="item">
+                                        <img 
+                                            src={screenshotUrl} 
+                                            alt={`Screenshot of ${item.frontmatter.name}`} 
+                                            class="item__img" 
+                                            style={`--placeholder: url('${placeholderUrl}')`} 
+                                        />
                                         <div class="item__info">
                                             <h3 class="item__title">{item.frontmatter.name}</h3>
-                                            <p class="item__content">{item.rawContent()}</p>
+                                            <p class="item__content">{sanitizeMD(item.rawContent())}</p>
                                         </div>
                                     </a>
                                 )

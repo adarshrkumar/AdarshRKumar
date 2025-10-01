@@ -1,27 +1,50 @@
 ---
+// Imports
 import '../styles/components/fullAreaIframe.scss'
-
 import Layout from '../layouts/Layout.astro'
-
 import Hero from '../components/hero.astro'
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
+import type { PageSection } from '../lib/types'
+
+// Page configuration
+// Page sections configuration
+const pageSections: Record<string, PageSection> = {
+    portfolio: {
+        title: "Featured Portfolio Items",
+        className: "pHighlights"
+    },
+    blog: {
+        title: "Featured Blog Posts", 
+        className: "bFeatures"
+    }
+}
+
+// Future sections (commented out for now)
+const futureSections = [
+    "Latest Blog Posts",
+    "Photography Showcase", 
+    "Skills Overview",
+    "Featured Project",
+    "Tutorials and Resources (If Any)",
+    "Newsletter Signup"
+]
 
 ---
+
+<!-- Home Page Layout -->
 <Layout title="" pageType="home">
     <Hero />
-    <section class="section pHighlights">
-        <h2 class="section-title">Featured Portfolio Items</h2>
+    
+    <section class={`section ${pageSections.portfolio.className}`}>
+        <h2 class="section-title">{pageSections.portfolio.title}</h2>
         <PortfolioHighlights />
     </section>
-    <section class="section bFeatures">
-        <h2 class="section-title">Featured Blog Posts</h2>
+    
+    <section class={`section ${pageSections.blog.className}`}>
+        <h2 class="section-title">{pageSections.blog.title}</h2>
         <FeaturedArticles />
     </section>
-    <!-- Latest Blog Posts -->
-    <!-- Photography Showcase -->
-    <!-- Skills Overview -->
-    <!-- Featured Project -->
-    <!-- Tutorials and Resources (If Any) -->
-    <!-- Newsletter Signup -->
+    
+    <!-- Future sections: {futureSections.join(', ')} -->
 </Layout>

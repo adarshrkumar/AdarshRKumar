@@ -1,15 +1,17 @@
+// About and contact page styling
 .about, .contact {
+    // Custom properties
     --pad: 2rem;
     --max: 1000px;
 
+    // Layout properties
     margin-inline: auto;
     box-sizing: border-box;
     padding-inline: var(--pad);
-
     width: min(calc(90% - var(--pad)), var(--max));
-
 }
 
+// About page content styling
 .about > p {
     max-width: 100%;
     color: var(--color);
@@ -18,16 +20,18 @@
     text-align: center;
 }
 
+// Contact page specific styling
 .contact {
+    // Custom properties
     --max: 500px;
+    
+    // Layout properties
     box-sizing: border-box;
-
     margin-block: 0;
-
     padding-block: var(--pad);
-
     border-radius: var(--pad);
 
+    // Visual properties
     background-color: var(--color);
     color: var(--bg);
 }

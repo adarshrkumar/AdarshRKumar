@@ -1,9 +1,12 @@
 {
+    // Extend Astro's base TypeScript configuration
     "extends": "astro/tsconfigs/base",
     "compilerOptions": {
+        // Enable strict type checking
         "strict": true,
-        "strictNullChecks": true, // add if using `base` template
-        "allowJs": true // required, and included with all Astro templates
+        "strictNullChecks": true, // Add if using `base` template
+        "allowJs": true // Required, and included with all Astro templates
     },
+    // Exclude build directories and dependencies
     "exclude": ["node_modules", "dist"]
 }

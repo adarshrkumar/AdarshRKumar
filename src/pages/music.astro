@@ -1,32 +1,56 @@
 ---
+// Imports
 import '../styles/pages/music.scss'
-
 import Layout from '../layouts/Layout.astro'
-
 import SiteGridContent from '../components/siteGridContent.astro'
 import ChannelVideos from '../components/channelVideos.astro'
+import type { MusicPlaylistConfig, GridOptions } from '../lib/types'
 
+// Configuration
+// Music playlist configuration
+const musicConfig: MusicPlaylistConfig = {
+    playlists: [
+        'https://embed.music.apple.com/us/playlist/on-the-road-s/pl.u-r2yBDVqsRy4JPxe', 
+        'https://embed.music.apple.com/us/playlist/daytime-hits-s/pl.u-06oxpo6tY48JWV7', 
+        'https://embed.music.apple.com/us/playlist/rise-shine-s/pl.u-MDAWkl9tANVeW83', 
+    ],
+    channelId: "UCHUWd3IuPu3P21XkDW8vSuQ",
+    videosPerChannel: 3
+}
 
-var playlists = [
-    'https://embed.music.apple.com/us/playlist/on-the-road-s/pl.u-r2yBDVqsRy4JPxe', 
-    'https://embed.music.apple.com/us/playlist/daytime-hits-s/pl.u-06oxpo6tY48JWV7', 
-    'https://embed.music.apple.com/us/playlist/rise-shine-s/pl.u-MDAWkl9tANVeW83', 
-]
+// Grid options for different sections
+const videoGridOptions: GridOptions = {
+    min: '4rem', 
+    max: '16rem'
+}
+
+const musicGridOptions: GridOptions = {
+    min: '4rem', 
+    max: '34rem'
+}
 
 ---
-<Layout title="My Music">
+
+<!-- Music Page -->
+<Layout title="My Music" classItems="music-area">
     <h2 class="section-title">My Performances</h2>
-    <SiteGridContent classItems="videos" options={{keys: ['min', 'max'], values: {min: '4rem', max: '495px'}}}>
-        {
-            <ChannelVideos id="UCHUWd3IuPu3P21XkDW8vSuQ" vidsPerChannel={3} />
-        }
+    <SiteGridContent classItems="videos" options={videoGridOptions}>
+        <ChannelVideos id={musicConfig.channelId} vidsPerChannel={musicConfig.videosPerChannel} />
     </SiteGridContent>
+    
     <h2 class="section-title">My Music Taste</h2>
-    <SiteGridContent classItems="music" options={{min: '4rem', max: '660px'}}>
+    <SiteGridContent classItems="music" options={musicGridOptions}>
         {
-          playlists.map(p => {
-            return <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src={p}></iframe>
-          })
+            musicConfig.playlists.map(playlistUrl => {
+                return (
+                    <iframe 
+                        allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                        frameborder="0" 
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                        src={playlistUrl}
+                    />
+                )
+            })
         }
     </SiteGridContent>
 </Layout>

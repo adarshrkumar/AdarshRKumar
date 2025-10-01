@@ -1,33 +1,51 @@
+// Imports
 import rss from '@astrojs/rss'
+import age from '../lib/getAge'
+import sanitizeMD from '../lib/sanitizeMD'
+import { getPostsForRSS } from '../lib/getPosts'
+import type { PostForRSS, AstroContext } from '../lib/types'
 
-const items = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
-const keys = Object.keys(items)
-const posts = Object.values(items)
+// Helper functions
+// Helper function to clean and normalize about content
+function cleanAboutContent(content: string): string {
+    let cleanedContent = content
+        .replaceAll('{ age }', age.toString())
+        .replaceAll('  ', ' ')
+        .replaceAll(' \n', ' ')
+        .replaceAll('\n', ' ')
+    
+    // Remove leading and trailing spaces
+    while (cleanedContent.startsWith(' ')) {
+        cleanedContent = cleanedContent.slice(1)
+    }
+    while (cleanedContent.endsWith(' ')) {
+        cleanedContent = cleanedContent.slice(0, -1)
+    }
+    
+    return cleanedContent
+}
 
-import age from '../../content/getAge'
-
+// Data loading and processing
+// Load about content
 const aboutFile = await import('../../content/aboutContent.md')
-let aboutContent = aboutFile.rawContent().replaceAll('{ age }', age.toString()).replaceAll('  ', ' ').replaceAll(' \n', ' ').replaceAll('\n', ' ')
-while (aboutContent.startsWith(' ')) aboutContent = aboutContent.slice(1)
-while (aboutContent.endsWith(' ')) aboutContent = aboutContent.slice(0, -1)
+const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 
-export async function GET(context: any) {
+// Get posts for RSS
+const postsForRSS = getPostsForRSS()
+
+// RSS feed generation
+export async function GET(context: AstroContext) {
     return rss({
         title: 'Buzz\'s Blog',
         description: aboutContent,
         site: context.site,
         trailingSlash: context.trailingSlash,
-        items: posts.map((post: any, i: number) => {
-            let id = keys[i]
-            const sw = `../../content/blog/posts/`
-            if (id) if (id.startsWith(sw)) id = id.slice(sw.length)
+        items: postsForRSS.map((post: PostForRSS) => {
             return {
-                title: post.frontmatter.title,
-                pubDate: post.frontmatter.pubDate,
-                description: post.frontmatter.description,
-                // Compute RSS link from post `id`
-                // This example assumes all posts are rendered as `/blog/[id]` routes
-                link: `/post/${id}/`,
+                title: post.frontmatter.title || 'Untitled',
+                pubDate: post.frontmatter.pubDate ? new Date(post.frontmatter.pubDate) : new Date(),
+                description: post.frontmatter.description || '',
+                link: post.link,
             }
         }),
     })
