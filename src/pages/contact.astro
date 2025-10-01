@@ -2,8 +2,6 @@
 // Imports
 import '../styles/pages/[about, contact].scss'
 
-import { nanoid } from 'nanoid'
-
 import Layout from '../layouts/Layout.astro'
 
 import Input from '../defaultComponents/Input.astro'
@@ -22,17 +20,6 @@ const formConfig: FormConfig = {
     method: "POST",
     className: "contact"
 }
-
-// Generate current date/time and random ID
-const now = new Date()
-const year = now.getFullYear()
-const month = String(now.getMonth() + 1).padStart(2, '0')
-const day = String(now.getDate()).padStart(2, '0')
-const hours = String(now.getHours()).padStart(2, '0')
-const minutes = String(now.getMinutes()).padStart(2, '0')
-const dateString = `${year}-${month}-${day}+${hours}:${minutes}`
-const randomId = nanoid()
-
 
 // Form field configurations
 const formFields: Record<string, FormField> = {
@@ -107,30 +94,6 @@ const formFields: Record<string, FormField> = {
             id={formFields.message.id}
             placeholder={formFields.message.placeholder}
             required={formFields.message.required}
-        />
-        
-        <input 
-            type="text" 
-            name="entry.1290678673" 
-            id="email-subject" 
-            value="Contact Form Submission" 
-            readonly
-        />
-        
-        <input 
-            type="text" 
-            name="entry.352902831" 
-            id="random-id" 
-            value={randomId} 
-            readonly
-        />
-        
-        <input 
-            type="text" 
-            name="entry.1741855386" 
-            id="date-time" 
-            value={dateString} 
-            readonly
         />
         
         <Input 
