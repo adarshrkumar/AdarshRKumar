@@ -199,11 +199,14 @@ const randomId = nanoid()
         // Handle iframe load event
         iframe.onload = () => {
             console.log('Form submitted successfully')
-            form.reset()
-            document.body.removeChild(iframe)
+            setTimeout(() => {
+                form.reset()
+                document.body.removeChild(iframe)
+            }, 10000)
         }
         
         // Submit the form
+
         form.submit()
     }
 </script>
