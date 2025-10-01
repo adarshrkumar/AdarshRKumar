@@ -16,9 +16,9 @@ const postsWithMetadata = getPostsForDisplay(Astro.site)
 <Layout title="Blog">
     <SiteGridContent classItems="posts">
         {
-            postsWithMetadata.map(post => {
+            postsWithMetadata.map(async post => {
                 // Process text content for preview
-                const rawTextContent = sanitizeMD(post.rawContent())
+                const rawTextContent = sanitizeMD(await post.rawContent())
                 const cleanedTextContent = cleanTextContent(rawTextContent)
                 const previewContent = createPreviewContent(cleanedTextContent)
                 

@@ -50,7 +50,7 @@ const authorInfo = getAuthorInfo(authors, authorUsername || '');
     </section>
     <section class="post-area">
         <div class="scroll-percentage"></div>
-        <article class="post-content" set:html={currentPost.compiledContent?.() || ''}></article>
+        <article class="post-content" set:html={await currentPost.compiledContent?.() || ''}></article>
         <section class="giscus" />
         <script 
             src="https://giscus.app/client.js"

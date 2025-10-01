@@ -83,7 +83,7 @@ const cssClassName = cleanCSSClass(`page-area main-content ${finalClassItems}`)
 import age from '../lib/getAge'
 
 const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
+const aboutContent = cleanAboutContent(sanitizeMD(await aboutFile.rawContent()))
 
 const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
