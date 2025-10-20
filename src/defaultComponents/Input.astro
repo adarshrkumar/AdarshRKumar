@@ -25,12 +25,18 @@ const valueInputs = [
     'color'
 ]
 
+let groupStyle = ''
+
+if (type --- 'honeypot') {
+    groupStyle += 'display:none;visibility:hidden'
+}
+
 ---
 
 <!-- Input component -->
 {
     (((await Astro.slots.render('default') && !valueInputs.includes(type ?? '')) || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
-     ? <div class="formGroup">
+     ? <div class="formGroup" style={groupStyle}>
         {valueInputs.includes(type ?? '') ? <label for={id} set:html={label} /> : <label for={id}><slot /></label>}
         {
             type === 'file'

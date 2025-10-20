@@ -41,6 +41,13 @@ const formFields: Record<string, FormField> = {
         align: "left",
         label: "Email: "
     },
+    subject: {
+        type: "honeypot" as const,
+        label: "Subeject:",
+        name: "",
+        id: "subject",
+        required: "FALSE"
+    },
     message: {
         type: "textarea" as const,
         label: "Message:",
@@ -84,6 +91,15 @@ const formFields: Record<string, FormField> = {
             align={formFields.email.align as "left" | "right" | "center" | undefined}
         >
             {formFields.email.label}
+        </Input>
+        
+        <Input 
+            type={formFields.subject.type as HTMLInputTypeAttribute} 
+            name={formFields.subject.name} 
+            id={formFields.subject.id} 
+            required={formFields.subject.required} 
+        >
+            {formFields.subject.label}
         </Input>
         
         <TextArea 
