@@ -53,6 +53,7 @@ const authorInfo = getAuthorInfo(authors, authorUsername || '');
         <article class="post-content" set:html={await currentPost.compiledContent?.() || ''}></article>
         <section class="giscus" />
         <script 
+            is:inline
             src="https://giscus.app/client.js"
             data-repo="adarshrkumar/blog-comments"
             data-repo-id="R_kgDOONF60Q"

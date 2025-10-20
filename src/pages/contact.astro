@@ -16,54 +16,54 @@ type HTMLInputTypeAttribute = HTMLAttributes<'input'>['type']
 // Configuration
 // Form configuration
 const formConfig: FormConfig = {
-    action: "https://docs.google.com/forms/d/e/1FAIpQLSfleYNKUZ6MfijVAEwcIT1Gga4aOhrElpEdayw3_z_vLrs1GA/formResponse",
-    method: "POST",
-    className: "contact"
+    action: 'https://docs.google.com/forms/d/e/1FAIpQLSfleYNKUZ6MfijVAEwcIT1Gga4aOhrElpEdayw3_z_vLrs1GA/formResponse',
+    method: 'POST',
+    className: 'contact'
 }
 
 // Form field configurations
 const formFields: Record<string, FormField> = {
     name: {
-        type: "text" as const,
-        name: "entry.183817893",
-        id: "name",
+        type: 'text' as const,
+        name: 'entry.183817893',
+        id: 'name',
         placeholder: "What's your name?",
-        required: "TRUE",
-        align: "left",
-        label: "Name: "
+        required: 'TRUE',
+        align: 'left',
+        label: 'Name: '
     },
     email: {
-        type: "email" as const,
-        name: "entry.1021394857",
-        id: "email",
-        placeholder: "you@email.tld",
-        required: "TRUE",
-        align: "left",
-        label: "Email: "
+        type: 'email' as const,
+        name: 'entry.1021394857',
+        id: 'email',
+        placeholder: 'you@email.tld',
+        required: 'TRUE',
+        align: 'left',
+        label: 'Email: '
     },
     subject: {
-        type: "honeypot" as const,
-        label: "Subeject:",
-        name: "",
-        id: "subject",
-        required: "FALSE"
+        type: 'honeypot' as const,
+        label: 'Subeject:',
+        name: 'entry.628171460',
+        id: 'subject',
+        required: 'FALSE'
     },
     message: {
-        type: "textarea" as const,
-        label: "Message:",
-        name: "entry.1554105426",
-        id: "message",
-        placeholder: "Type here...",
-        required: "TRUE"
+        type: 'textarea' as const,
+        label: 'Message:',
+        name: 'entry.1554105426',
+        id: 'message',
+        placeholder: 'Type here...',
+        required: 'TRUE'
     },
     submit: {
-        type: "submit" as const,
-        name: "submit",
-        id: "submit",
-        value: "Send",
-        className: "contact-button",
-        align: "right",
-        style: "cursor: pointer; margin-left: auto;"
+        type: 'submit' as const,
+        name: 'submit',
+        id: 'submit',
+        value: 'Send',
+        className: 'contact-button',
+        align: 'right',
+        style: 'cursor: pointer; margin-left: auto;'
     }
 }
 ---
@@ -77,7 +77,7 @@ const formFields: Record<string, FormField> = {
             id={formFields.name.id} 
             placeholder={formFields.name.placeholder} 
             required={formFields.name.required} 
-            align={formFields.name.align as "left" | "right" | "center" | undefined}
+            align={formFields.name.align as 'left' | 'right' | 'center' | undefined}
         >
             {formFields.name.label}
         </Input>
@@ -88,7 +88,7 @@ const formFields: Record<string, FormField> = {
             id={formFields.email.id} 
             placeholder={formFields.email.placeholder} 
             required={formFields.email.required} 
-            align={formFields.email.align as "left" | "right" | "center" | undefined}
+            align={formFields.email.align as 'left' | 'right' | 'center' | undefined}
         >
             {formFields.email.label}
         </Input>
@@ -116,7 +116,7 @@ const formFields: Record<string, FormField> = {
             type={formFields.submit.type as HTMLInputTypeAttribute} 
             value={formFields.submit.value} 
             class={formFields.submit.className} 
-            align={formFields.submit.align as "left" | "right" | "center" | undefined} 
+            align={formFields.submit.align as 'left' | 'right' | 'center' | undefined} 
             style={formFields.submit.style}
         />
     </form>
