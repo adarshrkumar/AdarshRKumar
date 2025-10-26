@@ -30,7 +30,7 @@ $min: 12rem;
     display: grid;
     gap: $gap;
     margin-inline: auto;
-    max-width: max(100%, var(--min, 1000px));
+    max-width: var(--maxWidth, max(100%, var(--min, 1000px)));
     justify-content: center;
 
     // Grid template columns with browser compatibility
@@ -68,7 +68,7 @@ $min: 12rem;
 // Grid items
 .item {
     box-sizing: border-box;
-    padding: $spacing-md;
+    padding: $spacing-lg;
 
     display: flex;
     flex-direction: column;
@@ -76,21 +76,41 @@ $min: 12rem;
     gap: $spacing-md;
 
     background: var(--middle-color);
-    color: inherit;
-    border-radius: $gap;
+    color: var(--bg);
+    border-radius: $border-radius-lg;
     text-decoration: inherit;
+
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition:
+        transform 0.3s $transition-timing,
+        box-shadow 0.3s $transition-timing,
+        background-color 0.3s $transition-timing;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px var(--shadow-color);
+        background: var(--middle-hover);
+    }
 
     // Item image
     &__img {
         width: 100%;
         aspect-ratio: 1;
-        border-radius: $gap - $spacing-md;
+        border-radius: $border-radius-md;
+        overflow: hidden;
 
         // Background image properties
         background-image: var(--placeholder, url('/assets/placeholder.svg'));
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s $transition-timing;
+    }
+
+    &:hover &__img {
+        transform: scale(1.05);
     }
 
     // Item info container

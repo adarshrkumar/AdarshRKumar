@@ -9,7 +9,7 @@ import type { HTMLString } from 'astro/runtime/server/escape.js';
 export interface Props extends Omit<HTMLAttributes<'input'>, 'type'> {
     align?: 'left' | 'center' | 'right';
     label?: HTMLString | String;
-    type?: HTMLAttributes<'input'>['type'] | 'honeypot';
+    type?: HTMLAttributes<'input'>['type'];
 }
 
 // Component props and configuration
@@ -26,7 +26,7 @@ const valueInputs = [
 
 let groupStyle = ''
 
-if (type === 'honeypot') {
+if ((type as typeof type | 'honeypot') === 'honeypot') {
     groupStyle += 'display:none;visibility:hidden'
 }
 
@@ -47,8 +47,8 @@ const shouldShowFormGroup = ((hasSlotContent || (valueInputs.includes(type ?? ''
              ? <div class="file">
                 <label for={id} class="customInput">Choose File</label><input {...attrs} />
             </div>
-             : valueInputs.includes(type ?? '') ? <input value={slotContent} {...attrs} /> : <input {...attrs} />
+             : valueInputs.includes(type ?? '') ? <input type={type} value={slotContent} {...attrs} /> : <input type={type} {...attrs} />
         }
     </div>
-     : valueInputs.includes(type ?? '') ? <input value={slotContent} {...attrs} /> : <input {...attrs} />
+     : valueInputs.includes(type ?? '') ? <input type={type} value={slotContent} {...attrs} /> : <input type={type} {...attrs} />
 }
