@@ -1,35 +1,74 @@
-// Color variables
+// ============================================
+// VARIABLES
+// Design system configuration
+// ============================================
+
+// --------------------------------------------
+// Spacing
+// --------------------------------------------
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+
+// --------------------------------------------
+// Typography
+// --------------------------------------------
+$font-family-base: 'Montserrat', sans-serif;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+
+// --------------------------------------------
+// Layout
+// --------------------------------------------
+$max-content-width: 1200px;
+$max-post-width: 800px;
+
+$border-radius-lg: 1rem;
+$border-radius-full: 100vw;
+
+// --------------------------------------------
+// Animation
+// --------------------------------------------
+$transition-base: 0.3s;
+$transition-timing: ease-out;
+
+// --------------------------------------------
+// Colors
+// --------------------------------------------
 $change-amt: 25%;
 
-// Main lightness values
 $main-bg-lightness: 100%;
 $main-bg-darkness: 100%;
 $main-bdr-darkness: 75%;
 $main-color-lightness: 15%;
 
-// Middle color
 $middle-lightness: 45%;
 $middle-color: hsl(0, 0%, $middle-lightness);
 
-// Light theme colors
+// Light theme
 $light-bg: hsl(0, 0%, $main-bg-lightness);
 $light-color: hsl(0, 0%, $main-color-lightness);
 $light-nav-hover: lighten($light-color, $change-amt);
-
-// Light theme link colors
 $light-link-color: #0000EE;
 $light-link-visited: #551A8B;
 
-// Dark theme colors
+// Dark theme
 $dark-bg: hsl(0, 0%, $main-color-lightness);
 $dark-color: hsl(0, 0%, $main-bg-darkness);
 $dark-border: hsl(0, 0%, $main-bdr-darkness);
 $dark-nav-hover: darken($dark-color, $change-amt);
-
-// Dark theme link colors
 $dark-link-color: #0000EE;
 $dark-link-visited: #551A8B;
 
-// Special colors
+// Accent colors
 $logo-a-color: hsl(195 12% 94%);
 $primary-btn-clr: hsl(352 68% 77%);
+
+// --------------------------------------------
+// Z-index
+// --------------------------------------------
+$z-index-tooltip: 700;

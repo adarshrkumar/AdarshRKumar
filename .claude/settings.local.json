@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm install)",
-      "Bash(npm audit fix)"
+      "Bash(npm audit fix)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

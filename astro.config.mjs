@@ -1,7 +1,10 @@
 // Imports
 
 import { defineConfig } from 'astro/config';
+
+import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+
 import path from 'path';
 import fs from 'fs';
 import updateImages from './update';
@@ -68,6 +71,7 @@ export default defineConfig({
     site: 'https://adarshrkumar.dev',
     base: '/',
     trailingSlash: 'always',
+    adapter: vercel(),
     integrations: [sitemap()],
     vite: {
         server: {

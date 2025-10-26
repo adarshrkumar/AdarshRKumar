@@ -1,34 +1,32 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
 // Theme switcher styles
 .theme-switcher {
-    // Custom properties
     --pos: 30px;
     --size: 30px;
     --icon-size: 20px;
     --shadow-size: 10px;
     --padding: calc((var(--size) - var(--icon-size))/2);
-    
-    // Positioning
+
     position: fixed;
     bottom: var(--pos);
     left: var(--pos);
 
-    // Layout properties
     box-sizing: border-box;
     padding: var(--padding);
     width: var(--size);
     height: var(--size);
     aspect-ratio: 1;
 
-    // Visual properties
     background-color: var(--color);
     border-radius: 50%;
-    box-shadow: 
+    box-shadow:
         0 0 var(--shadow-size) 0 var(--color),
         0 0 calc(var(--shadow-size)*2) calc(var(--shadow-size)*2) var(--bg);
 
-    // Interactive properties
     cursor: pointer;
-    z-index: calc(9 * pow(10, 10));
+    z-index: $z-index-tooltip;
 
     // Icon styling
     .icon {

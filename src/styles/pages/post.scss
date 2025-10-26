@@ -1,3 +1,6 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
 // Scroll timeline
 html {
     scroll-timeline: --page-scroll block;
@@ -5,12 +8,12 @@ html {
 
 // Post layout variables
 .post, .page-title:has(+ .post) {
-    --pad: 1rem;
+    --pad: #{$spacing-md};
     --bor: 0.09375rem solid var(--color);
 
     box-sizing: border-box;
     margin-inline: auto;
-    width: clamp(500px, 100%, 800px);
+    width: clamp(500px, 100%, $max-post-width);
 }
 
 // Post borders
