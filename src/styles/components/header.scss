@@ -4,53 +4,53 @@
     initial-value: false;
 }
 
+@import '../variables.scss';
+@import '../mixins.scss';
+
 // Header navigation bar
 .header {
     // Custom properties
     --shadow-size: 10px;
 
     // Layout properties
-    padding: 2rem 4rem;
+    padding: $spacing-xl $spacing-3xl;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    place-items: center;
-    gap: 1rem;
+    align-items: center;
+    gap: $spacing-md;
 
     // Border styling
     border-bottom: solid 1px var(--bdr-clr, var(--color));
 
     // Responsive design
-    @media (max-width: 640px) {
+    @include respond-below(mobile) {
         grid-template-columns: 1fr;
     }
 
     // Logo link
     .logo-link {
-        // Layout properties
         display: block;
         width: 5rem;
+        height: 5rem;
         aspect-ratio: 1;
 
-        // Visual properties
         color: var(--logo-a-color);
         background-color: var(--color);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        border-radius: 100%;
+        border-radius: 50%;
         box-shadow: 0 0 var(--shadow-size) 0 var(--color);
 
-        // Transitions
-        transition: border-radius 1s ease-out;
+        transition: border-radius 1s $transition-timing;
 
-        // Logo styling
         .logo {
             display: inherit;
             border-radius: inherit;
         }
 
-        // Interactive states
         &:is(:hover, :focus) {
             border-radius: 25%;
             outline: solid 1px var(--color);

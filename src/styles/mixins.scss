@@ -1,0 +1,85 @@
+// ============================================
+// MIXINS
+// Semantic, reusable SCSS patterns
+// ============================================
+
+// --------------------------------------------
+// Media Queries
+// --------------------------------------------
+
+$breakpoints: (
+  'mobile': 640px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'wide': 1280px
+);
+
+@mixin respond-above($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint) - 1px}) {
+      @content;
+    }
+  }
+}
+
+// --------------------------------------------
+// Typography
+// --------------------------------------------
+
+@mixin heading-base {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@mixin body-text {
+  font-size: $font-size-base;
+  line-height: 1.6;
+}
+
+// --------------------------------------------
+// Layout Patterns
+// --------------------------------------------
+
+@mixin card {
+  background: var(--middle-color);
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+}
+
+@mixin centered-content($max-width: $max-content-width) {
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: $spacing-md;
+}
+
+// --------------------------------------------
+// Interactive Elements
+// --------------------------------------------
+
+@mixin button-base {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-full;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    color $transition-base $transition-timing,
+    background-color $transition-base $transition-timing;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--primary-btn-clr);
+    outline-offset: 2px;
+  }
+}

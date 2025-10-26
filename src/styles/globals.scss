@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @import './variables.scss';
+@import './mixins.scss';
 
 :not(nav *):not([class*="-title"]) {
     box-sizing: border-box;
@@ -20,8 +21,8 @@
     --middle-color: #{$middle-color};
     --primary-btn-clr: #{$primary-btn-clr};
     --nav-btn-hover: #{$light-nav-hover};
-    
-    font-family: 'Montserrat', sans-serif;
+
+    font-family: $font-family-base;
 }
 
 
@@ -55,7 +56,6 @@ html, iframe {
   
 body {
     margin: 0;
-
     min-height: 100dvh;
 
     background-color: var(--bg);
@@ -94,27 +94,28 @@ img {
 .content {
     display: flex;
     flex-direction: column;
-    
     gap: 0;
-
     max-width: 100%;
 
     hr {
         margin-inline: auto;
     }
+
     &:not(.isSoon) {
         margin: 0 !important;
     }
 }
 
 .main-content {
-    --pad: 1rem;
+    --pad: #{$spacing-md};
+
     &:not(.author) {
         flex: 1;
     }
 
     box-sizing: border-box;
     max-width: 100%;
+
     &:not(.ignorePadding) {
         padding: var(--pad);
     }
@@ -131,52 +132,48 @@ img {
 
 .btn {
     box-sizing: border-box;
-    padding: 10px 20px;
-  
+    padding: $spacing-sm $spacing-lg;
     min-width: var(--min-width, fit-content);
-  
-    border-radius: 100vw;
-  
-    font-size: 1.25rem;
+
+    border-radius: $border-radius-full;
+
+    font-size: $font-size-xl;
     text-align: center;
     text-decoration: none;
-  
+
     cursor: pointer;
 
-    transition: 
-        color 0.3s ease-out,
-        background-color 0.3s ease-out;
+    transition:
+        color $transition-base $transition-timing,
+        background-color $transition-base $transition-timing;
 
-    
     &:not(.primary) {
         background-color: transparent;
         color: var(--color);
-    
-        border: solid 1px var(--color);    
+        border: solid 1px var(--color);
     }
 
     &.primary {
         background-color: var(--color);
         color: var(--bg);
-        
         border: solid 1px var(--bg);
 
         &:hover {
             background-color: var(--nav-btn-hover);
-            color: var(--bg)
+            color: var(--bg);
         }
     }
-  
+
     &:hover {
         background-color: var(--nav-btn-hover);
-        color: var(--bg)
+        color: var(--bg);
     }
 }
 
 hr[isDivider], .divider {
     --size: var(--s, 100%);
     --stroke: 1px;
-    --mar: 1rem;
+    --mar: #{$spacing-md};
 
     background-color: var(--color);
 
@@ -186,6 +183,7 @@ hr[isDivider], .divider {
         margin-inline: auto;
         margin-block: var(--mar);
     }
+
     &.v {
         height: var(--size);
         width: var(--stroke);
@@ -222,9 +220,10 @@ h1, h2, h3, h4, h5, h6, .heading-link {
 form {
     width: -moz-fit-content;
     width: fit-content;
+
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: $spacing-xl;
 }
   
 fieldset {

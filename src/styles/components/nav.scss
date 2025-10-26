@@ -1,3 +1,6 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
 // Navigation styles
 .nav {
     // Sidebar variant styling
@@ -12,7 +15,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: var(--data-direction, row);
-    gap: 1rem;
+    gap: $spacing-md;
 }
 
 // Navigation buttons

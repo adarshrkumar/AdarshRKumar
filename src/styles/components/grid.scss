@@ -1,6 +1,8 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
 // Grid variables
-$gap: 2rem;
-$padding: 1rem;
+$gap: $spacing-xl;
 $min: 12rem;
 
 // Grid frame styles
@@ -65,15 +67,14 @@ $min: 12rem;
 
 // Grid items
 .item {
-    // Layout properties
     box-sizing: border-box;
-    padding: $padding;
+    padding: $spacing-md;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: $padding;
+    gap: $spacing-md;
 
-    // Visual properties
     background: var(--middle-color);
     color: inherit;
     border-radius: $gap;
@@ -83,7 +84,7 @@ $min: 12rem;
     &__img {
         width: 100%;
         aspect-ratio: 1;
-        border-radius: $gap - $padding;
+        border-radius: $gap - $spacing-md;
 
         // Background image properties
         background-image: var(--placeholder, url('/assets/placeholder.svg'));
@@ -96,7 +97,7 @@ $min: 12rem;
     &__info {
         overflow-x: hidden;
         display: grid;
-        gap: $padding;
+        gap: $spacing-md;
     }
 
     // Common properties for info, title, and content
