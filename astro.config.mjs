@@ -68,6 +68,7 @@ categories.forEach((category, i) => {
 
 // https://astro.build/config
 export default defineConfig({
+    output: 'server',
     site: 'https://adarshrkumar.dev',
     base: '/',
     trailingSlash: 'always',
