@@ -6,36 +6,40 @@ import type { HTMLAttributes } from 'astro/types';
 import type { HTMLString } from 'astro/runtime/server/escape.js';
 
 // Type definitions
-export interface Props extends HTMLAttributes<'input'> {
+export interface Props extends Omit<HTMLAttributes<'input'>, 'type'> {
     align?: 'left' | 'center' | 'right';
     label?: HTMLString | String;
+    type?: HTMLAttributes<'input'>['type'] | 'honeypot';
 }
 
 // Component props and configuration
-const { 
-    id, type, label
+const {
+    id, type, label, ...attrs
 } = Astro.props
-
-const { ...attrs } = Astro.props
 
 const valueInputs = [
     'button',
-    'submit', 
-    'reset', 
+    'submit',
+    'reset',
     'color'
 ]
 
 let groupStyle = ''
 
-if (type --- 'honeypot') {
+if (type === 'honeypot') {
     groupStyle += 'display:none;visibility:hidden'
 }
+
+// Pre-render slot content for value inputs
+const slotContent = await Astro.slots.render('default')
+const hasSlotContent = slotContent && !valueInputs.includes(type ?? '')
+const shouldShowFormGroup = ((hasSlotContent || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
 
 ---
 
 <!-- Input component -->
 {
-    (((await Astro.slots.render('default') && !valueInputs.includes(type ?? '')) || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
+    shouldShowFormGroup
      ? <div class="formGroup" style={groupStyle}>
         {valueInputs.includes(type ?? '') ? <label for={id} set:html={label} /> : <label for={id}><slot /></label>}
         {
@@ -43,9 +47,8 @@ if (type --- 'honeypot') {
              ? <div class="file">
                 <label for={id} class="customInput">Choose File</label><input {...attrs} />
             </div>
-             : <>{async () => valueInputs.includes(type ?? '') ? <input value={await Astro.slots.render('default')} {...attrs} /> : <input {...attrs} />}</>
+             : valueInputs.includes(type ?? '') ? <input value={slotContent} {...attrs} /> : <input {...attrs} />
         }
     </div>
-     : <>{async () => valueInputs.includes(type ?? '') ? <input value={await Astro.slots.render('default')} {...attrs} /> : <input {...attrs} />}</>
-
+     : valueInputs.includes(type ?? '') ? <input value={slotContent} {...attrs} /> : <input {...attrs} />
 }
