@@ -20,14 +20,6 @@ function formatBioText(bio: string): string {
     return bio.includes('\n') ? bio.split('\n').join('<br>') : bio;
 }
 
-// Static path generation
-// Static paths for authors
-export function getStaticPaths() {
-    return [
-        {params: {username: 'adarshrkumar'}}, 
-    ];
-}
-
 // Data loading and processing
 // Get username from URL parameters
 const { username } = Astro.params;

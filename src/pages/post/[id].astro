@@ -14,15 +14,6 @@ function getAuthorInfo(authors: Authors, authorUsername: string) {
     return authors[authorUsername as keyof typeof authors]
 }
 
-// Static path generation
-// Dynamically generate static paths from published posts
-export function getStaticPaths() {
-    const posts = getPosts()
-    return posts.map(post => ({
-        params: { id: extractSlugFromFilePath(post.file) }
-    }))
-}
-
 // Data loading and processing
 // Get post ID from URL parameters
 const { id: postId = '' } = Astro.params;

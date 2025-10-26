@@ -23,18 +23,35 @@ export function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
  * Helper function to extract slug from file path
  */
 export function extractSlugFromFilePath(filePath: string): string {
-    const pathPrefix = 'AdarshRKumar.dev/content/blog/posts/'
-    let slug = filePath
-    
-    const prefixIndex = slug.indexOf(pathPrefix)
-    if (prefixIndex !== -1) {
-        slug = slug.slice(prefixIndex + pathPrefix.length)
+    // Normalize path separators
+    const normalizedPath = filePath.replace(/\\/g, '/')
+
+    // Look for the posts directory in the path
+    const postsMarker = '/content/blog/posts/'
+    let slug = normalizedPath
+
+    const postsIndex = slug.indexOf(postsMarker)
+    if (postsIndex !== -1) {
+        slug = slug.slice(postsIndex + postsMarker.length)
+    } else {
+        // Fallback: just get the filename
+        const parts = normalizedPath.split('/')
+        slug = parts[parts.length - 1] || ''
     }
-    
+
+    // Remove .md extension
     if (slug.endsWith('.md')) {
         slug = slug.slice(0, -'.md'.length)
     }
-    
+
+    // Remove /index if present (for folder-based posts)
+    if (slug.endsWith('/index')) {
+        slug = slug.slice(0, -'/index'.length)
+    }
+
+    // Remove any remaining slashes at start/end
+    slug = slug.replace(/^\/+|\/+$/g, '')
+
     return slug
 }
 
