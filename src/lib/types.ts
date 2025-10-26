@@ -134,6 +134,7 @@ export interface SiteConfig {
 export interface GridOptions {
     min?: string;
     max?: string;
+    maxWidth?: string;
     keys?: string[];
     values?: {
         min?: string;

@@ -87,7 +87,7 @@ const allProjects: PortfolioItem[] = Object.values(allProjectsObj) as PortfolioI
             return (
                 <section class="category">
                     <h3 class="category__title">{category.name}</h3>
-                    <SiteGridContent classItems="wrap">
+                    <SiteGridContent classItems="wrap" options={{ maxWidth: '1200px' }}>
                         {
                             visibleItems.map((item, itemIndex) => {
                                 const projectName = getFName(item.file)

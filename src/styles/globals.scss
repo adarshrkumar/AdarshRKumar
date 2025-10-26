@@ -9,20 +9,27 @@
 
 :root {
     --data-theme: attr(data-theme);
-    
+
     --bg: light-dark(#{$light-bg}, #{$dark-bg});
     --color: light-dark(#{$light-color}, #{$dark-color});
-    
+    --border-color: light-dark(#{$light-border}, #{$dark-border});
+    --shadow-color: light-dark(#{$light-shadow}, #{$dark-shadow});
+
     --logo-a-color: #{$logo-a-color};
     --bg-lightness: #{$main-bg-lightness};
     --color-lightness: #{$main-color-lightness};
-    --bdr-clr: unset;
+    --bdr-clr: var(--border-color);
     --middle-lightness: #{$middle-lightness};
     --middle-color: #{$middle-color};
+    --middle-hover: #{$middle-hover};
     --primary-btn-clr: #{$primary-btn-clr};
-    --nav-btn-hover: #{$light-nav-hover};
+    --accent-color: #{$accent-color};
+    --nav-btn-hover: light-dark(#{$light-nav-hover}, #{$dark-nav-hover});
 
     font-family: $font-family-base;
+    line-height: $line-height-base;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -137,36 +144,51 @@ img {
 
     border-radius: $border-radius-full;
 
-    font-size: $font-size-xl;
+    font-size: $font-size-lg;
+    font-weight: 500;
     text-align: center;
     text-decoration: none;
+    letter-spacing: 0.02em;
 
     cursor: pointer;
 
     transition:
         color $transition-base $transition-timing,
-        background-color $transition-base $transition-timing;
+        background-color $transition-base $transition-timing,
+        border-color $transition-base $transition-timing,
+        transform 0.2s $transition-timing,
+        box-shadow 0.2s $transition-timing;
 
     &:not(.primary) {
         background-color: transparent;
         color: var(--color);
-        border: solid 1px var(--color);
+        border: solid 2px var(--border-color);
+
+        &:hover {
+            background-color: var(--color);
+            color: var(--bg);
+            border-color: var(--color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
     }
 
     &.primary {
         background-color: var(--color);
         color: var(--bg);
-        border: solid 1px var(--bg);
+        border: solid 2px var(--color);
+        box-shadow: 0 2px 8px var(--shadow-color);
 
         &:hover {
             background-color: var(--nav-btn-hover);
-            color: var(--bg);
+            border-color: var(--nav-btn-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-color);
         }
     }
 
-    &:hover {
-        background-color: var(--nav-btn-hover);
-        color: var(--bg);
+    &:active {
+        transform: translateY(0);
     }
 }
 
@@ -194,27 +216,54 @@ hr[isDivider], .divider {
   
 .page-title {
     margin: 0;
-    padding-block: 1.26375rem;
+    padding-block: $spacing-lg;
 
-    border-bottom: 1px solid var(--color);
+    border-bottom: 2px solid var(--border-color);
 
     text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: $line-height-heading;
+    letter-spacing: -0.02em;
 }
 
 .section-title {
-    --bor: 1px solid var(--color);
-
     margin: 0;
-    padding-block: 0.83rem;
+    padding: $spacing-md $spacing-lg;
 
-    border: var(--bor);
+    border: 2px solid var(--border-color);
+    border-radius: $border-radius-md;
+    background: linear-gradient(135deg, transparent 0%, var(--shadow-color) 100%);
 
     text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: $line-height-heading;
+    letter-spacing: -0.01em;
 }
 
-h1, h2, h3, h4, h5, h6, .heading-link {
-    // font-size: 2.5rem;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: $line-height-heading;
+    letter-spacing: -0.01em;
+    margin-top: 0;
+    margin-bottom: $spacing-md;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.125rem; }
+
+.heading-link {
     text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        color: var(--accent-color);
+    }
 }
 
 form {
@@ -261,7 +310,7 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
 /* Skip link for screen readers */
 .skip-link {
     position: absolute;
-    top: -40px;
+    top: #{-40px - 4px};
     left: 6px;
     background: var(--color);
     color: var(--bg);
