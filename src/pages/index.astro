@@ -1,6 +1,7 @@
 ---
 // Imports
 import '../styles/components/fullAreaIframe.scss'
+import '../styles/pages/index.scss'
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/hero.astro'
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
@@ -38,7 +39,10 @@ const readmeContent = await readmeFile.compiledContent()
 
 const dom = new JSDOM(readmeContent);
 const document = dom.window.document;
-document.querySelectorAll('h1')[0].remove()
+document.querySelectorAll('h1')[0]?.remove()
+Array.from(document.querySelectorAll('table'))?.forEach(t => {
+    t.cellSpacing = '0'
+})
 const newReadmeContent = dom.serialize()
 ---
 
@@ -46,7 +50,9 @@ const newReadmeContent = dom.serialize()
 <Layout title="" pageType="home">
     <Hero />
 
-    <section class="readme" set:html={newReadmeContent} />
+    <section class="readme">
+        <div class="readme__content" set:html={newReadmeContent} />
+    </section>
     
     <section class={`section ${pageSections.portfolio.className}`}>
         <h2 class="section-title">{pageSections.portfolio.title}</h2>

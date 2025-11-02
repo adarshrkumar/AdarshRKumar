@@ -1,0 +1,46 @@
+.readme {
+    --br: 2rem;
+    --pad: 1rem;
+
+    --bgColor-default: white;
+    --borderColor-muted: #ccc;
+    --borderColor-default: #aaa;
+
+    max-width: 750px;
+    margin-inline: auto;
+    padding: var(--pad);
+
+    background-color: lightgray;
+
+    border-radius: var(--br);
+
+    &__content {
+        padding: calc(var(--pad) / 2);
+        
+        background-color: white;
+
+        border-radius: calc(var(--br) - var(--pad));
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        width: max-content;
+        max-width: 100%;
+        overflow: auto;
+
+        border: 1px solid var(--borderColor-default);
+
+        tr {
+            background-color: var(--bgColor-default);
+            border-top: 1px solid var(--borderColor-muted);
+            &:nth-child(2n)  {
+                background-color: var(--bgColor-muted);
+            }
+        }
+        th, td {
+            padding: 6px 13px;
+            border: 1px solid var(--borderColor-default);
+        }
+    }
+}
