@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website for Adarsh Kumar built with Astro 5. The site features a blog, photography gallery, project showcase, and portfolio sections. It uses TypeScript, SCSS for styling, and has a custom build process for managing photo content.
+This is a personal portfolio website for Adarsh Kumar built with Astro 5. The site features a blog, photography gallery, project showcase, and portfolio sections. It uses TypeScript, SCSS for styling, and has a custom build process for managing photo content. The site uses server-side rendering (SSR) mode and is deployed on Vercel.
 
 ## Essential Commands
 
@@ -46,6 +46,7 @@ npm run astro ...    # Run Astro CLI commands
 ### Key Architectural Patterns
 
 **Post Management** (`src/lib/getPosts.ts`):
+
 - Uses Vite's `import.meta.glob()` for file-based routing
 - Multiple helper functions for different use cases:
   - `getPosts()`: Raw posts
@@ -56,12 +57,14 @@ npm run astro ...    # Run Astro CLI commands
 - Screenshots generated via external service: `https://webshot.adarshrkumar.dev/take`
 
 **Layout System** (`src/layouts/Layout.astro`):
+
 - Single base layout for all pages
 - Page types: `home`, `post`, `author` (affects title formatting and rendering)
 - Dynamic content injection with `{ age }` placeholder replacement (calculated from `src/lib/getAge.ts`)
 - SEO metadata, Open Graph, and Twitter card support
 
 **Photo Gallery**:
+
 - Categories can be hidden by naming folder `hide`
 - Photos without explicit titles (starting with `IMG_`) get auto-generated titles from filename
 - Build-time processing ensures all photos are accessible via `content/allPhotos/`
@@ -69,9 +72,11 @@ npm run astro ...    # Run Astro CLI commands
 ### Project-Specific Conventions
 
 - **Draft Files**: Prefix with `_` (e.g., `_draft-post.md`) to exclude from builds
-- **TypeScript**: Strict mode enabled, uses Astro's base TypeScript config
+- **TypeScript**: Strict mode enabled, uses Astro's base TypeScript config. All types are centralized in `src/lib/types.ts`
 - **Styling**: Component-specific SCSS in `src/styles/components/`, page-specific in `src/styles/pages/`
 - **Author System**: Multi-author support via `src/lib/authors.ts` and author pages at `/author/[username]`
+- **Helper Functions Pattern**: Files consistently place helper functions at the top before main logic, with clear comments separating sections
+- **Script Execution**: Custom `<Script />` component in `src/utils/script.astro` for inline scripts (uses clever image onerror pattern)
 
 ### Site Configuration
 
@@ -80,9 +85,18 @@ npm run astro ...    # Run Astro CLI commands
 - **CSP Headers**: Configured in Vite dev server with specific allow-lists for external services
 - **External APIs**: RSS feed via rss2json.com, social sharing via ShareThis
 
+## Key Utility Libraries
+
+- **`src/lib/getPosts.ts`**: Comprehensive post management utilities with functions for different use cases (display, RSS, featured posts)
+- **`src/lib/sanitizeMD.ts`**: Markdown sanitization (removes HTML comments)
+- **`src/lib/getAge.ts`**: Calculates current age from birthdate (March 28, 2007), used for dynamic content replacement
+- **`src/lib/types.ts`**: Centralized TypeScript type definitions for all data structures
+- **`src/lib/authors.ts`**: Author configuration and metadata
+
 ## Development Notes
 
 - When adding new photos: Drop image files into appropriate category folder in `content/photos/{category}/`, then run build (update.ts will auto-generate structure)
 - Blog post slugs are derived from markdown filenames in `content/blog/posts/`
 - The site uses custom RSS generation at `/rss.xml` via `src/pages/rss.xml.ts`
 - Theme switching functionality is available via `src/components/themeSwitcher.astro`
+- Dynamic content uses `{ age }` placeholder that gets replaced with calculated age at build time
