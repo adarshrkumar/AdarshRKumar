@@ -15,25 +15,25 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 |Tool|Level|
 |---|---|
-|[![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com)|[![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)|
-|[![Canva](https://skillicons.dev/icons?i=canva)](https://canva.com)|[![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)|
+|[![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)|
+|[![Canva](https://skillicons.dev/icons?i=canva)](https://canva.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)|
 
 ### Other Tools
 
 |Tool|Level|
 |---|---|
-|[![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.com)|[![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50)](https://progress-bar.adarshrkumar.dev/bar.svg?p=50)|
-|[![GCP](https://skillicons.dev/icons?i=gcp)](https://cloud.google.com)|[![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50)](https://progress-bar.adarshrkumar.dev/bar.svg?p=50)|
-|[![Git](https://skillicons.dev/icons?i=git)](https://git-scm.com)|[![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
-|[![GitHub](https://skillicons.dev/icons?i=github)](https://github.com)|[![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95)](https://progress-bar.adarshrkumar.dev/bar.svg?p=95)|
-|[![GitHub Actions](https://skillicons.dev/icons?i=githubactions)](https://github.com/actions)|[![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)|
-|[![Vercel](https://skillicons.dev/icons?i=vercel)](https://vercel.com)|[![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)|
-|[![Visual Studio](https://skillicons.dev/icons?i=visualstudio)](https://visualstudio.com)|[![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
-|[![VS Code](https://skillicons.dev/icons?i=vscode)](https://code.visualstudio.com)|[![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)|
-|[![Cursor](https://akum.site/p/CursorIcon)](https://cursor.com)|[![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99)](https://progress-bar.adarshrkumar.dev/bar.svg?p=99)|
-|[![Cursor](https://skillicons.dev/icons?i=claudecode)](https://claude.ai)|[![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)|
-|[![Windows](https://akum.site/p/WindowsIcon?)](https://akum.site/p/WindowsInfo)|[![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
-|[![Mac](https://akum.site/p/MacLogo)](https://akum.site/p/MacInfo)|[![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
+|[![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.com)|![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50)|
+|[![GCP](https://skillicons.dev/icons?i=gcp)](https://cloud.google.com)|![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50)|
+|[![Git](https://skillicons.dev/icons?i=git)](https://git-scm.com)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
+|[![GitHub](https://skillicons.dev/icons?i=github)](https://github.com)|![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95)|
+|[![GitHub Actions](https://skillicons.dev/icons?i=githubactions)](https://github.com/actions)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)|
+|[![Vercel](https://skillicons.dev/icons?i=vercel)](https://vercel.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)|
+|[![Visual Studio](https://skillicons.dev/icons?i=visualstudio)](https://visualstudio.com)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
+|[![VS Code](https://skillicons.dev/icons?i=vscode)](https://code.visualstudio.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100)|
+|[![Cursor](https://akum.site/p/CursorIcon)](https://cursor.com)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99)|
+|[![Claude Code](https://skillicons.dev/icons?i=claudecode)](https://claude.ai)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80)|
+|[![Windows](https://akum.site/p/WindowsIcon?)](https://akum.site/p/WindowsInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
+|[![Mac](https://akum.site/p/MacLogo)](https://akum.site/p/MacInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75)|
 
 ## Languages
 
