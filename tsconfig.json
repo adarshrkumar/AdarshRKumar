@@ -5,7 +5,10 @@
         // Enable strict type checking
         "strict": true,
         "strictNullChecks": true, // Add if using `base` template
-        "allowJs": true // Required, and included with all Astro templates
+        "allowJs": true, // Required, and included with all Astro templates
+        // Module and target settings for top-level await support
+        "module": "ESNext",
+        "target": "ESNext"
     },
     // Exclude build directories and dependencies
     "exclude": ["node_modules", "dist"]
