@@ -8,7 +8,10 @@
         "allowJs": true, // Required, and included with all Astro templates
         // Module and target settings for top-level await support
         "module": "ESNext",
-        "target": "ESNext"
+        "target": "ESNext",
+        // JSX settings for Astro
+        "jsx": "preserve",
+        "jsxImportSource": "astro"
     },
     // Exclude build directories and dependencies
     "exclude": ["node_modules", "dist"]
