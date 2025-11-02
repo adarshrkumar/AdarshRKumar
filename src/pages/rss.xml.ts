@@ -36,7 +36,7 @@ const postsForRSS = getPostsForRSS()
 // RSS feed generation
 export async function GET(context: AstroContext) {
     return rss({
-        title: 'Buzz\'s Blog',
+        title: 'Adarsh R. Kumar',
         description: aboutContent,
         site: context.site,
         trailingSlash: context.trailingSlash,
