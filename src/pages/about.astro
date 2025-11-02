@@ -8,18 +8,8 @@ import Layout from '../layouts/Layout.astro'
 // Load age first
 import age from '../lib/getAge'
 
-// Helper function to load and process about content
-async function loadAboutContent(): Promise<string> {
-    const aboutFile = (await import('../../content/aboutContent.md'))
-    const rawContent = await aboutFile.compiledContent()
-    
-    // Replace age placeholder with actual age
-    return rawContent.replaceAll('{ age }', age.toString())
-}
-
-// Data loading
-// Load about content
-const aboutContent = await loadAboutContent()
+const aboutFile = await import('../../content/aboutContent.md')
+const aboutContent = (await aboutFile.compiledContent())?.replaceAll('{ age }', age.toString())
 
 ---
 

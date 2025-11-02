@@ -7,6 +7,8 @@ import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
 import type { PageSection } from '../lib/types'
 
+import { JSDOM } from 'jsdom'
+
 // Page configuration
 // Page sections configuration
 const pageSections: Record<string, PageSection> = {
@@ -30,11 +32,21 @@ const futureSections = [
     'Newsletter Signup'
 ]
 
+
+const readmeFile = await import('../../README.md')
+const readmeContent = await readmeFile.compiledContent()
+
+const dom = new JSDOM(readmeContent);
+const document = dom.window.document;
+document.querySelectorAll('h1')[0].remove()
+const newReadmeContent = dom.serialize()
 ---
 
 <!-- Home Page Layout -->
 <Layout title="" pageType="home">
     <Hero />
+
+    <section class="readme" set:html={newReadmeContent} />
     
     <section class={`section ${pageSections.portfolio.className}`}>
         <h2 class="section-title">{pageSections.portfolio.title}</h2>
