@@ -10,7 +10,7 @@ I am excited to announce the launch of my new custom blog service, using which I
 
 ## A Little About Me
 
-For those who don't know me, I am an enthusiast in web development, programming, technology, and photography. I love exploring new ideas, tackling challenges, and sharing my knowledge with others. 
+For those who don't know me, I am an enthusiast in web development, programming, technology, and photography. I love exploring new ideas, tackling challenges, and sharing my knowledge with others.
 
 ## What to Expect
 
