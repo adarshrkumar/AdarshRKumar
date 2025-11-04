@@ -2,22 +2,26 @@
     --br: 2rem;
     --pad: 1rem;
 
-    --bgColor-default: white;
-    --borderColor-muted: #ccc;
-    --borderColor-default: #aaa;
+    --lbg: hsl(from var(--bg) h s calc(l - 5));
+    --dbg: hsl(from var(--bg) h s calc(l + 10));
+    --lmbg: hsl(from var(--bg) h s calc(l - 2.5));
+    --dmbg: hsl(from var(--bg) h s calc(l + 5));
+
+    --mbg: light-dark(var(--lmbg), var(--dmbg));
+    --blbg: light-dark(var(--lbg, var(--bg)), var(--dbg, var(--bg)));
 
     max-width: 750px;
     margin-inline: auto;
     padding: var(--pad);
 
-    background-color: lightgray;
+    background-color: var(--blbg);
 
     border-radius: var(--br);
 
     &__content {
         padding: calc(var(--pad) / 2);
         
-        background-color: white;
+        background-color: var(--bg);
 
         border-radius: calc(var(--br) - var(--pad));
     }
@@ -29,18 +33,59 @@
         max-width: 100%;
         overflow: auto;
 
-        border: 1px solid var(--borderColor-default);
+        border: 1px solid var(--mlbg);
+
+        --br: 1rem;
 
         tr {
-            background-color: var(--bgColor-default);
-            border-top: 1px solid var(--borderColor-muted);
+            background-color: var(--bg);
+            border-top: 1px solid var(--mbg);
             &:nth-child(2n)  {
-                background-color: var(--bgColor-muted);
+                background-color: var(--mbg);
+            }
+        }
+        thead tr:first-child {
+            > :first-child {
+                border-top-left-radius: var(--br);
+            }
+            > :last-child {
+                border-top-right-radius: var(--br);
+            }
+        }
+        tbody tr:last-child {
+            > :first-child {
+                border-bottom-left-radius: var(--br);
+            }
+            > :last-child {
+                border-bottom-right-radius: var(--br);
             }
         }
         th, td {
             padding: 6px 13px;
-            border: 1px solid var(--borderColor-default);
+            border: 1px solid var(--blbg);
+
+            &:last-child {
+                img {
+                    border-radius: 100vw;
+                }
+            }
+        }
+    }
+
+    #social-media + p {
+        font-size: 3.40cqw;
+        text-align: center;
+        vertical-align: middle;
+        text-box-trim: trim-both;
+
+        a, img {
+            display: inline-block;
+            &, * {
+                max-width: 1em;
+            }
+        }
+        img {
+            display: block;
         }
     }
 }

@@ -135,7 +135,7 @@ function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     
     return posts.map(post => {
         const postSlug = extractSlugFromFilePath(post.file)
-        const postUrl = `${siteLocation.protocol}//${siteLocation.host}/post/${postSlug}?hideHeader=true`
+        const postUrl = `${siteLocation.protocol}//${siteLocation.host}/post/${postSlug}/?hideHeader=true`
         const screenshotImage = generateScreenshotImage(postUrl, post.frontmatter.title || 'Untitled Post')
         
         return {
