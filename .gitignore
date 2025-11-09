@@ -27,5 +27,7 @@ pnpm-debug.log*
 .vscode/
 .hintrc
 
+.claude/
+
 # other content
 content/allPhotos
