@@ -8,7 +8,7 @@ import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
 import type { PageSection } from '../lib/types'
 
-import { JSDOM } from 'jsdom'
+import * as cheerio from 'cheerio'
 
 // Page configuration
 // Page sections configuration
@@ -18,7 +18,7 @@ const pageSections: Record<string, PageSection> = {
         className: 'pHighlights'
     },
     blog: {
-        title: 'Featured Blog Posts', 
+        title: 'Featured Blog Posts',
         className: 'bFeatures'
     }
 }
@@ -26,7 +26,7 @@ const pageSections: Record<string, PageSection> = {
 // Future sections (commented out for now)
 const futureSections = [
     'Latest Blog Posts',
-    'Photography Showcase', 
+    'Photography Showcase',
     'Skills Overview',
     'Featured Project',
     'Tutorials and Resources (If Any)',
@@ -37,13 +37,12 @@ const futureSections = [
 const readmeFile = await import('../../README.md')
 const readmeContent = await readmeFile.compiledContent()
 
-const dom = new JSDOM(readmeContent);
-const document = dom.window.document;
-document.querySelectorAll('h1')[0]?.remove()
-Array.from(document.querySelectorAll('table'))?.forEach(t => {
-    t.cellSpacing = '0'
+const $ = cheerio.load(readmeContent);
+$('h1').first().remove()
+$('table').each((i, table) => {
+    $(table).attr('cellspacing', '0')
 })
-const newReadmeContent = dom.serialize()
+const newReadmeContent = $.html()
 ---
 
 <!-- Home Page Layout -->
