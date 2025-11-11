@@ -81,12 +81,15 @@ export interface YouTubeFeed {
     title: string;
 }
 
-// Photo types
+// Photo types (database-backed)
 export interface PhotoMetadata {
     title?: string;
     location?: string;
     info?: string;
     fullname?: string;
+    name?: string;
+    category?: string;
+    uploader?: string;
 }
 
 export interface PhotoImport {
@@ -100,6 +103,21 @@ export interface PhotoItem {
     fullname?: string;
     import?: PhotoImport;
     data?: PhotoMetadata;
+}
+
+// Database photo type (from Drizzle schema)
+export interface DBPhoto {
+    id: string;
+    name: string;
+    fullname: string;
+    extention: string;
+    category: string;
+    title: string;
+    uploader: string;
+    imageKey: string;
+    imageUrl: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 // Form types

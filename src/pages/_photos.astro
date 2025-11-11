@@ -2,107 +2,34 @@
 // Imports
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
-import { getImage } from 'astro:assets'
 import '../styles/pages/photos.scss'
-import type { PhotoItem, PhotoMetadata, PhotoImport } from '../lib/types'
+import type { PhotoItem } from '../lib/types'
+import { getAllPhotos, formatPhotoForDisplay } from '../lib/getPhotos.ts'
 
 // Helper functions
 // Helper function to extract clean site URL
 function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
     const defaultUrl = 'https://adarshrkumar.dev'
     let cleanUrl = siteUrl?.toString() || defaultUrl
-    
+
     if (cleanUrl.includes('://')) {
         cleanUrl = cleanUrl.split('://')[1]
     }
     if (cleanUrl.endsWith('/')) {
         cleanUrl = cleanUrl.slice(0, -1)
     }
-    
+
     return cleanUrl
-}
-
-// Helper function to extract filename from path
-function extractFileName(filePath: string): string {
-    let fileName = filePath
-    
-    // Extract filename from path
-    if (fileName.includes('/')) {
-        fileName = fileName.split('/').slice(-1)[0]
-    }
-    
-    // Remove query parameters
-    if (fileName.includes('?')) {
-        fileName = fileName.split('?')[0]
-    }
-    
-    // Handle complex extensions (e.g., file.name.jpg -> file.jpg)
-    if (fileName.includes('.')) {
-        const nameParts = fileName.split('.')
-        if (nameParts.length > 2) {
-            fileName = `${nameParts.slice(0, -2).join('.')}.${nameParts.slice(-1).join('.')}`
-        }
-    }
-    
-    return fileName
-}
-
-// Helper function to normalize imported data
-function normalizeImportedData<T>(items: T[]): T[] {
-    return items.map(item => (item as { default?: T }).default || item) as T[]
-}
-
-// Helper function to match photos with their metadata
-function enrichPhotosWithMetadata(photos: PhotoImport[], metadataList: PhotoMetadata[]): PhotoItem[] {
-    return photos.map(photo => {
-        if (!photo.src) return photo
-        
-        const photoFileName = extractFileName(photo.src)
-        const matchingMetadata = metadataList.find(metadata => 
-            metadata.fullname === photoFileName
-        )
-        
-        return {
-            ...photo,
-            fullname: photoFileName,
-            data: matchingMetadata
-        }
-    })
 }
 
 // Configuration and data loading
 const cleanSiteUrl = getCleanSiteUrl(Astro.site)
 
-// Load photos and metadata
-const photoModules = import.meta.glob('../../content/allPhotos/*/*')
-const metadataModules = import.meta.glob('../../content/allPhotos/*/info.js', { eager: true })
+// Fetch photos from database
+const dbPhotos = await getAllPhotos()
 
-// Normalize imported data (handle .default exports)
-const normalizedMetadata: PhotoMetadata[] = normalizeImportedData(Object.values(metadataModules) as PhotoMetadata[])
-
-// Process photos with async imports
-const photosWithMetadata: PhotoItem[] = []
-for (const [path, importFn] of Object.entries(photoModules)) {
-    const photoModule = await importFn() as { default?: PhotoImport } | PhotoImport
-    const photo = (photoModule as { default?: PhotoImport }).default || photoModule as PhotoImport
-    
-    // Extract filename for metadata matching
-    const photoFileName = extractFileName(path)
-    const matchingMetadata = normalizedMetadata.find(metadata => 
-        metadata.fullname === photoFileName
-    )
-    
-    photosWithMetadata.push({
-        src: photo.src,
-        import: photo,
-        alt: photoFileName,
-        fullname: photoFileName,
-        data: matchingMetadata
-    })
-}
-
-// Re-export getFName for compatibility
-const getFName = extractFileName
+// Format photos for display
+const photosWithMetadata: PhotoItem[] = dbPhotos.map(formatPhotoForDisplay)
 
 ---
 
