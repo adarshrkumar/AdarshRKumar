@@ -132,7 +132,7 @@ const getFName = extractFileName
 <script>
     // Handle lazy loading state for images
     document.addEventListener('DOMContentLoaded', () => {
-        const images = document.querySelectorAll('.item__img');
+        const images = document.querySelectorAll<HTMLImageElement>('.item__img');
 
         images.forEach(img => {
             // Check if image is already loaded (cached)
