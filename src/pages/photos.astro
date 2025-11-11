@@ -104,11 +104,11 @@ const getFName = extractFileName
                 return (
                     <label class="item">
                         <input type="checkbox" class="item__checkbox" />
-                        <img 
-                            class="item__img" 
-                            src={photo.src || ''} 
-                            alt={photo.alt || photoData?.title || `Photo: ${photo.fullname}`} 
-                            loading="lazy" 
+                        <img
+                            class="item__img loading"
+                            src={photo.src || ''}
+                            alt={photo.alt || photoData?.title || `Photo: ${photo.fullname}`}
+                            loading="lazy"
                             decoding="async"
                             style={`--placeholder: url('${optimizedImage.src}');`}
                         />
@@ -128,3 +128,30 @@ const getFName = extractFileName
         }
     </SiteGridContent>
 </Layout>
+
+<script>
+    // Handle lazy loading state for images
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.item__img');
+
+        images.forEach(img => {
+            // Check if image is already loaded (cached)
+            if (img.complete && img.naturalHeight !== 0) {
+                img.classList.remove('loading');
+                img.classList.add('loaded');
+            } else {
+                // Add load event listener
+                img.addEventListener('load', () => {
+                    img.classList.remove('loading');
+                    img.classList.add('loaded');
+                });
+
+                // Handle error case
+                img.addEventListener('error', () => {
+                    img.classList.remove('loading');
+                    console.warn('Image failed to load:', img.src);
+                });
+            }
+        });
+    });
+</script>
