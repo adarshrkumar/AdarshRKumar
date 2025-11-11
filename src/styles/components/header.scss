@@ -90,4 +90,13 @@
         grid-row: 1;
         justify-self: end;
     }
+
+    // Override non-primary button hover - no background or color change
+    .nav .btn.nav-btn:not(.primary):hover {
+        background-color: transparent;
+        color: var(--color);
+        border-color: color-mix(in srgb, var(--border-color) 70%, white);
+        transform: none;
+        box-shadow: none;
+    }
 }

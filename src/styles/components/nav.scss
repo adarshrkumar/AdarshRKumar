@@ -51,17 +51,19 @@
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
     }
+}
 
-    &.primary {
-        // Primary button styles remain unchanged
-        background-color: var(--color);
-        color: var(--bg);
-        border: 2px solid var(--color);
+// Current page indicator - inverted colors (same as non-primary)
+.nav-btn.btn.primary {
+    background-color: transparent;
+    color: var(--color);
+    border: 2px solid var(--border-color);
 
-        &:hover {
-            background-color: var(--nav-btn-hover);
-            border-color: var(--nav-btn-hover);
-            text-decoration: none;
-        }
+    &:hover {
+        // Lighter border on hover
+        border-color: color-mix(in srgb, var(--border-color) 70%, white);
+        transform: none;
+        box-shadow: none;
+        text-decoration: none;
     }
 }
