@@ -114,7 +114,7 @@ img {
 }
 
 .main-content {
-    --pad: #{$spacing-md};
+    --pad: #{$content-spacing};
 
     &:not(.author) {
         flex: 1;
@@ -139,12 +139,12 @@ img {
 
 .btn {
     box-sizing: border-box;
-    padding: $spacing-sm $spacing-lg;
+    padding: $button-spacing $section-spacing;
     min-width: var(--min-width, fit-content);
 
-    border-radius: $border-radius-full;
+    border-radius: $border-radius-pill;
 
-    font-size: $font-size-lg;
+    font-size: $font-size-button;
     font-weight: 500;
     text-align: center;
     text-decoration: none;
@@ -195,7 +195,7 @@ img {
 hr[isDivider], .divider {
     --size: var(--s, 100%);
     --stroke: 1px;
-    --mar: #{$spacing-md};
+    --mar: #{$content-spacing};
 
     background-color: var(--color);
 
@@ -216,7 +216,7 @@ hr[isDivider], .divider {
   
 .page-title {
     margin: 0;
-    padding-block: $spacing-lg;
+    padding-block: $section-spacing;
 
     border-bottom: 2px solid var(--border-color);
 
@@ -229,10 +229,10 @@ hr[isDivider], .divider {
 
 .section-title {
     margin: 0;
-    padding: $spacing-md $spacing-lg;
+    padding: $content-spacing $section-spacing;
 
     border: 2px solid var(--border-color);
-    border-radius: $border-radius-md;
+    border-radius: $border-radius-card;
     background: linear-gradient(135deg, transparent 0%, var(--shadow-color) 100%);
 
     text-align: center;
@@ -247,9 +247,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: $line-height-heading;
     letter-spacing: -0.01em;
     margin-top: 0;
-    margin-bottom: $spacing-md;
+    margin-bottom: $content-spacing;
     *:not(&) + & {
-        margin-top: $spacing-md;
+        margin-top: $content-spacing;
     }
 }
 
@@ -275,7 +275,7 @@ form {
 
     display: flex;
     flex-direction: column;
-    gap: $spacing-xl;
+    gap: $header-spacing;
 }
   
 fieldset {

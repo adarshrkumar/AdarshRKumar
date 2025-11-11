@@ -11,13 +11,13 @@
 .header {
     --shadow-size: 12px;
 
-    padding: $spacing-lg $spacing-3xl;
+    padding: $section-spacing $hero-spacing;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: $spacing-lg;
+    gap: $section-spacing;
+    row-gap: $content-spacing;
 
     border-bottom: 2px solid var(--border-color);
     background: var(--bg);
@@ -27,17 +27,24 @@
     top: 0;
     z-index: $z-index-tooltip;
 
-    @include respond-below(mobile) {
-        padding: $spacing-md $spacing-lg;
-        grid-template-columns: 1fr;
+    // Tablet and below - reduce padding
+    @include respond-below(tablet) {
+        padding: $content-spacing $header-spacing;
     }
 
-    // Logo link
+    // Mobile - minimal padding
+    @include respond-below(mobile) {
+        padding: $content-spacing $section-spacing;
+    }
+
+    // Logo link - spans all rows
     .logo-link {
         display: block;
         width: 4.5rem;
         height: 4.5rem;
         aspect-ratio: 1;
+        grid-row: 1 / -1; // Span all rows from first to last
+        align-self: center;
 
         color: var(--logo-a-color);
         background-color: var(--color);
@@ -69,9 +76,22 @@
         }
     }
 
-    // Navigation
+    // Navigation - takes middle column, wraps internally
     .nav {
-        flex: 1;
-        align-self: end;
+        grid-column: 2 / 3; // Stay in column 2 only
+        grid-row: 1; // Stay in first row
+        justify-self: end;
+
+        // Nav items should wrap within this container, not create new grid rows
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 100%; // Don't overflow the grid column
+    }
+
+    // Theme switcher - takes right column, always on first row
+    .theme-switcher {
+        grid-column: 3;
+        grid-row: 1; // Pin to first row
+        justify-self: end;
     }
 }
