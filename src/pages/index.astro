@@ -15,16 +15,20 @@ import * as cheerio from 'cheerio'
 
 // Page configuration
 // Page sections configuration
-const pageSections: Record<string, PageSection> = {
-    portfolio: {
+const pageSections: PageSection[] = [
+    {
+        id: 'portfolio',
         title: 'Featured Portfolio Items',
-        className: 'pHighlights'
+        className: 'pHighlights',
+        element: PortfolioHighlights,
     },
-    blog: {
+    {
+        id: 'blog',
         title: 'Featured Blog Posts',
-        className: 'bFeatures'
+        className: 'bFeatures',
+        element: FeaturedArticles,
     }
-}
+]
 
 // Future sections (commented out for now)
 const futureSections = [
@@ -55,16 +59,18 @@ const newReadmeContent = $.html()
     <section class="readme">
         <div class="readme__content" set:html={newReadmeContent} />
     </section>
-    
-    <section class={`section ${pageSections.portfolio.className}`}>
-        <h2 class="section-title">{pageSections.portfolio.title}</h2>
-        <PortfolioHighlights />
-    </section>
-    
-    <section class={`section ${pageSections.blog.className}`}>
-        <h2 class="section-title">{pageSections.blog.title}</h2>
-        <FeaturedArticles />
-    </section>
-    
+
+    {
+        pageSections.map(s => {
+            const Component = s.element
+            return (
+                <section class={`section ${s.className}`}>
+                    <h2 class="section-title">{s.title}</h2>
+                    <Component />
+                </section>
+            )
+        })
+    }
+        
     <!-- Future sections: {futureSections.join(', ')} -->
 </Layout>
