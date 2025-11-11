@@ -1,188 +1,363 @@
-// Photos page variables
-$textSpace: 5%;
+// ============================================
+// PHOTOS PAGE - MINIMALIST CARD DESIGN
+// ============================================
 
-// Custom property for padding transition
-@property --paddingTrans {
-    syntax: "<length>";
-    inherits: true;
-    initial-value: 0;
-}
+// --------------------------------------------
+// Variables
+// --------------------------------------------
+$card-border-radius: 0.75rem;
+$card-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+$card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+$card-shadow-dark-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
+$card-shadow-dark-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+$transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-// Animation keyframes
-@keyframes z-index-fix {
-    0%, 100% {
-        z-index: 1;
-    }
-}
-
-@keyframes shadow-in {
+// --------------------------------------------
+// Animations
+// --------------------------------------------
+@keyframes blur-fade-in {
     from {
-        --paddingTrans: var(--padding);
+        filter: blur(10px);
+        opacity: 0.7;
     }
     to {
-        --paddingTrans: calc(var(--padding)*1.25);
+        filter: blur(0);
+        opacity: 1;
     }
 }
 
-@keyframes shadow-out {
+@keyframes fade-in {
     from {
-        --paddingTrans: calc(var(--padding)*1.25);
+        opacity: 0;
     }
     to {
-        --paddingTrans: var(--padding);
+        opacity: 1;
     }
 }
 
-// Photos container
+@keyframes scale-in {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+// --------------------------------------------
+// Photos Container
+// --------------------------------------------
 .photos {
-    $time: 750ms;
-
-    // Layout properties
     margin-inline: auto;
-    width: clamp(500px, 100%, 1000px);
+    padding: 1rem;
+    max-width: 1400px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden; // Prevent horizontal scroll
 
-    // Background overlay
+    // Override grid to ensure proper wrapping
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr)) !important;
+
+    // Mobile optimization
+    @media (max-width: 768px) {
+        padding: 0.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr)) !important;
+    }
+
+    @media (max-width: 480px) {
+        padding: 0.25rem;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 100%), 1fr)) !important;
+    }
+
+    // Backdrop overlay for fullscreen mode
     &::before {
         content: '';
-        position: fixed;    
+        position: fixed;
         inset: 0;
-        display: block;
-        opacity: 0;
-        
-        transition: opacity $time $time;
-        @supports(transition-behavior: allow-discrete) {
-            transition-behavior: allow-discrete;
-        }
+        background-color: rgba(0, 0, 0, 0.85);
 
-        z-index: -1;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+
+        opacity: 0;
         pointer-events: none;
+        z-index: 998;
+        transition: opacity $transition-smooth;
     }
 
-    // Fullscreen mode when item is checked
-    &:has(.item .item__checkbox:checked) {
-        --pad: 1rem;
-        position: fixed;
-        inset: var(--pad);
-        margin: auto;
-        aspect-ratio: 1;
-        max-height: calc(100dvh - var(--pad)*2);
-        z-index: 999;
-
+    // Fullscreen mode active
+    &:has(.item__checkbox:checked) {
         &::before {
             opacity: 1;
-            background-color: rgb(from var(--bg) r g b / 0.75);
             pointer-events: all;
-            z-index: 998;
         }
     }
 
+    // Body scroll lock when fullscreen
+    body:has(&:has(.item__checkbox:checked)) {
+        overflow: hidden;
+    }
 
-
-    // Photo items
+    // --------------------------------------------
+    // Photo Card Items
+    // --------------------------------------------
     .item {
-        $main-shadow: 0 0 var(--padding);
-
-        // Layout properties
         position: relative;
-        pointer-events: all;
-        overflow: clip;
-
-        // Transitions and animations
-        transition: 
-            position $time,
-            inset $time,
-            margin $time,
-            box-shadow $time,
-            scale $time;
-            
-        animation: 
-            z-index-fix $time ease,
-            shadow-out $time ease;
-
-        // Visual properties
-        box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 0);
+        display: flex;
+        flex-direction: column;
+        border-radius: $card-border-radius;
+        overflow: hidden;
+        background-color: var(--bg);
         cursor: pointer;
+        padding: 0 !important; // Override grid padding
+        max-width: 100%; // Prevent overflow
+        box-sizing: border-box;
+        transition:
+            transform $transition-smooth,
+            box-shadow $transition-smooth,
+            position 0s,
+            inset 0s,
+            z-index 0s;
 
-        // Hidden checkbox for interaction
+        // Card elevation
+        box-shadow: $card-shadow-subtle;
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: $card-shadow-dark-subtle;
+        }
+
+        // Animation on load
+        animation: scale-in 0.5s $transition-smooth backwards;
+
+        // Stagger animation for sequential loading
+        @for $i from 1 through 20 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.05}s;
+            }
+        }
+
+        // --------------------------------------------
+        // Hidden Checkbox (for fullscreen toggle)
+        // --------------------------------------------
         &__checkbox {
             position: absolute;
             width: 0;
             height: 0;
-            top: -10px;
-            left: -10px;
-            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
         }
 
-        // Body overflow control
-        body:has(.photos .item .item__checkbox:checked) {
-            overflow-y: clip;
-        }
+        // --------------------------------------------
+        // Image Container
+        // --------------------------------------------
+        &__img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            user-select: none;
 
-        // Fullscreen mode when checked
-        &:has(.item__checkbox:checked) {
-            --pad: 1rem;
-            position: fixed;
-            inset: var(--pad);
-            margin: auto;
-            aspect-ratio: 1;
-            max-height: calc(100dvh - var(--pad)*2);
-            z-index: 999;
-        }
-
-        // Hover effects
-        &:not(:has(.item__checkbox:checked)):hover {
-            --paddingTrans: calc(var(--padding)*1.25);
+            @supports(-webkit-user-drag: none) {
+                -webkit-user-drag: none;
+            }
 
             position: relative;
-            scale: 1.125;
-            z-index: 2;
-            box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 1);
 
-            animation: shadow-in $time ease;
+            // Loading state - show placeholder with blur
+            &.loading {
+                background-image: var(--placeholder);
+                background-size: cover;
+                background-position: center;
+                background-color: hsl(0, 0%, 95%);
 
-            .item__info {
-                opacity: 0;
-                pointer-events: none;
+                @media (prefers-color-scheme: dark) {
+                    background-color: hsl(0, 0%, 20%);
+                }
+
+                // Blur and fade the placeholder
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: inherit;
+                    filter: blur(10px);
+                    opacity: 0.7;
+                }
+
+                // Pulse animation for loading indicator
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            // Loaded state - clear, sharp image
+            &.loaded {
+                background: none;
+                animation: fade-in 0.4s ease-out;
+
+                &::before {
+                    display: none;
+                }
             }
         }
-        
-        // Item info overlay
+
+        // Pulse animation for loading state
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        // --------------------------------------------
+        // Info Overlay
+        // --------------------------------------------
         &__info {
             position: absolute;
-            inset: var(--padding);
-            padding: calc(var(--padding)*2);
-            background-color: hsla(0, 0%, var(--bg-lightness), 0.125);
-            border-radius: calc(var(--borderRadius) - var(--padding));
-            gap: 2rem;
-            transition: opacity $time;
-        }
-        
-        // Title and content styling
-        &__title, &__content {
-            padding: var(--padding) calc(var(--padding) * 1.5);
-            background-color: var(--middle-color);
-            border-radius: 100dvw;
-            align-self: center;
-            box-shadow: $main-shadow hsla(0, 0%, var(--color-lightness), 1);
-        }
-        
-        // Title positioning
-        &__title {
-            &:has(+ .item__content) {
-                align-self: end;
-            }
-            + .item__content {
-                align-self: start;
-            }
-        }
-        
-        // Image styling
-        &__image {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.4) 70%,
+                transparent 100%
+            );
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition:
+                opacity $transition-smooth,
+                transform $transition-smooth;
             pointer-events: none;
+
+            @media (max-width: 768px) {
+                padding: 1rem;
+            }
+        }
+
+        &__title {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+            @media (max-width: 768px) {
+                font-size: 0.9rem;
+            }
+        }
+
+        &__content {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+            @media (max-width: 768px) {
+                font-size: 0.8rem;
+            }
+        }
+
+        // --------------------------------------------
+        // Hover State (not in fullscreen)
+        // --------------------------------------------
+        &:not(:has(.item__checkbox:checked)):hover {
+            transform: translateY(-4px);
+            box-shadow: $card-shadow-hover;
+            z-index: 2;
+
+            @media (prefers-color-scheme: dark) {
+                box-shadow: $card-shadow-dark-hover;
+            }
+
+            // Reveal info overlay on hover
+            .item__info {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            // Subtle image zoom
+            .item__img {
+                transform: scale(1.05);
+                transition: transform 0.6s $transition-smooth;
+            }
+        }
+
+        // Mobile touch - show info by default
+        @media (max-width: 768px), (hover: none) {
+            .item__info {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        // --------------------------------------------
+        // Fullscreen Mode
+        // --------------------------------------------
+        &:has(.item__checkbox:checked) {
+            position: fixed;
+            inset: clamp(1rem, 5vw, 3rem);
+            margin: auto;
+            max-width: min(90vw, 90vh);
+            max-height: min(90vw, 90vh);
+            aspect-ratio: 1 / 1;
+            z-index: 999;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: scale-in 0.4s $transition-spring;
+
+            @media (max-width: 768px) {
+                inset: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+            }
+
+            .item__img {
+                object-fit: contain;
+                background-color: transparent;
+            }
+
+            // Always show info in fullscreen
+            .item__info {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            // Prevent hover effects in fullscreen
+            &:hover {
+                transform: none;
+            }
+        }
+    }
+}
+
+// --------------------------------------------
+// Accessibility
+// --------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+    .photos {
+        .item {
+            animation: fade-in 0.3s ease;
+            transition-duration: 0.1s;
+
+            &:hover {
+                transition-duration: 0.1s;
+            }
+
+            &__img {
+                animation: none;
+                transition-duration: 0.1s;
+            }
+
+            &__info {
+                transition-duration: 0.1s;
+            }
         }
     }
 }
