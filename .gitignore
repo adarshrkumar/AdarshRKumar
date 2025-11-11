@@ -31,5 +31,4 @@ pnpm-debug.log*
 .claude/
 CLAUDE*.md
 
-# other content
-content/allPhotos
+.vercel/output
