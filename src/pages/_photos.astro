@@ -2,9 +2,10 @@
 // Imports
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
+import { getImage } from 'astro:assets'
 import '../styles/pages/photos.scss'
-import type { PhotoItem } from '../lib/types'
-import { getAllPhotos, formatPhotoForDisplay } from '../lib/getPhotos.ts'
+import type { PhotoItem, PhotoMetadata } from '../lib/types'
+import { getAllPhotos } from '../lib/getPhotos.ts'
 
 // Helper functions
 // Helper function to extract clean site URL
@@ -22,14 +23,54 @@ function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
     return cleanUrl
 }
 
+// Helper function to extract filename from path
+function extractFileName(filePath: string): string {
+    let fileName = filePath
+
+    // Extract filename from path
+    if (fileName.includes('/')) {
+        fileName = fileName.split('/').slice(-1)[0]
+    }
+
+    // Remove query parameters
+    if (fileName.includes('?')) {
+        fileName = fileName.split('?')[0]
+    }
+
+    // Handle complex extensions (e.g., file.name.jpg -> file.jpg)
+    if (fileName.includes('.')) {
+        const nameParts = fileName.split('.')
+        if (nameParts.length > 2) {
+            fileName = `${nameParts.slice(0, -2).join('.')}.${nameParts.slice(-1).join('.')}`
+        }
+    }
+
+    return fileName
+}
+
 // Configuration and data loading
 const cleanSiteUrl = getCleanSiteUrl(Astro.site)
 
-// Fetch photos from database
+// Fetch photos from database instead of filesystem
 const dbPhotos = await getAllPhotos()
 
-// Format photos for display
-const photosWithMetadata: PhotoItem[] = dbPhotos.map(formatPhotoForDisplay)
+// Format photos to match the existing PhotoItem structure
+const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
+    src: photo.imageUrl,
+    alt: photo.title || photo.name,
+    fullname: photo.fullname,
+    import: { src: photo.imageUrl },
+    data: {
+        title: photo.title,
+        fullname: photo.fullname,
+        name: photo.name,
+        category: photo.category,
+        uploader: photo.uploader,
+    }
+}))
+
+// Re-export getFName for compatibility
+const getFName = extractFileName
 
 ---
 
