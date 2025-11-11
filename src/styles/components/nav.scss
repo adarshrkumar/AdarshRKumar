@@ -24,9 +24,12 @@
     padding: $button-spacing $content-spacing;
     font-weight: 500;
     letter-spacing: 0.01em;
-    position: relative;
     white-space: nowrap; // Prevent button text wrapping
     flex-shrink: 0; // Prevent buttons from shrinking too much
+    text-decoration: none;
+    color: var(--color);
+    background: transparent;
+    border: none;
 
     // Tablet and below - reduce padding
     @include respond-below(tablet) {
@@ -39,31 +42,26 @@
         font-size: 0.85rem;
     }
 
-    &:not(.primary) {
-        border: none;
-        background: transparent;
-        text-decoration: none;
+    &:hover {
+        color: var(--nav-btn-hover);
 
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transform: translateX(-50%);
-            transition: width 0.3s $transition-timing;
-        }
-
-        &:hover::after {
-            width: 80%;
-        }
+        // Underline effect on text itself
+        text-decoration: underline;
+        text-decoration-color: var(--accent-color);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
     }
 
-    &:hover {
-        background-color: transparent;
-        color: var(--nav-btn-hover);
-        transform: none;
+    &.primary {
+        // Primary button styles remain unchanged
+        background-color: var(--color);
+        color: var(--bg);
+        border: 2px solid var(--color);
+
+        &:hover {
+            background-color: var(--nav-btn-hover);
+            border-color: var(--nav-btn-hover);
+            text-decoration: none;
+        }
     }
 }

@@ -76,22 +76,18 @@
         }
     }
 
-    // Navigation - takes middle column, wraps internally
+    // Navigation - takes middle column
     .nav {
-        grid-column: 2 / 3; // Stay in column 2 only
-        grid-row: 1; // Stay in first row
+        grid-column: 2 / 3;
+        grid-row: 1;
         justify-self: end;
-
-        // Nav items should wrap within this container, not create new grid rows
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 100%; // Don't overflow the grid column
+        max-width: 100%;
     }
 
     // Theme switcher - takes right column, always on first row
     .theme-switcher {
         grid-column: 3;
-        grid-row: 1; // Pin to first row
+        grid-row: 1;
         justify-self: end;
     }
 }
