@@ -36,7 +36,10 @@ function processNavItem(item: NavItem) {
     }
 
     var primaryCls = ''
-    if (url === currentPath) primaryCls = ' primary'
+    // Normalize both URLs for comparison (remove trailing slash except for root)
+    var normalizedUrl = url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url
+    var normalizedCurrentPath = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath
+    if (normalizedUrl === normalizedCurrentPath) primaryCls = ' primary'
 
 
     return { url, target, primaryCls, name }
