@@ -29,7 +29,7 @@ pnpm-debug.log*
 
 # Claude
 .claude/
-CLAUDE.md
+CLAUDE*.md
 
 # other content
 content/allPhotos
