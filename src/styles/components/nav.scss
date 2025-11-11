@@ -15,15 +15,29 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: var(--data-direction, row);
-    gap: $spacing-md;
+    gap: inherit; // Inherit gap from parent (header)
+    justify-content: flex-end;
 }
 
 // Navigation buttons
 .nav-btn {
-    padding: $spacing-sm $spacing-md;
+    padding: $button-spacing $content-spacing;
     font-weight: 500;
     letter-spacing: 0.01em;
     position: relative;
+    white-space: nowrap; // Prevent button text wrapping
+    flex-shrink: 0; // Prevent buttons from shrinking too much
+
+    // Tablet and below - reduce padding
+    @include respond-below(tablet) {
+        padding: $button-spacing;
+        font-size: 0.9rem;
+    }
+
+    // Mobile - even smaller
+    @include respond-below(mobile) {
+        font-size: 0.85rem;
+    }
 
     &:not(.primary) {
         border: none;

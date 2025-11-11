@@ -8,7 +8,7 @@ html {
 
 // Post layout variables
 .post, .page-title:has(+ .post) {
-    --pad: #{$spacing-md};
+    --pad: #{$content-spacing};
     --bor: 0.09375rem solid var(--color);
 
     box-sizing: border-box;

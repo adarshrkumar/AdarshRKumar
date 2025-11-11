@@ -51,14 +51,14 @@ $breakpoints: (
 
 @mixin card {
   background: var(--middle-color);
-  border-radius: $border-radius-lg;
-  padding: $spacing-lg;
+  border-radius: $border-radius-section;
+  padding: $section-spacing;
 }
 
 @mixin centered-content($max-width: $max-content-width) {
   max-width: $max-width;
   margin-inline: auto;
-  padding-inline: $spacing-md;
+  padding-inline: $content-spacing;
 }
 
 // --------------------------------------------
@@ -67,8 +67,8 @@ $breakpoints: (
 
 @mixin button-base {
   display: inline-block;
-  padding: $spacing-sm $spacing-lg;
-  border-radius: $border-radius-full;
+  padding: $button-spacing $section-spacing;
+  border-radius: $border-radius-pill;
   text-decoration: none;
   text-align: center;
   cursor: pointer;

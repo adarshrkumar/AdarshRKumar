@@ -75,7 +75,9 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
     <a class="logo-link" href="/">
         <img class="logo" src={logo} alt="Site logo" />
     </a>
-    <NavContent items={links} />
+    <nav class="nav">
+        <NavContent items={links} />
+    </nav>
     <ThemeSwitcher defaultTheme="system" />
 </header>
 

@@ -4,22 +4,22 @@
 // ============================================
 
 // --------------------------------------------
-// Spacing
+// Spacing - Semantic, context-based values
 // --------------------------------------------
-$spacing-sm: 0.5rem;
-$spacing-md: 1rem;
-$spacing-lg: 1.5rem;
-$spacing-xl: 2rem;
-$spacing-2xl: 3rem;
-$spacing-3xl: 4rem;
+$button-spacing: 0.5rem;
+$content-spacing: 1rem;
+$section-spacing: 1.5rem;
+$header-spacing: 2rem;
+$page-spacing: 3rem;
+$hero-spacing: 4rem;
 
 // --------------------------------------------
 // Typography
 // --------------------------------------------
 $font-family-base: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 $font-size-base: 1rem;
-$font-size-lg: 1.125rem;
-$font-size-xl: 1.25rem;
+$font-size-button: 1.125rem;
+$font-size-heading: 1.25rem;
 $line-height-base: 1.6;
 $line-height-heading: 1.3;
 
@@ -29,10 +29,10 @@ $line-height-heading: 1.3;
 $max-content-width: 1200px;
 $max-post-width: 800px;
 
-$border-radius-sm: 0.5rem;
-$border-radius-md: 0.75rem;
-$border-radius-lg: 1rem;
-$border-radius-full: 100vw;
+$border-radius-button: 0.5rem;
+$border-radius-card: 0.75rem;
+$border-radius-section: 1rem;
+$border-radius-pill: 100vw;
 
 // --------------------------------------------
 // Animation
