@@ -3,6 +3,8 @@
  * All interfaces and types used across the application
  */
 
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 // Blog and content types
 export interface Post {
     file: string;
@@ -195,8 +197,10 @@ export interface AstroContext {
 }
 
 export interface PageSection {
+    id: string;
     title: string;
     className: string;
+    element: AstroComponentFactory;
 }
 
 // RSS feed types
