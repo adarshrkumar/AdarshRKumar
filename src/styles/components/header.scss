@@ -14,7 +14,7 @@
     padding: $section-spacing $hero-spacing;
 
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     align-items: center;
     gap: $section-spacing;
     row-gap: $content-spacing;
@@ -82,13 +82,6 @@
         grid-row: 1;
         justify-self: end;
         max-width: 100%;
-    }
-
-    // Theme switcher - takes right column, always on first row
-    .theme-switcher {
-        grid-column: 3;
-        grid-row: 1;
-        justify-self: end;
     }
 
     // Override non-primary button hover - no background or color change
