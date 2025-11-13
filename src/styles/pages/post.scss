@@ -1,11 +1,6 @@
 @import '../variables.scss';
 @import '../mixins.scss';
 
-// Scroll timeline
-html {
-    scroll-timeline: --page-scroll block;
-}
-
 // Post layout variables
 .post, .page-title:has(+ .post) {
     --pad: #{$content-spacing};
@@ -40,44 +35,7 @@ html {
         margin: 0;
         border-bottom: var(--bor);
     }
-    
-    // Scroll progress indicator
-    .scroll-percentage {
-        --w: 0;
-        --h: 10px;
-    
-        position: sticky;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: calc(var(--h)*2);
-    
-        // Progress bar pseudo-elements
-        &::before, &::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            height: var(--h);
-            border-radius: 100dvw;
-        }
-        
-        // Background bar
-        &::before {
-            background-color: lightgray;
-            box-shadow: 0 calc(var(--h)/2) calc(var(--h)/2) 0 white;
-        }
-        
-        // Progress bar
-        &::after {
-            width: 0;
-            transform-origin: left;
-            background-color: gray;
-            animation: position auto linear;
-            animation-timeline: --page-scroll;
-            animation-range: normal;
-        }
-    }
-    
+
     // Post content area
     .post-area {
         flex: 1;
@@ -110,15 +68,5 @@ html {
                 padding: var(--pad);
             }
         }
-    }
-}
-
-// Scroll animation
-@keyframes position {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
     }
 }

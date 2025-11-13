@@ -40,7 +40,6 @@ const authorInfo = getAuthorInfo(authors, authorUsername || '');
         <a href={`/author/${authorUsername}`} class="author">{authorInfo.displayName}</a> | <span class="date">{currentPost.frontmatter.date}</span>
     </section>
     <section class="post-area">
-        <div class="scroll-percentage"></div>
         <article class="post-content" set:html={await currentPost.compiledContent?.() || ''}></article>
         <section class="giscus" />
         <script 
