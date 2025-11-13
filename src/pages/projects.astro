@@ -40,7 +40,7 @@ function determineLinkTarget(url: string, siteUrl: string | URL | undefined): st
 
 // Helper function to generate screenshot image URL
 function generateScreenshotUrl(url: string, imageSize: number = 512): string {
-    return `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+    return `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
 }
 
 // Helper function to filter out hidden items
