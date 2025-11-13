@@ -29,6 +29,6 @@ pnpm-debug.log*
 
 # Claude
 .claude/
-CLAUDE*.md
+/CLAUDE*.md
 
 .vercel/output
