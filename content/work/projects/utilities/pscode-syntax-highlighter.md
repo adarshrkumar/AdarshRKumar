@@ -1,6 +1,7 @@
 ---
 name: "pscode Syntax Highlighter"
 url: "https://github.com/adarshrkumar/pscode-syntax-highlighter"
+target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
 

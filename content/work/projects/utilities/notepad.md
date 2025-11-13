@@ -1,6 +1,7 @@
 ---
 name: "Notepad Application"
 url: "https://notepad.adarshrkumar.dev"
+target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
 
