@@ -1,5 +1,10 @@
 // Large frame component variables
 $t-time: 0.5s;
+$frame-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+$frame-shadow-dark-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
+$frame-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+$frame-shadow-dark-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+$transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Large frame styling
 .large-frame {
@@ -15,11 +20,18 @@ $t-time: 0.5s;
     background-size: contain;
 
     // Visual properties
-    border: solid 1px var(--color);
+    background-color: var(--bg);
     border-radius: 1rem;
+    box-shadow: $frame-shadow-subtle;
     overflow: hidden;
     overflow: clip;
     isolation: isolate;
+    transition: transform $transition-smooth,
+                box-shadow $transition-smooth;
+
+    @media (prefers-color-scheme: dark) {
+        box-shadow: $frame-shadow-dark-subtle;
+    }
 
     // Child element positioning
     > *, &::before, &::after {
@@ -107,6 +119,13 @@ $t-time: 0.5s;
 
     // Hover effects
     &:hover {
+        transform: translateY(-4px);
+        box-shadow: $frame-shadow-hover;
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: $frame-shadow-dark-hover;
+        }
+
         .info {
             opacity: 1;
         }
@@ -128,10 +147,30 @@ $t-time: 0.5s;
     &::before {
         background-color: darkred;
     }
-    
+
     &::after {
         opacity: 0;
         background-color: hsla(0, 0%, var(--color-lightness), 1);
         transition: opacity $t-time;
-    }    
+    }
+}
+
+// Accessibility - reduced motion
+@media (prefers-reduced-motion: reduce) {
+    .large-frame {
+        transition-duration: 0.1s;
+
+        &:hover {
+            transform: none;
+            transition-duration: 0.1s;
+        }
+
+        .info {
+            transition-duration: 0.1s;
+        }
+
+        &::after {
+            transition-duration: 0.1s;
+        }
+    }
 }
