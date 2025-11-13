@@ -1,22 +1,36 @@
 @import '../variables.scss';
 @import '../mixins.scss';
 
-// Post layout variables
-.post, .page-title:has(+ .post) {
+// Post styling variables
+$post-border-radius: 1rem;
+$post-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+$post-shadow-dark-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
+$post-section-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+$post-section-shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+// Post layout
+.post {
     --pad: #{$content-spacing};
-    --bor: 0.09375rem solid var(--color);
 
     box-sizing: border-box;
     margin-inline: auto;
+    margin-block: $content-spacing;
     width: clamp(500px, 100%, $max-post-width);
-}
 
-// Post borders
-.page-title:has(+ .post), .post {
+    // Post container styling with shadows
+    border-radius: $post-border-radius;
+    box-shadow: $post-shadow-subtle;
+    background-color: var(--bg);
+
+    @media (prefers-color-scheme: dark) {
+        box-shadow: $post-shadow-dark-subtle;
+    }
+
     @media (width > 1012px) {
-        & {
-            border-left: var(--bor);
-            border-right: var(--bor);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
         }
     }
 }
@@ -24,23 +38,34 @@
 // Post content
 .post {
     gap: 0;
+    overflow: hidden; // Contain border-radius
 
     // Info and post area padding
     .info, .post-area {
         padding: var(--pad);
+        transition: background-color $transition-base $transition-timing;
     }
 
     // Post info section
     .info {
         margin: 0;
-        border-bottom: var(--bor);
+        background: linear-gradient(135deg, transparent 0%, var(--shadow-color) 100%);
+        box-shadow: $post-section-shadow;
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: $post-section-shadow-dark;
+        }
     }
 
     // Post content area
     .post-area {
         flex: 1;
-        margin-bottom: var(--pad);
-        border-bottom: var(--bor);
+        background-color: hsl(from var(--middle-color) h s calc(l + 50));
+        box-shadow: $post-section-shadow;
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: $post-section-shadow-dark;
+        }
 
         // Post content styling
         .post-content {
@@ -48,14 +73,14 @@
             > * {
                 text-wrap: wrap;
             }
-    
+
             // First child margin reset
             > :first-child {
                 &, > :first-child {
                     margin-top: 0;
                 }
             }
-            
+
             // Last child margin reset
             > :last-child {
                 &, > :last-child {
