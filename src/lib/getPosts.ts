@@ -97,9 +97,16 @@ export function createPreviewContent(text: string, maxLength: number = 50): stri
 /**
  * Helper function to generate screenshot image data
  */
-export function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512) {
-    const screenshotUrl = `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-    
+export function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512, siteUrl?: string) {
+    // Handle relative URLs by prefixing with site URL
+    let fullUrl = postUrl
+    if (postUrl.startsWith('/')) {
+        const baseUrl = siteUrl || 'https://adarshrkumar.dev'
+        fullUrl = `${baseUrl.replace(/\/$/, '')}${postUrl}`
+    }
+
+    const screenshotUrl = `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+
     return {
         src: screenshotUrl,
         alt: `Screenshot of the "${title}" post.`,
