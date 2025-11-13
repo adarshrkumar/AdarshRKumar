@@ -5,6 +5,37 @@
 $gap: $header-spacing;
 $min: 12rem;
 
+// Card styling variables
+$card-border-radius: 1rem;
+$card-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+$card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+$card-shadow-dark-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
+$card-shadow-dark-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+$transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// --------------------------------------------
+// Animations
+// --------------------------------------------
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scale-in {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 // Grid frame styles
 .grid .frame {
     $ar: 2;
@@ -25,7 +56,7 @@ $min: 12rem;
 }
 
 // Main grid layout
-.grid:not(.lite) {
+.grid {
     // Grid properties
     display: grid;
     gap: $gap;
@@ -34,8 +65,8 @@ $min: 12rem;
     justify-content: center;
 
     // Grid template columns with browser compatibility
-    grid-template-columns: repeat(auto-fit, minmax(var(--min, $min), var(--max, 1fr))); // Old browsers (no "min()")
-    grid-template-columns: repeat(auto-fit, minmax(min(var(--min, $min), var(--max, 100%)), var(--max, 1fr))); // New browsers (yes "min()")
+    grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr)); // Old browsers (no "min()")
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr)); // New browsers (yes "min()")
 
     // Commented out advanced grid logic for specific item counts
     // @for $i from 1 through 3 {
@@ -67,37 +98,72 @@ $min: 12rem;
 
 // Grid items
 .item {
+    position: relative;
     box-sizing: border-box;
-    padding: $section-spacing;
+    padding: 0;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: $content-spacing;
+    overflow: hidden;
 
-    background: var(--middle-color);
-    color: var(--bg);
-    border-radius: $border-radius-section;
+    background-color: var(--bg);
+    border-radius: $card-border-radius;
     text-decoration: inherit;
+    cursor: pointer;
 
-    box-shadow: 0 2px 8px var(--shadow-color);
+    // Enhanced shadows with light/dark mode support
+    box-shadow: $card-shadow-subtle;
+
+    @media (prefers-color-scheme: dark) {
+        box-shadow: $card-shadow-dark-subtle;
+    }
+
     transition:
-        transform 0.3s $transition-timing,
-        box-shadow 0.3s $transition-timing,
-        background-color 0.3s $transition-timing;
+        transform $transition-smooth,
+        box-shadow $transition-smooth;
+
+    // Animation on load
+    animation: scale-in 0.5s $transition-smooth backwards;
+
+    // Stagger animation for sequential loading
+    @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.05}s;
+        }
+    }
 
     &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 8px 24px var(--shadow-color);
-        background: var(--middle-hover);
+        box-shadow: $card-shadow-hover;
+        z-index: 2;
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: $card-shadow-dark-hover;
+        }
+
+        // Reveal info overlay on hover
+        .item__info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        // Subtle image zoom
+        .item__img {
+            transform: scale(1.05);
+        }
     }
 
     // Item image
     &__img {
         width: 100%;
-        aspect-ratio: 1;
-        border-radius: $border-radius-card;
-        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        display: block;
+        user-select: none;
+
+        @supports(-webkit-user-drag: none) {
+            -webkit-user-drag: none;
+        }
 
         // Background image properties
         background-image: var(--placeholder, url('/assets/placeholder.svg'));
@@ -105,37 +171,140 @@ $min: 12rem;
         background-position: center;
         background-repeat: no-repeat;
 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s $transition-timing;
+        transition: transform 0.6s $transition-smooth;
+
+        // Loading state - show placeholder
+        &.loading {
+            background-color: hsl(0, 0%, 95%);
+
+            @media (prefers-color-scheme: dark) {
+                background-color: hsl(0, 0%, 20%);
+            }
+
+            // Blur effect for placeholder
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: inherit;
+                filter: blur(10px);
+                opacity: 0.7;
+            }
+
+            // Pulse animation for loading indicator
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        // Loaded state - clear, sharp image
+        &.loaded {
+            background: none;
+            animation: fade-in 0.4s ease-out;
+
+            &::before {
+                display: none;
+            }
+        }
     }
 
-    &:hover &__img {
-        transform: scale(1.05);
+    // Pulse animation for loading state
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.8;
+        }
     }
 
-    // Item info container
+    // Item info container (overlay on image)
     &__info {
-        overflow-x: hidden;
-        display: grid;
-        gap: $content-spacing;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.4) 70%,
+            transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+            opacity $transition-smooth,
+            transform $transition-smooth;
+        pointer-events: none;
+
+        @media (max-width: 768px) {
+            padding: 1rem;
+        }
     }
 
-    // Common properties for info, title, and content
-    &__info, &__title, &__content {
-        max-width: 100%;
+    // Title styling
+    &__title {
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 768px) {
+            font-size: 0.9rem;
+        }
     }
 
-    // Title and content styling
-    &__title, &__content {
-        margin-block: 0;
-        margin-inline: auto;
-        height: fit-content;
-        text-align: center;
-    }
-
-    // Content-specific styling
+    // Content styling
     &__content {
-        text-wrap: wrap;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.875rem;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        // Limit to 3 lines with ellipsis
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
         text-overflow: ellipsis;
+        line-height: 1.4;
+
+        @media (max-width: 768px) {
+            font-size: 0.8rem;
+        }
+    }
+
+    // Mobile touch - show info by default
+    @media (max-width: 768px), (hover: none) {
+        .item__info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+// --------------------------------------------
+// Accessibility
+// --------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+    .item {
+        animation: fade-in 0.3s ease;
+        transition-duration: 0.1s;
+
+        &:hover {
+            transition-duration: 0.1s;
+        }
+
+        &__img {
+            animation: none;
+            transition-duration: 0.1s;
+        }
+
+        &__info {
+            transition-duration: 0.1s;
+        }
     }
 }
