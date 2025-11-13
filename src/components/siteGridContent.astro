@@ -1,7 +1,6 @@
 ---
 // Imports
 import '../styles/components/grid.scss'
-import '../styles/components/liteGrid.scss'
 import type { SiteGridContentProps, GridOptions } from '../lib/types'
 
 // Helper functions
@@ -38,20 +37,19 @@ function generateCustomProperties(options: GridOptions | undefined): string {
 }
 
 // Helper function to build CSS class string
-function buildCSSClass(mode: string | undefined, classItems: string): string {
+function buildCSSClass(classItems: string): string {
     const baseClass = 'grid'
-    const liteClass = mode === 'lite' ? ' lite' : ''
-    return `${baseClass}${liteClass}${classItems}`
+    return `${baseClass}${classItems}`
 }
 
 // Component props and processing
 // Get component props
-const { id, classItems, mode, options }: SiteGridContentProps = Astro.props
+const { id, classItems, options }: SiteGridContentProps = Astro.props
 
 // Process props
 const formattedClassItems = formatClassItems(classItems)
 const customProperties = generateCustomProperties(options)
-const cssClass = buildCSSClass(mode, formattedClassItems)
+const cssClass = buildCSSClass(formattedClassItems)
 
 ---
 

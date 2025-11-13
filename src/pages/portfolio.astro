@@ -61,7 +61,7 @@ const visiblePortfolioItems = filterVisibleItems(allPortfolioItems)
 
 <!-- Portfolio Page -->
 <Layout title="Portfolio">
-    <SiteGridContent classItems="portfolio wrap" options={{ maxWidth: '1200px' }}>
+    <SiteGridContent classItems="portfolio wrap" options={{ min: '18rem' }}>
         {
             visiblePortfolioItems.map(async (item, itemIndex) => {
                 const portfolioName = getFName(item.file)

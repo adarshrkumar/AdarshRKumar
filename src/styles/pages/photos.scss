@@ -1,41 +1,16 @@
 // ============================================
-// PHOTOS PAGE - MINIMALIST CARD DESIGN
+// PHOTOS PAGE - FULLSCREEN & OVERLAY STYLES
 // ============================================
 
 // --------------------------------------------
 // Variables
 // --------------------------------------------
-$card-border-radius: 0.75rem;
-$card-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
-$card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
-$card-shadow-dark-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
-$card-shadow-dark-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
 $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
 // --------------------------------------------
 // Animations
 // --------------------------------------------
-@keyframes blur-fade-in {
-    from {
-        filter: blur(10px);
-        opacity: 0.7;
-    }
-    to {
-        filter: blur(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 @keyframes scale-in {
     from {
         transform: scale(0.95);
@@ -106,38 +81,15 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     // --------------------------------------------
     .item {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        border-radius: $card-border-radius;
-        overflow: hidden;
         background-color: var(--bg);
         cursor: pointer;
         padding: 0 !important; // Override grid padding
-        max-width: 100%; // Prevent overflow
-        box-sizing: border-box;
         transition:
             transform $transition-smooth,
             box-shadow $transition-smooth,
             position 0s,
             inset 0s,
             z-index 0s;
-
-        // Card elevation
-        box-shadow: $card-shadow-subtle;
-
-        @media (prefers-color-scheme: dark) {
-            box-shadow: $card-shadow-dark-subtle;
-        }
-
-        // Animation on load
-        animation: scale-in 0.5s $transition-smooth backwards;
-
-        // Stagger animation for sequential loading
-        @for $i from 1 through 20 {
-            &:nth-child(#{$i}) {
-                animation-delay: #{$i * 0.05}s;
-            }
-        }
 
         // --------------------------------------------
         // Hidden Checkbox (for fullscreen toggle)
@@ -154,61 +106,26 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         // Image Container
         // --------------------------------------------
         &__img {
-            width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
-            display: block;
             user-select: none;
 
             @supports(-webkit-user-drag: none) {
                 -webkit-user-drag: none;
             }
 
-            position: relative;
-
-            // Loading state - show placeholder with blur
-            &.loading {
-                background-image: var(--placeholder);
-                background-size: cover;
-                background-position: center;
-                background-color: hsl(0, 0%, 95%);
-
-                @media (prefers-color-scheme: dark) {
-                    background-color: hsl(0, 0%, 20%);
-                }
-
-                // Blur and fade the placeholder
-                &::before {
-                    content: '';
-                    position: absolute;
-                    inset: 0;
-                    background: inherit;
-                    filter: blur(10px);
-                    opacity: 0.7;
-                }
-
-                // Pulse animation for loading indicator
-                animation: pulse 2s ease-in-out infinite;
+            // Photos-specific: blur effect for placeholder
+            &.loading::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: inherit;
+                filter: blur(10px);
+                opacity: 0.7;
             }
 
-            // Loaded state - clear, sharp image
-            &.loaded {
-                background: none;
-                animation: fade-in 0.4s ease-out;
-
-                &::before {
-                    display: none;
-                }
-            }
-        }
-
-        // Pulse animation for loading state
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
+            &.loaded::before {
+                display: none;
             }
         }
 
@@ -269,24 +186,12 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         // Hover State (not in fullscreen)
         // --------------------------------------------
         &:not(:has(.item__checkbox:checked)):hover {
-            transform: translateY(-4px);
-            box-shadow: $card-shadow-hover;
             z-index: 2;
-
-            @media (prefers-color-scheme: dark) {
-                box-shadow: $card-shadow-dark-hover;
-            }
 
             // Reveal info overlay on hover
             .item__info {
                 opacity: 1;
                 transform: translateY(0);
-            }
-
-            // Subtle image zoom
-            .item__img {
-                transform: scale(1.05);
-                transition: transform 0.6s $transition-smooth;
             }
         }
 
@@ -343,18 +248,6 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 @media (prefers-reduced-motion: reduce) {
     .photos {
         .item {
-            animation: fade-in 0.3s ease;
-            transition-duration: 0.1s;
-
-            &:hover {
-                transition-duration: 0.1s;
-            }
-
-            &__img {
-                animation: none;
-                transition-duration: 0.1s;
-            }
-
             &__info {
                 transition-duration: 0.1s;
             }

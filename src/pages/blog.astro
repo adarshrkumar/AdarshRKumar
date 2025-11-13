@@ -14,7 +14,7 @@ const postsWithMetadata = getPostsForDisplay(Astro.site)
 
 <!-- Blog Page -->
 <Layout title="Blog">
-    <SiteGridContent classItems="posts">
+    <SiteGridContent classItems="posts" options={{ min: '18rem' }}>
         {
             postsWithMetadata.map(async post => {
                 // Process text content for preview

@@ -228,7 +228,6 @@ export interface LayoutProps {
 export interface SiteGridContentProps {
     id?: string;
     classItems?: string;
-    mode?: string;
     options?: GridOptions;
 }
 
