@@ -1,6 +1,6 @@
 ---
 name: "Graphics for Good"
-url: "https://graphics-for-good.com"
+url: "https://old-g4g-site.vercel.app"
 target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
