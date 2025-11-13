@@ -1,10 +1,78 @@
+// Music page styling variables
+$music-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+$music-shadow-dark-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
+$music-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+$music-shadow-dark-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+$transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Animations
+@keyframes scale-in {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 // Music page styling
 .music-area {
     // Iframe styling for music embeds
     iframe {
-        border: solid 1px var(--color);
-        border-radius: 10px;
+        background-color: var(--bg);
+        border-radius: 1rem;
+        box-shadow: $music-shadow-subtle;
         overflow: hidden;
         aspect-ratio: 16 / 9;
+        transition: transform $transition-smooth,
+                    box-shadow $transition-smooth;
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: $music-shadow-dark-subtle;
+        }
+
+        // Animation on load
+        animation: scale-in 0.5s $transition-smooth backwards;
+
+        // Stagger animation for sequential loading
+        @for $i from 1 through 20 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.05}s;
+            }
+        }
+
+        // Hover effects
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: $music-shadow-hover;
+
+            @media (prefers-color-scheme: dark) {
+                box-shadow: $music-shadow-dark-hover;
+            }
+        }
+    }
+}
+
+// Accessibility - reduced motion
+@media (prefers-reduced-motion: reduce) {
+    .music-area iframe {
+        animation: fade-in 0.3s ease;
+        transition-duration: 0.1s;
+
+        &:hover {
+            transform: none;
+            transition-duration: 0.1s;
+        }
     }
 }

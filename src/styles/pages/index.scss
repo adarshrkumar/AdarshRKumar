@@ -66,13 +66,18 @@
 
             &:last-child {
                 img {
+                    vertical-align: middle;
                     border-radius: 100vw;
+                    aspect-ratio: 100 / 25;
+                    height: 25px;
+                    width: 100px;
                 }
             }
         }
     }
 
     #social-media + p {
+        margin-block: 1rem;
         font-size: 3.40cqw;
         text-align: center;
         vertical-align: middle;
