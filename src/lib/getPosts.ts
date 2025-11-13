@@ -98,7 +98,7 @@ export function createPreviewContent(text: string, maxLength: number = 50): stri
  * Helper function to generate screenshot image data
  */
 export function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512) {
-    const screenshotUrl = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+    const screenshotUrl = `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
     
     return {
         src: screenshotUrl,
