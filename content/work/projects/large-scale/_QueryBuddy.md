@@ -1,6 +1,7 @@
 ---
 name: "Virtual Assistant"
 url: "https://assistant.adarshrkumar.dev"
+target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
 

@@ -1,6 +1,7 @@
 ---
 name: "Live Clock"
 url: "https://live-clock.adarshrkumar.dev"
+target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
 

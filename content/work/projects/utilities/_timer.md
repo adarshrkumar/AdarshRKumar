@@ -1,6 +1,7 @@
 ---
 name: "Timer Application"
 url: "https://timer.adarshrkumar.dev"
+target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
 

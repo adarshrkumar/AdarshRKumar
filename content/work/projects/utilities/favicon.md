@@ -1,6 +1,7 @@
 ---
 name: "Favicon Generator"
 url: "https://favicons.adarshrkumar.dev"
+target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
 

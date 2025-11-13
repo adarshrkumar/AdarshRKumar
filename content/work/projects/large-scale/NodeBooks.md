@@ -1,6 +1,7 @@
 ---
 name: "NodeBooks"
 url: "/post/nodebooks"
+target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
 
