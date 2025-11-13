@@ -6,6 +6,18 @@ $frame-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
 $frame-shadow-dark-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
 $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+// Animations
+@keyframes scale-in {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 // Large frame styling
 .large-frame {
     // Layout properties
@@ -31,6 +43,16 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     @media (prefers-color-scheme: dark) {
         box-shadow: $frame-shadow-dark-subtle;
+    }
+
+    // Animation on load
+    animation: scale-in 0.5s $transition-smooth backwards;
+
+    // Stagger animation for sequential loading
+    @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.05}s;
+        }
     }
 
     // Child element positioning
@@ -156,8 +178,18 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 // Accessibility - reduced motion
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .large-frame {
+        animation: fade-in 0.3s ease;
         transition-duration: 0.1s;
 
         &:hover {
