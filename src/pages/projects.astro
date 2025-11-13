@@ -92,10 +92,10 @@ const allProjects: PortfolioItem[] = Object.values(allProjectsObj) as PortfolioI
                             visibleItems.map((item, itemIndex) => {
                                 const projectName = getFName(item.file)
                                 const projectUrl = item.frontmatter.url
-                                const linkTarget = determineLinkTarget(projectUrl, Astro.site)
+                                const linkTarget = item.frontmatter.target || determineLinkTarget(projectUrl, Astro.site)
                                 const screenshotUrl = generateScreenshotUrl(projectUrl)
                                 const placeholderUrl = `${screenshotUrl}&image_quality=50`
-                                
+
                                 return (
                                     <a href={projectUrl} target={linkTarget} class="item">
                                         <img 
