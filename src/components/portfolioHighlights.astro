@@ -48,7 +48,7 @@ highlights.forEach(name => {
             if (!url.includes(':') || domain === Astro.site?.toString()) target = '_self'
 
             var imageSize = 512
-            var image_url = `https://webshot.adarshrkumar.dev/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+            var image_url = `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(url)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
             return (
                 <a href={url} target={target} class="item">
                     <img src={image_url} alt={`Screenshot of ${item.frontmatter.name} project`} alt="" class="item__img" style={`--placeholder: url('${image_url}&image_quality=${50}')`} />
