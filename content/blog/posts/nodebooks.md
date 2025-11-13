@@ -16,7 +16,7 @@ At first, I just made a way to view MarkDown (`.md`) based notebooks that were s
 
 ### Next Steps
 
-I then integraded the [tinymce](https://tiny.cloud) rich-text editor and parsed the MarkDown using [marked](https://marked.js.org) to serve to the user in the editor, but soon realized that saving in MarkDown was working well.  
+I then integraded the [tinymce](https://tiny.cloud) rich-text editor and parsed the MarkDown using [marked](https://marked.js.org) to serve to the user in the editor, but soon realized that saving in MarkDown was not working well.  
 I then switched to saving in [HTML](https://akum.site/p/HTMLInfo) (then Base64 Encoded HTML) instead.  
 
 ### Ability to create
