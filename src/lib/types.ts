@@ -59,6 +59,7 @@ export interface PortfolioItem {
     frontmatter: {
         url: string;
         name: string;
+        target?: string;
     };
     rawContent: () => string;
 }

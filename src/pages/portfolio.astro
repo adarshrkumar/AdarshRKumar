@@ -66,10 +66,10 @@ const visiblePortfolioItems = filterVisibleItems(allPortfolioItems)
             visiblePortfolioItems.map(async (item, itemIndex) => {
                 const portfolioName = getFName(item.file)
                 const portfolioUrl = item.frontmatter.url
-                const linkTarget = determineLinkTarget(portfolioUrl, Astro.site)
+                const linkTarget = item.frontmatter.target || determineLinkTarget(portfolioUrl, Astro.site)
                 const screenshotUrl = generateScreenshotUrl(portfolioUrl)
                 const placeholderUrl = `${screenshotUrl}&image_quality=50`
-                
+
                 return (
                     <a href={portfolioUrl} target={linkTarget} class="item">
                         <img 
