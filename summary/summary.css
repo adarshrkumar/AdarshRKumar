@@ -7,6 +7,7 @@
     --border: #d0d7de;
     --skill-bg: #eaeef2;
 }
+
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: #0d1117;
@@ -17,17 +18,81 @@
         --skill-bg: #21262d;
     }
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 600px; margin: 0 auto; }
-h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-.tagline { color: var(--text-muted); margin-bottom: 1.5rem; }
-section { margin-bottom: 1.5rem; }
-h2 { font-size: 1rem; color: var(--accent); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; }
-ul { list-style: none; }
-li { padding: 0.25rem 0; }
-.skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.skill { background: var(--skill-bg); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; }
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.links { display: flex; flex-wrap: wrap; gap: 1rem; }
-.website-link { margin-top: 0.75rem; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.25rem;
+}
+
+section {
+    margin-bottom: 1.5rem;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding: 0.25rem 0;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.tagline {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill {
+    background: var(--skill-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.website-link {
+    margin-top: 0.75rem;
+}
