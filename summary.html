@@ -5,17 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Adarsh R. Kumar</title>
         <style>
+            :root {
+                color-scheme: light dark;
+                --bg: #ffffff;
+                --text: #1f2328;
+                --text-muted: #656d76;
+                --accent: #0969da;
+                --border: #d0d7de;
+                --skill-bg: #eaeef2;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg: #0d1117;
+                    --text: #e6edf3;
+                    --text-muted: #8b949e;
+                    --accent: #58a6ff;
+                    --border: #30363d;
+                    --skill-bg: #21262d;
+                }
+            }
             * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { font-family: system-ui, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; padding: 2rem; max-width: 600px; margin: 0 auto; }
+            body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 600px; margin: 0 auto; }
             h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-            .tagline { color: #8b949e; margin-bottom: 1.5rem; }
+            .tagline { color: var(--text-muted); margin-bottom: 1.5rem; }
             section { margin-bottom: 1.5rem; }
-            h2 { font-size: 1rem; color: #58a6ff; margin-bottom: 0.5rem; border-bottom: 1px solid #30363d; padding-bottom: 0.25rem; }
+            h2 { font-size: 1rem; color: var(--accent); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; }
             ul { list-style: none; }
             li { padding: 0.25rem 0; }
             .skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-            .skill { background: #21262d; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; }
-            a { color: #58a6ff; text-decoration: none; }
+            .skill { background: var(--skill-bg); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; }
+            a { color: var(--accent); text-decoration: none; }
             a:hover { text-decoration: underline; }
             .links { display: flex; flex-wrap: wrap; gap: 1rem; }
             .website-link { margin-top: 0.75rem; }
