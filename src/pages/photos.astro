@@ -6,6 +6,7 @@ import { getImage } from 'astro:assets'
 import '../styles/pages/photos.scss'
 import type { PhotoItem, PhotoMetadata } from '../lib/types'
 import { getAllPhotos } from '../lib/getPhotos.ts'
+import AnimatedCard from '../components/motion/AnimatedCard.astro'
 
 // Helper functions
 // Helper function to extract clean site URL
@@ -78,14 +79,14 @@ const getFName = extractFileName
 <Layout title="Photos">
     <SiteGridContent classItems="photos" options={{min: '18rem'}}>
         {
-            photosWithMetadata.map(async photo => {
+            photosWithMetadata.map(async (photo, index) => {
                 // Skip photos without source
                 if (!photo.src) {
                     return ''
                 }
-                
+
                 const photoData = photo.data
-                
+
                 // Generate Astro's native resized image URL
                 const optimizedImage = await getImage({
                     src: photo.import?.src || photo.src || '',
@@ -95,34 +96,35 @@ const getFName = extractFileName
                     quality: 85
                 })
 
-                
                 // Check if we have metadata to display
                 const hasMetadata = !!(photoData?.title || photoData?.info)
                 const hasTitle = !!photoData?.title
                 const hasLocation = !!photoData?.location
-                
+
                 return (
-                    <label class="item">
-                        <input type="checkbox" class="item__checkbox" />
-                        <img
-                            class="item__img loading"
-                            src={photo.src || ''}
-                            alt={photo.alt || photoData?.title || `Photo: ${photo.fullname}`}
-                            loading="lazy"
-                            decoding="async"
-                            style={`--placeholder: url('${optimizedImage.src}');`}
-                        />
-                        {hasMetadata && (
-                            <div class="item__info">
-                                {hasTitle && (
-                                    <h3 class="item__title">{photoData.title}</h3>
-                                )}
-                                {hasLocation && (
-                                    <span class="item__content">📍 {photoData.location}</span>
-                                )}
-                            </div>
-                        )}
-                    </label>
+                    <AnimatedCard index={index} class="item">
+                        <label style="display: contents;">
+                            <input type="checkbox" class="item__checkbox" />
+                            <img
+                                class="item__img loading"
+                                src={photo.src || ''}
+                                alt={photo.alt || photoData?.title || `Photo: ${photo.fullname}`}
+                                loading="lazy"
+                                decoding="async"
+                                style={`--placeholder: url('${optimizedImage.src}');`}
+                            />
+                            {hasMetadata && (
+                                <div class="item__info">
+                                    {hasTitle && (
+                                        <h3 class="item__title">{photoData.title}</h3>
+                                    )}
+                                    {hasLocation && (
+                                        <span class="item__content">📍 {photoData.location}</span>
+                                    )}
+                                </div>
+                            )}
+                        </label>
+                    </AnimatedCard>
                 )
             })
         }
