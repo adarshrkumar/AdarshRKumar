@@ -6,6 +6,7 @@ import SiteGridContent from '../components/siteGridContent.astro'
 import getFName from '../lib/getFName'
 import sanitizeMD from '../lib/sanitizeMD'
 import type { PortfolioItem } from '../lib/types'
+import AnimatedCard from '../components/motion/AnimatedCard.astro'
 
 // Helper functions
 // Helper function to determine link target based on URL
@@ -78,18 +79,18 @@ const visiblePortfolioItems = filterVisibleItems(allPortfolioItems)
                 const placeholderUrl = `${screenshotUrl}&image_quality=50`
 
                 return (
-                    <a href={portfolioUrl} target={linkTarget} class="item">
-                        <img 
-                            src={screenshotUrl} 
-                            alt={`Screenshot of ${item.frontmatter.name}`} 
-                            class="item__img" 
-                            style={`--placeholder: url('${placeholderUrl}')`} 
+                    <AnimatedCard index={itemIndex} class="item" href={portfolioUrl} target={linkTarget}>
+                        <img
+                            src={screenshotUrl}
+                            alt={`Screenshot of ${item.frontmatter.name}`}
+                            class="item__img"
+                            style={`--placeholder: url('${placeholderUrl}')`}
                         />
                         <div class="item__info">
                             <h3 class="item__title">{item.frontmatter.name}</h3>
                             <p class="item__content">{sanitizeMD(await item.rawContent())}</p>
                         </div>
-                    </a>
+                    </AnimatedCard>
                 )
             })
         }

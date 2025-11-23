@@ -1,0 +1,174 @@
+// Animation variables
+$animation-duration: 0.5s;
+$animation-duration-fast: 0.4s;
+$animation-duration-slow: 0.6s;
+$animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+// Keyframes
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Base animation classes
+.animate {
+    opacity: 0;
+
+    &.animate--visible {
+        animation-fill-mode: forwards;
+        animation-timing-function: $animation-easing;
+    }
+}
+
+// FadeIn component styles
+.fade-in {
+    opacity: 0;
+
+    &.fade-in--visible {
+        animation-fill-mode: forwards;
+        animation-timing-function: $animation-easing;
+
+        &.fade-in--up {
+            animation-name: fadeInUp;
+        }
+
+        &.fade-in--down {
+            animation-name: fadeInDown;
+        }
+
+        &.fade-in--left {
+            animation-name: fadeInLeft;
+        }
+
+        &.fade-in--right {
+            animation-name: fadeInRight;
+        }
+
+        &.fade-in--none {
+            animation-name: fadeIn;
+        }
+    }
+}
+
+// AnimatedCard component styles
+.animated-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.2s ease-out;
+
+    &.animated-card--visible {
+        animation: scaleIn $animation-duration-fast $animation-easing forwards;
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+    }
+}
+
+.animated-card-link {
+    display: contents;
+
+    &:hover .animated-card {
+        transform: translateY(-6px);
+    }
+}
+
+// AnimatedTitle component styles
+.animated-title {
+    opacity: 0;
+    transform: translateX(-20px);
+
+    &.animated-title--visible {
+        animation: slideInLeft $animation-duration $animation-easing forwards;
+    }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .animated-card,
+    .animated-title,
+    .animate {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+        transition: none !important;
+
+        &.fade-in--visible,
+        &.animated-card--visible,
+        &.animated-title--visible,
+        &.animate--visible {
+            animation: none !important;
+        }
+    }
+}

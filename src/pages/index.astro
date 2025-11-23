@@ -6,39 +6,10 @@ import Layout from '../layouts/Layout.astro'
 import Hero from '../components/hero.astro'
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
-import type { PageSection } from '../lib/types'
+import FadeIn from '../components/motion/FadeIn.astro'
+import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 
 import * as cheerio from 'cheerio'
-
-// Export for navigation
-// export consMt url = '/'
-
-// Page configuration
-// Page sections configuration
-const pageSections: PageSection[] = [
-    {
-        id: 'portfolio',
-        title: 'Featured Portfolio Items',
-        className: 'pHighlights',
-        element: PortfolioHighlights,
-    },
-    {
-        id: 'blog',
-        title: 'Featured Blog Posts',
-        className: 'bFeatures',
-        element: FeaturedArticles,
-    }
-]
-
-// Future sections (commented out for now)
-const futureSections = [
-    'Latest Blog Posts',
-    'Photography Showcase',
-    'Skills Overview',
-    'Featured Project',
-    'Tutorials and Resources (If Any)',
-    'Newsletter Signup'
-]
 
 
 const readmeFile = await import('../../README.md')
@@ -56,21 +27,27 @@ const newReadmeContent = $.html()
 <Layout title="" pageType="home">
     <!-- <Hero /> -->
 
-    <section class="readme">
-        <div class="readme__content" set:html={newReadmeContent} />
+    <FadeIn direction="up" duration={0.6}>
+        <section class="readme">
+            <div class="readme__content" set:html={newReadmeContent} />
+        </section>
+    </FadeIn>
+
+    <section class="section pHighlights">
+        <FadeIn delay={0.1} direction="up">
+            <AnimatedTitle as="h2" class="section-title">
+                Featured Portfolio Items
+            </AnimatedTitle>
+        </FadeIn>
+        <PortfolioHighlights />
     </section>
 
-    {
-        pageSections.map(s => {
-            const Component = s.element
-            return (
-                <section class={`section ${s.className}`}>
-                    <h2 class="section-title">{s.title}</h2>
-                    <Component />
-                </section>
-            )
-        })
-    }
-        
-    <!-- Future sections: {futureSections.join(', ')} -->
+    <section class="section bFeatures">
+        <FadeIn delay={0.2} direction="up">
+            <AnimatedTitle as="h2" class="section-title">
+                Featured Blog Posts
+            </AnimatedTitle>
+        </FadeIn>
+        <FeaturedArticles />
+    </section>
 </Layout>
