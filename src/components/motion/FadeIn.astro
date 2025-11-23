@@ -1,0 +1,54 @@
+---
+import '../../styles/components/animations.scss'
+
+interface Props {
+    class?: string
+    delay?: number
+    direction?: 'up' | 'down' | 'left' | 'right' | 'none'
+    duration?: number
+}
+
+const {
+    class: className = '',
+    delay = 0,
+    direction = 'up',
+    duration = 0.5
+} = Astro.props
+---
+
+<div
+    class:list={['fade-in', `fade-in--${direction}`, className]}
+    style={`animation-delay: ${delay}s; animation-duration: ${duration}s;`}
+    data-animate="fade"
+>
+    <slot />
+</div>
+
+<script>
+    function initFadeIn() {
+        const elements = document.querySelectorAll('[data-animate="fade"]')
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in--visible')
+                        observer.unobserve(entry.target)
+                    }
+                })
+            },
+            {
+                rootMargin: '-50px',
+                threshold: 0
+            }
+        )
+
+        elements.forEach((el) => observer.observe(el))
+    }
+
+    // Run on initial load
+    initFadeIn()
+
+    // Re-run on Astro page transitions
+    document.addEventListener('astro:page-load', initFadeIn)
+</script>

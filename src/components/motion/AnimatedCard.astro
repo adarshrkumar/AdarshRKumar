@@ -1,0 +1,64 @@
+---
+import '../../styles/components/animations.scss'
+
+interface Props {
+    index?: number
+    class?: string
+    href?: string
+    target?: string
+}
+
+const { index = 0, class: className = '', href, target } = Astro.props
+
+// Calculate delay based on index (max 0.4s)
+const delay = Math.min(index * 0.08, 0.4)
+---
+
+{href ? (
+    <a href={href} target={target} class="animated-card-link">
+        <div
+            class:list={['animated-card', className]}
+            style={`animation-delay: ${delay}s;`}
+            data-animate="card"
+        >
+            <slot />
+        </div>
+    </a>
+) : (
+    <div
+        class:list={['animated-card', className]}
+        style={`animation-delay: ${delay}s;`}
+        data-animate="card"
+    >
+        <slot />
+    </div>
+)}
+
+<script>
+    function initAnimatedCards() {
+        const cards = document.querySelectorAll('[data-animate="card"]')
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated-card--visible')
+                        observer.unobserve(entry.target)
+                    }
+                })
+            },
+            {
+                rootMargin: '-30px',
+                threshold: 0
+            }
+        )
+
+        cards.forEach((card) => observer.observe(card))
+    }
+
+    // Run on initial load
+    initAnimatedCards()
+
+    // Re-run on Astro page transitions
+    document.addEventListener('astro:page-load', initAnimatedCards)
+</script>
