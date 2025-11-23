@@ -4,7 +4,6 @@ import { defineConfig } from 'astro/config';
 
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
-import react from '@astrojs/react';
 
 // Astro configuration
 
@@ -15,7 +14,7 @@ export default defineConfig({
     base: '/',
     trailingSlash: 'always',
     adapter: vercel(),
-    integrations: [sitemap(), react()],
+    integrations: [sitemap()],
     vite: {
         server: {
             headers: {

@@ -1,0 +1,46 @@
+---
+import '../../styles/components/animations.scss'
+
+interface Props {
+    class?: string
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+}
+
+const { class: className = '', as: Tag = 'h2' } = Astro.props
+---
+
+<Tag
+    class:list={['animated-title', className]}
+    data-animate="title"
+>
+    <slot />
+</Tag>
+
+<script>
+    function initAnimatedTitles() {
+        const titles = document.querySelectorAll('[data-animate="title"]')
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated-title--visible')
+                        observer.unobserve(entry.target)
+                    }
+                })
+            },
+            {
+                rootMargin: '-50px',
+                threshold: 0
+            }
+        )
+
+        titles.forEach((title) => observer.observe(title))
+    }
+
+    // Run on initial load
+    initAnimatedTitles()
+
+    // Re-run on Astro page transitions
+    document.addEventListener('astro:page-load', initAnimatedTitles)
+</script>
