@@ -8,7 +8,7 @@ import sanitizeMD from '../lib/sanitizeMD'
 import type { PortfolioItem } from '../lib/types'
 
 // Configuration
-var highlights = ['TransTrack', 'graphics-for-good', 'SMCAS']
+var highlights = ['commonps', 'pscode-syntax-highlighter', 'ai-scholarly-mode', 'imageresize', 'SMCAS']
 const ports = import.meta.glob('../../content/work/portfolio/**/*.md', { eager: true })
 const keys = Object.keys(ports)
 const allItems = Object.values(ports) as PortfolioItem[];
