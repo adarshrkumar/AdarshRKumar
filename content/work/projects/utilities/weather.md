@@ -1,6 +1,6 @@
 ---
 name: "Weather"
-url: "https://github.com/adarshrkumar/Weather"
+url: "https://Weather.adarshrkumar.dev"
 target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->

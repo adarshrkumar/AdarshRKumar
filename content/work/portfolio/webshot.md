@@ -1,6 +1,6 @@
 ---
 name: "WebShot"
-url: "https://github.com/adarshrkumar/WebShot"
+url: "https://WebShot.adarshrkumar.dev"
 target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->

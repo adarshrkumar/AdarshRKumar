@@ -1,6 +1,6 @@
 ---
 name: "Progress Bar"
-url: "https://github.com/adarshrkumar/Progress-Bar"
+url: "https://Progress-Bar.adarshrkumar.dev"
 target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->

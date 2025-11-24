@@ -1,6 +1,6 @@
 ---
 name: "ImageResize"
-url: "https://github.com/adarshrkumar/ImageResize"
+url: "https://ImageResize.adarshrkumar.dev"
 target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
