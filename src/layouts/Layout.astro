@@ -56,18 +56,6 @@ function buildFinalTitle(processedTitle: string, pageTitle: string): string {
     return `${processedTitle} | ${siteConfig.name}`
 }
 
-// Helper function to clean CSS class string
-function cleanCSSClass(classString: string): string {
-    let cleaned = classString
-    if (cleaned.startsWith(' ')) {
-        cleaned = cleaned.substring(1)
-    }
-    if (cleaned.endsWith(' ')) {
-        cleaned = cleaned.substring(0, cleaned.length - 1)
-    }
-    return cleaned
-}
-
 // Get component props
 const { title, pTitle, classItems, inlineStyles, pageType, author }: LayoutProps = Astro.props
 
@@ -77,13 +65,13 @@ const baseClassItems = classItems || ''
 const finalClassItems = pageType ? `${baseClassItems} ${pageType}` : baseClassItems
 const processedTitle = processPageTitle(title || '', pageType)
 const finalTitle = buildFinalTitle(processedTitle, pageTitle)
-const cssClassName = cleanCSSClass(`page-area main-content ${finalClassItems}`)
+const cssClassName = `page-area main-content ${finalClassItems.trim()}`.trim().replaceAll('  ', ' ')
 
 // Load and process content
 import age from '../lib/getAge'
 
 const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(sanitizeMD(await aboutFile.rawContent()))
+const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 
 const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))

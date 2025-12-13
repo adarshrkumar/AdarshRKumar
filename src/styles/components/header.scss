@@ -67,12 +67,14 @@
         }
 
         &:is(:hover, :focus) {
-            border-radius: 20%;
-            transform: rotate(5deg) scale(1.05);
-            box-shadow:
-                0 0 calc(var(--shadow-size) * 1.5) 0 var(--color),
-                0 8px 20px var(--shadow-color);
-            outline: none;
+            &:not(:has(.fancy-logo:is(:hover, :focus))) {
+                border-radius: 20%;
+                transform: rotate(5deg) scale(1.05);
+                box-shadow:
+                    0 0 calc(var(--shadow-size) * 1.5) 0 var(--color),
+                    0 8px 20px var(--shadow-color);
+                outline: none;
+            }
         }
     }
 
