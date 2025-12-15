@@ -75,30 +75,13 @@
             overflow: hidden;
         }
 
-        .logo {
-            display: none;
-
-            transition: opacity 0.4s $transition-timing;
-        }
-
         &:is(:hover, :focus) {
-            &:not(:has(.fancy-logo:is(:hover, :focus))) {
-                border-radius: 20%;
-                transform: rotate(5deg) scale(1.05);
-                box-shadow:
-                    0 0 calc(var(--shadow-size) * 1.5) 0 var(--color),
-                    0 8px 20px var(--shadow-color);
-                outline: none;
-            }
-        }
-    }
-
-    @media (pointer:coarse) {
-        .logo {
-            display: block;
-        }
-        .face-tracker {
-            display: none;
+            border-radius: 20%;
+            transform: rotate(5deg) scale(1.05);
+            box-shadow:
+                0 0 calc(var(--shadow-size) * 1.5) 0 var(--color),
+                0 8px 20px var(--shadow-color);
+            outline: none;
         }
     }
 }
