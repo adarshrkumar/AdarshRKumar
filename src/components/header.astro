@@ -6,7 +6,6 @@ import '../styles/components/nav.scss'
 import '../styles/components/fancy-logo.scss'
 import NavContent from './navContent.astro'
 import ThemeSwitcher from './themeSwitcher.astro'
-import FancyFace from './fancyFace.astro'
 import type { PageImport } from '../lib/types'
 
 // Props and data
@@ -83,10 +82,7 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
 
 <header id="header" class="header" aria-label="Site navigation">
     <a class="logo-link" href="/">
-        <FancyFace />
-        <div class="logo-container">
-            <img class="logo" src={logo} alt="Site logo" />
-        </div>
+        <img class="logo" src={logo} alt="Site logo" />
     </a>
     <nav class="nav">
         <NavContent items={links} />
