@@ -63,9 +63,24 @@
             transform 0.3s $transition-timing,
             box-shadow 0.3s $transition-timing;
 
-        .logo {
-            display: inherit;
+        display: grid;
+        grid-template: 1fr;
+        grid-template-rows: 1fr;
+
+        > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            
             border-radius: inherit;
+            overflow: hidden;
+        }
+
+        .logo {
+            opacity: 0;
+
+            scale: 1.3;
+
+            transition: opacity 0.4s $transition-timing;
         }
 
         &:is(:hover, :focus) {
@@ -91,7 +106,11 @@
             margin-bottom: calc(-1 * #{math.div($nav-height, 2)});
             scale: 0.5;
             transform-origin: top;
-        }        
+        }
+
+        .logo {
+            opacity: 1;
+        }
     }
     @media (pointer:coarse) {
         .nav {
