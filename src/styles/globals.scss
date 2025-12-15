@@ -99,10 +99,13 @@ img {
 }
 
 .content {
+    --pad: #{$content-spacing};
+
     display: flex;
     flex-direction: column;
     gap: 0;
-    max-width: 100%;
+    
+    max-width: calc(100dvw - var(--pad) + 1px);
 
     hr {
         margin-inline: auto;
@@ -111,10 +114,13 @@ img {
     &:not(.isSoon) {
         margin: 0 !important;
     }
+
+    &:not(:has(> .ignorePadding)) {
+        padding: var(--pad);
+    }
 }
 
 .main-content {
-    --pad: #{$content-spacing};
 
     &:not(.author) {
         flex: 1;
@@ -122,10 +128,6 @@ img {
 
     box-sizing: border-box;
     max-width: 100%;
-
-    &:not(.ignorePadding) {
-        padding: var(--pad);
-    }
 }
 
 .section, .hero {

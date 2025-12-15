@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // Custom property for small container
 @property --small-container {
     syntax: '<boolean>';
@@ -13,11 +15,11 @@
 
     padding: $section-spacing $hero-spacing;
 
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+
     gap: $section-spacing;
-    row-gap: $content-spacing;
 
     border-bottom: 2px solid var(--border-color);
     background: var(--bg);
@@ -78,41 +80,23 @@
         }
     }
 
-    // Navigation - takes middle column
-    .nav {
-        grid-column: 2 / 3;
-        grid-row: 1;
-        justify-self: end;
-        max-width: 100%;
+    nav {
+        transition: 
+            margin-bottom 0.4s $transition-timing,
+            scale 0.4s $transition-timing;
     }
 
-    // Override non-primary button hover - no background or color change
-    .nav .btn.nav-btn:not(.primary):hover {
-        background-color: transparent;
-        color: var(--color);
-        border-color: color-mix(in srgb, var(--border-color) 70%, white);
-        transform: none;
-        box-shadow: none;
+    &:not(:is(:hover, :focus)) {
+        .nav {
+            margin-bottom: calc(-1 * #{math.div($nav-height, 2)});
+            scale: 0.5;
+            transform-origin: top;
+        }        
     }
-
-    // Primary button - filled by default, transparent on hover
-    .nav .btn.nav-btn.primary {
-        background-color: var(--color);
-        color: var(--bg);
-        border: 2px solid var(--color);
-        box-shadow: none;
-
-        &:hover {
-            // Transparent on hover with lighter border and underline
-            background-color: transparent;
-            border-color: color-mix(in srgb, var(--border-color) 70%, white);
-            color: var(--color);
-            transform: none;
-            box-shadow: none;
-            text-decoration: underline;
-            text-decoration-color: var(--accent-color);
-            text-decoration-thickness: 2px;
-            text-underline-offset: 4px;
+    @media (pointer:coarse) {
+        .nav {
+            margin-bottom: unset;
+            scale: unset;
         }
     }
 }

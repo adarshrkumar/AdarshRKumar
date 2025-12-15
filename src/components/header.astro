@@ -3,6 +3,7 @@
 
 import '../styles/components/header.scss'
 import '../styles/components/nav.scss'
+import '../styles/components/fancy-logo.scss'
 import NavContent from '../components/navContent.astro'
 import ThemeSwitcher from '../components/themeSwitcher.astro'
 import type { PageImport } from '../lib/types'
@@ -80,9 +81,14 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
 <!-- Header Component -->
 
 <header id="header" class="header" aria-label="Site navigation">
-    <a class="logo-link" href="/">
-        <img class="logo" src={logo} alt="Site logo" />
-    </a>
+    <div class="logo-container">
+        <a class="logo-link" href="/">
+            <img class="logo" src={logo} alt="Site logo" />
+        </a>
+        <!-- <div class="fancy-logo">
+            <img class="logo" src={logo} alt="Site logo" />
+        </div> -->
+    </div>
     <nav class="nav">
         <NavContent items={links} />
     </nav>
