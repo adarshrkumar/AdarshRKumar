@@ -26,6 +26,28 @@
         border-radius: calc(var(--br) - var(--pad));
     }
 
+    .fancy-column {
+        display: flex;
+        gap: var(--pad);
+
+        .face-tracker {
+            border-radius: 50%;
+            max-width: 8rem;
+            aspect-ratio: 1;
+            overflow: hidden;
+
+            background-image: url('/assets/logo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            > img {
+                scale: 0.77;
+                translate: -2px 5px;
+            }
+        }
+    }
+
     table {
         display: block;
         width: 100%;
