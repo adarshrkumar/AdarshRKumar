@@ -30,6 +30,10 @@
         display: flex;
         gap: var(--pad);
 
+        h1 {
+            margin-top: calc(var(--pad) / 2);
+        }
+
         .face-tracker {
             border-radius: 50%;
             max-width: 8rem;

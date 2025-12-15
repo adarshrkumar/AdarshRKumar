@@ -45,7 +45,7 @@ const fancyFaceHTML = await container.renderToString(FancyFace, {
 
     <FadeIn direction="up" duration={0.6}>
         <section class="readme">
-            <div class="readme__content" set:html={newReadmeContent.replace(firstPara ?? '', `<div class="fancy-column">${fancyFaceHTML}${firstPara}</div>`)} />
+            <div class="readme__content" set:html={newReadmeContent.replace(firstPara ?? '', `<div class="fancy-column">${fancyFaceHTML}<div><h1>Adarsh R. Kumar</h1>${firstPara}</div></div>`)} />
         </section>
     </FadeIn>
 
