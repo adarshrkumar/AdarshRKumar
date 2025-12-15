@@ -103,8 +103,8 @@
 
     &:not(:is(:hover, :focus)) {
         .nav {
-            margin-bottom: calc(-1 * #{math.div($nav-height, 2)});
-            scale: 0.5;
+            margin-bottom: calc(-1 * #{math.div($nav-height, 6)});
+            scale: 0.75;
             transform-origin: top;
         }
 
