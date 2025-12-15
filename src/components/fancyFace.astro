@@ -86,7 +86,9 @@
         setFromClient(rect.left + rect.width / 2, rect.top + rect.height / 2);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.face-tracker').forEach((el) => initializeFaceTracker(el));
-    });
+    if (!window.matchMedia('(pointer: coarse)').matches) {
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.face-tracker').forEach((el) => initializeFaceTracker(el));
+        });
+    }
 </script>
