@@ -105,7 +105,7 @@ img {
     flex-direction: column;
     gap: 0;
     
-    max-width: calc(100dvw - var(--pad) + 1px);
+    max-width: 100dvw;
 
     hr {
         margin-inline: auto;
@@ -115,7 +115,10 @@ img {
         margin: 0 !important;
     }
 
-    &:not(:has(> .ignorePadding)) {
+    &:not(:has(> .ignorePadding)):not(:has(> .page-title:first-child)) {
+        padding: var(--pad);
+    }
+    &:has(> .page-title:first-child) .main-content {
         padding: var(--pad);
     }
 }
