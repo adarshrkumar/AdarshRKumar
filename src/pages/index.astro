@@ -2,14 +2,20 @@
 // Imports
 import '../styles/components/fullAreaIframe.scss'
 import '../styles/pages/index.scss'
+
 import Layout from '../layouts/Layout.astro'
+
 import Hero from '../components/hero.astro'
+import FancyFace from '../components/fancyFace.astro'
+
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
+
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 
 import * as cheerio from 'cheerio'
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 
 
 const readmeFile = await import('../../README.md')
@@ -21,6 +27,16 @@ $('table').each((i, table) => {
     $(table).attr('cellspacing', '0')
 })
 const newReadmeContent = $.html()
+
+const firstPara = $('p').first().html()?.trim();
+
+const container = await AstroContainer.create();
+const fancyFaceHTML = await container.renderToString(FancyFace, {
+    props: {
+        basePath: '/faces/',
+        debug: 'false'
+    }
+});
 ---
 
 <!-- Home Page Layout -->
@@ -29,7 +45,7 @@ const newReadmeContent = $.html()
 
     <FadeIn direction="up" duration={0.6}>
         <section class="readme">
-            <div class="readme__content" set:html={newReadmeContent} />
+            <div class="readme__content" set:html={newReadmeContent.replace(firstPara ?? '', `<div class="fancy-column">${fancyFaceHTML}${firstPara}</div>`)} />
         </section>
     </FadeIn>
 
