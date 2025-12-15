@@ -28,7 +28,7 @@ $('table').each((i, table) => {
 })
 const newReadmeContent = $.html()
 
-const firstPara = $('p').first().html()?.trim();
+const firstPara = $.html($('p').first()).trim();
 
 const container = await AstroContainer.create();
 const fancyFaceHTML = await container.renderToString(FancyFace, {
