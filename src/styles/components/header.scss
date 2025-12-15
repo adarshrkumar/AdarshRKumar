@@ -93,24 +93,7 @@
         }
     }
 
-    nav {
-        transition: 
-            margin-bottom 0.4s $transition-timing,
-            scale 0.4s $transition-timing;
-    }
-
-    &:not(:is(:hover, :focus)) {
-        .nav {
-            margin-bottom: calc(-1 * #{math.div($nav-height, 6)});
-            scale: 0.75;
-            transform-origin: top;
-        }
-    }
     @media (pointer:coarse) {
-        .nav {
-            margin-bottom: unset;
-            scale: unset;
-        }
         .logo {
             display: block;
         }
