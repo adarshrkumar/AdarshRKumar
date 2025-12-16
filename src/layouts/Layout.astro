@@ -61,11 +61,8 @@ const { title, pTitle, classItems, inlineStyles, pageType, author }: LayoutProps
 
 // Process props
 const pageTitle = pTitle || title || 'Home'
-const baseClassItems = classItems || ''
-const finalClassItems = pageType ? `${baseClassItems} ${pageType}` : baseClassItems
 const processedTitle = processPageTitle(title || '', pageType)
 const finalTitle = buildFinalTitle(processedTitle, pageTitle)
-const cssClassName = `page-area main-content ${finalClassItems.trim()}`.trim().replaceAll('  ', ' ')
 
 // Load and process content
 import age from '../lib/getAge'
@@ -115,7 +112,7 @@ const keywords = keywordsArray.join(', ')
         <div class="wrapper">
             <main class="content" id="content">
                 { pageType === 'home' ? '' : <h1 class="page-title">{pTitle || title}</h1> }
-                <div class={cssClassName} style={inlineStyles}>
+                <div class:list={['page-area', 'main-content', classItems, pageType]} style={inlineStyles}>
                     <slot />
                 </div>
             </main>

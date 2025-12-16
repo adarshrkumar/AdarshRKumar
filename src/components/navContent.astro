@@ -35,14 +35,14 @@ function processNavItem(item: NavItem) {
         }
     }
 
-    var primaryCls = ''
+    var isPrimary = false
     // Normalize both URLs for comparison (remove trailing slash except for root)
     var normalizedUrl = url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url
     var normalizedCurrentPath = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath
-    if (normalizedUrl === normalizedCurrentPath) primaryCls = ' primary'
+    if (normalizedUrl === normalizedCurrentPath) isPrimary = true
 
 
-    return { url, target, primaryCls, name }
+    return { url, target, isPrimary, name }
 }
 
 // Data processing
@@ -52,7 +52,7 @@ var processedItems = items.map(processNavItem)
 
 <!-- Navigation content component -->
 {
-    processedItems.map((item: { url: string; target: string; primaryCls: string; name: string }) => 
-        <a href={item.url} class={`btn nav-btn${item.primaryCls}`} target={item.target || '_self'}>{item.name}</a>
+    processedItems.map((item: { url: string; target: string; isPrimary: boolean; name: string }) =>
+        <a href={item.url} class:list={['btn', 'nav-btn', { 'primary': item.isPrimary }]} target={item.target || '_self'}>{item.name}</a>
     )
 }
