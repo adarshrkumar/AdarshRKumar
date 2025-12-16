@@ -1,4 +1,4 @@
-var setTheme = t => {}
+var setTheme = _t => {}
 var settingsKey = 'settings'
 
 var settingFunctions = {
