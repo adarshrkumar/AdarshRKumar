@@ -36,8 +36,7 @@ function extractVideoItems(response: RSSResponse, maxVideos: number = 3): VideoI
 // Main function to get channel information
 async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     const allVideoItems: VideoItem[] = []
-    const videosPerChannel = Math.ceil(channelIds.length / channelIds.length) // This seems redundant
-    
+
     // Process each channel
     const channelPromises = channelIds.map(async (channelId) => {
         try {

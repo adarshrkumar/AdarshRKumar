@@ -10,7 +10,6 @@ import type { PortfolioItem } from '../lib/types'
 // Configuration
 var highlights = ['commonps', 'pscode-syntax-highlighter', 'ai-scholarly-mode', 'imageresize', 'SMCAS']
 const ports = import.meta.glob('../../content/work/portfolio/**/*.md', { eager: true })
-const keys = Object.keys(ports)
 const allItems = Object.values(ports) as PortfolioItem[];
 
 // Data processing
@@ -32,7 +31,7 @@ highlights.forEach(name => {
 <!-- Portfolio highlights component -->
 <SiteGridContent classItems="portfolio wrap" options={{ maxWidth: '1200px' }}>
     {
-        items.map(async (item, i2) => {
+        items.map(async (item, _i2) => {
             var target = '_blank'
             var url = item.frontmatter.url
             if (url.startsWith('//')) url = `https:${url}`
