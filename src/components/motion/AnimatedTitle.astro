@@ -24,7 +24,7 @@ const { class: className = '', as: Tag = 'h2' } = Astro.props
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animated-title--visible')
+                        (entry.target as HTMLElement).dataset.state = 'visible'
                         observer.unobserve(entry.target)
                     }
                 })

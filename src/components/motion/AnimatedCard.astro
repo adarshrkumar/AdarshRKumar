@@ -42,7 +42,7 @@ const delay = Math.min(index * 0.08, 0.4)
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animated-card--visible')
+                        (entry.target as HTMLElement).dataset.state = 'visible'
                         observer.unobserve(entry.target)
                     }
                 })
