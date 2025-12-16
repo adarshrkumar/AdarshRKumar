@@ -28,13 +28,13 @@ function cleanAboutContent(content: string): string {
 // Data loading and processing
 // Load about content
 const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(sanitizeMD(await aboutFile.rawContent()))
-
-// Get posts for RSS
-const postsForRSS = getPostsForRSS()
+const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 
 // RSS feed generation
 export async function GET(context: AstroContext) {
+    // Get posts for RSS
+    const postsForRSS = await getPostsForRSS()
+
     return rss({
         title: 'Adarsh R. Kumar',
         description: aboutContent,

@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import { getImage } from 'astro:assets'
 import '../styles/pages/photos.scss'
-import type { PhotoItem, PhotoMetadata } from '../lib/types'
+import type { PhotoItem } from '../lib/types'
 import { getAllPhotos } from '../lib/getPhotos.ts'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
 
@@ -50,8 +50,6 @@ function extractFileName(filePath: string): string {
 }
 
 // Configuration and data loading
-const cleanSiteUrl = getCleanSiteUrl(Astro.site)
-
 // Fetch photos from database instead of filesystem
 const dbPhotos = await getAllPhotos()
 
@@ -69,9 +67,6 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
         uploader: photo.uploader,
     }
 }))
-
-// Re-export getFName for compatibility
-const getFName = extractFileName
 
 ---
 
