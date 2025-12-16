@@ -17,9 +17,10 @@ const {
 ---
 
 <div
-    class:list={['fade-in', `fade-in--${direction}`, className]}
+    class:list={['fade-in', className]}
     style={`animation-delay: ${delay}s; animation-duration: ${duration}s;`}
     data-animate="fade"
+    data-direction={direction}
 >
     <slot />
 </div>
@@ -32,7 +33,7 @@ const {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in--visible')
+                        (entry.target as HTMLElement).dataset.state = 'visible'
                         observer.unobserve(entry.target)
                     }
                 })
