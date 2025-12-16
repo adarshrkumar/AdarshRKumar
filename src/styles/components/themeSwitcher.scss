@@ -29,10 +29,10 @@
     z-index: $z-index-tooltip;
 
     // Icon styling
-    .icon {
+    &__icon {
         height: calc(var(--size) - (var(--padding)*2));
         aspect-ratio: 1;
-        
+
         fill: var(--bg);
         stroke: var(--bg);
     }
