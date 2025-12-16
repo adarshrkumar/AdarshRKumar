@@ -119,17 +119,93 @@ export function generateScreenshotImage(postUrl: string, title: string, imageSiz
 // Main post functions
 
 /**
- * Main function to get all published blog posts
+ * Helper function to convert database post to Post format
  */
-export function getPosts(): Post[] {
+function convertDBPostToPost(dbPost: DBPost): Post {
+    return {
+        file: `db://${dbPost.slug}`,
+        frontmatter: {
+            title: dbPost.title,
+            author: dbPost.author,
+            date: dbPost.updatedAt.toISOString(), // Use updatedAt for sorting
+            pubDate: dbPost.createdAt.toISOString(),
+            description: dbPost.content.substring(0, 150) + '...',
+        },
+        rawContent: () => dbPost.content,
+        compiledContent: () => dbPost.content,
+    }
+}
+
+/**
+ * Helper function to get updated date from a post
+ */
+function getPostUpdatedDate(post: Post): Date {
+    // For DB posts, extract from file path
+    if (post.file.startsWith('db://')) {
+        // This is a DB post converted to Post format
+        // We'll need to handle this differently - for now use frontmatter date
+        const dateStr = post.frontmatter.date || post.frontmatter.pubDate
+        return dateStr ? new Date(dateStr) : new Date(0)
+    }
+
+    // For file-based posts, use frontmatter date
+    const dateStr = post.frontmatter.date || post.frontmatter.pubDate
+    return dateStr ? new Date(dateStr) : new Date(0)
+}
+
+/**
+ * Async function to get all posts from database
+ */
+export async function getDBPosts(): Promise<Post[]> {
+    try {
+        const dbPosts = await db.select().from(postsTable)
+        return dbPosts.map(convertDBPostToPost)
+    } catch (error) {
+        console.error('Error fetching DB posts:', error)
+        return []
+    }
+}
+
+/**
+ * Main function to get all published blog posts from files
+ */
+export function getLocalPosts(): Post[] {
     const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
     const publishedPosts: Post[] = Object.values(blogPostItems)
         .filter(item => {
             const fileName = (item as Post).file.split('/').pop() || ''
             return !fileName.startsWith('_')
         }) as Post[]
-    
+
     return publishedPosts
+}
+
+/**
+ * Main function to get all published blog posts (both local and DB)
+ * Sorted by updated date (most recent first)
+ */
+export async function getPosts(): Promise<Post[]> {
+    const localPosts = getLocalPosts()
+    const dbPosts = await getDBPosts()
+
+    // Combine both sources
+    const allPosts = [...localPosts, ...dbPosts]
+
+    // Sort by updated date (most recent first)
+    allPosts.sort((a, b) => {
+        const dateA = getPostUpdatedDate(a)
+        const dateB = getPostUpdatedDate(b)
+        return dateB.getTime() - dateA.getTime()
+    })
+
+    return allPosts
+}
+
+/**
+ * Synchronous version that only returns local posts (for compatibility)
+ */
+export function getPostsSync(): Post[] {
+    return getLocalPosts()
 }
 
 /**
@@ -159,17 +235,18 @@ function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
 /**
  * Function to get posts with additional processing for display
  */
-export function getPostsForDisplay(siteUrl?: string | URL) {
-    return addDisplayMetadata(getPosts(), siteUrl)
+export async function getPostsForDisplay(siteUrl?: string | URL) {
+    const posts = await getPosts()
+    return addDisplayMetadata(posts, siteUrl)
 }
 
 /**
  * Function to get featured posts by slug
  */
-export function getFeaturedPosts(featuredSlugs: string[]) {
-    const allPosts = getPosts()
+export async function getFeaturedPosts(featuredSlugs: string[]) {
+    const allPosts = await getPosts()
     const featuredPosts: Post[] = []
-    
+
     featuredSlugs.forEach(targetSlug => {
         const filename = targetSlug.endsWith('.md') ? targetSlug : `${targetSlug}.md`
         const matchingPosts = allPosts.filter(post => {
@@ -178,23 +255,25 @@ export function getFeaturedPosts(featuredSlugs: string[]) {
         })
         featuredPosts.push(...matchingPosts)
     })
-    
+
     return featuredPosts
 }
 
 /**
  * Function to get featured posts with display metadata
  */
-export function getFeaturedPostsForDisplay(featuredSlugs: string[], siteUrl?: string | URL) {
-    return addDisplayMetadata(getFeaturedPosts(featuredSlugs), siteUrl)
+export async function getFeaturedPostsForDisplay(featuredSlugs: string[], siteUrl?: string | URL) {
+    const featured = await getFeaturedPosts(featuredSlugs)
+    return addDisplayMetadata(featured, siteUrl)
 }
 
 /**
  * Function to find a specific post by ID/slug
  */
-export function findPostById(postId: string | undefined): Post | undefined {
-    return getPosts().find(post => 
-        !post.file.startsWith('_') && 
+export async function findPostById(postId: string | undefined): Promise<Post | undefined> {
+    const allPosts = await getPosts()
+    return allPosts.find(post =>
+        !post.file.startsWith('_') &&
         post.file.includes(postId || '')
     )
 }
@@ -202,8 +281,9 @@ export function findPostById(postId: string | undefined): Post | undefined {
 /**
  * Function to get posts for RSS feed
  */
-export function getPostsForRSS() {
-    return getPosts().map(post => {
+export async function getPostsForRSS() {
+    const allPosts = await getPosts()
+    return allPosts.map(post => {
         const postId = extractSlugFromFilePath(post.file)
         return {
             ...post,
