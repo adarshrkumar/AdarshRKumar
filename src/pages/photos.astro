@@ -8,47 +8,6 @@ import type { PhotoItem } from '../lib/types'
 import { getAllPhotos } from '../lib/getPhotos.ts'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
 
-// Helper functions
-// Helper function to extract clean site URL
-function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
-    const defaultUrl = 'https://adarshrkumar.dev'
-    let cleanUrl = siteUrl?.toString() || defaultUrl
-
-    if (cleanUrl.includes('://')) {
-        cleanUrl = cleanUrl.split('://')[1]
-    }
-    if (cleanUrl.endsWith('/')) {
-        cleanUrl = cleanUrl.slice(0, -1)
-    }
-
-    return cleanUrl
-}
-
-// Helper function to extract filename from path
-function extractFileName(filePath: string): string {
-    let fileName = filePath
-
-    // Extract filename from path
-    if (fileName.includes('/')) {
-        fileName = fileName.split('/').slice(-1)[0]
-    }
-
-    // Remove query parameters
-    if (fileName.includes('?')) {
-        fileName = fileName.split('?')[0]
-    }
-
-    // Handle complex extensions (e.g., file.name.jpg -> file.jpg)
-    if (fileName.includes('.')) {
-        const nameParts = fileName.split('.')
-        if (nameParts.length > 2) {
-            fileName = `${nameParts.slice(0, -2).join('.')}.${nameParts.slice(-1).join('.')}`
-        }
-    }
-
-    return fileName
-}
-
 // Configuration and data loading
 // Fetch photos from database instead of filesystem
 const dbPhotos = await getAllPhotos()
