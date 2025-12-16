@@ -240,7 +240,6 @@ export async function getFeaturedPosts(featuredSlugs: string[]) {
     const featuredPosts: Post[] = []
 
     featuredSlugs.forEach(targetSlug => {
-        const filename = targetSlug.endsWith('.md') ? targetSlug : `${targetSlug}.md`
         const matchingPosts = allPosts.filter(post => {
             const postSlug = extractSlugFromFilePath(post.file)
             return postSlug === targetSlug || postSlug === targetSlug.replace('.md', '')
