@@ -7,6 +7,21 @@ import type { APIRoute } from 'astro';
 import { db } from '../../../../db/db.ts';
 import { posts } from '../../../../db/schema.ts';
 
+// Helper function to add CORS headers
+const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+// Handle OPTIONS preflight request
+export const OPTIONS: APIRoute = async () => {
+    return new Response(null, {
+        status: 204,
+        headers: corsHeaders,
+    });
+};
+
 export const POST: APIRoute = async ({ request }) => {
     try {
         // Parse the request body
@@ -29,7 +44,7 @@ export const POST: APIRoute = async ({ request }) => {
                 }),
                 {
                     status: 400,
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
                 }
             );
         }
@@ -54,7 +69,7 @@ export const POST: APIRoute = async ({ request }) => {
                 }),
                 {
                     status: 400,
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
                 }
             );
         }
@@ -81,7 +96,7 @@ export const POST: APIRoute = async ({ request }) => {
             }),
             {
                 status: 201,
-                headers: { 'Content-Type': 'application/json' }
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
             }
         );
 
@@ -96,7 +111,7 @@ export const POST: APIRoute = async ({ request }) => {
                 }),
                 {
                     status: 409,
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
                 }
             );
         }
@@ -109,7 +124,7 @@ export const POST: APIRoute = async ({ request }) => {
             }),
             {
                 status: 500,
-                headers: { 'Content-Type': 'application/json' }
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
             }
         );
     }
