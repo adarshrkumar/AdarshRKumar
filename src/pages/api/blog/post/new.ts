@@ -12,14 +12,21 @@ export const POST: APIRoute = async ({ request }) => {
         // Parse the request body
         const body = await request.json();
 
-        // Validate required fields
-        const { title, content, author, categories, slug } = body;
+        // Extract fields with defaults
+        const {
+            title,
+            content,
+            slug,
+            author = 'adarshrkumar',
+            categories = 'general'
+        } = body;
 
-        if (!title || !content || !author || !categories || !slug) {
+        // Validate required fields
+        if (!title || !content || !slug) {
             return new Response(
                 JSON.stringify({
                     error: 'Missing required fields',
-                    required: ['title', 'content', 'author', 'categories', 'slug']
+                    required: ['title', 'content', 'slug']
                 }),
                 {
                     status: 400,
