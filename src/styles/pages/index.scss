@@ -20,13 +20,13 @@
 
     &__content {
         padding: calc(var(--pad) / 2);
-        
+
         background-color: var(--bg);
 
         border-radius: calc(var(--br) - var(--pad));
     }
 
-    .fancy-column {
+    &__fancy-column {
         display: flex;
         gap: var(--pad);
 
