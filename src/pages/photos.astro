@@ -56,11 +56,11 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
                 const hasLocation = !!photoData?.location
 
                 return (
-                    <AnimatedCard index={index} class="item">
+                    <AnimatedCard index={index} class="photos__item">
                         <label style="display: contents;">
-                            <input type="checkbox" class="item__checkbox" />
+                            <input type="checkbox" class="photos__checkbox" />
                             <img
-                                class="item__img loading"
+                                class="photos__img loading"
                                 src={photo.src || ''}
                                 alt={photo.alt || photoData?.title || `Photo: ${photo.fullname}`}
                                 loading="lazy"
@@ -68,12 +68,12 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
                                 style={`--placeholder: url('${optimizedImage.src}');`}
                             />
                             {hasMetadata && (
-                                <div class="item__info">
+                                <div class="photos__info">
                                     {hasTitle && (
-                                        <h3 class="item__title">{photoData.title}</h3>
+                                        <h3 class="photos__title">{photoData.title}</h3>
                                     )}
                                     {hasLocation && (
-                                        <span class="item__content">📍 {photoData.location}</span>
+                                        <span class="photos__content">📍 {photoData.location}</span>
                                     )}
                                 </div>
                             )}
@@ -88,7 +88,7 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
 <script>
     // Handle lazy loading state for images
     document.addEventListener('DOMContentLoaded', () => {
-        const images = document.querySelectorAll<HTMLImageElement>('.item__img');
+        const images = document.querySelectorAll<HTMLImageElement>('.photos__img');
 
         images.forEach(img => {
             // Check if image is already loaded (cached)
