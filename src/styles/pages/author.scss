@@ -28,12 +28,12 @@
     }
 
     // Author name styling
-    .name {
+    &__name {
         text-align: center;
     }
 
     // Profile picture styling
-    .pfp {
+    &__pfp {
         position: relative;
         width: clamp(50px, 25%, 100px);
         aspect-ratio: 1;
@@ -49,11 +49,11 @@
             opacity: 0;
             border-radius: 50%;
         }
+    }
 
-        // Inner image styling
-        &__inner {
-            border-radius: 50%;
-            pointer-events: none;
-        }
+    // Profile picture inner image styling
+    &__pfp-inner {
+        border-radius: 50%;
+        pointer-events: none;
     }
 }
