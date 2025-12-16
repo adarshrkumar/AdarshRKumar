@@ -9,7 +9,7 @@ const featuredPostSlugs = ['hello-world', 'nodebooks']
 
 // Data processing
 // Get featured posts with all processing done
-const featuredPosts = getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)
+const featuredPosts = await getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)
 
 ---
 

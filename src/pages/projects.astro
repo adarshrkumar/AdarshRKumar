@@ -83,7 +83,6 @@ const projectCategories: ProjectCategoryConfig[] = [
 
 // Load all projects for reference
 const allProjectsObj = import.meta.glob('../../content/work/projects/*/*.md', { eager: true })
-const allProjects: PortfolioItem[] = Object.values(allProjectsObj) as PortfolioItem[]
 
 ---
 
@@ -105,7 +104,6 @@ const allProjects: PortfolioItem[] = Object.values(allProjectsObj) as PortfolioI
                         <SiteGridContent classItems="wrap" options={{ min: '18rem' }}>
                             {
                                 visibleItems.map((item, itemIndex) => {
-                                    const projectName = getFName(item.file)
                                     const projectUrl = item.frontmatter.url
                                     const linkTarget = item.frontmatter.target || determineLinkTarget(projectUrl, Astro.site)
                                     const screenshotUrl = generateScreenshotUrl(projectUrl)
