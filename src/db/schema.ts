@@ -1,6 +1,6 @@
 import { pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 
-export const photos = pgTable('photos', {
+const photos = pgTable('photos', {
     id: uuid('id').defaultRandom().primaryKey(),
     name: varchar('name', { length: 255 }).notNull(),
     fullname: varchar('fullname', { length: 255 }).notNull(),
@@ -18,5 +18,18 @@ export const photos = pgTable('photos', {
     updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
-export type Photo = typeof photos.$inferSelect;
-export type NewPhoto = typeof photos.$inferInsert;
+const posts = pgTable('posts', {
+    slug: uuid('slug').defaultRandom().primaryKey(),
+    title: text('title').notNull(),
+    content: text('content').notNull(),
+
+    // Timestamps
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+type Photo = typeof photos.$inferSelect;
+type NewPhoto = typeof photos.$inferInsert;
+
+
+export { photos, posts, type Photo, type NewPhoto };
