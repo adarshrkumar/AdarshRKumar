@@ -24,8 +24,30 @@ export const OPTIONS: APIRoute = async () => {
 
 export const POST: APIRoute = async ({ request }) => {
     try {
+        // Log request details for debugging
+        console.log('Content-Type:', request.headers.get('content-type'));
+
+        // Get raw body text first
+        const rawBody = await request.text();
+        console.log('Raw body:', rawBody);
+
         // Parse the request body
-        const body = await request.json();
+        let body;
+        try {
+            body = JSON.parse(rawBody);
+        } catch (jsonError) {
+            return new Response(
+                JSON.stringify({
+                    error: 'Invalid JSON',
+                    message: 'Request body must be valid JSON',
+                    received: rawBody.substring(0, 100)
+                }),
+                {
+                    status: 400,
+                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                }
+            );
+        }
 
         // Extract fields with defaults
         const {
