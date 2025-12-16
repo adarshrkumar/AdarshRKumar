@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', _e => {
+window.addEventListener('DOMContentLoaded', e => {
     var linkRels = document.querySelectorAll('link[rel]')
     linkRels.forEach(l => {
         let lHref = l.href
