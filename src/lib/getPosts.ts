@@ -1,4 +1,6 @@
-import type { Post } from './types'
+import type { Post, DBPost } from './types'
+import { db } from '../db/initialize.ts'
+import { posts as postsTable } from '../db/schema.ts'
 
 // Helper functions
 
