@@ -56,7 +56,7 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     // Fullscreen mode active
-    &:has(.item__checkbox:checked) {
+    &:has(&__checkbox:checked) {
         &::before {
             opacity: 1;
             pointer-events: all;
@@ -64,12 +64,12 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     // Body scroll lock when fullscreen
-    body:has(&:has(.item__checkbox:checked)) {
+    body:has(&:has(&__checkbox:checked)) {
         overflow: hidden;
     }
 
     // Photo Card Items
-    .item {
+    &__item {
         position: relative;
         background-color: var(--bg);
         cursor: pointer;
@@ -80,155 +80,153 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position 0s,
             inset 0s,
             z-index 0s;
+    }
 
-        // Hidden Checkbox (for fullscreen toggle)
-        &__checkbox {
+    // Hidden Checkbox (for fullscreen toggle)
+    &__checkbox {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    // Image Container
+    &__img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        user-select: none;
+
+        @supports(-webkit-user-drag: none) {
+            -webkit-user-drag: none;
+        }
+
+        // Photos-specific: blur effect for placeholder
+        &.loading::before {
+            content: '';
             position: absolute;
-            width: 0;
-            height: 0;
-            opacity: 0;
-            pointer-events: none;
+            inset: 0;
+            background: inherit;
+            filter: blur(10px);
+            opacity: 0.7;
         }
 
-        // Image Container
-        &__img {
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            user-select: none;
-
-            @supports(-webkit-user-drag: none) {
-                -webkit-user-drag: none;
-            }
-
-            // Photos-specific: blur effect for placeholder
-            &.loading::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                background: inherit;
-                filter: blur(10px);
-                opacity: 0.7;
-            }
-
-            &.loaded::before {
-                display: none;
-            }
+        &.loaded::before {
+            display: none;
         }
+    }
 
-        // Info Overlay
+    // Info Overlay
+    &__info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.4) 70%,
+            transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+            opacity $transition-smooth,
+            transform $transition-smooth;
+        pointer-events: none;
+
+        @media (max-width: 768px) {
+            padding: 1rem;
+        }
+    }
+
+    &__title {
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 768px) {
+            font-size: 0.9rem;
+        }
+    }
+
+    &__content {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.875rem;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 768px) {
+            font-size: 0.8rem;
+        }
+    }
+
+    // Hover State (not in fullscreen)
+    &__item:not(:has(&__checkbox:checked)):hover {
+        z-index: 2;
+
+        // Reveal info overlay on hover
+        & ~ &__info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    // Mobile touch - show info by default
+    @media (max-width: 768px), (hover: none) {
         &__info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
-            background: linear-gradient(
-                to top,
-                rgba(0, 0, 0, 0.8) 0%,
-                rgba(0, 0, 0, 0.4) 70%,
-                transparent 100%
-            );
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            opacity: 0;
-            transform: translateY(10px);
-            transition:
-                opacity $transition-smooth,
-                transform $transition-smooth;
-            pointer-events: none;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-            @media (max-width: 768px) {
-                padding: 1rem;
-            }
+    // Fullscreen Mode
+    &__item:has(&__checkbox:checked) {
+        position: fixed;
+        inset: clamp(1rem, 5vw, 3rem);
+        margin: auto;
+        max-width: min(90vw, 90vh);
+        max-height: min(90vw, 90vh);
+        aspect-ratio: 1 / 1;
+        z-index: 999;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        animation: scale-in 0.4s $transition-spring;
+
+        @media (max-width: 768px) {
+            inset: 0.5rem;
+            max-width: calc(100vw - 1rem);
+            max-height: calc(100vh - 1rem);
         }
 
-        &__title {
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-
-            @media (max-width: 768px) {
-                font-size: 0.9rem;
-            }
+        // Prevent hover effects in fullscreen
+        &:hover {
+            transform: none;
         }
+    }
 
-        &__content {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.875rem;
-            margin: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    &__item:has(&__checkbox:checked) ~ &__img {
+        object-fit: contain;
+        background-color: transparent;
+    }
 
-            @media (max-width: 768px) {
-                font-size: 0.8rem;
-            }
-        }
-
-        // Hover State (not in fullscreen)
-        &:not(:has(.item__checkbox:checked)):hover {
-            z-index: 2;
-
-            // Reveal info overlay on hover
-            .item__info {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        // Mobile touch - show info by default
-        @media (max-width: 768px), (hover: none) {
-            .item__info {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        // Fullscreen Mode
-        &:has(.item__checkbox:checked) {
-            position: fixed;
-            inset: clamp(1rem, 5vw, 3rem);
-            margin: auto;
-            max-width: min(90vw, 90vh);
-            max-height: min(90vw, 90vh);
-            aspect-ratio: 1 / 1;
-            z-index: 999;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            animation: scale-in 0.4s $transition-spring;
-
-            @media (max-width: 768px) {
-                inset: 0.5rem;
-                max-width: calc(100vw - 1rem);
-                max-height: calc(100vh - 1rem);
-            }
-
-            .item__img {
-                object-fit: contain;
-                background-color: transparent;
-            }
-
-            // Always show info in fullscreen
-            .item__info {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            // Prevent hover effects in fullscreen
-            &:hover {
-                transform: none;
-            }
-        }
+    // Always show info in fullscreen
+    &__item:has(&__checkbox:checked) ~ &__info {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 // Accessibility
 @media (prefers-reduced-motion: reduce) {
     .photos {
-        .item {
-            &__info {
-                transition-duration: 0.1s;
-            }
+        &__info {
+            transition-duration: 0.1s;
         }
     }
 }
