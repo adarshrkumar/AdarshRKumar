@@ -15,6 +15,9 @@ export default defineConfig({
     trailingSlash: 'always',
     adapter: vercel(),
     integrations: [sitemap()],
+    security: {
+        checkOrigin: false
+    },
     vite: {
         server: {
             headers: {
