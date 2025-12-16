@@ -56,25 +56,8 @@
     }
 }
 
-// Current page indicator - higher specificity
-.nav-btn.btn.primary {
-    background-color: transparent;
-    color: var(--color);
-    border: 2px solid var(--border-color);
-
-    &:hover {
-        // Invert colors on hover - filled background
-        background-color: var(--color);
-        border-color: var(--color);
-        color: var(--bg);
-        transform: none;
-        box-shadow: none;
-        text-decoration: none;
-    }
-}
-
 // Override non-primary button hover - no background or color change
-.nav-btn.btn:not(.primary):hover {
+.nav-btn:not([data-primary="true"]):hover {
     background-color: transparent;
     color: var(--color);
     @supports (border-color: color-mix(in srgb, var(--border-color) 70%, white)) {
@@ -85,7 +68,7 @@
 }
 
 // Primary button - filled by default, transparent on hover
-.nav-btn.btn.primary {
+.nav-btn[data-primary="true"] {
     background-color: var(--color);
     color: var(--bg);
     border: 2px solid var(--color);
