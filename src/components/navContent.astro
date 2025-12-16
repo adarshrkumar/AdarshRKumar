@@ -53,6 +53,6 @@ var processedItems = items.map(processNavItem)
 <!-- Navigation content component -->
 {
     processedItems.map((item: { url: string; target: string; isPrimary: boolean; name: string }) =>
-        <a href={item.url} class:list={['btn', 'nav-btn', { 'primary': item.isPrimary }]} target={item.target || '_self'}>{item.name}</a>
+        <a href={item.url} class:list={['btn', 'nav-btn']} data-primary={item.isPrimary ? 'true' : 'false'} target={item.target || '_self'}>{item.name}</a>
     )
 }

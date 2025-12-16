@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-.list.v {
+.list[data-direction="vertical"] {
     --gap: 2rem;
 
     margin-block: var(--gap);
