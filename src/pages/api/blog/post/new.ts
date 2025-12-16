@@ -4,12 +4,12 @@
  */
 
 import type { APIRoute } from 'astro';
-import { db } from '../../../../db/db.ts';
+import { db } from '../../../../db/initialize.ts';
 import { posts } from '../../../../db/schema.ts';
 
 // Helper function to add CORS headers
 const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': '*',//'https://adarshrkumar.app.n8n.cloud',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
 };
@@ -102,6 +102,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     } catch (error: any) {
         console.error('Error creating post:', error);
+        console.error('Error details:', {
+            message: error?.message,
+            code: error?.code,
+            detail: error?.detail,
+            stack: error?.stack,
+            cause: error?.cause
+        });
 
         // Handle duplicate slug error
         if (error?.code === '23505') {
@@ -116,11 +123,14 @@ export const POST: APIRoute = async ({ request }) => {
             );
         }
 
-        // Return generic error response
+        // Return generic error response with more details
         return new Response(
             JSON.stringify({
                 error: 'Failed to create post',
-                details: error?.message || 'Unknown error'
+                message: error?.message || 'Unknown error',
+                code: error?.code,
+                detail: error?.detail,
+                cause: error?.cause?.message
             }),
             {
                 status: 500,
