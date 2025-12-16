@@ -4,7 +4,7 @@
 // Hero section styles
 .hero {
     // Center all direct children
-    & > * {
+    > * {
         width: fit-content;
         margin-inline: auto;
         text-align: center;
