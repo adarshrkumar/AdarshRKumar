@@ -18,7 +18,7 @@ const featuredPosts = await getFeaturedPostsForDisplay(featuredPostSlugs, Astro.
     {
         featuredPosts.map(async post => {
             // Process text content for preview
-            const rawTextContent = sanitizeMD(await post.rawContent())
+            const rawTextContent = sanitizeMD(post.rawContent())
             const cleanedTextContent = cleanTextContent(rawTextContent)
             const previewContent = createPreviewContent(cleanedTextContent)
             
