@@ -19,9 +19,12 @@ const photos = pgTable('photos', {
 });
 
 const posts = pgTable('posts', {
-    slug: uuid('slug').defaultRandom().primaryKey(),
+    id: uuid('id').defaultRandom().primaryKey(),
+    slug: varchar('slug', { length: 255 }).notNull().unique(),
     title: text('title').notNull(),
     content: text('content').notNull(),
+    author: varchar('author', { length: 100 }).notNull(),
+    categories: text('categories').notNull(), // Comma-separated categories
 
     // Timestamps
     createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -30,6 +33,8 @@ const posts = pgTable('posts', {
 
 type Photo = typeof photos.$inferSelect;
 type NewPhoto = typeof photos.$inferInsert;
+type Post = typeof posts.$inferSelect;
+type NewPost = typeof posts.$inferInsert;
 
 
-export { photos, posts, type Photo, type NewPhoto };
+export { photos, posts, type Photo, type NewPhoto, type Post, type NewPost };
