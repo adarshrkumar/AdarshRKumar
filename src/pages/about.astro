@@ -3,6 +3,10 @@
 import '../styles/pages/about.scss'
 
 import Layout from '../layouts/Layout.astro'
+import FadeIn from '../components/motion/FadeIn.astro'
+
+import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
+import FancyFace from '../components/fancyFace.astro'
 
 // Helper functions
 // Load age first
@@ -11,9 +15,97 @@ import age from '../lib/getAge'
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = (await aboutFile.compiledContent())?.replaceAll('{ age }', age.toString())
 
+// Skills data
+const skills = [
+    { name: 'Web Development', icon: '🌐', tech: ['HTML', 'CSS', 'JavaScript', 'TypeScript'] },
+    { name: 'Frameworks', icon: '⚛️', tech: ['Astro', 'React', 'Node.js'] },
+    { name: 'Databases', icon: '🗄️', tech: ['PostgreSQL', 'Drizzle ORM'] },
+    { name: 'Tools', icon: '🛠️', tech: ['Git', 'VS Code', 'Vercel'] }
+]
+
+// Interests data
+const interests = [
+    { name: 'Photography', icon: '📸', link: '/photography/' },
+    { name: 'History', icon: '📚', link: null },
+    { name: 'Geography', icon: '🌍', link: null },
+    { name: 'Technology', icon: '💻', link: '/work/' },
+    { name: 'Music', icon: '🎵', link: null },
+    { name: 'Astronomy', icon: '🔭', link: null }
+]
+
+// CTA buttons
+const ctaButtons = [
+    { text: 'View Portfolio', link: '/work/portfolio/', primary: true },
+    { text: 'Read Blog', link: '/posts/', primary: false },
+    { text: 'See Photography', link: '/photography/', primary: false }
+]
 ---
 
 <!-- About Page -->
 <Layout title="About">
-    <div class="about" set:html={aboutContent} />
+    <div class="about">
+        <FadeIn direction="up" duration={0.6}>
+            <div class="about__header">
+                <FancyFace />
+                <AnimatedTitle as="h1" class="about__name">
+                    Adarsh R. Kumar
+                </AnimatedTitle>
+                <p class="about__tagline">Web Developer • Photographer • Tech Enthusiast</p>
+            </div>
+        </FadeIn>
+
+        <FadeIn delay={0.1} direction="up" duration={0.6}>
+            <div class="about__bio" set:html={aboutContent} />
+        </FadeIn>
+
+        <FadeIn delay={0.2} direction="up" duration={0.6}>
+            <section class="about__section">
+                <h2 class="about__section-title">Skills & Technologies</h2>
+                <div class="about__skills">
+                    {skills.map(skill => (
+                        <div class="skill-card">
+                            <div class="skill-card__icon">{skill.icon}</div>
+                            <h3 class="skill-card__name">{skill.name}</h3>
+                            <ul class="skill-card__tech">
+                                {skill.tech.map(item => (
+                                    <li>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </FadeIn>
+
+        <FadeIn delay={0.3} direction="up" duration={0.6}>
+            <section class="about__section">
+                <h2 class="about__section-title">Interests & Hobbies</h2>
+                <div class="about__interests">
+                    {interests.map(interest => (
+                        interest.link ? (
+                            <a href={interest.link} class="interest-badge interest-badge--link">
+                                <span class="interest-badge__icon">{interest.icon}</span>
+                                <span class="interest-badge__name">{interest.name}</span>
+                            </a>
+                        ) : (
+                            <div class="interest-badge">
+                                <span class="interest-badge__icon">{interest.icon}</span>
+                                <span class="interest-badge__name">{interest.name}</span>
+                            </div>
+                        )
+                    ))}
+                </div>
+            </section>
+        </FadeIn>
+
+        <FadeIn delay={0.4} direction="up" duration={0.6}>
+            <div class="about__cta">
+                {ctaButtons.map(button => (
+                    <a href={button.link} class:list={['cta-button', { 'cta-button--primary': button.primary }]}>
+                        {button.text}
+                    </a>
+                ))}
+            </div>
+        </FadeIn>
+    </div>
 </Layout>
