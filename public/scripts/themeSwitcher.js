@@ -1,4 +1,4 @@
-var themeAttribute = 'data-theme'
+var themeAttribute = 'theme'
 var themes = [
     'system', 
     'light', 
@@ -11,7 +11,7 @@ var htmls = {
 }
 var themeSwitcher =  document.querySelector('.theme-switcher')
 themeSwitcher.onclick = e => {
-    var currentTheme = document.documentElement.getAttribute(themeAttribute)
+    var currentTheme = document.documentElement.dataset[themeAttribute]
     var newIndex = themes.indexOf(currentTheme) + 1
 
     changeTheme(newIndex)
@@ -25,7 +25,7 @@ function changeTheme(newIndex) {
     setTheme(newTheme)
 }
 var setTheme = theme => {
-    document.documentElement.setAttribute(themeAttribute, theme)
+    document.documentElement.dataset[themeAttribute] = theme
 
     setSetting('theme', theme)
 

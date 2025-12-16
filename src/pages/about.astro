@@ -83,7 +83,7 @@ const ctaButtons = [
                 <div class="about__interests">
                     {interests.map(interest => (
                         interest.link ? (
-                            <a href={interest.link} class="interest-badge interest-badge--link">
+                            <a href={interest.link} class:list={['interest-badge', { 'clickable': interest.link }]}>
                                 <span class="interest-badge__icon">{interest.icon}</span>
                                 <span class="interest-badge__name">{interest.name}</span>
                             </a>
@@ -101,7 +101,7 @@ const ctaButtons = [
         <FadeIn delay={0.4} direction="up" duration={0.6}>
             <div class="about__cta">
                 {ctaButtons.map(button => (
-                    <a href={button.link} class:list={['cta-button', { 'cta-button--primary': button.primary }]}>
+                    <a href={button.link} class:list={['btn', { 'primary': button.primary }]}>
                         {button.text}
                     </a>
                 ))}
