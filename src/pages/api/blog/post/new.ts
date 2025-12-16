@@ -102,13 +102,6 @@ export const POST: APIRoute = async ({ request }) => {
 
     } catch (error: any) {
         console.error('Error creating post:', error);
-        console.error('Error details:', {
-            message: error?.message,
-            code: error?.code,
-            detail: error?.detail,
-            stack: error?.stack,
-            cause: error?.cause
-        });
 
         // Handle duplicate slug error
         if (error?.code === '23505') {
@@ -123,14 +116,11 @@ export const POST: APIRoute = async ({ request }) => {
             );
         }
 
-        // Return generic error response with more details
+        // Return generic error response
         return new Response(
             JSON.stringify({
                 error: 'Failed to create post',
-                message: error?.message || 'Unknown error',
-                code: error?.code,
-                detail: error?.detail,
-                cause: error?.cause?.message
+                message: error?.message || 'Unknown error'
             }),
             {
                 status: 500,
