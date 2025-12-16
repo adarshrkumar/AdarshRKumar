@@ -11,6 +11,7 @@
         "astro": "astro"
     },
     "dependencies": {
+        "@astrojs/check": "^0.9.6",
         "@astrojs/rss": "^4.0.14",
         "@astrojs/sitemap": "^3.6.0",
         "@astrojs/vercel": "^9.0.2",
@@ -27,6 +28,7 @@
         "sass": "^1.75.0",
         "signal-exit": "^4.1.0",
         "to-fast-properties": "^4.0.0",
+        "typescript": "^5.9.3",
         "vite": "^7.1.7",
         "yargs-parser": "^22.0.0"
     },
