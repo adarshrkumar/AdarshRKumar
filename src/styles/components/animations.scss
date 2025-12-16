@@ -84,7 +84,7 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
 .animate {
     opacity: 0;
 
-    &.animate--visible {
+    &[data-state="visible"] {
         animation-fill-mode: forwards;
         animation-timing-function: $animation-easing;
     }
@@ -94,27 +94,27 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
 .fade-in {
     opacity: 0;
 
-    &.fade-in--visible {
+    &[data-state="visible"] {
         animation-fill-mode: forwards;
         animation-timing-function: $animation-easing;
 
-        &.fade-in--up {
+        &[data-direction="up"] {
             animation-name: fadeInUp;
         }
 
-        &.fade-in--down {
+        &[data-direction="down"] {
             animation-name: fadeInDown;
         }
 
-        &.fade-in--left {
+        &[data-direction="left"] {
             animation-name: fadeInLeft;
         }
 
-        &.fade-in--right {
+        &[data-direction="right"] {
             animation-name: fadeInRight;
         }
 
-        &.fade-in--none {
+        &[data-direction="none"] {
             animation-name: fadeIn;
         }
     }
@@ -126,7 +126,7 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(20px) scale(0.95);
     transition: transform 0.2s ease-out;
 
-    &.animated-card--visible {
+    &[data-state="visible"] {
         animation: scaleIn $animation-duration-fast $animation-easing forwards;
     }
 
@@ -148,7 +148,7 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     transform: translateX(-20px);
 
-    &.animated-title--visible {
+    &[data-state="visible"] {
         animation: slideInLeft $animation-duration $animation-easing forwards;
     }
 }
@@ -164,10 +164,7 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
         animation: none !important;
         transition: none !important;
 
-        &.fade-in--visible,
-        &.animated-card--visible,
-        &.animated-title--visible,
-        &.animate--visible {
+        &[data-state="visible"] {
             animation: none !important;
         }
     }

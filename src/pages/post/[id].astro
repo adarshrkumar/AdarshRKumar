@@ -35,12 +35,11 @@ const authorInfo = getAuthorInfo(authors, authorUsername || '');
 
 <!-- Individual Post Page -->
 <Layout title={currentPost.frontmatter.title} pageType="post" author={authorInfo.displayName} classItems="ignorePadding">
-    <section class="info">
+    <section class="post__info">
         <a href={`/author/${authorUsername}`} class="author">{authorInfo.displayName}</a> | <span class="date">{currentPost.frontmatter.date}</span>
     </section>
-    <section class="post-area">
-        <article class="post-content" set:html={currentPost.compiledContent?.() || ''}></article>
-        <section class="giscus" />
+    <section class="post__area">
+        <article class="post__content" set:html={currentPost.compiledContent?.() || ''}></article>        <section class="giscus" />
         <script 
             is:inline
             src="https://giscus.app/client.js"

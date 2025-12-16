@@ -41,13 +41,13 @@ $post-section-shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.15);
     overflow: hidden; // Contain border-radius
 
     // Info and post area padding
-    .info, .post-area {
+    &__info, &__area {
         padding: var(--pad);
         transition: background-color $transition-base $transition-timing;
     }
 
     // Post info section
-    .info {
+    &__info {
         margin: 0;
         background: linear-gradient(135deg, transparent 0%, var(--shadow-color) 100%);
         box-shadow: $post-section-shadow;
@@ -58,7 +58,7 @@ $post-section-shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.15);
     }
 
     // Post content area
-    .post-area {
+    &__area {
         flex: 1;
         background-color: hsl(from var(--middle-color) h s calc(l + 50));
         box-shadow: $post-section-shadow;
@@ -66,32 +66,32 @@ $post-section-shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.15);
         @media (prefers-color-scheme: dark) {
             box-shadow: $post-section-shadow-dark;
         }
+    }
 
-        // Post content styling
-        .post-content {
-            // Text wrapping
-            > * {
-                text-wrap: wrap;
-            }
+    // Post content styling
+    &__content {
+        // Text wrapping
+        > * {
+            text-wrap: wrap;
+        }
 
-            // First child margin reset
-            > :first-child {
-                &, > :first-child {
-                    margin-top: 0;
-                }
+        // First child margin reset
+        > :first-child {
+            &, > :first-child {
+                margin-top: 0;
             }
+        }
 
-            // Last child margin reset
-            > :last-child {
-                &, > :last-child {
-                    margin-bottom: 0;
-                }
+        // Last child margin reset
+        > :last-child {
+            &, > :last-child {
+                margin-bottom: 0;
             }
+        }
 
-            // Code block padding
-            pre.astro-code:has( > code) {
-                padding: var(--pad);
-            }
+        // Code block padding
+        pre.astro-code:has( > code) {
+            padding: var(--pad);
         }
     }
 }
