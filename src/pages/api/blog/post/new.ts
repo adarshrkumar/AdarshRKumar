@@ -16,23 +16,33 @@ export const POST: APIRoute = async ({ request }) => {
         const {
             title,
             content,
-            slug,
             author = 'adarshrkumar',
             categories = 'general'
         } = body;
 
         // Validate required fields
-        if (!title || !content || !slug) {
+        if (!title || !content) {
             return new Response(
                 JSON.stringify({
                     error: 'Missing required fields',
-                    required: ['title', 'content', 'slug']
+                    required: ['title', 'content']
                 }),
                 {
                     status: 400,
                     headers: { 'Content-Type': 'application/json' }
                 }
             );
+        }
+
+        // Generate slug from title if not provided
+        let slug = body.slug;
+        if (!slug) {
+            slug = title
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+                .replace(/\s+/g, '-')          // Replace spaces with hyphens
+                .replace(/-+/g, '-')           // Replace multiple hyphens with single hyphen
+                .replace(/^-|-$/g, '');        // Remove leading/trailing hyphens
         }
 
         // Validate slug format (lowercase, hyphens only, no spaces)
