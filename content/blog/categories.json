@@ -1,10 +1,14 @@
 {
     "general": {
-        "displayName": "General", 
+        "displayName": "General",
         "description": "All blog posts will go here!"
-    }, 
+    },
     "projects": {
-        "displayName": "Projects", 
+        "displayName": "Projects",
         "description": "Any posts relates to my projects will be added to this category."
+    },
+    "youtube": {
+        "displayName": "YouTube",
+        "description": "Posts sourced from YouTube videos and content."
     }
 }
