@@ -133,13 +133,13 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
         transform: translateY(-6px);
     }
-}
 
-.animated-card-link {
-    display: contents;
+    &__link {
+        display: contents;
 
-    &:hover .animated-card {
-        transform: translateY(-6px);
+        &:hover .animated-card {
+            transform: translateY(-6px);
+        }
     }
 }
 
