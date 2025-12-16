@@ -43,8 +43,7 @@ export interface PostForRSS extends Post {
 export interface Author {
     displayName: string;
     bio: string;
-    hasPfp: boolean;
-    pfp: {
+    pfp?: {
         filename: string;
     };
 }

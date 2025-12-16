@@ -35,12 +35,12 @@ const formattedBio = formatBioText(author.bio);
 
 <!-- Author Profile Page -->
 <Layout title={author.displayName} pageType="author" classItems="ignorePadding">
-    {author.hasPfp && (
+    {(author.pfp && author.pfp.filename) && (
         <div class="pfp">
-            <img 
-                class="pfp__inner" 
-                src={`/profiles/${username}/imgs/${author.pfp.filename}`} 
-                alt={`${username}'s Profile Picture`} 
+            <img
+                class="pfp__inner"
+                src={`/profiles/${username}/imgs/${author.pfp.filename}`}
+                alt={`${username}'s Profile Picture`}
             />
         </div>
     )}
