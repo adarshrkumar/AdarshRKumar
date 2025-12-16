@@ -35,22 +35,24 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 // Grid frame styles
-.grid .frame {
-    $ar: 2;
-    box-sizing: border-box;
+.grid {
+    &__frame {
+        $ar: 2;
+        box-sizing: border-box;
 
-    // Size and aspect ratio
-    max-width: 100%;
-    aspect-ratio: var(--ar, $ar);
+        // Size and aspect ratio
+        max-width: 100%;
+        aspect-ratio: var(--ar, $ar);
 
-    // Background properties
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+        // Background properties
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
 
-    // Border styling
-    border: solid 1px var(--color);
-    border-radius: 1rem;
+        // Border styling
+        border: solid 1px var(--color);
+        border-radius: 1rem;
+    }
 }
 
 // Main grid layout
