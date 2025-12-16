@@ -127,7 +127,7 @@ function convertDBPostToPost(dbPost: DBPost): Post {
         frontmatter: {
             title: dbPost.title,
             author: dbPost.author,
-            date: dbPost.updatedAt.toISOString(), // Use updatedAt for sorting
+            date: dbPost.createdAt.toISOString(),
             pubDate: dbPost.createdAt.toISOString(),
             description: dbPost.content.substring(0, 150) + '...',
         },
@@ -137,18 +137,10 @@ function convertDBPostToPost(dbPost: DBPost): Post {
 }
 
 /**
- * Helper function to get updated date from a post
+ * Helper function to get created date from a post
  */
-function getPostUpdatedDate(post: Post): Date {
-    // For DB posts, extract from file path
-    if (post.file.startsWith('db://')) {
-        // This is a DB post converted to Post format
-        // We'll need to handle this differently - for now use frontmatter date
-        const dateStr = post.frontmatter.date || post.frontmatter.pubDate
-        return dateStr ? new Date(dateStr) : new Date(0)
-    }
-
-    // For file-based posts, use frontmatter date
+function getPostCreatedDate(post: Post): Date {
+    // Use frontmatter date (which is set to createdAt for DB posts)
     const dateStr = post.frontmatter.date || post.frontmatter.pubDate
     return dateStr ? new Date(dateStr) : new Date(0)
 }
@@ -182,7 +174,7 @@ export function getLocalPosts(): Post[] {
 
 /**
  * Main function to get all published blog posts (both local and DB)
- * Sorted by updated date (most recent first)
+ * Sorted by created date (most recent first)
  */
 export async function getPosts(): Promise<Post[]> {
     const localPosts = getLocalPosts()
@@ -191,10 +183,10 @@ export async function getPosts(): Promise<Post[]> {
     // Combine both sources
     const allPosts = [...localPosts, ...dbPosts]
 
-    // Sort by updated date (most recent first)
+    // Sort by created date (most recent first)
     allPosts.sort((a, b) => {
-        const dateA = getPostUpdatedDate(a)
-        const dateB = getPostUpdatedDate(b)
+        const dateA = getPostCreatedDate(a)
+        const dateB = getPostCreatedDate(b)
         return dateB.getTime() - dateA.getTime()
     })
 
