@@ -11,7 +11,7 @@ import { posts } from '../../../../db/schema.ts';
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',//'https://adarshrkumar.app.n8n.cloud',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
 // Handle OPTIONS preflight request
@@ -24,29 +24,36 @@ export const OPTIONS: APIRoute = async () => {
 
 export const POST: APIRoute = async ({ request }) => {
     try {
-        // Log request details for debugging
-        console.log('Content-Type:', request.headers.get('content-type'));
+        const contentType = request.headers.get('content-type') || '';
+        let body: any = {};
 
-        // Get raw body text first
-        const rawBody = await request.text();
-        console.log('Raw body:', rawBody);
-
-        // Parse the request body
-        let body;
-        try {
-            body = JSON.parse(rawBody);
-        } catch (jsonError) {
-            return new Response(
-                JSON.stringify({
-                    error: 'Invalid JSON',
-                    message: 'Request body must be valid JSON',
-                    received: rawBody.substring(0, 100)
-                }),
-                {
-                    status: 400,
-                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-                }
-            );
+        // Parse based on content type
+        if (contentType.includes('application/json')) {
+            // Handle JSON
+            body = await request.json();
+        } else if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
+            // Handle form data
+            const formData = await request.formData();
+            for (const [key, value] of formData.entries()) {
+                body[key] = value;
+            }
+        } else {
+            // Try to parse as JSON by default
+            try {
+                body = await request.json();
+            } catch {
+                return new Response(
+                    JSON.stringify({
+                        error: 'Unsupported content type',
+                        message: 'Please send JSON or form data',
+                        contentType
+                    }),
+                    {
+                        status: 400,
+                        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                    }
+                );
+            }
         }
 
         // Extract fields with defaults
