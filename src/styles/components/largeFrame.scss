@@ -63,32 +63,32 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     // Checkbox styling
-    .checker {
+    &__checker {
         appearance: none;
     }
-    
+
     // Interactive states
-    &:has(.checker:not(:checked)) {
+    &:has(&__checker:not(:checked)) {
         cursor: pointer;
     }
-    
-    &:has(.checker:checked) {
+
+    &:has(&__checker:checked) {
         pointer-events: none;
     }
-    
+
     // Frame visibility control
-    .checker:checked ~ :not(.checker):not(.frame), &:has(.checker:checked) {
+    &__checker:checked ~ :not(&__checker):not(&__frame), &:has(&__checker:checked) {
         &::before, &::after {
             display: none;
         }
     }
-    
-    .checker:not(:checked) ~ .frame {
+
+    &__checker:not(:checked) ~ &__frame {
         display: none;
     }
 
     // Image styling
-    .img {
+    &__img {
         display: block;
         width: 100%;
         background-image: var(--bg);
@@ -99,7 +99,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     // Info overlay
-    .info {
+    &__info {
         padding: 1rem;
         width: 100%;
         height: 100%;
@@ -125,7 +125,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     // Frame content
-    .frame {
+    &__frame {
         box-sizing: inherit;
         max-width: unset;
         aspect-ratio: unset;
@@ -148,7 +148,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: $frame-shadow-dark-hover;
         }
 
-        .info {
+        &__info {
             opacity: 1;
         }
         &::after {

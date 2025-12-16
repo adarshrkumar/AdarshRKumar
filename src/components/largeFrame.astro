@@ -54,25 +54,25 @@ const frameTitle = `"${video.title}" uploaded by "${video.author}"`
 
 <!-- Large frame component -->
 <label class="large-frame">
-    <input type="checkbox" class="checker" />
-    <img 
-        class="img" 
-        src={imageUrls.highRes} 
-        style={`--bg: url('${imageUrls.background}')`} 
-        alt={imageAlt} 
+    <input type="checkbox" class="large-frame__checker" />
+    <img
+        class="large-frame__img"
+        src={imageUrls.highRes}
+        style={`--bg: url('${imageUrls.background}')`}
+        alt={imageAlt}
     />
-    <div class="info">
+    <div class="large-frame__info">
         <h2 class="title">{video.title}</h2>
         <p class="author">
             by <a target="_blank" href={youtubeUrls.channel}>{feed.title}</a>
         </p>
     </div>
-    <iframe 
-        class="frame" 
-        allow="autoplay; fullscreen;" 
-        allowfullscreen 
-        loading="lazy" 
-        src={youtubeUrls.embed} 
-        title={frameTitle} 
+    <iframe
+        class="large-frame__frame"
+        allow="autoplay; fullscreen;"
+        allowfullscreen
+        loading="lazy"
+        src={youtubeUrls.embed}
+        title={frameTitle}
     />
 </label>
