@@ -40,7 +40,7 @@
     }
 
     // Logo link - spans all rows
-    .logo-link {
+    &__logo-link {
         display: block;
         width: 4.5rem;
         height: 4.5rem;
@@ -70,7 +70,7 @@
         > * {
             grid-column: 1 / -1;
             grid-row: 1 / -1;
-            
+
             border-radius: inherit;
             overflow: hidden;
         }
