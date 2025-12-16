@@ -122,6 +122,18 @@ export interface DBPhoto {
     updatedAt: Date;
 }
 
+// Database post type (from Drizzle schema)
+export interface DBPost {
+    id: string;
+    slug: string;
+    title: string;
+    content: string;
+    author: string;
+    categories: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
 // Form types
 export interface FormField {
     type: string;
