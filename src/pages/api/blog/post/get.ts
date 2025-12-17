@@ -7,7 +7,7 @@
 import type { APIRoute } from 'astro';
 import { db } from '../../../../db/initialize.ts';
 import { posts } from '../../../../db/schema.ts';
-import { eq, and, like, or } from 'drizzle-orm';
+import { eq, and, like } from 'drizzle-orm';
 
 // Helper function to add CORS headers
 const corsHeaders = {
