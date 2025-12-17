@@ -23,6 +23,7 @@ const posts = pgTable('posts', {
     slug: varchar('slug', { length: 255 }).notNull().unique(),
     title: text('title').notNull(),
     content: text('content').notNull(),
+    videoId: varchar('video_id', { length: 100 }),
     author: varchar('author', { length: 100 }).notNull(),
     categories: text('categories').notNull(), // Comma-separated categories
 
