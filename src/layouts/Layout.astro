@@ -1,5 +1,7 @@
 ---
 // Imports
+import Analytics from '@vercel/analytics/astro'
+
 import '../styles/globals.scss'
 
 import Header from '../components/header.astro'
@@ -105,6 +107,8 @@ const keywords = keywordsArray.join(', ')
         <link rel="preload" as="image" href="/assets/placeholder.svg" />
         {pageType === 'post' && <script is:inline type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=625cc7f8cb9e7d001955b4a3&product=sop' async='async'></script>}
         <Script name="settings" />
+
+        <Analytics />
     </head>
     <body>
         <a href="#content" class="skip-link">Skip to main content</a>
