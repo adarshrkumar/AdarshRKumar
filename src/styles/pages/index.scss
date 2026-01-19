@@ -1,30 +1,24 @@
 .readme {
     --br: 2rem;
-    --pad: 1rem;
+    --pad: 2rem;
 
+    // Card background colors (lighter than base)
     --lbg: hsl(from var(--bg) h s calc(l - 5));
     --dbg: hsl(from var(--bg) h s calc(l + 10));
+    --card-bg: light-dark(var(--lbg), var(--dbg));
+
     --lmbg: hsl(from var(--bg) h s calc(l - 2.5));
     --dmbg: hsl(from var(--bg) h s calc(l + 5));
-
     --mbg: light-dark(var(--lmbg), var(--dmbg));
-    --blbg: light-dark(var(--lbg, var(--bg)), var(--dbg, var(--bg)));
 
     max-width: 750px;
     margin-inline: auto;
     padding: var(--pad);
 
-    background-color: var(--blbg);
-
+    // Card styling
+    background-color: var(--card-bg);
     border-radius: var(--br);
-
-    &__content {
-        padding: var(--pad);
-
-        background-color: var(--bg);
-
-        border-radius: calc(var(--br) - var(--pad));
-    }
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 
     &__fancy-column {
         display: flex;
@@ -43,6 +37,7 @@
         overflow: auto;
 
         border: 1px solid var(--mlbg);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
         --br: 1rem;
 
@@ -71,7 +66,7 @@
         }
         th, td {
             padding: 6px 13px;
-            border: 1px solid var(--blbg);
+            border: 1px solid var(--card-bg);
 
             &:last-child {
                 img {

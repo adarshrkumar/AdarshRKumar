@@ -6,6 +6,11 @@
     --pad: 2rem;
     --max: 1000px;
 
+    // Card background colors (lighter than base)
+    --lbg: hsl(from var(--bg) h s calc(l - 5));
+    --dbg: hsl(from var(--bg) h s calc(l + 10));
+    --card-bg: light-dark(var(--lbg), var(--dbg));
+
     // Layout properties
     margin-inline: auto;
     box-sizing: border-box;
@@ -13,6 +18,11 @@
     padding-block: $page-spacing;
     width: min(calc(90% - var(--pad)), var(--max));
     max-width: $max-content-width;
+
+    // Card styling
+    background-color: var(--card-bg);
+    border-radius: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 
     // Header section
     &__header {
