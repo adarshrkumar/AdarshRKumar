@@ -62,22 +62,40 @@ function filterVisibleItems(items: PortfolioItem[]): PortfolioItem[] {
 }
 
 // Configuration and data loading
+// Load portfolio items that have projectsCategory field
+const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })) as PortfolioItem[]
+const portfolioWithCategory = portfolioItems.filter(item => item.frontmatter.projectsCategory)
+
+// Helper to get portfolio items for a specific category
+function getPortfolioItemsForCategory(categoryId: string): PortfolioItem[] {
+    return portfolioWithCategory.filter(item => item.frontmatter.projectsCategory === categoryId)
+}
+
 // Project categories configuration
 const projectCategories: ProjectCategoryConfig[] = [
     {
-        id: 'games', 
+        id: 'games',
         name: 'Games',
-        items: Object.values(import.meta.glob('../../content/work/projects/games/*.md', { eager: true })) as PortfolioItem[]
+        items: [
+            ...Object.values(import.meta.glob('../../content/work/projects/games/*.md', { eager: true })) as PortfolioItem[],
+            ...getPortfolioItemsForCategory('games')
+        ]
     },
     {
-        id: 'large-scale', 
+        id: 'large-scale',
         name: 'Large Scale',
-        items: Object.values(import.meta.glob('../../content/work/projects/large-scale/*.md', { eager: true })) as PortfolioItem[]
+        items: [
+            ...Object.values(import.meta.glob('../../content/work/projects/large-scale/*.md', { eager: true })) as PortfolioItem[],
+            ...getPortfolioItemsForCategory('large-scale')
+        ]
     },
     {
-        id: 'utilities', 
+        id: 'utilities',
         name: 'Utilities',
-        items: Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })) as PortfolioItem[]
+        items: [
+            ...Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })) as PortfolioItem[],
+            ...getPortfolioItemsForCategory('utilities')
+        ]
     }
 ]
 
