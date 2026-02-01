@@ -2,6 +2,7 @@
 name: "ImageResize"
 url: "https://ImageResize.adarshrkumar.dev"
 target: "_blank"
+projectsCategory: "utilities"
 ---
 <!-- markdownlint-disable MD041 -->
 

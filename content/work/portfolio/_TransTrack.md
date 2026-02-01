@@ -1,6 +1,7 @@
 ---
 name: "Bay Area TransTracker"
 url: "https://tt.adarshrkumar.dev/tracker"
+projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->
 
