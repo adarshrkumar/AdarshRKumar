@@ -2,6 +2,7 @@
 name: "AI Scholarly Mode"
 url: "https://github.com/adarshrkumar/AI-Scholarly-Mode"
 target: "_blank"
+projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->
 

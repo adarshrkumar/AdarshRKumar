@@ -2,6 +2,7 @@
 name: "WebShot"
 url: "https://WebShot.adarshrkumar.dev"
 target: "_blank"
+projectsCategory: "utilities"
 ---
 <!-- markdownlint-disable MD041 -->
 
