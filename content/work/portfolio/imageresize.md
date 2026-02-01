@@ -1,6 +1,6 @@
 ---
 name: "ImageResize"
-url: "https://ImageResize.adarshrkumar.dev"
+url: "https://imageresize.adarshrkumar.dev"
 target: "_blank"
 projectsCategory: "utilities"
 ---

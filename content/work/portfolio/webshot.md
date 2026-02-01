@@ -1,6 +1,6 @@
 ---
 name: "WebShot"
-url: "https://WebShot.adarshrkumar.dev"
+url: "https://webshot.adarshrkumar.dev"
 target: "_blank"
 projectsCategory: "utilities"
 ---
