@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio website for Adarsh Kumar built with Astro 5. Features blog, photography gallery, project showcase, and portfolio sections.
 
-**Tech Stack**: Astro 5 (SSR), TypeScript (strict), SCSS, Drizzle ORM + Vercel Postgres
+**Tech Stack**: Astro 5 (SSR), TypeScript (strict), SCSS, Drizzle ORM + Neon HTTP
 
 ## Essential Commands
 
@@ -23,7 +23,7 @@ npx drizzle-kit studio    # Open Drizzle Studio (database GUI)
 
 ## Environment Variables
 
-- `POSTGRES_URL` - Vercel Postgres connection string (auto-provided in Vercel)
+- `POSTGRES_URL` - Neon HTTP connection string (provided by Vercel)
 
 ## Architecture Overview
 
@@ -41,7 +41,7 @@ npx drizzle-kit studio    # Open Drizzle Studio (database GUI)
 
 ### Database Schema
 
-**Vercel Postgres via Drizzle ORM** (`src/db/schema.ts`, `drizzle.config.ts`):
+**Neon HTTP via Drizzle ORM** (`src/db/schema.ts`, `drizzle.config.ts`):
 
 - **Photos table**: id, name, fullname, extention, category, title, uploader, imageKey, imageUrl, createdAt, updatedAt
   - Query functions in `src/lib/getPhotos.ts`: `getAllPhotos()`, `getPhotosByCategory()`, `getPhotoByName()`, `getPhotoCategories()`
