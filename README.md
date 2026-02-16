@@ -17,6 +17,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 |---|---|
 |[![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
 |[![Canva](https://imageresize.adarshrkumar.dev/api/resize?url=https://static.canva.com/domain-assets/canva/static/images/apple-touch-180x180-1.png&width=48)](https://canva.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
+|[![PowerPoint](https://imageresize.adarshrkumar.dev/api/resize?url=https://static.wikia.nocookie.net/logopedia/images/b/b1/PPT3.png&width=48)](https://canva.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
 
 ### Other Tools
 
