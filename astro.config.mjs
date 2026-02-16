@@ -5,6 +5,11 @@ import { defineConfig } from 'astro/config';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
+import updateReadme from './scripts/update-readme.mjs';
+
+// Run the README update script before the build
+await updateReadme();
+
 // Astro configuration
 
 // https://astro.build/config

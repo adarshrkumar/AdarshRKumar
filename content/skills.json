@@ -1,0 +1,258 @@
+{
+  "Design Softwares": [
+    {
+      "name": "Figma",
+      "proficiency": 80,
+      "icon_url": "https://skillicons.dev/icons?i=figma",
+      "skill_url": "https://figma.com"
+    },
+    {
+      "name": "Canva",
+      "proficiency": 100,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/Canva.png",
+      "skill_url": "https://canva.com"
+    },
+    {
+      "name": "PowerPoint",
+      "proficiency": 100,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/PowerPoint.png",
+      "skill_url": "https://powerpoint.cloud.microsoft"
+    },
+    {
+      "name": "OnShape",
+      "proficiency": 100,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/OnShape.png",
+      "skill_url": "https://onshape.com"
+    }
+  ],
+  "Other Tools": [
+    {
+      "name": "Firebase",
+      "proficiency": 50,
+      "icon_url": "https://skillicons.dev/icons?i=firebase",
+      "skill_url": "https://firebase.com"
+    },
+    {
+      "name": "GCP",
+      "proficiency": 50,
+      "icon_url": "https://skillicons.dev/icons?i=gcp",
+      "skill_url": "https://cloud.google.com"
+    },
+    {
+      "name": "Git",
+      "proficiency": 75,
+      "icon_url": "https://skillicons.dev/icons?i=git",
+      "skill_url": "https://git-scm.com"
+    },
+    {
+      "name": "GitHub",
+      "proficiency": 95,
+      "icon_url": "https://skillicons.dev/icons?i=github",
+      "skill_url": "https://github.com"
+    },
+    {
+      "name": "GitHub Actions",
+      "proficiency": 25,
+      "icon_url": "https://skillicons.dev/icons?i=githubactions",
+      "skill_url": "https://github.com/actions"
+    },
+    {
+      "name": "Vercel",
+      "proficiency": 25,
+      "icon_url": "https://skillicons.dev/icons?i=vercel",
+      "skill_url": "https://vercel.com"
+    },
+    {
+      "name": "Visual Studio",
+      "proficiency": 75,
+      "icon_url": "https://skillicons.dev/icons?i=visualstudio",
+      "skill_url": "https://visualstudio.com"
+    },
+    {
+      "name": "VS Code",
+      "proficiency": 100,
+      "icon_url": "https://skillicons.dev/icons?i=vscode",
+      "skill_url": "https://code.visualstudio.com"
+    },
+    {
+      "name": "Cursor",
+      "proficiency": 99,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.png",
+      "skill_url": "https://cursor.com"
+    },
+    {
+      "name": "Claude Code",
+      "proficiency": 80,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.png",
+      "skill_url": "https://claude.ai"
+    },
+    {
+      "name": "Gemini CLI",
+      "proficiency": 60,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/GeminiCLI.png",
+      "skill_url": "https://claude.ai"
+    },
+    {
+      "name": "Windows",
+      "proficiency": 75,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/Windows.png",
+      "skill_url": "https://akum.site/p/WindowsInfo"
+    },
+    {
+      "name": "Mac",
+      "proficiency": 75,
+      "icon_url": "https://adarshrkumar.dev/assets/readme/Mac.png",
+      "skill_url": "https://akum.site/p/MacInfo"
+    }
+  ],
+  "Web Development - Front-End": [
+    {
+      "name": "HMTL",
+      "proficiency": 99,
+      "icon_url": "https://skillicons.dev/icons?i=html",
+      "skill_url": "https://akum.site/p/HTMLInfo"
+    },
+    {
+      "name": "CSS",
+      "proficiency": 95,
+      "icon_url": "https://skillicons.dev/icons?i=css",
+      "skill_url": "https://akum.site/p/CSSInfo"
+    },
+    {
+      "name": "JavaScript",
+      "proficiency": 90,
+      "icon_url": "https://skillicons.dev/icons?i=js",
+      "skill_url": "https://akum.site/p/JSInfo"
+    },
+    {
+      "name": "TypeScript",
+      "proficiency": 80,
+      "icon_url": "https://skillicons.dev/icons?i=ts",
+      "skill_url": "https://www.typescriptlang.org"
+    },
+    {
+      "name": "SVG",
+      "proficiency": 75,
+      "icon_url": "https://skillicons.dev/icons?i=svg",
+      "skill_url": "https://akum.site/p/SVGInfo"
+    },
+    {
+      "name": "SCSS",
+      "proficiency": 80,
+      "icon_url": "https://skillicons.dev/icons?i=scss",
+      "skill_url": "https://sass-lang.com"
+    }
+  ],
+  "Web Development - Back End": [
+    {
+      "name": "PHP",
+      "proficiency": 75,
+      "icon_url": "https://skillicons.dev/icons?i=php",
+      "skill_url": "https://akum.site/p/PHPInfo"
+    },
+    {
+      "name": "Node.JS",
+      "proficiency": 90,
+      "icon_url": "https://skillicons.dev/icons?i=nodejs",
+      "skill_url": "https://nodejs.org"
+    },
+    {
+      "name": "NPM",
+      "proficiency": 90,
+      "icon_url": "https://skillicons.dev/icons?i=npm",
+      "skill_url": "https://npmjs.com"
+    },
+    {
+      "name": "Express.JS",
+      "proficiency": 90,
+      "icon_url": "https://skillicons.dev/icons?i=express",
+      "skill_url": "https://expressjs.com"
+    },
+    {
+      "name": "Vite",
+      "proficiency": 70,
+      "icon_url": "https://skillicons.dev/icons?i=vite",
+      "skill_url": "https://vitejs.dev"
+    },
+    {
+      "name": "React",
+      "proficiency": 40,
+      "icon_url": "https://skillicons.dev/icons?i=react",
+      "skill_url": "https://react.dev"
+    },
+    {
+      "name": "Next.JS",
+      "proficiency": 40,
+      "icon_url": "https://skillicons.dev/icons?i=nextjs",
+      "skill_url": "https://nextjs.org"
+    },
+    {
+      "name": "Astro",
+      "proficiency": 90,
+      "icon_url": "https://skillicons.dev/icons?i=astro",
+      "skill_url": "https://astro.build"
+    },
+    {
+      "name": "Discord.JS",
+      "proficiency": 50,
+      "icon_url": "https://skillicons.dev/icons?i=discordjs",
+      "skill_url": "https://discord.js.org"
+    }
+  ],
+  "Other Languages": [
+    {
+      "name": "Bash",
+      "proficiency": 60,
+      "icon_url": "https://skillicons.dev/icons?i=bash",
+      "skill_url": "https://akum.site/p/BASHInfo"
+    },
+    {
+      "name": "Batch",
+      "proficiency": 40,
+      "icon_url": "https://skillicons.dev/icons?i=batch",
+      "skill_url": "https://akum.site/p/BatchInfo"
+    },
+    {
+      "name": "PowerShell",
+      "proficiency": 30,
+      "icon_url": "https://skillicons.dev/icons?i=powershell",
+      "skill_url": "https://akum.site/p/PSInfo"
+    },
+    {
+      "name": "Python",
+      "proficiency": 70,
+      "icon_url": "https://skillicons.dev/icons?i=py",
+      "skill_url": "https://python.org"
+    },
+    {
+      "name": "Flask.PY",
+      "proficiency": 65,
+      "icon_url": "https://skillicons.dev/icons?i=flask",
+      "skill_url": "https://palletsprojects.com/p/flask/"
+    },
+    {
+      "name": "C",
+      "proficiency": 50,
+      "icon_url": "https://skillicons.dev/icons?i=c",
+      "skill_url": "https://akum.site/p/CInfo"
+    },
+    {
+      "name": "C++",
+      "proficiency": 30,
+      "icon_url": "https://skillicons.dev/icons?i=cpp",
+      "skill_url": "https://cplusplus.com"
+    },
+    {
+      "name": "Markdown",
+      "proficiency": 100,
+      "icon_url": "https://skillicons.dev/icons?i=md",
+      "skill_url": "https://akum.site/p/MarkDownInfo"
+    },
+    {
+      "name": "RegEx",
+      "proficiency": 70,
+      "icon_url": "https://skillicons.dev/icons?i=regex",
+      "skill_url": "https://akum.site/p/RegExInfo"
+    }
+  ]
+}
