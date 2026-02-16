@@ -15,7 +15,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 |Tool|Proficiency Level|
 |---|---|
-|[![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80%|
+|[![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; <span style="font-size: 100px">80%</span>|
 |[![Canva](https://adarshrkumar.dev/assets/readme/Canva.png)](https://canva.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100%|
 |[![PowerPoint](https://adarshrkumar.dev/assets/readme/PowerPoint.png)](https://powerpoint.cloud.microsoft)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100%|
 |[![OnShape](https://adarshrkumar.dev/assets/readme/OnShape.png)](https://onshape.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100%|
