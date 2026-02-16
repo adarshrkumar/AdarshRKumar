@@ -46,12 +46,12 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 |Lang|Proficiency Level|
 |---|---|
-|[![HMTL](https://skillicons.dev/icons?i=html)](https://akum.site/p/HTMLInfo)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)|
-|[![CSS](https://skillicons.dev/icons?i=css)](https://akum.site/p/CSSInfo)|![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)|
-|[![JavaScript](https://skillicons.dev/icons?i=js)](https://akum.site/p/JSInfo)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)|
-|[![TypeScript](https://skillicons.dev/icons?i=ts)](https://www.typescriptlang.org)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
-|[![SVG](https://skillicons.dev/icons?i=svg)](https://akum.site/p/SVGInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
-|[![Sass](https://skillicons.dev/icons?i=sass)](https://sass-lang.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
+|[![HMTL](https://skillicons.dev/icons?i=html)](https://akum.site/p/HTMLInfo)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)&nbsp; 99%|
+|[![CSS](https://skillicons.dev/icons?i=css)](https://akum.site/p/CSSInfo)|![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)&nbsp; 95%|
+|[![JavaScript](https://skillicons.dev/icons?i=js)](https://akum.site/p/JSInfo)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90%|
+|[![TypeScript](https://skillicons.dev/icons?i=ts)](https://www.typescriptlang.org)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80%|
+|[![SVG](https://skillicons.dev/icons?i=svg)](https://akum.site/p/SVGInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75%|
+|[![Sass](https://skillicons.dev/icons?i=sass)](https://sass-lang.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80%|
 
 #### Back End
 
