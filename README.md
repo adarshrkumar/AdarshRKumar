@@ -16,9 +16,9 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 |Tool|Proficiency Level|
 |---|---|
 |[![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
-|[![Canva](https://imageresize.adarshrkumar.dev/api/resize?url=https://static.canva.com/domain-assets/canva/static/images/apple-touch-180x180-1.png&width=48)](https://canva.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
+|[![Canva](ttps://adarshrkumar.dev/assets/readme/Canva.png)](https://canva.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
 |[![PowerPoint](https://adarshrkumar.dev/assets/readme/PowerPoint.png)](https://powerpoint.cloud.microsoft)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
-|[![OnShape](https://imageresize.adarshrkumar.dev/api/resize?url=https://www.onshape.com/cdn-images/f35a61ea6bddcaa17307207813b50aaf8d6b846d-180x180.png&width=48)](https://onshape.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
+|[![OnShape](ttps://adarshrkumar.dev/assets/readme/OnShape.png)](https://onshape.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
 
 ### Other Tools
 
@@ -32,8 +32,8 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 |[![Vercel](https://skillicons.dev/icons?i=vercel)](https://vercel.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
 |[![Visual Studio](https://skillicons.dev/icons?i=visualstudio)](https://visualstudio.com)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
 |[![VS Code](https://skillicons.dev/icons?i=vscode)](https://code.visualstudio.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
-|[![Cursor](https://akum.site/p/CursorIcon)](https://cursor.com)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)|
-|[![Claude Code](https://skillicons.dev/icons?i=claudecode)](https://claude.ai)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
+|[![Cursor](ttps://adarshrkumar.dev/assets/readme/Cursor.png)](https://cursor.com)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)|
+|[![Claude Code](https://adarshrkumar.dev/assets/readme/ClaudeCode.png)](https://claude.ai)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
 |[![Windows](https://akum.site/p/WindowsIcon?)](https://akum.site/p/WindowsInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
 |[![Mac](https://akum.site/p/MacLogo)](https://akum.site/p/MacInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
 
