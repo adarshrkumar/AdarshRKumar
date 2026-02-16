@@ -68,6 +68,12 @@
             padding: 6px 13px;
             border: 1px solid var(--card-bg);
 
+            &:first-child {
+                img {
+                    border-radius: 0.75rem;
+                }
+            }
+
             &:last-child {
                 img {
                     vertical-align: middle;
