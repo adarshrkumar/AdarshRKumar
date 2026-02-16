@@ -1,5 +1,5 @@
-@import '../variables.scss';
-@import '../mixins.scss';
+@import '../variables';
+@import '../mixins';
 
 // Navigation styles
 .nav {
@@ -16,8 +16,7 @@
 
     // Layout properties
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: var(--data-direction, row);
+    flex-flow: var(--data-direction, row) wrap;
     gap: inherit; // Inherit gap from parent (header)
     justify-content: flex-end;
 }
@@ -60,9 +59,11 @@
 .nav-btn:not([data-primary="true"]):hover {
     background-color: transparent;
     color: var(--color);
+
     @supports (border-color: color-mix(in srgb, var(--border-color) 70%, white)) {
         border-color: color-mix(in srgb, var(--border-color) 70%, white);
     }
+
     transform: none;
     box-shadow: none;
 }
@@ -77,9 +78,11 @@
     &:hover {
         // Transparent on hover with lighter border and underline
         background-color: transparent;
+
         @supports (border-color: color-mix(in srgb, var(--border-color) 70%, white)) {
             border-color: color-mix(in srgb, var(--border-color) 70%, white);
         }
+
         color: var(--color);
         transform: none;
         box-shadow: none;

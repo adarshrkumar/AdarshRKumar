@@ -1,12 +1,11 @@
-@use 'sass:math';
+@use 'sass:math' as math;
 
 // Variables
 $pad: 1rem;
 
 // Mixins
 // Default styles for form elements
-@mixin defaultStyles() {
-    -webkit-appearance: none;
+@mixin default-styles() {
     appearance: none;
 
     // Font properties
@@ -34,7 +33,7 @@ $pad: 1rem;
 }
 
 // Main styling for form elements
-@mixin mainStyles() {
+@mixin main-styles() {
     padding: math.div($pad, 2);
     max-height: 100%;
 
@@ -47,11 +46,12 @@ $pad: 1rem;
 }
 
 // Text input styling
-@mixin textStyles() {
+@mixin text-styles() {
     min-width: 200px;
     
     &:is(textarea) {
         resize: vertical;
+
         @supports (field-sizing: content) {
             field-sizing: content;
             resize: none;
@@ -60,14 +60,14 @@ $pad: 1rem;
 }
 
 // Button styling
-@mixin buttonStyles() {
+@mixin button-styles() {
     min-width: 100px;
     width: fit-content;
     cursor: pointer;
 }
 
 // Checkbox and radio styling
-@mixin checkboxRadio() {
+@mixin checkboxradio() {
     border: solid 1px gray;
     aspect-ratio: 1;
     min-height: 1em;
@@ -82,15 +82,12 @@ $pad: 1rem;
 // Placeholder styles
 ::placeholder, 
 :placeholder-shown, 
-:-moz-placeholder, 
-::-moz-placeholder, 
-:-ms-input-placeholder, 
-::-webkit-input-placeholder {
+::placeholder {
     color: inherit;
 }
 
 // Form components
-.formGroup {
+.form-group {
     position: relative;
     padding-top: 0.5lh;
     display: flex;
@@ -98,7 +95,7 @@ $pad: 1rem;
 
     // Label styling
     > label:not(.file label) {
-        @include mainStyles();
+        @include main-styles;
 
         position: absolute;
         translate: 1em -0.5lh;
@@ -117,7 +114,7 @@ datalist,
 output, 
 option, 
 optgroup {
-    @include defaultStyles();
+    @include default-styles;
 }
 
 // Input types
@@ -135,28 +132,30 @@ input {
     // &[type="month"],
     // &[type="time"],
     // &[type="week"] {
-    //     @include defaultStyles();
-    //     @include mainStyles();
-    //     @include textStyles();
+    //     @include default-styles();
+    //     @include main-styles();
+    //     @include text-styles();
     // }
 
     // Checkbox styling
     &[type="checkbox"] {
-        @include defaultStyles();
-        @include checkboxRadio();
+        @include default-styles;
+        @include checkboxradio;
+
         border-radius: 0.15em;
     }
     
     // Radio button styling
     &[type="radio"] {
-        @include defaultStyles();
-        @include checkboxRadio();
+        @include default-styles;
+        @include checkboxradio;
+
         border-radius: 50%;
     }
     
     // Image input styling
     &[type="image"] {
-        @include defaultStyles();
+        @include default-styles;
     }
 
     // Text-based inputs
@@ -172,17 +171,17 @@ input {
     &[type="tel"], 
     &[type="text"], 
     &[type="url"] {
-        @include defaultStyles();
-        @include mainStyles();
-        @include textStyles();
+        @include default-styles;
+        @include main-styles;
+        @include text-styles;
     }
 }
 
 // Textarea styling
 textarea {
-    @include defaultStyles();
-    @include mainStyles();
-    @include textStyles();
+    @include default-styles;
+    @include main-styles;
+    @include text-styles;
 }
 
 // Buttons
@@ -192,13 +191,13 @@ input[type="submit"],
 input[type="reset"],
 input[type="color"],
 label:has(+ input[type="file"]) {
-    @include defaultStyles();
-    @include mainStyles();
-    @include buttonStyles();
+    @include default-styles;
+    @include main-styles;
+    @include button-styles;
 }
 
 // File input
-.formGroup .file {
+.form-group .file {
     display: flex;
     flex-direction: row-reverse;
 }
@@ -208,7 +207,7 @@ label:has(+ input[type="file"]) {
 }
 
 input[type="file"] {
-    @include defaultStyles();
+    @include default-styles;
 }
 
 input[type="color"] {
@@ -218,20 +217,21 @@ input[type="color"] {
 
 // Select elements
 select {
-    @include defaultStyles();
-    @include mainStyles();
-    @include textStyles();
+    @include default-styles;
+    @include main-styles;
+    @include text-styles;
+
     appearance: base-select;
 }
 
 option {
-    @include defaultStyles();
-    @include mainStyles();
-    @include textStyles();
+    @include default-styles;
+    @include main-styles;
+    @include text-styles;
 }
 
 optgroup {
-    @include defaultStyles();
-    @include mainStyles();
-    @include textStyles();
+    @include default-styles;
+    @include main-styles;
+    @include text-styles;
 }

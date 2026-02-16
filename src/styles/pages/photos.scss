@@ -10,6 +10,7 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         transform: scale(0.95);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -29,12 +30,12 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr)) !important;
 
     // Mobile optimization
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         padding: 0.5rem;
         grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr)) !important;
     }
 
-    @media (max-width: 480px) {
+    @media (width <= 480px) {
         padding: 0.25rem;
         grid-template-columns: repeat(auto-fill, minmax(min(100%, 100%), 1fr)) !important;
     }
@@ -44,11 +45,9 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         content: '';
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.85);
-
+        background-color: rgb(0 0 0 / 85%);
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
-
         opacity: 0;
         pointer-events: none;
         z-index: 998;
@@ -125,8 +124,8 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         padding: 1.5rem;
         background: linear-gradient(
             to top,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.4) 70%,
+            rgb(0 0 0 / 80%) 0%,
+            rgb(0 0 0 / 40%) 70%,
             transparent 100%
         );
         display: flex;
@@ -139,7 +138,7 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform $transition-smooth;
         pointer-events: none;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             padding: 1rem;
         }
     }
@@ -149,20 +148,20 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         font-size: 1rem;
         font-weight: 600;
         margin: 0;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             font-size: 0.9rem;
         }
     }
 
     &__content {
-        color: rgba(255, 255, 255, 0.9);
+        color: rgb(255 255 255 / 90%);
         font-size: 0.875rem;
         margin: 0;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             font-size: 0.8rem;
         }
     }
@@ -179,7 +178,7 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     // Mobile touch - show info by default
-    @media (max-width: 768px), (hover: none) {
+    @media (width <= 768px), (hover: none) {
         &__info {
             opacity: 1;
             transform: translateY(0);
@@ -195,10 +194,10 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         max-height: min(90vw, 90vh);
         aspect-ratio: 1 / 1;
         z-index: 999;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 25px 50px rgb(0 0 0 / 50%);
         animation: scale-in 0.4s $transition-spring;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             inset: 0.5rem;
             max-width: calc(100vw - 1rem);
             max-height: calc(100vh - 1rem);

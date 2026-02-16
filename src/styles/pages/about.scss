@@ -1,5 +1,5 @@
 // About page styling
-@import '../variables.scss';
+@import '../variables';
 
 .about {
     // Custom properties
@@ -22,7 +22,7 @@
     // Card styling
     background-color: var(--card-bg);
     border-radius: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
 
     // Header section
     &__header {
@@ -120,7 +120,7 @@
     padding: $content-spacing * 1.5;
     text-align: center;
     transition: all $transition-base $transition-timing;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 
     &:hover {
         transform: translateY(-4px);
@@ -192,8 +192,10 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px var(--shadow);
 
-            .interest-badge__name {
-                color: white;
+            .interest-badge {
+                &__name {
+                    color: white;
+                }
             }
         }
     }
@@ -201,7 +203,7 @@
 
 
 // Responsive design
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .about {
         --pad: 1rem;
 

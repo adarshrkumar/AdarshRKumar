@@ -1,20 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
+@import './variables';
+@import './mixins';
 
-@import './variables.scss';
-@import './mixins.scss';
-
-:not(nav *):not([class*="-title"]) {
+:not(nav *, [class*="-title"]) {
     box-sizing: border-box;
 }
 
 :root {
     --data-theme: attr(data-theme);
-
     --bg: light-dark(#{$light-bg}, #{$dark-bg});
     --color: light-dark(#{$light-color}, #{$dark-color});
     --border-color: light-dark(#{$light-border}, #{$dark-border});
     --shadow-color: light-dark(#{$light-shadow}, #{$dark-shadow});
-
     --logo-a-color: #{$logo-a-color};
     --bg-lightness: #{$main-bg-lightness};
     --color-lightness: #{$main-color-lightness};
@@ -44,6 +41,7 @@ html {
 [data-theme="light"] {
     color-scheme: light;
 }
+
 [data-theme="dark"] {
     color-scheme: dark;
 }
@@ -51,23 +49,18 @@ html {
 html, iframe {
     margin: 0;
     padding: 0;
-
     min-width: 100%;
     min-height: 100%;
-
     border: none;
     outline: none;
-
     box-shadow: none;
 }
   
 body {
     margin: 0;
     min-height: 100dvh;
-
     background-color: var(--bg);
     color: var(--color);
-
     display: flex;
     flex-direction: column;
 
@@ -88,9 +81,7 @@ img {
 
 .wrapper {
     flex: 1;
-
     width: 100%;
-
     display: grid;
 
     & ~ iframe {
@@ -104,27 +95,26 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0;
-    
     max-width: 100dvw;
 
     hr {
         margin-inline: auto;
     }
 
-    &:not(.isSoon) {
+    &:not(.is-soon) {
         margin: 0 !important;
     }
 
-    &:not(:has(> .ignorePadding)):not(:has(> .page-title:first-child)) {
+    &:not(:has(> .ignorepadding), :has(> .page-title:first-child)) {
         padding: var(--pad);
     }
+
     &:has(> .page-title:first-child) .main-content {
         padding: var(--pad);
     }
 }
 
 .main-content {
-
     &:not(.author) {
         flex: 1;
     }
@@ -134,8 +124,9 @@ img {
 }
 
 .section, .hero {
-    &:not(.ignorePadding) {
+    &:not(.ignorepadding) {
         padding-bottom: var(--pad);
+
         > :not(.section-title, .hero *):first-of-type {
             padding-top: var(--pad);
         }
@@ -146,17 +137,13 @@ img {
     box-sizing: border-box;
     padding: $button-spacing $section-spacing;
     min-width: var(--min-width, fit-content);
-
     border-radius: $border-radius-pill;
-
     font-size: $font-size-button;
     font-weight: 500;
     text-align: center;
     text-decoration: none;
     letter-spacing: 0.02em;
-
     cursor: pointer;
-
     transition:
         color $transition-base $transition-timing,
         background-color $transition-base $transition-timing,
@@ -222,9 +209,7 @@ hr[isDivider], .divider {
 .page-title {
     margin: 0;
     padding-block: $section-spacing;
-
     border-bottom: 2px solid var(--border-color);
-
     text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
@@ -235,11 +220,9 @@ hr[isDivider], .divider {
 .section-title {
     margin: 0;
     padding: $content-spacing $section-spacing;
-
     border: 2px solid var(--border-color);
     border-radius: $border-radius-card;
     background: linear-gradient(135deg, transparent 0%, var(--shadow-color) 100%);
-
     text-align: center;
     font-size: 1.75rem;
     font-weight: 600;
@@ -253,6 +236,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.01em;
     margin-top: 0;
     margin-bottom: $content-spacing;
+
     *:not(&) + & {
         margin-top: $content-spacing;
     }
@@ -275,9 +259,7 @@ h6 { font-size: 1.125rem; }
 }
 
 form {
-    width: -moz-fit-content;
     width: fit-content;
-
     display: flex;
     flex-direction: column;
     gap: $header-spacing;
@@ -295,6 +277,7 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
     &:first-child {
         margin-top: 0;
     }
+
     &:last-child {
         margin-bottom: 0;
     }

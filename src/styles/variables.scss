@@ -14,7 +14,7 @@ $hero-spacing: 4rem;
 // ============================================
 // Typography
 // ============================================
-$font-family-base: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-family-base: 'Montserrat', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
 $font-size-base: 1rem;
 $font-size-button: 1.125rem;
 $font-size-heading: 1.25rem;
@@ -27,7 +27,6 @@ $line-height-heading: 1.3;
 $nav-height: 4.5rem;
 $max-content-width: 1200px;
 $max-post-width: 800px;
-
 $border-radius-button: 0.5rem;
 $border-radius-card: 0.75rem;
 $border-radius-section: 1rem;
@@ -43,38 +42,36 @@ $transition-timing: ease-out;
 // Colors
 // ============================================
 $change-amt: 25%;
-
 $main-bg-lightness: 98%;
 $main-bg-darkness: 100%;
 $main-bdr-darkness: 75%;
 $main-color-lightness: 12%;
-
 $middle-lightness: 50%;
-$middle-color: hsl(0, 0%, $middle-lightness);
-$middle-hover: hsl(0, 0%, 45%);
+$middle-color: hsl(0deg, 0%, $middle-lightness);
+$middle-hover: hsl(0deg 0% 45%);
 
 // Light theme - softer, warmer tones
-$light-bg: hsl(210, 20%, $main-bg-lightness);
-$light-color: hsl(210, 15%, $main-color-lightness);
-$light-border: hsl(210, 15%, 85%);
-$light-nav-hover: hsl(210, 25%, 25%);
-$light-link-color: hsl(220, 90%, 50%);
-$light-link-visited: hsl(280, 70%, 45%);
-$light-shadow: rgba(0, 0, 0, 0.08);
+$light-bg: hsl(210deg, 20%, $main-bg-lightness);
+$light-color: hsl(210deg, 15%, $main-color-lightness);
+$light-border: hsl(210deg 15% 85%);
+$light-nav-hover: hsl(210deg 25% 25%);
+$light-link-color: hsl(220deg 90% 50%);
+$light-link-visited: hsl(280deg 70% 45%);
+$light-shadow: rgb(0 0 0 / 8%);
 
 // Dark theme - richer, less harsh
-$dark-bg: hsl(220, 15%, $main-color-lightness);
-$dark-color: hsl(210, 15%, 92%);
-$dark-border: hsl(220, 15%, 25%);
-$dark-nav-hover: hsl(210, 15%, 80%);
-$dark-link-color: hsl(220, 85%, 65%);
-$dark-link-visited: hsl(280, 65%, 70%);
-$dark-shadow: rgba(0, 0, 0, 0.3);
+$dark-bg: hsl(220deg, 15%, $main-color-lightness);
+$dark-color: hsl(210deg 15% 92%);
+$dark-border: hsl(220deg 15% 25%);
+$dark-nav-hover: hsl(210deg 15% 80%);
+$dark-link-color: hsl(220deg 85% 65%);
+$dark-link-visited: hsl(280deg 65% 70%);
+$dark-shadow: rgb(0 0 0 / 30%);
 
 // Accent colors
-$logo-a-color: hsl(195, 12%, 94%);
-$primary-btn-clr: hsl(352, 68%, 77%);
-$accent-color: hsl(195, 75%, 55%);
+$logo-a-color: hsl(195deg 12% 94%);
+$primary-btn-clr: hsl(352deg 68% 77%);
+$accent-color: hsl(195deg 75% 55%);
 
 // ============================================
 // Z-index

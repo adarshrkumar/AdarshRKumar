@@ -5,75 +5,82 @@ $animation-duration-slow: 0.6s;
 $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
 // Keyframes
-@keyframes fadeInUp {
+@keyframes fade-in-up {
     from {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes fadeInDown {
+@keyframes fade-in-down {
     from {
         opacity: 0;
         transform: translateY(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes fadeInLeft {
+@keyframes fade-in-left {
     from {
         opacity: 0;
         transform: translateX(30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
-@keyframes fadeInRight {
+@keyframes fade-in-right {
     from {
         opacity: 0;
         transform: translateX(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
 
-@keyframes scaleIn {
+@keyframes scale-in {
     from {
         opacity: 0;
         transform: translateY(20px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-@keyframes slideInLeft {
+@keyframes slide-in-left {
     from {
         opacity: 0;
         transform: translateX(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -99,23 +106,23 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
         animation-timing-function: $animation-easing;
 
         &[data-direction="up"] {
-            animation-name: fadeInUp;
+            animation-name: fade-in-up;
         }
 
         &[data-direction="down"] {
-            animation-name: fadeInDown;
+            animation-name: fade-in-down;
         }
 
         &[data-direction="left"] {
-            animation-name: fadeInLeft;
+            animation-name: fade-in-left;
         }
 
         &[data-direction="right"] {
-            animation-name: fadeInRight;
+            animation-name: fade-in-right;
         }
 
         &[data-direction="none"] {
-            animation-name: fadeIn;
+            animation-name: fade-in;
         }
     }
 }
@@ -127,7 +134,7 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.2s ease-out;
 
     &[data-state="visible"] {
-        animation: scaleIn $animation-duration-fast $animation-easing forwards;
+        animation: scale-in $animation-duration-fast $animation-easing forwards;
     }
 
     &:hover {
@@ -149,7 +156,7 @@ $animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-20px);
 
     &[data-state="visible"] {
-        animation: slideInLeft $animation-duration $animation-easing forwards;
+        animation: slide-in-left $animation-duration $animation-easing forwards;
     }
 }
 

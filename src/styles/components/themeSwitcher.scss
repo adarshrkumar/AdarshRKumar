@@ -1,5 +1,5 @@
-@import '../variables.scss';
-@import '../mixins.scss';
+@import '../variables';
+@import '../mixins';
 
 // Theme switcher styles
 .theme-switcher {
@@ -7,32 +7,28 @@
     --size: 30px;
     --icon-size: 20px;
     --shadow-size: 10px;
-    --padding: calc((var(--size) - var(--icon-size))/2);
+    --padding: calc((var(--size) - var(--icon-size)) / 2);
 
     position: fixed;
     bottom: var(--pos);
     left: var(--pos);
-
     box-sizing: border-box;
     padding: var(--padding);
     width: var(--size);
     height: var(--size);
     aspect-ratio: 1;
-
     background-color: var(--color);
     border-radius: 50%;
     box-shadow:
         0 0 var(--shadow-size) 0 var(--color),
-        0 0 calc(var(--shadow-size)*2) calc(var(--shadow-size)*2) var(--bg);
-
+        0 0 calc(var(--shadow-size) * 2) calc(var(--shadow-size) * 2) var(--bg);
     cursor: pointer;
     z-index: $z-index-tooltip;
 
     // Icon styling
     &__icon {
-        height: calc(var(--size) - (var(--padding)*2));
+        height: calc(var(--size) - (var(--padding) * 2));
         aspect-ratio: 1;
-
         fill: var(--bg);
         stroke: var(--bg);
     }
