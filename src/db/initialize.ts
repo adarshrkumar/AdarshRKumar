@@ -1,10 +1,10 @@
-import { sql } from '@vercel/postgres';
-import { drizzle } from 'drizzle-orm/vercel-postgres';
-import * as schema from './schema.ts';
-import 'dotenv/config'
+import { drizzle } from 'drizzle-orm/neon-http';
 
-// Vercel Postgres automatically uses environment variables:
-// POSTGRES_URL, POSTGRES_PRISMA_URL, etc.
+import { neon } from "@neondatabase/serverless";
+import "dotenv/config";
 
-// Create and export the Drizzle database instance
-export const db = drizzle(sql, { schema });
+const sql = neon(import.meta.env.DATABASE_URL || process.env.DATABASE_URL!);
+
+const db = drizzle({ client: sql });
+
+export { db };
