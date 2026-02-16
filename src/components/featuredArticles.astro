@@ -14,7 +14,7 @@ const featuredPosts = await getFeaturedPostsForDisplay(featuredPostSlugs, Astro.
 ---
 
 <!-- Featured articles component -->
-<SiteGridContent classItems="posts" options={{ maxWidth: '1200px' }}>
+<SiteGridContent classItems="posts" options={{ 'max-width': '1200px' }}>
     {
         featuredPosts.map(async post => {
             // Process text content for preview
