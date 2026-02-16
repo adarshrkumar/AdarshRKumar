@@ -17,7 +17,7 @@ function generateTable(skills, header = 'Tool') {
     }
 
     let table = `| ${header} | Proficiency Level |\n`;
-    table += '|---|---|\n';
+    table += '| --- | --- |\n';
 
     for (const skill of skills) {
         // Construct the icon and link part: [![Name](icon_url)](skill_url)
