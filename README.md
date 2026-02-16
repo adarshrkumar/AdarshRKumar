@@ -51,7 +51,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 |[![JavaScript](https://skillicons.dev/icons?i=js)](https://akum.site/p/JSInfo)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90%|
 |[![TypeScript](https://skillicons.dev/icons?i=ts)](https://www.typescriptlang.org)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80%|
 |[![SVG](https://skillicons.dev/icons?i=svg)](https://akum.site/p/SVGInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75%|
-|[![Sass](https://skillicons.dev/icons?i=sass)](https://sass-lang.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80%|
+|[![SCSS](https://skillicons.dev/icons?i=scss)](https://sass-lang.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80%|
 
 #### Back End
 
