@@ -87,7 +87,7 @@
                 img {
                     vertical-align: middle;
                     border-radius: 100vw;
-                    aspect-ratio: $size / 25;
+                    aspect-ratio: 100 / $size;
                     height: #{$size}px;
                     width: auto;
                 }
