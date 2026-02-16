@@ -69,11 +69,12 @@
         }
 
         th, td {
+            $size: 25;
+
             padding: 6px 13px;
             border: 1px solid var(--card-bg);
 
             &:first-child {
-                $size: 25;
 
                 font-size: #{$size}px;
 
