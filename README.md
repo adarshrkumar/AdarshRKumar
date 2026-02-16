@@ -14,7 +14,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 ### Design Softwares
 
 | Tool | Proficiency Level |
-|---|---|
+| --- | --- |
 | [![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com) | ![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80% |
 | [![Canva](https://adarshrkumar.dev/assets/readme/Canva.png)](https://canva.com) | ![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100% |
 | [![PowerPoint](https://adarshrkumar.dev/assets/readme/PowerPoint.png)](https://powerpoint.cloud.microsoft) | ![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100% |
@@ -23,7 +23,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 ### Other Tools
 
 | Tool | Proficiency Level |
-|---|---|
+| --- | --- |
 | [![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.com) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
 | [![GCP](https://skillicons.dev/icons?i=gcp)](https://cloud.google.com) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
 | [![Git](https://skillicons.dev/icons?i=git)](https://git-scm.com) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
@@ -45,7 +45,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 #### Front-End
 
 | Lang | Proficiency Level |
-|---|---|
+| --- | --- |
 | [![HMTL](https://skillicons.dev/icons?i=html)](https://akum.site/p/HTMLInfo) | ![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)&nbsp; 99% |
 | [![CSS](https://skillicons.dev/icons?i=css)](https://akum.site/p/CSSInfo) | ![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)&nbsp; 95% |
 | [![JavaScript](https://skillicons.dev/icons?i=js)](https://akum.site/p/JSInfo) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
@@ -56,7 +56,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 #### Back End
 
 | Lang | Proficiency Level |
-|---|---|
+| --- | --- |
 | [![PHP](https://skillicons.dev/icons?i=php)](https://akum.site/p/PHPInfo) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
 | [![Node.JS](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
 | [![NPM](https://skillicons.dev/icons?i=npm)](https://npmjs.com) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
@@ -70,7 +70,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 ### Other Languages
 
 | Lang | Proficiency Level |
-|---|---|
+| --- | --- |
 | [![Bash](https://skillicons.dev/icons?i=bash)](https://akum.site/p/BASHInfo) | ![60%](https://progress-bar.adarshrkumar.dev/bar.svg?p=60%25)&nbsp; 60% |
 | [![Batch](https://skillicons.dev/icons?i=batch)](https://akum.site/p/BatchInfo) | ![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)&nbsp; 40% |
 | [![PowerShell](https://skillicons.dev/icons?i=powershell)](https://akum.site/p/PSInfo) | ![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)&nbsp; 30% |
