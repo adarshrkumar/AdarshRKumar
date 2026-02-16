@@ -59,6 +59,7 @@ export interface PortfolioItem {
         url: string;
         name: string;
         target?: string;
+        projectsCategory?: string;
     };
     rawContent: () => string;
 }
@@ -166,7 +167,7 @@ export interface SiteConfig {
 export interface GridOptions {
     min?: string;
     max?: string;
-    maxWidth?: string;
+    'max-width'?: string;
     keys?: string[];
     values?: {
         min?: string;
