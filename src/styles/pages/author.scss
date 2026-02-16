@@ -19,7 +19,7 @@
     // Visual properties
     background-color: var(--color);
     color: var(--bg);
-    border-radius: calc(var(--padding)*2);
+    border-radius: calc(var(--padding) * 2);
 
     // Child element styling
     & > * {

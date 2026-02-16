@@ -30,10 +30,11 @@
 }
 
 // Responsive design
-@media (max-width: 492px) {
+@media (width <= 492px) {
     .main-content {
         grid-template-columns: 1fr 0fr;
     }
+
     .main-sidebar {
         display: none;
     }
@@ -59,7 +60,7 @@
 
         // Border styling
         border: solid 1px var(--bdr-clr, var(--color));
-        border-radius: calc(var(--padding)*2);
+        border-radius: calc(var(--padding) * 2);
 
         // YouTube subscribe button styling
         [id*="___ytsubscribe"] {

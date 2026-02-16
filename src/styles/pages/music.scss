@@ -1,8 +1,8 @@
 // Music page styling variables
-$music-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
-$music-shadow-dark-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
-$music-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
-$music-shadow-dark-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+$music-shadow-subtle: 0 2px 8px rgb(0 0 0 / 6%);
+$music-shadow-dark-subtle: 0 2px 8px rgb(0 0 0 / 20%);
+$music-shadow-hover: 0 8px 24px rgb(0 0 0 / 12%);
+$music-shadow-dark-hover: 0 8px 24px rgb(0 0 0 / 30%);
 $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Animations
@@ -11,6 +11,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transform: scale(0.95);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -21,6 +22,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }

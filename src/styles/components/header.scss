@@ -1,30 +1,25 @@
-@use 'sass:math';
+@use '../variables' as *;
+@use '../mixins' as *;
+@use 'sass:math' as math;
 
 // Custom property for small container
 @property --small-container {
     syntax: '<boolean>';
     initial-value: false;
-}
-
-@import '../variables.scss';
-@import '../mixins.scss';
+}    
 
 // Header navigation bar
 .header {
     --shadow-size: 12px;
 
     padding: $section-spacing $hero-spacing;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: $section-spacing;
-
     border-bottom: 2px solid var(--border-color);
     background: var(--bg);
     box-shadow: 0 2px 8px var(--shadow-color);
-
     position: sticky;
     top: 0;
     z-index: $z-index-tooltip;
@@ -41,13 +36,11 @@
 
     // Logo link - spans all rows
     &__logo-link {
-        display: block;
         width: 4.5rem;
         height: 4.5rem;
         aspect-ratio: 1;
         grid-row: 1 / -1; // Span all rows from first to last
         align-self: center;
-
         color: var(--logo-a-color);
         background-color: var(--color);
         background-size: cover;
@@ -57,20 +50,16 @@
         box-shadow:
             0 0 var(--shadow-size) 0 var(--color),
             0 4px 12px var(--shadow-color);
-
         transition:
             border-radius 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
             transform 0.3s $transition-timing,
             box-shadow 0.3s $transition-timing;
-
         display: grid;
         grid-template: 1fr;
-        grid-template-rows: 1fr;
 
         > * {
             grid-column: 1 / -1;
             grid-row: 1 / -1;
-
             border-radius: inherit;
             overflow: hidden;
         }

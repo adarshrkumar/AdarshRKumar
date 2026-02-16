@@ -6,7 +6,6 @@
     --lbg: hsl(from var(--bg) h s calc(l - 5));
     --dbg: hsl(from var(--bg) h s calc(l + 10));
     --card-bg: light-dark(var(--lbg), var(--dbg));
-
     --lmbg: hsl(from var(--bg) h s calc(l - 2.5));
     --dmbg: hsl(from var(--bg) h s calc(l + 5));
     --mbg: light-dark(var(--lmbg), var(--dmbg));
@@ -18,7 +17,7 @@
     // Card styling
     background-color: var(--card-bg);
     border-radius: var(--br);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
 
     &__fancy-column {
         display: flex;
@@ -35,40 +34,49 @@
         width: max-content;
         max-width: 100%;
         overflow: auto;
-
         border: 1px solid var(--mlbg);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
 
         --br: 1rem;
 
         tr {
             background-color: var(--bg);
             border-top: 1px solid var(--mbg);
+
             &:nth-child(2n)  {
                 background-color: var(--mbg);
             }
         }
+
         thead tr:first-child {
             > :first-child {
                 border-top-left-radius: var(--br);
             }
+
             > :last-child {
                 border-top-right-radius: var(--br);
             }
         }
+
         tbody tr:last-child {
             > :first-child {
                 border-bottom-left-radius: var(--br);
             }
+
             > :last-child {
                 border-bottom-right-radius: var(--br);
             }
         }
+
         th, td {
             padding: 6px 13px;
             border: 1px solid var(--card-bg);
 
             &:first-child {
+                $size: 25;
+
+                font-size: #{$size}px;
+
                 img {
                     border-radius: 0.75rem;
                 }
@@ -78,9 +86,9 @@
                 img {
                     vertical-align: middle;
                     border-radius: 100vw;
-                    aspect-ratio: 100 / 25;
-                    height: 25px;
-                    width: 100px;
+                    aspect-ratio: $size / 25;
+                    height: #{$size}px;
+                    width: auto;
                 }
             }
         }
@@ -95,10 +103,12 @@
 
         a, img {
             display: inline-block;
+
             &, * {
                 max-width: 1em;
             }
         }
+
         img {
             display: block;
         }
