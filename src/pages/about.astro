@@ -16,12 +16,32 @@ const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = (await aboutFile.compiledContent())?.replaceAll('{ age }', age.toString())
 
 // Skills data
-const skills = [
-    { name: 'Web Development', icon: '🌐', tech: ['HTML', 'CSS', 'JavaScript', 'TypeScript'] },
-    { name: 'Frameworks', icon: '⚛️', tech: ['Astro', 'React', 'Node.js'] },
-    { name: 'Databases', icon: '🗄️', tech: ['PostgreSQL', 'Drizzle ORM'] },
-    { name: 'Tools', icon: '🛠️', tech: ['Git', 'VS Code', 'Vercel'] }
-]
+import skillsData from '../../content/skills.json'
+
+const categoryMap = {
+    'Design Softwares': { name: 'Design', icon: '🎨' },
+    'Other Tools': { name: 'Tools', icon: '🛠️' },
+    'Web Development - Front-End': { name: 'Front-End', icon: '🌐' },
+    'Web Development - Back End': { name: 'Back-End', icon: '⚙️' },
+    'Other Languages': { name: 'Languages', icon: '🗣️' }
+};
+
+const skills = Object.entries(skillsData).map(([category, skillList]) => {
+    const mapping = categoryMap[category as keyof typeof categoryMap];
+    if (!mapping) return null;
+    return {
+        name: mapping.name,
+        icon: mapping.icon,
+        tech: skillList.map(s => s.name)
+    };
+}).filter(Boolean);
+
+// Add the Databases card which is not in the JSON
+skills.push({
+    name: 'Databases',
+    icon: '🗄️',
+    tech: ['PostgreSQL', 'Drizzle ORM']
+});
 
 // Interests data
 const interests = [
@@ -64,10 +84,10 @@ const ctaButtons = [
                 <div class="about__skills">
                     {skills.map(skill => (
                         <div class="skill-card">
-                            <div class="skill-card__icon">{skill.icon}</div>
-                            <h3 class="skill-card__name">{skill.name}</h3>
+                            <div class="skill-card__icon">{skill?.icon}</div>
+                            <h3 class="skill-card__name">{skill?.name}</h3>
                             <ul class="skill-card__tech">
-                                {skill.tech.map(item => (
+                                {skill?.tech.map(item => (
                                     <li>{item}</li>
                                 ))}
                             </ul>
