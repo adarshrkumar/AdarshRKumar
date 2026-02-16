@@ -13,7 +13,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 ### Design Softwares
 
-|Tool|Level|
+|Tool|Proficiency Level|
 |---|---|
 |[![Figma](https://skillicons.dev/icons?i=figma)](https://figma.com)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
 |[![Canva](https://imageresize.adarshrkumar.dev/api/resize?url=https://static.canva.com/domain-assets/canva/static/images/apple-touch-180x180-1.png&width=48)](https://canva.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
@@ -22,7 +22,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 ### Other Tools
 
-|Tool|Level|
+|Tool|Proficiency Level|
 |---|---|
 |[![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.com)|![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)|
 |[![GCP](https://skillicons.dev/icons?i=gcp)](https://cloud.google.com)|![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)|
@@ -43,7 +43,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 #### Front-End
 
-|Lang|Level|
+|Lang|Proficiency Level|
 |---|---|
 |[![HMTL](https://skillicons.dev/icons?i=html)](https://akum.site/p/HTMLInfo)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)|
 |[![CSS](https://skillicons.dev/icons?i=css)](https://akum.site/p/CSSInfo)|![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)|
@@ -54,7 +54,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 #### Back End
 
-|Lang|Level|
+|Lang|Proficiency Level|
 |---|---|
 |[![PHP](https://skillicons.dev/icons?i=php)](https://akum.site/p/PHPInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
 |[![Node.JS](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)|
@@ -68,7 +68,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 ### Other Languages
 
-|Lang|Level|
+|Lang|Proficiency Level|
 |---|---|
 |[![BASH](https://skillicons.dev/icons?i=bash)](https://akum.site/p/BASHInfo)|![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)|
 |[![PowerShell](https://skillicons.dev/icons?i=powershell)](https://akum.site/p/PSInfo)|![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)|
