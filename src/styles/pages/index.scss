@@ -77,7 +77,6 @@
             text-align: center;
 
             &:first-child {
-
                 font-size: #{$size}px;
 
                 img {
@@ -86,6 +85,7 @@
             }
 
             &:last-child {
+
                 img {
                     vertical-align: middle;
                     border-radius: 100vw;

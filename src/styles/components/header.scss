@@ -2,12 +2,6 @@
 @use '../mixins' as *;
 @use 'sass:math' as math;
 
-// Custom property for small container
-@property --small-container {
-    syntax: '<boolean>';
-    initial-value: false;
-}    
-
 // Header navigation bar
 .header {
     --shadow-size: 12px;

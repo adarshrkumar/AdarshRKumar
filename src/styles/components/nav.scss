@@ -9,7 +9,7 @@
     }
 
     // Custom property for direction
-    --data-direction: attr(data-direction, type( <custom-ident> ));
+    --data-direction: attr(data-direction, type(<custom-ident>));
 
     margin-inline: auto;
     width: fit-content;
