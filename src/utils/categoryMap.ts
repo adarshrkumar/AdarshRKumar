@@ -1,5 +1,5 @@
 // src/utils/categoryMap.ts
-export const categoryMap = {
+export default {
     'Design Softwares': { name: 'Design', icon: '🎨' },
     'Other Tools': { name: 'Tools', icon: '🛠️' },
     'Web Development - Front-End': { name: 'Front-End', icon: '🌐' },
