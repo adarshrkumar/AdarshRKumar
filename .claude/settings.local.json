@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx drizzle-kit:*)",
+      "Bash(node --experimental-strip-types:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(git fetch:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "Bash(git pull:*)",
+      "Bash(git cat-file:*)",
+      "Bash(cat:*)",
+      "Bash(git read-tree:*)",
+      "Bash(git verify-pack:*)",
+      "Bash(git remote get-url:*)",
+      "Bash(git clone:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

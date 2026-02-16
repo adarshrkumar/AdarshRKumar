@@ -27,8 +27,4 @@ pnpm-debug.log*
 .vscode/
 .hintrc
 
-# Claude
-.claude/
-/CLAUDE*.md
-
 .vercel/output
