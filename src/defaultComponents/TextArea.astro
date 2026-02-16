@@ -24,7 +24,7 @@ const { ...attrs } = Astro.props
 ---
 
 <!-- Textarea component -->
-<div class="formGroup">
+<div class="form-group">
     <label for={id} set:html={label} />
     <textarea {...attrs}>{await Astro.slots.render('default')}</textarea>
     <Script name="autosize" />

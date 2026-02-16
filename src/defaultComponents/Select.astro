@@ -22,7 +22,7 @@ const { ...attrs } = Astro.props
 ---
 
 <!-- Select component -->
-<div class="formGroup">
+<div class="form-group">
     <label for={id} set:html={label} />
     <select {...attrs}><slot /></select>
 </div>

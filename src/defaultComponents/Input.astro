@@ -33,14 +33,14 @@ if ((type as typeof type | 'honeypot') === 'honeypot') {
 // Pre-render slot content for value inputs
 const slotContent = await Astro.slots.render('default')
 const hasSlotContent = slotContent && !valueInputs.includes(type ?? '')
-const shouldShowFormGroup = ((hasSlotContent || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
+const shouldShowformGroup = ((hasSlotContent || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
 
 ---
 
 <!-- Input component -->
 {
-    shouldShowFormGroup
-     ? <div class="formGroup" style={groupStyle}>
+    shouldShowformGroup
+     ? <div class="form-group" style={groupStyle}>
         {valueInputs.includes(type ?? '') ? <label for={id} set:html={label} /> : <label for={id}><slot /></label>}
         {
             type === 'file'

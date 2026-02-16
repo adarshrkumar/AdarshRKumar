@@ -4,7 +4,7 @@ import '../styles/pages/index.scss'
 
 import Layout from '../layouts/Layout.astro'
 
-import Hero from '../components/hero.astro'
+import _Hero from '../components/hero.astro'
 import FancyFace from '../components/fancyFace.astro'
 
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
@@ -22,7 +22,7 @@ const readmeContent = await readmeFile.compiledContent()
 
 const $ = cheerio.load(readmeContent);
 $('h1').first().remove()
-$('table').each((i, table) => {
+$('table').each((_i, table) => {
     $(table).attr('cellspacing', '0')
 })
 const newReadmeContent = $.html()
