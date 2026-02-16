@@ -9,7 +9,7 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "stylelint": "stylelint \"src/styles/**/*.scss\"",
+        "check": "astro check && stylelint \"src/**/*.scss\" && astro build",
         "stylelint:fix": "stylelint \"src/**/*.scss\" --fix"
     },
     "dependencies": {
