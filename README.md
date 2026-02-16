@@ -57,15 +57,15 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 |Lang|Proficiency Level|
 |---|---|
-|[![PHP](https://skillicons.dev/icons?i=php)](https://akum.site/p/PHPInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
-|[![Node.JS](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)|
-|[![NPM](https://skillicons.dev/icons?i=npm)](https://npmjs.com)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)|
-|[![Express.JS](https://skillicons.dev/icons?i=express)](https://expressjs.com)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)|
-|[![Vite](https://skillicons.dev/icons?i=vite)](https://vitejs.dev)|![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)|
-|[![React](https://skillicons.dev/icons?i=react)](https://react.dev)|![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)|
-|[![Next.JS](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org)|![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)|
-|[![Astro](https://skillicons.dev/icons?i=astro)](https://astro.build)|![98%](https://progress-bar.adarshrkumar.dev/bar.svg?p=98%25)|
-|[![Discord.JS](https://skillicons.dev/icons?i=discordjs)](https://discord.js.org)|![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)|
+|[![PHP](https://skillicons.dev/icons?i=php)](https://akum.site/p/PHPInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75%|
+|[![Node.JS](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90%|
+|[![NPM](https://skillicons.dev/icons?i=npm)](https://npmjs.com)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90%|
+|[![Express.JS](https://skillicons.dev/icons?i=express)](https://expressjs.com)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90%|
+|[![Vite](https://skillicons.dev/icons?i=vite)](https://vitejs.dev)|![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)&nbsp; 70%|
+|[![React](https://skillicons.dev/icons?i=react)](https://react.dev)|![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)&nbsp; 40%|
+|[![Next.JS](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org)|![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)&nbsp; 40%|
+|[![Astro](https://skillicons.dev/icons?i=astro)](https://astro.build)|![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 908%|
+|[![Discord.JS](https://skillicons.dev/icons?i=discordjs)](https://discord.js.org)|![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50%|
 
 ### Other Languages
 
