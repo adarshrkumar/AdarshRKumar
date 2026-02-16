@@ -8,7 +8,9 @@
         "start": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
-        "astro": "astro"
+        "astro": "astro",
+        "check": "astro check && stylelint \"src/**/*.scss\"",
+        "stylelint:fix": "stylelint \"src/**/*.scss\" --fix"
     },
     "dependencies": {
         "@astrojs/check": "^0.9.6",
@@ -34,6 +36,8 @@
         "yargs-parser": "^22.0.0"
     },
     "devDependencies": {
-        "@types/fs-extra": "^11.0.4"
+        "@types/fs-extra": "^11.0.4",
+        "stylelint": "^17.3.0",
+        "stylelint-config-standard-scss": "^17.0.0"
     }
 }
