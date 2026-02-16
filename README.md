@@ -34,7 +34,7 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 |[![VS Code](https://skillicons.dev/icons?i=vscode)](https://code.visualstudio.com)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)|
 |[![Cursor](https://adarshrkumar.dev/assets/readme/Cursor.png)](https://cursor.com)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)|
 |[![Claude Code](https://adarshrkumar.dev/assets/readme/ClaudeCode.png)](https://claude.ai)|![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)|
-|[![Gemini CLI](https://adarshrkumar.dev/assets/readme/GeminiCli.png)](https://claude.ai)|![60%](https://progress-bar.adarshrkumar.dev/bar.svg?p=60%25)|
+|[![Gemini CLI](https://adarshrkumar.dev/assets/readme/GeminiCLI.png)](https://claude.ai)|![60%](https://progress-bar.adarshrkumar.dev/bar.svg?p=60%25)|
 |[![Windows](https://akum.site/p/WindowsIcon?)](https://akum.site/p/WindowsInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
 |[![Mac](https://akum.site/p/MacLogo)](https://akum.site/p/MacInfo)|![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)|
 
