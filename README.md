@@ -71,14 +71,15 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 |Lang|Proficiency Level|
 |---|---|
-|[![BASH](https://skillicons.dev/icons?i=bash)](https://akum.site/p/BASHInfo)|![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)|
-|[![PowerShell](https://skillicons.dev/icons?i=powershell)](https://akum.site/p/PSInfo)|![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)|
-|[![Python](https://skillicons.dev/icons?i=py)](https://python.org)|![65%](https://progress-bar.adarshrkumar.dev/bar.svg?p=65%25)|
-|[![Flask.PY](https://skillicons.dev/icons?i=flask)](https://palletsprojects.com/p/flask/)|![65%](https://progress-bar.adarshrkumar.dev/bar.svg?p=65%25)|
-|[![C](https://skillicons.dev/icons?i=c)](https://akum.site/p/CInfo)|![20%](https://progress-bar.adarshrkumar.dev/bar.svg?p=20%25)|
-|[![C++](https://skillicons.dev/icons?i=cpp)](https://cplusplus.com)|![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)|
-|[![Markdown](https://skillicons.dev/icons?i=md)](https://akum.site/p/MarkDownInfo)|![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)|
-|[![RegEx](https://skillicons.dev/icons?i=regex)](https://akum.site/p/RegExInfo)|![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)|
+|[![Bash](https://skillicons.dev/icons?i=bash)](https://akum.site/p/BASHInfo)|![60%](https://progress-bar.adarshrkumar.dev/bar.svg?p=60%25)&nbsp; 60%|
+|[![Batch](https://skillicons.dev/icons?i=batch)](https://akum.site/p/BatchInfo)|![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)&nbsp; 40%|
+|[![PowerShell](https://skillicons.dev/icons?i=powershell)](https://akum.site/p/PSInfo)|![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)&nbsp; 30%|
+|[![Python](https://skillicons.dev/icons?i=py)](https://python.org)|![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)&nbsp; 70&|
+|[![Flask.PY](https://skillicons.dev/icons?i=flask)](https://palletsprojects.com/p/flask/)|![65%](https://progress-bar.adarshrkumar.dev/bar.svg?p=65%25)&nbsp; 65%|
+|[![C](https://skillicons.dev/icons?i=c)](https://akum.site/p/CInfo)|![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50%|
+|[![C++](https://skillicons.dev/icons?i=cpp)](https://cplusplus.com)|![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)&nbsp; 30%|
+|[![Markdown](https://skillicons.dev/icons?i=md)](https://akum.site/p/MarkDownInfo)|![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100%|
+|[![RegEx](https://skillicons.dev/icons?i=regex)](https://akum.site/p/RegExInfo)|![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)&nbsp; 70%|
 
 ## Social Media
 
