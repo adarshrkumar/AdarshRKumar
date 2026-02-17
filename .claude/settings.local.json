@@ -17,7 +17,10 @@
       "Bash(git clone:*)",
       "Bash(git add:*)",
       "Bash(git mv:*)",
-      "Bash(npm run check:*)"
+      "Bash(npm run check:*)",
+      "Bash(npx astro:*)",
+      "Bash(node:*)",
+      "Bash(node -e:*)"
     ],
     "deny": [],
     "ask": []
