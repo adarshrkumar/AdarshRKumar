@@ -3,7 +3,7 @@
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import ChannelVideos from '../components/channelVideos.astro'
-import '../styles/pages/videos.scss'
+import '../styles/pages/youtube.scss'
 import type { VideoChannelConfig } from '../lib/types'
 
 // Configuration
@@ -22,9 +22,8 @@ const videoConfig: VideoChannelConfig = {
 
 ---
 
-<!-- Videos Page -->
-<Layout title="Videos">
-    <SiteGridContent classItems="videos" options={videoConfig.gridOptions}>
+<Layout title="YouTube">
+    <SiteGridContent classItems="youtube" options={videoConfig.gridOptions}>
         {
             videoConfig.channelIds.map(channelId => {
                 return (

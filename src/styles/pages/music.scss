@@ -28,6 +28,12 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
+// Music videos grid
+.music-videos.grid {
+    margin-inline: auto;
+    width: min(100%, 100rem);
+}
+
 // Music page styling
 .music-area {
     // Iframe styling for music embeds

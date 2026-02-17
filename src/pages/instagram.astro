@@ -1,0 +1,223 @@
+---
+// Imports
+import '../styles/pages/instagram.scss'
+
+import Layout from '../layouts/Layout.astro'
+import SiteGridContent from '../components/siteGridContent.astro'
+import AnimatedCard from '../components/motion/AnimatedCard.astro'
+import FadeIn from '../components/motion/FadeIn.astro'
+
+import type { InstagramMediaNode } from '../lib/types'
+import { getInstagramData, getInstagramCaption, formatInstagramDate } from '../lib/getInstagram'
+
+// Helper functions
+
+function truncateCaption(caption: string, maxLength = 100): string {
+    if (!caption || caption.length <= maxLength) return caption
+    return caption.substring(0, maxLength).trimEnd() + '...'
+}
+
+function buildPostUrl(shortcode: string): string {
+    return `https://www.instagram.com/p/${shortcode}/`
+}
+
+function formatCount(count: number): string {
+    if (count >= 1_000_000) return `${(count / 1_000_000).toFixed(1)}M`
+    if (count >= 1_000) return `${(count / 1_000).toFixed(1)}K`
+    return count.toString()
+}
+
+// Data fetching
+const { profile, posts, reels, stories, error } = await getInstagramData()
+const hasContent = profile || posts.length > 0 || reels.length > 0
+const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
+---
+
+<Layout title="Instagram">
+    <div class="instagram">
+        {!hasContent ? (
+            <FadeIn direction="up" duration={0.6}>
+                <div class="instagram__empty">
+                    <p class="instagram__empty-text">
+                        {error
+                            ? `Unable to load Instagram data: ${error}`
+                            : 'Instagram content is currently unavailable.'}
+                    </p>
+                    <a href={profileUrl} target="_blank" rel="noopener noreferrer" class="btn primary">
+                        View on Instagram
+                    </a>
+                </div>
+            </FadeIn>
+        ) : (
+            <>
+                {profile && (
+                    <FadeIn direction="up" duration={0.6}>
+                        <div class="instagram__profile">
+                            <img
+                                class="instagram__avatar"
+                                src={profile.profile_pic_url_hd || profile.profile_pic_url}
+                                alt={profile.full_name}
+                                loading="eager"
+                            />
+                            <div class="instagram__info">
+                                <h1 class="instagram__name">{profile.full_name}</h1>
+                                {profile.biography && (
+                                    <p class="instagram__bio">{profile.biography}</p>
+                                )}
+                                <div class="instagram__stats">
+                                    <div class="instagram__stat">
+                                        <span class="instagram__stat-count">
+                                            {formatCount(profile.edge_owner_to_timeline_media?.count ?? 0)}
+                                        </span>
+                                        <span class="instagram__stat-label">Posts</span>
+                                    </div>
+                                    <div class="instagram__stat">
+                                        <span class="instagram__stat-count">
+                                            {formatCount(profile.edge_followed_by?.count ?? 0)}
+                                        </span>
+                                        <span class="instagram__stat-label">Followers</span>
+                                    </div>
+                                    <div class="instagram__stat">
+                                        <span class="instagram__stat-count">
+                                            {formatCount(profile.edge_follow?.count ?? 0)}
+                                        </span>
+                                        <span class="instagram__stat-label">Following</span>
+                                    </div>
+                                </div>
+                                <div class="instagram__profile-link">
+                                    <a href={profileUrl} target="_blank" rel="noopener noreferrer" class="btn primary">
+                                        View on Instagram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </FadeIn>
+                )}
+
+                {stories.length > 0 && (
+                    <FadeIn delay={0.1} direction="up" duration={0.6}>
+                        <section>
+                            <h2 class="instagram__section-title">Stories</h2>
+                            <div class="instagram__stories">
+                                {stories.map((story) => {
+                                    const storyUrl = story.image_versions2?.candidates?.[0]?.url
+                                    if (!storyUrl) return null
+                                    return (
+                                        <div class="instagram__story">
+                                            <img
+                                                class="instagram__story-img"
+                                                src={storyUrl}
+                                                alt="Instagram story"
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </section>
+                    </FadeIn>
+                )}
+
+                {posts.length > 0 && (
+                    <FadeIn delay={0.2} direction="up" duration={0.6}>
+                        <section>
+                            <h2 class="instagram__section-title">Posts</h2>
+                            <div class="instagram__grid">
+                                <SiteGridContent classItems="instagram-posts" options={{min: '16rem'}}>
+                                    {posts.map((post: InstagramMediaNode, index: number) => {
+                                        const caption = getInstagramCaption(post)
+                                        return (
+                                            <AnimatedCard
+                                                index={index}
+                                                class="item"
+                                                href={buildPostUrl(post.shortcode)}
+                                                target="_blank"
+                                            >
+                                                <img
+                                                    class="item__img instagram__post-img loading"
+                                                    src={post.display_url}
+                                                    alt={truncateCaption(caption, 60) || 'Instagram post'}
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                />
+                                                {caption && (
+                                                    <div class="item__info">
+                                                        <p class="item__content">{truncateCaption(caption)}</p>
+                                                    </div>
+                                                )}
+                                                {post.is_video && (
+                                                    <div class="instagram__play-icon" />
+                                                )}
+                                            </AnimatedCard>
+                                        )
+                                    })}
+                                </SiteGridContent>
+                            </div>
+                        </section>
+                    </FadeIn>
+                )}
+
+                {reels.length > 0 && (
+                    <FadeIn delay={0.3} direction="up" duration={0.6}>
+                        <section>
+                            <h2 class="instagram__section-title">Reels</h2>
+                            <div class="instagram__grid">
+                                <SiteGridContent classItems="instagram-reels" options={{min: '14rem'}}>
+                                    {reels.map((reel: InstagramMediaNode, index: number) => {
+                                        const caption = getInstagramCaption(reel)
+                                        return (
+                                            <AnimatedCard
+                                                index={index}
+                                                class="item"
+                                                href={buildPostUrl(reel.shortcode)}
+                                                target="_blank"
+                                            >
+                                                <img
+                                                    class="item__img instagram__reel-img loading"
+                                                    src={reel.display_url || reel.thumbnail_src}
+                                                    alt={truncateCaption(caption, 60) || 'Instagram reel'}
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                />
+                                                <div class="instagram__play-icon" />
+                                                {caption && (
+                                                    <div class="item__info">
+                                                        <p class="item__content">{truncateCaption(caption)}</p>
+                                                    </div>
+                                                )}
+                                            </AnimatedCard>
+                                        )
+                                    })}
+                                </SiteGridContent>
+                            </div>
+                        </section>
+                    </FadeIn>
+                )}
+            </>
+        )}
+    </div>
+</Layout>
+
+<script>
+    // Handle lazy loading state for images
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll<HTMLImageElement>('.instagram__post-img, .instagram__reel-img');
+
+        images.forEach(img => {
+            if (img.complete && img.naturalHeight !== 0) {
+                img.classList.remove('loading');
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', () => {
+                    img.classList.remove('loading');
+                    img.classList.add('loaded');
+                });
+
+                img.addEventListener('error', () => {
+                    img.classList.remove('loading');
+                    console.warn('Image failed to load:', img.src);
+                });
+            }
+        });
+    });
+</script>
