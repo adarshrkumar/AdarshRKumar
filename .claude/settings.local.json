@@ -16,7 +16,8 @@
       "Bash(git remote get-url:*)",
       "Bash(git clone:*)",
       "Bash(git add:*)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(npm run check:*)"
     ],
     "deny": [],
     "ask": []
