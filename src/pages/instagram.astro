@@ -122,37 +122,35 @@ const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
                     <FadeIn delay={0.2} direction="up" duration={0.6}>
                         <section>
                             <h2 class="instagram__section-title">Posts</h2>
-                            <div class="instagram__grid">
-                                <SiteGridContent classItems="instagram-posts" options={{min: '16rem'}}>
-                                    {posts.map((post: InstagramMediaNode, index: number) => {
-                                        const caption = getInstagramCaption(post)
-                                        return (
-                                            <AnimatedCard
-                                                index={index}
-                                                class="item"
-                                                href={buildPostUrl(post.shortcode)}
-                                                target="_blank"
-                                            >
-                                                <img
-                                                    class="item__img instagram__post-img loading"
-                                                    src={post.display_url}
-                                                    alt={truncateCaption(caption, 60) || 'Instagram post'}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                />
-                                                {caption && (
-                                                    <div class="item__info">
-                                                        <p class="item__content">{truncateCaption(caption)}</p>
-                                                    </div>
-                                                )}
-                                                {post.is_video && (
-                                                    <div class="instagram__play-icon" />
-                                                )}
-                                            </AnimatedCard>
-                                        )
-                                    })}
-                                </SiteGridContent>
-                            </div>
+                            <SiteGridContent classItems="instagram__grid instagram-posts" options={{min: '16rem'}}>
+                                {posts.map((post: InstagramMediaNode, index: number) => {
+                                    const caption = getInstagramCaption(post)
+                                    return (
+                                        <AnimatedCard
+                                            index={index}
+                                            class="item"
+                                            href={buildPostUrl(post.shortcode)}
+                                            target="_blank"
+                                        >
+                                            <img
+                                                class="item__img instagram__post-img loading"
+                                                src={post.display_url}
+                                                alt={truncateCaption(caption, 60) || 'Instagram post'}
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                            {caption && (
+                                                <div class="item__info">
+                                                    <p class="item__content">{truncateCaption(caption)}</p>
+                                                </div>
+                                            )}
+                                            {post.is_video && (
+                                                <div class="instagram__play-icon" />
+                                            )}
+                                        </AnimatedCard>
+                                    )
+                                })}
+                            </SiteGridContent>
                         </section>
                     </FadeIn>
                 )}
@@ -161,35 +159,33 @@ const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
                     <FadeIn delay={0.3} direction="up" duration={0.6}>
                         <section>
                             <h2 class="instagram__section-title">Reels</h2>
-                            <div class="instagram__grid">
-                                <SiteGridContent classItems="instagram-reels" options={{min: '14rem'}}>
-                                    {reels.map((reel: InstagramMediaNode, index: number) => {
-                                        const caption = getInstagramCaption(reel)
-                                        return (
-                                            <AnimatedCard
-                                                index={index}
-                                                class="item"
-                                                href={buildPostUrl(reel.shortcode)}
-                                                target="_blank"
-                                            >
-                                                <img
-                                                    class="item__img instagram__reel-img loading"
-                                                    src={reel.display_url || reel.thumbnail_src}
-                                                    alt={truncateCaption(caption, 60) || 'Instagram reel'}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                />
-                                                <div class="instagram__play-icon" />
-                                                {caption && (
-                                                    <div class="item__info">
-                                                        <p class="item__content">{truncateCaption(caption)}</p>
-                                                    </div>
-                                                )}
-                                            </AnimatedCard>
-                                        )
-                                    })}
-                                </SiteGridContent>
-                            </div>
+                            <SiteGridContent classItems="instagram__grid instagram-reels" options={{min: '14rem'}}>
+                                {reels.map((reel: InstagramMediaNode, index: number) => {
+                                    const caption = getInstagramCaption(reel)
+                                    return (
+                                        <AnimatedCard
+                                            index={index}
+                                            class="item"
+                                            href={buildPostUrl(reel.shortcode)}
+                                            target="_blank"
+                                        >
+                                            <img
+                                                class="item__img instagram__reel-img loading"
+                                                src={reel.display_url || reel.thumbnail_src}
+                                                alt={truncateCaption(caption, 60) || 'Instagram reel'}
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                            <div class="instagram__play-icon" />
+                                            {caption && (
+                                                <div class="item__info">
+                                                    <p class="item__content">{truncateCaption(caption)}</p>
+                                                </div>
+                                            )}
+                                        </AnimatedCard>
+                                    )
+                                })}
+                            </SiteGridContent>
                         </section>
                     </FadeIn>
                 )}
