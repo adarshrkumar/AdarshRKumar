@@ -332,6 +332,24 @@ export interface InstagramMediaNode {
     edge_media_to_comment?: { count: number };
 }
 
+export interface InflactMediaItem {
+    id?: string;
+    shortCode?: string;
+    shortcode?: string;
+    imageUrl?: string;
+    display_url?: string;
+    mediaType?: number;
+    is_video?: boolean;
+    caption?: string;
+    createdAt?: number;
+    taken_at_timestamp?: number;
+    thumbnail_src?: string;
+    video_url?: string;
+    edge_media_to_caption?: { edges: Array<{ node: { text: string } }> };
+    edge_liked_by?: { count: number };
+    edge_media_to_comment?: { count: number };
+}
+
 export interface InstagramStory {
     image_versions2?: { candidates: Array<{ url: string }> };
     video_versions?: Array<{ url: string }>;
