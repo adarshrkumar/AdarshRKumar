@@ -15,7 +15,8 @@
       "Bash(git verify-pack:*)",
       "Bash(git remote get-url:*)",
       "Bash(git clone:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git mv:*)"
     ],
     "deny": [],
     "ask": []
