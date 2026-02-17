@@ -1,6 +1,7 @@
 {
     // Extend Astro's base TypeScript configuration
     "extends": "astro/tsconfigs/base",
+    "moduleResolution": "nodenext",
     "compilerOptions": {
         // Enable strict type checking
         "strict": true,
