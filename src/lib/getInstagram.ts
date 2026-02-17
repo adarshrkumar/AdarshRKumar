@@ -45,15 +45,93 @@ async function fetchInstagramEndpoint(endpoint: string): Promise<unknown> {
 }
 
 /**
+ * Recursively search for media edges in API response
+ */
+function findEdges(obj: unknown, depth = 0): InstagramMediaNode[] {
+    if (!obj || typeof obj !== 'object' || depth > 6) return [];
+
+    const record = obj as Record<string, unknown>;
+
+    // Check for edge_owner_to_timeline_media or edge_felix_video_timeline patterns
+    for (const key of Object.keys(record)) {
+        if (key.startsWith('edge_') && key.includes('media') || key.startsWith('edge_felix')) {
+            const edge = record[key] as { edges?: Array<{ node: InstagramMediaNode }> } | undefined;
+            if (edge?.edges?.length) {
+                return edge.edges.map(e => e.node);
+            }
+        }
+    }
+
+    // Recurse into nested objects
+    for (const val of Object.values(record)) {
+        if (val && typeof val === 'object' && !Array.isArray(val)) {
+            const result = findEdges(val, depth + 1);
+            if (result.length > 0) return result;
+        }
+    }
+
+    return [];
+}
+
+/**
+ * Normalize a flat reel/post item (inflact format) into InstagramMediaNode
+ */
+interface InflactMediaItem {
+    id?: string;
+    shortCode?: string;
+    shortcode?: string;
+    imageUrl?: string;
+    display_url?: string;
+    mediaType?: number;
+    is_video?: boolean;
+    caption?: string;
+    createdAt?: number;
+    taken_at_timestamp?: number;
+    thumbnail_src?: string;
+    video_url?: string;
+    edge_media_to_caption?: { edges: Array<{ node: { text: string } }> };
+    edge_liked_by?: { count: number };
+    edge_media_to_comment?: { count: number };
+}
+
+function normalizeMediaNode(item: InflactMediaItem): InstagramMediaNode {
+    return {
+        display_url: item.display_url || item.imageUrl || item.thumbnail_src || '',
+        shortcode: item.shortcode || item.shortCode || '',
+        is_video: item.is_video ?? (item.mediaType === 2),
+        taken_at_timestamp: item.taken_at_timestamp || item.createdAt,
+        thumbnail_src: item.thumbnail_src || item.imageUrl,
+        video_url: item.video_url,
+        edge_media_to_caption: item.edge_media_to_caption || (item.caption
+            ? { edges: [{ node: { text: item.caption } }] }
+            : undefined),
+        edge_liked_by: item.edge_liked_by,
+        edge_media_to_comment: item.edge_media_to_comment,
+    };
+}
+
+/**
  * Extract media nodes from API response data
  */
-function extractMediaNodes(data: Record<string, unknown>, endpoint: string): InstagramMediaNode[] {
-    const endpointData = data?.[endpoint] as Record<string, unknown> | undefined;
-    const user = (endpointData?.data as Record<string, unknown>)?.user as Record<string, unknown> | undefined;
-    const timeline = user?.edge_owner_to_timeline_media as { edges: Array<{ node: InstagramMediaNode }> } | undefined;
+function extractMediaNodes(data: unknown): InstagramMediaNode[] {
+    if (!data || typeof data !== 'object') return [];
 
-    if (timeline?.edges) {
-        return timeline.edges.map(e => e.node);
+    // Try to find edges recursively in the response (graph API format)
+    const edges = findEdges(data);
+    if (edges.length > 0) return edges;
+
+    // Handle inflact flat array format (e.g. data.reels, data.posts)
+    const record = data as Record<string, unknown>;
+    for (const key of Object.keys(record)) {
+        const val = record[key];
+        if (Array.isArray(val) && val.length > 0 && typeof val[0] === 'object') {
+            return val.map((item: InflactMediaItem) => normalizeMediaNode(item));
+        }
+    }
+
+    // Fallback: if data is an array of nodes directly
+    if (Array.isArray(data)) {
+        return (data as InflactMediaItem[]).map(normalizeMediaNode);
     }
 
     return [];
@@ -87,31 +165,21 @@ export async function getInstagramData(): Promise<InstagramData> {
         }
 
         // Extract posts
-        let posts: InstagramMediaNode[] = [];
-        const postsData = data.posts as Record<string, unknown> | undefined;
-        if (postsData) {
-            posts = extractMediaNodes(postsData as Record<string, unknown>, 'posts');
-            // Fallback: try top-level array
-            if (posts.length === 0 && Array.isArray(postsData.posts)) {
-                posts = postsData.posts as InstagramMediaNode[];
-            }
-        }
+        const posts = extractMediaNodes(data.posts);
 
         // Extract reels
-        let reels: InstagramMediaNode[] = [];
-        const reelsData = data.reels as Record<string, unknown> | undefined;
-        if (reelsData) {
-            reels = extractMediaNodes(reelsData as Record<string, unknown>, 'reels');
-            if (reels.length === 0 && Array.isArray(reelsData.reels)) {
-                reels = reelsData.reels as InstagramMediaNode[];
-            }
-        }
+        const reels = extractMediaNodes(data.reels);
 
         // Extract stories
         let stories: InstagramStory[] = [];
         const storiesData = data.stories as Record<string, unknown> | undefined;
-        if (storiesData?.stories && Array.isArray(storiesData.stories)) {
-            stories = storiesData.stories as InstagramStory[];
+        if (storiesData) {
+            // Stories may be nested under various keys
+            const reel = storiesData.reel as Record<string, unknown> | undefined;
+            const storyArray = (storiesData.stories ?? reel?.items ?? storiesData) as unknown;
+            if (Array.isArray(storyArray)) {
+                stories = storyArray as InstagramStory[];
+            }
         }
 
         return { profile, posts, reels, stories, error: null };

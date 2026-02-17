@@ -16,7 +16,8 @@
 
     // Layout properties
     display: flex;
-    flex-flow: var(--data-direction, row) wrap;
+    flex-direction: var(--data-direction, row);
+    flex-wrap: wrap;
     gap: inherit; // Inherit gap from parent (header)
     justify-content: flex-end;
 }
