@@ -306,3 +306,43 @@ export interface ScreenshotConfig {
     title: string;
     imageSize?: number;
 }
+
+// Instagram types
+export interface InstagramProfile {
+    full_name: string;
+    biography: string;
+    profile_pic_url: string;
+    profile_pic_url_hd?: string;
+    edge_followed_by: { count: number };
+    edge_follow: { count: number };
+    edge_owner_to_timeline_media: { count: number };
+    username?: string;
+    is_verified?: boolean;
+}
+
+export interface InstagramMediaNode {
+    display_url: string;
+    shortcode: string;
+    edge_media_to_caption?: { edges: Array<{ node: { text: string } }> };
+    taken_at_timestamp?: number;
+    is_video: boolean;
+    video_url?: string;
+    thumbnail_src?: string;
+    edge_liked_by?: { count: number };
+    edge_media_to_comment?: { count: number };
+}
+
+export interface InstagramStory {
+    image_versions2?: { candidates: Array<{ url: string }> };
+    video_versions?: Array<{ url: string }>;
+    taken_at?: number;
+    id?: string;
+}
+
+export interface InstagramData {
+    profile: InstagramProfile | null;
+    posts: InstagramMediaNode[];
+    reels: InstagramMediaNode[];
+    stories: InstagramStory[];
+    error: string | null;
+}
