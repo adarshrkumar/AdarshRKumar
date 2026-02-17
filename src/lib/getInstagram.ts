@@ -3,14 +3,14 @@
  * Uses inflact.com API to fetch profile, posts, reels, and stories
  */
 
-import type { InstagramData, InstagramMediaNode, InstagramProfile, InstagramStory } from './types';
+import type { InflactMediaItem, InstagramData, InstagramMediaNode, InstagramProfile, InstagramStory } from './types';
 
 // API configuration (tokens may expire and need refreshing)
 const INSTAGRAM_USERNAME = 'adarsh.r.kumar';
 const FORM_BOUNDARY = '----WebKitFormBoundaryhvlGBNAlLf6A7hTO';
 const CLIENT_SIGNATURE = 'e7a80dcbf2c4c0c89fcc7bf4672f6bcfad307873aa6dbd95b4f219b4e1316476';
 const CLIENT_TOKEN = btoa(JSON.stringify({
-    "timestamp": 1771297108,
+    "timestamp": Math.floor(Date.now() / 1000),
     "clientId": "01915f1ba872bbe1e9a6d2711482a96e",
     "nonce": "cab9791b3287051b3787552f2750cea0"
 }))
@@ -73,27 +73,7 @@ function findEdges(obj: unknown, depth = 0): InstagramMediaNode[] {
     return [];
 }
 
-/**
- * Normalize a flat reel/post item (inflact format) into InstagramMediaNode
- */
-interface InflactMediaItem {
-    id?: string;
-    shortCode?: string;
-    shortcode?: string;
-    imageUrl?: string;
-    display_url?: string;
-    mediaType?: number;
-    is_video?: boolean;
-    caption?: string;
-    createdAt?: number;
-    taken_at_timestamp?: number;
-    thumbnail_src?: string;
-    video_url?: string;
-    edge_media_to_caption?: { edges: Array<{ node: { text: string } }> };
-    edge_liked_by?: { count: number };
-    edge_media_to_comment?: { count: number };
-}
-
+// Normalize a flat reel/post item (inflact format) into InstagramMediaNode
 function normalizeMediaNode(item: InflactMediaItem): InstagramMediaNode {
     return {
         display_url: item.display_url || item.imageUrl || item.thumbnail_src || '',
