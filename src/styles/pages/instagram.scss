@@ -155,13 +155,13 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transform: translate(-50%, -50%);
         width: 48px;
         height: 48px;
-        background: rgb(0 0 0 / 60%);
+        background-color: rgb(0 0 0 / 60%);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         pointer-events: none;
-        transition: background $transition-smooth;
+        transition: background-color $transition-smooth;
 
         &::after {
             content: '';
@@ -190,7 +190,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Hover play icon effect on reel cards
 .item:hover .instagram__play-icon {
-    background: rgb(0 0 0 / 75%);
+    background-color: rgb(0 0 0 / 75%);
 }
 
 // Responsive design
