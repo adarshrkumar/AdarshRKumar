@@ -31,7 +31,7 @@ if (title) {
     else if (pageType === 'author' || author) processedTitle = `${title} | Author`
 }
 
-const finalTitle = pageTitle === 'Home' ? siteConfig.name : `${processedTitle} | ${siteConfig.name}`
+const finalTitle = (pageTitle === 'Home' || !processedTitle) ? siteConfig.name : `${processedTitle} | ${siteConfig.name}`
 
 const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
