@@ -18,8 +18,7 @@ const aboutContent = (await aboutFile.compiledContent())?.replaceAll('{ age }', 
 // Skills data
 const skillsData = (await import('../../content/skills.json')).default
 
-const categoryMap = (await import('../utils/categoryMap')).default
-// import categoryMap from '../utils/categoryMap';
+import categoryMap from '../lib/category-map'
 
 const skills = Object.entries(skillsData).map(([category, skillList]) => {
     const mapping = categoryMap[category as keyof typeof categoryMap];
