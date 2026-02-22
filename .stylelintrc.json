@@ -3,6 +3,9 @@
     "rules": {
         "property-no-vendor-prefix": [true, {
             "ignoreProperties": ["-webkit-backdrop-filter"]
+        }],
+        "declaration-block-no-redundant-longhand-properties": [true, {
+            "ignoreShorthands": ["flex-flow"]
         }]
     }
 }
