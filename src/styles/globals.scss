@@ -314,3 +314,12 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
 .skip-link:focus-visible {
     top: 6px;
 }
+
+.list[data-direction="vertical"] {
+    --gap: 2rem;
+
+    margin-block: var(--gap);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
