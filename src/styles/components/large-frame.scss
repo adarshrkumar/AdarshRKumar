@@ -96,7 +96,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        z-index: 1;
+        z-index: -1;
     }
 
     // Info overlay
@@ -111,7 +111,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         flex-direction: column;
         gap: 0.5rem;
         transition: opacity $t-time;
-        z-index: 2;
 
         // Text styling
         > * {
