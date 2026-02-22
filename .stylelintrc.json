@@ -6,6 +6,7 @@
         }],
         "declaration-block-no-redundant-longhand-properties": [true, {
             "ignoreShorthands": ["flex-flow"]
-        }]
+        }],
+        "scss/operator-no-unspaced": null
     }
 }
