@@ -3,44 +3,7 @@
 import '../styles/components/largeFrame.scss'
 import type { LargeFrameProps } from '../lib/types'
 
-// Helper functions
-// Helper function to extract channel ID from feed link
-function extractChannelId(feedLink: string): string {
-    let channelId = feedLink
-    if (channelId.includes('/')) {
-        channelId = channelId.split('/').pop() || ''
-    }
-    return channelId
-}
-
-// Helper function to extract video ID from GUID
-function extractVideoId(videoGuid: string): string {
-    return videoGuid.substring(videoGuid.lastIndexOf(':') + 1)
-}
-
-// Helper function to generate YouTube image URLs
-async function generateYouTubeImageUrls(videoId: string) {
-    const baseImageUrl = `https://i.ytimg.com/vi/${videoId}`
-    let size = 'maxresdefault'
-    let url = `${baseImageUrl}/${size}.jpg`
-    const resp = await fetch(url)
-    if (!resp.ok) {
-        size = 'hqdefault'
-        url = `${baseImageUrl}/${size}.jpg`
-    }
-
-    return {
-        highRes: url
-    }
-}
-
-// Helper function to generate YouTube URLs
-function generateYouTubeUrls(videoId: string, channelId: string) {
-    return {
-        channel: `https://youtube.com/channel/${channelId}`,
-        embed: `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`
-    }
-}
+import { extractChannelId, extractVideoId, generateYouTubeImageUrls, generateYouTubeUrls } from '../lib/youtube'
 
 // Component props and data processing
 // Get component props
