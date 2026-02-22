@@ -77,9 +77,6 @@ export default async function updateReadme() {
 
         // Write to README.md
         await fs.writeFile(readmePath, finalContent, 'utf-8');
-
-        console.log('✅ README.md has been updated successfully!');
-
     } catch (error) {
         console.error('❌ Error updating README.md:', error);
         process.exit(1);
