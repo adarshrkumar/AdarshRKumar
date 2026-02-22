@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .readme {
     --br: 2rem;
     --pad: 2rem;
@@ -87,7 +89,7 @@
                 img {
                     vertical-align: middle;
                     border-radius: 100vw;
-                    aspect-ratio: 100 / $size;
+                    aspect-ratio: math.div(100, $size);
                     height: #{$size}px;
                     width: auto;
                 }
