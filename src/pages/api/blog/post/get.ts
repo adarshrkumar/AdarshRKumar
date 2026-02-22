@@ -1,4 +1,4 @@
-/**
+/*
  * API endpoint for retrieving blog posts from the database
  * GET /api/blog/post/get
  * Supports query parameters: id, slug, title, author, categories, videoId

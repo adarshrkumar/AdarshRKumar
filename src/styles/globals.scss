@@ -76,7 +76,7 @@ body {
 //     // display: none;
 // }
 
-/* Styles for below the nav bar */
+// Styles for below the nav bar
 
 img {
     max-width: 100%;
@@ -290,7 +290,7 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
     flex: 1;
 }
 
-/* Focus styles for accessibility */
+// Focus styles for accessibility
 *:focus-visible {
     outline: 2px solid var(--color);
     outline-offset: 2px;
@@ -301,7 +301,7 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
     outline-offset: 2px;
 }
 
-/* Skip link for screen readers */
+// Skip link for screen readers and keyboard users
 .skip-link {
     position: absolute;
     top: #{-40px - 4px};
