@@ -19,12 +19,18 @@ function extractVideoId(videoGuid: string): string {
 }
 
 // Helper function to generate YouTube image URLs
-function generateYouTubeImageUrls(videoId: string) {
+async function generateYouTubeImageUrls(videoId: string) {
     const baseImageUrl = `https://i.ytimg.com/vi/${videoId}`
-    
+    let size = 'maxresdefault'
+    let url = `${baseImageUrl}/${size}.jpg`
+    const resp = await fetch(url)
+    if (!resp.ok) {
+        size = 'hqdefault'
+        url = `${baseImageUrl}/${size}.jpg`
+    }
+
     return {
-        highRes: `${baseImageUrl}/maxresdefault.jpg`,
-        background: `${baseImageUrl}/hqdefault.jpg`
+        highRes: url
     }
 }
 
@@ -43,7 +49,7 @@ const { video, feed } = Astro.props as LargeFrameProps
 // Extract IDs and generate URLs
 const channelId = extractChannelId(feed.link)
 const videoId = extractVideoId(video.guid)
-const imageUrls = generateYouTubeImageUrls(videoId)
+const imageUrls = await generateYouTubeImageUrls(videoId)
 const youtubeUrls = generateYouTubeUrls(videoId, channelId)
 
 // Generate alt text and titles
@@ -58,7 +64,6 @@ const frameTitle = `"${video.title}" uploaded by "${video.author}"`
     <img
         class="large-frame__img"
         src={imageUrls.highRes}
-        style={`--bg: url('${imageUrls.background}')`}
         alt={imageAlt}
     />
     <div class="large-frame__info">
