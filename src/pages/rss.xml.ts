@@ -1,8 +1,8 @@
 // Imports
 import rss from '@astrojs/rss'
-import age from '../lib/getAge'
-import sanitizeMD from '../lib/sanitizeMD'
-import { getPostsForRSS } from '../lib/getPosts'
+import age from '../lib/get-age'
+import sanitizeMD from '../lib/sanitize-md'
+import { getPostsForRSS } from '../lib/get-posts'
 import type { PostForRSS, AstroContext } from '../lib/types'
 
 // Helper functions

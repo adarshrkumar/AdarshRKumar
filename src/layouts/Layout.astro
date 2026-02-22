@@ -7,8 +7,9 @@ import '../styles/globals.scss'
 import Header from '../components/header.astro'
 // import Sidebar from '../components/sidebar.astro'
 import Script from '../utils/script.astro'
-import sanitizeMD from '../lib/sanitizeMD'
-import type { SiteConfig, PageType, LayoutProps } from '../lib/types'
+import age from '../lib/get-age'
+import aboutContent from '../lib/get-raw-about-content'
+import type { SiteConfig, LayoutProps } from '../lib/types'
 
 // Site configuration
 const siteConfig: SiteConfig = {
@@ -18,59 +19,23 @@ const siteConfig: SiteConfig = {
     placeholder: '/assets/placeholder.svg'
 }
 
-// Helper functions
-// Helper function to clean and normalize about content
-function cleanAboutContent(content: string): string {
-    let cleanedContent = content
-        .replaceAll('{ age }', age.toString())
-        .replaceAll('  ', ' ')
-        .replaceAll(' \n', ' ')
-        .replaceAll('\n', ' ')
-    
-    // Remove leading and trailing spaces
-    while (cleanedContent.startsWith(' ')) {
-        cleanedContent = cleanedContent.slice(1)
-    }
-    while (cleanedContent.endsWith(' ')) {
-        cleanedContent = cleanedContent.slice(0, -1)
-    }
-    
-    return cleanedContent
-}
-
-// Helper function to process page title based on page type
-function processPageTitle(title: string, pageType: PageType): string {
-    switch (pageType) {
-        case 'post':
-            return `${title} | Blog`
-        case 'author':
-            return `${title} | Author`
-        default:
-            return title
-    }
-}
-
-// Helper function to build final page title
-function buildFinalTitle(processedTitle: string, pageTitle: string): string {
-    if (pageTitle === 'Home') {
-        return siteConfig.name
-    }
-    return `${processedTitle} | ${siteConfig.name}`
-}
-
 // Get component props
 const { title, pTitle, classItems, inlineStyles, pageType, author }: LayoutProps = Astro.props
 
 // Process props
 const pageTitle = pTitle || title || 'Home'
-const processedTitle = processPageTitle(title || '', pageType)
-const finalTitle = buildFinalTitle(processedTitle, pageTitle)
 
-// Load and process content
-import age from '../lib/getAge'
+let processedTitle = title
+switch (pageType) {
+    case 'post':
+        processedTitle = `${title} | Blog`
+        break
+    case 'author':
+        processedTitle = `${title} | Author`
+        break
+}
 
-const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
+const finalTitle = pageTitle === 'Home' ? siteConfig.name : `${processedTitle} | ${siteConfig.name}`
 
 const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
