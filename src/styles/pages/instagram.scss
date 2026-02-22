@@ -189,8 +189,10 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 // Hover play icon effect on reel cards
-.item:hover .instagram__play-icon {
-    background-color: rgb(0 0 0 / 75%);
+.item:hover .instagram {
+    &__play-icon {
+        background-color: rgb(0 0 0 / 75%);
+    }
 }
 
 // Responsive design
