@@ -20,7 +20,10 @@
       "Bash(npm run check:*)",
       "Bash(npx astro:*)",
       "Bash(node:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(git:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)"
     ],
     "deny": [],
     "ask": []
