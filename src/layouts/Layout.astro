@@ -7,8 +7,10 @@ import '../styles/globals.scss'
 import Header from '../components/header.astro'
 // import Sidebar from '../components/sidebar.astro'
 import Script from '../utils/script.astro'
+
 import age from '../lib/get-age'
 import aboutContent from '../lib/get-raw-about-content'
+
 import type { SiteConfig, LayoutProps } from '../lib/types'
 
 // Site configuration
@@ -29,9 +31,10 @@ let processedTitle = title
 if (title) {
     if (pageType === 'post') processedTitle = `${title} | Blog`
     else if (pageType === 'author' || author) processedTitle = `${title} | Author`
+    else if (pageTitle !== 'home') processedTitle = `${title} | ${siteConfig.name}`
 }
 
-const finalTitle = (pageTitle === 'Home' || !processedTitle) ? siteConfig.name : `${processedTitle} | ${siteConfig.name}`
+const finalTitle = processedTitle || siteConfig.name
 
 const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
