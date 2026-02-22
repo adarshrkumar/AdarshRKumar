@@ -10,7 +10,7 @@ import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 
 // Helper functions
 // Load age first
-import age from '../lib/getAge'
+import age from '../lib/get-age'
 
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = (await aboutFile.compiledContent())?.replaceAll('{ age }', age.toString())
