@@ -298,7 +298,6 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
 
 :is(a, button, input, textarea, select):focus-visible {
     outline: 2px solid var(--primary-btn-clr);
-    outline-offset: 2px;
 }
 
 // Skip link for screen readers and keyboard users
