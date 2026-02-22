@@ -2,8 +2,6 @@
 // Imports
 import '../styles/components/default-inputs.scss'
 
-import Script from '../components/script.astro'
-
 import type { HTMLAttributes } from 'astro/types';
 import type { HTMLString } from 'astro/runtime/server/escape.js';
 
@@ -11,7 +9,6 @@ import type { HTMLString } from 'astro/runtime/server/escape.js';
 export interface Props extends HTMLAttributes<'textarea'> {
     align?: 'left' | 'center' | 'right';
     label?: HTMLString | String;
-    autosize?: Boolean;
 }
 
 // Component props and configuration
@@ -27,5 +24,4 @@ const { ...attrs } = Astro.props
 <div class="form-group">
     <label for={id} set:html={label} />
     <textarea {...attrs}>{await Astro.slots.render('default')}</textarea>
-    <Script name="autosize" />
 </div>
