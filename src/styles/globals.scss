@@ -47,10 +47,13 @@ html {
 }
 
 html, iframe {
-    margin: 0;
-    padding: 0;
     min-width: 100%;
     min-height: 100%;
+}
+  
+iframe {
+    margin: 0;
+    padding: 0;
     border: none;
     outline: none;
     box-shadow: none;
