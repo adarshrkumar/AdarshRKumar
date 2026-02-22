@@ -26,13 +26,9 @@ const { title, pTitle, classItems, inlineStyles, pageType, author }: LayoutProps
 const pageTitle = pTitle || title || 'Home'
 
 let processedTitle = title
-switch (pageType) {
-    case 'post':
-        processedTitle = `${title} | Blog`
-        break
-    case 'author':
-        processedTitle = `${title} | Author`
-        break
+if (title) {
+    if (pageType === 'post') processedTitle = `${title} | Blog`
+    else if (pageType === 'author' || author) processedTitle = `${title} | Author`
 }
 
 const finalTitle = pageTitle === 'Home' ? siteConfig.name : `${processedTitle} | ${siteConfig.name}`
