@@ -25,7 +25,7 @@ const skills = Object.entries(skillsData).map(([category, skillList]) => {
     return {
         name: mapping.name,
         icon: mapping.icon,
-        tech: skillList.map(s => s.name)
+        tech: skillList
     };
 }).filter(Boolean);
 
@@ -33,7 +33,10 @@ const skills = Object.entries(skillsData).map(([category, skillList]) => {
 skills.push({
     name: 'Databases',
     icon: '🗄️',
-    tech: ['PostgreSQL', 'Drizzle ORM']
+    tech: [
+        { name: 'PostgreSQL', proficiency: 75, icon_url: 'https://skillicons.dev/icons?i=postgres', skill_url: 'https://postgresql.org' },
+        { name: 'Drizzle ORM', proficiency: 75, icon_url: 'https://adarshrkumar.dev/assets/readme/DrizzleORM.png', skill_url: 'https://orm.drizzle.team' }
+    ]
 });
 
 // Interests data
@@ -76,9 +79,9 @@ const ctaButtons = [
                         <div class="skill-card">
                             <div class="skill-card__icon">{skill?.icon}</div>
                             <h3 class="skill-card__name">{skill?.name}</h3>
-                            <ul class="skill-card__tech">
-                                {skill?.tech.map(item => (
-                                    <li>{item}</li>
+                            <ul class="skill-card__tech" data-long={(skill?.tech.map(i => i.name.length > 13).filter(Boolean).length ?? 0) % 2 ? 'even' : 'off'}>
+                                {skill?.tech.map((item, i) => (
+                                    <li data-long={item.name.length > 13 ? '' : undefined}>{item.name}</li>
                                 ))}
                             </ul>
                         </div>
@@ -93,7 +96,7 @@ const ctaButtons = [
                 <div class="about__interests">
                     {interests.map(interest => (
                         interest.link ? (
-                            <a href={interest.link} class:list={['interest-badge', { 'clickable': interest.link }]}>
+                            <a href={interest.link} class="interest-badge" data-clickable>
                                 <span class="interest-badge__icon">{interest.icon}</span>
                                 <span class="interest-badge__name">{interest.name}</span>
                             </a>
@@ -111,7 +114,7 @@ const ctaButtons = [
         <FadeIn delay={0.4} direction="up" duration={0.6}>
             <div class="about__cta">
                 {ctaButtons.map(button => (
-                    <a href={button.link} class:list={['btn', { 'primary': button.primary }]}>
+                    <a href={button.link} class="btn" data-primary={button.primary || undefined}>
                         {button.text}
                     </a>
                 ))}
