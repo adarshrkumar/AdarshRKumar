@@ -55,6 +55,8 @@ const ctaButtons = [
     { text: 'Read Blog', link: '/posts/', primary: false },
     { text: 'See Photography', link: '/photography/', primary: false }
 ]
+
+const skillSpanLength = 9;
 ---
 
 <Layout title="About">
@@ -79,9 +81,9 @@ const ctaButtons = [
                         <div class="skill-card">
                             <div class="skill-card__icon">{skill?.icon}</div>
                             <h3 class="skill-card__name">{skill?.name}</h3>
-                            <ul class="skill-card__tech" data-long={(skill?.tech.map(i => i.name.length > 13).filter(Boolean).length ?? 0) % 2 ? 'even' : 'off'}>
+                            <ul class="skill-card__tech" data-long={(skill?.tech.map(i => i.name.length > skillSpanLength).filter(Boolean).length ?? 0) % 2 ? 'even' : 'off'}>
                                 {skill?.tech.map((item, i) => (
-                                    <li data-long={item.name.length > 13 ? '' : undefined}>{item.name}</li>
+                                    <li style={`--icon: url(${item.icon_url})`} data-long={item.name.length > skillSpanLength ? '' : undefined}>{item.name}</li>
                                 ))}
                             </ul>
                         </div>

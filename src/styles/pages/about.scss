@@ -144,15 +144,13 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        display: flex;
         flex-wrap: wrap;
-        // flex-direction: column;
         justify-content: space-between;
         gap: 0.5rem;
 
         li {
-            grid-column: span 2;
+            flex: 1;
             color: var(--bg);
             font-size: 0.95rem;
             padding: 0.25rem 0.5rem;
@@ -161,27 +159,20 @@
             border: 1px solid var(--border);
 
             display: flex;
+            gap: 0.5rem;
 
-            &[data-long],
-            &:nth-child(odd):has(+ [data-long]) {
-                grid-column: 1 / -1;
-
-                + :has(+ [data-long]) {
-                    grid-column: 1 / -1;
-                }
+            &[data-long] {
+                flex: 100%;
             }
 
             &::before {
-                content: attr(image) / attr(name);
-                margin-right: 0.5rem;
-                color: var(--bg);
-            }
-        }
-
-        &:not(:has([data-long])),
-        &[data-long="even"] {
-            li:nth-child(4n-3):last-child {
-                grid-column: 2 / -2;
+                content: '';
+                height: 100%;
+                width: 1lh;
+                background-image: var(--icon);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
             }
         }
     }
