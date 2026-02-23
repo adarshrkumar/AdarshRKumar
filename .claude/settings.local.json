@@ -23,7 +23,8 @@
       "Bash(node -e:*)",
       "Bash(git:*)",
       "Bash(head:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": [],
     "ask": []
