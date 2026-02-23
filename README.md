@@ -24,12 +24,12 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 | Tool | Proficiency Level |
 | --- | --- |
-| [![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.com) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
-| [![GCP](https://skillicons.dev/icons?i=gcp)](https://cloud.google.com) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
+| [![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.com) | ![25%](https://progress-bar.adarshrkumar.dev/bar.svg?p=25%25)&nbsp; 25% |
+| [![GCP](https://skillicons.dev/icons?i=gcp)](https://cloud.google.com) | ![25%](https://progress-bar.adarshrkumar.dev/bar.svg?p=25%25)&nbsp; 25% |
+| [![Vercel](https://skillicons.dev/icons?i=vercel)](https://vercel.com) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
 | [![Git](https://skillicons.dev/icons?i=git)](https://git-scm.com) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
 | [![GitHub](https://skillicons.dev/icons?i=github)](https://github.com) | ![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)&nbsp; 95% |
 | [![GitHub Actions](https://skillicons.dev/icons?i=githubactions)](https://github.com/actions) | ![25%](https://progress-bar.adarshrkumar.dev/bar.svg?p=25%25)&nbsp; 25% |
-| [![Vercel](https://skillicons.dev/icons?i=vercel)](https://vercel.com) | ![25%](https://progress-bar.adarshrkumar.dev/bar.svg?p=25%25)&nbsp; 25% |
 | [![Visual Studio](https://skillicons.dev/icons?i=visualstudio)](https://visualstudio.com) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
 | [![VS Code](https://skillicons.dev/icons?i=vscode)](https://code.visualstudio.com) | ![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100% |
 | [![Cursor](https://adarshrkumar.dev/assets/readme/Cursor.png)](https://cursor.com) | ![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)&nbsp; 99% |
