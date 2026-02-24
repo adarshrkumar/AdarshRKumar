@@ -1,0 +1,130 @@
+---
+// Imports
+import '../styles/pages/projects.scss'
+import Layout from '../layouts/Layout.astro'
+import SiteGridContent from '../components/siteGridContent.astro'
+import getFName from '../lib/get-fname'
+import sanitizeMD from '../lib/sanitize-md'
+import type { PortfolioItem } from '../lib/types'
+import AnimatedCard from '../components/motion/AnimatedCard.astro'
+import FadeIn from '../components/motion/FadeIn.astro'
+import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
+
+// Helper functions
+function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
+    let target = '_blank'
+    if (url.startsWith('//')) url = `https:${url}`
+    let domain = url
+    if (domain.includes('://')) {
+        domain = domain.split('://')[1].split('/')[0]
+        if (domain.startsWith('www.')) domain = domain.slice(4)
+        const sUrl = siteUrl?.toString() || ''
+        if (sUrl.includes(domain)) target = '_self'
+    } else {
+        target = '_self'
+    }
+    return target
+}
+
+function generateScreenshotUrl(url: string, imageSize: number = 512): string {
+    let fullUrl = url
+    if (url.startsWith('/')) {
+        const baseUrl = Astro.site?.toString() || 'https://adarshrkumar.dev'
+        fullUrl = `${baseUrl.replace(/\/$/, '')}${url}`
+    }
+    return `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+}
+
+function filterVisibleItems(items: PortfolioItem[]): PortfolioItem[] {
+    return items.filter(item => !getFName(item.file).startsWith('_'))
+}
+
+// Load all potential app sources
+const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })) as PortfolioItem[]
+const projectGames = Object.values(import.meta.glob('../../content/work/projects/games/*.md', { eager: true })) as PortfolioItem[]
+const projectLargeScale = Object.values(import.meta.glob('../../content/work/projects/large-scale/*.md', { eager: true })) as PortfolioItem[]
+const projectUtilities = Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })) as PortfolioItem[]
+
+// Combine all items
+const allPotentialApps = [
+    ...portfolioItems,
+    ...projectGames,
+    ...projectLargeScale,
+    ...projectUtilities
+]
+
+// Keywords that suggest it's a web app/tool
+const appKeywords = ['app', 'application', 'tool', 'platform', 'service', 'editor', 'tracker', 'buddy', 'wise', 'shot', 'resize', 'checker', 'clock', 'notepad']
+
+const webApps = filterVisibleItems(allPotentialApps).filter(item => {
+    const name = item.frontmatter.name.toLowerCase()
+    const content = item.rawContent().toLowerCase()
+    const url = item.frontmatter.url.toLowerCase()
+
+    // Explicitly include requested ones and identified web apps
+    const explicitApps = [
+        'viabay', 
+        'studywise', 
+        'recorder buddy', 
+        'nodebooks', 
+        'webshot', 
+        'imageresize', 
+        'favicon generator', 
+        'notepad application', 
+        'live clock', 
+        'weather'
+    ]
+    if (explicitApps.some(appName => name.includes(appName))) return true
+
+    // Check for web app characteristics
+    // External apps that aren't source code repos
+    const isExternalApp = url.startsWith('http') && 
+                         !url.includes('github.com') && 
+                         !url.includes('npmjs.com')
+    
+    // Keywords in name or description that strongly suggest a functional web app
+    const mentionsApp = appKeywords.some(keyword => name.includes(keyword) || content.includes(keyword))
+    
+    return isExternalApp || mentionsApp
+})
+
+// Deduplicate by name
+const uniqueApps = Array.from(new Map(webApps.map(item => [item.frontmatter.name, item])).values())
+    .sort((a, b) => a.frontmatter.name.localeCompare(b.frontmatter.name))
+
+---
+
+<Layout title="Apps">
+    <section class="category">
+        <FadeIn direction="up">
+            <AnimatedTitle as="h3" class="category__title">
+                Web Applications
+            </AnimatedTitle>
+        </FadeIn>
+        <SiteGridContent classItems="wrap" options={{ min: '18rem' }}>
+            {
+                uniqueApps.map((item, itemIndex) => {
+                    const projectUrl = item.frontmatter.url
+                    const linkTarget = item.frontmatter.target || determineLinkTarget(projectUrl, Astro.site)
+                    const screenshotUrl = generateScreenshotUrl(projectUrl)
+                    const placeholderUrl = `${screenshotUrl}&image_quality=50`
+
+                    return (
+                        <AnimatedCard index={itemIndex} class="item" href={projectUrl} target={linkTarget}>
+                            <img
+                                src={screenshotUrl}
+                                alt={`Screenshot of ${item.frontmatter.name}`}
+                                class="item__img"
+                                style={`--placeholder: url('${placeholderUrl}')`}
+                            />
+                            <div class="item__info">
+                                <h3 class="item__title">{item.frontmatter.name}</h3>
+                                <p class="item__content">{sanitizeMD(item.rawContent())}</p>
+                            </div>
+                        </AnimatedCard>
+                    )
+                })
+            }
+        </SiteGridContent>
+    </section>
+</Layout>
