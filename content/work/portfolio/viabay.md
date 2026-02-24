@@ -1,6 +1,6 @@
 ---
-name: "Bay Area TransTracker"
-url: "https://tt.adarshrkumar.dev/tracker"
+name: "ViaBay"
+url: "https://viabay.adarshrkumar.app"
 projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->
