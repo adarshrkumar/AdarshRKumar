@@ -53,39 +53,19 @@ const allPotentialApps = [
     ...projectUtilities
 ]
 
-// Keywords that suggest it's a web app/tool
-const appKeywords = ['app', 'application', 'tool', 'platform', 'service', 'editor', 'tracker', 'buddy', 'wise', 'shot', 'resize', 'checker', 'clock', 'notepad']
-
 const webApps = filterVisibleItems(allPotentialApps).filter(item => {
     const name = item.frontmatter.name.toLowerCase()
-    const content = item.rawContent().toLowerCase()
-    const url = item.frontmatter.url.toLowerCase()
 
-    // Explicitly include requested ones and identified web apps
+    // Explicitly include only full-scale applications
     const explicitApps = [
         'viabay', 
         'studywise', 
         'recorder buddy', 
-        'nodebooks', 
-        'webshot', 
-        'imageresize', 
-        'favicon generator', 
+        'nodebooks',
         'notepad application', 
-        'live clock', 
-        'weather'
     ]
-    if (explicitApps.some(appName => name.includes(appName))) return true
-
-    // Check for web app characteristics
-    // External apps that aren't source code repos
-    const isExternalApp = url.startsWith('http') && 
-                         !url.includes('github.com') && 
-                         !url.includes('npmjs.com')
     
-    // Keywords in name or description that strongly suggest a functional web app
-    const mentionsApp = appKeywords.some(keyword => name.includes(keyword) || content.includes(keyword))
-    
-    return isExternalApp || mentionsApp
+    return explicitApps.some(appName => name.includes(appName))
 })
 
 // Deduplicate by name
