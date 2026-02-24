@@ -56,15 +56,14 @@ const allPotentialApps = [
 const webApps = filterVisibleItems(allPotentialApps).filter(item => {
     const name = item.frontmatter.name.toLowerCase()
 
-    // Explicitly include only full-scale applications
-    const explicitApps = [
-        'viabay', 
-        'studywise', 
-        'recorder buddy', 
-        'nodebooks',
-        'notepad application', 
-    ]
-    
+        // Explicitly include only full-scale applications
+        const explicitApps = [
+            'viabay', 
+            'studywise', 
+            'recorder buddy', 
+            'nodebooks',
+            'notepad'
+        ]
     return explicitApps.some(appName => name.includes(appName))
 })
 
