@@ -25,6 +25,15 @@ $('h1').first().remove()
 $('table').each((_i, table) => {
     $(table).attr('cellspacing', '0')
 })
+
+const imgs = $('img');
+imgs.each((_i, img) => {
+    const src = $(img).attr('src');
+    if (src && src.startsWith('./public/')) {
+        $(img).attr('src', src.replace('./public/', '/'))
+    }
+})
+
 const newReadmeContent = $.html()
 
 const firstPara = $.html($('p').first()).trim();

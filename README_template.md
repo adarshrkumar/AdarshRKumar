@@ -17,6 +17,10 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 {languages}
 
+## GitHub Stats
+
+![GitHub Stats](./public/github/stats.svg)
+
 ## Social Media
 
 [![Dev.to](https://skillicons.dev/icons?i=devto)](https://dev.to/adarshrkumar)|[![Discord](https://skillicons.dev/icons?i=discord)](https://discord.com/users/adarshrkumar)|[![Facebook](https://akum.site/p/FacebookIcon)](https://facebook.com/adarshrkumar)|[![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:adarshrkumar@aol.com)|[![Instagram](https://skillicons.dev/icons?i=instagram)](https://instagram.com/adarsh.r.kumar)|[![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://linkedin.com/in/adarshrkumar)|[![StackOverflow](https://skillicons.dev/icons?i=stackoverflow)](https://stackoverflow.com/adarshrkumar)|[![TikTok](https://akum.site/p/TikTokIcon)](https://tiktok.com/@adarsh.r.kumar)|[![X](https://skillicons.dev/icons?i=twitter)](https://x.com/adarshrkumar)|[![YouTube](https://skillicons.dev/icons?i=youtube)](https://youtube.com/@adarshrtech)
