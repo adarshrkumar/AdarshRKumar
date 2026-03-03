@@ -26,11 +26,11 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 | --- | --- |
 | [![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.com) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
 | [![GCP](https://skillicons.dev/icons?i=gcp)](https://cloud.google.com) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
+| [![Vercel](https://skillicons.dev/icons?i=vercel)](https://vercel.com) | ![25%](https://progress-bar.adarshrkumar.dev/bar.svg?p=25%25)&nbsp; 25% |
 | [![Git](https://skillicons.dev/icons?i=git)](https://git-scm.com) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
 | [![GitHub](https://skillicons.dev/icons?i=github)](https://github.com) | ![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)&nbsp; 95% |
-| [![GitHub Actions](https://skillicons.dev/icons?i=githubactions)](https://github.com/actions) | ![25%](https://progress-bar.adarshrkumar.dev/bar.svg?p=25%25)&nbsp; 25% |
-| [![Vercel](https://skillicons.dev/icons?i=vercel)](https://vercel.com) | ![25%](https://progress-bar.adarshrkumar.dev/bar.svg?p=25%25)&nbsp; 25% |
-| [![Visual Studio](https://skillicons.dev/icons?i=visualstudio)](https://visualstudio.com) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
+| [![GitHub Actions](https://skillicons.dev/icons?i=githubactions)](https://github.com/actions) | ![45%](https://progress-bar.adarshrkumar.dev/bar.svg?p=45%25)&nbsp; 45% |
+| [![Visual Studio](https://skillicons.dev/icons?i=visualstudio)](https://visualstudio.com) | ![45%](https://progress-bar.adarshrkumar.dev/bar.svg?p=45%25)&nbsp; 45% |
 | [![VS Code](https://skillicons.dev/icons?i=vscode)](https://code.visualstudio.com) | ![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100% |
 | [![Cursor](https://adarshrkumar.dev/assets/readme/Cursor.png)](https://cursor.com) | ![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)&nbsp; 99% |
 | [![Claude Code](https://adarshrkumar.dev/assets/readme/ClaudeCode.png)](https://claude.ai) | ![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80% |
@@ -80,6 +80,10 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 | [![C++](https://skillicons.dev/icons?i=cpp)](https://cplusplus.com) | ![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)&nbsp; 30% |
 | [![Markdown](https://skillicons.dev/icons?i=md)](https://akum.site/p/MarkDownInfo) | ![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100% |
 | [![RegEx](https://skillicons.dev/icons?i=regex)](https://akum.site/p/RegExInfo) | ![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)&nbsp; 70% |
+
+## GitHub Stats
+
+![GitHub Stats](./public/github/stats.svg)
 
 ## Social Media
 
