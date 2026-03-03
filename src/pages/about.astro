@@ -82,7 +82,7 @@ const skillSpanLength = 9;
                             <div class="skill-card__icon">{skill?.icon}</div>
                             <h3 class="skill-card__name">{skill?.name}</h3>
                             <ul class="skill-card__tech" data-long={(skill?.tech.map(i => i.name.length > skillSpanLength).filter(Boolean).length ?? 0) % 2 ? 'even' : 'off'}>
-                                {skill?.tech.map((item, i) => (
+                                {skill?.tech.map(item => (
                                     <li style={`--icon: url(${item.icon_url})`} data-long={item.name.length > skillSpanLength ? '' : undefined}>{item.name}</li>
                                 ))}
                             </ul>
