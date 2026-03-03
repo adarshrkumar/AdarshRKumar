@@ -21,7 +21,13 @@ const readmeFile = await import('../../README.md')
 const readmeContent = await readmeFile.compiledContent()
 
 const $ = cheerio.load(readmeContent);
-$('h1').first().remove()
+
+const firstH1 = $('h1').first();
+const firstH1Text = firstH1.text().trim();
+if (firstH1Text === 'Adarsh R. Kumar') {
+    firstH1.remove();
+}
+
 $('table').each((_i, table) => {
     $(table).attr('cellspacing', '0')
 })
