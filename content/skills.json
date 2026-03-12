@@ -96,13 +96,13 @@
             "name": "Windows",
             "proficiency": 75,
             "icon_url": "https://adarshrkumar.dev/assets/readme/Windows.png",
-            "skill_url": "https://akum.site/p/WindowsInfo"
+            "skill_url": "https://microsoft.com/en-us/windows"
         },
         {
             "name": "Mac",
             "proficiency": 75,
             "icon_url": "https://adarshrkumar.dev/assets/readme/Mac.png",
-            "skill_url": "https://akum.site/p/MacInfo"
+            "skill_url": "https://apple.com/mac"
         }
     ],
     "Web Development - Front-End": [
@@ -110,19 +110,19 @@
             "name": "HMTL",
             "proficiency": 99,
             "icon_url": "https://skillicons.dev/icons?i=html",
-            "skill_url": "https://akum.site/p/HTMLInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/HTML"
         },
         {
             "name": "CSS",
             "proficiency": 95,
             "icon_url": "https://skillicons.dev/icons?i=css",
-            "skill_url": "https://akum.site/p/CSSInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/CSS"
         },
         {
             "name": "JavaScript",
             "proficiency": 90,
             "icon_url": "https://skillicons.dev/icons?i=js",
-            "skill_url": "https://akum.site/p/JSInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/JavaScript"
         },
         {
             "name": "TypeScript",
@@ -134,7 +134,7 @@
             "name": "SVG",
             "proficiency": 75,
             "icon_url": "https://skillicons.dev/icons?i=svg",
-            "skill_url": "https://akum.site/p/SVGInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/SVG"
         },
         {
             "name": "SCSS",
@@ -148,7 +148,7 @@
             "name": "PHP",
             "proficiency": 75,
             "icon_url": "https://skillicons.dev/icons?i=php",
-            "skill_url": "https://akum.site/p/PHPInfo"
+            "skill_url": "https://php.net"
         },
         {
             "name": "Node.JS",
@@ -204,19 +204,19 @@
             "name": "Bash",
             "proficiency": 60,
             "icon_url": "https://skillicons.dev/icons?i=bash",
-            "skill_url": "https://akum.site/p/BASHInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
         },
         {
             "name": "Batch",
             "proficiency": 40,
             "icon_url": "https://skillicons.dev/icons?i=batch",
-            "skill_url": "https://akum.site/p/BatchInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
         },
         {
             "name": "PowerShell",
             "proficiency": 30,
             "icon_url": "https://skillicons.dev/icons?i=powershell",
-            "skill_url": "https://akum.site/p/PSInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/PowerShell"
         },
         {
             "name": "Python",
@@ -234,7 +234,7 @@
             "name": "C",
             "proficiency": 50,
             "icon_url": "https://skillicons.dev/icons?i=c",
-            "skill_url": "https://akum.site/p/CInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/CI/CD"
         },
         {
             "name": "C++",
@@ -246,13 +246,13 @@
             "name": "Markdown",
             "proficiency": 100,
             "icon_url": "https://skillicons.dev/icons?i=md",
-            "skill_url": "https://akum.site/p/MarkDownInfo"
+            "skill_url": "https://www.markdownguide.org"
         },
         {
             "name": "RegEx",
             "proficiency": 70,
             "icon_url": "https://skillicons.dev/icons?i=regex",
-            "skill_url": "https://akum.site/p/RegExInfo"
+            "skill_url": "https://en.wikipedia.org/wiki/Regular_expression"
         }
     ]
 }
