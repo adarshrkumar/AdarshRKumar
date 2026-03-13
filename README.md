@@ -35,8 +35,8 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 | [![Cursor](https://adarshrkumar.dev/assets/readme/Cursor.png)](https://cursor.com) | ![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)&nbsp; 99% |
 | [![Claude Code](https://adarshrkumar.dev/assets/readme/ClaudeCode.png)](https://claude.ai) | ![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80% |
 | [![Gemini CLI](https://adarshrkumar.dev/assets/readme/GeminiCLI.png)](https://claude.ai) | ![60%](https://progress-bar.adarshrkumar.dev/bar.svg?p=60%25)&nbsp; 60% |
-| [![Windows](https://adarshrkumar.dev/assets/readme/Windows.png)](https://akum.site/p/WindowsInfo) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
-| [![Mac](https://adarshrkumar.dev/assets/readme/Mac.png)](https://akum.site/p/MacInfo) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
+| [![Windows](https://adarshrkumar.dev/assets/readme/Windows.png)](https://microsoft.com/en-us/windows) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
+| [![Mac](https://adarshrkumar.dev/assets/readme/Mac.png)](https://apple.com/mac) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
 
 ## Languages
 
@@ -46,18 +46,18 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 | Lang | Proficiency Level |
 | --- | --- |
-| [![HMTL](https://skillicons.dev/icons?i=html)](https://akum.site/p/HTMLInfo) | ![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)&nbsp; 99% |
-| [![CSS](https://skillicons.dev/icons?i=css)](https://akum.site/p/CSSInfo) | ![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)&nbsp; 95% |
-| [![JavaScript](https://skillicons.dev/icons?i=js)](https://akum.site/p/JSInfo) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
+| [![HMTL](https://skillicons.dev/icons?i=html)](https://en.wikipedia.org/wiki/HTML) | ![99%](https://progress-bar.adarshrkumar.dev/bar.svg?p=99%25)&nbsp; 99% |
+| [![CSS](https://skillicons.dev/icons?i=css)](https://en.wikipedia.org/wiki/CSS) | ![95%](https://progress-bar.adarshrkumar.dev/bar.svg?p=95%25)&nbsp; 95% |
+| [![JavaScript](https://skillicons.dev/icons?i=js)](https://en.wikipedia.org/wiki/JavaScript) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
 | [![TypeScript](https://skillicons.dev/icons?i=ts)](https://www.typescriptlang.org) | ![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80% |
-| [![SVG](https://skillicons.dev/icons?i=svg)](https://akum.site/p/SVGInfo) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
+| [![SVG](https://skillicons.dev/icons?i=svg)](https://en.wikipedia.org/wiki/SVG) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
 | [![SCSS](https://skillicons.dev/icons?i=scss)](https://sass-lang.com) | ![80%](https://progress-bar.adarshrkumar.dev/bar.svg?p=80%25)&nbsp; 80% |
 
 #### Back End
 
 | Lang | Proficiency Level |
 | --- | --- |
-| [![PHP](https://skillicons.dev/icons?i=php)](https://akum.site/p/PHPInfo) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
+| [![PHP](https://skillicons.dev/icons?i=php)](https://php.net) | ![75%](https://progress-bar.adarshrkumar.dev/bar.svg?p=75%25)&nbsp; 75% |
 | [![Node.JS](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
 | [![NPM](https://skillicons.dev/icons?i=npm)](https://npmjs.com) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
 | [![Express.JS](https://skillicons.dev/icons?i=express)](https://expressjs.com) | ![90%](https://progress-bar.adarshrkumar.dev/bar.svg?p=90%25)&nbsp; 90% |
@@ -71,15 +71,15 @@ Hi, I’m [@adarshrkumar](https://github.com/adarshrkumar)
 
 | Lang | Proficiency Level |
 | --- | --- |
-| [![Bash](https://skillicons.dev/icons?i=bash)](https://akum.site/p/BASHInfo) | ![60%](https://progress-bar.adarshrkumar.dev/bar.svg?p=60%25)&nbsp; 60% |
-| [![Batch](https://skillicons.dev/icons?i=batch)](https://akum.site/p/BatchInfo) | ![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)&nbsp; 40% |
-| [![PowerShell](https://skillicons.dev/icons?i=powershell)](https://akum.site/p/PSInfo) | ![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)&nbsp; 30% |
+| [![Bash](https://skillicons.dev/icons?i=bash)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) | ![60%](https://progress-bar.adarshrkumar.dev/bar.svg?p=60%25)&nbsp; 60% |
+| [![Batch](https://skillicons.dev/icons?i=batch)](https://en.wikipedia.org/wiki/Batch_file) | ![40%](https://progress-bar.adarshrkumar.dev/bar.svg?p=40%25)&nbsp; 40% |
+| [![PowerShell](https://skillicons.dev/icons?i=powershell)](https://en.wikipedia.org/wiki/PowerShell) | ![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)&nbsp; 30% |
 | [![Python](https://skillicons.dev/icons?i=py)](https://python.org) | ![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)&nbsp; 70% |
 | [![Flask.PY](https://skillicons.dev/icons?i=flask)](https://palletsprojects.com/p/flask/) | ![65%](https://progress-bar.adarshrkumar.dev/bar.svg?p=65%25)&nbsp; 65% |
-| [![C](https://skillicons.dev/icons?i=c)](https://akum.site/p/CInfo) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
+| [![C](https://skillicons.dev/icons?i=c)](https://en.wikipedia.org/wiki/CI/CD) | ![50%](https://progress-bar.adarshrkumar.dev/bar.svg?p=50%25)&nbsp; 50% |
 | [![C++](https://skillicons.dev/icons?i=cpp)](https://cplusplus.com) | ![30%](https://progress-bar.adarshrkumar.dev/bar.svg?p=30%25)&nbsp; 30% |
-| [![Markdown](https://skillicons.dev/icons?i=md)](https://akum.site/p/MarkDownInfo) | ![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100% |
-| [![RegEx](https://skillicons.dev/icons?i=regex)](https://akum.site/p/RegExInfo) | ![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)&nbsp; 70% |
+| [![Markdown](https://skillicons.dev/icons?i=md)](https://www.markdownguide.org) | ![100%](https://progress-bar.adarshrkumar.dev/bar.svg?p=100%25)&nbsp; 100% |
+| [![RegEx](https://skillicons.dev/icons?i=regex)](https://en.wikipedia.org/wiki/Regular_expression) | ![70%](https://progress-bar.adarshrkumar.dev/bar.svg?p=70%25)&nbsp; 70% |
 
 ## GitHub Stats
 
