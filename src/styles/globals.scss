@@ -149,7 +149,7 @@ img {
         box-shadow 0.2s $transition-timing;
 
     &:not(.primary) {
-        background-color: transparent;
+        background-color: var(--bg);
         color: var(--color);
         border: solid 2px var(--border-color);
 

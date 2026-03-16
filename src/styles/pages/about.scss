@@ -230,11 +230,6 @@
     @media (prefers-reduced-motion: reduce) {
         animation: fade-in 0.3s ease;
     }
-
-    [type="submit"] {
-        background-color: var(--bg);
-        color: var(--color);
-    }
 }
 
 @keyframes scale-in {
