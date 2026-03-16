@@ -1,7 +1,6 @@
 @import '../variables/globals';
 @import '../variables/mixins';
 
-// Theme switcher styles
 .theme-switcher {
     --pos: 30px;
     --size: 30px;
@@ -25,7 +24,6 @@
     cursor: pointer;
     z-index: $z-index-tooltip;
 
-    // Icon styling
     &__icon {
         height: calc(var(--size) - (var(--padding) * 2));
         aspect-ratio: 1;

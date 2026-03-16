@@ -1,7 +1,5 @@
-// Instagram page styling
 @use '../variables/globals' as *;
 
-// Variables
 $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 .instagram {
@@ -15,7 +13,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     max-width: $max-content-width;
     box-sizing: border-box;
 
-    // Profile section
     &__profile {
         display: flex;
         align-items: center;
@@ -89,7 +86,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin-top: $content-spacing;
     }
 
-    // Section titles
     &__section-title {
         font-size: 1.5rem;
         font-weight: 600;
@@ -99,7 +95,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border-bottom: 2px solid var(--border-color);
     }
 
-    // Stories section
     &__stories {
         display: flex;
         gap: $content-spacing;
@@ -111,7 +106,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             -webkit-overflow-scrolling: touch;
         }
 
-        // Hide scrollbar
         @supports (scrollbar-width: none) {
             scrollbar-width: none;
         }
@@ -140,14 +134,12 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    // Grid sections
     &__grid {
         margin-inline: auto;
         max-width: 100%;
         width: 100%;
     }
 
-    // Play icon overlay for videos/reels
     &__play-icon {
         position: absolute;
         top: 50%;
@@ -175,7 +167,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    // Empty/error state
     &__empty {
         text-align: center;
         padding: $hero-spacing $header-spacing;
@@ -188,14 +179,12 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-// Hover play icon effect on reel cards
 .item:hover .instagram {
     &__play-icon {
         background-color: rgb(0 0 0 / 75%);
     }
 }
 
-// Responsive design
 @media (width <= 768px) {
     .instagram {
         &__profile {

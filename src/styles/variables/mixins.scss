@@ -1,11 +1,8 @@
 @use 'sass:map' as map;
 
-// MIXINS
 // Semantic, reusable SCSS patterns
 
-// ============================================
 // Media Queries
-// ============================================
 
 $breakpoints: (
   'mobile': 640px,
@@ -30,9 +27,7 @@ $breakpoints: (
   }
 }
 
-// ============================================
 // Typography
-// ============================================
 
 @mixin heading-base {
   margin: 0;
@@ -45,9 +40,7 @@ $breakpoints: (
   line-height: 1.6;
 }
 
-// ============================================
 // Layout Patterns
-// ============================================
 
 @mixin card {
   background: var(--middle-color);
@@ -61,9 +54,7 @@ $breakpoints: (
   padding-inline: $content-spacing;
 }
 
-// ============================================
 // Interactive Elements
-// ============================================
 
 @mixin button-base {
   display: inline-block;

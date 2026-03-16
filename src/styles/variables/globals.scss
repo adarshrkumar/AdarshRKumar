@@ -1,9 +1,6 @@
-// VARIABLES
 // Design system configuration
 
-// ============================================
 // Spacing - Semantic, context-based values
-// ============================================
 $button-spacing: 0.5rem;
 $content-spacing: 1rem;
 $section-spacing: 1.5rem;
@@ -11,9 +8,7 @@ $header-spacing: 2rem;
 $page-spacing: 3rem;
 $hero-spacing: 4rem;
 
-// ============================================
 // Typography
-// ============================================
 $font-family-base: 'Montserrat', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
 $font-size-base: 1rem;
 $font-size-button: 1.125rem;
@@ -21,9 +16,7 @@ $font-size-heading: 1.25rem;
 $line-height-base: 1.6;
 $line-height-heading: 1.3;
 
-// ============================================
 // Layout
-// ============================================
 $nav-height: 4.5rem;
 $max-content-width: 1200px;
 $max-post-width: 800px;
@@ -32,15 +25,11 @@ $border-radius-card: 0.75rem;
 $border-radius-section: 1rem;
 $border-radius-pill: 100vw;
 
-// ============================================
 // Animation
-// ============================================
 $transition-base: 0.3s;
 $transition-timing: ease-out;
 
-// ============================================
 // Colors
-// ============================================
 $change-amt: 25%;
 $main-bg-lightness: 98%;
 $main-bg-darkness: 100%;
@@ -73,7 +62,5 @@ $logo-a-color: hsl(195deg 12% 94%);
 $primary-btn-clr: hsl(352deg 68% 77%);
 $accent-color: hsl(195deg 75% 55%);
 
-// ============================================
 // Z-index
-// ============================================
 $z-index-tooltip: 700;

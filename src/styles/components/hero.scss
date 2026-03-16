@@ -1,9 +1,7 @@
 @import '../variables/globals';
 @import '../variables/mixins';
 
-// Hero section styles
 .hero {
-    // Center all direct children
     > * {
         width: fit-content;
         margin-inline: auto;

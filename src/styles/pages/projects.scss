@@ -1,26 +1,14 @@
-// Projects page styling
 .main-content {
     display: flex;
     flex-direction: column;
     
-    // Gap for non-post content
     &:not(.post) {
         gap: var(--pad);
     }
 }
 
-// Category styling
 .category {
     &__title {
         text-align: center;
     }
 }
-
-// Commented out legacy styles
-// .grid {
-//     margin: var(--gap);
-// }
-// .project-description {
-//     padding: 0.5rem;
-//     border: solid 1px gray;
-// }

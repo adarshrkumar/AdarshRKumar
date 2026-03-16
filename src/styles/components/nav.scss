@@ -1,54 +1,42 @@
 @import '../variables/globals';
 @import '../variables/mixins';
 
-// Navigation styles
 .nav {
-    // Sidebar variant styling
     &[data-varient="sidebar"] {
         justify-content: center;
     }
 
-    // Custom property for direction
     --data-direction: attr(data-direction, type(<custom-ident>));
 
     margin-inline: auto;
     width: fit-content;
-
-    // Layout properties
     display: flex;
     flex-direction: var(--data-direction, row);
     flex-wrap: wrap;
-    gap: inherit; // Inherit gap from parent (header)
-    justify-content: flex-end;
+    gap: inherit; justify-content: flex-end;
 }
 
-// Navigation buttons
 .nav-btn {
     padding: $button-spacing $content-spacing;
     font-weight: 500;
     letter-spacing: 0.01em;
-    white-space: nowrap; // Prevent button text wrapping
-    flex-shrink: 0; // Prevent buttons from shrinking too much
+    white-space: nowrap; flex-shrink: 0;
     text-decoration: none;
     color: var(--color);
     background: transparent;
     border: none;
 
-    // Tablet and below - reduce padding
     @include respond-below(tablet) {
         padding: $button-spacing;
         font-size: 0.9rem;
     }
 
-    // Mobile - even smaller
     @include respond-below(mobile) {
         font-size: 0.85rem;
     }
 
     &:hover {
         color: var(--nav-btn-hover);
-
-        // Underline effect on text itself
         text-decoration: underline;
         text-decoration-color: var(--accent-color);
         text-decoration-thickness: 2px;
@@ -56,7 +44,6 @@
     }
 }
 
-// Override non-primary button hover - no background or color change
 .nav-btn:not([data-primary="true"]):hover {
     background-color: transparent;
     color: var(--color);
@@ -69,7 +56,6 @@
     box-shadow: none;
 }
 
-// Primary button - filled by default, transparent on hover
 .nav-btn[data-primary="true"] {
     background-color: var(--color);
     color: var(--bg);
@@ -77,7 +63,6 @@
     box-shadow: none;
 
     &:hover {
-        // Transparent on hover with lighter border and underline
         background-color: transparent;
 
         @supports (border-color: color-mix(in srgb, var(--border-color) 70%, white)) {
