@@ -4,7 +4,6 @@
     --br: 2rem;
     --pad: 2rem;
 
-    // Card background colors (lighter than base)
     --lbg: hsl(from var(--bg) h s calc(l - 5));
     --dbg: hsl(from var(--bg) h s calc(l + 10));
     --card-bg: light-dark(var(--lbg), var(--dbg));
@@ -16,7 +15,6 @@
     margin-inline: auto;
     padding: var(--pad);
 
-    // Card styling
     background-color: var(--card-bg);
     border-radius: var(--br);
     box-shadow: 0 4px 20px rgb(0 0 0 / 8%);

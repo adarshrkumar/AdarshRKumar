@@ -2,7 +2,6 @@
 @use '../variables/mixins' as *;
 @use 'sass:math' as math;
 
-// Header navigation bar
 .header {
     --shadow-size: 12px;
 
@@ -18,22 +17,19 @@
     top: 0;
     z-index: $z-index-tooltip;
 
-    // Tablet and below - reduce padding
     @include respond-below(tablet) {
         padding: $content-spacing $header-spacing;
     }
 
-    // Mobile - minimal padding
     @include respond-below(mobile) {
         padding: $content-spacing $section-spacing;
     }
 
-    // Logo link - spans all rows
     &__logo-link {
         width: 4.5rem;
         height: 4.5rem;
         aspect-ratio: 1;
-        grid-row: 1 / -1; // Span all rows from first to last
+        grid-row: 1 / -1; 
         align-self: center;
         color: var(--logo-a-color);
         background-color: var(--color);

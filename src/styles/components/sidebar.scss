@@ -1,35 +1,25 @@
-// Sidebar wrapper layout
 .wrapper {
     grid-template-columns: 1fr auto;
 }
 
-// Main sidebar
 .main-sidebar {
-    // Custom properties
     --gap: 1rem;
 
-    // Positioning
     position: sticky;
     top: 0;
     max-height: 100dvh;
-
-    // Layout properties
     padding-block: var(--gap);
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-
-    // Border styling
     border-left: solid 1px var(--bdr-clr, var(--color));
 
-    // Child element styling
     & > *:not(.divider) {
         padding-inline: var(--gap);
         height: fit-content;
     }
 }
 
-// Responsive design
 @media (width <= 492px) {
     .main-content {
         grid-template-columns: 1fr 0fr;
@@ -40,35 +30,27 @@
     }
 }
 
-// Channel stats section
 .channel-stats {
     display: grid;
     gap: var(--gap);
 
-    // Channel container
     .channel-container {
-        // Custom properties
         --padding: 5px;
 
-        // Layout properties
         box-sizing: border-box;
         padding: var(--padding);
         display: grid;
         grid-template-rows: subgrid;
         align-items: center;
         overflow: hidden;
-
-        // Border styling
         border: solid 1px var(--bdr-clr, var(--color));
         border-radius: calc(var(--padding) * 2);
 
-        // YouTube subscribe button styling
         [id*="___ytsubscribe"] {
             border-radius: var(--padding);
             overflow: hidden;
         }
 
-        // Dark theme styling
         [data-theme="dark"] & {
             background-color: var(--color);
         }

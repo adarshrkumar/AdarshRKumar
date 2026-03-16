@@ -1,11 +1,8 @@
 @use '../variables/globals' as *;
 @use '../variables/mixins' as *;
 
-// Grid variables
 $gap: $header-spacing;
 $min: 12rem;
-
-// Card styling variables
 $card-border-radius: 1rem;
 $card-shadow-subtle: 0 2px 8px rgb(0 0 0 / 6%);
 $card-shadow-hover: 0 8px 24px rgb(0 0 0 / 12%);
@@ -13,7 +10,6 @@ $card-shadow-dark-subtle: 0 2px 8px rgb(0 0 0 / 20%);
 $card-shadow-dark-hover: 0 8px 24px rgb(0 0 0 / 30%);
 $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-// Animations
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -36,40 +32,29 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-// Grid frame styles
 .grid {
     &__frame {
         $ar: 2;
 
         box-sizing: border-box;
-
-        // Size and aspect ratio
         max-width: 100%;
         aspect-ratio: var(--ar, $ar);
-
-        // Background properties
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-
-        // Border styling
         border: solid 1px var(--color);
         border-radius: 1rem;
     }
 }
 
-// Main grid layout
 .grid {
-    // Grid properties
     display: grid;
     gap: $gap;
     margin-inline: auto;
     max-width: var(--max-width, max(100%, var(--min, 1000px)));
     justify-content: center;
-
-    // Grid template columns with browser compatibility
-    grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr)); // Old browsers (no "min()")
-    grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr)); // New browsers (yes "min()")
+    grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr));
 
     // Commented out advanced grid logic for specific item counts
     // @for $i from 1 through 3 {
@@ -99,7 +84,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     // }
 }
 
-// Grid items
 .item {
     position: relative;
     box-sizing: border-box;
@@ -111,8 +95,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: $card-border-radius;
     text-decoration: inherit;
     cursor: pointer;
-
-    // Enhanced shadows with light/dark mode support
     box-shadow: $card-shadow-subtle;
 
     @media (prefers-color-scheme: dark) {
@@ -122,11 +104,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition:
         transform $transition-smooth,
         box-shadow $transition-smooth;
-
-    // Animation on load
     animation: scale-in 0.5s $transition-smooth backwards;
 
-    // Stagger animation for sequential loading
     @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
             animation-delay: #{$i * 0.05}s;
@@ -143,20 +122,17 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .item {
-            // Reveal info overlay on hover
             &__info {
                 opacity: 1;
                 transform: translateY(0);
             }
 
-            // Subtle image zoom
             &__img {
                 transform: scale(1.05);
             }
         }
     }
 
-    // Item image
     &__img {
         width: 100%;
         aspect-ratio: 1 / 1;
@@ -168,14 +144,12 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             -webkit-user-drag: none;
         }
 
-        // Background image properties
         background-image: var(--placeholder, url('/assets/placeholder.svg'));
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         transition: transform 0.6s $transition-smooth;
 
-        // Loading state - show placeholder
         &.loading {
             background-color: hsl(0deg 0% 95%);
 
@@ -183,7 +157,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 background-color: hsl(0deg 0% 20%);
             }
 
-            // Blur effect for placeholder
             &::before {
                 content: '';
                 position: absolute;
@@ -193,11 +166,9 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 opacity: 0.7;
             }
 
-            // Pulse animation for loading indicator
             animation: pulse 2s ease-in-out infinite;
         }
 
-        // Loaded state - clear, sharp image
         &.loaded {
             background: none;
             animation: fade-in 0.4s ease-out;
@@ -208,7 +179,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    // Pulse animation for loading state
     @keyframes pulse {
         0%, 100% {
             opacity: 1;
@@ -219,7 +189,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    // Item info container (overlay on image)
     &__info {
         position: absolute;
         bottom: 0;
@@ -247,7 +216,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    // Title styling
     &__title {
         color: white;
         font-size: 1rem;
@@ -260,14 +228,11 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    // Content styling
     &__content {
         color: rgb(255 255 255 / 90%);
         font-size: 0.875rem;
         margin: 0;
         text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
-
-        // Limit to 3 lines with ellipsis
         display: -webkit-box;
 
         --lc: 3;
@@ -284,7 +249,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    // Mobile touch - show info by default
     @media (width <= 768px), (hover: none) {
         .item {
             &__info {
@@ -295,7 +259,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-// Accessibility
 @media (prefers-reduced-motion: reduce) {
     .item {
         animation: fade-in 0.3s ease;

@@ -1,17 +1,13 @@
-// About page styling
 @import '../variables/globals';
 
 .about {
-    // Custom properties
     --pad: 2rem;
     --max: 1000px;
 
-    // Card background colors (lighter than base)
     --lbg: hsl(from var(--bg) h s calc(l - 5));
     --dbg: hsl(from var(--bg) h s calc(l + 10));
     --card-bg: light-dark(var(--lbg), var(--dbg));
 
-    // Layout properties
     margin-inline: auto;
     box-sizing: border-box;
     padding-inline: var(--pad);
@@ -19,12 +15,10 @@
     width: min(calc(90% - var(--pad)), var(--max));
     max-width: $max-content-width;
 
-    // Card styling
     background-color: var(--card-bg);
     border-radius: 2rem;
     box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
 
-    // Header section
     &__header {
         text-align: center;
         margin-bottom: $section-spacing * 2;
@@ -46,7 +40,6 @@
         margin: 0;
     }
 
-    // Bio content
     &__bio {
         margin-bottom: $section-spacing * 2;
 
@@ -71,7 +64,6 @@
         }
     }
 
-    // Section styling
     &__section {
         margin-bottom: $section-spacing * 2;
     }
@@ -84,7 +76,6 @@
         color: var(--color);
     }
 
-    // Skills grid
     &__skills {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -92,7 +83,6 @@
         margin-bottom: $section-spacing;
     }
 
-    // Interests grid
     &__interests {
         display: flex;
         flex-wrap: wrap;
@@ -100,7 +90,6 @@
         justify-content: center;
     }
 
-    // CTA buttons container
     &__cta {
         display: flex;
         gap: $content-spacing;
@@ -112,7 +101,6 @@
     }
 }
 
-// Skill card component
 .skill-card {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -177,7 +165,6 @@
     }
 }
 
-// Interest badge component
 .interest-badge {
     display: inline-flex;
     align-items: center;
@@ -220,7 +207,6 @@
 }
 
 
-// Contact form within about page
 .contact {
     --pad: 2rem;
     --max: 500px;
@@ -263,7 +249,6 @@
     to { opacity: 1; }
 }
 
-// Responsive design
 @media (width <= 768px) {
     .about {
         --pad: 1rem;

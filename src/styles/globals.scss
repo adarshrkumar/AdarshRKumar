@@ -284,7 +284,6 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
     flex: 1;
 }
 
-// Focus styles for accessibility
 *:focus-visible {
     outline: 2px solid var(--color);
     outline-offset: 2px;
@@ -294,7 +293,6 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
     outline: 2px solid var(--primary-btn-clr);
 }
 
-// Skip link for screen readers and keyboard users
 .skip-link {
     position: absolute;
     top: #{-40px - 4px};
