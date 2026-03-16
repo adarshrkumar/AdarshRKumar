@@ -8,6 +8,12 @@ import FancyFace from '../components/fancyFace.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 
+import Input from '../default-components/Input.astro'
+import TextArea from '../default-components/TextArea.astro'
+
+import type { FormConfig, FormField } from '../lib/types'
+import type { HTMLAttributes } from 'astro/types'
+
 // Helper functions
 // Load age first
 import age from '../lib/get-age'
@@ -57,6 +63,58 @@ const ctaButtons = [
 ]
 
 const skillSpanLength = 9;
+
+// Contact form configuration
+const formConfig: FormConfig = {
+    action: 'https://docs.google.com/forms/d/e/1FAIpQLSfleYNKUZ6MfijVAEwcIT1Gga4aOhrElpEdayw3_z_vLrs1GA/formResponse',
+    method: 'POST',
+    className: 'contact'
+}
+
+const formFields: Record<string, FormField> = {
+    name: {
+        type: 'text' as const,
+        name: 'entry.183817893',
+        id: 'name',
+        placeholder: "What's your name?",
+        required: 'TRUE',
+        align: 'left',
+        label: 'Name: '
+    },
+    email: {
+        type: 'email' as const,
+        name: 'entry.1021394857',
+        id: 'email',
+        placeholder: 'you@email.tld',
+        required: 'TRUE',
+        align: 'left',
+        label: 'Email: '
+    },
+    subject: {
+        type: 'honeypot' as const,
+        label: 'Subeject:',
+        name: 'entry.628171460',
+        id: 'subject',
+        required: 'FALSE'
+    },
+    message: {
+        type: 'textarea' as const,
+        label: 'Message:',
+        name: 'entry.1554105426',
+        id: 'message',
+        placeholder: 'Type here...',
+        required: 'TRUE'
+    },
+    submit: {
+        type: 'submit' as const,
+        name: 'submit',
+        id: 'submit',
+        value: 'Send',
+        className: 'btn',
+        align: 'right',
+        style: 'cursor: pointer; margin-left: auto;'
+    }
+}
 ---
 
 <Layout title="About">
@@ -121,6 +179,62 @@ const skillSpanLength = 9;
                     </a>
                 ))}
             </div>
+        </FadeIn>
+
+        <FadeIn delay={0.5} direction="up" duration={0.6}>
+            <section class="about__section">
+                <h2 class="about__section-title">Get in Touch</h2>
+                <iframe name="hidden_iframe" style="display: none;"></iframe>
+                <form action={formConfig.action} method={formConfig.method} class={formConfig.className} target="hidden_iframe">
+                    <Input
+                        type={formFields.name.type as HTMLAttributes<'input'>['type']}
+                        name={formFields.name.name}
+                        id={formFields.name.id}
+                        placeholder={formFields.name.placeholder}
+                        required={formFields.name.required}
+                        align={formFields.name.align as 'left' | 'right' | 'center' | undefined}
+                    >
+                        {formFields.name.label}
+                    </Input>
+
+                    <Input
+                        type={formFields.email.type as HTMLAttributes<'input'>['type']}
+                        name={formFields.email.name}
+                        id={formFields.email.id}
+                        placeholder={formFields.email.placeholder}
+                        required={formFields.email.required}
+                        align={formFields.email.align as 'left' | 'right' | 'center' | undefined}
+                    >
+                        {formFields.email.label}
+                    </Input>
+
+                    <Input
+                        type={formFields.subject.type as HTMLAttributes<'input'>['type']}
+                        name={formFields.subject.name}
+                        id={formFields.subject.id}
+                        required={formFields.subject.required}
+                    >
+                        {formFields.subject.label}
+                    </Input>
+
+                    <TextArea
+                        label={formFields.message.label}
+                        rows="1"
+                        name={formFields.message.name}
+                        id={formFields.message.id}
+                        placeholder={formFields.message.placeholder}
+                        required={formFields.message.required}
+                    />
+
+                    <Input
+                        type={formFields.submit.type as HTMLAttributes<'input'>['type']}
+                        value={formFields.submit.value}
+                        class={formFields.submit.className}
+                        align={formFields.submit.align as 'left' | 'right' | 'center' | undefined}
+                        style={formFields.submit.style}
+                    />
+                </form>
+            </section>
         </FadeIn>
     </div>
 </Layout>

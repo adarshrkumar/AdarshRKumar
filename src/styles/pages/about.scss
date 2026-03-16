@@ -220,6 +220,49 @@
 }
 
 
+// Contact form within about page
+.contact {
+    --pad: 2rem;
+    --max: 500px;
+
+    margin-inline: auto;
+    box-sizing: border-box;
+    margin-block: 1rem;
+    padding-inline: var(--pad);
+    padding-block: var(--pad);
+    width: min(calc(90% - var(--pad)), var(--max));
+    border-radius: 1rem;
+    background-color: var(--color);
+    color: var(--bg);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+    animation: scale-in 0.5s 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+
+    @media (prefers-color-scheme: dark) {
+        box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: fade-in 0.3s ease;
+    }
+}
+
+@keyframes scale-in {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 // Responsive design
 @media (width <= 768px) {
     .about {
