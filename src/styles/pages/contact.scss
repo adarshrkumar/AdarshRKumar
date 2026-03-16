@@ -44,21 +44,19 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 1rem;
 
     // Visual properties
-    background-color: var(--bg);
-    color: var(--color);
+    background-color: var(--color);
+    color: var(--bg);
     box-shadow: $contact-shadow-large;
-
-    @media (prefers-color-scheme: dark) {
-        box-shadow: $contact-shadow-dark-large;
-    }
 
     // Animation on load
     animation: scale-in 0.5s $transition-smooth backwards;
-}
 
-// Accessibility - reduced motion
-@media (prefers-reduced-motion: reduce) {
-    .contact {
+    @media (prefers-color-scheme: dark) {
+        box-shadow: $contact-shadow-dark-large;
+    }    
+
+    // Accessibility - reduced motion
+    @media (prefers-reduced-motion: reduce) {
         animation: fade-in 0.3s ease;
     }
 }
