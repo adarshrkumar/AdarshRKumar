@@ -1,28 +1,17 @@
 @use 'sass:math' as math;
 
-// Variables
 $pad: 1rem;
 
-// Mixins
-// Default styles for form elements
 @mixin default-styles() {
     appearance: none;
-
-    // Font properties
     font: inherit;
-    
-    // Text properties
     text-decoration: inherit;
     text-transform: inherit;
     text-rendering: auto;
     text-align: inherit;
     text-align-last: inherit;
-
-    // Layout properties
     direction: inherit;
     vertical-align: inherit;
-
-    // Advanced text properties
     unicode-bidi: inherit;
     unicode-range: inherit;
     text-indent: inherit;
@@ -32,12 +21,9 @@ $pad: 1rem;
     -webkit-rtl-ordering: inherit;
 }
 
-// Main styling for form elements
 @mixin main-styles() {
     padding: math.div($pad, 2);
     max-height: 100%;
-
-    // Visual properties
     background-color: var(--bg);
     color: var(--color);
     border: solid 1px var(--middle-color);
@@ -45,7 +31,6 @@ $pad: 1rem;
     text-align: center;
 }
 
-// Text input styling
 @mixin text-styles() {
     min-width: 200px;
     
@@ -59,14 +44,12 @@ $pad: 1rem;
     }
 }
 
-// Button styling
 @mixin button-styles() {
     min-width: 100px;
     width: fit-content;
     cursor: pointer;
 }
 
-// Checkbox and radio styling
 @mixin checkboxradio() {
     border: solid 1px gray;
     aspect-ratio: 1;
@@ -79,21 +62,18 @@ $pad: 1rem;
     }
 }
 
-// Placeholder styles
 ::placeholder, 
 :placeholder-shown, 
 ::placeholder {
     color: inherit;
 }
 
-// Form components
 .form-group {
     position: relative;
     padding-top: 0.5lh;
     display: flex;
     flex-direction: column;
 
-    // Label styling
     > label:not(.file label) {
         @include main-styles;
 
@@ -106,38 +86,11 @@ $pad: 1rem;
     }
 }
 
-// Form elements
-label, 
-fieldset, 
-legend, 
-datalist, 
-output, 
-option, 
-optgroup {
+label, fieldset, legend, datalist, output, option, optgroup {
     @include default-styles;
 }
 
-// Input types
 input {
-    // // Text input styling
-    // &[type="text"],
-    // &[type="password"],
-    // &[type="email"],
-    // &[type="search"],
-    // &[type="tel"],
-    // &[type="url"],
-    // &[type="number"],
-    // &[type="date"],
-    // &[type="datetime-local"],
-    // &[type="month"],
-    // &[type="time"],
-    // &[type="week"] {
-    //     @include default-styles();
-    //     @include main-styles();
-    //     @include text-styles();
-    // }
-
-    // Checkbox styling
     &[type="checkbox"] {
         @include default-styles;
         @include checkboxradio;
@@ -145,7 +98,6 @@ input {
         border-radius: 0.15em;
     }
     
-    // Radio button styling
     &[type="radio"] {
         @include default-styles;
         @include checkboxradio;
@@ -153,12 +105,10 @@ input {
         border-radius: 50%;
     }
     
-    // Image input styling
     &[type="image"] {
         @include default-styles;
     }
 
-    // Text-based inputs
     &[type="date"], 
     &[type="datetime-local"], 
     &[type="month"], 
@@ -177,14 +127,12 @@ input {
     }
 }
 
-// Textarea styling
 textarea {
     @include default-styles;
     @include main-styles;
     @include text-styles;
 }
 
-// Buttons
 button,
 input[type="button"],
 input[type="submit"], 
@@ -196,7 +144,6 @@ label:has(+ input[type="file"]) {
     @include button-styles;
 }
 
-// File input
 .form-group .file {
     display: flex;
     flex-direction: row-reverse;
@@ -215,7 +162,6 @@ input[type="color"] {
     min-width: 10px;
 }
 
-// Select elements
 select {
     @include default-styles;
     @include main-styles;
