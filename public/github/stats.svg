@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">Adarsh Kumar's GitHub Stats, Rank: B</title>
-        <desc id="descId">Total Stars Earned: 10, Total Commits  (last year) : 1539, Total PRs: 23, Total Issues: 2, Contributed to (last year): 8</desc>
+        <desc id="descId">Total Stars Earned: 10, Total Commits  (last year) : 1539, Total PRs: 23, Total Issues: 3, Contributed to (last year): 9</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 156.52004180965616;
+        stroke-dashoffset: 155.9782218783334;
       }
     }
   
@@ -207,7 +207,7 @@
         x="219.01"
         y="12.5"
         data-testid="issues"
-      >2</text>
+      >3</text>
     </g>
   </g><g transform="translate(0, 100)">
     <g class="stagger" style="animation-delay: 1050ms" transform="translate(25, 0)">
@@ -222,7 +222,7 @@
         x="219.01"
         y="12.5"
         data-testid="contribs"
-      >8</text>
+      >9</text>
     </g>
   </g>
     </svg>
