@@ -170,10 +170,10 @@ export default {
                         maxSeenGroup = group === 4 ? 3 : group;
                     }
 
-                    if (previousNode && previousGroup !== null && ((previousGroup !== (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2) || (previousGroup === (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2))) {
+                    if (previousNode && previousGroup !== null && ((previousGroup === (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2) || (previousGroup !== (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2))) {
                         context.report({
                             node: importNode,
-                            message: previousGroup !== (group === 4 ? 3 : group) ? `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${importNode.source.value}" (group ${group === 4 ? 3 : group})` : `Remove blank line between same import group.`,
+                            message: previousGroup === (group === 4 ? 3 : group) ? `Remove blank line between same import group.` : `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${importNode.source.value}" (group ${group === 4 ? 3 : group})`,
                         });
                     }
 
