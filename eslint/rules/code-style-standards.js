@@ -144,7 +144,7 @@ export default {
                         const scriptStartIndex = match.index + match[0].indexOf('>') + 1;
                         const scriptLineOffset = code.substring(0, scriptStartIndex).split(/\r?\n/).length - 1;
 
-                        // Check 6 (Astro script): Arrow function definitions
+                        // Check 7 (Astro script): Arrow function definitions
                         const arrowFunctionRegex = /(?:const|let|var|async)\s+(\w+)\s*=\s*(?:async\s*)?(?:\([^)]*\)|\w+)\s*=>/g;
                         let arrowMatch;
                         while ((arrowMatch = arrowFunctionRegex.exec(scriptContent)) !== null) {
@@ -324,6 +324,22 @@ export default {
                     }
                 });
 
+                // Check 1b: Unused variables (Astro files only)
+                if (context.filename.endsWith('.astro')) {
+                    const scope = context.sourceCode.scopeManager?.acquire?.(node);
+                    if (scope) {
+                        scope.variables.forEach(variable => {
+                            if (variable.defs.length > 0 && variable.references.length === 0 && !variable.name.startsWith('_')) {
+                                const def = variable.defs[0];
+                                context.report({
+                                    loc: def.node.loc,
+                                    message: `Variable '${variable.name}' is defined but never used. Prefix with '_' to ignore.`
+                                });
+                            }
+                        });
+                    }
+                }
+
                 // Check 2: Excessive newlines (3 or more consecutive, ignoring first skipLines lines of Astro frontmatter)
                 const skipLines = 3; // Number of lines to skip for Astro frontmatter
                 const codeAfterFrontmatter = code.replace(/(?:\r\n|\r|\n)+$/, '').split(/\r\n|\r|\n/).slice(skipLines).join('\n');
@@ -431,7 +447,7 @@ export default {
                 checkSingleDeclarationBlock(node, node.body, context);
             },
             ArrowFunctionExpression(node) {
-                // Check 6: Arrow function definitions
+                // Check 7: Arrow function definitions
                 if (!isAllowedAsFunctionArgument(node) && !isAllowedIife(node) && !isAllowedApiHandler(node, context.filename.includes('/pages/api/')) && !isAllowedExecuteProperty(node) && !isAllowedObjectProperty(node)) {
                     context.report({
                         node,
@@ -439,7 +455,7 @@ export default {
                     });
                 }
 
-                // Check 7: Arrow function parameter parentheses (as-needed)
+                // Check 8: Arrow function parameter parentheses (as-needed)
                 if (!node.params[0] || node.params.length !== 1) return;
                 if (node.params[0].type === 'RestElement') return;
                 if (node.returnType?.typeAnnotation?.type === 'TSTypePredicate') return;
@@ -466,7 +482,7 @@ export default {
                 });
             },
             ConditionalExpression(node) {
-                // Check 8: Unnecessary parentheses around ternary condition test for simple identifiers/properties
+                // Check 9: Unnecessary parentheses around ternary condition test for simple identifiers/properties
                 if (!node.test) return;
 
                 // Get the first token before the test and the last token after it

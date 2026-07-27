@@ -82,7 +82,13 @@ export default [
             ...js.configs.recommended.rules,
             ...tsPlugin.configs.recommended.rules,
             '@typescript-eslint/no-explicit-any': 'error',
-            '@typescript-eslint/no-unused-vars': 'off',
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_'
+                }
+            ],
             'no-multiple-empty-lines': [
                 'error',
                 {
