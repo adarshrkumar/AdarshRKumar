@@ -1,5 +1,4 @@
 // Instagram data fetching utilities
-// Uses inflact.com API to fetch profile, posts, reels, and stories
 /* global btoa */
 
 import type { InflactMediaItem, InflactEndpoints, InstagramData, InstagramMediaNode, InstagramProfile, InstagramStory } from './types';

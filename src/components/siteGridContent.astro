@@ -3,12 +3,6 @@
 import '../styles/components/grid.scss'
 import type { SiteGridContentProps, GridOptions } from '../lib/types'
 
-// Helper functions
-// Helper function to format class items
-function formatClassItems(classItems: string | undefined): string {
-    return classItems ? ` ${classItems}` : ''
-}
-
 // Helper function to generate CSS custom properties from options
 function generateCustomProperties(options: GridOptions | undefined): string {
     if (!options || typeof options !== 'object') return '';
@@ -40,14 +34,12 @@ function buildCSSClass(classItems: string): string {
     return `${baseClass}${classItems}`
 }
 
-// Component props and processing
 // Get component props
 const { id, classItems, options }: SiteGridContentProps = Astro.props
 
 // Process props
-const formattedClassItems = formatClassItems(classItems)
 const customProperties = generateCustomProperties(options)
-const cssClass = buildCSSClass(formattedClassItems)
+const cssClass = buildCSSClass(classItems ? ` ${classItems}` : '')
 
 ---
 

@@ -1,5 +1,4 @@
-// Calculates current age based on date of birth
-// Accounts for whether birthday has occurred this year
+// Calculates current age based on date of birth; Accounts for whether birthday has occurred this year
 
 // Date of birth configuration
 const dateOfBirth = {
@@ -8,7 +7,6 @@ const dateOfBirth = {
     year: 2007
 }
 
-// Current date processing
 // Get current date
 const currentDate = new Date()
 const currentDateInfo = {
@@ -16,8 +14,6 @@ const currentDateInfo = {
     day: currentDate.getDate(),
     year: currentDate.getFullYear()
 }
-
-// Age calculation
 
 // Calculate age based on whether birthday has occurred this year
 function calculateAge(): number {

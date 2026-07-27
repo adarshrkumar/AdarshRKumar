@@ -1,5 +1,4 @@
 // Centralized type definitions for the AdarshRKumar.dev website
-// All interfaces and types used across the application
 
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 

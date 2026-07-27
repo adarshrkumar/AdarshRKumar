@@ -1,5 +1,4 @@
 // API endpoint for creating new blog posts in the database
-// POST /api/blog/post/new
 
 import { db } from '../../../../db/initialize.ts'
 import { posts } from '../../../../db/schema.ts'

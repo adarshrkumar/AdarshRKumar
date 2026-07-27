@@ -10,7 +10,6 @@ import AnimatedCard from '../components/motion/AnimatedCard.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 
-// Helper functions
 // Helper function to determine link target based on URL
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
     let target = '_blank'
@@ -45,7 +44,6 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
     return `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
 }
 
-// Configuration and data loading
 // Load portfolio items that have projectsCategory field
 const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })).filter((item): item is PortfolioItem => {
     return !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)

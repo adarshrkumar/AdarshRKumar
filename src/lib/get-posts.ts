@@ -159,7 +159,6 @@ export function getLocalPosts(): Post[] {
 }
 
 // Main function to get all published blog posts (both local and DB)
-// Sorted by created date (most recent first)
 export async function getPosts(): Promise<Post[]> {
     const localPosts = getLocalPosts()
     const dbPosts = await getDBPosts()

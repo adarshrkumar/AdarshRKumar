@@ -5,7 +5,6 @@ import sanitizeMD from '../lib/sanitize-md'
 import { getPostsForRSS } from '../lib/get-posts'
 import type { AstroContext } from '../lib/types'
 
-// Helper functions
 // Helper function to clean and normalize about content
 function cleanAboutContent(content: string): string {
     let cleanedContent = content
@@ -25,7 +24,6 @@ function cleanAboutContent(content: string): string {
     return cleanedContent
 }
 
-// Data loading and processing
 // Load about content
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
