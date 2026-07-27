@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const parserFiles = fs.readdirSync('./eslint/parsers').filter(f => f.endsWith('.js'));
+const parserFiles = fs.readdirSync('./eslint/parsers').filter(f => f.endsWith('.js') && !f.startsWith('_'));
 
 export default Object.fromEntries(
     await Promise.all(
