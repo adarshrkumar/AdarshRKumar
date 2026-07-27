@@ -42,7 +42,8 @@ try {
     if (isValidRSSResponse(result)) {
         channelFeed = result.feed
         channelVideos = result.items
-    } else {
+    }
+    else {
         console.warn(`No valid videos found for channel: ${channelId}`)
     }
 } catch (error) {
