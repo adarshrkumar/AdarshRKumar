@@ -40,9 +40,7 @@ async function fetchInstagramEndpoint(endpoint: string): Promise<unknown> {
     return json?.data;
 }
 
-/**
- * Recursively search for media edges in API response
- */
+// Recursively search for media edges in API response
 function findEdges(obj: unknown, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
 
@@ -84,9 +82,7 @@ function normalizeMediaNode(item: InflactMediaItem): InstagramMediaNode {
     };
 }
 
-/**
- * Extract media nodes from API response data
- */
+// Extract media nodes from API response data
 function extractMediaNodes(data: unknown): InstagramMediaNode[] {
     if (!data || typeof data !== 'object') return [];
 

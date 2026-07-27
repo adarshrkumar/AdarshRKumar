@@ -53,9 +53,7 @@ export function extractSlugFromFilePath(filePath: string): string {
     return slug
 }
 
-/**
- * Helper function to clean and normalize text content
- */
+// Helper function to clean and normalize text content
 export function cleanTextContent(text: string): string {
     let cleanText = text
     
@@ -72,9 +70,7 @@ export function cleanTextContent(text: string): string {
     return cleanText
 }
 
-/**
- * Helper function to create preview content with trimming
- */
+// Helper function to create preview content with trimming
 export function createPreviewContent(text: string, maxLength: number = 50): string {
     let preview = text
     
@@ -92,9 +88,7 @@ export function createPreviewContent(text: string, maxLength: number = 50): stri
     return preview
 }
 
-/**
- * Helper function to generate screenshot image data
- */
+// Helper function to generate screenshot image data
 export function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512, siteUrl?: string) {
     // Handle relative URLs by prefixing with site URL
     let fullUrl = postUrl
