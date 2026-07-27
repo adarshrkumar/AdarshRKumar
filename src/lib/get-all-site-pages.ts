@@ -1,4 +1,4 @@
-import type { PageImport } from "./types";
+import type { PageImport } from './types';
 
 export default function getAllSitePages(): PageImport[] {
     const items = import.meta.glob('../pages/*.astro', { eager: true })

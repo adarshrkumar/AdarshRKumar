@@ -147,7 +147,9 @@ export async function getDBPosts(): Promise<Post[]> {
 // Main function to get all published blog posts from files
 export function getLocalPosts(): Post[] {
     const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
-    const publishedPosts: Post[] = Object.values(blogPostItems)
+    const publishedPosts: Post[] = Object.values(blogPostItems).filter((item): item is Post => {
+        return Boolean(item && typeof item === 'object' && 'file' in item);
+    })
         .filter(item => {
             const fileName = item.file.split('/').pop() || ''
             return !fileName.startsWith('_')

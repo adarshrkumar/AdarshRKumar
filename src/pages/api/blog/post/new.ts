@@ -80,9 +80,9 @@ export const POST: APIRoute = async ({ request }) => {
         }
 
         // Generate slug from title if not provided
-        let slug = body.slug;
+        let slug: string = typeof body.slug === 'string' ? body.slug : '';
         if (!slug) {
-            slug = title
+            slug = (typeof title === 'string' ? title : '')
                 .toLowerCase()
                 .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
                 .replace(/\s+/g, '-')          // Replace spaces with hyphens
