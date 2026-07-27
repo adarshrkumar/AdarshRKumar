@@ -4,7 +4,6 @@ import * as cheerio from 'cheerio'
 
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
 
-import '../styles/pages/index.scss'
 import Layout from '../layouts/Layout.astro'
 import _Hero from '../components/hero.astro'
 import FancyFace from '../components/fancyFace.astro'
@@ -12,6 +11,8 @@ import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
+
+import '../styles/pages/index.scss'
 
 const readmeFile = await import('../../README.md')
 const readmeContent = await readmeFile.compiledContent()
