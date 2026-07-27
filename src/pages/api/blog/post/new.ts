@@ -8,7 +8,7 @@ import { posts } from '../../../../db/schema.ts';
 
 // Helper function to add CORS headers
 const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',//'https://adarshrkumar.app.n8n.cloud',
+    'Access-Control-Allow-Origin': 'https://adarshrkumar.app.n8n.cloud',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
