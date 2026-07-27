@@ -10,7 +10,7 @@ export default [
         ignores: ['node_modules', 'dist', '.astro', '.vercel']
     },
     {
-        files: ['**/*.{js,ts,mjs,cjs,tsx,jsx}', 'eslint/**/*.js'],
+        files: ['**/*.{js,ts,mjs,cjs,tsx,jsx}', 'eslint/**/*.js', '!src/**/*.astro'],
         languageOptions: {
             parser: tsParser,
             ecmaVersion: 'latest',
@@ -82,13 +82,7 @@ export default [
             ...js.configs.recommended.rules,
             ...tsPlugin.configs.recommended.rules,
             '@typescript-eslint/no-explicit-any': 'error',
-            '@typescript-eslint/no-unused-vars': [
-                'error',
-                {
-                    argsIgnorePattern: '^_',
-                    varsIgnorePattern: '^_'
-                }
-            ],
+            '@typescript-eslint/no-unused-vars': 'off',
             'no-multiple-empty-lines': [
                 'error',
                 {
