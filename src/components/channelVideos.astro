@@ -4,24 +4,6 @@ import LargeFrame from '../components/largeFrame.astro'
 import '../styles/pages/youtube.scss'
 import type { RSSResponse } from '../lib/types'
 
-// Helper functions
-// Helper function to build RSS URL for YouTube channel
-function buildYouTubeRSSUrl(channelId: string): string {
-    const apiKey = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
-    const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-    return `https://api.rss2json.com/v1/api.json?api_key=${atob(apiKey)}&rss_url=${encodeURIComponent(channelURL)}`
-}
-
-// Helper function to validate RSS response
-function isValidRSSResponse(result: RSSResponse): boolean {
-    return !!(result && result.status === 'ok' && result.feed && result.items && result.items.length > 0)
-}
-
-// Helper function to limit videos based on count
-function shouldIncludeVideo(index: number, maxVideos: number | string): boolean {
-    return typeof maxVideos === 'string' || index < maxVideos
-}
-
 // Component props and configuration
 // Get component props
 const { id: channelId, vidsPerChannel } = Astro.props
@@ -31,17 +13,18 @@ const maxVideosPerChannel = vidsPerChannel || 'all'
 
 // Data fetching
 // Fetch channel data
-let channelFeed: RSSResponse = { status: 'error' }
-let channelVideos: Array<{ link?: string; title?: string }> = []
+let channel: { feed: RSSResponse; videos: Array<{ link?: string; title?: string }> } = { feed: { status: 'error' }, videos: [] }
 
 try {
-    const rssUrl = buildYouTubeRSSUrl(channelId)
+    const apiKey = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
+    const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+    const rssUrl = `https://api.rss2json.com/v1/api.json?api_key=${atob(apiKey)}&rss_url=${encodeURIComponent(channelURL)}`
+
     const response = await fetch(rssUrl)
     const result = await response.json()
 
-    if (isValidRSSResponse(result)) {
-        channelFeed = result.feed
-        channelVideos = result.items
+    if (result && result.status === 'ok' && result.feed && result.items && result.items.length > 0) {
+        channel = result
     }
     else {
         console.warn(`No valid videos found for channel: ${channelId}`)
@@ -54,15 +37,15 @@ try {
 
 <!-- Channel videos component -->
 {
-    channelVideos.map((video, videoIndex) => {
-        if (!shouldIncludeVideo(videoIndex, maxVideosPerChannel)) {
+    channel.videos.map((video, videoIndex) => {
+        if (typeof maxVideosPerChannel !== 'string' && videoIndex >= maxVideosPerChannel) {
             return ''
         }
 
         return (
             <LargeFrame
                 video={video}
-                feed={channelFeed}
+                feed={channel.feed}
             />
         )
     })
