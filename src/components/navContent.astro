@@ -12,35 +12,27 @@ function processNavItem(item: NavItem) {
     var name = item.name
     var url = item.url
     var target = item.target
-    if (!!target === false) {
-        target = '_self'
-    }
+    if (!target) target = '_self';
 
-    if (!!url) {
+    if (url) {
         if (url.includes('://')) {
             var domain = url.split('://')[1]
-            if (domain.includes('/')) domain = domain.split('/')[0]
-            if (new URL(`https://${domain}`) !== Astro.site) {
-                target = '_black'
-            }
+            if (domain.includes('/')) domain = domain.split('/')[0];
+            if (new URL(`https://${domain}`) !== Astro.site) target = '_black';
         }
         else if (!url.endsWith('/')) url += '/'
         // if (url.endsWith('/')) url = url.slice(0, -1)
     }
-    else if (!!url === false) {
+    else {
         url = '/'
-
-        if (name !== 'Home') {
-            url += name.toLowerCase()
-        }
+        if (name !== 'Home') url += name.toLowerCase();
     }
 
     var isPrimary = false
     // Normalize both URLs for comparison (remove trailing slash except for root)
     var normalizedUrl = url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url
     var normalizedCurrentPath = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath
-    if (normalizedUrl === normalizedCurrentPath) isPrimary = true
-
+    if (normalizedUrl === normalizedCurrentPath) isPrimary = true;
 
     return { url, target, isPrimary, name }
 }
