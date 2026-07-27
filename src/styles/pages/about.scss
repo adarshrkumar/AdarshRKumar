@@ -1,4 +1,4 @@
-@import '../variables/globals';
+@use '../variables/globals' as *;
 
 .about {
     --pad: 2rem;

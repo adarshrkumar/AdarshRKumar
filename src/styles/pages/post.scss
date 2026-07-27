@@ -1,5 +1,5 @@
-@import '../variables/globals';
-@import '../variables/mixins';
+@use '../variables/globals' as *;
+@use '../variables/mixins' as *;
 
 $post-border-radius: 1rem;
 $post-shadow-subtle: 0 2px 8px rgb(0 0 0 / 6%);
