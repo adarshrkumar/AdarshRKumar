@@ -1,7 +1,7 @@
 /**
  * Extracts a clean filename from a file path
  * Handles complex extensions and query parameters
- * 
+ *
  * @param name - The file path or filename to process
  * @returns Clean filename without path, query params, or complex extensions
  */
