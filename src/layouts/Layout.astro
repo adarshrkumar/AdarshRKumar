@@ -1,14 +1,15 @@
 ---
 // Imports
-import type { SiteConfig, LayoutProps } from '../lib/types'
-
 import Analytics from '@vercel/analytics/astro'
+
+import type { SiteConfig, LayoutProps } from '../lib/types'
+import age from '../lib/get-age'
+import aboutContent from '../lib/get-raw-about-content'
+
 import '../styles/globals.scss'
 import Header from '../components/header.astro'
 // import Sidebar from '../components/sidebar.astro'
 import SettingsScript from '../scripts/settings.astro'
-import age from '../lib/get-age'
-import aboutContent from '../lib/get-raw-about-content'
 
 // Site configuration
 const siteConfig: SiteConfig = {
