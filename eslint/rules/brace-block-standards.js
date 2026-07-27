@@ -7,15 +7,11 @@ function checkSingleDeclarationBlock(node, blockNode, context) {
         return;
     }
 
-    const parentStartLine = node.loc?.start?.line;
-    const parentEndLine = blockNode.loc?.start?.line;
-    if (!parentStartLine || !parentEndLine || parentStartLine !== parentEndLine) {
+    if (!node.loc?.start?.line || !blockNode.loc?.start?.line || node.loc?.start?.line !== blockNode.loc?.start?.line) {
         return;
     }
 
-    const parentCode = context.sourceCode.getText(node).trim();
-    const statementCode = context.sourceCode.getText(blockNode.body[0]).trim();
-    const condensedLine = `${parentCode} ${statementCode}`;
+    const condensedLine = `${context.sourceCode.getText(node).trim()} ${context.sourceCode.getText(blockNode.body[0]).trim()}`;
     if (condensedLine.length >= 100) return;
 
     const reportObj = {
@@ -25,14 +21,11 @@ function checkSingleDeclarationBlock(node, blockNode, context) {
 
     if (!context.filename.endsWith('.astro')) {
         reportObj.fix = function(fixer) {
-            const openBraceToken = context.sourceCode.getFirstToken(blockNode);
-            const closeBraceToken = context.sourceCode.getLastToken(blockNode);
-            const beforeBrace = context.sourceCode.text[openBraceToken.range[0] - 1];
+            const beforeBrace = context.sourceCode.text[context.sourceCode.getFirstToken(blockNode).range[0] - 1];
             const needsSpace = beforeBrace !== ' ' && beforeBrace !== '\t' && beforeBrace !== '\n';
-            const spacing = needsSpace ? ' ' : '';
             return fixer.replaceTextRange(
-                [openBraceToken.range[0], closeBraceToken.range[1]],
-                `${spacing}${statementCode}`
+                [context.sourceCode.getFirstToken(blockNode).range[0], context.sourceCode.getLastToken(blockNode).range[1]],
+                `${needsSpace ? ' ' : ''}${context.sourceCode.getText(blockNode.body[0]).trim()}`
             );
         };
     }
@@ -55,16 +48,15 @@ export default {
             IfStatement(node) {
                 // Check 3: If/else brace placement
                 if (node.alternate) {
-                    const consequentClosingBrace = context.sourceCode.getLastToken(node.consequent);
-                    const elseToken = context.sourceCode.getTokenAfter(consequentClosingBrace);
+                    const elseToken = context.sourceCode.getTokenAfter(context.sourceCode.getLastToken(node.consequent));
 
-                    if (elseToken && elseToken.value === 'else' && consequentClosingBrace.loc.end.line === elseToken.loc.start.line) {
+                    if (elseToken && elseToken.value === 'else' && context.sourceCode.getLastToken(node.consequent).loc.end.line === elseToken.loc.start.line) {
                         context.report({
                             node: elseToken,
                             message: 'Closing curly brace appears on the same line as the subsequent if else block',
                             fix(fixer) {
                                 return fixer.replaceTextRange(
-                                    [consequentClosingBrace.range[1], elseToken.range[0]],
+                                    [context.sourceCode.getLastToken(node.consequent).range[1], elseToken.range[0]],
                                     '\n'
                                 );
                             }
@@ -80,18 +72,16 @@ export default {
             },
             TryStatement(node) {
                 // Check 4: Try/catch/finally must stay on same line
-                const tryBlockClosingBrace = context.sourceCode.getLastToken(node.block);
-
                 if (node.handler) {
-                    const catchToken = context.sourceCode.getTokenAfter(tryBlockClosingBrace);
+                    const catchToken = context.sourceCode.getTokenAfter(context.sourceCode.getLastToken(node.block));
 
-                    if (catchToken && catchToken.value === 'catch' && tryBlockClosingBrace.loc.end.line !== catchToken.loc.start.line) {
+                    if (catchToken && catchToken.value === 'catch' && context.sourceCode.getLastToken(node.block).loc.end.line !== catchToken.loc.start.line) {
                         context.report({
                             node: catchToken,
                             message: 'catch block must be on the same line as closing brace: } catch',
                             fix(fixer) {
                                 return fixer.replaceTextRange(
-                                    [tryBlockClosingBrace.range[1], catchToken.range[0]],
+                                    [context.sourceCode.getLastToken(node.block).range[1], catchToken.range[0]],
                                     ' '
                                 );
                             }
@@ -99,16 +89,15 @@ export default {
                     }
 
                     if (node.finalizer) {
-                        const catchBlockClosingBrace = context.sourceCode.getLastToken(node.handler.body);
-                        const finallyToken = context.sourceCode.getTokenAfter(catchBlockClosingBrace);
+                        const finallyToken = context.sourceCode.getTokenAfter(context.sourceCode.getLastToken(node.handler.body));
 
-                        if (finallyToken && finallyToken.value === 'finally' && catchBlockClosingBrace.loc.end.line !== finallyToken.loc.start.line) {
+                        if (finallyToken && finallyToken.value === 'finally' && context.sourceCode.getLastToken(node.handler.body).loc.end.line !== finallyToken.loc.start.line) {
                             context.report({
                                 node: finallyToken,
                                 message: 'finally block must be on the same line as closing brace: } finally',
                                 fix(fixer) {
                                     return fixer.replaceTextRange(
-                                        [catchBlockClosingBrace.range[1], finallyToken.range[0]],
+                                        [context.sourceCode.getLastToken(node.handler.body).range[1], finallyToken.range[0]],
                                         ' '
                                     );
                                 }
@@ -117,15 +106,15 @@ export default {
                     }
                 }
                 else if (node.finalizer) {
-                    const finallyToken = context.sourceCode.getTokenAfter(tryBlockClosingBrace);
+                    const finallyToken = context.sourceCode.getTokenAfter(context.sourceCode.getLastToken(node.block));
 
-                    if (finallyToken && finallyToken.value === 'finally' && tryBlockClosingBrace.loc.end.line !== finallyToken.loc.start.line) {
+                    if (finallyToken && finallyToken.value === 'finally' && context.sourceCode.getLastToken(node.block).loc.end.line !== finallyToken.loc.start.line) {
                         context.report({
                             node: finallyToken,
                             message: 'finally block must be on the same line as closing brace: } finally',
                             fix(fixer) {
                                 return fixer.replaceTextRange(
-                                    [tryBlockClosingBrace.range[1], finallyToken.range[0]],
+                                    [context.sourceCode.getLastToken(node.block).range[1], finallyToken.range[0]],
                                     ' '
                                 );
                             }
