@@ -166,7 +166,7 @@ export default {
                     if ((group === 4 ? 3 : group) < maxSeenGroup) {
                         context.report({
                             node: importNode,
-                            message: 'Import order must be: external non-drizzle, then drizzle/db, then lib imports, then remaining ts/tsx/cjs/mjs imports, then remaining non-(ts/js*/astro/scss) files, then astro/scss files.',
+                            message: 'Import order must be: external non-astro/drizzle, then drizzle/db, then astro, then lib imports, then remaining ts/tsx/cjs/mjs imports, then remaining non-(ts/js*/astro/scss) files, then astro/scss files.',
                         });
                     }
 
