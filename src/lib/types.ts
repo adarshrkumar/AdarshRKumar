@@ -68,7 +68,6 @@ export interface VideoItem {
     title?: string;
 }
 
-
 // YouTube types
 export interface YouTubeVideo {
     guid: string;

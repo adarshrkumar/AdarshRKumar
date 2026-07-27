@@ -2,6 +2,7 @@
 // POST /api/blog/post/new
 
 import type { APIRoute } from 'astro';
+
 import { db } from '../../../../db/initialize.ts';
 import { posts } from '../../../../db/schema.ts';
 
@@ -23,7 +24,7 @@ export const OPTIONS: APIRoute = async () => {
 export const POST: APIRoute = async ({ request }) => {
     try {
         const contentType = request.headers.get('content-type') || '';
-        let body: any = {};
+        let body: Record<string, unknown> = {};
 
         // Parse based on content type
         if (contentType.includes('application/json')) {
@@ -127,7 +128,7 @@ export const POST: APIRoute = async ({ request }) => {
             }
         );
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Error creating post:', error);
 
         // Handle duplicate slug error

@@ -2,9 +2,11 @@
 // GET /api/blog/post/get
 
 import type { APIRoute } from 'astro';
+
+import { eq, and, like } from 'drizzle-orm';
+
 import { db } from '../../../../db/initialize.ts';
 import { posts } from '../../../../db/schema.ts';
-import { eq, and, like } from 'drizzle-orm';
 
 // Helper function to add CORS headers
 const corsHeaders = {
@@ -89,7 +91,7 @@ export const GET: APIRoute = async ({ url }) => {
             }
         );
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Error retrieving posts:', error);
 
         // Return generic error response
