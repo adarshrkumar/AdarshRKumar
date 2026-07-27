@@ -189,17 +189,6 @@ export default {
                                 }
                             }
 
-                            // Check for trailing whitespace
-                            if (/[ \t]+$/.test(line) && !isMistakenTrailingWhitespaceIssue(context.filename, scriptLineOffset + i + 1, line.length - line.trimEnd().length + 1)) {
-                                context.report({
-                                    loc: {
-                                        line: scriptLineOffset + i + 1,
-                                        column: line.length - line.trimEnd().length + 1
-                                    },
-                                    message: 'Found trailing whitespace. Remove spaces or tabs at the end of lines.'
-                                });
-                            }
-
                             // Check for if/else brace placement: } else should be on separate lines
                             if (/}\s*else\s/.test(line)) {
                                 context.report({
