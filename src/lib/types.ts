@@ -347,6 +347,8 @@ export interface InflactMediaItem {
     edge_media_to_comment?: { count: number };
 }
 
+export type InflactEndpoints = 'profile' | 'posts' | 'reels' | 'stories';
+
 export interface InstagramStory {
     image_versions2?: { candidates: Array<{ url: string }> };
     video_versions?: Array<{ url: string }>;
