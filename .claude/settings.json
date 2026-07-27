@@ -75,7 +75,9 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(* git add *)",
-      "Bash(* git commit *)"
+      "Bash(* git commit *)",
+      "Bash(npm run check 2>&1)",
+      "Bash(npm run check 2>&1 | grep *)"
     ],
     "ask": []
   }
