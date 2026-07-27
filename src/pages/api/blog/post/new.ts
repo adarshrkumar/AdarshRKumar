@@ -57,13 +57,11 @@ export const POST: APIRoute = async ({ request }) => {
             }
         }
 
-        // Extract fields with defaults
-        const {
-            title,
-            content,
-            author = 'adarshrkumar',
-            categories = 'general'
-        } = body;
+        // Extract fields with defaults, ensuring they are strings
+        const title = typeof body.title === 'string' ? body.title : '';
+        const content = typeof body.content === 'string' ? body.content : '';
+        const author = typeof body.author === 'string' ? body.author : 'adarshrkumar';
+        const categories = typeof body.categories === 'string' ? body.categories : 'general';
 
         // Validate required fields
         if (!title || !content) {
