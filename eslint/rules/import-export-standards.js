@@ -171,9 +171,8 @@ export default {
                         maxSeenGroup = group === 4 ? 3 : group;
                     }
 
-                    if (previousNode && previousGroup !== null && previousGroup !== (group === 4 ? 3 : group)) {
-                        const hasBlankLineBetweenGroups = (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2;
-                        if (!hasBlankLineBetweenGroups) {
+                    if (previousNode && previousGroup !== null) {
+                        if (previousGroup !== group === 4 ? 3 : group && !(importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2) {
                             context.report({
                                 node: importNode,
                                 message: `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${source}" (group ${group === 4 ? 3 : group})`,
@@ -194,12 +193,11 @@ export default {
                     if (typeof source !== 'string') continue;
 
                     const group = getImportGroup(source);
-                    const normalizedGroup = group === 4 ? 3 : group;
 
-                    if (normalizedGroup !== currentGroupNumber) {
+                    if (group === 4 ? 3 : group !== currentGroupNumber) {
                         // New import group, reset tracking
                         currentGroupImports = [];
-                        currentGroupNumber = normalizedGroup;
+                        currentGroupNumber = group === 4 ? 3 : group;
                     }
 
                     currentGroupImports.push(importNode);
