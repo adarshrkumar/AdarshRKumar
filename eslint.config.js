@@ -10,7 +10,7 @@ export default [
         ignores: ['node_modules', 'dist', '.astro', '.vercel']
     },
     {
-        files: ['**/*.{js,ts,mjs,cjs,tsx,jsx}', 'eslint/**/*.js', '!src/**/*.astro'],
+        files: ['**/*.{js,ts,mjs,cjs,tsx,jsx}', 'eslint/**/*.js'],
         languageOptions: {
             parser: tsParser,
             ecmaVersion: 'latest',
@@ -97,6 +97,7 @@ export default [
     {
         files: ['src/**/*.css'],
         plugins: {
+            '@typescript-eslint': tsPlugin,
             'custom': { rules },
         },
         rules: {
