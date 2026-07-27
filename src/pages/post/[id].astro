@@ -26,7 +26,8 @@ const authorInfo = authors[authorUsername as keyof typeof authors];
         <a href={`/author/${authorUsername}`} class="author">{authorInfo.displayName}</a> | <span class="date">{currentPost.frontmatter.date}</span>
     </section>
     <section class="post__area">
-        <article class="post__content" set:html={currentPost.compiledContent?.() || ''}></article>        <section class="giscus" />
+        <article class="post__content" set:html={currentPost.compiledContent?.() || ''}></article>
+        <section class="giscus" />
         <script
             is:inline
             src="https://giscus.app/client.js"
