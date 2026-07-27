@@ -1,7 +1,7 @@
 // Instagram data fetching utilities
 // Uses inflact.com API to fetch profile, posts, reels, and stories
 
-import type { InflactMediaItem, InstagramData, InstagramMediaNode, InstagramProfile, InstagramStory } from './types';
+import type { InflactMediaItem, InflactEndpoints, InstagramData, InstagramMediaNode, InstagramProfile, InstagramStory } from './types';
 
 // API configuration (tokens may expire and need refreshing)
 const INSTAGRAM_USERNAME = 'adarsh.r.kumar';
@@ -45,9 +45,9 @@ function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
 
     // Check for edge_owner_to_timeline_media or edge_felix_video_timeline patterns
-    for (const key of Object.keys(obj)) {
-        if (key.startsWith('edge_') && key.includes('media') || key.startsWith('edge_felix')) {
-            const edge = obj[key as keyof typeof obj];
+    for (const key in obj) {
+        if ((key.startsWith('edge_') && key.includes('media')) || key.startsWith('edge_felix')) {
+            const edge = obj[key as keyof object];
             if (edge?.edges?.length) {
                 return edge.edges.map(e => e.node);
             }
@@ -83,7 +83,7 @@ function normalizeMediaNode(item: InflactMediaItem): InstagramMediaNode {
 }
 
 // Extract media nodes from API response data
-function extractMediaNodes(data: unknown): InstagramMediaNode[] {
+function extractMediaNodes(data: object): InstagramMediaNode[] {
     if (!data || typeof data !== 'object') return [];
 
     // Try to find edges recursively in the response (graph API format)
@@ -109,12 +109,12 @@ function extractMediaNodes(data: unknown): InstagramMediaNode[] {
 // Main function: fetch all Instagram data resiliently
 export async function getInstagramData(): Promise<InstagramData> {
     try {
-        const endpoints = ['profile', 'posts', 'reels', 'stories'] as const;
+        const endpoints: (InflactEndpoints)[] = ['profile', 'posts', 'reels', 'stories'];
         const results = await Promise.allSettled(
             endpoints.map(endpoint => fetchInstagramEndpoint(endpoint))
         );
 
-        const data: Record<string, unknown> = {};
+        const data: Record<string, object> = {};
         for (let i = 0; i < endpoints.length; i++) {
             const result = results[i];
             if (result.status === 'fulfilled' && result.value) {
