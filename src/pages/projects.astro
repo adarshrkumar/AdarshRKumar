@@ -16,27 +16,19 @@ function determineLinkTarget(url: string, siteUrl: string | URL | undefined): st
     let target = '_blank'
 
     // Handle protocol-relative URLs
-    if (url.startsWith('//')) {
-        url = `https:${url}`
-    }
+    if (url.startsWith('//')) url = `https:${url}`;
 
     // Extract domain from URL
     let domain = url
     if (domain.includes('://')) {
         domain = domain.split('://')[1]
-        if (domain.includes('/')) {
-            domain = domain.split('/')[0]
-        }
-        if (domain.startsWith('www.')) {
-            domain = domain.slice('www.'.length)
-        }
+        if (domain.includes('/')) domain = domain.split('/')[0];
+        if (domain.startsWith('www.')) domain = domain.slice('www.'.length);
         domain = `https://${domain}`
     }
 
     // Check if it's an internal link
-    if (!url.includes(':') || domain === siteUrl?.toString()) {
-        target = '_self'
-    }
+    if (!url.includes(':') || domain === siteUrl?.toString()) target = '_self';
 
     return target
 }

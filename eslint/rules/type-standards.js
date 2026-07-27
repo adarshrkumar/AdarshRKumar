@@ -23,6 +23,8 @@ export default {
 
         return {
             TSAsExpression(node) {
+                if (node.typeAnnotation?.type === 'TSTypeOperator' && node.typeAnnotation.operator === 'keyof' && node.typeAnnotation.typeParameter?.type === 'TSTypeQuery') return;
+
                 context.report({
                     node,
                     message: 'Type casts (as expressions) are not allowed. Use proper typing or type annotations instead.'
