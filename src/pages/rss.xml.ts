@@ -1,5 +1,6 @@
 // Imports
 import rss from '@astrojs/rss'
+
 import age from '../lib/get-age'
 import sanitizeMD from '../lib/sanitize-md'
 import { getPostsForRSS } from '../lib/get-posts'
@@ -13,7 +14,7 @@ function cleanAboutContent(content: string): string {
         .replaceAll('  ', ' ')
         .replaceAll(' \n', ' ')
         .replaceAll('\n', ' ')
-    
+
     // Remove leading and trailing spaces
     while (cleanedContent.startsWith(' ')) {
         cleanedContent = cleanedContent.slice(1)
@@ -21,7 +22,7 @@ function cleanAboutContent(content: string): string {
     while (cleanedContent.endsWith(' ')) {
         cleanedContent = cleanedContent.slice(0, -1)
     }
-    
+
     return cleanedContent
 }
 
@@ -40,7 +41,7 @@ export async function GET(context: AstroContext) {
         description: aboutContent,
         site: context.site,
         trailingSlash: context.trailingSlash,
-        items: postsForRSS.map((post: PostForRSS) => {
+        items: postsForRSS.map(post => {
             return {
                 title: post.frontmatter.title || 'Untitled',
                 pubDate: post.frontmatter.pubDate ? new Date(post.frontmatter.pubDate) : new Date(),
