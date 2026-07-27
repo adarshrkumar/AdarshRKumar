@@ -51,7 +51,7 @@ const keywords = keywordsArray.join(', ')
         <meta name="keywords" content={keywords} />
         {author ? <meta name="author" content={author} /> : ''}
         <title>{finalTitle}</title>
-        
+
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url} />
@@ -59,7 +59,7 @@ const keywords = keywordsArray.join(', ')
         <meta property="og:description" content={aboutContent} />
         <meta property="og:image" content={`${Astro.site}${siteConfig.logo}`} />
         <meta property="og:site_name" content={siteConfig.name} />
-        
+
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={Astro.url} />

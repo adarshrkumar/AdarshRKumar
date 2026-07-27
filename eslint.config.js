@@ -69,7 +69,9 @@ export default [
                 URL: 'readonly',
                 File: 'readonly',
                 FormDataEntryValue: 'readonly',
-                Astro: 'readonly'
+                Astro: 'readonly',
+                atob: 'readonly',
+                btoa: 'readonly'
             }
         },
         plugins: {
