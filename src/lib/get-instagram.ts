@@ -50,12 +50,10 @@ async function fetchInstagramEndpoint(endpoint: string): Promise<unknown> {
 function findEdges(obj: unknown, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
 
-    const record = obj as Record<string, unknown>;
-
     // Check for edge_owner_to_timeline_media or edge_felix_video_timeline patterns
-    for (const key of Object.keys(record)) {
+    for (const key of Object.keys(obj)) {
         if (key.startsWith('edge_') && key.includes('media') || key.startsWith('edge_felix')) {
-            const edge = record[key] as { edges?: Array<{ node: InstagramMediaNode }> } | undefined;
+            const edge = obj[key as keyof typeof obj];
             if (edge?.edges?.length) {
                 return edge.edges.map(e => e.node);
             }
@@ -63,7 +61,7 @@ function findEdges(obj: unknown, depth = 0): InstagramMediaNode[] {
     }
 
     // Recurse into nested objects
-    for (const val of Object.values(record)) {
+    for (const val of Object.values(obj)) {
         if (val && typeof val === 'object' && !Array.isArray(val)) {
             const result = findEdges(val, depth + 1);
             if (result.length > 0) return result;
@@ -101,9 +99,8 @@ function extractMediaNodes(data: unknown): InstagramMediaNode[] {
     if (edges.length > 0) return edges;
 
     // Handle inflact flat array format (e.g. data.reels, data.posts)
-    const record = data as Record<string, unknown>;
-    for (const key of Object.keys(record)) {
-        const val = record[key];
+    for (const key of Object.keys(data)) {
+        const val = data[key as keyof typeof data];
         if (Array.isArray(val) && val.length > 0 && typeof val[0] === 'object') {
             return val.map((item: InflactMediaItem) => normalizeMediaNode(item));
         }
