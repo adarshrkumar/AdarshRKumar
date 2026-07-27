@@ -1,14 +1,14 @@
 ---
 // Imports
-import '../styles/components/default-inputs.scss'
-
 import type { HTMLAttributes } from 'astro/types';
 import type { HTMLString } from 'astro/runtime/server/escape.js';
+
+import '../styles/components/default-inputs.scss'
 
 // Type definitions
 export interface Props extends HTMLAttributes<'textarea'> {
     align?: 'left' | 'center' | 'right';
-    label?: HTMLString | String;
+    label?: HTMLString | string;
 }
 
 // Component props and configuration
