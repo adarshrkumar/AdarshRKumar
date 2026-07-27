@@ -15,12 +15,14 @@ var items: PortfolioItem[] = []
 highlights.forEach(name => {
     // Add .md extension if not already present
     const filename = name.endsWith('.md') ? name : `${name}.md`
-    var res = Object.values(ports).filter(item => getFName(item.file) === filename)
-    if (res) {
-        if (res.length > 0) {
-            res.forEach(r => items.push(r))
+    var res = Object.values(ports).filter((item): item is PortfolioItem => {
+        if (item && typeof item === 'object' && 'file' in item && 'frontmatter' in item) {
+            const fileName = typeof item.file === 'string' ? item.file : String(item.file)
+            return getFName(fileName) === filename
         }
-    }
+        return false
+    })
+    if (res.length > 0) res.forEach(r => items.push(r));
 });
 
 ---
@@ -40,7 +42,7 @@ highlights.forEach(name => {
                 if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
                 domain = `https://${domain}`
             }
-            
+
             if (!url.includes(':') || domain === Astro.site?.toString()) target = '_self'
 
             // Handle relative URLs by prefixing with site URL
