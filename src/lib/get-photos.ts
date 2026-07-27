@@ -2,7 +2,6 @@
 // Uses Drizzle ORM to query photos from Vercel Postgres
 
 import { eq, desc } from 'drizzle-orm';
-
 import { db } from '../db/initialize.ts';
 import { photos, type Photo } from '../db/schema.ts';
 
