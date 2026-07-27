@@ -137,23 +137,27 @@ export async function getInstagramData(): Promise<InstagramData> {
 
         // Extract profile
         let profile: InstagramProfile | null = null;
-        if (data.profile?.profile) {
-            profile = data.profile.profile?.data?.user || null;
+        if (data && typeof data === 'object' && 'profile' in data) {
+            const profileObj = data.profile;
+            if (profileObj && typeof profileObj === 'object' && 'profile' in profileObj) {
+                profile = (profileObj.profile && typeof profileObj.profile === 'object' && 'data' in profileObj.profile ? (profileObj.profile.data && typeof profileObj.profile.data === 'object' && 'user' in profileObj.profile.data ? profileObj.profile.data.user : null) : null);
+            }
         }
 
         // Extract posts
-        const posts = extractMediaNodes(data.posts);
+        const postsData = data && typeof data === 'object' && 'posts' in data ? data.posts : null;
+        const posts = postsData ? extractMediaNodes(postsData) : [];
 
         // Extract reels
-        const reels = extractMediaNodes(data.reels);
+        const reelsData = data && typeof data === 'object' && 'reels' in data ? data.reels : null;
+        const reels = reelsData ? extractMediaNodes(reelsData) : [];
 
         // Extract stories
         let stories: InstagramStory[] = [];
-        const storiesData = data.stories | undefined;
-        if (storiesData) {
-            // Stories may be nested under various keys
-            const reel = storiesData.reel | undefined;
-            const storyArray = (storiesData.stories ?? reel?.items ?? storiesData);
+        const storiesData = data && typeof data === 'object' && 'stories' in data ? data.stories : null;
+        if (storiesData && typeof storiesData === 'object') {
+            const reel = 'reel' in storiesData ? storiesData.reel : null;
+            const storyArray = ('stories' in storiesData ? storiesData.stories : (reel && typeof reel === 'object' && 'items' in reel ? reel.items : storiesData));
             if (Array.isArray(storyArray)) {
                 stories = storyArray;
             }
