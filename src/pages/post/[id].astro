@@ -2,23 +2,18 @@
 // Imports
 // import '../../styles/pages/[about, contact].scss'
 import '../../styles/pages/post.scss'
-
 import Layout from '../../layouts/Layout.astro'
 import { findPostById } from '../../lib/get-posts'
+import authors from '../../lib/authors'
 
 // Data loading and processing
 // Get post ID from URL parameters
 const { id: postId = '' } = Astro.params;
 
-// Load authors
-import authors from '../../lib/authors'
-
 // Find the specific post
 const currentPost = await findPostById(postId);
 
-if (!currentPost) {
-    return Astro.redirect('/404');
-}
+if (!currentPost) return Astro.redirect('/404');
 
 // Get author information
 const authorUsername = currentPost.frontmatter.author;
