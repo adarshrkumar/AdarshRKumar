@@ -62,7 +62,7 @@
       "Bash(npx drizzle-kit:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
-      "Bash(npm run check:*)",
+      "Bash(npm run check)",
       "Bash(npx astro:*)",
       "Bash(git:*)",
       "Bash(head:*)",
