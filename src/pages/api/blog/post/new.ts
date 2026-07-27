@@ -24,7 +24,7 @@ export const OPTIONS: APIRoute = async () => {
 export const POST: APIRoute = async ({ request }) => {
     try {
         const contentType = request.headers.get('content-type') || '';
-        let body: Record<string, unknown> = {};
+        let body: Record<string, string | Blob> = {};
 
         // Parse based on content type
         if (contentType.includes('application/json')) {

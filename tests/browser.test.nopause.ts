@@ -4,6 +4,6 @@ import 'dotenv/config'
 const base = 'http://localhost:4321';
 const path = process.env.BROWSER_TEST_PATH || '';
 
-test('test browser', async { page } => {
+test('test browser', async ({ page }) => {
     await page.goto(`${base}${path.startsWith('/') ? path : `/${path}`}`)
 })
