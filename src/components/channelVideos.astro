@@ -31,7 +31,7 @@ function shouldIncludeVideo(index: number, maxVideos: number | string): boolean 
 
 // Component props and configuration
 // Get component props
-const { id: channelId, vidsPerChannel } = Astro.props as ChannelVideosProps
+const { id: channelId, vidsPerChannel } = Astro.props
 
 // Set default videos per channel
 const maxVideosPerChannel = vidsPerChannel || 'all'

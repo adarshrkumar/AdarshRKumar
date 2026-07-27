@@ -38,20 +38,14 @@ const delay = Math.min(index * 0.08, 0.4)
     function initAnimatedCards() {
         const cards = document.querySelectorAll('[data-animate="card"]')
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        (entry.target as HTMLElement).dataset.state = 'visible'
-                        observer.unobserve(entry.target)
-                    }
-                })
-            },
-            {
-                rootMargin: '-30px',
-                threshold: 0
-            }
-        )
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    (entry.target as HTMLElement).dataset.state = 'visible'
+                    observer.unobserve(entry.target)
+                }
+            })
+        }, { rootMargin: '-30px', threshold: 0 })
 
         cards.forEach((card) => observer.observe(card))
     }
