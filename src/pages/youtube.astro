@@ -10,11 +10,11 @@ import type { VideoChannelConfig } from '../lib/types'
 // Video channel configuration
 const videoConfig: VideoChannelConfig = {
     channelIds: [
-        'UCzhr23vdbi63nZGYqBM7Ofw', 
-        // 'UCb35v6VAVFI8Q0aIpwPoW1g', 
-        'UCLK0Lj3V864AbKfutfyztYA', 
-        'UC8cV2cdrp1ccBWzoi1R-UwQ', 
-        'UCHUWd3IuPu3P21XkDW8vSuQ', 
+        'UCzhr23vdbi63nZGYqBM7Ofw',
+        // 'UCb35v6VAVFI8Q0aIpwPoW1g',
+        'UCLK0Lj3V864AbKfutfyztYA',
+        'UC8cV2cdrp1ccBWzoi1R-UwQ',
+        'UCHUWd3IuPu3P21XkDW8vSuQ',
     ],
     videosPerChannel: 3,
     gridOptions: { min: '24rem' }
@@ -27,9 +27,9 @@ const videoConfig: VideoChannelConfig = {
         {
             videoConfig.channelIds.map(channelId => {
                 return (
-                    <ChannelVideos 
-                        id={channelId} 
-                        vidsPerChannel={videoConfig.videosPerChannel} 
+                    <ChannelVideos
+                        id={channelId}
+                        vidsPerChannel={videoConfig.videosPerChannel}
                     />
                 )
             })

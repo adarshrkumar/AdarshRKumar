@@ -41,7 +41,7 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
 const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })) as PortfolioItem[]
 const projectItems = Object.values(import.meta.glob('../../content/work/projects/*/*.md', { eager: true })) as PortfolioItem[]
 
-const webApps = 
+const webApps =
     filterVisibleItems([...portfolioItems, ...projectItems])
     .filter(item => (appsList.some(appName => item.frontmatter.name.toLowerCase().includes(appName))))
 

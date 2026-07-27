@@ -19,19 +19,19 @@ const postsWithMetadata = await getPostsForDisplay(Astro.site)
                 const rawTextContent = sanitizeMD(post.rawContent())
                 const cleanedTextContent = cleanTextContent(rawTextContent)
                 const previewContent = createPreviewContent(cleanedTextContent)
-                
+
                 // Check if we have content to display
                 const hasContent = !!(post.frontmatter.title || cleanedTextContent)
                 const hasTitle = !!post.frontmatter.title
                 const hasPreview = !!previewContent
-                
+
                 return (
                     <a href={`/post/${post.slug}`} class="item">
-                        <img 
-                            class="item__img" 
-                            src={post.screenshotImage.src} 
-                            alt={post.screenshotImage.alt} 
-                            style={`--placeholder: url('${post.screenshotImage.placeholder}')`} 
+                        <img
+                            class="item__img"
+                            src={post.screenshotImage.src}
+                            alt={post.screenshotImage.alt}
+                            style={`--placeholder: url('${post.screenshotImage.placeholder}')`}
                         />
                         {hasContent && (
                             <div class="item__info">

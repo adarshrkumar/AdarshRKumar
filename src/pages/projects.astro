@@ -14,12 +14,12 @@ import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 // Helper function to determine link target based on URL
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
     let target = '_blank'
-    
+
     // Handle protocol-relative URLs
     if (url.startsWith('//')) {
         url = `https:${url}`
     }
-    
+
     // Extract domain from URL
     let domain = url
     if (domain.includes('://')) {
@@ -32,12 +32,12 @@ function determineLinkTarget(url: string, siteUrl: string | URL | undefined): st
         }
         domain = `https://${domain}`
     }
-    
+
     // Check if it's an internal link
     if (!url.includes(':') || domain === siteUrl?.toString()) {
         target = '_self'
     }
-    
+
     return target
 }
 
@@ -55,12 +55,18 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
 
 // Configuration and data loading
 // Load portfolio items that have projectsCategory field
-const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true }))
-const portfolioWithCategory = portfolioItems.filter(item => item.frontmatter.projectsCategory)
+const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })).filter((item): item is PortfolioItem => {
+    return !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)
+})
+const portfolioWithCategory = portfolioItems.filter((item): item is PortfolioItem => {
+    return !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory)
+})
 
 // Helper to get portfolio items for a specific category
 function getPortfolioItemsForCategory(categoryId: string): PortfolioItem[] {
-    return portfolioWithCategory.filter(item => item.frontmatter.projectsCategory === categoryId)
+    return portfolioWithCategory.filter((item): item is PortfolioItem => {
+        return !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory === categoryId)
+    })
 }
 
 // Project categories configuration
@@ -69,7 +75,7 @@ const projectCategories: ProjectCategoryConfig[] = [
         id: 'games',
         name: 'Games',
         items: [
-            ...Object.values(import.meta.glob('../../content/work/projects/games/*.md', { eager: true }))
+            ...Object.values(import.meta.glob('../../content/work/projects/games/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)),
             ...getPortfolioItemsForCategory('games')
         ]
     },
@@ -90,7 +96,6 @@ const projectCategories: ProjectCategoryConfig[] = [
         ]
     }
 ]
-
 
 ---
 

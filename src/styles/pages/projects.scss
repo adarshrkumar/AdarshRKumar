@@ -1,7 +1,7 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    
+
     &:not(.post) {
         gap: var(--pad);
     }
