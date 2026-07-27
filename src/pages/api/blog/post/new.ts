@@ -128,11 +128,12 @@ export const POST: APIRoute = async ({ request }) => {
             }
         );
 
-    } catch (error: unknown) {
+    } catch (error) {
+        const message = error instanceof Error ? error.message : 'Unknown error';
         console.error('Error creating post:', error);
 
         // Handle duplicate slug error
-        if (error?.code === '23505') {
+        if (error && typeof error === 'object' && 'code' in error && error.code === '23505') {
             return new Response(
                 JSON.stringify({
                     error: 'A post with this slug already exists'
@@ -148,7 +149,7 @@ export const POST: APIRoute = async ({ request }) => {
         return new Response(
             JSON.stringify({
                 error: 'Failed to create post',
-                message: error?.message || 'Unknown error'
+                message
             }),
             {
                 status: 500,
