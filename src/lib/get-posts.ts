@@ -84,7 +84,7 @@ export function createPreviewContent(text: string, maxLength: number = 50): stri
     while (trimChars.some(char => preview.endsWith(char))) {
         preview = preview.slice(0, -1)
     }
-    
+
     return preview
 }
 
