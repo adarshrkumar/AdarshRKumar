@@ -32,8 +32,8 @@ export default {
                             if (baseName.startsWith('_')) return;
                             if (!new RegExp(`\\b${baseName}\\b`).test(context.sourceCode.getText().replace(/import\s+type\s+\{([^}]+)\}\s+from/g, ''))) {
                                 context.report({
-                                    loc: { line: code.substring(0, typeMatch.index).split('\n').length, column: 1 },
-                                    message: `Type '${importName.split(/\s+as\s+/)[0].trim()}' is imported but never used. Prefix with '_' to ignore or remove the import.`
+                                    loc: { line: context.sourceCode.getText().substring(0, match.index).split('\n').length, column: 1 },
+                                    message: `Type '${baseName}' is imported but never used. Prefix with '_' to ignore or remove the import.`
                                 });
                             }
                         });
