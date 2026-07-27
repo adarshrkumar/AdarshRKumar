@@ -1,5 +1,5 @@
-@import '../variables/globals';
-@import '../variables/mixins';
+@use '../variables/globals' as *;
+@use '../variables/mixins' as *;
 
 .nav {
     &[data-varient="sidebar"] {
