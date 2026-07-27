@@ -1,9 +1,10 @@
 ---
 // Imports
-import '../../styles/pages/author.scss'
-
-import Layout from '../../layouts/Layout.astro'
 import type { Author, Authors } from '../../lib/types'
+import regAuthors from '../../lib/authors'
+
+import '../../styles/pages/author.scss'
+import Layout from '../../layouts/Layout.astro'
 
 // Helper functions
 // Helper function to get author by username
@@ -24,7 +25,6 @@ function formatBioText(bio: string): string {
 const { username } = Astro.params;
 
 // Load authors data
-import regAuthors from '../../lib/authors'
 const authors: Authors = regAuthors;
 
 // Get author information
