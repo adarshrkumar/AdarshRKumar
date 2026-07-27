@@ -1,8 +1,8 @@
 import * as $ from 'cheerio'
 
-const aboutFile = await import('../../content/aboutContent.md')
-
 import age from './get-age'
+
+const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = await aboutFile.compiledContent()
 
 function cleanAboutContent(content: string): string {
@@ -19,7 +19,7 @@ function cleanAboutContent(content: string): string {
     while (cleanedContent.endsWith(' ')) {
         cleanedContent = cleanedContent.slice(0, -1)
     }
-    
+
     return cleanedContent
 }
 
