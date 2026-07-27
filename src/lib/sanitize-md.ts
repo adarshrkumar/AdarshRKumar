@@ -1,6 +1,6 @@
 /**
  * Sanitizes markdown content by removing HTML comments
- * 
+ *
  * @param content - The markdown content to sanitize
  * @returns Clean markdown content without HTML comments
  */

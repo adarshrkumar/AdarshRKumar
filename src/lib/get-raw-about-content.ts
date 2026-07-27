@@ -1,8 +1,8 @@
-import age from './get-age'
-
 import * as $ from 'cheerio'
 
 const aboutFile = await import('../../content/aboutContent.md')
+
+import age from './get-age'
 const aboutContent = await aboutFile.compiledContent()
 
 function cleanAboutContent(content: string): string {
@@ -11,7 +11,7 @@ function cleanAboutContent(content: string): string {
         .replaceAll('  ', ' ')
         .replaceAll(' \n', ' ')
         .replaceAll('\n', ' ')
-    
+
     // Remove leading and trailing spaces
     while (cleanedContent.startsWith(' ')) {
         cleanedContent = cleanedContent.slice(1)
