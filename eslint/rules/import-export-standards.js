@@ -4,10 +4,6 @@ import fs from 'fs-extra';
 function getImportGroup(source) {
     const extension = path.extname(source.toLowerCase()).slice(1);
 
-    if (source === 'astro' || source.startsWith('astro/') || source === '@astrojs' || source.startsWith('@astrojs/')) {
-        return 3;
-    }
-
     if (
         source === 'drizzle-orm'
         || source.startsWith('drizzle-orm/')
@@ -16,16 +12,14 @@ function getImportGroup(source) {
         return 2;
     }
 
-    if (!source.startsWith('.') && (source.toLowerCase().endsWith('.astro') || source.toLowerCase().endsWith('.scss'))) {
-        return 8;
+    if (source === 'astro' || source.startsWith('astro/') || source === '@astrojs' || source.startsWith('@astrojs/')) {
+        return 3;
     }
 
-    if (
-        !source.startsWith('.')
-        && extension.length > 0
-        && !['js', 'ts'].some(prefix => extension.startsWith(prefix) || extension.endsWith(prefix))
-    ) {
-        return 7;
+    const frameworks = ['astro', 'svelte', 'react', 'vue', 'solid', 'preact'];
+    const styles = ['css', 'scss', 'sass', 'less', 'styl', 'stylus'];
+    if (!source.startsWith('.') && (frameworks.find(f => f === source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => s === source.toLowerCase().endsWith(`.${s}`)))) {
+        return 8;
     }
 
     if (
@@ -34,6 +28,14 @@ function getImportGroup(source) {
         && ['js', 'ts'].some(prefix => extension.startsWith(prefix) || extension.endsWith(prefix))
     ) {
         return 6;
+    }
+
+    if (
+        !source.startsWith('.')
+        && extension.length > 0
+        && !['js', 'ts'].some(prefix => extension.startsWith(prefix) || extension.endsWith(prefix))
+    ) {
+        return 7;
     }
 
     if (!source.startsWith('.')) return 1;
