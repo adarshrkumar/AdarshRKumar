@@ -32,7 +32,8 @@ export function extractSlugFromFilePath(filePath: string): string {
     const postsIndex = slug.indexOf(postsMarker)
     if (postsIndex !== -1) {
         slug = slug.slice(postsIndex + postsMarker.length)
-    } else {
+    }
+    else {
         // Fallback: just get the filename
         const parts = normalizedPath.split('/')
         slug = parts[parts.length - 1] || ''

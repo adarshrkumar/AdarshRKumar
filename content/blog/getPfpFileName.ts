@@ -10,7 +10,7 @@ import path from 'path'
  */
 function getPfpFileName(username: string): string[] {
     try {
-        const authorDirectory = path.join(__dirname, 'authors', username)
+        const authorDirectory = path.join('./', 'authors', username)
         const files = fs.readdirSync(authorDirectory)
 
         // Filter for profile picture files (starting with 'pfp')
