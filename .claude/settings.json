@@ -80,7 +80,8 @@
       "Bash(* npm run check 2>&1 | *)"
     ],
     "ask": [
-      "Edit(eslint/**/*.js)"
+      "Edit(eslint/**/*.js)",
+      "Edit(eslint*js)"
     ]
   }
 }
