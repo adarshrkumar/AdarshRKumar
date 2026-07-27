@@ -200,17 +200,13 @@ function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     })
 }
 
-/**
- * Function to get posts with additional processing for display
- */
+// Function to get posts with additional processing for display
 export async function getPostsForDisplay(siteUrl?: string | URL) {
     const posts = await getPosts()
     return addDisplayMetadata(posts, siteUrl)
 }
 
-/**
- * Function to get featured posts by slug
- */
+// Function to get featured posts by slug
 export async function getFeaturedPosts(featuredSlugs: string[]) {
     const allPosts = await getPosts()
     const featuredPosts: Post[] = []
@@ -226,17 +222,13 @@ export async function getFeaturedPosts(featuredSlugs: string[]) {
     return featuredPosts
 }
 
-/**
- * Function to get featured posts with display metadata
- */
+// Function to get featured posts with display metadata
 export async function getFeaturedPostsForDisplay(featuredSlugs: string[], siteUrl?: string | URL) {
     const featured = await getFeaturedPosts(featuredSlugs)
     return addDisplayMetadata(featured, siteUrl)
 }
 
-/**
- * Function to find a specific post by ID/slug
- */
+// Function to find a specific post by ID/slug
 export async function findPostById(postId: string | undefined): Promise<Post | undefined> {
     const allPosts = await getPosts()
     return allPosts.find(post =>
@@ -245,9 +237,7 @@ export async function findPostById(postId: string | undefined): Promise<Post | u
     )
 }
 
-/**
- * Function to get posts for RSS feed
- */
+// Function to get posts for RSS feed
 export async function getPostsForRSS() {
     const allPosts = await getPosts()
     return allPosts.map(post => {
