@@ -8,7 +8,6 @@ import type { PortfolioItem } from '../lib/types'
 // Configuration
 var highlights = ['commonps', 'pscode-syntax-highlighter', 'ai-scholarly-mode', 'imageresize', 'SMCAS']
 const ports = import.meta.glob('../../content/work/portfolio/**/*.md', { eager: true })
-const allItems = Object.values(ports) as PortfolioItem[];
 
 // Data processing
 var items: PortfolioItem[] = []
@@ -16,7 +15,7 @@ var items: PortfolioItem[] = []
 highlights.forEach(name => {
     // Add .md extension if not already present
     const filename = name.endsWith('.md') ? name : `${name}.md`
-    var res = allItems.filter(item => getFName(item.file) === filename)
+    var res = Object.values(ports).filter(item => getFName(item.file) === filename)
     if (res) {
         if (res.length > 0) {
             res.forEach(r => items.push(r))

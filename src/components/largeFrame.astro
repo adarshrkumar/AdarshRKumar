@@ -7,7 +7,7 @@ import { extractChannelId, extractVideoId, generateYouTubeImageUrls, generateYou
 
 // Component props and data processing
 // Get component props
-const { video, feed } = Astro.props as LargeFrameProps
+const { video, feed } = Astro.props
 
 // Extract IDs and generate URLs
 const channelId = extractChannelId(feed.link)

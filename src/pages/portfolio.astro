@@ -53,15 +53,14 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
 // Data loading and processing
 // Load and filter portfolio items
 const portfolioItemsObj = import.meta.glob('../../content/work/portfolio/*.md', { eager: true })
-const allPortfolioItems: PortfolioItem[] = Object.values(portfolioItemsObj) as PortfolioItem[]
-const visiblePortfolioItems = filterVisibleItems(allPortfolioItems)
+const portfolioItems: PortfolioItem[] = filterVisibleItems(Object.values(portfolioItemsObj))
 
 ---
 
 <Layout title="Portfolio">
     <SiteGridContent classItems="portfolio wrap" options={{ min: '18rem' }}>
         {
-            visiblePortfolioItems.map(async (item, itemIndex) => {
+            portfolioItems.map(async (item, itemIndex) => {
                 const portfolioUrl = item.frontmatter.url
                 const linkTarget = item.frontmatter.target || determineLinkTarget(portfolioUrl, Astro.site)
                 const screenshotUrl = generateScreenshotUrl(portfolioUrl)

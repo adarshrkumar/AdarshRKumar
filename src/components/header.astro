@@ -42,7 +42,7 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
 <script>
     var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true';
     if (hideHeader) {
-        const headerElement = document.querySelector('.header') as HTMLElement;
+        const headerElement: HTMLElement | null = document.querySelector('.header');
         if (headerElement) {
             headerElement.style.display = 'none';
         }
