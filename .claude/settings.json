@@ -25,6 +25,7 @@
       "Bash(head:*)",
       "Bash(tail:*)",
       "mcp__ide__getDiagnostics",
+      "mcp__context7__resolve-library-id",
       "Bash(cd:*)"
     ],
     "deny": [],
