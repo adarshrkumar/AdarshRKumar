@@ -447,7 +447,7 @@ export default {
                 if (node.params[0].type === 'RestElement') return;
                 if (node.returnType?.typeAnnotation?.type === 'TSTypePredicate') return;
 
-                if (node.params[0].type !== 'Identifier' && !node.params[0].typeAnnotation) return;
+                if (!node.params[0].typeAnnotation) return;
 
                 if (node.returnType && node.returnType.typeAnnotation) return;
 
