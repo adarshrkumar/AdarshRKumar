@@ -202,7 +202,8 @@ const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
             if (img.complete && img.naturalHeight !== 0) {
                 img.classList.remove('loading');
                 img.classList.add('loaded');
-            } else {
+            }
+            else {
                 img.addEventListener('load', () => {
                     img.classList.remove('loading');
                     img.classList.add('loaded');
