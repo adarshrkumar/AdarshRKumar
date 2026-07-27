@@ -1,21 +1,17 @@
 ---
 // Imports
+import * as cheerio from 'cheerio'
+import { experimental_AstroContainer as AstroContainer } from 'astro/container'
+
 import '../styles/pages/index.scss'
 
 import Layout from '../layouts/Layout.astro'
-
 import _Hero from '../components/hero.astro'
 import FancyFace from '../components/fancyFace.astro'
-
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
-
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
-
-import * as cheerio from 'cheerio'
-import { experimental_AstroContainer as AstroContainer } from 'astro/container';
-
 
 const readmeFile = await import('../../README.md')
 const readmeContent = await readmeFile.compiledContent()
@@ -24,9 +20,7 @@ const $ = cheerio.load(readmeContent);
 
 const firstH1 = $('h1').first();
 const firstH1Text = firstH1.text().trim();
-if (firstH1Text === 'Adarsh R. Kumar') {
-    firstH1.remove();
-}
+if (firstH1Text === 'Adarsh R. Kumar') firstH1.remove();
 
 $('table').each((_i, table) => {
     $(table).attr('cellspacing', '0')
