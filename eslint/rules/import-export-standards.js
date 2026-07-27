@@ -155,10 +155,9 @@ export default {
                 let previousGroup = null;
 
                 for (const importNode of importNodes) {
-                    const source = importNode.source.value;
-                    if (typeof source !== 'string') continue;
+                    if (typeof importNode.source.value !== 'string') continue;
 
-                    const group = getImportGroup(source);
+                    const group = getImportGroup(importNode.source.value);
 
                     if ((group === 4 ? 3 : group) < maxSeenGroup) {
                         context.report({
@@ -171,13 +170,11 @@ export default {
                         maxSeenGroup = group === 4 ? 3 : group;
                     }
 
-                    if (previousNode && previousGroup !== null) {
-                        if (previousGroup !== group === 4 ? 3 : group && !(importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2) {
-                            context.report({
-                                node: importNode,
-                                message: `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${source}" (group ${group === 4 ? 3 : group})`,
-                            });
-                        }
+                    if (previousNode && previousGroup !== null && ((previousGroup !== (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2) || (previousGroup === (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2))) {
+                        context.report({
+                            node: importNode,
+                            message: previousGroup !== (group === 4 ? 3 : group) ? `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${importNode.source.value}" (group ${group === 4 ? 3 : group})` : `Remove blank line between same import group.`,
+                        });
                     }
 
                     previousNode = importNode;
@@ -189,10 +186,9 @@ export default {
                 let currentGroupNumber = null;
 
                 for (const importNode of importNodes) {
-                    const source = importNode.source.value;
-                    if (typeof source !== 'string') continue;
+                    if (typeof importNode.source.value !== 'string') continue;
 
-                    const group = getImportGroup(source);
+                    const group = getImportGroup(importNode.source.value);
 
                     if (group === 4 ? 3 : group !== currentGroupNumber) {
                         // New import group, reset tracking
@@ -246,11 +242,10 @@ export default {
                 }
             },
             ImportDeclaration(node) {
-                const importPath = node.source.value;
-                if (typeof importPath !== 'string') return;
+                if (typeof node.source.value !== 'string') return;
 
                 // Check 4: No bare "." or ".." imports
-                if (/(^|\/)\.\.?$/.test(importPath)) {
+                if (/(^|\/)\.\.?$/.test(node.source.value)) {
                     context.report({
                         node,
                         message: 'Importing from paths ending in "." or ".." is not allowed. Import from a concrete module path instead.',
@@ -262,10 +257,10 @@ export default {
                 //     const indexSuffixPattern = /\/index(?:\.ts)?$/;
                 //     const exactIndexPattern = /^\.\/index(?:\.ts)?$/;
 
-                //     if (!indexSuffixPattern.test(importPath) && !exactIndexPattern.test(importPath)) return;
+                //     if (!indexSuffixPattern.test(node.source.value) && !exactIndexPattern.test(node.source.value)) return;
 
-                //     let suggestedPath = importPath.replace(indexSuffixPattern, '');
-                //     if (exactIndexPattern.test(importPath)) {
+                //     let suggestedPath = node.source.value.replace(indexSuffixPattern, '');
+                //     if (exactIndexPattern.test(node.source.value)) {
                 //         const fileDir = context.filename.substring(0, context.filename.lastIndexOf('/'));
                 //         const folderName = fileDir.substring(fileDir.lastIndexOf('/') + 1);
                 //         suggestedPath = `../${folderName}`;
@@ -283,20 +278,17 @@ export default {
             ExportNamedDeclaration(node) {
                 // Check 6: No direct re-exports
                 if (node.source) {
-                    const importPath = node.source.value;
                     context.report({
                         node,
-                        message: `Direct re-export not allowed. Import from "${importPath}" directly in files that need it, don't re-export.`
+                        message: `Direct re-export not allowed. Import from "${node.source.value}" directly in files that need it, don't re-export.`
                     });
                 }
             },
             ExportAllDeclaration(node) {
                 // Check 7: No wildcard re-exports
-                const importPath = node.source.value;
-
                 context.report({
                     node,
-                    message: `Direct re-export with \`export *\` not allowed. Import from "${importPath}" directly in files that need it.`
+                    message: `Direct re-export with \`export *\` not allowed. Import from "${node.source.value}" directly in files that need it.`
                 });
             }
         };
