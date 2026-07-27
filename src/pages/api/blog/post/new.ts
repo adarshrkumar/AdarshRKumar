@@ -1,4 +1,5 @@
-// API endpoint for creating new blog posts in the database: POST /api/blog/post/new
+// API endpoint for creating new blog posts in the database
+// POST /api/blog/post/new
 
 import type { APIRoute } from 'astro';
 import { db } from '../../../../db/initialize.ts';

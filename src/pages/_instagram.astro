@@ -196,7 +196,7 @@ const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
 
 <script>
     // Handle lazy loading state for images
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
         const images = document.querySelectorAll<HTMLImageElement>('.instagram__post-img, .instagram__reel-img');
 
         images.forEach(img => {

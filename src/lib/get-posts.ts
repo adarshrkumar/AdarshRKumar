@@ -4,9 +4,7 @@ import { posts as postsTable } from '../db/schema.ts'
 
 // Helper functions
 
-/**
- * Helper function to extract clean site URL
- */
+// Helper function to extract clean site URL
 export function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
     let cleanUrl = siteUrl ? siteUrl.toString() : ''
     

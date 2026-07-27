@@ -1,8 +1,5 @@
-/*
- * API endpoint for retrieving blog posts from the database
- * GET /api/blog/post/get
- * Supports query parameters: id, slug, title, author, categories, videoId
- */
+// API endpoint for retrieving blog posts from the database
+// GET /api/blog/post/get
 
 import type { APIRoute } from 'astro';
 import { db } from '../../../../db/initialize.ts';

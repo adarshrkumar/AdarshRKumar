@@ -86,7 +86,7 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
 
 <script>
     // Handle lazy loading state for images
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
         const images = document.querySelectorAll<HTMLImageElement>('.photos__img');
 
         images.forEach(img => {
