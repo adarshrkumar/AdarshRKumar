@@ -173,16 +173,12 @@ export async function getPosts(): Promise<Post[]> {
     return allPosts
 }
 
-/**
- * Synchronous version that only returns local posts (for compatibility)
- */
+// Synchronous version that only returns local posts (for compatibility)
 export function getPostsSync(): Post[] {
     return getLocalPosts()
 }
 
-/**
- * Helper function to add display metadata to posts
- */
+// Helper function to add display metadata to posts
 function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     const cleanSiteUrl = getCleanSiteUrl(siteUrl)
     const siteLocation = {
