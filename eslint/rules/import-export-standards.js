@@ -18,7 +18,7 @@ function getImportGroup(source) {
 
     const frameworks = ['astro', 'svelte', 'react', 'vue', 'solid', 'preact'];
     const styles = ['css', 'scss', 'sass', 'less', 'styl', 'stylus'];
-    if (!source.startsWith('.') && (frameworks.find(f => f === source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => s === source.toLowerCase().endsWith(`.${s}`)))) {
+    if (!source.startsWith('.') && (frameworks.find(f => source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => source.toLowerCase().endsWith(`.${s}`)))) {
         return 8;
     }
 
