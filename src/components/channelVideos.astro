@@ -4,14 +4,12 @@ import LargeFrame from '../components/largeFrame.astro'
 import '../styles/pages/youtube.scss'
 import type { RSSResponse } from '../lib/types'
 
-// Component props and configuration
 // Get component props
 const { id: channelId, vidsPerChannel } = Astro.props
 
 // Set default videos per channel
 const maxVideosPerChannel = vidsPerChannel || 'all'
 
-// Data fetching
 // Fetch channel data
 let channel: { feed: RSSResponse; videos: Array<{ link?: string; title?: string }> } = { feed: { status: 'error' }, videos: [] }
 

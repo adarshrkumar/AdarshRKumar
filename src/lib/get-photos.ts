@@ -1,5 +1,4 @@
 // Photo fetching utilities for database-backed photo gallery
-// Uses Drizzle ORM to query photos from Vercel Postgres
 
 import { eq, desc } from 'drizzle-orm';
 import { db } from '../db/initialize.ts';

@@ -1,5 +1,4 @@
 // API endpoint for retrieving blog posts from the database
-// GET /api/blog/post/get
 
 import { eq, and, like } from 'drizzle-orm'
 import { db } from '../../../../db/initialize.ts'

@@ -1,12 +1,10 @@
 ---
-// Imports
 // import '../../styles/pages/[about, contact].scss'
 import '../../styles/pages/post.scss'
 import Layout from '../../layouts/Layout.astro'
 import { findPostById } from '../../lib/get-posts'
 import authors from '../../lib/authors'
 
-// Data loading and processing
 // Get post ID from URL parameters
 const { id: postId = '' } = Astro.params;
 

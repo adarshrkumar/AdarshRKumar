@@ -1,18 +1,6 @@
 // Imports
 import type { VideoItem, RSSResponse } from '../lib/types'
 
-// Helper functions
-// Helper function to build RSS URL for a channel
-function buildChannelRSSUrl(channelId: string): string {
-    const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-    return `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(channelURL)}`
-}
-
-// Helper function to validate channel data
-function isValidChannelData(response: RSSResponse): boolean {
-    return !!(response.items && response.items.length > 0)
-}
-
 // Helper function to extract video items from response
 function extractVideoItems(response: RSSResponse, maxVideos: number = 3): VideoItem[] {
     if (!response.items) return []
@@ -40,11 +28,12 @@ async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     // Process each channel
     const channelPromises = channelIds.map(async channelId => {
         try {
-            const rssUrl = buildChannelRSSUrl(channelId)
+            const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+            const rssUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(channelURL)}`
             const response = await fetch(rssUrl)
             const data: RSSResponse = await response.json()
 
-            if (isValidChannelData(data)) return extractVideoItems(data, 3)
+            if (data.items && data.items.length > 0) return extractVideoItems(data, 3)
             console.warn(`No valid data found for channel: ${channelId}`)
             return []
         } catch (error) {

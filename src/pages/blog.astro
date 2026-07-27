@@ -5,7 +5,6 @@ import SiteGridContent from '../components/siteGridContent.astro'
 import sanitizeMD from '../lib/sanitize-md'
 import { getPostsForDisplay, cleanTextContent, createPreviewContent } from '../lib/get-posts'
 
-// Data processing
 // Get posts with all processing done
 const postsWithMetadata = await getPostsForDisplay(Astro.site)
 
