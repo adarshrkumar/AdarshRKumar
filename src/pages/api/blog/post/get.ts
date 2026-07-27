@@ -91,14 +91,15 @@ export const GET: APIRoute = async ({ url }) => {
             }
         );
 
-    } catch (error: unknown) {
-        console.error('Error retrieving posts:', error);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        console.error('Error retrieving posts:', message);
 
         // Return generic error response
         return new Response(
             JSON.stringify({
                 error: 'Failed to retrieve posts',
-                message: error?.message || 'Unknown error'
+                message
             }),
             {
                 status: 500,
