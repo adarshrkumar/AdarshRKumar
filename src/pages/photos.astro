@@ -1,15 +1,14 @@
 ---
 // Imports
-import type { PhotoItem } from '../lib/types'
-
 import { getImage } from 'astro:assets'
+
+import type { PhotoItem } from '../lib/types'
+import { getAllPhotos } from '../lib/get-photos'
 
 import '../styles/pages/photos.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
-import { getAllPhotos } from '../lib/get-photos'
-
 // Configuration and data loading
 // Fetch photos from database instead of filesystem
 const dbPhotos = await getAllPhotos()
