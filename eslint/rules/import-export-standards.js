@@ -45,7 +45,7 @@ function getImportModulePath(source, currentDir) {
 
     // Resolve to absolute canonical path (directory)
 
-    // If only one part, it's the full module path (e.g., ./config, ../modules)
+    // If only one part, it's the full lib path (e.g., ./config, ../modules)
     if (parts.length === 1) {
         let targetPath = path.resolve(currentDir, source);
         // Check if it's a file (has extension)
@@ -162,7 +162,7 @@ export default {
                     if ((group === 4 ? 3 : group) < maxSeenGroup) {
                         context.report({
                             node: importNode,
-                            message: 'Import order must be: external non-drizzle, then drizzle/db, then module imports, then remaining modules imports, then remaining ts/tsx/cjs/mjs imports, then remaining non-(ts/js*/astro/scss) files, then astro/scss files.',
+                            message: 'Import order must be: external non-drizzle, then drizzle/db, then lib imports, then remaining ts/tsx/cjs/mjs imports, then remaining non-(ts/js*/astro/scss) files, then astro/scss files.',
                         });
                     }
 
@@ -181,7 +181,7 @@ export default {
                     previousGroup = group === 4 ? 3 : group;
                 }
 
-                // Check 3: Within the same import group, imports from the same module must be grouped together
+                // Check 3: Within the same import group, imports from the same lib must be grouped together
                 let currentGroupImports = [];
                 let currentGroupNumber = null;
 
@@ -198,24 +198,24 @@ export default {
 
                     currentGroupImports.push(importNode);
 
-                    // Check within the current group: imports from the same module must be together
+                    // Check within the current group: imports from the same lib must be together
                     if (currentGroupImports.length > 1) {
                         const modules = new Map();
                         for (const imp of currentGroupImports) {
-                            const modulePath = getImportModulePath(imp.source.value, currentDir);
-                            if (modulePath) {
-                                if (!modules.has(modulePath)) modules.set(modulePath, []);
-                                modules.get(modulePath).push(imp);
+                            const libPath = getImportModulePath(imp.source.value, currentDir);
+                            if (libPath) {
+                                if (!modules.has(libPath)) modules.set(libPath, []);
+                                modules.get(libPath).push(imp);
                             }
                         }
 
-                        // Check if imports from the same module are consecutive
-                        for (const [modulePath, moduleImports] of modules.entries()) {
-                            if (moduleImports.length <= 1) continue;
+                        // Check if imports from the same lib are consecutive
+                        for (const [libPath, libImports] of modules.entries()) {
+                            if (libImports.length <= 1) continue;
 
-                            for (let i = 1; i < moduleImports.length; i++) {
-                                const prevImport = moduleImports[i - 1];
-                                const currImport = moduleImports[i];
+                            for (let i = 1; i < libImports.length; i++) {
+                                const prevImport = libImports[i - 1];
+                                const currImport = libImports[i];
 
                                 // Find if there are any imports from OTHER modules between these two
                                 const prevIndex = currentGroupImports.indexOf(prevImport);
@@ -224,7 +224,7 @@ export default {
                                 let hasOtherImportsBetween = false;
                                 for (let j = prevIndex + 1; j < currIndex; j++) {
                                     const betweenModulePath = getImportModulePath(currentGroupImports[j].source.value, currentDir);
-                                    if (betweenModulePath !== modulePath) {
+                                    if (betweenModulePath !== libPath) {
                                         hasOtherImportsBetween = true;
                                         break;
                                     }
@@ -233,7 +233,7 @@ export default {
                                 if (hasOtherImportsBetween) {
                                     context.report({
                                         node: currImport,
-                                        message: `Imports from module "${modulePath}" must be grouped together. Group all "${modulePath}" imports consecutively.`,
+                                        message: `Imports from lib "${libPath}" must be grouped together. Group all "${libPath}" imports consecutively.`,
                                     });
                                 }
                             }
@@ -248,7 +248,7 @@ export default {
                 if (/(^|\/)\.\.?$/.test(node.source.value)) {
                     context.report({
                         node,
-                        message: 'Importing from paths ending in "." or ".." is not allowed. Import from a concrete module path instead.',
+                        message: 'Importing from paths ending in "." or ".." is not allowed. Import from a concrete lib path instead.',
                     });
                 }
 
