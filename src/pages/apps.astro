@@ -37,8 +37,8 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
 }
 
 // Load all potential app sources
-const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })) as PortfolioItem[]
-const projectItems = Object.values(import.meta.glob('../../content/work/projects/*/*.md', { eager: true })) as PortfolioItem[]
+const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item))
+const projectItems = Object.values(import.meta.glob('../../content/work/projects/*/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item))
 
 const webApps =
     filterVisibleItems([...portfolioItems, ...projectItems])

@@ -70,7 +70,7 @@ const formConfig: FormConfig = {
 
 const formFields: Record<string, FormField> = {
     name: {
-        type: 'text' as const,
+        type: 'text',
         name: 'entry.183817893',
         id: 'name',
         placeholder: "What's your name?",
@@ -79,7 +79,7 @@ const formFields: Record<string, FormField> = {
         label: 'Name: '
     },
     email: {
-        type: 'email' as const,
+        type: 'email',
         name: 'entry.1021394857',
         id: 'email',
         placeholder: 'you@email.tld',
@@ -88,14 +88,14 @@ const formFields: Record<string, FormField> = {
         label: 'Email: '
     },
     subject: {
-        type: 'honeypot' as const,
+        type: 'honeypot',
         label: 'Subeject:',
         name: 'entry.628171460',
         id: 'subject',
         required: 'FALSE'
     },
     message: {
-        type: 'textarea' as const,
+        type: 'textarea',
         label: 'Message:',
         name: 'entry.1554105426',
         id: 'message',
@@ -103,7 +103,7 @@ const formFields: Record<string, FormField> = {
         required: 'TRUE'
     },
     submit: {
-        type: 'submit' as const,
+        type: 'submit',
         name: 'submit',
         id: 'submit',
         value: 'Send',
