@@ -2,6 +2,8 @@
 // // Imports
 import type { HTMLAttributes } from 'astro/types'
 import type { FormConfig, FormField } from '../lib/types'
+import age from '../lib/get-age'
+import categoryMap from '../lib/category-map'
 
 import '../styles/pages/about.scss'
 import Layout from '../layouts/Layout.astro'
@@ -10,11 +12,6 @@ import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 import Input from '../default-components/Input.astro'
 import TextArea from '../default-components/TextArea.astro'
-
-// Helper functions
-// Load age first
-import age from '../lib/get-age'
-import categoryMap from '../lib/category-map'
 
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = (await aboutFile.compiledContent())?.replaceAll('{ age }', age.toString())

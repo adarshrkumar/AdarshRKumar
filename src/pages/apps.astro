@@ -1,6 +1,8 @@
 ---
 // Imports
 import type { PortfolioItem } from '../lib/types'
+import filterVisibleItems from '../lib/filter-visible-content-items'
+import sanitizeMD from '../lib/sanitize-md'
 
 import '../styles/pages/projects.scss'
 import Layout from '../layouts/Layout.astro'
@@ -9,8 +11,6 @@ import AnimatedCard from '../components/motion/AnimatedCard.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 import appsList from '../../content/work/appsList.json'
-import filterVisibleItems from '../lib/filter-visible-content-items'
-import sanitizeMD from '../lib/sanitize-md'
 
 // Helper functions
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
