@@ -1,4 +1,5 @@
 import type { Post, DBPost } from './types'
+
 import { db } from '../db/initialize.ts'
 import { posts as postsTable } from '../db/schema.ts'
 
@@ -7,15 +8,15 @@ import { posts as postsTable } from '../db/schema.ts'
 // Helper function to extract clean site URL
 export function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
     let cleanUrl = siteUrl ? siteUrl.toString() : ''
-    
+
     if (cleanUrl.includes('://')) {
         cleanUrl = cleanUrl.split('://')[1]
     }
-    
+
     if (cleanUrl.endsWith('/')) {
         cleanUrl = cleanUrl.slice(0, -1)
     }
-    
+
     return cleanUrl
 }
 
@@ -56,31 +57,31 @@ export function extractSlugFromFilePath(filePath: string): string {
 // Helper function to clean and normalize text content
 export function cleanTextContent(text: string): string {
     let cleanText = text
-    
+
     // Replace line breaks with spaces
     if (cleanText.includes('\n')) {
         cleanText = cleanText.split('\n').join(' ')
     }
-    
+
     // Replace double spaces with single spaces
     if (cleanText.includes('  ')) {
         cleanText = cleanText.split('  ').join(' ')
     }
-    
+
     return cleanText
 }
 
 // Helper function to create preview content with trimming
 export function createPreviewContent(text: string, maxLength: number = 50): string {
     let preview = text
-    
+
     if (preview.length > maxLength) {
         preview = preview.slice(0, maxLength)
     }
-    
+
     // Characters to trim from the end
     const trimChars = [' ', ',', ':', '(', '[', '{', '|', '~', '@', '*', '+', '=', '-', '^']
-    
+
     while (trimChars.some(char => preview.endsWith(char))) {
         preview = preview.slice(0, -1)
     }
@@ -182,15 +183,15 @@ export function getPostsSync(): Post[] {
 function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     const cleanSiteUrl = getCleanSiteUrl(siteUrl)
     const siteLocation = {
-        protocol: 'https:', 
-        host: cleanSiteUrl, 
+        protocol: 'https:',
+        host: cleanSiteUrl,
     }
-    
+
     return posts.map(post => {
         const postSlug = extractSlugFromFilePath(post.file)
         const postUrl = `${siteLocation.protocol}//${siteLocation.host}/post/${postSlug}?hideHeader=true`
         const screenshotImage = generateScreenshotImage(postUrl, post.frontmatter.title || 'Untitled Post')
-        
+
         return {
             ...post,
             slug: postSlug,

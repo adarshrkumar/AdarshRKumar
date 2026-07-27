@@ -40,7 +40,7 @@ export default function getAllSitePages(): PageImport[] {
         if (fileName.endsWith('/')) fileName = fileName.slice(0, -1)
 
         var nameParts = fileName.includes('-') ? fileName.split('-') : [fileName]
-        nameParts = nameParts.map((p: string) => `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`)
+        nameParts = nameParts.map(p => `${p.substring(0, 1).toUpperCase()}${p.slice(1)}`)
         var name = nameParts.join(' ')
 
         if (lPath.startsWith('//')) lPath = `https:${lPath}`

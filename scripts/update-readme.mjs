@@ -12,9 +12,7 @@ const readmePath = path.join(process.cwd(), 'README.md');
  * @returns {string} - The Markdown table.
  */
 function generateTable(skills, header = 'Tool') {
-    if (!skills || skills.length === 0) {
-        return '';
-    }
+    if (!skills || skills.length === 0) return '';
 
     let table = `| ${header} | Proficiency Level |\n`;
     table += '| --- | --- |\n';
