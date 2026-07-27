@@ -18,9 +18,8 @@ const currentDateInfo = {
 }
 
 // Age calculation
-/**
- * Calculate age based on whether birthday has occurred this year
- */
+
+// Calculate age based on whether birthday has occurred this year
 function calculateAge(): number {
     const hasBirthdayOccurred = 
         currentDateInfo.month > dateOfBirth.month || 

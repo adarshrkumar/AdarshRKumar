@@ -15,9 +15,7 @@ const CLIENT_TOKEN = btoa(JSON.stringify({
 
 // Helper functions
 
-/**
- * Fetch a single Instagram endpoint from inflact API
- */
+// Fetch a single Instagram endpoint from inflact API
 async function fetchInstagramEndpoint(endpoint: string): Promise<unknown> {
     const response = await fetch(`https://inflact.com/downloader/api/viewer/${endpoint}/?lang=en`, {
         method: 'POST',

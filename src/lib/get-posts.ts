@@ -19,9 +19,7 @@ export function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
     return cleanUrl
 }
 
-/**
- * Helper function to extract slug from file path
- */
+// Helper function to extract slug from file path
 export function extractSlugFromFilePath(filePath: string): string {
     // Normalize path separators
     const normalizedPath = filePath.replace(/\\/g, '/')
