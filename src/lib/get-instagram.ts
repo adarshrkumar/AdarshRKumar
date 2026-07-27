@@ -16,7 +16,7 @@ const CLIENT_TOKEN = btoa(JSON.stringify({
 // Helper functions
 
 // Fetch a single Instagram endpoint from inflact API
-async function fetchInstagramEndpoint(endpoint: string): Promise<unknown> {
+async function fetchInstagramEndpoint(endpoint: string): Promise<object> {
     const response = await fetch(`https://inflact.com/downloader/api/viewer/${endpoint}/?lang=en`, {
         method: 'POST',
         headers: {
@@ -41,7 +41,7 @@ async function fetchInstagramEndpoint(endpoint: string): Promise<unknown> {
 }
 
 // Recursively search for media edges in API response
-function findEdges(obj: unknown, depth = 0): InstagramMediaNode[] {
+function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
 
     // Check for edge_owner_to_timeline_media or edge_felix_video_timeline patterns

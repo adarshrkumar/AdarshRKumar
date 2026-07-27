@@ -30,13 +30,15 @@ export const POST: APIRoute = async ({ request }) => {
         if (contentType.includes('application/json')) {
             // Handle JSON
             body = await request.json();
-        } else if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
+        }
+        else if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
             // Handle form data
             const formData = await request.formData();
             for (const [key, value] of formData.entries()) {
                 body[key] = value;
             }
-        } else {
+        }
+        else {
             // Try to parse as JSON by default
             try {
                 body = await request.json();
