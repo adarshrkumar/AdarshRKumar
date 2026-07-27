@@ -108,9 +108,7 @@ export function generateScreenshotImage(postUrl: string, title: string, imageSiz
 
 // Main post functions
 
-/**
- * Helper function to convert database post to Post format
- */
+// Helper function to convert database post to Post format
 function convertDBPostToPost(dbPost: DBPost): Post {
     return {
         file: `db://${dbPost.slug}`,
@@ -126,18 +124,14 @@ function convertDBPostToPost(dbPost: DBPost): Post {
     }
 }
 
-/**
- * Helper function to get created date from a post
- */
+// Helper function to get created date from a post
 function getPostCreatedDate(post: Post): Date {
     // Use frontmatter date (which is set to createdAt for DB posts)
     const dateStr = post.frontmatter.date || post.frontmatter.pubDate
     return dateStr ? new Date(dateStr) : new Date(0)
 }
 
-/**
- * Async function to get all posts from database
- */
+// Async function to get all posts from database
 export async function getDBPosts(): Promise<Post[]> {
     try {
         const dbPosts = await db.select().from(postsTable)
@@ -148,24 +142,20 @@ export async function getDBPosts(): Promise<Post[]> {
     }
 }
 
-/**
- * Main function to get all published blog posts from files
- */
+// Main function to get all published blog posts from files
 export function getLocalPosts(): Post[] {
     const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
     const publishedPosts: Post[] = Object.values(blogPostItems)
         .filter(item => {
-            const fileName = (item as Post).file.split('/').pop() || ''
+            const fileName = item.file.split('/').pop() || ''
             return !fileName.startsWith('_')
-        }) as Post[]
+        })
 
     return publishedPosts
 }
 
-/**
- * Main function to get all published blog posts (both local and DB)
- * Sorted by created date (most recent first)
- */
+// Main function to get all published blog posts (both local and DB)
+// Sorted by created date (most recent first)
 export async function getPosts(): Promise<Post[]> {
     const localPosts = getLocalPosts()
     const dbPosts = await getDBPosts()

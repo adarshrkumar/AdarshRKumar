@@ -100,15 +100,13 @@ function extractMediaNodes(data: unknown): InstagramMediaNode[] {
 
     // Fallback: if data is an array of nodes directly
     if (Array.isArray(data)) {
-        return (data as InflactMediaItem[]).map(normalizeMediaNode);
+        return data.map(normalizeMediaNode);
     }
 
     return [];
 }
 
-/**
- * Main function: fetch all Instagram data resiliently
- */
+// Main function: fetch all Instagram data resiliently
 export async function getInstagramData(): Promise<InstagramData> {
     try {
         const endpoints = ['profile', 'posts', 'reels', 'stories'] as const;
@@ -126,11 +124,8 @@ export async function getInstagramData(): Promise<InstagramData> {
 
         // Extract profile
         let profile: InstagramProfile | null = null;
-        const profileData = data.profile as Record<string, unknown> | undefined;
-        if (profileData?.profile) {
-            const rawProfile = (profileData.profile as Record<string, unknown>)?.data as Record<string, unknown> | undefined;
-            const user = rawProfile?.user as InstagramProfile | undefined;
-            profile = user || null;
+        if (data.profile?.profile) {
+            profile = data.profile.profile?.data?.user || null;
         }
 
         // Extract posts
@@ -141,13 +136,13 @@ export async function getInstagramData(): Promise<InstagramData> {
 
         // Extract stories
         let stories: InstagramStory[] = [];
-        const storiesData = data.stories as Record<string, unknown> | undefined;
+        const storiesData = data.stories | undefined;
         if (storiesData) {
             // Stories may be nested under various keys
-            const reel = storiesData.reel as Record<string, unknown> | undefined;
-            const storyArray = (storiesData.stories ?? reel?.items ?? storiesData) as unknown;
+            const reel = storiesData.reel | undefined;
+            const storyArray = (storiesData.stories ?? reel?.items ?? storiesData);
             if (Array.isArray(storyArray)) {
-                stories = storyArray as InstagramStory[];
+                stories = storyArray;
             }
         }
 
@@ -164,9 +159,7 @@ export async function getInstagramData(): Promise<InstagramData> {
     }
 }
 
-/**
- * Extract caption text from a media node
- */
+// Extract caption text from a media node
 export function getInstagramCaption(node: InstagramMediaNode): string {
     const edges = node.edge_media_to_caption?.edges;
     if (edges && edges.length > 0) {
@@ -175,9 +168,7 @@ export function getInstagramCaption(node: InstagramMediaNode): string {
     return '';
 }
 
-/**
- * Format Instagram timestamp to readable date
- */
+// Format Instagram timestamp to readable date
 export function formatInstagramDate(timestamp: number | undefined): string {
     if (!timestamp) return '';
     return new Date(timestamp * 1000).toLocaleDateString('en-US', {
