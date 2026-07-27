@@ -21,7 +21,7 @@ export default {
             Program(node) {
                 const code = context.sourceCode.getText();
 
-                // Check 0b: 4-space indentation (disallow tabs and 2-space indents)
+                // Check 1: 4-space indentation (disallow tabs and 2-space indents)
                 code.split(/\r?\n/).forEach((line, i) => {
                     if (line && line.match(/^\s/)) {
                         const match = line.match(/^(\s+)/);

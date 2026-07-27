@@ -46,7 +46,7 @@ export default {
     create(context) {
         return {
             IfStatement(node) {
-                // Check 3: If/else brace placement
+                // Check 1: If/else brace placement
                 if (node.alternate) {
                     const elseToken = context.sourceCode.getTokenAfter(context.sourceCode.getLastToken(node.consequent));
 
@@ -64,14 +64,14 @@ export default {
                     }
                 }
 
-                // Check 5: Single statement in if/else should be on one line
+                // Check 3: Single statement in if/else should be on one line
                 checkSingleDeclarationBlock(node, node.consequent, context);
                 if (node.alternate && node.alternate.type !== 'IfStatement') {
                     checkSingleDeclarationBlock(node.alternate, node.alternate, context);
                 }
             },
             TryStatement(node) {
-                // Check 4: Try/catch/finally must stay on same line
+                // Check 2: Try/catch/finally must stay on same line
                 if (node.handler) {
                     const catchToken = context.sourceCode.getTokenAfter(context.sourceCode.getLastToken(node.block));
 

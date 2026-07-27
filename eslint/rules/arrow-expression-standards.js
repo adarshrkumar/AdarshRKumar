@@ -24,7 +24,7 @@ export default {
     create(context) {
         return {
             ArrowFunctionExpression(node) {
-                // Check 7: Arrow function definitions
+                // Check 1: Arrow function definitions
                 if ((!node.parent || !(node.parent.type === 'CallExpression' || node.parent.type === 'NewExpression') || !Array.isArray(node.parent.arguments) || !node.parent.arguments.includes(node)) && (!node.parent || node.parent.type !== 'CallExpression' || node.parent.callee !== node) && (!context.filename.includes('/pages/api/') || !node.parent || node.parent.type !== 'VariableDeclarator' || !['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'].includes(node.parent.id?.name)) && (!node.parent || node.parent.type !== 'Property' || node.parent.key.type !== 'Identifier' || node.parent.key.name !== 'execute') && (!node.parent || node.parent.type !== 'Property')) {
                     context.report({
                         node,
@@ -32,7 +32,7 @@ export default {
                     });
                 }
 
-                // Check 8: Arrow function parameter parentheses (as-needed)
+                // Check 2: Arrow function parameter parentheses (as-needed)
                 if (!node.params[0] || node.params.length !== 1) return;
                 if (node.params[0].type === 'RestElement') return;
                 if (node.returnType?.typeAnnotation?.type === 'TSTypePredicate') return;
@@ -59,7 +59,7 @@ export default {
                 });
             },
             ConditionalExpression(node) {
-                // Check 9: Unnecessary parentheses around ternary condition test
+                // Check 3: Unnecessary parentheses around ternary condition test
                 if (!node.test) return;
 
                 const tokenBeforeTest = context.sourceCode.getTokenBefore(node.test);

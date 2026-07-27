@@ -11,9 +11,7 @@ export default {
     create(context) {
         return {
             Program(node) {
-                const code = context.sourceCode.getText();
-
-                // Check 0a: Multi-line block comments
+                // Check 1: Multi-line block comments
                 const comments = context.sourceCode.getAllComments?.() || context.sourceCode.getComments?.() || [];
                 const jsDocTags = /@(param|returns?|example|deprecated|throws?|see|author|version|since|async|yields?|access|readonly|private|protected|static|abstract|type|enum|callback|template|typedef|implements|interface|extends|class|function|const|var|let|ignore|preserve|preserve-indent|pre|code|literal|external|link)/;
 
@@ -60,9 +58,9 @@ export default {
                     });
                 });
 
-                // Check 0c: Duplicate consecutive comments
+                // Check 2: Duplicate consecutive comments
                 for (let i = 0; i < comments.length - 1; i++) {
-                    if (code.substring(comments[i].range[1], comments[i + 1].range[0]).trim() === '') {
+                    if (context.sourceCode.getText().substring(comments[i].range[1], comments[i + 1].range[0]).trim() === '') {
                         if (comments[i].value === comments[i + 1].value) {
                             context.report({
                                 node: node,
