@@ -10,39 +10,30 @@ import type { MusicPlaylistConfig, GridOptions } from '../lib/types'
 // Music playlist configuration
 const musicConfig: MusicPlaylistConfig = {
     playlists: [
-        'https://embed.music.apple.com/us/playlist/on-the-road-s/pl.u-r2yBDVqsRy4JPxe', 
-        'https://embed.music.apple.com/us/playlist/daytime-hits-s/pl.u-06oxpo6tY48JWV7', 
-        'https://embed.music.apple.com/us/playlist/rise-shine-s/pl.u-MDAWkl9tANVeW83', 
+        'https://embed.music.apple.com/us/playlist/on-the-road-s/pl.u-r2yBDVqsRy4JPxe',
+        'https://embed.music.apple.com/us/playlist/daytime-hits-s/pl.u-06oxpo6tY48JWV7',
+        'https://embed.music.apple.com/us/playlist/rise-shine-s/pl.u-MDAWkl9tANVeW83',
     ],
     channelId: 'UCHUWd3IuPu3P21XkDW8vSuQ',
     videosPerChannel: 3
-}
-
-// Grid options for different sections
-const videoGridOptions: GridOptions = {
-    min: '24rem', 
-}
-
-const musicGridOptions: GridOptions = {
-    min: '24rem', 
 }
 
 ---
 
 <Layout title="My Music" classItems="music-area">
     <h2 class="section-title">My Performances</h2>
-    <SiteGridContent classItems="music-videos" options={videoGridOptions}>
+    <SiteGridContent classItems="music-videos" options={{ min: '24rem' }}>
         <ChannelVideos id={musicConfig.channelId} vidsPerChannel={musicConfig.videosPerChannel} />
     </SiteGridContent>
-    
+
     <h2 class="section-title">My Music Taste</h2>
-    <SiteGridContent classItems="music" options={musicGridOptions}>
+    <SiteGridContent classItems="music" options={{ min: '24rem' }}>
         {
             musicConfig.playlists.map(playlistUrl => {
                 return (
-                    <iframe 
-                        allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    <iframe
+                        allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
                         src={playlistUrl}
                     />
                 )

@@ -24,19 +24,18 @@ if (lastPath) {
         // Helper function to update 404 page content dynamically
         function initialize404Page() {
             const pageElement = document.querySelector('.page')
-            const linkElement = pageElement?.parentNode as HTMLAnchorElement
-            
-            if (pageElement && linkElement) {
+
+            if (pageElement && pageElement?.parentNode) {
                 // Set the link to the current pathname
-                linkElement.href = location.pathname
-                
+                (pageElement?.parentNode as HTMLAnchorElement).href = location.pathname
+
                 // Update page text if not already on 404 page
                 if (!location.pathname.startsWith('/404')) {
                     pageElement.textContent = location.pathname
                 }
             }
         }
-        
+
         // Initialize 404 page functionality
         if (document.querySelector('.page')) {
             initialize404Page()

@@ -11,12 +11,12 @@ import AnimatedCard from '../components/motion/AnimatedCard.astro'
 // Helper function to determine link target based on URL
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
     let target = '_blank'
-    
+
     // Handle protocol-relative URLs
     if (url.startsWith('//')) {
         url = `https:${url}`
     }
-    
+
     // Extract domain from URL
     let domain = url
     if (domain.includes('://')) {
@@ -29,12 +29,12 @@ function determineLinkTarget(url: string, siteUrl: string | URL | undefined): st
         }
         domain = `https://${domain}`
     }
-    
+
     // Check if it's an internal link
     if (!url.includes(':') || domain === siteUrl?.toString()) {
         target = '_self'
     }
-    
+
     return target
 }
 
