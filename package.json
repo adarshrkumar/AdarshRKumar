@@ -21,8 +21,11 @@
         "test:nopause:chrome:headed": "npx playwright test tests/browser.test.nopause.ts --headed --browser=chromium",
         "test:nopause:firefox:headed": "npx playwright test tests/browser.test.nopause.ts --headed --browser=firefox",
         "test:nopause:safari:headed": "npx playwright test tests/browser.test.nopause.ts --headed --browser=webkit",
-        "check": "astro check && stylelint \"src/**/*.scss\" && astro build",
-        "stylelint:fix": "stylelint \"src/**/*.scss\" --fix"
+        "lint": "eslint --max-warnings 0",
+        "lint:fix": "eslint --max-warnings 0 --fix",
+        "stylelint": "stylelint \"src/**/*.scss\"",
+        "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
+        "check": "eslint --max-warnings 0 && stylelint \"src/**/*.scss\" && astro check && astro build"
     },
     "dependencies": {
         "@astrojs/check": "^0.9.7",
