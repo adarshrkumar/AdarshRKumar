@@ -451,7 +451,7 @@ export default {
 
                 if (node.returnType && node.returnType.typeAnnotation) return;
 
-                if (!node.params[0].typeAnnotation) return;
+                if (node.params[0].typeAnnotation) return;
 
                 const openParen = context.sourceCode.getTokenBefore(node.params[0]);
                 const closeParen = context.sourceCode.getTokenAfter(node.params[0]);
