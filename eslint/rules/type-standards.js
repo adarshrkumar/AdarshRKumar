@@ -23,7 +23,7 @@ export default {
 
         return {
             TSAsExpression(node) {
-                if (node.typeAnnotation?.type === 'TSTypeOperator' && node.typeAnnotation.operator === 'keyof' && node.typeAnnotation.typeParameter?.type === 'TSTypeQuery') return;
+                if (node.typeAnnotation?.type === 'TSTypeOperator' && node.typeAnnotation.operator === 'keyof') return;
                 if (node.typeAnnotation?.type === 'TSUnionType' && node.typeAnnotation.types?.some(t => t.type === 'TSTypeQuery') && node.typeAnnotation.types?.some(t => t.type === 'TSLiteralType' && t.literal === 'honeypot')) return;
 
                 context.report({
