@@ -47,9 +47,9 @@ function getArrowFunctionName(node) {
 
 function isAllowedApiHandler(node, isApiRoute) {
     if (!isApiRoute) return false;
-    if (!node.parent || node.parent.type !== 'VariableDeclarator' || node.parent.id.type !== 'Identifier') return false;
+    if (!node.parent || node.parent.type !== 'VariableDeclarator') return false;
     const apiHandlers = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'];
-    return apiHandlers.includes(node.parent.id.name);
+    return node.parent.id?.name && apiHandlers.includes(node.parent.id.name);
 }
 
 function isAllowedExecuteProperty(node) {

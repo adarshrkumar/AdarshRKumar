@@ -4,7 +4,7 @@ import rss from '@astrojs/rss'
 import age from '../lib/get-age'
 import sanitizeMD from '../lib/sanitize-md'
 import { getPostsForRSS } from '../lib/get-posts'
-import type { PostForRSS, AstroContext } from '../lib/types'
+import type { AstroContext } from '../lib/types'
 
 // Helper functions
 // Helper function to clean and normalize about content
