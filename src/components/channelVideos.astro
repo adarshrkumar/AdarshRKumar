@@ -14,19 +14,12 @@ function buildYouTubeRSSUrl(channelId: string): string {
 
 // Helper function to validate RSS response
 function isValidRSSResponse(result: RSSResponse): boolean {
-    return !!(
-        result && 
-        result.status === 'ok' && 
-        result.feed && 
-        result.items && 
-        result.items.length > 0
-    )
+    return !!(result && result.status === 'ok' && result.feed && result.items && result.items.length > 0)
 }
 
 // Helper function to limit videos based on count
 function shouldIncludeVideo(index: number, maxVideos: number | string): boolean {
-    if (typeof maxVideos === 'string') return true
-    return index < maxVideos
+    return typeof maxVideos === 'string' || index < maxVideos
 }
 
 // Component props and configuration
@@ -45,7 +38,7 @@ try {
     const rssUrl = buildYouTubeRSSUrl(channelId)
     const response = await fetch(rssUrl)
     const result = await response.json()
-    
+
     if (isValidRSSResponse(result)) {
         channelFeed = result.feed
         channelVideos = result.items
@@ -64,11 +57,11 @@ try {
         if (!shouldIncludeVideo(videoIndex, maxVideosPerChannel)) {
             return ''
         }
-        
+
         return (
-            <LargeFrame 
-                video={video} 
-                feed={channelFeed} 
+            <LargeFrame
+                video={video}
+                feed={channelFeed}
             />
         )
     })
