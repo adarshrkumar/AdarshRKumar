@@ -8,9 +8,9 @@ import SiteGridContent from '../components/siteGridContent.astro'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
+import appsList from '../../content/work/appsList.json'
 import filterVisibleItems from '../lib/filter-visible-content-items'
 import sanitizeMD from '../lib/sanitize-md'
-import appsList from '../../content/work/appsList.json'
 
 // Helper functions
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
@@ -22,9 +22,8 @@ function determineLinkTarget(url: string, siteUrl: string | URL | undefined): st
         if (domain.startsWith('www.')) domain = domain.slice(4)
         const sUrl = siteUrl?.toString() || ''
         if (sUrl.includes(domain)) target = '_self'
-    } else {
-        target = '_self'
     }
+    else target = '_self';
     return target
 }
 
