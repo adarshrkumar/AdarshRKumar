@@ -4,6 +4,10 @@ import fs from 'fs-extra';
 function getImportGroup(source) {
     const extension = path.extname(source.toLowerCase()).slice(1);
 
+    if (source === 'astro' || source.startsWith('astro/') || source === '@astrojs' || source.startsWith('@astrojs/')) {
+        return 3;
+    }
+
     if (
         source === 'drizzle-orm'
         || source.startsWith('drizzle-orm/')
@@ -13,7 +17,7 @@ function getImportGroup(source) {
     }
 
     if (!source.startsWith('.') && (source.toLowerCase().endsWith('.astro') || source.toLowerCase().endsWith('.scss'))) {
-        return 7;
+        return 8;
     }
 
     if (
@@ -21,7 +25,7 @@ function getImportGroup(source) {
         && extension.length > 0
         && !['js', 'ts'].some(prefix => extension.startsWith(prefix) || extension.endsWith(prefix))
     ) {
-        return 6;
+        return 7;
     }
 
     if (
@@ -29,13 +33,13 @@ function getImportGroup(source) {
         && extension.length > 0
         && ['js', 'ts'].some(prefix => extension.startsWith(prefix) || extension.endsWith(prefix))
     ) {
-        return 5;
+        return 6;
     }
 
     if (!source.startsWith('.')) return 1;
-    if (source.startsWith('../')) return 3;
-    if (source.startsWith('./')) return 4;
-    return 4;
+    if (source.startsWith('../')) return 4;
+    if (source.startsWith('./')) return 5;
+    return 5;
 }
 
 function getImportModulePath(source, currentDir) {
@@ -170,10 +174,10 @@ export default {
                         maxSeenGroup = group === 4 ? 3 : group;
                     }
 
-                    if (previousNode && previousGroup !== null && ((previousGroup === (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2) || (previousGroup !== (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2))) {
+                    if (previousNode && previousGroup !== null && ((previousGroup !== (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2) || (previousGroup === (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2))) {
                         context.report({
                             node: importNode,
-                            message: previousGroup === (group === 4 ? 3 : group) ? `Remove blank line between same import group.` : `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${importNode.source.value}" (group ${group === 4 ? 3 : group})`,
+                            message: previousGroup !== (group === 4 ? 3 : group) ? `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${importNode.source.value}" (group ${group === 4 ? 3 : group})` : `Remove blank line between same import group.`,
                         });
                     }
 
