@@ -44,9 +44,7 @@ async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
             const response = await fetch(rssUrl)
             const data: RSSResponse = await response.json()
 
-            if (isValidChannelData(data)) {
-                return extractVideoItems(data, 3)
-            }
+            if (isValidChannelData(data)) return extractVideoItems(data, 3)
             console.warn(`No valid data found for channel: ${channelId}`)
             return []
         } catch (error) {
