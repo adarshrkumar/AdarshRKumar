@@ -1,5 +1,6 @@
 // Instagram data fetching utilities
 // Uses inflact.com API to fetch profile, posts, reels, and stories
+/* global btoa */
 
 import type { InflactMediaItem, InflactEndpoints, InstagramData, InstagramMediaNode, InstagramProfile, InstagramStory } from './types';
 
@@ -45,11 +46,18 @@ function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
 
     // Check for edge_owner_to_timeline_media or edge_felix_video_timeline patterns
-    for (const key in obj) {
-        if ((key.startsWith('edge_') && key.includes('media')) || key.startsWith('edge_felix')) {
-            const edge = obj[key as keyof object];
-            if (edge?.edges?.length) {
-                return edge.edges.map(e => e.node);
+    const entries = Object.entries(obj);
+    for (let i = 0; i < entries.length; i++) {
+        if ((entries[i][0].startsWith('edge_') && entries[i][0].includes('media')) || entries[i][0].startsWith('edge_felix')) {
+            if (typeof entries[i][1] === 'object' && entries[i][1] !== null && 'edges' in entries[i][1] && Array.isArray(entries[i][1].edges) && entries[i][1].edges.length > 0) {
+                const nodes: InstagramMediaNode[] = [];
+                for (let j = 0; j < entries[i][1].edges.length; j++) {
+                    const edge = entries[i][1].edges[j];
+                    if (edge && typeof edge === 'object' && 'node' in edge) {
+                        nodes.push(edge.node);
+                    }
+                }
+                return nodes;
             }
         }
     }
@@ -91,10 +99,15 @@ function extractMediaNodes(data: object): InstagramMediaNode[] {
     if (edges.length > 0) return edges;
 
     // Handle inflact flat array format (e.g. data.reels, data.posts)
-    for (const key of Object.keys(data)) {
-        const val = data[key as keyof typeof data];
+    const entries = Object.entries(data);
+    for (let i = 0; i < entries.length; i++) {
+        const val = entries[i][1];
         if (Array.isArray(val) && val.length > 0 && typeof val[0] === 'object') {
-            return val.map((item: InflactMediaItem) => normalizeMediaNode(item));
+            const results: InstagramMediaNode[] = [];
+            for (let j = 0; j < val.length; j++) {
+                results.push(normalizeMediaNode(val[j]));
+            }
+            return results;
         }
     }
 

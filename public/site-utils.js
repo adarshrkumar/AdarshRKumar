@@ -1,3 +1,5 @@
+/* global window, document */
+
 window.addEventListener('DOMContentLoaded', _e => {
     var linkRels = document.querySelectorAll('link[rel]')
     linkRels.forEach(l => {
