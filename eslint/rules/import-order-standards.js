@@ -1,5 +1,79 @@
 import path from 'path';
-import { getImportGroup, getImportModulePath } from '../import-export-helpers.js';
+import fs from 'fs-extra';
+
+function getImportGroup(source) {
+    if (
+        source === 'drizzle-orm'
+        || source.startsWith('drizzle-orm/')
+        || (source.startsWith('.') && /(^|\/)db(\/|$)/.test(source.replaceAll('\\', '/')))
+    ) {
+        return 2;
+    }
+
+    if (source === 'astro' || source.startsWith('astro/') || source === '@astrojs' || source.startsWith('@astrojs/')) {
+        return 3;
+    }
+
+    const frameworks = ['astro', 'svelte', 'react', 'vue', 'solid', 'preact'];
+    const styles = ['css', 'scss', 'sass', 'less', 'styl', 'stylus'];
+    if (!source.startsWith('.') && (frameworks.find(f => source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => source.toLowerCase().endsWith(`.${s}`)))) {
+        return 8;
+    }
+
+    if (
+        !source.startsWith('.')
+        && path.extname(source.toLowerCase()).slice(1).length > 0
+        && ['js', 'ts'].some(prefix => path.extname(source.toLowerCase()).slice(1).startsWith(prefix) || path.extname(source.toLowerCase()).slice(1).endsWith(prefix))
+    ) {
+        return 6;
+    }
+
+    if (
+        !source.startsWith('.')
+        && path.extname(source.toLowerCase()).slice(1).length > 0
+        && !['js', 'ts'].some(prefix => path.extname(source.toLowerCase()).slice(1).startsWith(prefix) || path.extname(source.toLowerCase()).slice(1).endsWith(prefix))
+    ) {
+        return 7;
+    }
+
+    if (!source.startsWith('.')) return 1;
+    if (source.startsWith('../')) return 4;
+    if (source.startsWith('./')) return 5;
+    return 5;
+}
+
+function getImportModulePath(source, currentDir) {
+    if (!source.startsWith('.')) return null;
+
+    if (source.split('/').length === 1) {
+        let targetPath = path.resolve(currentDir, source);
+        try {
+            const stat = fs.statSync(targetPath, { throwIfNoEntry: false });
+            if (stat && stat.isFile()) {
+                return path.dirname(targetPath);
+            }
+        } catch {
+            // Ignore errors
+        }
+        return targetPath;
+    }
+
+    try {
+        const dirStat = fs.statSync(path.resolve(currentDir, source.split('/').slice(0, -1).join('/')), { throwIfNoEntry: false });
+        if (dirStat && dirStat.isDirectory()) {
+            for (const entry of fs.readdirSync(path.resolve(currentDir, source.split('/').slice(0, -1).join('/')))) {
+                const stat = fs.statSync(path.join(path.resolve(currentDir, source.split('/').slice(0, -1).join('/')), entry), { throwIfNoEntry: false });
+                if (stat && stat.isFile() && path.parse(entry).name === source.split('/')[source.split('/').length - 1]) {
+                    return path.resolve(currentDir, source.split('/').slice(0, -1).join('/'));
+                }
+            }
+        }
+    } catch {
+        // Ignore errors
+    }
+
+    return path.resolve(currentDir, source);
+}
 
 export default {
     meta: {
@@ -12,20 +86,17 @@ export default {
         schema: []
     },
     create(context) {
-        const currentDir = path.dirname(context.filename);
-
         return {
             Program(node) {
                 if (!node.body) return;
 
-                const importNodes = (node.body || []).filter(statement => statement && statement.type === 'ImportDeclaration');
-                if (importNodes.length === 0) return;
+                if ((node.body || []).filter(statement => statement && statement.type === 'ImportDeclaration').length === 0) return;
 
                 let maxSeenGroup = 0;
                 let previousNode = null;
                 let previousGroup = null;
 
-                for (const importNode of importNodes) {
+                for (const importNode of (node.body || []).filter(statement => statement && statement.type === 'ImportDeclaration')) {
                     if (typeof importNode.source.value !== 'string') continue;
 
                     const group = getImportGroup(importNode.source.value);
@@ -55,7 +126,7 @@ export default {
                 let currentGroupImports = [];
                 let currentGroupNumber = null;
 
-                for (const importNode of importNodes) {
+                for (const importNode of (node.body || []).filter(statement => statement && statement.type === 'ImportDeclaration')) {
                     if (typeof importNode.source.value !== 'string') continue;
 
                     const group = getImportGroup(importNode.source.value);
@@ -70,10 +141,9 @@ export default {
                     if (currentGroupImports.length > 1) {
                         const modules = new Map();
                         for (const imp of currentGroupImports) {
-                            const libPath = getImportModulePath(imp.source.value, currentDir);
-                            if (libPath) {
-                                if (!modules.has(libPath)) modules.set(libPath, []);
-                                modules.get(libPath).push(imp);
+                            if (getImportModulePath(imp.source.value, path.dirname(context.filename))) {
+                                if (!modules.has(getImportModulePath(imp.source.value, path.dirname(context.filename)))) modules.set(getImportModulePath(imp.source.value, path.dirname(context.filename)), []);
+                                modules.get(getImportModulePath(imp.source.value, path.dirname(context.filename))).push(imp);
                             }
                         }
 
@@ -81,24 +151,17 @@ export default {
                             if (libImports.length <= 1) continue;
 
                             for (let i = 1; i < libImports.length; i++) {
-                                const prevImport = libImports[i - 1];
-                                const currImport = libImports[i];
-
-                                const prevIndex = currentGroupImports.indexOf(prevImport);
-                                const currIndex = currentGroupImports.indexOf(currImport);
-
-                                let hasOtherImportsBetween = false;
-                                for (let j = prevIndex + 1; j < currIndex; j++) {
-                                    const betweenModulePath = getImportModulePath(currentGroupImports[j].source.value, currentDir);
-                                    if (betweenModulePath !== libPath) {
-                                        hasOtherImportsBetween = true;
+                                let foundOtherImports = false;
+                                for (let j = currentGroupImports.indexOf(libImports[i - 1]) + 1; j < currentGroupImports.indexOf(libImports[i]); j++) {
+                                    if (getImportModulePath(currentGroupImports[j].source.value, path.dirname(context.filename)) !== libPath) {
+                                        foundOtherImports = true;
                                         break;
                                     }
                                 }
 
-                                if (hasOtherImportsBetween) {
+                                if (foundOtherImports) {
                                     context.report({
-                                        node: currImport,
+                                        node: libImports[i],
                                         message: `Imports from lib "${libPath}" must be grouped together. Group all "${libPath}" imports consecutively.`,
                                     });
                                 }
