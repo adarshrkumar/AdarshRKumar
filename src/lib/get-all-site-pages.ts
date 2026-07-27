@@ -2,7 +2,9 @@ import type { PageImport } from './types';
 
 export default function getAllSitePages(): PageImport[] {
     const items = import.meta.glob('../pages/*.astro', { eager: true })
-    const pages = Object.values(items);
+    const pages = Object.values(items).filter((page): page is PageImport => {
+        return !!(page && typeof page === 'object' && 'url' in page && typeof page.url === 'string');
+    });
 
     const links: { url: string; name: string, target?: string, primaryCls?: string }[] = []
 
