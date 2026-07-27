@@ -7,12 +7,6 @@ import Layout from '../../layouts/Layout.astro'
 import { findPostById } from '../../lib/get-posts'
 import type { Authors } from '../../lib/types'
 
-// Helper functions
-// Helper function to get author information
-function getAuthorInfo(authors: Authors, authorUsername: string) {
-    return authors[authorUsername as keyof typeof authors]
-}
-
 // Data loading and processing
 // Get post ID from URL parameters
 const { id: postId = '' } = Astro.params;
@@ -29,7 +23,7 @@ if (!currentPost) {
 
 // Get author information
 const authorUsername = currentPost.frontmatter.author;
-const authorInfo = getAuthorInfo(authors, authorUsername || '');
+const authorInfo = authors[authorUsername as keyof typeof authors];
 
 ---
 
