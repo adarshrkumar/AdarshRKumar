@@ -6,7 +6,7 @@ import { rules, ruleConfigs } from './eslint/custom-rules.js';
 
 export default [
     {
-        ignores: ['node_modules', 'dist']
+        ignores: ['node_modules', 'dist', '.astro']
     },
     {
         files: ['**/*.{js,ts,mjs,cjs,tsx,jsx}'],
