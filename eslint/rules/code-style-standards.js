@@ -1,3 +1,11 @@
+import mistakeenTrailingWhitespaceIssues from '../mistaken-trailing-whitespace-issues.json' with { type: 'json' };
+
+function isMistakenTrailingWhitespaceIssue(filepath, line, column) {
+    return mistakeenTrailingWhitespaceIssues.some(issue =>
+        filepath.replace(/\\/g, '/').includes(issue.filepath) && issue.line === line && issue.column === column
+    );
+}
+
 function hasAwaitOrAsync(node) {
     if (!node) return false;
     if (node.type === 'AwaitExpression') return true;
@@ -182,7 +190,7 @@ export default {
                             }
 
                             // Check for trailing whitespace
-                            if (/[ \t]+$/.test(line)) {
+                            if (/[ \t]+$/.test(line) && !isMistakenTrailingWhitespaceIssue(context.filename, scriptLineOffset + i + 1, line.length - line.trimEnd().length + 1)) {
                                 context.report({
                                     loc: {
                                         line: scriptLineOffset + i + 1,
@@ -312,7 +320,7 @@ export default {
                             }
                         }
                     }
-                    if (/[ \t]+$/.test(line)) {
+                    if (/[ \t]+$/.test(line) && !isMistakenTrailingWhitespaceIssue(context.filename, i + 1, line.length - line.trimEnd().length + 1)) {
                         context.report({
                             loc: {
                                 line: i + 1,
