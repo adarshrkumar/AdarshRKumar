@@ -1,10 +1,10 @@
 // API endpoint for creating new blog posts in the database
 // POST /api/blog/post/new
 
-import type { APIRoute } from 'astro'
-
 import { db } from '../../../../db/initialize.ts'
 import { posts } from '../../../../db/schema.ts'
+
+import type { APIRoute } from 'astro'
 
 // Helper function to add CORS headers
 const corsHeaders = {

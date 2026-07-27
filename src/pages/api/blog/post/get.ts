@@ -1,11 +1,11 @@
 // API endpoint for retrieving blog posts from the database
 // GET /api/blog/post/get
 
-import type { APIRoute } from 'astro'
-
 import { eq, and, like } from 'drizzle-orm'
 import { db } from '../../../../db/initialize.ts'
 import { posts } from '../../../../db/schema.ts'
+
+import type { APIRoute } from 'astro'
 
 // Helper function to add CORS headers
 const corsHeaders = {

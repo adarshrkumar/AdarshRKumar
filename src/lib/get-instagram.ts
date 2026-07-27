@@ -137,12 +137,6 @@ export async function getInstagramData(): Promise<InstagramData> {
 
         // Extract profile
         let profile: InstagramProfile | null = null;
-        if (data && typeof data === 'object' && 'profile' in data) {
-            const profileObj = data.profile;
-            if (profileObj && typeof profileObj === 'object' && 'profile' in profileObj) {
-                profile = (profileObj.profile && typeof profileObj.profile === 'object' && 'data' in profileObj.profile ? (profileObj.profile.data && typeof profileObj.profile.data === 'object' && 'user' in profileObj.profile.data ? profileObj.profile.data.user : null) : null);
-            }
-        }
 
         // Extract posts
         const postsData = data && typeof data === 'object' && 'posts' in data ? data.posts : null;
