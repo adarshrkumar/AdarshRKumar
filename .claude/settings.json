@@ -79,6 +79,8 @@
       "Bash(npm run check 2>&1 | *)",
       "Bash(* npm run check 2>&1 | *)"
     ],
-    "ask": []
+    "ask": [
+      "Edit(eslint/**/*.js)"
+    ]
   }
 }
