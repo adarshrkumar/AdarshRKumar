@@ -1,6 +1,7 @@
 ---
 // Imports
 import '../styles/components/sidebar.scss'
+import Nav from './nav.astro'
 
 // Channel configuration
 var channels: { id: string, layout?: string, count?: string }[] = [
@@ -20,8 +21,6 @@ var channels: { id: string, layout?: string, count?: string }[] = [
         id: 'UC8cV2cdrp1ccBWzoi1R-UwQ',
     },
 ]
-
-import Nav from './nav.astro'
 
 // Navigation configuration
 var navItems = [
@@ -58,7 +57,7 @@ var props = [
         {
             channels.map(c => {
                 props.forEach(p => {
-                    if (!!c[p.name as keyof typeof c] === false) c[p.name as keyof typeof c] = p.default
+                    if (!c[p.name as keyof typeof c]) c[p.name as keyof typeof c] = p.default
                 })
 
                 return (
