@@ -77,7 +77,7 @@ const projectCategories: ProjectCategoryConfig[] = [
         id: 'large-scale',
         name: 'Large Scale',
         items: [
-            ...Object.values(import.meta.glob('../../content/work/projects/large-scale/*.md', { eager: true })),
+            ...Object.values(import.meta.glob('../../content/work/projects/large-scale/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)),
             ...getPortfolioItemsForCategory('large-scale')
         ]
     },
@@ -85,7 +85,7 @@ const projectCategories: ProjectCategoryConfig[] = [
         id: 'utilities',
         name: 'Utilities',
         items: [
-            ...Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })),
+            ...Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)),
             ...getPortfolioItemsForCategory('utilities')
         ]
     }

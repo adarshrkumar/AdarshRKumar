@@ -53,7 +53,9 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
 // Data loading and processing
 // Load and filter portfolio items
 const portfolioItemsObj = import.meta.glob('../../content/work/portfolio/*.md', { eager: true })
-const portfolioItems: PortfolioItem[] = filterVisibleItems(Object.values(portfolioItemsObj))
+const portfolioItems: PortfolioItem[] = filterVisibleItems(Object.values(portfolioItemsObj).filter((item): item is PortfolioItem => {
+    return !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)
+}))
 
 ---
 
