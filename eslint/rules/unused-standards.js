@@ -11,9 +11,7 @@ export default {
     create(context) {
         return {
             Program(node) {
-                const code = context.sourceCode.getText();
-
-                // Check 1b: Unused variables and imports (Astro files only)
+                // Check for unused variables and imports (Astro files only)
                 if (context.filename.endsWith('.astro')) {
                     if (context.sourceCode.scopeManager?.acquire?.(node)) {
                         context.sourceCode.scopeManager?.acquire?.(node).variables.forEach(variable => {
@@ -28,11 +26,11 @@ export default {
                     }
 
                     // Check for unused type imports
-                    let typeMatch;
-                    while ((typeMatch = /import\s+type\s+\{([^}]+)\}\s+from/g.exec(code)) !== null) {
-                        typeMatch[1].split(',').map(s => s.trim()).forEach(importName => {
-                            if (importName.split(/\s+as\s+/)[0].trim().startsWith('_')) return;
-                            if (!new RegExp(`\\b${importName.split(/\s+as\s+/)[0].trim()}\\b`).test(code.replace(/import\s+type\s+\{([^}]+)\}\s+from/g, ''))) {
+                    for (const match of context.sourceCode.getText().matchAll(/import\s+type\s+\{([^}]+)\}\s+from/g)) {
+                        match[1].split(',').map(s => s.trim()).forEach(importName => {
+                            const baseName = importName.split(/\s+as\s+/)[0].trim();
+                            if (baseName.startsWith('_')) return;
+                            if (!new RegExp(`\\b${baseName}\\b`).test(context.sourceCode.getText().replace(/import\s+type\s+\{([^}]+)\}\s+from/g, ''))) {
                                 context.report({
                                     loc: { line: code.substring(0, typeMatch.index).split('\n').length, column: 1 },
                                     message: `Type '${importName.split(/\s+as\s+/)[0].trim()}' is imported but never used. Prefix with '_' to ignore or remove the import.`
