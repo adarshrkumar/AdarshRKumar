@@ -1,4 +1,61 @@
 {
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|NotebookEdit|Agent|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-absolute-paths.sh",
+            "timeout": 20
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-bash-bypass-cmds.sh",
+            "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-git-ops.sh",
+            "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-all-cd.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ~/.claude/hooks/check-empty-agents-dir.js",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/on-stop.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(npx drizzle-kit:*)",
