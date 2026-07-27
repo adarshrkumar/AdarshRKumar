@@ -11,9 +11,7 @@ function formatClassItems(classItems: string | undefined): string {
 
 // Helper function to generate CSS custom properties from options
 function generateCustomProperties(options: GridOptions | undefined): string {
-    if (!options || typeof options !== 'object') {
-        return ''
-    }
+    if (!options || typeof options !== 'object') return '';
 
     let customProperties = ''
     const optionKeys = Object.keys(options)
@@ -26,11 +24,10 @@ function generateCustomProperties(options: GridOptions | undefined): string {
         if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
             const nestedKeys = Object.keys(value)
             nestedKeys.forEach(nestedKey => {
-                customProperties += `--${key}-${nestedKey}: ${(value as Record<string, string>)[nestedKey]}; `
+                customProperties += `--${key}-${nestedKey}: ${value[nestedKey as keyof typeof value] ?? ''}; `
             })
-        } else {
-            customProperties += `--${key}: ${value};`
         }
+        else customProperties += `--${key}: ${value};`;
     })
 
     return customProperties
