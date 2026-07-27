@@ -1,7 +1,5 @@
-/**
- * Calculates current age based on date of birth
- * Accounts for whether birthday has occurred this year
- */
+// Calculates current age based on date of birth
+// Accounts for whether birthday has occurred this year
 
 // Date of birth configuration
 const dateOfBirth = {
