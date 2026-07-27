@@ -21,11 +21,11 @@ const currentDateInfo = {
 
 // Calculate age based on whether birthday has occurred this year
 function calculateAge(): number {
-    const hasBirthdayOccurred = 
-        currentDateInfo.month > dateOfBirth.month || 
+    const hasBirthdayOccurred =
+        currentDateInfo.month > dateOfBirth.month ||
         (currentDateInfo.month === dateOfBirth.month && currentDateInfo.day >= dateOfBirth.day)
-    
-    return hasBirthdayOccurred 
+
+    return hasBirthdayOccurred
         ? currentDateInfo.year - dateOfBirth.year
         : currentDateInfo.year - dateOfBirth.year - 1
 }
