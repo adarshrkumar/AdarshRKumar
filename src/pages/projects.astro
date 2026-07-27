@@ -3,7 +3,7 @@
 import '../styles/pages/projects.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
-import getFName from '../lib/get-fname'
+import filterVisibleItems from '../lib/filter-visible-content-items'
 import sanitizeMD from '../lib/sanitize-md'
 import type { ProjectCategoryConfig, PortfolioItem } from '../lib/types'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
@@ -51,14 +51,6 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
     }
 
     return `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
-}
-
-// Helper function to filter out hidden items
-function filterVisibleItems(items: PortfolioItem[]): PortfolioItem[] {
-    return items.filter(item => {
-        const name = getFName(item.file)
-        return !name.startsWith('_')
-    })
 }
 
 // Configuration and data loading

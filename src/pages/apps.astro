@@ -3,12 +3,14 @@
 import '../styles/pages/projects.scss'
 import Layout from '../layouts/Layout.astro'
 import SiteGridContent from '../components/siteGridContent.astro'
-import getFName from '../lib/get-fname'
+import filterVisibleItems from '../lib/filter-visible-content-items'
 import sanitizeMD from '../lib/sanitize-md'
 import type { PortfolioItem } from '../lib/types'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
+
+import appsList from '../../content/work/appsList.json'
 
 // Helper functions
 function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
@@ -35,36 +37,13 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
     return `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
 }
 
-function filterVisibleItems(items: PortfolioItem[]): PortfolioItem[] {
-    return items.filter(item => !getFName(item.file).startsWith('_'))
-}
-
 // Load all potential app sources
 const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })) as PortfolioItem[]
-const projectGames = Object.values(import.meta.glob('../../content/work/projects/games/*.md', { eager: true })) as PortfolioItem[]
-const projectLargeScale = Object.values(import.meta.glob('../../content/work/projects/large-scale/*.md', { eager: true })) as PortfolioItem[]
-const projectUtilities = Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })) as PortfolioItem[]
+const projectItems = Object.values(import.meta.glob('../../content/work/projects/*/*.md', { eager: true })) as PortfolioItem[]
 
-// Combine all items
-const allPotentialApps = [
-    ...portfolioItems,
-    ...projectGames,
-    ...projectLargeScale,
-    ...projectUtilities
-]
-
-const webApps = filterVisibleItems(allPotentialApps).filter(item => {
-    const name = item.frontmatter.name.toLowerCase()
-
-        // Explicitly include only full-scale applications
-        const explicitApps = [
-            'viabay', 
-            'studywise', 
-            'nodebooks',
-            'notepad'
-        ]
-    return explicitApps.some(appName => name.includes(appName))
-})
+const webApps = 
+    filterVisibleItems([...portfolioItems, ...projectItems])
+    .filter(item => (appsList.some(appName => item.frontmatter.name.toLowerCase().includes(appName))))
 
 // Deduplicate by name
 const uniqueApps = Array.from(new Map(webApps.map(item => [item.frontmatter.name, item])).values())
