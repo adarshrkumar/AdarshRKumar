@@ -14,7 +14,6 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
     margin-inline: auto;
     margin-block: $content-spacing;
     width: clamp(500px, 100%, $max-post-width);
-
     border-radius: $post-border-radius;
     box-shadow: $post-shadow-subtle;
     background-color: var(--bg);
@@ -35,6 +34,7 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
 .post {
     gap: 0;
     overflow: hidden; 
+
     &__info, &__area {
         padding: var(--pad);
         transition: background-color $transition-base $transition-timing;
