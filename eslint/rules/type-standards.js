@@ -8,8 +8,7 @@ export default {
         schema: []
     },
     create(context) {
-        const sourceCode = context.sourceCode;
-        const allComments = sourceCode.getAllComments?.() || sourceCode.getComments?.() || [];
+        const allComments = context.sourceCode.getAllComments?.() || context.sourceCode.getComments?.() || [];
 
         allComments.forEach(comment => {
             if (/@ts-(ignore|nocheck|expect-error)/.test(comment.value)) {
