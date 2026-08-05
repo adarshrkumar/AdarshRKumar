@@ -16,27 +16,22 @@ function getImportGroup(source) {
 
     const frameworks = ['astro', 'svelte', 'react', 'vue', 'solid', 'preact'];
     const styles = ['css', 'scss', 'sass', 'less', 'styl', 'stylus'];
-    if (!source.startsWith('.') && (frameworks.find(f => source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => source.toLowerCase().endsWith(`.${s}`)))) {
+    if (frameworks.find(f => source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => source.toLowerCase().endsWith(`.${s}`))) {
         return 8;
     }
 
-    if (
-        !source.startsWith('.')
-        && path.extname(source.toLowerCase()).slice(1).length > 0
-        && ['js', 'ts'].some(prefix => path.extname(source.toLowerCase()).slice(1).startsWith(prefix) || path.extname(source.toLowerCase()).slice(1).endsWith(prefix))
-    ) {
-        return 6;
-    }
+    if (!source.startsWith('.')) {
+        if (path.extname(source.toLowerCase()).slice(1).length === 0) {
+            return 1;
+        }
 
-    if (
-        !source.startsWith('.')
-        && path.extname(source.toLowerCase()).slice(1).length > 0
-        && !['js', 'ts'].some(prefix => path.extname(source.toLowerCase()).slice(1).startsWith(prefix) || path.extname(source.toLowerCase()).slice(1).endsWith(prefix))
-    ) {
+        if (['js', 'ts'].some(prefix => path.extname(source.toLowerCase()).slice(1).startsWith(prefix) || path.extname(source.toLowerCase()).slice(1).endsWith(prefix))) {
+            return 6;
+        }
+
         return 7;
     }
 
-    if (!source.startsWith('.')) return 1;
     if (source.startsWith('../')) return 4;
     if (source.startsWith('./')) return 5;
     return 5;
@@ -101,26 +96,26 @@ export default {
 
                     const group = getImportGroup(importNode.source.value);
 
-                    if ((group === 4 ? 3 : group) < maxSeenGroup) {
+                    if (group < maxSeenGroup) {
                         context.report({
                             node: importNode,
                             message: 'Import order must be: external non-astro/drizzle, then drizzle/db, then astro, then lib imports, then remaining ts/tsx/cjs/mjs imports, then remaining non-(ts/js*/astro/scss) files, then astro/scss files.',
                         });
                     }
 
-                    if ((group === 4 ? 3 : group) > maxSeenGroup) {
-                        maxSeenGroup = group === 4 ? 3 : group;
+                    if (group > maxSeenGroup) {
+                        maxSeenGroup = group;
                     }
 
-                    if (previousNode && previousGroup !== null && ((previousGroup !== (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2) || (previousGroup === (group === 4 ? 3 : group) && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2))) {
+                    if (previousNode && previousGroup !== null && ((previousGroup !== group && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2) || (previousGroup === group && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2))) {
                         context.report({
                             node: importNode,
-                            message: previousGroup !== (group === 4 ? 3 : group) ? `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${importNode.source.value}" (group ${group === 4 ? 3 : group})` : `Remove blank line between same import group.`,
+                            message: previousGroup !== group ? `Add a blank line between import groups. Previous: "${previousNode.source.value}" (group ${previousGroup}), Current: "${importNode.source.value}" (group ${group})` : `Remove blank line between same import group (group ${previousGroup}).`,
                         });
                     }
 
                     previousNode = importNode;
-                    previousGroup = group === 4 ? 3 : group;
+                    previousGroup = group;
                 }
 
                 let currentGroupImports = [];
@@ -131,9 +126,9 @@ export default {
 
                     const group = getImportGroup(importNode.source.value);
 
-                    if (group === 4 ? 3 : group !== currentGroupNumber) {
+                    if (group !== currentGroupNumber) {
                         currentGroupImports = [];
-                        currentGroupNumber = group === 4 ? 3 : group;
+                        currentGroupNumber = group;
                     }
 
                     currentGroupImports.push(importNode);
