@@ -1,10 +1,11 @@
 ---
-import '../styles/pages/projects.scss'
-import Layout from '../layouts/Layout.astro'
-import SiteGridContent from '../components/siteGridContent.astro'
 import filterVisibleItems from '../lib/filter-visible-content-items'
 import sanitizeMD from '../lib/sanitize-md'
 import type { ProjectCategoryConfig, PortfolioItem } from '../lib/types'
+
+import '../styles/pages/projects.scss'
+import Layout from '../layouts/Layout.astro'
+import SiteGridContent from '../components/siteGridContent.astro'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
