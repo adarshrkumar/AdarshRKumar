@@ -105,7 +105,7 @@ img {
         padding: var(--pad);
     }
 
-    &:has(> .page-title:first-child) .main-content {
+    &:has(> .page-title:first-child) .main-content:not(.post) {
         padding: var(--pad);
     }
 }
