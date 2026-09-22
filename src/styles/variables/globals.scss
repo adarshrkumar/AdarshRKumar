@@ -36,12 +36,12 @@ $main-bg-darkness: 100%;
 $main-bdr-darkness: 75%;
 $main-color-lightness: 12%;
 $middle-lightness: 50%;
-$middle-color: hsl(0deg, 0%, $middle-lightness);
+$middle-color: hsl(0deg 0% $middle-lightness);
 $middle-hover: hsl(0deg 0% 45%);
 
 // Light theme - softer, warmer tones
-$light-bg: hsl(210deg, 20%, $main-bg-lightness);
-$light-color: hsl(210deg, 15%, $main-color-lightness);
+$light-bg: hsl(210deg 20% $main-bg-lightness);
+$light-color: hsl(210deg 15% $main-color-lightness);
 $light-border: hsl(210deg 15% 85%);
 $light-nav-hover: hsl(210deg 25% 25%);
 $light-link-color: hsl(220deg 90% 50%);
@@ -49,7 +49,7 @@ $light-link-visited: hsl(280deg 70% 45%);
 $light-shadow: rgb(0 0 0 / 8%);
 
 // Dark theme - richer, less harsh
-$dark-bg: hsl(220deg, 15%, $main-color-lightness);
+$dark-bg: hsl(220deg 15% $main-color-lightness);
 $dark-color: hsl(210deg 15% 92%);
 $dark-border: hsl(220deg 15% 25%);
 $dark-nav-hover: hsl(210deg 15% 80%);
