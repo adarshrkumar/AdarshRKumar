@@ -18,9 +18,6 @@ var currentPath = Astro.url.pathname
 if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
 
 ---
-
-<!-- Header Component -->
-
 <header id="header" class="header" aria-label="Site navigation">
     <a class="header__logo-link" href="/">
         <img class="header__logo" src={logo} alt="Site logo" />
