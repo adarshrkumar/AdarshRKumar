@@ -78,8 +78,6 @@ img {
 }
 
 .content {
-    --pad: #{$content-spacing};
-
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -94,11 +92,11 @@ img {
     }
 
     &:not(:has(> .ignorepadding), :has(> .page-title:first-child)) {
-        padding: var(--pad);
+        padding: $content-spacing;
     }
 
     &:has(> .page-title:first-child) .main-content/*:not(.post)*/ {
-        padding: var(--pad);
+        padding: $content-spacing;
     }
 }
 
@@ -113,10 +111,10 @@ img {
 
 .section, .hero {
     &:not(.ignorepadding) {
-        padding-bottom: var(--pad);
+        padding-bottom: $content-spacing;
 
         > :not(.section-title, .hero *):first-of-type {
-            padding-top: var(--pad);
+            padding-top: $content-spacing;
         }
     }
 }

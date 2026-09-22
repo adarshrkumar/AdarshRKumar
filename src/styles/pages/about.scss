@@ -1,19 +1,19 @@
 @use '../variables/globals' as *;
 
 .about {
-    --pad: 2rem;
-    --max: 1000px;
-    --lbg: hsl(from var(--bg) h s calc(l - 5));
-    --dbg: hsl(from var(--bg) h s calc(l + 10));
-    --card-bg: light-dark(var(--lbg), var(--dbg));
+    $padding: #{$content-spacing * 2};
+    $max: 1000px;
+    $lbg: hsl(from var(--bg) h s calc(l - 5));
+    $dbg: hsl(from var(--bg) h s calc(l + 10));
+    $card-bg: light-dark(#{$lbg}, #{$dbg});
 
     margin-inline: auto;
     box-sizing: border-box;
-    padding-inline: var(--pad);
+    padding-inline: $padding;
     padding-block: $page-spacing;
-    width: min(calc(90% - var(--pad)), var(--max));
+    width: min(calc(90% - $padding), $max);
     max-width: $max-content-width;
-    background-color: var(--card-bg);
+    background-color: $card-bg;
     border-radius: 2rem;
     box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
 
@@ -206,14 +206,14 @@
 
 .contact {
     --pad: 2rem;
-    --max: 500px;
+    $max: 500px;
 
     margin-inline: auto;
     box-sizing: border-box;
     margin-block: 1rem;
-    padding-inline: var(--pad);
-    padding-block: var(--pad);
-    width: min(calc(90% - var(--pad)), var(--max));
+    padding-inline: $padding;
+    padding-block: $padding;
+    width: min(calc(90% - $padding), $max);
     border-radius: 1rem;
     background-color: var(--color);
     color: var(--bg);
