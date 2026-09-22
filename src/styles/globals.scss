@@ -13,15 +13,6 @@
     --color: light-dark(#{$light-color}, #{$dark-color});
     --border-color: light-dark(#{$light-border}, #{$dark-border});
     --shadow-color: light-dark(#{$light-shadow}, #{$dark-shadow});
-    --logo-a-color: #{$logo-a-color};
-    --bg-lightness: #{$main-bg-lightness};
-    --color-lightness: #{$main-color-lightness};
-    --bdr-clr: var(--border-color);
-    --middle-lightness: #{$middle-lightness};
-    --middle-color: #{$middle-color};
-    --middle-hover: #{$middle-hover};
-    --primary-btn-clr: #{$primary-btn-clr};
-    --accent-color: #{$accent-color};
     --nav-btn-hover: light-dark(#{$light-nav-hover}, #{$dark-nav-hover});
 
     font-family: $font-family-base;
@@ -251,7 +242,7 @@ h6 { font-size: 1.125rem; }
     color: inherit;
 
     &:hover {
-        color: var(--accent-color);
+        color: $accent-color;
     }
 }
 
@@ -290,7 +281,7 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
 }
 
 :is(a, button, input, textarea, select):focus-visible {
-    outline: 2px solid var(--primary-btn-clr);
+    outline: 2px solid $primary-btn-clr;
 }
 
 .skip-link {

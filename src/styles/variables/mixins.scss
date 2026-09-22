@@ -1,4 +1,6 @@
 @use 'sass:map' as map;
+@use './globals' as *;
+
 
 // Semantic, reusable SCSS patterns
 
@@ -43,7 +45,7 @@ $breakpoints: (
 // Layout Patterns
 
 @mixin card {
-    background: var(--middle-color);
+    background: $middle-color;
     border-radius: $border-radius-section;
     padding: $section-spacing;
 }
@@ -70,7 +72,7 @@ $breakpoints: (
 
 @mixin focus-ring {
     &:focus-visible {
-        outline: 2px solid var(--primary-btn-clr);
+        outline: 2px solid $primary-btn-clr;
         outline-offset: 2px;
     }
 }
