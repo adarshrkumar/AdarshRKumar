@@ -1,18 +1,15 @@
 ---
-// Imports
-import '../styles/components/large-frame.scss'
 import { extractChannelId, extractVideoId, generateYouTubeImageUrls, generateYouTubeUrls } from '../lib/youtube'
 
-// Get component props
+import '../styles/components/large-frame.scss'
+
 const { video, feed } = Astro.props
 
-// Extract IDs and generate URLs
 const channelId = extractChannelId(feed.link)
 const videoId = extractVideoId(video.guid)
 const imageUrls = await generateYouTubeImageUrls(videoId)
 const youtubeUrls = generateYouTubeUrls(videoId, channelId)
 
-// Generate alt text and titles
 const imageAlt = `YouTube Video Thumbnail for "${video.title}" uploaded by "${video.author}"`
 const frameTitle = `"${video.title}" uploaded by "${video.author}"`
 

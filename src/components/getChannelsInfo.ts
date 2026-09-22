@@ -1,7 +1,5 @@
-// Imports
 import type { VideoItem, RSSResponse } from '../lib/types'
 
-// Helper function to extract video items from response
 function extractVideoItems(response: RSSResponse, maxVideos: number = 3): VideoItem[] {
     if (!response.items) return []
 
@@ -21,7 +19,6 @@ function extractVideoItems(response: RSSResponse, maxVideos: number = 3): VideoI
     return videoItems
 }
 
-// Main function to get channel information
 async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     const allVideoItems: VideoItem[] = []
 
@@ -53,4 +50,4 @@ async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     return allVideoItems
 }
 
-export { getChannelsInfo }
+export default getChannelsInfo

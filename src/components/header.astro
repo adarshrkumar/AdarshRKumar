@@ -1,24 +1,18 @@
 ---
-// Imports
 import getAllSitePages from '../lib/get-all-site-pages'
-import '../styles/components/header.scss'
-import '../styles/components/nav.scss'
 
 import NavContent from './navContent.astro'
 import ThemeSwitcher from './themeSwitcher.astro'
-
-// Props and data
+import '../styles/components/header.scss'
+import '../styles/components/nav.scss'
 
 var { logo } = Astro.props
 var path = Astro.url.pathname
 
-// Clean up path
 if (path.startsWith('/') && path !== '/') path = path.slice(1)
 if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length - 1)
 
-// Page generation
 const links = getAllSitePages()
-// Current path processing
 
 var currentPath = Astro.url.pathname
 if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.slice(0, -1)
