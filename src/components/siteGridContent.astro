@@ -32,8 +32,6 @@ const customProperties = generateCustomProperties(options)
 const cssClass = `grid${classItems ? ` ${classItems}` : ''}`
 
 ---
-
-<!-- Site grid content component -->
 <section id={id || ''} class={cssClass} style={customProperties}>
     <slot />
 </section>

@@ -11,8 +11,6 @@ const featuredPostSlugs = ['a-drive-for-mac-issue', 'hello-world', 'nodebooks']
 const featuredPosts = await getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)
 
 ---
-
-<!-- Featured articles component -->
 <SiteGridContent classItems="posts" options={{ 'max-width': '1200px' }}>
     {
         featuredPosts.map(async post => {
