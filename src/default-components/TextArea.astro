@@ -1,7 +1,7 @@
 ---
-// Imports
 import type { HTMLAttributes } from 'astro/types'
 import type { HTMLString } from 'astro/runtime/server/escape.js'
+
 import '../styles/components/default-inputs.scss'
 
 // Type definitions
@@ -11,15 +11,11 @@ export interface Props extends HTMLAttributes<'textarea'> {
 }
 
 // Component props and configuration
-const {
-    id, label
-} = Astro.props
+const { id, label } = Astro.props
 
 const { ...attrs } = Astro.props
 
 ---
-
-<!-- Textarea component -->
 <div class="form-group">
     <label for={id} set:html={label} />
     <textarea {...attrs}>{await Astro.slots.render('default')}</textarea>
