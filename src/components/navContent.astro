@@ -36,8 +36,6 @@ function processNavItem(item: NavItem) {
 }
 
 ---
-
-<!-- Navigation content component -->
 {
     items.map(processNavItem).map((item: { url: string; target: string; isPrimary: boolean; name: string }) =>
         <a href={item.url} class:list={['btn', 'nav-btn']} data-primary={item.isPrimary ? 'true' : 'false'} target={item.target || '_self'}>{item.name}</a>
