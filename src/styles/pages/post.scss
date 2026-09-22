@@ -52,7 +52,9 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
 
     &__area {
         flex: 1;
-        background-color: hsl(from var(--middle-color) h s calc(l + 50));
+
+        // background-color: hsl(from var(--middle-color) h s calc(l + 50));
+
         box-shadow: $post-section-shadow;
 
         @media (prefers-color-scheme: dark) {
