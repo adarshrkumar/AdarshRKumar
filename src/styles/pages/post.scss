@@ -8,8 +8,6 @@ $post-section-shadow: 0 1px 3px rgb(0 0 0 / 4%);
 $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
 
 .post {
-    --pad: #{$content-spacing};
-
     box-sizing: border-box;
     margin-inline: auto;
     margin-block: $content-spacing;
