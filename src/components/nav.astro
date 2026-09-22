@@ -1,12 +1,9 @@
 ---
-// Imports
+import NavContent from './navContent.astro'
 import '../styles/components/nav.scss'
 
-import NavContent from './navContent.astro'
-
-// Component props and configuration
 var { items, direction, varient } = Astro.props
-if (!!varient === false) varient = 'header'
+if (!!varient === false) varient = 'header';
 
 ---
 
