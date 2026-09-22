@@ -4,7 +4,7 @@ author: adarshrkumar
 date: 09/22/26
 categories: ["general"]
 ---
-This is most definitely not going to be a 100% accurate tutorial. This is just going to be what I did in order to fix this issue for myself.
+This is most definitely not going to be a 100% accurate tutorial. This is just going to walk you through what worked for me to fix this issue.
 
 ## The Issue
 
@@ -15,10 +15,10 @@ You may wish to stop syncing or delete that file so that it doesn't start syncin
 
 ### Possible Failed Solutions
 
-If you try to stop syncing in Google Drive for Desktop on Windows, you'll be able to click "Stop syncing" after hovering over the file name.
+First, I tried to stop syncing the file. If you try to stop syncing in Google Drive for Desktop on Windows, you'll be able to click "Stop syncing" after hovering over the file name.
 But on macOS, when you try to do this, nothing changes on screen, and there's no button or area to click.
 
-You might think, "I might be able to delete the file. I don't need it anyway, so I don't mind deleting it. Since there will no longer be a copy on disk, Google Drive won't be able to pull any file content to keep syncing, especially if I delete it permanently."
+Then I thought, "I might be able to delete the file. I don't need it anyway, so I don't mind deleting it. Since there will no longer be a copy on disk, Google Drive won't be able to pull any file content to keep syncing, especially if I delete it permanently."
 
 On Windows, when you do this, you might get the desired result, but on Mac, the file will keep syncing.
 
@@ -30,13 +30,13 @@ My solution so far for files that aren't too large is to just let them upload, e
 
 ## My "Investigative" Work
 
-Then I decided to do some digging. I found that when I renamed the `~/Library/Application Support/Google/DriveFS` folder to something like `DriveFS copy` or something similar, Google Drive reset back to its freshly installed state.
+Then I decided to do some digging. I renamed the `~/Library/Application Support/Google/DriveFS` folder to something like `DriveFS copy` or something similar. If you do this, Google Drive resets back to its freshly installed state.
 
-This was no good because I no longer had my accounts, so then I decided I would just rename the folder for my account. That fixed the problem: the file was no longer being uploaded. But now I didn't have any of my files, and the Drive folder associated with that account had also disappeared.
+This is no good because you no longer have your accounts, so then I decided I would just rename the folder for my account. If you do this, it fixes the problem: the file is no longer being uploaded. But now you don't have any of your files, and the Drive folder associated with that account also disappears.
 
-## The Final Solution
+## My Final Solution
 
-So then I decided to spin up an instance of Claude Code, and I told it to look for that file name, noting that it might be encoded. This was the result from the AI:
+So then I decided to spin up an instance of Claude Code, and I told it to look for that file name, noting that it might be encoded. This was the result from Claude:
 
 ```text
 Found it — it's referenced inside Google DriveFS's internal metadata databases, not as a regular file in the tree:
@@ -58,6 +58,8 @@ It shows up multiple times as a local-title with mimeType: application/octet-str
 This is DriveFS's naming pattern for a temporary local placeholder/pack file created during sync (before Drive assigns/receives the real filename) — it's not something you created directly; it's sync-layer bookkeeping. It's not present as an actual file on disk in this copy, only as a metadata row.
 ```
 
-The mysterious ghost file had been found. Now, how to delete it? Well, I didn't ask the AI to delete the references to the file inside those databases. Instead, I just deleted those database files myself entirely. That did fix the issue, and now the ghost file is no longer syncing.
+Now that the mysterious ghost file has been found, how do I delete it? Well, I didn't ask the AI to delete the references to the file inside those databases. Instead, I just deleted those database files myself entirely. If you do this, it should fix the issue, and the ghost file will no longer be syncing.
 
 This might be a semi-destructive action, deleting these databases without really looking at whether there's anything of use in them, but in my case, there was nothing in them, and I was able to safely (I hope) delete those databases without any issues.
+
+Your ghost file may not be stored in these same database files, and deleting the database files alone may not fix the issue for you, though that may be where your ghost files are stored as well. This is just what worked for me, and I wanted to share my solution because I had been having this issue for a little bit of a while.
