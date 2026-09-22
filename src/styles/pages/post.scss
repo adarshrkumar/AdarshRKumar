@@ -51,11 +51,13 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
     }
 
     &__area {
+        $change-value: 50;
+
         flex: 1;
 
         background-color: light-dark(
-            hsl(from $middle-color h s calc(l + 50)),
-            hsl(from $middle-color h s calc(l - 50))
+            hsl(from $middle-color h s calc(l + $change-value)),
+            hsl(from $middle-color h s calc(l - $change-value))
         );
 
         // box-shadow: $post-section-shadow;
