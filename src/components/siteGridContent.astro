@@ -26,18 +26,10 @@ function generateCustomProperties(options: GridOptions | undefined): string {
     return customProperties
 }
 
-// Helper function to build CSS class string
-function buildCSSClass(classItems: string): string {
-    const baseClass = 'grid'
-    return `${baseClass}${classItems}`
-}
-
-// Get component props
 const { id, classItems, options }: SiteGridContentProps = Astro.props
 
-// Process props
 const customProperties = generateCustomProperties(options)
-const cssClass = buildCSSClass(classItems ? ` ${classItems}` : '')
+const cssClass = `grid${classItems ? ` ${classItems}` : ''}`
 
 ---
 

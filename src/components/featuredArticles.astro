@@ -1,11 +1,11 @@
 ---
-// Imports
-import SiteGridContent from '../components/siteGridContent.astro'
 import sanitizeMD from '../lib/sanitize-md'
 import { getFeaturedPostsForDisplay, cleanTextContent, createPreviewContent } from '../lib/get-posts'
 
+import SiteGridContent from '../components/siteGridContent.astro'
+
 // Configuration
-const featuredPostSlugs = ['hello-world', 'nodebooks']
+const featuredPostSlugs = ['a-drive-for-mac-issue', 'hello-world', 'nodebooks']
 
 // Get featured posts with all processing done
 const featuredPosts = await getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)
