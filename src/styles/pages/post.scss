@@ -2,14 +2,13 @@
 @use '../variables/mixins' as *;
 
 $post-border-radius: 1rem;
+$bdr-rad-small: $post-border-radius;
 $post-shadow-subtle: 0 2px 8px rgb(0 0 0 / 6%);
 $post-shadow-dark-subtle: 0 2px 8px rgb(0 0 0 / 20%);
 $post-section-shadow: 0 1px 3px rgb(0 0 0 / 4%);
 $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
 
 .post {
-    $bdr-rad-small: $post-border-radius, 2 - ($content-spacing * 2);
-
     box-sizing: border-box;
     margin-inline: auto;
     margin-block: $content-spacing;
