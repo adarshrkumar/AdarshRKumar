@@ -1,6 +1,6 @@
+@use 'sass:math';
 @use '../variables/globals' as *;
 @use '../variables/mixins' as *;
-@use 'sass:math' as math;
 
 .header {
     --shadow-size: 12px;
@@ -31,7 +31,7 @@
         aspect-ratio: 1;
         grid-row: 1 / -1;
         align-self: center;
-        color: var(--logo-a-color);
+        color: $logo-a-color;
         background-color: var(--color);
         background-size: cover;
         background-position: center;
