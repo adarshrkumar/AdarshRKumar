@@ -36,7 +36,7 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
     overflow: hidden;
 
     &__info, &__area {
-        padding: var(--pad);
+        padding: $content-spacing;
         transition: background-color $transition-base $transition-timing;
     }
 
@@ -80,7 +80,7 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
         }
 
         pre.astro-code:has( > code) {
-            padding: var(--pad);
+            padding: $content-spacing;
         }
     }
 }
