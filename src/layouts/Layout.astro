@@ -1,13 +1,13 @@
 ---
-// Imports
 import Analytics from '@vercel/analytics/astro'
 
 import type { SiteConfig, LayoutProps } from '../lib/types'
 import age from '../lib/get-age'
 import aboutContent from '../lib/get-raw-about-content'
-import '../styles/globals.scss'
+
 import Header from '../components/header.astro'
 import SettingsScript from '../scripts/settings.astro'
+import '../styles/globals.scss'
 
 // Site configuration
 const siteConfig: SiteConfig = {
@@ -17,20 +17,15 @@ const siteConfig: SiteConfig = {
     placeholder: '/assets/placeholder.svg'
 }
 
-// Get component props
 const { title, pTitle, classItems, inlineStyles, pageType, author }: LayoutProps = Astro.props
 
-// Process props
-const pageTitle = pTitle || title || 'Home'
-
-let processedTitle = title
+let finalTitle = title
 if (title) {
-    if (pageType === 'post') processedTitle = `${title} | Blog`
-    else if (pageType === 'author' || author) processedTitle = `${title} | Author`
-    else if (pageTitle !== 'home') processedTitle = `${title} | ${siteConfig.name}`
+    if (pageType === 'post') finalTitle = `${title} | Blog`
+    else if (pageType === 'author' || author) finalTitle = `${title} | Author`
+    else if ((pTitle || title || 'Home').toLowerCase() !== 'home') finalTitle = `${title} | ${siteConfig.name}`
 }
-
-const finalTitle = processedTitle || siteConfig.name
+if (!finalTitle) finalTitle = siteConfig.name
 
 const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))

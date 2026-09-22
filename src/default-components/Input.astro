@@ -1,20 +1,16 @@
 ---
-// Imports
 import type { HTMLAttributes } from 'astro/types'
 import type { HTMLString } from 'astro/runtime/server/escape.js'
+
 import '../styles/components/default-inputs.scss'
 
-// Type definitions
 export interface Props extends Omit<HTMLAttributes<'input'>, 'type'> {
     align?: 'left' | 'center' | 'right';
     label?: HTMLString | string;
     type?: HTMLAttributes<'input'>['type'];
 }
 
-// Component props and configuration
-const {
-    id, type, label, ...attrs
-} = Astro.props
+const { id, type, label, ...attrs } = Astro.props
 
 const valueInputs = [
     'button',
@@ -35,8 +31,6 @@ const hasSlotContent = slotContent && !valueInputs.includes(type ?? '')
 const shouldShowformGroup = ((hasSlotContent || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')
 
 ---
-
-<!-- Input component -->
 {
     shouldShowformGroup
      ? <div class="form-group" style={groupStyle}>

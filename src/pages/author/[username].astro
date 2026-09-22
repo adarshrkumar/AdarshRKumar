@@ -1,32 +1,12 @@
 ---
-// Imports
-import type { Author, Authors } from '../../lib/types'
-import regAuthors from '../../lib/authors'
-import '../../styles/pages/author.scss'
+import type { Author } from '../../lib/types'
+import authors from '../../lib/authors'
+
 import Layout from '../../layouts/Layout.astro'
+import '../../styles/pages/author.scss'
 
-// Helper function to get author by username
-function getAuthorByUsername(authors: Authors, username: string | undefined): Author {
-    if (!username || !authors[username]) {
-        throw new Error('Author not found');
-    }
-    return authors[username];
-}
-
-// Helper function to format bio text
-function formatBioText(bio: string): string {
-    return bio.includes('\n') ? bio.split('\n').join('<br>') : bio;
-}
-
-// Get username from URL parameters
 const { username } = Astro.params;
-
-// Load authors data
-const authors: Authors = regAuthors;
-
-// Get author information
-const author = getAuthorByUsername(authors, username);
-const formattedBio = formatBioText(author.bio);
+const author: Author = authors[username as keyof typeof authors];
 
 ---
 
@@ -44,6 +24,6 @@ const formattedBio = formatBioText(author.bio);
     <h2 class="author__name">{author.displayName}</h2>
 
     {author.bio && (
-        <div class="bio" set:html={formattedBio}></div>
+        <div class="bio" set:html={author.bio.includes('\n') ? author.bio.split('\n').join('<br>') : author.bio}></div>
     )}
 </Layout>
