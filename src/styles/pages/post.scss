@@ -65,6 +65,10 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
         // @media (prefers-color-scheme: dark) {
         //     box-shadow: $post-section-shadow-dark;
         // }
+
+        .giscus {
+            margin-top: $content-spacing;
+        }
     }
 
     &__content {
