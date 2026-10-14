@@ -1,6 +1,6 @@
 ---
 name: "Studify"
-url: "https://studywise.onl"
+url: "https://studywise.adarshrkumar.app"
 projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->
