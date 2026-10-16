@@ -6,28 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/hooks/block-absolute-paths.sh",
+            "command": "node ~/.claude/hooks/index.js",
             "timeout": 20
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/block-bash-bypass-cmds.sh",
-            "timeout": 30
-          },
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/block-git-ops.sh",
-            "timeout": 30
-          },
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/block-all-cd.sh",
-            "timeout": 30
           }
         ]
       }
