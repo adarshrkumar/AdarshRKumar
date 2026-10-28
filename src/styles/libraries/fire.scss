@@ -121,8 +121,8 @@ h1, h2, h3, h4, h5, h6 {
 p {
     font-size: 18px;
     color: var(--foreground-primary-color);
-    line-height: 25px;
     max-width: 80%;
+    line-height: 25px;
 }
 
 b, u, i, s {
@@ -259,8 +259,8 @@ input[type="text"], input[type="url"], input[type="number"], input[type="email"]
     color: var(--foreground-primary-color);
     background-color: var(--background-primary-color);
     border: none;
-    outline: 1.5px solid var(--background-secondary-color);
     max-width: 450px;
+    outline: 1.5px solid var(--background-secondary-color);
     height: 50px;
     font-size: 20px;
     border-radius: 10px;
@@ -274,8 +274,8 @@ textarea {
     color: var(--foreground-primary-color);
     background-color: var(--background-primary-color);
     border: none;
-    outline: 1.5px solid var(--background-secondary-color);
     max-width: 100%;
+    outline: 1.5px solid var(--background-secondary-color);
     height: 200px;
     font-size: 20px;
     border-radius: 10px;
