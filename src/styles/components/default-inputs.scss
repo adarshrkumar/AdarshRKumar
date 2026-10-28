@@ -25,8 +25,8 @@ $pad: 1rem;
 @mixin main-styles() {
     padding: math.div($pad, 2);
     max-height: 100%;
-    background-color: var(--bg);
     color: var(--color);
+    background-color: var(--bg);
     border: solid 1px $middle-color;
     border-radius: $pad;
     text-align: center;

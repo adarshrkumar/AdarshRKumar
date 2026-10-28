@@ -45,8 +45,8 @@
 }
 
 .nav-btn:not([data-primary="true"]):hover {
-    background-color: transparent;
     color: var(--color);
+    background-color: transparent;
 
     @supports (border-color: color-mix(in srgb, var(--border-color) 70%, white)) {
         border-color: color-mix(in srgb, var(--border-color) 70%, white);
@@ -57,19 +57,19 @@
 }
 
 .nav-btn[data-primary="true"] {
-    background-color: var(--color);
     color: var(--bg);
+    background-color: var(--color);
     border: 2px solid var(--color);
     box-shadow: none;
 
     &:hover {
+        color: var(--color);
         background-color: transparent;
 
         @supports (border-color: color-mix(in srgb, var(--border-color) 70%, white)) {
             border-color: color-mix(in srgb, var(--border-color) 70%, white);
         }
 
-        color: var(--color);
         transform: none;
         box-shadow: none;
         text-decoration: underline;
