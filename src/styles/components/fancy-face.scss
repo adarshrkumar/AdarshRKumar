@@ -1,16 +1,16 @@
 .face-tracker {
     margin-inline: auto;
     max-width: 8rem;
-    border-radius: 50%;
     aspect-ratio: 1;
-    overflow: hidden;
     background-image: url('/assets/logo.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 50%;
+    overflow: hidden;
 
     > img {
-        scale: 0.77;
         translate: -2px 5px;
+        scale: 0.77;
     }
 }
