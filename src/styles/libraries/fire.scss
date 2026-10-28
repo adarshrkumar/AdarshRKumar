@@ -77,8 +77,8 @@ li {
     position: absolute;
     display: none;
     top: 35px;
-    border-radius: 8px;
     box-shadow: var(--accent-secondary-color) 0 2px 8px 0;
+    border-radius: 8px;
 }
 
 .dropdown li + li {
@@ -231,8 +231,8 @@ button, input:is([type="button"], [type="submit"]) {
 }
 
 :is(button, input:is([type="button"], [type="submit"])):disabled:hover {
-    opacity: 0.3;
     box-shadow: none;
+    opacity: 0.3;
 }
 
 .btn-secondary:disabled:hover {

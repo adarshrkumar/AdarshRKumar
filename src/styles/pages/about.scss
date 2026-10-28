@@ -15,8 +15,8 @@ $padding: #{$content-spacing * 2};
     width: min(calc(90% - $padding), $max);
     max-width: $max-content-width;
     background-color: $card-bg;
-    border-radius: 2rem;
     box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+    border-radius: 2rem;
 
     &__header {
         text-align: center;
@@ -106,12 +106,12 @@ $padding: #{$content-spacing * 2};
     border-radius: $border-radius-card;
     padding: $content-spacing * 1.5;
     text-align: center;
-    transition: all $transition-base $transition-timing;
     box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+    transition: all $transition-base $transition-timing;
 
     &:hover {
-        transform: translateY(-4px);
         box-shadow: 0 8px 16px var(--shadow);
+        transform: translateY(-4px);
         border-color: $accent-color;
     }
 
@@ -193,8 +193,8 @@ $padding: #{$content-spacing * 2};
             background: $accent-color;
             border-color: $accent-color;
             color: white;
-            transform: translateY(-2px);
             box-shadow: 0 4px 12px var(--shadow);
+            transform: translateY(-2px);
 
             .interest-badge {
                 &__name {

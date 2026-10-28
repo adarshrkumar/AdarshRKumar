@@ -45,8 +45,8 @@ html, iframe {
 iframe {
     margin: 0;
     padding: 0;
-    border: none;
     box-shadow: none;
+    border: none;
     outline: none;
 }
 
@@ -146,22 +146,22 @@ img {
             color: var(--bg);
             background-color: var(--color);
             border-color: var(--color);
-            transform: translateY(-2px);
             box-shadow: 0 4px 12px var(--shadow-color);
+            transform: translateY(-2px);
         }
     }
 
     &.primary {
         color: var(--bg);
         background-color: var(--color);
-        border: solid 2px var(--color);
         box-shadow: 0 2px 8px var(--shadow-color);
+        border: solid 2px var(--color);
 
         &:hover {
             background-color: var(--nav-btn-hover);
             border-color: var(--nav-btn-hover);
-            transform: translateY(-2px);
             box-shadow: 0 6px 16px var(--shadow-color);
+            transform: translateY(-2px);
         }
     }
 
