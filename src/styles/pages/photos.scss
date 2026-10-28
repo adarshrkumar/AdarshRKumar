@@ -4,24 +4,24 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
 @keyframes scale-in {
     from {
-        transform: scale(0.95);
         opacity: 0;
+        transform: scale(0.95);
     }
 
     to {
-        transform: scale(1);
         opacity: 1;
+        transform: scale(1);
     }
 }
 
 .photos {
+    box-sizing: border-box;
     margin-inline: auto;
     padding: 1rem;
-    max-width: 1400px;
     width: 100%;
-    box-sizing: border-box;
-    overflow-x: hidden;
+    max-width: 1400px;
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr)) !important;
+    overflow-x: hidden;
 
     @media (width <= 768px) {
         padding: 0.5rem;
@@ -41,9 +41,9 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
         opacity: 0;
-        pointer-events: none;
         z-index: 998;
         transition: opacity $transition-smooth;
+        pointer-events: none;
     }
 
     &:has(&__checkbox:checked) {
@@ -59,14 +59,15 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     &__item {
         position: relative;
+        padding: 0 !important;
         background-color: var(--bg);
-        cursor: pointer;
-        padding: 0 !important; transition:
+        transition:
             transform $transition-smooth,
             box-shadow $transition-smooth,
             position 0s,
             inset 0s,
             z-index 0s;
+        cursor: pointer;
     }
 
     &__checkbox {
@@ -116,10 +117,10 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         flex-direction: column;
         gap: 0.5rem;
         opacity: 0;
-        transform: translateY(10px);
         transition:
             opacity $transition-smooth,
             transform $transition-smooth;
+        transform: translateY(10px);
         pointer-events: none;
 
         @media (width <= 768px) {
@@ -128,10 +129,10 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     &__title {
+        margin: 0;
         color: white;
         font-size: 1rem;
         font-weight: 600;
-        margin: 0;
         text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 
         @media (width <= 768px) {
@@ -140,9 +141,9 @@ $transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     &__content {
+        margin: 0;
         color: rgb(255 255 255 / 90%);
         font-size: 0.875rem;
-        margin: 0;
         text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 
         @media (width <= 768px) {
