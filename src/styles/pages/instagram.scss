@@ -127,10 +127,10 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         object-fit: cover;
         border: 3px solid $accent-color;
         border-radius: 50%;
-        transition: transform $transition-smooth;
+        transition: scale $transition-smooth;
 
         &:hover {
-            transform: scale(1.08);
+            scale: 1.08;
         }
     }
 
@@ -152,7 +152,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         justify-content: center;
         align-items: center;
         transition: background-color $transition-smooth;
-        transform: translate(-50%, -50%);
+        translate: -50% -50%;
         pointer-events: none;
 
         &::after {

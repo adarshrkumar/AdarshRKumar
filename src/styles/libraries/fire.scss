@@ -243,11 +243,11 @@ button, input:is([type="button"], [type="submit"]) {
 }
 
 :is(button, input:is([type="button"], [type="submit"])):active, .btn-secondary:active {
-    transform: scale(1.02);
+    scale: 1.02;
 }
 
 :is(button, input:is([type="button"], [type="submit"])):disabled:active, .btn-secondary:disabled:active {
-    transform: none;
+    scale: none;
 }
 
 .btn-block {
@@ -323,7 +323,7 @@ input[type="file"] {
 }
 
 .file-selector:active {
-    transform: scale(1.02);
+    scale: 1.02;
 }
 
 .switch {
@@ -364,7 +364,7 @@ input[type="checkbox"]:checked + .slider {
 }
 
 input[type="checkbox"]:checked + .slider::before {
-    transform: translateX(42px);
+    translate: 42px 0;
 }
 
 .slider.round {
@@ -471,7 +471,7 @@ code {
     height: 10px;
     border: solid var(--foreground-secondary-color);
     border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+    rotate: 45deg;
 }
 
 .checkbox-container input:disabled ~ .checkbox-mark, .radio-container input:disabled ~ .radio-mark {
@@ -661,10 +661,10 @@ table th {
 
 @keyframes spin {
     0% {
-        transform: rotate(0deg);
+        rotate: 0deg;
     }
 
     100% {
-        transform: rotate(360deg);
+        rotate: 360deg;
     }
 }

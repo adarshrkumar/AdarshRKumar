@@ -23,12 +23,12 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 @keyframes scale-in {
     from {
         opacity: 0;
-        transform: scale(0.95);
+        scale: 0.95;
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+        scale: 1;
     }
 }
 
@@ -96,7 +96,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: inherit;
     animation: scale-in 0.5s $transition-smooth backwards;
     transition:
-        transform $transition-smooth,
+        translate $transition-smooth,
         box-shadow $transition-smooth;
     cursor: pointer;
     overflow: hidden;
@@ -114,7 +114,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
         box-shadow: $card-shadow-hover;
         z-index: 2;
-        transform: translateY(-4px);
+        translate: 0 -4px;
 
         @media (prefers-color-scheme: dark) {
             box-shadow: $card-shadow-dark-hover;
@@ -123,11 +123,11 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         .item {
             &__info {
                 opacity: 1;
-                transform: translateY(0);
+                translate: 0 0;
             }
 
             &__img {
-                transform: scale(1.05);
+                scale: 1.05;
             }
         }
     }
@@ -141,7 +141,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        transition: transform 0.6s $transition-smooth;
+        transition: scale 0.6s $transition-smooth;
         user-select: none;
 
         @supports(-webkit-user-drag: none) {
@@ -205,8 +205,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0;
         transition:
             opacity $transition-smooth,
-            transform $transition-smooth;
-        transform: translateY(10px);
+            translate $transition-smooth;
+        translate: 0 10px;
         pointer-events: none;
 
         @media (width <= 768px) {
@@ -251,7 +251,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         .item {
             &__info {
                 opacity: 1;
-                transform: translateY(0);
+                translate: 0 0;
             }
         }
     }

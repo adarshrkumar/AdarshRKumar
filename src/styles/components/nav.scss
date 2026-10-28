@@ -55,7 +55,7 @@
     }
 
     box-shadow: none;
-    transform: none;
+    translate: none;
 }
 
 .nav-btn[data-primary="true"] {
@@ -77,6 +77,6 @@
         text-decoration-color: $accent-color;
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
-        transform: none;
+        translate: none;
     }
 }

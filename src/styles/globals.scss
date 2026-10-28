@@ -133,7 +133,7 @@ img {
         color $transition-base $transition-timing,
         background-color $transition-base $transition-timing,
         border-color $transition-base $transition-timing,
-        transform 0.2s $transition-timing,
+        translate 0.2s $transition-timing,
         box-shadow 0.2s $transition-timing;
     cursor: pointer;
 
@@ -147,7 +147,7 @@ img {
             background-color: var(--color);
             box-shadow: 0 4px 12px var(--shadow-color);
             border-color: var(--color);
-            transform: translateY(-2px);
+            translate: 0 -2px;
         }
     }
 
@@ -161,12 +161,12 @@ img {
             background-color: var(--nav-btn-hover);
             box-shadow: 0 6px 16px var(--shadow-color);
             border-color: var(--nav-btn-hover);
-            transform: translateY(-2px);
+            translate: 0 -2px;
         }
     }
 
     &:active {
-        transform: translateY(0);
+        translate: 0 0;
     }
 }
 
