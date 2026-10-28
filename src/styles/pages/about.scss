@@ -8,10 +8,10 @@ $padding: #{$content-spacing * 2};
     $dbg: hsl(from var(--bg) h s calc(l + 10));
     $card-bg: light-dark(#{$lbg}, #{$dbg});
 
-    margin-inline: auto;
     box-sizing: border-box;
-    padding-inline: $padding;
+    margin-inline: auto;
     padding-block: $page-spacing;
+    padding-inline: $padding;
     width: min(calc(90% - $padding), $max);
     max-width: $max-content-width;
     background-color: $card-bg;
@@ -19,42 +19,42 @@ $padding: #{$content-spacing * 2};
     border-radius: 2rem;
 
     &__header {
-        text-align: center;
         margin-bottom: $section-spacing * 2;
         padding-bottom: $section-spacing;
         border-bottom: 1px solid var(--border);
+        text-align: center;
     }
 
     &__name {
         margin: $content-spacing 0 0.5rem;
+        color: var(--color);
         font-size: 2.5rem;
         font-weight: 700;
-        color: var(--color);
     }
 
     &__tagline {
-        font-size: 1.125rem;
-        color: $middle-color;
-        font-weight: 500;
         margin: 0;
+        color: $middle-color;
+        font-size: 1.125rem;
+        font-weight: 500;
     }
 
     &__bio {
         margin-bottom: $section-spacing * 2;
 
         > p {
+            margin-bottom: $content-spacing;
             max-width: 100%;
             color: var(--color);
             font-size: 1.125rem;
             line-height: 1.8;
             text-align: center;
-            margin-bottom: $content-spacing;
         }
 
         a {
             color: var(--link-color);
-            text-decoration: none;
             border-bottom: 2px solid transparent;
+            text-decoration: none;
             transition: border-color $transition-base $transition-timing;
 
             &:hover {
@@ -68,69 +68,69 @@ $padding: #{$content-spacing * 2};
     }
 
     &__section-title {
+        margin-bottom: $section-spacing;
+        color: var(--color);
         font-size: 1.75rem;
         font-weight: 600;
         text-align: center;
-        margin-bottom: $section-spacing;
-        color: var(--color);
     }
 
     &__skills {
+        margin-bottom: $section-spacing;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: $content-spacing * 1.5;
-        margin-bottom: $section-spacing;
     }
 
     &__interests {
         display: flex;
         flex-wrap: wrap;
-        gap: $content-spacing;
         justify-content: center;
+        gap: $content-spacing;
     }
 
     &__cta {
-        display: flex;
-        gap: $content-spacing;
-        justify-content: center;
-        flex-wrap: wrap;
         margin-top: $section-spacing * 2;
         padding-top: $section-spacing;
+        display: flex;
         border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $content-spacing;
     }
 }
 
 .skill-card {
+    padding: $content-spacing * 1.5;
     background: var(--bg);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
     border: 1px solid var(--border);
     border-radius: $border-radius-card;
-    padding: $content-spacing * 1.5;
     text-align: center;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
     transition: all $transition-base $transition-timing;
 
     &:hover {
         box-shadow: 0 8px 16px var(--shadow);
-        transform: translateY(-4px);
         border-color: $accent-color;
+        transform: translateY(-4px);
     }
 
     &__icon {
-        font-size: 2.5rem;
         margin-bottom: $content-spacing;
+        font-size: 2.5rem;
     }
 
     &__name {
-        font-size: 1.25rem;
-        font-weight: 600;
         margin-bottom: $content-spacing;
         color: var(--color);
+        font-size: 1.25rem;
+        font-weight: 600;
     }
 
     &__tech {
         list-style: none;
-        padding: 0;
         margin: 0;
+        padding: 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -138,14 +138,14 @@ $padding: #{$content-spacing * 2};
 
         li {
             flex: 1;
-            color: var(--bg);
-            font-size: 0.95rem;
             padding: 0.25rem 0.5rem;
+            color: var(--bg);
             background: var(--color);
-            border-radius: $border-radius-button;
             border: 1px solid var(--border);
+            border-radius: $border-radius-button;
             display: flex;
             gap: 0.5rem;
+            font-size: 0.95rem;
 
             &[data-long] {
                 flex: 100%;
@@ -153,28 +153,28 @@ $padding: #{$content-spacing * 2};
 
             &::before {
                 content: '';
-                height: 100%;
                 width: 1lh;
+                height: 100%;
                 background-image: var(--icon);
                 background-size: contain;
-                background-repeat: no-repeat;
                 background-position: center;
+                background-repeat: no-repeat;
             }
         }
     }
 }
 
 .interest-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
     padding: 0.75rem 1.25rem;
+    display: inline-flex;
+    color: var(--color);
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: $border-radius-pill;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--color);
     transition: all $transition-base $transition-timing;
 
     &__icon {
@@ -190,10 +190,10 @@ $padding: #{$content-spacing * 2};
         cursor: pointer;
 
         &:hover {
-            background: $accent-color;
-            border-color: $accent-color;
             color: white;
+            background: $accent-color;
             box-shadow: 0 4px 12px var(--shadow);
+            border-color: $accent-color;
             transform: translateY(-2px);
 
             .interest-badge {
@@ -208,16 +208,16 @@ $padding: #{$content-spacing * 2};
 .contact {
     $max: 500px;
 
-    margin-inline: auto;
     box-sizing: border-box;
     margin-block: 1rem;
-    padding-inline: $padding;
+    margin-inline: auto;
     padding-block: $padding;
+    padding-inline: $padding;
     width: min(calc(90% - $padding), $max);
-    border-radius: 1rem;
     color: var(--bg);
     background-color: var(--color);
     box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+    border-radius: 1rem;
     animation: scale-in 0.5s 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
 
     @media (prefers-color-scheme: dark) {
@@ -231,13 +231,13 @@ $padding: #{$content-spacing * 2};
 
 @keyframes scale-in {
     from {
-        transform: scale(0.95);
         opacity: 0;
+        transform: scale(0.95);
     }
 
     to {
-        transform: scale(1);
         opacity: 1;
+        transform: scale(1);
     }
 }
 
