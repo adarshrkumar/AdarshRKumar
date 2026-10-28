@@ -6,13 +6,13 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 @keyframes scale-in {
     from {
-        transform: scale(0.95);
         opacity: 0;
+        transform: scale(0.95);
     }
 
     to {
-        transform: scale(1);
         opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -33,19 +33,18 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 .music-area {
     iframe {
+        aspect-ratio: 16 / 9;
         background-color: var(--bg);
         box-shadow: $music-shadow-subtle;
         border-radius: 1rem;
-        overflow: hidden;
-        aspect-ratio: 16 / 9;
+        animation: scale-in 0.5s $transition-smooth backwards;
         transition: transform $transition-smooth,
-                    box-shadow $transition-smooth;
+            box-shadow $transition-smooth;
+        overflow: hidden;
 
         @media (prefers-color-scheme: dark) {
             box-shadow: $music-shadow-dark-subtle;
         }
-
-        animation: scale-in 0.5s $transition-smooth backwards;
 
         @for $i from 1 through 20 {
             &:nth-child(#{$i}) {
@@ -70,8 +69,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 0.1s;
 
         &:hover {
-            transform: none;
             transition-duration: 0.1s;
+            transform: none;
         }
     }
 }
