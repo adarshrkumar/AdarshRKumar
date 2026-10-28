@@ -4,21 +4,21 @@
 $pad: 1rem;
 
 @mixin default-styles() {
-    appearance: none;
     font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    vertical-align: inherit;
+    direction: inherit;
+    unicode-bidi: inherit;
+    text-indent: inherit;
+    text-align: inherit;
+    text-align-last: inherit;
     text-decoration: inherit;
     text-transform: inherit;
     text-rendering: auto;
-    text-align: inherit;
-    text-align-last: inherit;
-    direction: inherit;
-    vertical-align: inherit;
-    unicode-bidi: inherit;
-    unicode-range: inherit;
-    text-indent: inherit;
-    letter-spacing: inherit;
-    word-spacing: inherit;
     white-space: inherit;
+    appearance: none;
+    unicode-range: inherit;
     -webkit-rtl-ordering: inherit;
 }
 
@@ -39,27 +39,27 @@ $pad: 1rem;
         resize: vertical;
 
         @supports (field-sizing: content) {
-            field-sizing: content;
             resize: none;
+            field-sizing: content;
         }
     }
 }
 
 @mixin button-styles() {
-    min-width: 100px;
     width: fit-content;
+    min-width: 100px;
     cursor: pointer;
 }
 
 @mixin checkboxradio() {
-    border: solid 1px gray;
-    aspect-ratio: 1;
     min-height: 1em;
+    aspect-ratio: 1;
+    border: solid 1px gray;
 
     &:checked {
-        appearance: auto;
-        border-radius: inherit;
         border-style: solid;
+        border-radius: inherit;
+        appearance: auto;
     }
 }
 
@@ -79,11 +79,11 @@ $pad: 1rem;
         @include main-styles;
 
         position: absolute;
-        translate: 1em -0.5lh;
         box-sizing: border-box;
         padding: 0 $pad;
         width: fit-content;
         text-align: left;
+        translate: 1em -0.5lh;
     }
 }
 
@@ -159,8 +159,8 @@ input[type="file"] {
 }
 
 input[type="color"] {
-    min-height: 40px;
     min-width: 10px;
+    min-height: 40px;
 }
 
 select {
