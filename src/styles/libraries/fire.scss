@@ -256,8 +256,8 @@ button, input:is([type="button"], [type="submit"]) {
 
 input[type="text"], input[type="url"], input[type="number"], input[type="email"], input[type="password"], input[type="time"], input[type="date"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="search"], input[type="tel"] {
     font-family: var(--font-family);
-    background-color: var(--background-primary-color);
     color: var(--foreground-primary-color);
+    background-color: var(--background-primary-color);
     border: none;
     outline: 1.5px solid var(--background-secondary-color);
     max-width: 450px;
@@ -271,8 +271,8 @@ input[type="text"], input[type="url"], input[type="number"], input[type="email"]
 
 textarea {
     font-family: var(--font-family);
-    background-color: var(--background-primary-color);
     color: var(--foreground-primary-color);
+    background-color: var(--background-primary-color);
     border: none;
     outline: 1.5px solid var(--background-secondary-color);
     max-width: 100%;
@@ -376,8 +376,8 @@ input[type="checkbox"]:checked + .slider::before {
 }
 
 code {
-    background-color: var(--background-secondary-color);
     color: var(--accent-primary-color);
+    background-color: var(--background-secondary-color);
     font-size: 17px;
     padding: 3px;
     border-radius: 5px;
@@ -414,8 +414,8 @@ code {
 }
 
 ::selection {
-    background-color: var(--accent-primary-color);
     color: var(--foreground-secondary-color);
+    background-color: var(--accent-primary-color);
 }
 
 .checkbox-container {
