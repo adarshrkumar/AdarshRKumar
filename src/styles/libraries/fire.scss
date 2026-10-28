@@ -17,22 +17,22 @@ html {
 }
 
 body {
-    font-family: Inter, sans-serif;
     background-color: var(--background-primary-color);
+    font-family: Inter, sans-serif;
 }
 
 main, form {
+    margin: 64px auto;
     display: flex;
+    max-width: 1000px;
     flex-direction: column;
     gap: 64px;
-    margin: 64px auto;
-    max-width: 1000px;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 li {
@@ -40,13 +40,13 @@ li {
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 15px;
-    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
+    display: flex;
     color: var(--foreground-secondary-color);
+    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
     box-shadow: var(--accent-secondary-color) 0 1px 15px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-links a {
@@ -72,11 +72,11 @@ li {
 }
 
 .dropdown {
-    background: linear-gradient(var(--accent-primary-color), var(--accent-secondary-color));
-    padding: 1em 0;
     position: absolute;
-    display: none;
     top: 35px;
+    padding: 1em 0;
+    display: none;
+    background: linear-gradient(var(--accent-primary-color), var(--accent-secondary-color));
     box-shadow: var(--accent-secondary-color) 0 2px 8px 0;
     border-radius: 8px;
 }
@@ -119,9 +119,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    font-size: 18px;
-    color: var(--foreground-primary-color);
     max-width: 80%;
+    color: var(--foreground-primary-color);
+    font-size: 18px;
     line-height: 25px;
 }
 
@@ -165,23 +165,23 @@ img, iframe {
 
 a {
     color: var(--foreground-tertiary-color);
-    text-decoration: none;
     font-size: 18px;
+    text-decoration: none;
     transition: 0.3s;
 }
 
 button, input:is([type="button"], [type="submit"]) {
-    font-family: var(--font-family);
-    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
-    color: var(--foreground-secondary-color);
-    border: none;
-    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     min-width: 150px;
     max-width: 300px;
     height: 50px;
+    color: var(--foreground-secondary-color);
+    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
+    border: none;
     border-radius: 10px;
-    padding-right: 15px;
-    padding-left: 15px;
+    font-family: var(--font-family);
+    font-size: 20px;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -191,23 +191,23 @@ button, input:is([type="button"], [type="submit"]) {
 }
 
 .btn-secondary {
-    background: var(--background-primary-color);
-    color: var(--accent-primary-color);
-    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     min-width: 150px;
     max-width: 300px;
     height: 50px;
+    color: var(--accent-primary-color);
+    background: var(--background-primary-color);
     border: 2px solid var(--accent-primary-color);
     border-radius: 10px;
-    padding-right: 15px;
-    padding-left: 15px;
-    cursor: pointer;
+    font-size: 20px;
     transition: 0.15s, border 0s;
+    cursor: pointer;
 }
 
 .btn-secondary:hover {
-    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
     color: var(--foreground-secondary-color);
+    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
     box-shadow: 0 0 15px var(--accent-secondary-color);
     border: none;
 }
@@ -221,8 +221,8 @@ button, input:is([type="button"], [type="submit"]) {
 .btn-small {
     width: 100px;
     height: 40px;
-    font-size: 16px;
     border-radius: 10px;
+    font-size: 16px;
 }
 
 :is(button, input:is([type="button"], [type="submit"])):disabled, .btn-secondary:disabled {
@@ -236,8 +236,8 @@ button, input:is([type="button"], [type="submit"]) {
 }
 
 .btn-secondary:disabled:hover {
-    background: var(--background-primary-color);
     color: var(--accent-primary-color);
+    background: var(--background-primary-color);
     border: 2px solid var(--accent-primary-color);
     opacity: 0.7;
 }
@@ -255,31 +255,31 @@ button, input:is([type="button"], [type="submit"]) {
 }
 
 input[type="text"], input[type="url"], input[type="number"], input[type="email"], input[type="password"], input[type="time"], input[type="date"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="search"], input[type="tel"] {
-    font-family: var(--font-family);
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 450px;
+    height: 50px;
     color: var(--foreground-primary-color);
     background-color: var(--background-primary-color);
     border: none;
-    max-width: 450px;
-    outline: 1.5px solid var(--background-secondary-color);
-    height: 50px;
-    font-size: 20px;
     border-radius: 10px;
-    padding-right: 15px;
-    padding-left: 15px;
+    outline: 1.5px solid var(--background-secondary-color);
+    font-family: var(--font-family);
+    font-size: 20px;
     transition: 0.15s;
 }
 
 textarea {
-    font-family: var(--font-family);
+    padding: 10px 15px 0;
+    max-width: 100%;
+    height: 200px;
     color: var(--foreground-primary-color);
     background-color: var(--background-primary-color);
     border: none;
-    max-width: 100%;
-    outline: 1.5px solid var(--background-secondary-color);
-    height: 200px;
-    font-size: 20px;
     border-radius: 10px;
-    padding: 10px 15px 0;
+    outline: 1.5px solid var(--background-secondary-color);
+    font-family: var(--font-family);
+    font-size: 20px;
     line-height: 30px;
     transition: 0.15s;
 }
@@ -306,14 +306,14 @@ input[type="file"] {
 }
 
 .file-selector {
-    font-family: var(--font-family);
-    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
-    color: var(--foreground-secondary-color);
-    border: none;
-    font-size: 20px;
-    height: 50px;
-    border-radius: 10px;
     padding: 13px;
+    height: 50px;
+    color: var(--foreground-secondary-color);
+    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
+    border: none;
+    border-radius: 10px;
+    font-family: var(--font-family);
+    font-size: 20px;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -328,33 +328,33 @@ input[type="file"] {
 
 .switch {
     position: relative;
+    margin-bottom: 20px;
     display: inline-block;
     width: 80px;
     height: 34px;
-    margin-bottom: 20px;
 }
 
 .switch input[type="checkbox"] {
-    opacity: 0;
     width: 0;
     height: 0;
+    opacity: 0;
 }
 
 .slider {
     position: absolute;
-    cursor: pointer;
     inset: 0;
     background-color: var(--background-secondary-color);
     transition: .4s;
+    cursor: pointer;
 }
 
 .slider::before {
-    position: absolute;
     content: "";
-    height: 23px;
-    width: 23px;
-    left: 7.5px;
+    position: absolute;
     bottom: 5.5px;
+    left: 7.5px;
+    width: 23px;
+    height: 23px;
     background-color: white;
     transition: .4s;
 }
@@ -376,20 +376,20 @@ input[type="checkbox"]:checked + .slider::before {
 }
 
 code {
+    padding: 3px;
     color: var(--accent-primary-color);
     background-color: var(--background-secondary-color);
-    font-size: 17px;
-    padding: 3px;
     border-radius: 5px;
+    font-size: 17px;
 }
 
 .footer {
-    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
-    color: var(--foreground-secondary-color);
-    text-align: center;
-    font-size: 18px;
     padding: 15px;
+    color: var(--foreground-secondary-color);
+    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
     box-shadow: var(--accent-secondary-color) 0 1px 15px;
+    font-size: 18px;
+    text-align: center;
 }
 
 .footer a, .navbar a {
@@ -419,12 +419,12 @@ code {
 }
 
 .checkbox-container {
-    display: block;
     position: relative;
-    padding-left: 35px;
     margin-bottom: -40px;
-    font-size: 18px;
+    padding-left: 35px;
+    display: block;
     color: var(--foreground-primary-color);
+    font-size: 18px;
 }
 
 .checkbox-container:last-child, .radio-container:last-child {
@@ -441,13 +441,13 @@ code {
     position: absolute;
     top: 0;
     left: 0;
-    height: 23px;
     width: 23px;
+    height: 23px;
     background-color: transparent;
     border: 1.5px var(--background-secondary-color) solid;
     border-radius: 5px;
-    cursor: pointer;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .checkbox-container input:checked ~ .checkbox-mark {
@@ -465,8 +465,8 @@ code {
 }
 
 .checkbox-container .checkbox-mark::after {
-    left: 7px;
     top: 3px;
+    left: 7px;
     width: 5px;
     height: 10px;
     border: solid var(--foreground-secondary-color);
@@ -480,12 +480,12 @@ code {
 }
 
 .radio-container {
-    display: block;
     position: relative;
-    padding-left: 35px;
     margin-bottom: -40px;
-    font-size: 18px;
+    padding-left: 35px;
+    display: block;
     color: var(--foreground-primary-color);
+    font-size: 18px;
 }
 
 .radio-container input {
@@ -497,8 +497,8 @@ code {
     position: absolute;
     top: 0;
     left: 0;
-    height: 23px;
     width: 23px;
+    height: 23px;
     background-color: transparent;
     border: 1.5px var(--background-secondary-color) solid;
     border-radius: 50%;
@@ -525,27 +525,27 @@ code {
     left: 5.73px;
     width: 9px;
     height: 9px;
-    border-radius: 50%;
     background-color: var(--foreground-secondary-color);
+    border-radius: 50%;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    border: 1.5px var(--background-secondary-color) solid;
     color: var(--accent-primary-color);
+    border: 1.5px var(--background-secondary-color) solid;
+    border-collapse: collapse;
 }
 
 table td, table th {
-    border: 1.5px var(--background-secondary-color) solid;
-    color: var(--foreground-primary-color);
     padding: 10px;
+    color: var(--foreground-primary-color);
+    border: 1.5px var(--background-secondary-color) solid;
     text-align: left;
 }
 
 table th {
-    font-size: 22px;
     color: var(--accent-primary-color);
+    font-size: 22px;
     text-shadow: 0 0 15px var(--accent-secondary-color);
 }
 
@@ -555,13 +555,13 @@ table th {
     }
 
     .menu {
-        display: none;
         position: absolute;
-        background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
-        right: 0;
         left: 0;
-        text-align: center;
+        right: 0;
         padding: 16px 0;
+        display: none;
+        background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
+        text-align: center;
     }
 
     .menu li:hover {
@@ -592,23 +592,23 @@ table th {
 
 @media (width <= 600px) {
     img {
-        max-width: none !important;
         width: 100%;
+        max-width: none !important;
     }
 }
 
 .card-container {
     display: flex;
     flex-flow: row wrap;
-    place-content: space-around space-evenly;
     align-items: stretch;
+    place-content: space-around space-evenly;
     gap: 25px;
 }
 
 .card {
-    outline: 1.5px var(--background-secondary-color) solid;
-    border-radius: 8px;
     flex: 1 0 47%;
+    border-radius: 8px;
+    outline: 1.5px var(--background-secondary-color) solid;
     transition: 0.3s;
 }
 
@@ -632,30 +632,30 @@ table th {
 }
 
 .badge {
-    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
-    color: var(--foreground-secondary-color);
-    padding: 2px 7px;
     margin-left: 8px;
+    padding: 2px 7px;
+    color: var(--foreground-secondary-color);
+    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
     border-radius: 5px;
     font-weight: bold;
 }
 
 .alert {
-    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
-    color: var(--foreground-secondary-color);
-    font-size: 18px;
     padding: 15px 12.5px;
+    color: var(--foreground-secondary-color);
+    background: linear-gradient(90deg, var(--accent-primary-color), var(--accent-secondary-color));
     border-radius: 10px;
+    font-size: 18px;
 }
 
 .spinner {
     width: 40px;
     height: 40px;
     border: 4px var(--background-primary-color) solid;
-    border-radius: 50%;
     border-top: 4px var(--accent-primary-color) solid;
-    border-right: 4px var(--accent-primary-color) solid;
     border-bottom: 4px var(--accent-primary-color) solid;
+    border-right: 4px var(--accent-primary-color) solid;
+    border-radius: 50%;
     animation: spin 1.5s linear infinite;
 }
 
