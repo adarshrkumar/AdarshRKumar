@@ -45,15 +45,15 @@ $breakpoints: (
 // Layout Patterns
 
 @mixin card {
-    background: $middle-color;
     padding: $section-spacing;
+    background: $middle-color;
     border-radius: $border-radius-section;
 }
 
 @mixin centered-content($max-width: $max-content-width) {
     margin-inline: auto;
-    max-width: $max-width;
     padding-inline: $content-spacing;
+    max-width: $max-width;
 }
 
 // Interactive Elements
