@@ -10,12 +10,12 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
 
 .post {
     box-sizing: border-box;
-    margin-inline: auto;
     margin-block: $content-spacing;
+    margin-inline: auto;
     width: clamp(500px, 100%, $max-post-width);
+    background-color: var(--bg);
     box-shadow: $post-shadow-subtle;
     border-radius: $post-border-radius;
-    background-color: var(--bg);
 
     @media (prefers-color-scheme: dark) {
         box-shadow: $post-shadow-dark-subtle;
@@ -43,7 +43,6 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
         margin: 0;
         background-color: var(--shadow-color);
         box-shadow: $post-section-shadow;
-
         border-top-left-radius: $bdr-rad-small;
         border-top-right-radius: $bdr-rad-small;
 
@@ -56,14 +55,12 @@ $post-section-shadow-dark: 0 1px 3px rgb(0 0 0 / 15%);
         $change-value: 1;
 
         flex: 1;
-
-        border-bottom-left-radius: $bdr-rad-small;
-        border-bottom-right-radius: $bdr-rad-small;
-
         background-color: light-dark(
             hsl(from var(--bg) h s calc(l + #{$change-value})),
             hsl(from var(--bg) h s calc(l - #{$change-value}))
         );
+        border-bottom-right-radius: $bdr-rad-small;
+        border-bottom-left-radius: $bdr-rad-small;
 
         // box-shadow: $post-section-shadow;
 
