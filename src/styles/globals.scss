@@ -126,16 +126,16 @@ img {
     border-radius: $border-radius-pill;
     font-size: $font-size-button;
     font-weight: 500;
-    text-align: center;
     letter-spacing: 0.02em;
+    text-align: center;
     text-decoration: none;
-    cursor: pointer;
     transition:
         color $transition-base $transition-timing,
         background-color $transition-base $transition-timing,
         border-color $transition-base $transition-timing,
         transform 0.2s $transition-timing,
         box-shadow 0.2s $transition-timing;
+    cursor: pointer;
 
     &:not(.primary) {
         color: var(--color);
@@ -145,8 +145,8 @@ img {
         &:hover {
             color: var(--bg);
             background-color: var(--color);
-            border-color: var(--color);
             box-shadow: 0 4px 12px var(--shadow-color);
+            border-color: var(--color);
             transform: translateY(-2px);
         }
     }
@@ -159,8 +159,8 @@ img {
 
         &:hover {
             background-color: var(--nav-btn-hover);
-            border-color: var(--nav-btn-hover);
             box-shadow: 0 6px 16px var(--shadow-color);
+            border-color: var(--nav-btn-hover);
             transform: translateY(-2px);
         }
     }
@@ -178,17 +178,17 @@ hr[isDivider], .divider {
     background-color: var(--color);
 
     &.h {
+        margin-block: var(--mar);
+        margin-inline: auto;
         width: var(--size);
         height: var(--stroke);
-        margin-inline: auto;
-        margin-block: var(--mar);
     }
 
     &.v {
-        height: var(--size);
-        width: var(--stroke);
         margin-block: auto;
         margin-inline: var(--mar);
+        width: var(--stroke);
+        height: var(--size);
     }
 }
 
@@ -196,8 +196,8 @@ hr[isDivider], .divider {
     margin: 0;
     padding: $section-spacing math.div($section-spacing, 2);
     border-bottom: 2px solid var(--border-color);
-    text-align: center;
     font-size: 2.5rem;
+    text-align: center;
     font-weight: 700;
     line-height: $line-height-heading;
     letter-spacing: -0.02em;
@@ -206,11 +206,11 @@ hr[isDivider], .divider {
 .section-title {
     margin: 0;
     padding: $content-spacing $section-spacing;
+    background: linear-gradient(135deg, transparent 0%, var(--shadow-color) 100%);
     border: 2px solid var(--border-color);
     border-radius: $border-radius-card;
-    background: linear-gradient(135deg, transparent 0%, var(--shadow-color) 100%);
-    text-align: center;
     font-size: 1.75rem;
+    text-align: center;
     font-weight: 600;
     line-height: $line-height-heading;
     letter-spacing: -0.01em;
@@ -219,8 +219,8 @@ hr[isDivider], .divider {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     line-height: $line-height-heading;
-    letter-spacing: -0.01em;
     margin-top: 0;
+    letter-spacing: -0.01em;
     margin-bottom: $content-spacing;
 
     *:not(&) + & {
@@ -236,8 +236,8 @@ h5 { font-size: 1.25rem; }
 h6 { font-size: 1.125rem; }
 
 .heading-link {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 
     &:hover {
         color: $accent-color;
@@ -286,11 +286,11 @@ address, blockquote, details, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hg
     position: absolute;
     top: #{-40px - 4px};
     left: 6px;
-    background: var(--color);
-    color: var(--bg);
     padding: 8px;
-    text-decoration: none;
+    color: var(--bg);
+    background: var(--color);
     border-radius: 4px;
+    text-decoration: none;
     z-index: 1000;
 }
 
