@@ -285,8 +285,8 @@ textarea {
 }
 
 input[type="text"]:focus, input[type="url"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="time"]:focus, input[type="date"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="search"]:focus, input[type="tel"]:focus, textarea:focus {
-    outline: 1.5px solid var(--accent-primary-color);
     box-shadow: 0 0 15px var(--accent-secondary-color);
+    outline: 1.5px solid var(--accent-primary-color);
 }
 
 input[type="text"]:read-only, input[type="url"]:read-only, input[type="number"]:read-only, input[type="email"]:read-only, input[type="password"]:read-only, input[type="time"]:read-only, input[type="date"]:read-only, input[type="datetime-local"]:read-only, input[type="month"]:read-only, input[type="week"]:read-only, input[type="search"]:read-only, input[type="tel"]:read-only, textarea:read-only {
@@ -627,8 +627,8 @@ table th {
 }
 
 .card:hover {
-    outline: 1.5px var(--accent-primary-color) solid;
     box-shadow: 0 0 15px var(--accent-secondary-color);
+    outline: 1.5px var(--accent-primary-color) solid;
 }
 
 .badge {
