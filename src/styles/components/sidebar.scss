@@ -7,8 +7,8 @@
 
     position: sticky;
     top: 0;
-    max-height: 100dvh;
     padding-block: var(--gap);
+    max-height: 100dvh;
     display: flex;
     flex-direction: column;
     gap: var(--gap);
@@ -42,8 +42,8 @@
         display: grid;
         grid-template-rows: subgrid;
         align-items: center;
-        overflow: hidden;
         border: solid 1px var(--bdr-clr, var(--color));
+        overflow: hidden;
         border-radius: calc(var(--padding) * 2);
 
         [id*="___ytsubscribe"] {
