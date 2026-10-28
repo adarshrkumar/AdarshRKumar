@@ -22,13 +22,13 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 @keyframes scale-in {
     from {
-        transform: scale(0.95);
         opacity: 0;
+        transform: scale(0.95);
     }
 
     to {
-        transform: scale(1);
         opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -39,9 +39,9 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-sizing: border-box;
         max-width: 100%;
         aspect-ratio: var(--ar, $ar);
+        background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: contain;
         border: solid 1px var(--color);
         border-radius: 1rem;
     }
@@ -49,12 +49,12 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 .grid {
     display: grid;
-    gap: $gap;
     margin-inline: auto;
     max-width: var(--max-width, max(100%, var(--min, 1000px)));
-    justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(var(--min, $min), 1fr));
     grid-template-columns: repeat(auto-fill, minmax(min(var(--min, $min), 100%), 1fr));
+    justify-content: center;
+    gap: $gap;
 
     // Commented out advanced grid logic for specific item counts
     // @for $i from 1 through 3 {
@@ -89,22 +89,21 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
     background-color: var(--bg);
-    border-radius: $card-border-radius;
-    text-decoration: inherit;
     box-shadow: $card-shadow-subtle;
+    border-radius: $card-border-radius;
+    flex-direction: column;
+    text-decoration: inherit;
+    animation: scale-in 0.5s $transition-smooth backwards;
+    transition:
+        transform $transition-smooth,
+        box-shadow $transition-smooth;
     cursor: pointer;
+    overflow: hidden;
 
     @media (prefers-color-scheme: dark) {
         box-shadow: $card-shadow-dark-subtle;
     }
-
-    transition:
-        transform $transition-smooth,
-        box-shadow $transition-smooth;
-    animation: scale-in 0.5s $transition-smooth backwards;
 
     @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
@@ -114,8 +113,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
         box-shadow: $card-shadow-hover;
-        transform: translateY(-4px);
         z-index: 2;
+        transform: translateY(-4px);
 
         @media (prefers-color-scheme: dark) {
             box-shadow: $card-shadow-dark-hover;
@@ -138,17 +137,16 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         aspect-ratio: 1 / 1;
         object-fit: cover;
         display: block;
-        user-select: none;
-
-        @supports(-webkit-user-drag: none) {
-            -webkit-user-drag: none;
-        }
-
         background-image: var(--placeholder, url('/assets/placeholder.svg'));
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         transition: transform 0.6s $transition-smooth;
+        user-select: none;
+
+        @supports(-webkit-user-drag: none) {
+            -webkit-user-drag: none;
+        }
 
         &.loading {
             background-color: hsl(0deg 0% 95%);
@@ -205,10 +203,10 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         flex-direction: column;
         gap: 0.5rem;
         opacity: 0;
-        transform: translateY(10px);
         transition:
             opacity $transition-smooth,
             transform $transition-smooth;
+        transform: translateY(10px);
         pointer-events: none;
 
         @media (width <= 768px) {
@@ -217,10 +215,10 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &__title {
+        margin: 0;
         color: white;
         font-size: 1rem;
         font-weight: 600;
-        margin: 0;
         text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 
         @media (width <= 768px) {
@@ -229,9 +227,11 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &__content {
+        margin: 0;
         color: rgb(255 255 255 / 90%);
         font-size: 0.875rem;
-        margin: 0;
+        line-height: 1.4;
+        text-overflow: ellipsis;
         text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
         display: -webkit-box;
 
@@ -241,8 +241,6 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         line-clamp: var(--lc);
         -webkit-box-orient: vertical;
         overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 1.4;
 
         @media (width <= 768px) {
             font-size: 0.8rem;
