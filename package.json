@@ -46,6 +46,7 @@
         "nanoid": "^5.1.6",
         "sass": "^1.75.0",
         "signal-exit": "^4.1.0",
+        "stylelint-order": "^8.1.2",
         "to-fast-properties": "^4.0.0",
         "typescript": "^5.9.3",
         "vite": "^7.1.7",
