@@ -9,13 +9,13 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 @keyframes scale-in {
     from {
-        transform: scale(0.95);
         opacity: 0;
+        transform: scale(0.95);
     }
 
     to {
-        transform: scale(1);
         opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -24,23 +24,22 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
     max-width: 100%;
     aspect-ratio: var(--ar, 2);
+    background-color: var(--bg);
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    background-color: var(--bg);
     box-shadow: $frame-shadow-subtle;
     border-radius: 1rem;
-    overflow: hidden;
-    overflow: clip;
     isolation: isolate;
+    animation: scale-in 0.5s $transition-smooth backwards;
     transition: transform $transition-smooth,
                 box-shadow $transition-smooth;
+    overflow: hidden;
+    overflow: clip;
 
     @media (prefers-color-scheme: dark) {
         box-shadow: $frame-shadow-dark-subtle;
     }
-
-    animation: scale-in 0.5s $transition-smooth backwards;
 
     @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
@@ -91,23 +90,22 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         width: 100%;
         height: 100%;
         background-color: hsl(0deg 0% #{$main-bg-lightness} / 75%);
-        opacity: 0;
-        user-select: none;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        opacity: 0;
         transition: opacity $t-time;
+        user-select: none;
 
         > * {
             margin-block: 0;
+            text-overflow: ellipsis;
             white-space: nowrap;
             overflow-x: hidden;
 
             @supports( overflow-x: clip) {
                 overflow-x: clip;
             }
-
-            text-overflow: ellipsis;
         }
     }
 
@@ -116,13 +114,13 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         max-width: unset;
         aspect-ratio: unset;
         background-color: #000;
+        background-size: unset;
         background-position: unset;
         background-repeat: unset;
-        background-size: unset;
         border: none;
         border-radius: 0;
-        pointer-events: all;
         z-index: 4;
+        pointer-events: all;
     }
 
     &:hover {
@@ -155,8 +153,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &::after {
-        opacity: 0;
         background-color: hsl(0deg 0% #{$main-color-lightness} / 100%);
+        opacity: 0;
         transition: opacity $t-time;
     }
 }
@@ -177,8 +175,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 0.1s;
 
         &:hover {
-            transform: none;
             transition-duration: 0.1s;
+            transform: none;
         }
 
         &__info {
