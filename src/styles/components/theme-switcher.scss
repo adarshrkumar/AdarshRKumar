@@ -17,10 +17,10 @@
     height: var(--size);
     aspect-ratio: 1;
     background-color: var(--color);
-    border-radius: 50%;
     box-shadow:
         0 0 var(--shadow-size) 0 var(--color),
         0 0 calc(var(--shadow-size) * 2) calc(var(--shadow-size) * 2) var(--bg);
+    border-radius: 50%;
     cursor: pointer;
     z-index: $z-index-tooltip;
 

@@ -28,8 +28,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background-repeat: no-repeat;
     background-size: contain;
     background-color: var(--bg);
-    border-radius: 1rem;
     box-shadow: $frame-shadow-subtle;
+    border-radius: 1rem;
     overflow: hidden;
     overflow: clip;
     isolation: isolate;
@@ -126,8 +126,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &:hover {
-        transform: translateY(-4px);
         box-shadow: $frame-shadow-hover;
+        transform: translateY(-4px);
 
         @media (prefers-color-scheme: dark) {
             box-shadow: $frame-shadow-dark-hover;

@@ -52,15 +52,15 @@
         border-color: color-mix(in srgb, var(--border-color) 70%, white);
     }
 
-    transform: none;
     box-shadow: none;
+    transform: none;
 }
 
 .nav-btn[data-primary="true"] {
     color: var(--bg);
     background-color: var(--color);
-    border: 2px solid var(--color);
     box-shadow: none;
+    border: 2px solid var(--color);
 
     &:hover {
         color: var(--color);
@@ -70,8 +70,8 @@
             border-color: color-mix(in srgb, var(--border-color) 70%, white);
         }
 
-        transform: none;
         box-shadow: none;
+        transform: none;
         text-decoration: underline;
         text-decoration-color: $accent-color;
         text-decoration-thickness: 2px;

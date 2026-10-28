@@ -34,8 +34,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 .music-area {
     iframe {
         background-color: var(--bg);
-        border-radius: 1rem;
         box-shadow: $music-shadow-subtle;
+        border-radius: 1rem;
         overflow: hidden;
         aspect-ratio: 16 / 9;
         transition: transform $transition-smooth,
@@ -54,8 +54,8 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         &:hover {
-            transform: translateY(-4px);
             box-shadow: $music-shadow-hover;
+            transform: translateY(-4px);
 
             @media (prefers-color-scheme: dark) {
                 box-shadow: $music-shadow-dark-hover;
