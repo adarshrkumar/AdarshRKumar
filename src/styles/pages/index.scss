@@ -10,9 +10,9 @@
     --dmbg: hsl(from var(--bg) h s calc(l + 5));
     --mbg: light-dark(var(--lmbg), var(--dmbg));
 
-    max-width: 750px;
     margin-inline: auto;
     padding: var(--pad);
+    max-width: 750px;
     background-color: var(--card-bg);
     box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
     border-radius: var(--br);
@@ -31,9 +31,9 @@
         width: 100%;
         width: max-content;
         max-width: 100%;
-        overflow: auto;
         box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
         border: 1px solid var(--mlbg);
+        overflow: auto;
 
         --br: 1rem;
 
@@ -83,11 +83,11 @@
 
             &:last-child {
                 img {
-                    vertical-align: middle;
-                    border-radius: 100vw;
-                    aspect-ratio: math.div(100, $size);
-                    height: #{$size}px;
                     width: auto;
+                    height: #{$size}px;
+                    aspect-ratio: math.div(100, $size);
+                    border-radius: 100vw;
+                    vertical-align: middle;
                 }
             }
         }
@@ -96,8 +96,8 @@
     #social-media + p {
         margin-block: 1rem;
         font-size: 3.40cqw;
-        text-align: center;
         vertical-align: middle;
+        text-align: center;
         text-box-trim: trim-both;
 
         a, img {
