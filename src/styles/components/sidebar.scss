@@ -10,9 +10,9 @@
     padding-block: var(--gap);
     max-height: 100dvh;
     display: flex;
+    border-left: solid 1px var(--bdr-clr, var(--color));
     flex-direction: column;
     gap: var(--gap);
-    border-left: solid 1px var(--bdr-clr, var(--color));
 
     & > *:not(.divider) {
         padding-inline: var(--gap);
@@ -40,11 +40,11 @@
         box-sizing: border-box;
         padding: var(--padding);
         display: grid;
+        border: solid 1px var(--bdr-clr, var(--color));
+        border-radius: calc(var(--padding) * 2);
         grid-template-rows: subgrid;
         align-items: center;
-        border: solid 1px var(--bdr-clr, var(--color));
         overflow: hidden;
-        border-radius: calc(var(--padding) * 2);
 
         [id*="___ytsubscribe"] {
             border-radius: var(--padding);
