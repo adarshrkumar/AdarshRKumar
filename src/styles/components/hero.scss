@@ -3,8 +3,8 @@
 
 .hero {
     > * {
-        width: fit-content;
         margin-inline: auto;
+        width: fit-content;
         text-align: center;
     }
 }
