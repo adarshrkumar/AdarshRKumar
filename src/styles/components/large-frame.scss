@@ -10,12 +10,12 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 @keyframes scale-in {
     from {
         opacity: 0;
-        transform: scale(0.95);
+        scale: 0.95;
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+        scale: 1;
     }
 }
 
@@ -32,7 +32,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 1rem;
     isolation: isolate;
     animation: scale-in 0.5s $transition-smooth backwards;
-    transition: transform $transition-smooth,
+    transition: translate $transition-smooth,
                 box-shadow $transition-smooth;
     overflow: hidden;
     overflow: clip;
@@ -125,7 +125,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
         box-shadow: $frame-shadow-hover;
-        transform: translateY(-4px);
+        translate: 0 -4px;
 
         @media (prefers-color-scheme: dark) {
             box-shadow: $frame-shadow-dark-hover;
@@ -176,7 +176,7 @@ $transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover {
             transition-duration: 0.1s;
-            transform: none;
+            translate: none;
         }
 
         &__info {
