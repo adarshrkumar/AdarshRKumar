@@ -7,13 +7,15 @@ const readmePath = path.join(process.cwd(), 'README.md');
 
 /**
  * Generates a Markdown bulleted list of linked skill names.
- * @param {Array<{name: string, skill_url: string}>} skills - The list of skills.
+ * @param {Array<{name: string, skill_url: string} | Array<{name: string, skill_url: string}>>} skills - The list of skills.
  * @returns {string} - The Markdown list.
  */
 function generateList(skills) {
     if (!skills || skills.length === 0) return '';
 
-    return skills.map((skill) => `- [${skill.name}](${skill.skill_url})\n`).join('');
+    return skills
+        .map(entry => `- ${[entry].flat().map((skill) => `[${skill.name}](${skill.skill_url})`).join(' / ')}\n`)
+        .join('');
 }
 
 /**
