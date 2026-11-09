@@ -201,6 +201,7 @@ hr[isDivider], .divider {
     line-height: $line-height-heading;
     letter-spacing: -0.02em;
     text-align: center;
+    text-wrap: balance;
 }
 
 .section-title {
