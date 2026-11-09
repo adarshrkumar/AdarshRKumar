@@ -35,9 +35,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 - [VS Code](https://code.visualstudio.com)
 - [Cursor](https://cursor.com)
 - [Claude Code](https://claude.ai)
-- [Gemini CLI](https://claude.ai)
-- [Windows](https://microsoft.com/en-us/windows)
-- [Mac](https://apple.com/mac)
+- [Antigravity](https://antigravity.google)
 
 ## Languages
 
