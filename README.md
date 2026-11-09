@@ -1,6 +1,6 @@
 # Adarsh R. Kumar
 
-Hey, I’m Adarsh, a student at [SCU](https://scu.edu). I code, design 3D models, and take photos.
+Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https://scu.edu). I code, design 3D models, and take photos.
 
 - 💻 I build websites, front end and back end
 - 🧊 I do 3D modeling and I’m taking CAD requests for 3D printing
