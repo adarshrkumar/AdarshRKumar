@@ -13,12 +13,6 @@
             "skill_url": "https://canva.com"
         },
         {
-            "name": "PowerPoint",
-            "proficiency": 100,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/PowerPoint.png",
-            "skill_url": "https://powerpoint.cloud.microsoft"
-        },
-        {
             "name": "OnShape",
             "proficiency": 100,
             "icon_url": "https://adarshrkumar.dev/assets/readme/OnShape.png",
@@ -44,18 +38,20 @@
             "icon_url": "https://skillicons.dev/icons?i=vercel",
             "skill_url": "https://vercel.com"
         },
-        {
-            "name": "Git",
-            "proficiency": 75,
-            "icon_url": "https://skillicons.dev/icons?i=git",
-            "skill_url": "https://git-scm.com"
-        },
-        {
-            "name": "GitHub",
-            "proficiency": 95,
-            "icon_url": "https://skillicons.dev/icons?i=github",
-            "skill_url": "https://github.com"
-        },
+        [
+            {
+                "name": "Git",
+                "proficiency": 75,
+                "icon_url": "https://skillicons.dev/icons?i=git",
+                "skill_url": "https://git-scm.com"
+            },
+            {
+                "name": "GitHub",
+                "proficiency": 95,
+                "icon_url": "https://skillicons.dev/icons?i=github",
+                "skill_url": "https://github.com"
+            }
+        ],
         {
             "name": "GitHub Actions",
             "proficiency": 45,
@@ -100,12 +96,20 @@
             "icon_url": "https://skillicons.dev/icons?i=html",
             "skill_url": "https://en.wikipedia.org/wiki/HTML"
         },
-        {
-            "name": "CSS",
-            "proficiency": 95,
-            "icon_url": "https://skillicons.dev/icons?i=css",
-            "skill_url": "https://en.wikipedia.org/wiki/CSS"
-        },
+        [
+            {
+                "name": "CSS",
+                "proficiency": 95,
+                "icon_url": "https://skillicons.dev/icons?i=css",
+                "skill_url": "https://en.wikipedia.org/wiki/CSS"
+            },
+            {
+                "name": "SCSS",
+                "proficiency": 80,
+                "icon_url": "https://skillicons.dev/icons?i=scss",
+                "skill_url": "https://sass-lang.com"
+            }
+        ],
         {
             "name": "JavaScript",
             "proficiency": 90,
@@ -123,12 +127,6 @@
             "proficiency": 75,
             "icon_url": "https://skillicons.dev/icons?i=svg",
             "skill_url": "https://en.wikipedia.org/wiki/SVG"
-        },
-        {
-            "name": "SCSS",
-            "proficiency": 80,
-            "icon_url": "https://skillicons.dev/icons?i=scss",
-            "skill_url": "https://sass-lang.com"
         }
     ],
     "Web Development - Back End": [
@@ -138,42 +136,40 @@
             "icon_url": "https://skillicons.dev/icons?i=php",
             "skill_url": "https://php.net"
         },
-        {
-            "name": "Node.js",
-            "proficiency": 90,
-            "icon_url": "https://skillicons.dev/icons?i=nodejs",
-            "skill_url": "https://nodejs.org"
-        },
-        {
-            "name": "npm",
-            "proficiency": 90,
-            "icon_url": "https://skillicons.dev/icons?i=npm",
-            "skill_url": "https://npmjs.com"
-        },
+        [
+            {
+                "name": "Node.js",
+                "proficiency": 90,
+                "icon_url": "https://skillicons.dev/icons?i=nodejs",
+                "skill_url": "https://nodejs.org"
+            },
+            {
+                "name": "npm",
+                "proficiency": 90,
+                "icon_url": "https://skillicons.dev/icons?i=npm",
+                "skill_url": "https://npmjs.com"
+            }
+        ],
         {
             "name": "Express.js",
             "proficiency": 90,
             "icon_url": "https://skillicons.dev/icons?i=express",
             "skill_url": "https://expressjs.com"
         },
-        {
-            "name": "Vite",
-            "proficiency": 70,
-            "icon_url": "https://skillicons.dev/icons?i=vite",
-            "skill_url": "https://vitejs.dev"
-        },
-        {
-            "name": "React",
-            "proficiency": 40,
-            "icon_url": "https://skillicons.dev/icons?i=react",
-            "skill_url": "https://react.dev"
-        },
-        {
-            "name": "Next.js",
-            "proficiency": 40,
-            "icon_url": "https://skillicons.dev/icons?i=nextjs",
-            "skill_url": "https://nextjs.org"
-        },
+        [
+            {
+                "name": "React",
+                "proficiency": 40,
+                "icon_url": "https://skillicons.dev/icons?i=react",
+                "skill_url": "https://react.dev"
+            },
+            {
+                "name": "Next.js",
+                "proficiency": 40,
+                "icon_url": "https://skillicons.dev/icons?i=nextjs",
+                "skill_url": "https://nextjs.org"
+            }
+        ],
         {
             "name": "Astro",
             "proficiency": 90,
@@ -194,30 +190,40 @@
             "icon_url": "https://skillicons.dev/icons?i=bash",
             "skill_url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
         },
-        {
-            "name": "Batch",
-            "proficiency": 40,
-            "icon_url": "https://skillicons.dev/icons?i=batch",
-            "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
-        },
-        {
-            "name": "PowerShell",
-            "proficiency": 30,
-            "icon_url": "https://skillicons.dev/icons?i=powershell",
-            "skill_url": "https://en.wikipedia.org/wiki/PowerShell"
-        },
+        [
+            {
+                "name": "Batch",
+                "proficiency": 40,
+                "icon_url": "https://skillicons.dev/icons?i=batch",
+                "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
+            },
+            {
+                "name": "PowerShell",
+                "proficiency": 30,
+                "icon_url": "https://skillicons.dev/icons?i=powershell",
+                "skill_url": "https://en.wikipedia.org/wiki/PowerShell"
+            }
+        ],
         {
             "name": "Python",
             "proficiency": 70,
             "icon_url": "https://skillicons.dev/icons?i=py",
             "skill_url": "https://python.org"
         },
-        {
-            "name": "Flask",
-            "proficiency": 65,
-            "icon_url": "https://skillicons.dev/icons?i=flask",
-            "skill_url": "https://palletsprojects.com/p/flask/"
-        },
+        [
+            {
+                "name": "Flask",
+                "proficiency": 65,
+                "icon_url": "https://skillicons.dev/icons?i=flask",
+                "skill_url": "https://palletsprojects.com/p/flask/"
+            },
+            {
+                "name": "Django",
+                "proficiency": 65,
+                "icon_url": "https://skillicons.dev/icons?i=django",
+                "skill_url": "https://djangoproject.com"
+            }
+        ],
         {
             "name": "C",
             "proficiency": 50,

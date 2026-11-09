@@ -20,7 +20,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 
 - [Figma](https://figma.com)
 - [Canva](https://canva.com)
-- [PowerPoint](https://powerpoint.cloud.microsoft)
 - [OnShape](https://onshape.com)
 
 ### Other Tools
@@ -28,8 +27,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 - [Firebase](https://firebase.com)
 - [Google Cloud](https://cloud.google.com)
 - [Vercel](https://vercel.com)
-- [Git](https://git-scm.com)
-- [GitHub](https://github.com)
+- [Git](https://git-scm.com) / [GitHub](https://github.com)
 - [GitHub Actions](https://github.com/actions)
 - [Visual Studio](https://visualstudio.com)
 - [VS Code](https://code.visualstudio.com)
@@ -44,31 +42,26 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 #### Front End
 
 - [HTML](https://en.wikipedia.org/wiki/HTML)
-- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [CSS](https://en.wikipedia.org/wiki/CSS) / [SCSS](https://sass-lang.com)
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 - [TypeScript](https://www.typescriptlang.org)
 - [SVG](https://en.wikipedia.org/wiki/SVG)
-- [SCSS](https://sass-lang.com)
 
 #### Back End
 
 - [PHP](https://php.net)
-- [Node.js](https://nodejs.org)
-- [npm](https://npmjs.com)
+- [Node.js](https://nodejs.org) / [npm](https://npmjs.com)
 - [Express.js](https://expressjs.com)
-- [Vite](https://vitejs.dev)
-- [React](https://react.dev)
-- [Next.js](https://nextjs.org)
+- [React](https://react.dev) / [Next.js](https://nextjs.org)
 - [Astro](https://astro.build)
 - [Discord.js](https://discord.js.org)
 
 ### Other Languages
 
 - [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
-- [Batch](https://en.wikipedia.org/wiki/Batch_file)
-- [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
+- [Batch](https://en.wikipedia.org/wiki/Batch_file) / [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
 - [Python](https://python.org)
-- [Flask](https://palletsprojects.com/p/flask/)
+- [Flask](https://palletsprojects.com/p/flask/) / [Django](https://djangoproject.com)
 - [C](https://en.wikipedia.org/wiki/CI/CD)
 - [C++](https://cplusplus.com)
 - [Markdown](https://www.markdownguide.org)
