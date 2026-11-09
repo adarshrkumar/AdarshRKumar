@@ -28,9 +28,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 
 ## Social Media
 
-- [Dev.to](https://dev.to/adarshrkumar)
 - [Discord](https://discord.com/users/adarshrkumar)
-- [Facebook](https://facebook.com/adarshrkumar)
 - [Gmail](mailto:adarshrkumar@aol.com)
 - [Instagram](https://instagram.com/adarsh.r.kumar)
 - [LinkedIn](https://linkedin.com/in/adarshrkumar)
