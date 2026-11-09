@@ -33,7 +33,7 @@
             "skill_url": "https://firebase.com"
         },
         {
-            "name": "GCP",
+            "name": "Google Cloud",
             "proficiency": 50,
             "icon_url": "https://skillicons.dev/icons?i=gcp",
             "skill_url": "https://cloud.google.com"
@@ -87,27 +87,15 @@
             "skill_url": "https://claude.ai"
         },
         {
-            "name": "Gemini CLI",
+            "name": "Antigravity",
             "proficiency": 60,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/GeminiCLI.png",
-            "skill_url": "https://claude.ai"
-        },
-        {
-            "name": "Windows",
-            "proficiency": 75,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Windows.png",
-            "skill_url": "https://microsoft.com/en-us/windows"
-        },
-        {
-            "name": "Mac",
-            "proficiency": 75,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Mac.png",
-            "skill_url": "https://apple.com/mac"
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.png",
+            "skill_url": "https://antigravity.google"
         }
     ],
     "Web Development - Front-End": [
         {
-            "name": "HMTL",
+            "name": "HTML",
             "proficiency": 99,
             "icon_url": "https://skillicons.dev/icons?i=html",
             "skill_url": "https://en.wikipedia.org/wiki/HTML"
@@ -151,19 +139,19 @@
             "skill_url": "https://php.net"
         },
         {
-            "name": "Node.JS",
+            "name": "Node.js",
             "proficiency": 90,
             "icon_url": "https://skillicons.dev/icons?i=nodejs",
             "skill_url": "https://nodejs.org"
         },
         {
-            "name": "NPM",
+            "name": "npm",
             "proficiency": 90,
             "icon_url": "https://skillicons.dev/icons?i=npm",
             "skill_url": "https://npmjs.com"
         },
         {
-            "name": "Express.JS",
+            "name": "Express.js",
             "proficiency": 90,
             "icon_url": "https://skillicons.dev/icons?i=express",
             "skill_url": "https://expressjs.com"
@@ -181,7 +169,7 @@
             "skill_url": "https://react.dev"
         },
         {
-            "name": "Next.JS",
+            "name": "Next.js",
             "proficiency": 40,
             "icon_url": "https://skillicons.dev/icons?i=nextjs",
             "skill_url": "https://nextjs.org"
@@ -193,7 +181,7 @@
             "skill_url": "https://astro.build"
         },
         {
-            "name": "Discord.JS",
+            "name": "Discord.js",
             "proficiency": 50,
             "icon_url": "https://skillicons.dev/icons?i=discordjs",
             "skill_url": "https://discord.js.org"
@@ -225,7 +213,7 @@
             "skill_url": "https://python.org"
         },
         {
-            "name": "Flask.PY",
+            "name": "Flask",
             "proficiency": 65,
             "icon_url": "https://skillicons.dev/icons?i=flask",
             "skill_url": "https://palletsprojects.com/p/flask/"

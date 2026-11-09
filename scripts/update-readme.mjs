@@ -6,28 +6,26 @@ const templatePath = path.join(process.cwd(), 'README_template.md');
 const readmePath = path.join(process.cwd(), 'README.md');
 
 /**
- * Generates a Markdown table for a list of skills, including icon, link, and progress bar.
- * @param {Array<{name: string, proficiency: number, icon_url: string, skill_url: string}>} skills - The list of skills.
- * @param {string} header - The header for the skill name column (e.g., 'Tool' or 'Lang').
- * @returns {string} - The Markdown table.
+ * Generates a Markdown bulleted list of linked skill names.
+ * @param {Array<{name: string, skill_url: string}>} skills - The list of skills.
+ * @returns {string} - The Markdown list.
  */
-function generateTable(skills, header = 'Tool') {
+function generateList(skills) {
     if (!skills || skills.length === 0) return '';
 
-    let table = `| ${header} | Proficiency Level |\n`;
-    table += '| --- | --- |\n';
+    return skills.map((skill) => `- [${skill.name}](${skill.skill_url})\n`).join('');
+}
 
-    for (const skill of skills) {
-        // Construct the icon and link part: [![Name](icon_url)](skill_url)
-        const iconAndLink = `[![${skill.name}](${skill.icon_url})](${skill.skill_url})`;
+/**
+ * Generates a Markdown section with a heading and a skill list.
+ * @param {string} heading - The Markdown heading line (e.g., '### Other Tools').
+ * @param {Array<{name: string, skill_url: string}>} skills - The list of skills.
+ * @returns {string} - The Markdown section, or an empty string if there are no skills.
+ */
+function generateSection(heading, skills) {
+    if (!skills || skills.length === 0) return '';
 
-        // Construct the progress bar part: ![80%](progress-bar-url)&nbsp; 80%
-        const progressBar = `![${skill.proficiency}%](https://progress-bar.adarshrkumar.dev/bar.svg?p=${skill.proficiency}%25)`;
-
-        table += `| ${iconAndLink} | ${progressBar}&nbsp; ${skill.proficiency}% |\n`;
-    }
-
-    return table;
+    return `${heading}\n\n${generateList(skills)}\n`;
 }
 
 export default async function updateReadme() {
@@ -38,36 +36,20 @@ export default async function updateReadme() {
         ]);
 
         // Generate markdown for tools
-        const toolCategories = ['Design Softwares', 'Other Tools'];
         let toolsMarkdown = '';
-        for (const category of toolCategories) {
-            if (skillsData[category]) {
-                toolsMarkdown += `### ${category}\n\n`;
-                toolsMarkdown += generateTable(skillsData[category], 'Tool');
-                toolsMarkdown += '\n';
-            }
-        }
+        toolsMarkdown += generateSection('### Design Software', skillsData['Design Softwares']);
+        toolsMarkdown += generateSection('### Other Tools', skillsData['Other Tools']);
 
         // Generate markdown for languages
+        const frontEnd = skillsData['Web Development - Front-End'];
+        const backEnd = skillsData['Web Development - Back End'];
         let languagesMarkdown = '';
-        if (skillsData['Web Development - Front-End'] || skillsData['Web Development - Back End']) {
+        if (frontEnd?.length || backEnd?.length) {
             languagesMarkdown += '### Web Development\n\n';
-            if (skillsData['Web Development - Front-End']) {
-                languagesMarkdown += '#### Front-End\n\n';
-                languagesMarkdown += generateTable(skillsData['Web Development - Front-End'], 'Lang');
-                languagesMarkdown += '\n';
-            }
-            if (skillsData['Web Development - Back End']) {
-                languagesMarkdown += '#### Back End\n\n';
-                languagesMarkdown += generateTable(skillsData['Web Development - Back End'], 'Lang');
-                languagesMarkdown += '\n';
-            }
+            languagesMarkdown += generateSection('#### Front End', frontEnd);
+            languagesMarkdown += generateSection('#### Back End', backEnd);
         }
-        if (skillsData['Other Languages']) {
-            languagesMarkdown += `### Other Languages\n\n`;
-            languagesMarkdown += generateTable(skillsData['Other Languages'], 'Lang');
-            languagesMarkdown += '\n';
-        }
+        languagesMarkdown += generateSection('### Other Languages', skillsData['Other Languages']);
 
         // Replace placeholders in the template
         let finalContent = templateContent.replace('{tools}', toolsMarkdown.trim());
