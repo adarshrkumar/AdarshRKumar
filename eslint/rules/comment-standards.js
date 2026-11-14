@@ -27,20 +27,23 @@ export default {
 
                     if (comment.type !== 'Block') return;
 
-                    if (comment.loc.start.line === comment.loc.end.line) {
+                    if (comment.value.startsWith('*') && !/^\s*\*?\s*@[a-zA-Z]+/m.test(comment.value)) {
+                        context.report({
+                            node: node,
+                            loc: comment.loc,
+                            message: 'Plain comments should use // instead of /** */'
+                        });
                         return;
                     }
+
+                    if (comment.loc.start.line === comment.loc.end.line) return;
 
                     if (jsDocTags.test(comment.value)) return;
 
                     const lines = comment.value.split('\n').map(line => line.trim());
 
-                    while (lines.length > 0 && lines[0] === '') {
-                        lines.shift();
-                    }
-                    while (lines.length > 0 && lines[lines.length - 1] === '') {
-                        lines.pop();
-                    }
+                    while (lines.length > 0 && lines[0] === '') lines.shift();
+                    while (lines.length > 0 && lines[lines.length - 1] === '') lines.pop();
 
                     const cleanedLines = lines.map(line => {
                         return line.replace(/^\*\s?/, '').trim();

@@ -10,24 +10,16 @@ function getImportGroup(source) {
         return 2;
     }
 
-    if (source === 'astro' || source.startsWith('astro/') || source === '@astrojs' || source.startsWith('@astrojs/')) {
-        return 3;
-    }
+    if (source === 'astro' || source.startsWith('astro/') || source === '@astrojs' || source.startsWith('@astrojs/')) return 3;
 
     const frameworks = ['astro', 'svelte', 'react', 'vue', 'solid', 'preact'];
     const styles = ['css', 'scss', 'sass', 'less', 'styl', 'stylus'];
-    if (frameworks.find(f => source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => source.toLowerCase().endsWith(`.${s}`))) {
-        return 8;
-    }
+    if (frameworks.find(f => source.toLowerCase().endsWith(`.${f}`)) || styles.find(s => source.toLowerCase().endsWith(`.${s}`))) return 8;
 
     if (!source.startsWith('.')) {
-        if (path.extname(source.toLowerCase()).slice(1).length === 0) {
-            return 1;
-        }
+        if (path.extname(source.toLowerCase()).slice(1).length === 0) return 1;
 
-        if (['js', 'ts'].some(prefix => path.extname(source.toLowerCase()).slice(1).startsWith(prefix) || path.extname(source.toLowerCase()).slice(1).endsWith(prefix))) {
-            return 6;
-        }
+        if (['js', 'ts'].some(prefix => path.extname(source.toLowerCase()).slice(1).startsWith(prefix) || path.extname(source.toLowerCase()).slice(1).endsWith(prefix))) return 6;
 
         return 7;
     }
@@ -44,9 +36,7 @@ function getImportModulePath(source, currentDir) {
         let targetPath = path.resolve(currentDir, source);
         try {
             const stat = fs.statSync(targetPath, { throwIfNoEntry: false });
-            if (stat && stat.isFile()) {
-                return path.dirname(targetPath);
-            }
+            if (stat && stat.isFile()) return path.dirname(targetPath);
         } catch {
             // Ignore errors
         }
@@ -58,9 +48,7 @@ function getImportModulePath(source, currentDir) {
         if (dirStat && dirStat.isDirectory()) {
             for (const entry of fs.readdirSync(path.resolve(currentDir, source.split('/').slice(0, -1).join('/')))) {
                 const stat = fs.statSync(path.join(path.resolve(currentDir, source.split('/').slice(0, -1).join('/')), entry), { throwIfNoEntry: false });
-                if (stat && stat.isFile() && path.parse(entry).name === source.split('/')[source.split('/').length - 1]) {
-                    return path.resolve(currentDir, source.split('/').slice(0, -1).join('/'));
-                }
+                if (stat && stat.isFile() && path.parse(entry).name === source.split('/')[source.split('/').length - 1]) return path.resolve(currentDir, source.split('/').slice(0, -1).join('/'));
             }
         }
     } catch {
@@ -103,9 +91,7 @@ export default {
                         });
                     }
 
-                    if (group > maxSeenGroup) {
-                        maxSeenGroup = group;
-                    }
+                    if (group > maxSeenGroup) maxSeenGroup = group;
 
                     if (previousNode && previousGroup !== null && ((previousGroup !== group && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) < 2) || (previousGroup === group && (importNode.loc.start.line || 0) - (previousNode.loc.end.line || 0) >= 2))) {
                         context.report({
