@@ -1,11 +1,4 @@
-/**
- * Sanitizes markdown content by removing HTML comments
- *
- * @param content - The markdown content to sanitize
- * @returns Clean markdown content without HTML comments
- */
-
-// Main sanitization function
+// Sanitizes markdown content by removing HTML comments
 export function sanitizeMD(content: string): string {
     if (!content) return content;
 

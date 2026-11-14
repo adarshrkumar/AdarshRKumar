@@ -28,14 +28,10 @@ async function fetchInstagramEndpoint(endpoint: string): Promise<object> {
         body: `------WebKitFormBoundaryhvlGBNAlLf6A7hTO\r\nContent-Disposition: form-data; name="url"\r\n\r\n${INSTAGRAM_USERNAME}\r\n------WebKitFormBoundaryhvlGBNAlLf6A7hTO--\r\n`,
     });
 
-    if (!response.ok) {
-        throw new Error(`Instagram API returned ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`Instagram API returned ${response.status}`);
 
     const json = await response.json();
-    if (json?.status !== 'success') {
-        throw new Error(`Instagram API returned status: ${json?.status}`);
-    }
+    if (json?.status !== 'success') throw new Error(`Instagram API returned status: ${json?.status}`);
 
     return json?.data;
 }
@@ -50,12 +46,7 @@ function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
         if ((entries[i][0].startsWith('edge_') && entries[i][0].includes('media')) || entries[i][0].startsWith('edge_felix')) {
             if (typeof entries[i][1] === 'object' && entries[i][1] !== null && 'edges' in entries[i][1] && Array.isArray(entries[i][1].edges) && entries[i][1].edges.length > 0) {
                 const nodes: InstagramMediaNode[] = [];
-                for (let j = 0; j < entries[i][1].edges.length; j++) {
-                    const edge = entries[i][1].edges[j];
-                    if (edge && typeof edge === 'object' && 'node' in edge) {
-                        nodes.push(edge.node);
-                    }
-                }
+                for (let j = 0; j < entries[i][1].edges.length; j++) if (entries[i][1].edges[j] && typeof entries[i][1].edges[j] === 'object' && 'node' in entries[i][1].edges[j]) nodes.push(entries[i][1].edges[j].node);
                 return nodes;
             }
         }
@@ -103,17 +94,13 @@ function extractMediaNodes(data: object): InstagramMediaNode[] {
         const val = entries[i][1];
         if (Array.isArray(val) && val.length > 0 && typeof val[0] === 'object') {
             const results: InstagramMediaNode[] = [];
-            for (let j = 0; j < val.length; j++) {
-                results.push(normalizeMediaNode(val[j]));
-            }
+            for (let j = 0; j < val.length; j++) results.push(normalizeMediaNode(val[j]));
             return results;
         }
     }
 
     // Fallback: if data is an array of nodes directly
-    if (Array.isArray(data)) {
-        return data.map(normalizeMediaNode);
-    }
+    if (Array.isArray(data)) return data.map(normalizeMediaNode);
 
     return [];
 }
@@ -127,12 +114,9 @@ export async function getInstagramData(): Promise<InstagramData> {
         );
 
         const data: Record<string, object> = {};
-        for (let i = 0; i < endpoints.length; i++) {
-            const result = results[i];
-            if (result.status === 'fulfilled' && result.value) {
-                data[endpoints[i]] = result.value;
-            }
-        }
+        results.forEach((result, i) => {
+            if (result.status === 'fulfilled' && result.value) data[endpoints[i]] = result.value;
+        });
 
         // Extract profile
         let profile: InstagramProfile | null = null;
@@ -151,9 +135,7 @@ export async function getInstagramData(): Promise<InstagramData> {
         if (storiesData && typeof storiesData === 'object') {
             const reel = 'reel' in storiesData ? storiesData.reel : null;
             const storyArray = ('stories' in storiesData ? storiesData.stories : (reel && typeof reel === 'object' && 'items' in reel ? reel.items : storiesData));
-            if (Array.isArray(storyArray)) {
-                stories = storyArray;
-            }
+            if (Array.isArray(storyArray)) stories = storyArray;
         }
 
         return { profile, posts, reels, stories, error: null };
@@ -171,10 +153,7 @@ export async function getInstagramData(): Promise<InstagramData> {
 
 // Extract caption text from a media node
 export function getInstagramCaption(node: InstagramMediaNode): string {
-    const edges = node.edge_media_to_caption?.edges;
-    if (edges && edges.length > 0) {
-        return edges[0].node.text;
-    }
+    if (node.edge_media_to_caption?.edges && node.edge_media_to_caption?.edges.length > 0) return node.edge_media_to_caption?.edges[0].node.text;
     return '';
 }
 

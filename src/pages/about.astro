@@ -25,7 +25,7 @@ const skills = Object.entries(skillsData).map(([category, skillList]) => {
     return {
         name: mapping.name,
         icon: mapping.icon,
-        tech: skillList
+        tech: skillList.flat()
     };
 }).filter(Boolean);
 

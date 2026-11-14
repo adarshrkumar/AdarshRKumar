@@ -21,20 +21,16 @@ try {
     const response = await fetch(rssUrl)
     const result = await response.json()
 
-    if (result && result.status === 'ok' && result.feed && result.items && result.items.length > 0) {
-        channel = result
-    }
-    else {
-        console.warn(`No valid videos found for channel: ${channelId}`)
-    }
+    if (result && result.status === 'ok' && result.feed && result.items && result.items.length > 0) channel = result
+    else console.warn(`No valid videos found for channel: ${channelId}`)
 } catch (error) {
     console.error(`Error fetching videos for channel ${channelId}:`, error)
 }
 
 ---
 {
-    channel.videos.map((video, videoIndex) => {
-        if (typeof maxVideosPerChannel !== 'string' && videoIndex >= maxVideosPerChannel) {
+    channel.videos.map((video, i) => {
+        if (typeof maxVideosPerChannel !== 'string' && i >= maxVideosPerChannel) {
             return ''
         }
 

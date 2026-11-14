@@ -1,8 +1,8 @@
 // Photo fetching utilities for database-backed photo gallery
 
 import { eq, desc } from 'drizzle-orm';
-import { db } from '../db/initialize.ts';
-import { photos, type Photo } from '../db/schema.ts';
+import db from '../db';
+import { photos, type Photo } from '../db/schema';
 
 // Helper functions
 

@@ -1,9 +1,6 @@
 export function extractChannelId(feedLink: string): string {
-    let channelId = feedLink
-    if (channelId.includes('/')) {
-        channelId = channelId.split('/').pop() || ''
-    }
-    return channelId
+    if (feedLink.includes('/')) feedLink = feedLink.split('/').pop() || ''
+    return feedLink
 }
 
 export function extractVideoId(videoGuid: string): string {
@@ -20,9 +17,7 @@ export async function generateYouTubeImageUrls(videoId: string) {
         url = `${baseImageUrl}/${size}.jpg`
     }
 
-    return {
-        highRes: url
-    }
+    return { highRes: url }
 }
 
 export function generateYouTubeUrls(videoId: string, channelId: string) {
