@@ -33,10 +33,7 @@ try {
         if (typeof maxVideosPerChannel !== 'string' && i >= maxVideosPerChannel) return ''
 
         return (
-            <LargeFrame
-                video={video}
-                feed={channel.feed}
-            />
+            <LargeFrame {video} feed={channel.feed} />
         )
     })
 }

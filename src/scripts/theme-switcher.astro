@@ -15,7 +15,7 @@ window.htmls = {
 }
 
 window.themeSwitcherEl = document.querySelector('.theme-switcher')
-window.themeSwitcherEl.onclick = _e => {
+window.themeSwitcherEl.onclick = function(_e) {
     var currentTheme = document.documentElement.dataset[window.themeAttribute]
     var newIndex = window.themes.indexOf(currentTheme) + 1
     window.changeTheme(newIndex)

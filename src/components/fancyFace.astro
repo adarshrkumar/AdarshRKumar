@@ -91,7 +91,7 @@ import '../styles/components/fancy-face.scss'
 
     if (!window.matchMedia('(pointer: coarse)').matches) {
         document.addEventListener('astro:page-load', () => {
-            document.querySelectorAll('.face-tracker').forEach((el) => initializeFaceTracker(el));
+            document.querySelectorAll('.face-tracker').forEach(el => initializeFaceTracker(el));
         });
     }
 </script>

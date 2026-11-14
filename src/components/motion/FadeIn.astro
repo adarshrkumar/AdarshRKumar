@@ -11,12 +11,7 @@ interface Props {
 const { class: className = '', delay = 0, direction = 'up', duration = 0.5 } = Astro.props
 ---
 
-<div
-    class:list={['fade-in', className]}
-    style={`animation-delay: ${delay}s; animation-duration: ${duration}s;`}
-    data-animate="fade"
-    data-direction={direction}
->
+<div class:list={['fade-in', className]} style={`animation-delay: ${delay}s; animation-duration: ${duration}s;`} data-animate="fade" data-direction={direction}>
     <slot />
 </div>
 
@@ -25,8 +20,8 @@ const { class: className = '', delay = 0, direction = 'up', duration = 0.5 } = A
         const elements = document.querySelectorAll('[data-animate="fade"]')
 
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
+            entries => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         (entry.target as HTMLElement).dataset.state = 'visible'
                         observer.unobserve(entry.target)
@@ -39,7 +34,7 @@ const { class: className = '', delay = 0, direction = 'up', duration = 0.5 } = A
             }
         )
 
-        elements.forEach((el) => observer.observe(el))
+        elements.forEach(el => observer.observe(el))
     }
 
     // Run on initial load

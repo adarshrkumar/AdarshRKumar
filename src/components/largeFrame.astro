@@ -16,22 +16,12 @@ const frameTitle = `"${video.title}" uploaded by "${video.author}"`
 ---
 <label class="large-frame">
     <input type="checkbox" class="large-frame__checker" />
-    <img
-        class="large-frame__img"
-        src={imageUrls.highRes}
-        alt={imageAlt}
-    />
+    <img class="large-frame__img" src={imageUrls.highRes} alt={imageAlt} />
     <div class="large-frame__info">
         <h2 class="title">{video.title}</h2>
         <p class="author">
             by <a target="_blank" href={youtubeUrls.channel}>{feed.title}</a>
         </p>
     </div>
-    <iframe
-        class="large-frame__frame"
-        allow="autoplay; fullscreen;"
-        loading="lazy"
-        src={youtubeUrls.embed}
-        title={frameTitle}
-    />
+    <iframe class="large-frame__frame" allow="autoplay; fullscreen;" loading="lazy" src={youtubeUrls.embed} title={frameTitle} />
 </label>

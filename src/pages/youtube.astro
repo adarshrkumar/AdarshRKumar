@@ -26,10 +26,7 @@ const videoConfig: VideoChannelConfig = {
         {
             videoConfig.channelIds.map(channelId => {
                 return (
-                    <ChannelVideos
-                        id={channelId}
-                        vidsPerChannel={videoConfig.videosPerChannel}
-                    />
+                    <ChannelVideos id={channelId} vidsPerChannel={videoConfig.videosPerChannel} />
                 )
             })
         }
