@@ -24,11 +24,7 @@ export default {
                 // Lines inside JSDoc comments (after the opening line) are exempt from indentation checks
                 const jsdocLines = new Set();
                 (context.sourceCode.getAllComments?.() || []).forEach(comment => {
-                    if (comment.type === 'Block' && comment.value.startsWith('*') && comment.loc) {
-                        for (let l = comment.loc.start.line + 1; l <= comment.loc.end.line; l++) {
-                            jsdocLines.add(l);
-                        }
-                    }
+                    if (comment.type === 'Block' && comment.value.startsWith('*') && comment.loc) for (let l = comment.loc.start.line + 1; l <= comment.loc.end.line; l++) jsdocLines.add(l);
                 });
 
                 // Check 1: 4-space indentation (disallow tabs and 2-space indents)

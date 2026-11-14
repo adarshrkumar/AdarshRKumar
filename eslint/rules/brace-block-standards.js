@@ -1,18 +1,9 @@
 function checkSingleDeclarationBlock(node, blockNode, context) {
-    if (!blockNode || blockNode.type !== 'BlockStatement' || blockNode.body.length !== 1) {
-        return;
-    }
+    if (!blockNode || blockNode.type !== 'BlockStatement' || blockNode.body.length !== 1) return;
 
-    if (!blockNode.body[0].loc?.start?.line || !blockNode.body[0].loc?.end?.line || blockNode.body[0].loc?.start?.line !== blockNode.body[0].loc?.end?.line) {
-        return;
-    }
+    if (!blockNode.body[0].loc?.start?.line || !blockNode.body[0].loc?.end?.line || blockNode.body[0].loc?.start?.line !== blockNode.body[0].loc?.end?.line) return;
 
-    if (!node.loc?.start?.line || !blockNode.loc?.start?.line || node.loc?.start?.line !== blockNode.loc?.start?.line) {
-        return;
-    }
-
-    const condensedLine = `${context.sourceCode.getText(node).trim()} ${context.sourceCode.getText(blockNode.body[0]).trim()}`;
-    if (condensedLine.length >= 100) return;
+    if (!node.loc?.start?.line || !blockNode.loc?.start?.line || node.loc?.start?.line !== blockNode.loc?.start?.line) return;
 
     const reportObj = {
         node,
@@ -45,6 +36,20 @@ export default {
     },
     create(context) {
         return {
+            Program(node) {
+                // Check 4: Single statement blocks in .astro template code (not covered by the AST, which only holds the frontmatter)
+                if (!context.filename.endsWith('.astro')) return;
+
+                for (const match of context.sourceCode.text.matchAll(/\b(?:(?:if|while|for)\s*\(.*\)|else)\s*\{\n[ \t]*[^\n{}]+\n[ \t]*\}/g)) {
+                    if (match.index > (context.sourceCode.text.match(/^---\n[\s\S]*?\n---/)?.[0].length ?? 0)) {
+                        context.report({
+                            node,
+                            loc: context.sourceCode.getLocFromIndex(match.index),
+                            message: 'Single statement in block should be on one line'
+                        });
+                    }
+                }
+            },
             IfStatement(node) {
                 // Check 1: If/else brace placement
                 if (node.alternate) {
@@ -66,9 +71,7 @@ export default {
 
                 // Check 3: Single statement in if/else should be on one line
                 checkSingleDeclarationBlock(node, node.consequent, context);
-                if (node.alternate && node.alternate.type !== 'IfStatement') {
-                    checkSingleDeclarationBlock(node.alternate, node.alternate, context);
-                }
+                if (node.alternate && node.alternate.type !== 'IfStatement') checkSingleDeclarationBlock(node.alternate, node.alternate, context);
             },
             TryStatement(node) {
                 // Check 2: Try/catch/finally must stay on same line
