@@ -26,9 +26,7 @@ export default function getAllSitePages(): PageImport[] {
         var lPath = link.url
 
         // Handle empty string URL (index.astro)
-        if (lPath === '') {
-            return { url: '/', name: 'Home' }
-        }
+        if (lPath === '') return { url: '/', name: 'Home' }
 
         if (!lPath) return null
 

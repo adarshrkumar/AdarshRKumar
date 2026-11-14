@@ -1,105 +1,54 @@
-import { db } from '../db/initialize.ts'
-import { posts as postsTable } from '../db/schema.ts'
+import db from '../db'
+import { posts as postsTable } from '../db/schema'
 
 import type { Post, DBPost } from './types'
 
-// Helper functions
-
-// Helper function to extract clean site URL
-export function getCleanSiteUrl(siteUrl: string | URL | undefined): string {
-    let cleanUrl = siteUrl ? siteUrl.toString() : ''
-
-    if (cleanUrl.includes('://')) {
-        cleanUrl = cleanUrl.split('://')[1]
-    }
-
-    if (cleanUrl.endsWith('/')) {
-        cleanUrl = cleanUrl.slice(0, -1)
-    }
-
-    return cleanUrl
-}
-
-// Helper function to extract slug from file path
 export function extractSlugFromFilePath(filePath: string): string {
-    // Normalize path separators
     const normalizedPath = filePath.replace(/\\/g, '/')
 
-    // Look for the posts directory in the path
     const postsMarker = '/content/blog/posts/'
     let slug = normalizedPath
 
     const postsIndex = slug.indexOf(postsMarker)
-    if (postsIndex !== -1) {
-        slug = slug.slice(postsIndex + postsMarker.length)
-    }
-    else {
-        // Fallback: just get the filename
-        const parts = normalizedPath.split('/')
-        slug = parts[parts.length - 1] || ''
-    }
+    if (postsIndex !== -1) slug = slug.slice(postsIndex + postsMarker.length)
+    else slug = normalizedPath.split('/').pop() || ''
 
-    // Remove .md extension
-    if (slug.endsWith('.md')) {
-        slug = slug.slice(0, -'.md'.length)
-    }
+    if (slug.endsWith('.md')) slug = slug.slice(0, -'.md'.length)
 
-    // Remove /index if present (for folder-based posts)
-    if (slug.endsWith('/index')) {
-        slug = slug.slice(0, -'/index'.length)
-    }
+    if (slug.endsWith('/index')) slug = slug.slice(0, -'/index'.length)
 
-    // Remove any remaining slashes at start/end
     slug = slug.replace(/^\/+|\/+$/g, '')
 
     return slug
 }
 
-// Helper function to clean and normalize text content
 export function cleanTextContent(text: string): string {
-    let cleanText = text
 
-    // Replace line breaks with spaces
-    if (cleanText.includes('\n')) {
-        cleanText = cleanText.split('\n').join(' ')
-    }
+    if (text.includes('\n')) text = text.split('\n').join(' ')
 
-    // Replace double spaces with single spaces
-    if (cleanText.includes('  ')) {
-        cleanText = cleanText.split('  ').join(' ')
-    }
+    if (text.includes('  ')) text = text.split('  ').join(' ')
 
-    return cleanText
+    return text
 }
 
-// Helper function to create preview content with trimming
 export function createPreviewContent(text: string, maxLength: number = 50): string {
-    let preview = text
-
-    if (preview.length > maxLength) {
-        preview = preview.slice(0, maxLength)
-    }
+    if (text.length > maxLength) text = text.slice(0, maxLength)
 
     // Characters to trim from the end
     const trimChars = [' ', ',', ':', '(', '[', '{', '|', '~', '@', '*', '+', '=', '-', '^']
 
-    while (trimChars.some(char => preview.endsWith(char))) {
-        preview = preview.slice(0, -1)
-    }
+    while (trimChars.some(char => text.endsWith(char))) text = text.slice(0, -1)
 
-    return preview
+    return text
 }
 
-// Helper function to generate screenshot image data
 export function generateScreenshotImage(postUrl: string, title: string, imageSize: number = 512, siteUrl?: string) {
-    // Handle relative URLs by prefixing with site URL
-    let fullUrl = postUrl
     if (postUrl.startsWith('/')) {
         const baseUrl = siteUrl || 'https://adarshrkumar.dev'
-        fullUrl = `${baseUrl.replace(/\/$/, '')}${postUrl}`
+        postUrl = `${baseUrl.replace(/\/$/, '')}${postUrl}`
     }
 
-    const screenshotUrl = `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+    const screenshotUrl = `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(postUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
 
     return {
         src: screenshotUrl,
@@ -108,9 +57,6 @@ export function generateScreenshotImage(postUrl: string, title: string, imageSiz
     }
 }
 
-// Main post functions
-
-// Helper function to convert database post to Post format
 function convertDBPostToPost(dbPost: DBPost): Post {
     return {
         file: `db://${dbPost.slug}`,
@@ -126,67 +72,36 @@ function convertDBPostToPost(dbPost: DBPost): Post {
     }
 }
 
-// Helper function to get created date from a post
 function getPostCreatedDate(post: Post): Date {
-    // Use frontmatter date (which is set to createdAt for DB posts)
-    const dateStr = post.frontmatter.date || post.frontmatter.pubDate
-    return dateStr ? new Date(dateStr) : new Date(0)
+    return new Date(post.frontmatter.date || post.frontmatter.pubDate || 0)
 }
 
-// Async function to get all posts from database
 export async function getDBPosts(): Promise<Post[]> {
     try {
-        const dbPosts = await db.select().from(postsTable)
-        return dbPosts.map(convertDBPostToPost)
+        return (await db.select().from(postsTable)).map(convertDBPostToPost)
     } catch (error) {
         console.error('Error fetching DB posts:', error)
         return []
     }
 }
 
-// Main function to get all published blog posts from files
 export function getLocalPosts(): Post[] {
-    const blogPostItems = import.meta.glob('../../content/blog/posts/**/*.md', { eager: true })
-    const publishedPosts: Post[] = Object.values(blogPostItems).filter((item): item is Post => {
-        return Boolean(item && typeof item === 'object' && 'file' in item);
-    })
-        .filter(item => {
-            const fileName = item.file.split('/').pop() || ''
-            return !fileName.startsWith('_')
-        })
+    const publishedPosts: Post[] = Object.values(import.meta.glob('../../content/blog/posts/**/*.md', { eager: true }))
+        .filter((item): item is Post => Boolean(item && typeof item === 'object' && 'file' in item && !item.file?.toString().split('/').pop()?.startsWith('_')))
 
     return publishedPosts
 }
 
-// Main function to get all published blog posts (both local and DB)
 export async function getPosts(): Promise<Post[]> {
-    const localPosts = getLocalPosts()
-    const dbPosts = await getDBPosts()
-
-    // Combine both sources
-    const allPosts = [...localPosts, ...dbPosts]
-
-    // Sort by created date (most recent first)
-    allPosts.sort((a, b) => {
-        const dateA = getPostCreatedDate(a)
-        const dateB = getPostCreatedDate(b)
-        return dateB.getTime() - dateA.getTime()
+    return [...getLocalPosts(), ...(await getDBPosts())].sort((a, b) => {
+        return getPostCreatedDate(b).getTime() - getPostCreatedDate(a).getTime()
     })
-
-    return allPosts
 }
 
-// Synchronous version that only returns local posts (for compatibility)
-export function getPostsSync(): Post[] {
-    return getLocalPosts()
-}
-
-// Helper function to add display metadata to posts
 function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
-    const cleanSiteUrl = getCleanSiteUrl(siteUrl)
     const siteLocation = {
         protocol: 'https:',
-        host: cleanSiteUrl,
+        host: siteUrl ? new URL(siteUrl).host : '',
     }
 
     return posts.map(post => {
@@ -203,13 +118,10 @@ function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     })
 }
 
-// Function to get posts with additional processing for display
 export async function getPostsForDisplay(siteUrl?: string | URL) {
-    const posts = await getPosts()
-    return addDisplayMetadata(posts, siteUrl)
+    return addDisplayMetadata(await getPosts(), siteUrl)
 }
 
-// Function to get featured posts by slug
 export async function getFeaturedPosts(featuredSlugs: string[]) {
     const allPosts = await getPosts()
     const featuredPosts: Post[] = []
@@ -225,25 +137,19 @@ export async function getFeaturedPosts(featuredSlugs: string[]) {
     return featuredPosts
 }
 
-// Function to get featured posts with display metadata
 export async function getFeaturedPostsForDisplay(featuredSlugs: string[], siteUrl?: string | URL) {
-    const featured = await getFeaturedPosts(featuredSlugs)
-    return addDisplayMetadata(featured, siteUrl)
+    return addDisplayMetadata(await getFeaturedPosts(featuredSlugs), siteUrl)
 }
 
-// Function to find a specific post by ID/slug
 export async function findPostById(postId: string | undefined): Promise<Post | undefined> {
-    const allPosts = await getPosts()
-    return allPosts.find(post =>
+    return (await getPosts()).find(post =>
         !post.file.startsWith('_') &&
         post.file.includes(postId || '')
     )
 }
 
-// Function to get posts for RSS feed
 export async function getPostsForRSS() {
-    const allPosts = await getPosts()
-    return allPosts.map(post => {
+    return (await getPosts()).map(post => {
         const postId = extractSlugFromFilePath(post.file)
         return {
             ...post,

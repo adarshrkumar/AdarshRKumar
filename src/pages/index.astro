@@ -28,9 +28,7 @@ $('table').each((_i, table) => {
 const imgs = $('img');
 imgs.each((_i, img) => {
     const src = $(img).attr('src');
-    if (src && src.startsWith('./public/')) {
-        $(img).attr('src', src.replace('./public/', '/'))
-    }
+    if (src && src.startsWith('./public/')) $(img).attr('src', src.replace('./public/', '/'))
 })
 
 const newReadmeContent = $.html()

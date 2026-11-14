@@ -58,7 +58,6 @@ npx drizzle-kit studio    # Open Drizzle Studio (database GUI)
 - `getLocalPosts()`: File-based posts only, filters out `_` prefixed files
 - `getDBPosts()`: Async query for database posts, converts to `Post` format
 - `getPosts()`: **Main function** - merges both sources, sorted by created date (newest first)
-- `getPostsSync()`: Synchronous version (local posts only, for compatibility)
 - `getPostsForDisplay(siteUrl)`: Adds slug, URL, screenshot metadata for rendering
 - `getFeaturedPosts(slugArray)`: Posts matching provided slugs
 - `findPostById(postId)`: Single post lookup across both sources

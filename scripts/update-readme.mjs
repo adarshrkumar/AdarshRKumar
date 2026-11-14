@@ -6,10 +6,10 @@ const templatePath = path.join(process.cwd(), 'README_template.md');
 const readmePath = path.join(process.cwd(), 'README.md');
 
 /**
- * Generates a Markdown bulleted list of linked skill names.
- * @param {Array<{name: string, skill_url: string} | Array<{name: string, skill_url: string}>>} skills - The list of skills.
- * @returns {string} - The Markdown list.
- */
+  * Generates a Markdown bulleted list of linked skill names.
+  * @param {Array<{name: string, skill_url: string} | Array<{name: string, skill_url: string}>>} skills - The list of skills.
+  * @returns {string} - The Markdown list.
+  */
 function generateList(skills) {
     if (!skills || skills.length === 0) return '';
 
@@ -19,11 +19,11 @@ function generateList(skills) {
 }
 
 /**
- * Generates a Markdown section with a heading and a skill list.
- * @param {string} heading - The Markdown heading line (e.g., '### Other Tools').
- * @param {Array<{name: string, skill_url: string}>} skills - The list of skills.
- * @returns {string} - The Markdown section, or an empty string if there are no skills.
- */
+  * Generates a Markdown section with a heading and a skill list.
+  * @param {string} heading - The Markdown heading line (e.g., '### Other Tools').
+  * @param {Array<{name: string, skill_url: string}>} skills - The list of skills.
+  * @returns {string} - The Markdown section, or an empty string if there are no skills.
+  */
 function generateSection(heading, skills) {
     if (!skills || skills.length === 0) return '';
 
@@ -37,12 +37,10 @@ export default async function updateReadme() {
             fs.readFile(templatePath, 'utf-8'),
         ]);
 
-        // Generate markdown for tools
         let toolsMarkdown = '';
         toolsMarkdown += generateSection('### Design Software', skillsData['Design Softwares']);
         toolsMarkdown += generateSection('### Other Tools', skillsData['Other Tools']);
 
-        // Generate markdown for languages
         const frontEnd = skillsData['Web Development - Front-End'];
         const backEnd = skillsData['Web Development - Back End'];
         let languagesMarkdown = '';
@@ -53,11 +51,9 @@ export default async function updateReadme() {
         }
         languagesMarkdown += generateSection('### Other Languages', skillsData['Other Languages']);
 
-        // Replace placeholders in the template
         let finalContent = templateContent.replace('{tools}', toolsMarkdown.trim());
         finalContent = finalContent.replace('{languages}', languagesMarkdown.trim());
 
-        // Write to README.md
         await fs.writeFile(readmePath, finalContent, 'utf-8');
     } catch (error) {
         console.error('❌ Error updating README.md:', error);

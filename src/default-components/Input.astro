@@ -21,9 +21,7 @@ const valueInputs = [
 
 let groupStyle = ''
 
-if ((type as typeof type | 'honeypot') === 'honeypot') {
-    groupStyle += 'display:none;visibility:hidden'
-}
+if ((type as typeof type | 'honeypot') === 'honeypot') groupStyle += 'display:none;visibility:hidden'
 
 // Pre-render slot content for value inputs
 const slotContent = await Astro.slots.render('default')
