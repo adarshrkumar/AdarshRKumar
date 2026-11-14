@@ -71,7 +71,16 @@ export default [
                 FormDataEntryValue: 'readonly',
                 Astro: 'readonly',
                 atob: 'readonly',
-                btoa: 'readonly'
+                btoa: 'readonly',
+                window: 'readonly',
+                document: 'readonly',
+                location: 'readonly',
+                URLSearchParams: 'readonly',
+                HTMLElement: 'readonly',
+                localStorage: 'readonly',
+                IntersectionObserver: 'readonly',
+                HTMLImageElement: 'readonly',
+                setInterval: 'readonly'
             }
         },
         plugins: {
