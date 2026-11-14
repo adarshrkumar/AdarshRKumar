@@ -15,27 +15,6 @@ const CLIENT_TOKEN = btoa(JSON.stringify({
 
 // Helper functions
 
-// Fetch a single Instagram endpoint from inflact API
-async function fetchInstagramEndpoint(endpoint: string): Promise<object> {
-    const response = await fetch(`https://inflact.com/downloader/api/viewer/${endpoint}/?lang=en`, {
-        method: 'POST',
-        headers: {
-            'content-type': `multipart/form-data; boundary=${FORM_BOUNDARY}`,
-            'priority': 'u=1, i',
-            'x-client-signature': CLIENT_SIGNATURE,
-            'x-client-token': CLIENT_TOKEN,
-        },
-        body: `------WebKitFormBoundaryhvlGBNAlLf6A7hTO\r\nContent-Disposition: form-data; name="url"\r\n\r\n${INSTAGRAM_USERNAME}\r\n------WebKitFormBoundaryhvlGBNAlLf6A7hTO--\r\n`,
-    });
-
-    if (!response.ok) throw new Error(`Instagram API returned ${response.status}`);
-
-    const json = await response.json();
-    if (json?.status !== 'success') throw new Error(`Instagram API returned status: ${json?.status}`);
-
-    return json?.data;
-}
-
 // Recursively search for media edges in API response
 function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
@@ -110,7 +89,26 @@ export async function getInstagramData(): Promise<InstagramData> {
     try {
         const endpoints: (InflactEndpoints)[] = ['profile', 'posts', 'reels', 'stories'];
         const results = await Promise.allSettled(
-            endpoints.map(endpoint => fetchInstagramEndpoint(endpoint))
+            // Fetch a single Instagram endpoint from inflact API
+            endpoints.map(async endpoint => {
+                const response = await fetch(`https://inflact.com/downloader/api/viewer/${endpoint}/?lang=en`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': `multipart/form-data; boundary=${FORM_BOUNDARY}`,
+                        'priority': 'u=1, i',
+                        'x-client-signature': CLIENT_SIGNATURE,
+                        'x-client-token': CLIENT_TOKEN,
+                    },
+                    body: `------WebKitFormBoundaryhvlGBNAlLf6A7hTO\r\nContent-Disposition: form-data; name="url"\r\n\r\n${INSTAGRAM_USERNAME}\r\n------WebKitFormBoundaryhvlGBNAlLf6A7hTO--\r\n`,
+                });
+
+                if (!response.ok) throw new Error(`Instagram API returned ${response.status}`);
+
+                const json = await response.json();
+                if (json?.status !== 'success') throw new Error(`Instagram API returned status: ${json?.status}`);
+
+                return json?.data;
+            })
         );
 
         const data: Record<string, object> = {};

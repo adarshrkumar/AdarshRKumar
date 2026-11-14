@@ -15,18 +15,6 @@ const currentDateInfo = {
     year: currentDate.getFullYear()
 }
 
-// Calculate age based on whether birthday has occurred this year
-function calculateAge(): number {
-    const hasBirthdayOccurred =
-        currentDateInfo.month > dateOfBirth.month ||
-        (currentDateInfo.month === dateOfBirth.month && currentDateInfo.day >= dateOfBirth.day)
-
-    return hasBirthdayOccurred
-        ? currentDateInfo.year - dateOfBirth.year
-        : currentDateInfo.year - dateOfBirth.year - 1
-}
-
-// Export calculated age
-const age = calculateAge()
-
-export default age
+export default currentDateInfo.month > dateOfBirth.month || (currentDateInfo.month === dateOfBirth.month && currentDateInfo.day >= dateOfBirth.day)
+    ? currentDateInfo.year - dateOfBirth.year
+    : currentDateInfo.year - dateOfBirth.year - 1

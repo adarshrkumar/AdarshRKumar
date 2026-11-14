@@ -1,10 +1,7 @@
 ---
 import * as cheerio from 'cheerio'
 
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-
 import '../styles/pages/index.scss'
-import FancyFace from '../components/fancyFace.astro'
 import FeaturedArticles from '../components/featuredArticles.astro'
 import _Hero from '../components/hero.astro'
 import PortfolioHighlights from '../components/portfolioHighlights.astro'
@@ -21,7 +18,7 @@ const firstH1 = $('h1').first();
 const firstH1Text = firstH1.text().trim();
 if (firstH1Text === 'Adarsh R. Kumar') firstH1.remove();
 
-$('table').each((_i, table) => $(table).attr('cellspacing', '0'))
+$('table').attr('cellspacing', '0')
 
 const imgs = $('img');
 imgs.each((_i, img) => {
@@ -32,21 +29,13 @@ imgs.each((_i, img) => {
 const newReadmeContent = $.html()
 
 const firstPara = $.html($('p').first()).trim();
-
-const container = await AstroContainer.create();
-const fancyFaceHTML = await container.renderToString(FancyFace, {
-    props: {
-        basePath: '/faces/',
-        debug: 'false'
-    }
-});
 ---
 
 <Layout title="" pageType="home">
     <!-- <Hero /> -->
 
     <FadeIn direction="up" duration={0.6}>
-        <div class="readme" set:html={newReadmeContent.replace(firstPara ?? '', `<div class="readme__fancy-column">${/*fancyFaceHTML*/''}<div><h1>Adarsh R. Kumar</h1>${firstPara}</div></div>`)} />
+        <div class="readme" set:html={newReadmeContent.replace(firstPara ?? '', `<div class="readme__fancy-column"><div><h1>Adarsh R. Kumar</h1>${firstPara}</div></div>`)} />
     </FadeIn>
 
     <section class="section pHighlights">

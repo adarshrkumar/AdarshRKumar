@@ -57,28 +57,24 @@ export function generateScreenshotImage(postUrl: string, title: string, imageSiz
     }
 }
 
-function convertDBPostToPost(dbPost: DBPost): Post {
-    return {
-        file: `db://${dbPost.slug}`,
-        frontmatter: {
-            title: dbPost.title,
-            author: dbPost.author,
-            date: dbPost.createdAt.toISOString(),
-            pubDate: dbPost.createdAt.toISOString(),
-            description: dbPost.content.substring(0, 150) + '...',
-        },
-        rawContent: () => dbPost.content,
-        compiledContent: () => dbPost.content,
-    }
-}
-
 function getPostCreatedDate(post: Post): Date {
     return new Date(post.frontmatter.date || post.frontmatter.pubDate || 0)
 }
 
 export async function getDBPosts(): Promise<Post[]> {
     try {
-        return (await db.select().from(postsTable)).map(convertDBPostToPost)
+        return (await db.select().from(postsTable)).map((dbPost: DBPost): Post => ({
+            file: `db://${dbPost.slug}`,
+            frontmatter: {
+                title: dbPost.title,
+                author: dbPost.author,
+                date: dbPost.createdAt.toISOString(),
+                pubDate: dbPost.createdAt.toISOString(),
+                description: dbPost.content.substring(0, 150) + '...',
+            },
+            rawContent: () => dbPost.content,
+            compiledContent: () => dbPost.content,
+        }))
     } catch (error) {
         console.error('Error fetching DB posts:', error)
         return []
