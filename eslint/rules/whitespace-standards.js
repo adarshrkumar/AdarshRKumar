@@ -1,11 +1,3 @@
-import mistakeenTrailingWhitespaceIssues from '../mistaken-trailing-whitespace-issues.json' with { type: 'json' };
-
-function isMistakenTrailingWhitespaceIssue(filepath, line, column) {
-    return mistakeenTrailingWhitespaceIssues.some(issue =>
-        filepath.replace(/\\/g, '/').includes(issue.filepath) && issue.line === line && issue.column === column
-    );
-}
-
 export default {
     meta: {
         type: 'problem',
@@ -19,17 +11,10 @@ export default {
     create(context) {
         return {
             Program(node) {
-                const code = context.sourceCode.getText();
-
-                // Lines inside JSDoc comments (after the opening line) are exempt from indentation checks
-                const jsdocLines = new Set();
-                (context.sourceCode.getAllComments?.() || []).forEach(comment => {
-                    if (comment.type === 'Block' && comment.value.startsWith('*') && comment.loc) for (let l = comment.loc.start.line + 1; l <= comment.loc.end.line; l++) jsdocLines.add(l);
-                });
-
                 // Check 1: 4-space indentation (disallow tabs and 2-space indents)
-                code.split(/\r?\n/).forEach((line, i) => {
-                    if (line && line.match(/^\s/) && !jsdocLines.has(i + 1)) {
+                context.sourceCode.getText().split(/\r?\n/).forEach((line, i) => {
+                    // Lines inside JSDoc comments (after the opening line) are exempt from indentation checks
+                    if (line && line.match(/^\s/) && !(context.sourceCode.getAllComments?.() || []).some(comment => comment.type === 'Block' && comment.value.startsWith('*') && comment.loc && i + 1 > comment.loc.start.line && i + 1 <= comment.loc.end.line)) {
                         const match = line.match(/^(\s+)/);
                         if (match) {
                             if (match[1].includes('\t')) {
@@ -38,7 +23,7 @@ export default {
                                         line: i + 1,
                                         column: 1
                                     },
-                                    message: 'Indentation must use 4 spaces, not tabs'
+                                    message: 'Tab in indentation found'
                                 });
                                 return;
                             }
@@ -49,40 +34,38 @@ export default {
                                         line: i + 1,
                                         column: 1
                                     },
-                                    message: `Indentation must use 4-space increments, not 2-space. Found ${match[1].length} spaces.`
+                                    message: `2-space indentation (${match[1].length} spaces) found. Indentation must use 4-space increments.`
                                 });
                                 return;
                             }
                         }
                     }
-                    if (/[ \t]+$/.test(line) && !isMistakenTrailingWhitespaceIssue(context.filename, i + 1, line.length - line.trimEnd().length + 1)) {
+                    if (/[ \t]+$/.test(line)) {
                         context.report({
                             loc: {
                                 line: i + 1,
                                 column: line.length - line.trimEnd().length + 1
                             },
-                            message: 'Found trailing whitespace. Remove spaces or tabs at the end of lines.',
+                            message: 'Trailing whitespace found.',
                             fix(fixer) {
-                                const fixedCode = code.replace(/[ \t]+$/gm, '');
-                                return fixer.replaceText(node, fixedCode);
+                                return fixer.replaceText(node, context.sourceCode.getText().replace(/[ \t]+$/gm, ''));
                             }
                         });
                     }
                 });
 
                 // Check 2: Excessive newlines (3 or more consecutive)
-                const skipLines = 3;
-                const codeAfterFrontmatter = code.replace(/(?:\r\n|\r|\n)+$/, '').split(/\r\n|\r|\n/).slice(skipLines).join('\n');
+                const codeAfterFrontmatter = context.sourceCode.getText().replace(/(?:\r\n|\r|\n)+$/, '').split(/\r\n|\r|\n/).slice(3).join('\n');
 
                 if (/(?:\n){3,}/g.test(codeAfterFrontmatter)) {
                     context.report({
                         loc: {
-                            line: skipLines + codeAfterFrontmatter.substring(0, codeAfterFrontmatter.search(/(?:\n){3,}/)).split('\n').length,
+                            line: 3 + codeAfterFrontmatter.substring(0, codeAfterFrontmatter.search(/(?:\n){3,}/)).split('\n').length,
                             column: 0
                         },
-                        message: 'Found 3+ consecutive newlines. Use at most 1 blank line (2 consecutive newlines).',
+                        message: '3 or more consecutive newlines found. The limit is at most 1 blank line (2 consecutive newlines).',
                         fix(fixer) {
-                            return fixer.replaceText(node, code.replace(/(?:\r\n|\r|\n){3,}/g, '\n\n'));
+                            return fixer.replaceText(node, context.sourceCode.getText().replace(/(?:\r\n|\r|\n){3,}/g, '\n\n'));
                         }
                     });
                 }

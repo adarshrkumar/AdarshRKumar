@@ -23,63 +23,59 @@ export default {
     },
     create(context) {
         return {
-            ArrowFunctionExpression(node) {
-                // Check 1: Arrow function definitions
-                if ((!node.parent || !(node.parent.type === 'CallExpression' || node.parent.type === 'NewExpression') || !Array.isArray(node.parent.arguments) || !node.parent.arguments.includes(node)) && (!node.parent || node.parent.type !== 'CallExpression' || node.parent.callee !== node) && (!context.filename.includes('/pages/api/') || !node.parent || node.parent.type !== 'VariableDeclarator' || !['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'].includes(node.parent.id?.name)) && (!node.parent || node.parent.type !== 'Property' || node.parent.key.type !== 'Identifier' || node.parent.key.name !== 'execute') && (!node.parent || node.parent.type !== 'Property')) {
+            Program() {
+                if (!context.filename.endsWith('.astro')) return;
+
+                // Check 1: Unnecessary parentheses around a single arrow parameter across the whole file, covering frontmatter, scripts and markup in one pass
+                for (const match of context.sourceCode.getText().matchAll(/\(\s*[\w$]+\s*\)\s*=>/g)) {
                     context.report({
-                        node,
-                        message: `Arrow function definition '${!node.parent ? 'anonymous' : node.parent.type === 'VariableDeclarator' && node.parent.id.type === 'Identifier' ? node.parent.id.name : node.parent.type === 'AssignmentExpression' && node.parent.left.type === 'Identifier' ? node.parent.left.name : node.parent.type === 'Property' && node.parent.key.type === 'Identifier' ? node.parent.key.name : 'anonymous'}' is not allowed. Use a regular function declaration instead.`,
+                        loc: context.sourceCode.getLocFromIndex(match.index),
+                        message: 'Parentheses around a single arrow function parameter found',
+                        fix(fixer) {
+                            return fixer.replaceTextRange([match.index, match.index + match[0].length], match[0].replace(/\(\s*([\w$]+)\s*\)/, '$1'));
+                        }
                     });
                 }
+            },
+            ArrowFunctionExpression(node) {
+                // Check 2: Arrow function definitions
+                if ((!node.parent || !(node.parent.type === 'CallExpression' || node.parent.type === 'NewExpression') || !Array.isArray(node.parent.arguments) || !node.parent.arguments.includes(node)) && (!node.parent || node.parent.type !== 'CallExpression' || node.parent.callee !== node) && (!context.filename.includes('/pages/api/') || !node.parent || node.parent.type !== 'VariableDeclarator' || !['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'].includes(node.parent.id?.name)) && (!node.parent || node.parent.type !== 'Property' || node.parent.key.type !== 'Identifier' || node.parent.key.name !== 'execute') && (!node.parent || node.parent.type !== 'Property') && (!node.parent || node.parent.type !== 'AssignmentExpression' || node.parent.right !== node || node.parent.left.type !== 'MemberExpression' || node.parent.left.object.type !== 'Identifier' || node.parent.left.object.name !== 'window') && !/\b(this|arguments|super)\b/.test(context.sourceCode.getText(node))) {
+                    context.report({
+                        node,
+                        fix(fixer) {
+                            const params = context.sourceCode.getText().slice(node.range[0], context.sourceCode.getTokenBefore(node.body, { filter: token => token.value === '=>' }).range[0]).trim().replace(/^async\s+/, '');
+                            const definition = `${node.async ? 'async ' : ''}function ${params.startsWith('(') ? params : `(${params})`} ${node.body.type === 'BlockStatement' ? context.sourceCode.getText(node.body) : `{ return ${context.sourceCode.getText(node.body)} }`}`;
 
-                // Check 2: Arrow function parameter parentheses (as-needed)
-                if (!node.params[0] || node.params.length !== 1) return;
-                if (node.params[0].type === 'RestElement') return;
-                if (node.returnType?.typeAnnotation?.type === 'TSTypePredicate') return;
+                            if (node.parent.type === 'VariableDeclarator' && node.parent.id.type === 'Identifier' && !node.parent.id.typeAnnotation && node.parent.parent.declarations.length === 1) return fixer.replaceText(node.parent.parent, definition.replace('function ', `function ${node.parent.id.name}`));
 
-                if (!node.params[0].typeAnnotation) return;
-
-                if (node.returnType && node.returnType.typeAnnotation) return;
-
-                if (node.params[0].typeAnnotation) return;
-
-                const openParen = context.sourceCode.getTokenBefore(node.params[0]);
-                const closeParen = context.sourceCode.getTokenAfter(node.params[0]);
-                if (!openParen && closeParen && openParen.value === '(' && closeParen.value === ')') return;
-
-                context.report({
-                    node,
-                    message: 'Unexpected parentheses around single arrow function parameter',
-                    fix(fixer) {
-                        return fixer.replaceTextRange(
-                            [openParen.range[0], closeParen.range[1]],
-                            node.params[0].name
-                        );
-                    }
-                });
+                            return fixer.replaceText(node, definition);
+                        },
+                        message: `Arrow function definition '${!node.parent ? 'anonymous' : node.parent.type === 'VariableDeclarator' && node.parent.id.type === 'Identifier' ? node.parent.id.name : node.parent.type === 'AssignmentExpression' && node.parent.left.type === 'Identifier' ? node.parent.left.name : node.parent.type === 'Property' && node.parent.key.type === 'Identifier' ? node.parent.key.name : 'anonymous'}' found.`,
+                    });
+                }
             },
             ConditionalExpression(node) {
                 // Check 3: Unnecessary parentheses around ternary condition test
                 if (!node.test) return;
 
-                const tokenBeforeTest = context.sourceCode.getTokenBefore(node.test);
-                const tokenAfterTest = context.sourceCode.getTokenAfter(node.test);
+                const tokenBeforeTestStart = context.sourceCode.getTokenBefore(node.test)?.range[0];
+                const tokenBeforeTestEnd = context.sourceCode.getTokenBefore(node.test)?.range[1];
+                const tokenAfterTestStart = context.sourceCode.getTokenAfter(node.test)?.range[0];
+                const tokenAfterTestEnd = context.sourceCode.getTokenAfter(node.test)?.range[1];
 
                 if (
-                    tokenBeforeTest
-                    && tokenAfterTest
-                    && tokenBeforeTest.value === '('
-                    && tokenAfterTest.value === ')'
-                    && tokenBeforeTest.range[1] === node.test.range[0]
-                    && tokenAfterTest.range[0] === node.test.range[1]
+                    context.sourceCode.text.slice(tokenBeforeTestStart, tokenBeforeTestEnd) === '(' &&
+                    context.sourceCode.text.slice(tokenAfterTestStart, tokenAfterTestEnd) === ')' &&
+                    tokenBeforeTestEnd === node.test.range[0] &&
+                    tokenAfterTestStart === node.test.range[1]
                 ) {
                     if (!hasAwaitOrAsync(node.test) && !(node.test.type !== 'Identifier' && node.test.type !== 'Literal' && node.test.type !== 'TemplateLiteral' && node.test.type !== 'MemberExpression')) {
                         context.report({
                             node,
-                            message: 'Unnecessary parentheses around simple ternary condition',
+                            message: 'Parentheses around a simple ternary condition found',
                             fix(fixer) {
                                 return fixer.replaceTextRange(
-                                    [tokenBeforeTest.range[0], tokenAfterTest.range[1]],
+                                    [tokenBeforeTestStart, tokenAfterTestEnd],
                                     context.sourceCode.getText(node.test)
                                 );
                             }
