@@ -10,15 +10,11 @@
     }
 
     window.getSettings = function() {
-        var settings = localStorage.getItem(window.settingsKey)
-        settings = !!settings ? settings : '[]'
-        settings = JSON.parse(settings)
-        return settings
+        return JSON.parse(localStorage.getItem(window.settingsKey) || '[]')
     }
 
     window.applySettings = function() {
-        var settings = window.getSettings()
-        settings.forEach(s => {
+        window.getSettings().forEach(s => {
             var sName = s.name
             var sContent = s.content
             window.settingFunctions[sName](sContent)
@@ -40,36 +36,32 @@
             sIndex = settingsLength
         }
 
-        var setting = settings[sIndex]
-        var content = setting.content
-        if (!!content === false) {
+        if (!!settings[sIndex].content === false) {
             switch(type) {
                 case 'object':
-                    content = {}
+                    settings[sIndex].content = {}
                     break
                 case 'list':
-                    content = []
+                    settings[sIndex].content = []
                     break
                 default:
-                    content = ''
+                    settings[sIndex].content = ''
                     break
             }
         }
 
         switch(type) {
             case 'object':
-                content[key] = value
+                settings[sIndex].content[key] = value
                 break
             case 'list':
-                content.push(value)
+                settings[sIndex].content.push(value)
                 break
             default:
-                content = value
+                settings[sIndex].content = value
                 break
         }
 
-        setting.content = content
-        settings[sIndex] = setting
         settings = JSON.stringify(settings)
         localStorage.setItem(window.settingsKey, settings)
     }
