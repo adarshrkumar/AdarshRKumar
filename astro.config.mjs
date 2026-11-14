@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
+import { defineConfig } from 'astro/config';
 
 import updateReadme from './scripts/update-readme.mjs';
 
