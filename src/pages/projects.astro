@@ -45,18 +45,12 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
 }
 
 // Load portfolio items that have projectsCategory field
-const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })).filter((item): item is PortfolioItem => {
-    return !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)
-})
-const portfolioWithCategory = portfolioItems.filter((item): item is PortfolioItem => {
-    return !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory)
-})
+const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item))
+const portfolioWithCategory = portfolioItems.filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory))
 
 // Helper to get portfolio items for a specific category
 function getPortfolioItemsForCategory(categoryId: string): PortfolioItem[] {
-    return portfolioWithCategory.filter((item): item is PortfolioItem => {
-        return !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory === categoryId)
-    })
+    return portfolioWithCategory.filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory === categoryId))
 }
 
 // Project categories configuration

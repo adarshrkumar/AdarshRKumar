@@ -93,9 +93,7 @@ export function getLocalPosts(): Post[] {
 }
 
 export async function getPosts(): Promise<Post[]> {
-    return [...getLocalPosts(), ...(await getDBPosts())].sort((a, b) => {
-        return getPostCreatedDate(b).getTime() - getPostCreatedDate(a).getTime()
-    })
+    return [...getLocalPosts(), ...(await getDBPosts())].sort((a, b) => getPostCreatedDate(b).getTime() - getPostCreatedDate(a).getTime())
 }
 
 function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {

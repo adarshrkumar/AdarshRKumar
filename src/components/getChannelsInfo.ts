@@ -43,9 +43,7 @@ async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     const channelResults = await Promise.all(channelPromises)
 
     // Flatten the results
-    channelResults.forEach(videos => {
-        allVideoItems.push(...videos)
-    })
+    channelResults.forEach(videos => allVideoItems.push(...videos))
 
     return allVideoItems
 }

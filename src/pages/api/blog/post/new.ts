@@ -25,9 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
         if (contentType.includes('application/json')) body = await request.json();
         else if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
             const formData = await request.formData();
-            for (const [key, value] of formData.entries()) {
-                body[key] = value;
-            }
+            for (const [key, value] of formData.entries()) body[key] = value;
         }
         else {
             try {

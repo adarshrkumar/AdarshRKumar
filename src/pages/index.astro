@@ -21,9 +21,7 @@ const firstH1 = $('h1').first();
 const firstH1Text = firstH1.text().trim();
 if (firstH1Text === 'Adarsh R. Kumar') firstH1.remove();
 
-$('table').each((_i, table) => {
-    $(table).attr('cellspacing', '0')
-})
+$('table').each((_i, table) => $(table).attr('cellspacing', '0'))
 
 const imgs = $('img');
 imgs.each((_i, img) => {
