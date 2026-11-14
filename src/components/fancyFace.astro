@@ -89,7 +89,5 @@ import '../styles/components/fancy-face.scss'
         setFromClient(rect.left + rect.width / 2, rect.top + rect.height / 2);
     }
 
-    if (!window.matchMedia('(pointer: coarse)').matches) {
-        document.addEventListener('astro:page-load', () => document.querySelectorAll('.face-tracker').forEach(el => initializeFaceTracker(el)));
-    }
+    if (!window.matchMedia('(pointer: coarse)').matches) document.addEventListener('astro:page-load', () => document.querySelectorAll('.face-tracker').forEach(el => initializeFaceTracker(el)));
 </script>
