@@ -2,7 +2,7 @@ export default {
     meta: {
         type: 'problem',
         docs: {
-            description: 'Import format standards: separate mixed type and value imports',
+            description: 'Import format standards: separate mixed type and value imports, and no bare "." or ".." imports',
             category: 'Best Practices'
         },
         fixable: 'code',
@@ -17,30 +17,26 @@ export default {
         }]
     },
     create(context) {
-        const options = context.options[0] || {};
-        const lineLength = options.lineLength || 100;
-
         return {
-            Program(node) {
-                if (!node.body) return;
+            ImportDeclaration(node) {
+                // Check 1: Mixed type and value imports on a long line
+                if (
+                    node.specifiers.some(spec => spec.importKind === 'type') &&
+                    node.specifiers.some(spec => spec.importKind !== 'type') &&
+                    context.sourceCode.getLines()[node.loc.start.line - 1]?.length > (context.options[0]?.lineLength || 100)
+                ) {
+                    context.report({
+                        node,
+                        message: `Mixed type and value imports on a long import line (${context.sourceCode.getLines()[node.loc.start.line - 1].length} chars) found.`
+                    });
+                }
 
-                const importNodes = (node.body || []).filter(statement => statement && statement.type === 'ImportDeclaration');
-                if (importNodes.length === 0) return;
-
-                for (const importNode of importNodes) {
-                    const fullLine = context.sourceCode.getLines()[importNode.loc.start.line - 1];
-                    if (!fullLine) continue;
-
-                    const hasMixedImports =
-                        importNode.specifiers.some(spec => spec.importKind === 'type') &&
-                        importNode.specifiers.some(spec => spec.importKind !== 'type');
-
-                    if (hasMixedImports && fullLine.length > lineLength) {
-                        context.report({
-                            node: importNode,
-                            message: `Long import line (${fullLine.length} chars) with mixed type and value imports. Separate them into two statements: \`import type { ... } from "..."\` and \`import { ... } from "..."\`.`
-                        });
-                    }
+                // Check 2: Imports from paths ending in "." or ".."
+                if (typeof node.source.value === 'string' && /(^|\/)\.\.?$/.test(node.source.value)) {
+                    context.report({
+                        node,
+                        message: 'Import from a path ending in "." or ".." found.',
+                    });
                 }
             }
         };
