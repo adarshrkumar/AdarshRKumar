@@ -13,12 +13,8 @@ import Layout from '../layouts/Layout.astro'
         var img = document.querySelector('.logo')
         var operation
         function go() {
-            if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === 0) {
-                operation = '+'
-            }
-            else if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === (window.innerWidth - 125)) {
-                operation = '-'
-            }
+            if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === 0) operation = '+'
+            else if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === (window.innerWidth - 125)) operation = '-'
             if (operation === '+') {
                 img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])+1}px;`)
             }

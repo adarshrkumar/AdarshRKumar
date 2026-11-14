@@ -30,9 +30,7 @@ try {
 ---
 {
     channel.videos.map((video, i) => {
-        if (typeof maxVideosPerChannel !== 'string' && i >= maxVideosPerChannel) {
-            return ''
-        }
+        if (typeof maxVideosPerChannel !== 'string' && i >= maxVideosPerChannel) return ''
 
         return (
             <LargeFrame

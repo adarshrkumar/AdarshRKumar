@@ -25,15 +25,11 @@ if (lastPath && !lastPath.includes('.') && !lastPath.endsWith('/')) return Astro
                 (pageElement?.parentNode as HTMLAnchorElement).href = location.pathname
 
                 // Update page text if not already on 404 page
-                if (!location.pathname.startsWith('/404')) {
-                    pageElement.textContent = location.pathname
-                }
+                if (!location.pathname.startsWith('/404')) pageElement.textContent = location.pathname
             }
         }
 
         // Initialize 404 page functionality
-        if (document.querySelector('.page')) {
-            initialize404Page()
-        }
+        if (document.querySelector('.page')) initialize404Page()
     </script>
 </Layout>
