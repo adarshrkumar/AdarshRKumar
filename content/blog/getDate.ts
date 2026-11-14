@@ -1,4 +1,4 @@
-function getDate(dateString: string): string {
+export default function getDate(dateString: string): string {
     const date = new Date(dateString)
     const month = date.getMonth() + 1
     const day = date.getDate()
@@ -6,5 +6,3 @@ function getDate(dateString: string): string {
 
     return `${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}/${year}`
 }
-
-export default getDate

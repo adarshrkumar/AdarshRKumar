@@ -232,23 +232,6 @@ export interface LayoutProps {
     author?: string;
 }
 
-// Component props types
-export interface SiteGridContentProps {
-    id?: string;
-    classItems?: string;
-    options?: GridOptions;
-}
-
-export interface ChannelVideosProps {
-    id: string;
-    vidsPerChannel?: number | string;
-}
-
-export interface LargeFrameProps {
-    video: YouTubeVideo;
-    feed: YouTubeFeed;
-}
-
 // Configuration types
 export interface MusicPlaylistConfig {
     playlists: string[];

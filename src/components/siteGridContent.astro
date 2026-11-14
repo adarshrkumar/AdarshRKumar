@@ -1,34 +1,26 @@
 ---
-import type { SiteGridContentProps, GridOptions } from '../lib/types'
+import type { GridOptions } from '../lib/types'
 
 import '../styles/components/grid.scss'
 
-function generateCustomProperties(options: GridOptions | undefined): string {
-    if (!options || typeof options !== 'object') return '';
+const { id, classItems, options } = Astro.props
 
-    let customProperties = ''
-    const optionKeys = Object.keys(options)
+let customProperties = ''
 
-    optionKeys.forEach((key, index) => {
-        if (index !== 0) customProperties += ' '
-        const value = options[key as keyof GridOptions]
+if (options && typeof options === 'object') Object.keys(options).forEach((key, index) => {
+    if (index !== 0) customProperties += ' '
+    const value = options[key as keyof GridOptions]
 
-        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-            const nestedKeys = Object.keys(value)
-            nestedKeys.forEach(nestedKey => {
-                const val = value ? String(Object.getOwnPropertyDescriptor(value, nestedKey)?.value ?? '') : ''
-                customProperties += `--${key}-${nestedKey}: ${val}; `
-            })
-        }
-        else customProperties += `--${key}: ${value};`;
-    })
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        const nestedKeys = Object.keys(value)
+        nestedKeys.forEach(nestedKey => {
+            const val = value ? String(Object.getOwnPropertyDescriptor(value, nestedKey)?.value ?? '') : ''
+            customProperties += `--${key}-${nestedKey}: ${val}; `
+        })
+    }
+    else customProperties += `--${key}: ${value};`;
+})
 
-    return customProperties
-}
-
-const { id, classItems, options }: SiteGridContentProps = Astro.props
-
-const customProperties = generateCustomProperties(options)
 const cssClass = `grid${classItems ? ` ${classItems}` : ''}`
 
 ---

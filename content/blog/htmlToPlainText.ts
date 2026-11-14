@@ -1,21 +1,14 @@
-// Converts HTML content to plain text
-function htmlToPlainText(content: string): string {
+export default function htmlToPlainText(content: string): string {
     let plainText = content
 
-    plainText = plainText.replace(/\n/ig, '')
-
     plainText = plainText
+        .replace(/\n/ig, '')
         .replace(/<style[^>]*>[\s\S]*?<\/style[^>]*>/ig, '')
         .replace(/<head[^>]*>[\s\S]*?<\/head[^>]*>/ig, '')
         .replace(/<script[^>]*>[\s\S]*?<\/script[^>]*>/ig, '')
-
-    plainText = plainText
         .replace(/<\/\s*(?:p|div)>/ig, '\n')
         .replace(/<br[^>]*\/?>/ig, '\n')
-
-    plainText = plainText.replace(/<[^>]*>/ig, '')
-
-    plainText = plainText
+        .replace(/<[^>]*>/ig, '')
         .replace('&nbsp;', ' ')
         .replace(/[^\S\r\n][^\S\r\n]+/ig, ' ')
 
@@ -23,5 +16,3 @@ function htmlToPlainText(content: string): string {
 
     return plainText
 }
-
-export default htmlToPlainText

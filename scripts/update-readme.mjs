@@ -5,29 +5,11 @@ const skillsPath = path.join(process.cwd(), 'content', 'skills.json');
 const templatePath = path.join(process.cwd(), 'README_template.md');
 const readmePath = path.join(process.cwd(), 'README.md');
 
-/**
-  * Generates a Markdown bulleted list of linked skill names.
-  * @param {Array<{name: string, skill_url: string} | Array<{name: string, skill_url: string}>>} skills - The list of skills.
-  * @returns {string} - The Markdown list.
-  */
-function generateList(skills) {
-    if (!skills || skills.length === 0) return '';
-
-    return skills
-        .map(entry => `- ${[entry].flat().map((skill) => `[${skill.name}](${skill.skill_url})`).join(' / ')}\n`)
-        .join('');
-}
-
-/**
-  * Generates a Markdown section with a heading and a skill list.
-  * @param {string} heading - The Markdown heading line (e.g., '### Other Tools').
-  * @param {Array<{name: string, skill_url: string}>} skills - The list of skills.
-  * @returns {string} - The Markdown section, or an empty string if there are no skills.
-  */
+// Generates a Markdown section with a heading and a bulleted list of linked skill names.
 function generateSection(heading, skills) {
     if (!skills || skills.length === 0) return '';
 
-    return `${heading}\n\n${generateList(skills)}\n`;
+    return `${heading}\n\n${skills.map(entry => `- ${[entry].flat().map(skill => `[${skill.name}](${skill.skill_url})`).join(' / ')}\n`).join('')}\n`;
 }
 
 export default async function updateReadme() {

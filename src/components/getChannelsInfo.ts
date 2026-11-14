@@ -1,25 +1,6 @@
 import type { VideoItem, RSSResponse } from '../lib/types'
 
-function extractVideoItems(response: RSSResponse, maxVideos: number = 3): VideoItem[] {
-    if (!response.items) return []
-
-    const videoItems: VideoItem[] = []
-    const videosToProcess = Math.min(response.items.length, maxVideos)
-
-    for (let i = 0; i < videosToProcess; i++) {
-        const item = response.items[i]
-        if (item) {
-            videoItems.push({
-                link: item.link || undefined,
-                title: item.title || undefined
-            })
-        }
-    }
-
-    return videoItems
-}
-
-async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
+export default async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     const allVideoItems: VideoItem[] = []
 
     // Process each channel
@@ -30,7 +11,9 @@ async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
             const response = await fetch(rssUrl)
             const data: RSSResponse = await response.json()
 
-            if (data.items && data.items.length > 0) return extractVideoItems(data, 3)
+            if (data.items && data.items.length > 0)
+                return data.items.slice(0, 3).filter(Boolean)
+                    .map(item => ({ link: item.link || undefined, title: item.title || undefined }))
             console.warn(`No valid data found for channel: ${channelId}`)
             return []
         } catch (error) {
@@ -47,5 +30,3 @@ async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
 
     return allVideoItems
 }
-
-export default getChannelsInfo

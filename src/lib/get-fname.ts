@@ -1,7 +1,7 @@
 import path from 'node:path'
 
 // Extracts a clean filename from a file path
-function getFName(name: string): string {
+export default function getFName(name: string): string {
     let fileName = name
 
     if (fileName.includes('/')) {
@@ -15,5 +15,3 @@ function getFName(name: string): string {
 
     return fileName
 }
-
-export default getFName
