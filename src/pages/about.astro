@@ -202,12 +202,7 @@ const formFields: Record<string, FormField> = {
                         {formFields.email.label}
                     </Input>
 
-                    <Input
-                        type={formFields.subject.type as HTMLAttributes<'input'>['type']}
-                        name={formFields.subject.name}
-                        id={formFields.subject.id}
-                        required={formFields.subject.required}
-                    >
+                    <Input type={formFields.subject.type as HTMLAttributes<'input'>['type']} name={formFields.subject.name} id={formFields.subject.id} required={formFields.subject.required}>
                         {formFields.subject.label}
                     </Input>
 

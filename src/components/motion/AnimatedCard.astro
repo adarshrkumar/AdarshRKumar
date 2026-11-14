@@ -16,20 +16,12 @@ const delay = Math.min(index * 0.08, 0.4)
 
 {href ? (
     <a href={href} target={target} class="animated-card__link">
-        <div
-            class:list={['animated-card', className]}
-            style={`animation-delay: ${delay}s;`}
-            data-animate="card"
-        >
+        <div class:list={['animated-card', className]} style={`animation-delay: ${delay}s;`} data-animate="card">
             <slot />
         </div>
     </a>
 ) : (
-    <div
-        class:list={['animated-card', className]}
-        style={`animation-delay: ${delay}s;`}
-        data-animate="card"
-    >
+    <div class:list={['animated-card', className]} style={`animation-delay: ${delay}s;`} data-animate="card">
         <slot />
     </div>
 )}
@@ -47,7 +39,7 @@ const delay = Math.min(index * 0.08, 0.4)
             })
         }, { rootMargin: '-30px', threshold: 0 })
 
-        cards.forEach((card) => observer.observe(card))
+        cards.forEach(card => observer.observe(card))
     }
 
     // Run on initial load

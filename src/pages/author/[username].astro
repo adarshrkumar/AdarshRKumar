@@ -13,11 +13,7 @@ const author: Author = authors[username as keyof typeof authors];
 <Layout title={author.displayName} pageType="author" classItems="ignorepadding">
     {(author.pfp && author.pfp.filename) && (
         <div class="author__pfp">
-            <img
-                class="author__pfp-inner"
-                src={`/profiles/${username}/imgs/${author.pfp.filename}`}
-                alt={`${username}'s Profile Picture`}
-            />
+            <img class="author__pfp-inner" src={`/profiles/${username}/imgs/${author.pfp.filename}`} alt={`${username}'s Profile Picture`} />
         </div>
     )}
 
