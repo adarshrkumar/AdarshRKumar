@@ -1,8 +1,8 @@
 import rss from '@astrojs/rss'
 
+import { getPostsForRSS } from '../lib/get-posts'
 import { cleanAboutContent } from '../lib/get-raw-about-content'
 import sanitizeMD from '../lib/sanitize-md'
-import { getPostsForRSS } from '../lib/get-posts'
 import type { AstroContext } from '../lib/types'
 
 const aboutFile = await import('../../content/aboutContent.md')
