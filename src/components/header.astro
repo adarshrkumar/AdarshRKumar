@@ -34,8 +34,6 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
     var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true';
     if (hideHeader) {
         const headerElement: HTMLElement | null = document.querySelector('.header');
-        if (headerElement) {
-            headerElement.style.display = 'none';
-        }
+        if (headerElement) headerElement.style.display = 'none';
     }
 </script>

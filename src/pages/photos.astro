@@ -34,9 +34,7 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
         {
             photosWithMetadata.map(async (photo, index) => {
                 // Skip photos without source
-                if (!photo.src) {
-                    return ''
-                }
+                if (!photo.src) return ''
 
                 const photoData = photo.data
 
