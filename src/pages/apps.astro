@@ -1,6 +1,7 @@
 ---
 import appsList from '../../content/work/appsList.json'
 import filterVisibleItems from '../lib/filter-visible-content-items'
+import getFName from '../lib/get-fname'
 import sanitizeMD from '../lib/sanitize-md'
 import type { PortfolioItem } from '../lib/types'
 
@@ -41,7 +42,7 @@ const projectItems = Object.values(import.meta.glob('../../content/work/projects
 
 const webApps =
     filterVisibleItems([...portfolioItems, ...projectItems])
-    .filter(item => (appsList.some(appName => item.frontmatter.name.toLowerCase().includes(appName))))
+    .filter(item => appsList.includes((getFName(item.file).endsWith('.md') ? getFName(item.file).slice(0, -'.md'.length) : getFName(item.file)).toLowerCase()))
 
 // Deduplicate by name
 const uniqueApps = Array.from(new Map(webApps.map(item => [item.frontmatter.name, item])).values())
