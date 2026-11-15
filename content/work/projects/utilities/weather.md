@@ -1,6 +1,6 @@
 ---
 name: "Weather"
-url: "https://Weather.adarshrkumar.app"
+url: "https://weather.adarshrkumar.app"
 target: "_blank"
 ---
 <!-- markdownlint-disable MD041 -->
