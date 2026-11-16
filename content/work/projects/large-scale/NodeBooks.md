@@ -2,6 +2,7 @@
 name: "NodeBooks"
 url: "/post/nodebooks/"
 target: "_blank"
+image: "/assets/projects/nodebooks.svg"
 ---
 <!-- markdownlint-disable MD041 -->
 
