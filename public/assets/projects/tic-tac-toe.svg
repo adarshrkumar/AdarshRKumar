@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Tic-Tac-Toe">
+    <rect width="512" height="512" fill="#1a1d23"/>
+    <g stroke="#363d49" stroke-width="12" stroke-linecap="round">
+        <path d="M200 88v336"/>
+        <path d="M312 88v336"/>
+        <path d="M88 200h336"/>
+        <path d="M88 312h336"/>
+    </g>
+    <g stroke="#36b7e2" stroke-width="16" stroke-linecap="round">
+        <path d="M118 118l52 52"/>
+        <path d="M170 118l-52 52"/>
+        <path d="M342 342l52 52"/>
+        <path d="M394 342l-52 52"/>
+        <path d="M230 230l52 52"/>
+        <path d="M282 230l-52 52"/>
+    </g>
+    <g fill="none" stroke="#9cece2" stroke-width="16">
+        <circle cx="368" cy="144" r="28"/>
+        <circle cx="144" cy="368" r="28"/>
+    </g>
+</svg>
