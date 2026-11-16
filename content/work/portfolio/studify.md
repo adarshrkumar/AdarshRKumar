@@ -1,6 +1,7 @@
 ---
 name: "Studify"
 url: "https://studywise.adarshrkumar.app"
+image: "https://studywise.adarshrkumar.app/assets/logos/logo.svg"
 projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->

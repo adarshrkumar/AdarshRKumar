@@ -1,6 +1,7 @@
 ---
 name: "ViaBay"
 url: "https://viabay.adarshrkumar.app"
+image: "/assets/projects/viabay.svg"
 projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->
