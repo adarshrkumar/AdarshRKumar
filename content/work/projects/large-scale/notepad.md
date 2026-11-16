@@ -2,6 +2,7 @@
 name: "Notepad Application"
 url: "https://notepad.adarshrkumar.dev"
 target: "_blank"
+image: "/assets/projects/notepad.svg"
 ---
 <!-- markdownlint-disable MD041 -->
 

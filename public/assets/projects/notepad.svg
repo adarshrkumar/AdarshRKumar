@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Notepad">
+    <rect width="512" height="512" fill="#1a1d23"/>
+    <rect x="112" y="80" width="288" height="364" rx="24" fill="#e8ebee"/>
+    <path d="M112 104a24 24 0 0 1 24-24h240a24 24 0 0 1 24 24v44H112z" fill="#36b7e2"/>
+    <g fill="#1a1d23">
+        <circle cx="168" cy="114" r="10"/>
+        <circle cx="224" cy="114" r="10"/>
+        <circle cx="280" cy="114" r="10"/>
+        <circle cx="336" cy="114" r="10"/>
+    </g>
+    <g stroke="#363d49" stroke-width="10" stroke-linecap="round">
+        <path d="M152 204h208"/>
+        <path d="M152 252h208"/>
+        <path d="M152 300h140"/>
+        <path d="M152 348h176"/>
+    </g>
+    <path d="M360 340l60-60 32 32-60 60-44 12z" fill="#ffd166"/>
+    <path d="M420 280l16-16a12 12 0 0 1 17 0l15 15a12 12 0 0 1 0 17l-16 16z" fill="#9cece2"/>
+    <path d="M316 404l12-44 32 32z" fill="#e8ebee"/>
+    <path d="M316 404l6-20 14 14z" fill="#1a1d23"/>
+</svg>
