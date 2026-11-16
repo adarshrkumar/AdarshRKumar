@@ -78,6 +78,14 @@ const projectCategories: ProjectCategoryConfig[] = [
             ...Object.values(import.meta.glob('../../content/work/projects/utilities/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)),
             ...getPortfolioItemsForCategory('utilities')
         ]
+    },
+    {
+        id: 'everyday',
+        name: 'Everyday Tools',
+        items: [
+            ...Object.values(import.meta.glob('../../content/work/projects/everyday/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)),
+            ...getPortfolioItemsForCategory('everyday')
+        ]
     }
 ]
 
