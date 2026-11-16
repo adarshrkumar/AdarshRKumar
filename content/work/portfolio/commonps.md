@@ -2,6 +2,7 @@
 name: "CommonPS"
 url: "https://commonps.dev"
 target: "_blank"
+image: "/assets/projects/commonps.svg"
 projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->
