@@ -56,6 +56,7 @@ export interface PortfolioItem {
         url: string;
         name: string;
         target?: string;
+        image?: string;
         projectsCategory?: string;
     };
     rawContent: () => string;

@@ -2,6 +2,7 @@
 name: "pscode Syntax Highlighter"
 url: "https://github.com/adarshrkumar/pscode-syntax-highlighter"
 target: "_blank"
+image: "/assets/projects/pscode-syntax-highlighter.svg"
 projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->
