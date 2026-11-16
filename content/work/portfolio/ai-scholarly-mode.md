@@ -2,6 +2,7 @@
 name: "AI Scholarly Mode"
 url: "https://github.com/adarshrkumar/AI-Scholarly-Mode"
 target: "_blank"
+image: "/assets/projects/ai-scholarly-mode.svg"
 projectsCategory: "large-scale"
 ---
 <!-- markdownlint-disable MD041 -->

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="pscode Syntax Highlighter">
+    <rect width="512" height="512" fill="#1a1d23"/>
+    <rect x="56" y="96" width="400" height="320" rx="24" fill="#23272f" stroke="#363d49" stroke-width="4"/>
+    <circle cx="96" cy="136" r="9" fill="#ff5f57"/>
+    <circle cx="128" cy="136" r="9" fill="#febc2e"/>
+    <circle cx="160" cy="136" r="9" fill="#28c840"/>
+    <g stroke-width="16" stroke-linecap="round" fill="none">
+        <path d="M96 200h72" stroke="#c678dd"/>
+        <path d="M184 200h120" stroke="#e5c07b"/>
+        <path d="M128 252h96" stroke="#61afef"/>
+        <path d="M240 252h48" stroke="#98c379"/>
+        <path d="M304 252h80" stroke="#d19a66"/>
+        <path d="M128 304h56" stroke="#c678dd"/>
+        <path d="M200 304h136" stroke="#98c379"/>
+        <path d="M96 356h88" stroke="#c678dd"/>
+        <path d="M200 356h64" stroke="#7f848e"/>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="AI Scholarly Mode">
+    <rect width="512" height="512" fill="#1a1d23"/>
+    <path d="M256 176c-40-28-96-36-156-24v212c60-12 116-4 156 24 40-28 96-36 156-24V152c-60-12-116-4-156 24z" fill="#e8ebee"/>
+    <path d="M256 176v212" stroke="#1a1d23" stroke-width="8"/>
+    <g stroke="#363d49" stroke-width="8" stroke-linecap="round">
+        <path d="M132 212c36-6 72 0 100 14"/>
+        <path d="M132 252c36-6 72 0 100 14"/>
+        <path d="M132 292c36-6 72 0 100 14"/>
+        <path d="M380 212c-36-6-72 0-100 14"/>
+        <path d="M380 252c-36-6-72 0-100 14"/>
+    </g>
+    <path d="M384 72l14 40 40 14-40 14-14 40-14-40-40-14 40-14z" fill="#ffd166"/>
+    <path d="M108 84l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#ffd166"/>
+</svg>
