@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Progress Bar">
+    <rect width="512" height="512" fill="#1a1d23"/>
+    <rect x="72" y="136" width="368" height="52" rx="26" fill="#23272f" stroke="#363d49" stroke-width="4"/>
+    <rect x="72" y="136" width="276" height="52" rx="26" fill="#36b7e2"/>
+    <rect x="72" y="230" width="368" height="52" rx="26" fill="#23272f" stroke="#363d49" stroke-width="4"/>
+    <rect x="72" y="230" width="184" height="52" rx="26" fill="#9cece2"/>
+    <rect x="72" y="324" width="368" height="52" rx="26" fill="#23272f" stroke="#363d49" stroke-width="4"/>
+    <rect x="72" y="324" width="108" height="52" rx="26" fill="#5a8cf2"/>
+</svg>

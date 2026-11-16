@@ -2,6 +2,7 @@
 name: "Favicon Generator"
 url: "https://favicons.adarshrkumar.dev"
 target: "_blank"
+image: "/assets/projects/favicon.svg"
 ---
 <!-- markdownlint-disable MD041 -->
 

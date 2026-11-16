@@ -2,6 +2,7 @@
 name: "Progress Bar"
 url: "https://Progress-Bar.adarshrkumar.dev"
 target: "_blank"
+image: "/assets/projects/progress-bar.svg"
 ---
 <!-- markdownlint-disable MD041 -->
 

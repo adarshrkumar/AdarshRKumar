@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Favicon Generator">
+    <rect width="512" height="512" fill="#1a1d23"/>
+    <rect x="56" y="96" width="400" height="320" rx="24" fill="#23272f" stroke="#363d49" stroke-width="4"/>
+    <path d="M56 120a24 24 0 0 1 24-24h352a24 24 0 0 1 24 24v36H56z" fill="#363d49"/>
+    <path d="M84 156v-28a16 16 0 0 1 16-16h148a16 16 0 0 1 16 16v28z" fill="#23272f"/>
+    <rect x="102" y="126" width="22" height="22" rx="5" fill="#36b7e2"/>
+    <rect x="136" y="132" width="84" height="10" rx="5" fill="#e8ebee"/>
+    <rect x="76" y="176" width="360" height="40" rx="20" fill="#1a1d23" stroke="#363d49" stroke-width="3"/>
+    <rect x="100" y="191" width="160" height="10" rx="5" fill="#363d49"/>
+    <rect x="168" y="248" width="176" height="128" rx="28" fill="#36b7e2"/>
+    <path d="M256 276l13 28 31 4-23 21 6 31-27-15-27 15 6-31-23-21 31-4z" fill="#e8ebee"/>
+</svg>
