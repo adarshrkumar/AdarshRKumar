@@ -48,7 +48,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         {
             "name": "Cursor",
             "proficiency": 99,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.png",
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.svg",
             "skill_url": "https://cursor.com"
         },
         [
@@ -74,7 +74,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         {
             "name": "Antigravity",
             "proficiency": 60,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.png",
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Google-Antigravity-Icon-Full-Color.svg",
             "skill_url": "https://antigravity.google"
         },
         {
@@ -251,7 +251,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
             {
                 "name": "Batch",
                 "proficiency": 40,
-                "icon_url": "https://skillicons.dev/icons?i=batch",
+                "icon_url": "https://adarshrkumar.dev/assets/readme/Batch.svg",
                 "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
             },
             {
