@@ -14,58 +14,262 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 - Photography
 - Music
 
-## Tools
+## Skills
 
-### Design Software
-
-- [Figma](https://figma.com)
-- [Canva](https://canva.com)
-- [OnShape](https://onshape.com)
-
-### Other Tools
-
-- [Firebase](https://firebase.com)
-- [Google Cloud](https://cloud.google.com)
-- [Vercel](https://vercel.com)
-- [Git](https://git-scm.com) / [GitHub](https://github.com)
-- [GitHub Actions](https://github.com/actions)
-- [Visual Studio](https://visualstudio.com)
-- [VS Code](https://code.visualstudio.com)
-- [Cursor](https://cursor.com)
-- [Claude Code](https://claude.ai)
-- [Antigravity](https://antigravity.google)
-
-## Languages
-
-### Web Development
-
-#### Front End
-
-- [HTML](https://en.wikipedia.org/wiki/HTML)
-- [CSS](https://en.wikipedia.org/wiki/CSS) / [SCSS](https://sass-lang.com)
-- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-- [TypeScript](https://www.typescriptlang.org)
-- [SVG](https://en.wikipedia.org/wiki/SVG)
-
-#### Back End
-
-- [PHP](https://php.net)
-- [Node.js](https://nodejs.org) / [npm](https://npmjs.com)
-- [Express.js](https://expressjs.com)
-- [React](https://react.dev) / [Next.js](https://nextjs.org)
-- [Astro](https://astro.build)
-- [Discord.js](https://discord.js.org)
-
-### Other Languages
-
-- [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
-- [Batch](https://en.wikipedia.org/wiki/Batch_file) / [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
-- [Python](https://python.org)
-- [Flask](https://palletsprojects.com/p/flask/) / [Django](https://djangoproject.com)
-- [C](https://en.wikipedia.org/wiki/CI/CD)
-- [C++](https://cplusplus.com)
-- [Markdown](https://www.markdownguide.org)
-- [RegEx](https://en.wikipedia.org/wiki/Regular_expression)
+```json
+{
+    "Design Softwares": [
+        {
+            "name": "Figma",
+            "proficiency": 80,
+            "icon_url": "https://skillicons.dev/icons?i=figma",
+            "skill_url": "https://figma.com"
+        },
+        {
+            "name": "Canva",
+            "proficiency": 100,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Canva.png",
+            "skill_url": "https://canva.com"
+        },
+        {
+            "name": "OnShape",
+            "proficiency": 100,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/OnShape.png",
+            "skill_url": "https://onshape.com"
+        }
+    ],
+    "Other Tools": [
+        {
+            "name": "Firebase",
+            "proficiency": 50,
+            "icon_url": "https://skillicons.dev/icons?i=firebase",
+            "skill_url": "https://firebase.com"
+        },
+        {
+            "name": "Google Cloud",
+            "proficiency": 50,
+            "icon_url": "https://skillicons.dev/icons?i=gcp",
+            "skill_url": "https://cloud.google.com"
+        },
+        {
+            "name": "Vercel",
+            "proficiency": 25,
+            "icon_url": "https://skillicons.dev/icons?i=vercel",
+            "skill_url": "https://vercel.com"
+        },
+        [
+            {
+                "name": "Git",
+                "proficiency": 75,
+                "icon_url": "https://skillicons.dev/icons?i=git",
+                "skill_url": "https://git-scm.com"
+            },
+            {
+                "name": "GitHub",
+                "proficiency": 95,
+                "icon_url": "https://skillicons.dev/icons?i=github",
+                "skill_url": "https://github.com"
+            }
+        ],
+        {
+            "name": "GitHub Actions",
+            "proficiency": 45,
+            "icon_url": "https://skillicons.dev/icons?i=githubactions",
+            "skill_url": "https://github.com/actions"
+        },
+        {
+            "name": "Visual Studio",
+            "proficiency": 45,
+            "icon_url": "https://skillicons.dev/icons?i=visualstudio",
+            "skill_url": "https://visualstudio.com"
+        },
+        {
+            "name": "VS Code",
+            "proficiency": 100,
+            "icon_url": "https://skillicons.dev/icons?i=vscode",
+            "skill_url": "https://code.visualstudio.com"
+        },
+        {
+            "name": "Cursor",
+            "proficiency": 99,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.png",
+            "skill_url": "https://cursor.com"
+        },
+        {
+            "name": "Claude Code",
+            "proficiency": 80,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.png",
+            "skill_url": "https://claude.ai"
+        },
+        {
+            "name": "Antigravity",
+            "proficiency": 60,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.png",
+            "skill_url": "https://antigravity.google"
+        }
+    ],
+    "Web Development - Front-End": [
+        {
+            "name": "HTML",
+            "proficiency": 99,
+            "icon_url": "https://skillicons.dev/icons?i=html",
+            "skill_url": "https://en.wikipedia.org/wiki/HTML"
+        },
+        [
+            {
+                "name": "CSS",
+                "proficiency": 95,
+                "icon_url": "https://skillicons.dev/icons?i=css",
+                "skill_url": "https://en.wikipedia.org/wiki/CSS"
+            },
+            {
+                "name": "SCSS",
+                "proficiency": 80,
+                "icon_url": "https://skillicons.dev/icons?i=scss",
+                "skill_url": "https://sass-lang.com"
+            }
+        ],
+        {
+            "name": "JavaScript",
+            "proficiency": 90,
+            "icon_url": "https://skillicons.dev/icons?i=js",
+            "skill_url": "https://en.wikipedia.org/wiki/JavaScript"
+        },
+        {
+            "name": "TypeScript",
+            "proficiency": 80,
+            "icon_url": "https://skillicons.dev/icons?i=ts",
+            "skill_url": "https://www.typescriptlang.org"
+        },
+        {
+            "name": "SVG",
+            "proficiency": 75,
+            "icon_url": "https://skillicons.dev/icons?i=svg",
+            "skill_url": "https://en.wikipedia.org/wiki/SVG"
+        }
+    ],
+    "Web Development - Back End": [
+        {
+            "name": "PHP",
+            "proficiency": 75,
+            "icon_url": "https://skillicons.dev/icons?i=php",
+            "skill_url": "https://php.net"
+        },
+        [
+            {
+                "name": "Node.js",
+                "proficiency": 90,
+                "icon_url": "https://skillicons.dev/icons?i=nodejs",
+                "skill_url": "https://nodejs.org"
+            },
+            {
+                "name": "npm",
+                "proficiency": 90,
+                "icon_url": "https://skillicons.dev/icons?i=npm",
+                "skill_url": "https://npmjs.com"
+            }
+        ],
+        {
+            "name": "Express.js",
+            "proficiency": 90,
+            "icon_url": "https://skillicons.dev/icons?i=express",
+            "skill_url": "https://expressjs.com"
+        },
+        [
+            {
+                "name": "React",
+                "proficiency": 40,
+                "icon_url": "https://skillicons.dev/icons?i=react",
+                "skill_url": "https://react.dev"
+            },
+            {
+                "name": "Next.js",
+                "proficiency": 40,
+                "icon_url": "https://skillicons.dev/icons?i=nextjs",
+                "skill_url": "https://nextjs.org"
+            }
+        ],
+        {
+            "name": "Astro",
+            "proficiency": 90,
+            "icon_url": "https://skillicons.dev/icons?i=astro",
+            "skill_url": "https://astro.build"
+        },
+        {
+            "name": "Discord.js",
+            "proficiency": 50,
+            "icon_url": "https://skillicons.dev/icons?i=discordjs",
+            "skill_url": "https://discord.js.org"
+        }
+    ],
+    "Other Languages": [
+        {
+            "name": "Bash",
+            "proficiency": 60,
+            "icon_url": "https://skillicons.dev/icons?i=bash",
+            "skill_url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
+        },
+        [
+            {
+                "name": "Batch",
+                "proficiency": 40,
+                "icon_url": "https://skillicons.dev/icons?i=batch",
+                "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
+            },
+            {
+                "name": "PowerShell",
+                "proficiency": 30,
+                "icon_url": "https://skillicons.dev/icons?i=powershell",
+                "skill_url": "https://en.wikipedia.org/wiki/PowerShell"
+            }
+        ],
+        {
+            "name": "Python",
+            "proficiency": 70,
+            "icon_url": "https://skillicons.dev/icons?i=py",
+            "skill_url": "https://python.org"
+        },
+        [
+            {
+                "name": "Flask",
+                "proficiency": 65,
+                "icon_url": "https://skillicons.dev/icons?i=flask",
+                "skill_url": "https://palletsprojects.com/p/flask/"
+            },
+            {
+                "name": "Django",
+                "proficiency": 65,
+                "icon_url": "https://skillicons.dev/icons?i=django",
+                "skill_url": "https://djangoproject.com"
+            }
+        ],
+        {
+            "name": "C",
+            "proficiency": 50,
+            "icon_url": "https://skillicons.dev/icons?i=c",
+            "skill_url": "https://en.wikipedia.org/wiki/CI/CD"
+        },
+        {
+            "name": "C++",
+            "proficiency": 30,
+            "icon_url": "https://skillicons.dev/icons?i=cpp",
+            "skill_url": "https://cplusplus.com"
+        },
+        {
+            "name": "Markdown",
+            "proficiency": 100,
+            "icon_url": "https://skillicons.dev/icons?i=md",
+            "skill_url": "https://www.markdownguide.org"
+        },
+        {
+            "name": "RegEx",
+            "proficiency": 70,
+            "icon_url": "https://skillicons.dev/icons?i=regex",
+            "skill_url": "https://en.wikipedia.org/wiki/Regular_expression"
+        }
+    ]
+}
+```
 
 ## GitHub Stats
 

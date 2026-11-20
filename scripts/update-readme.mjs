@@ -1,42 +1,21 @@
 import fs from 'fs-extra';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const skillsPath = path.join(process.cwd(), 'content', 'skills.json');
 const templatePath = path.join(process.cwd(), 'README_template.md');
 const readmePath = path.join(process.cwd(), 'README.md');
 
-// Generates a Markdown section with a heading and a bulleted list of linked skill names.
-function generateSection(heading, skills) {
-    if (!skills || skills.length === 0) return '';
-
-    return `${heading}\n\n${skills.map(entry => `- ${[entry].flat().map(skill => `[${skill.name}](${skill.skill_url})`).join(' / ')}\n`).join('')}\n`;
-}
+if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
 
 export default async function updateReadme() {
     try {
-        const [skillsData, templateContent] = await Promise.all([
-            fs.readJson(skillsPath),
-            fs.readFile(templatePath, 'utf-8'),
-        ]);
-
-        let toolsMarkdown = '';
-        toolsMarkdown += generateSection('### Design Software', skillsData['Design Softwares']);
-        toolsMarkdown += generateSection('### Other Tools', skillsData['Other Tools']);
-
-        const frontEnd = skillsData['Web Development - Front-End'];
-        const backEnd = skillsData['Web Development - Back End'];
-        let languagesMarkdown = '';
-        if (frontEnd?.length || backEnd?.length) {
-            languagesMarkdown += '### Web Development\n\n';
-            languagesMarkdown += generateSection('#### Front End', frontEnd);
-            languagesMarkdown += generateSection('#### Back End', backEnd);
-        }
-        languagesMarkdown += generateSection('### Other Languages', skillsData['Other Languages']);
-
-        let finalContent = templateContent.replace('{tools}', toolsMarkdown.trim());
-        finalContent = finalContent.replace('{languages}', languagesMarkdown.trim());
-
-        await fs.writeFile(readmePath, finalContent, 'utf-8');
+        await fs.writeFile(
+            readmePath,
+            (await fs.readFile(templatePath, 'utf-8'))
+                .replace('{skills}', `\`\`\`json\n${JSON.stringify(await fs.readJson(skillsPath), null, 4)}\n\`\`\``),
+            'utf-8'
+        );
     } catch (error) {
         console.error('❌ Error updating README.md:', error);
         process.exit(1);

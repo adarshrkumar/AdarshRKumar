@@ -14,13 +14,9 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 - Photography
 - Music
 
-## Tools
+## Skills
 
-{tools}
-
-## Languages
-
-{languages}
+{skills}
 
 ## GitHub Stats
 
