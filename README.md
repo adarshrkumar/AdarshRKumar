@@ -68,18 +68,16 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 ## Social Media
 
 ```json
-{
-    "Social Media": [
-        "<a href='https://discord.com/users/adarshrkumar'>Discord</a>",
-        "<a href='mailto:adarshrkumar@aol.com'>Gmail</a>",
-        "<a href='https://instagram.com/adarsh.r.kumar'>Instagram</a>",
-        "<a href='https://linkedin.com/in/adarshrkumar'>LinkedIn</a>",
-        "<a href='https://stackoverflow.com/adarshrkumar'>StackOverflow</a>",
-        "<a href='https://tiktok.com/@adarsh.r.kumar'>TikTok</a>",
-        "<a href='https://x.com/adarshrkumar'>X</a>",
-        "<a href='https://youtube.com/@adarshrtech'>YouTube</a>"
-    ]
-}
+[
+    "<a href='https://discord.com/users/adarshrkumar'>Discord</a>",
+    "<a href='mailto:adarshrkumar@aol.com'>Gmail</a>",
+    "<a href='https://instagram.com/adarsh.r.kumar'>Instagram</a>",
+    "<a href='https://linkedin.com/in/adarshrkumar'>LinkedIn</a>",
+    "<a href='https://stackoverflow.com/adarshrkumar'>StackOverflow</a>",
+    "<a href='https://tiktok.com/@adarsh.r.kumar'>TikTok</a>",
+    "<a href='https://x.com/adarshrkumar'>X</a>",
+    "<a href='https://youtube.com/@adarshrtech'>YouTube</a>"
+]
 ```
 
 🌱 I’m currently working with HTML, CSS, JS, [Python](https://python.org), C, and [Astro](https://astro.build)!  

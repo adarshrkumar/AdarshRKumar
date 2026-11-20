@@ -8,11 +8,17 @@ const templatePath = path.join(process.cwd(), 'README_template.md');
 const readmePath = path.join(process.cwd(), 'README.md');
 
 // Helper functions
-function toStrippedJson(data) {
-    return `{\n${Object.entries(data).map(([category, items]) => `    ${JSON.stringify(category)}: [\n${items
+function toStrippedLines(items, indent) {
+    return items
         .toSorted((a, b) => Math.max(...[b].flat().map(item => item.proficiency ?? 0)) - Math.max(...[a].flat().map(item => item.proficiency ?? 0)))
-        .map(entry => `        ${[entry].flat().map(item => `"<a href='${item.skill_url ?? item.social_url}'>${item.name}</a>"`).join(', ')}`)
-        .join(',\n')}\n    ]`).join(',\n')}\n}`;
+        .map(entry => `${' '.repeat(indent)}${[entry].flat().map(item => `"<a href='${item.skill_url ?? item.social_url}'>${item.name}</a>"`).join(', ')}`)
+        .join(',\n');
+}
+
+function toStrippedJson(data) {
+    return Array.isArray(data)
+        ? `[\n${toStrippedLines(data, 4)}\n]`
+        : `{\n${Object.entries(data).map(([category, items]) => `    ${JSON.stringify(category)}: [\n${toStrippedLines(items, 8)}\n    ]`).join(',\n')}\n}`;
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();

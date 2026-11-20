@@ -1,44 +1,42 @@
-{
-    "Social Media": [
-        {
-            "name": "Discord",
-            "icon_url": "https://skillicons.dev/icons?i=discord",
-            "social_url": "https://discord.com/users/adarshrkumar"
-        },
-        {
-            "name": "Gmail",
-            "icon_url": "https://skillicons.dev/icons?i=gmail",
-            "social_url": "mailto:adarshrkumar@aol.com"
-        },
-        {
-            "name": "Instagram",
-            "icon_url": "https://skillicons.dev/icons?i=instagram",
-            "social_url": "https://instagram.com/adarsh.r.kumar"
-        },
-        {
-            "name": "LinkedIn",
-            "icon_url": "https://skillicons.dev/icons?i=linkedin",
-            "social_url": "https://linkedin.com/in/adarshrkumar"
-        },
-        {
-            "name": "StackOverflow",
-            "icon_url": "https://skillicons.dev/icons?i=stackoverflow",
-            "social_url": "https://stackoverflow.com/adarshrkumar"
-        },
-        {
-            "name": "TikTok",
-            "icon_url": "https://akum.site/p/TikTokIcon",
-            "social_url": "https://tiktok.com/@adarsh.r.kumar"
-        },
-        {
-            "name": "X",
-            "icon_url": "https://adarshrkumar.dev/assets/readme/X.svg",
-            "social_url": "https://x.com/adarshrkumar"
-        },
-        {
-            "name": "YouTube",
-            "icon_url": "https://adarshrkumar.dev/assets/readme/YouTube.svg",
-            "social_url": "https://youtube.com/@adarshrtech"
-        }
-    ]
-}
+[
+    {
+        "name": "Discord",
+        "icon_url": "https://skillicons.dev/icons?i=discord",
+        "social_url": "https://discord.com/users/adarshrkumar"
+    },
+    {
+        "name": "Gmail",
+        "icon_url": "https://skillicons.dev/icons?i=gmail",
+        "social_url": "mailto:adarshrkumar@aol.com"
+    },
+    {
+        "name": "Instagram",
+        "icon_url": "https://skillicons.dev/icons?i=instagram",
+        "social_url": "https://instagram.com/adarsh.r.kumar"
+    },
+    {
+        "name": "LinkedIn",
+        "icon_url": "https://skillicons.dev/icons?i=linkedin",
+        "social_url": "https://linkedin.com/in/adarshrkumar"
+    },
+    {
+        "name": "StackOverflow",
+        "icon_url": "https://skillicons.dev/icons?i=stackoverflow",
+        "social_url": "https://stackoverflow.com/adarshrkumar"
+    },
+    {
+        "name": "TikTok",
+        "icon_url": "https://akum.site/p/TikTokIcon",
+        "social_url": "https://tiktok.com/@adarsh.r.kumar"
+    },
+    {
+        "name": "X",
+        "icon_url": "https://adarshrkumar.dev/assets/readme/X.svg",
+        "social_url": "https://x.com/adarshrkumar"
+    },
+    {
+        "name": "YouTube",
+        "icon_url": "https://adarshrkumar.dev/assets/readme/YouTube.svg",
+        "social_url": "https://youtube.com/@adarshrtech"
+    }
+]
