@@ -43,9 +43,9 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         "<a href='https://en.wikipedia.org/wiki/SVG'>SVG</a>"
     ],
     "Web Development - Back End": [
+        "<a href='https://astro.build'>Astro</a>",
         "<a href='https://nodejs.org'>Node.js</a>", "<a href='https://npmjs.com'>npm</a>",
         "<a href='https://expressjs.com'>Express.js</a>",
-        "<a href='https://astro.build'>Astro</a>",
         "<a href='https://php.net'>PHP</a>",
         "<a href='https://discord.js.org'>Discord.js</a>",
         "<a href='https://react.dev'>React</a>", "<a href='https://nextjs.org'>Next.js</a>"
