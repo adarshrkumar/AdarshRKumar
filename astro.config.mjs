@@ -2,6 +2,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import { defineConfig } from 'astro/config';
 
+import trailingSlashRedirect from './integrations/trailing-slash-redirect.mjs';
 import updateReadme from './scripts/update-readme.mjs';
 
 await updateReadme();
@@ -11,9 +12,9 @@ export default defineConfig({
     output: 'server',
     site: 'https://adarshrkumar.dev',
     base: '/',
-    trailingSlash: 'always',
+    trailingSlash: 'ignore',
     adapter: vercel(),
-    integrations: [sitemap()],
+    integrations: [sitemap(), trailingSlashRedirect],
     security: {
         checkOrigin: false
     },
