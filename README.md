@@ -28,7 +28,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         {
             "name": "OnShape",
             "proficiency": 100,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/OnShape.png",
+            "icon_url": "https://adarshrkumar.dev/assets/readme/OnShape.svg",
             "skill_url": "https://onshape.com"
         },
         {
