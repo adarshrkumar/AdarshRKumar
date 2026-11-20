@@ -1,3 +1,15 @@
+export interface RSSResponse {
+    status: string;
+    items?: Array<{
+        link?: string;
+        title?: string;
+    }>;
+    feed?: {
+        link?: string;
+        title?: string;
+    };
+}
+
 export function extractChannelId(feedLink: string): string {
     if (feedLink.includes('/')) feedLink = feedLink.split('/').pop() || ''
     return feedLink

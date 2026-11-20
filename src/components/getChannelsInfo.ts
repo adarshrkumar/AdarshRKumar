@@ -1,4 +1,9 @@
-import type { VideoItem, RSSResponse } from '../lib/types'
+import type { RSSResponse } from '../lib/youtube'
+
+interface VideoItem {
+    link?: string;
+    title?: string;
+}
 
 export default async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     const allVideoItems: VideoItem[] = []

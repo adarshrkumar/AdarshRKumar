@@ -24,7 +24,8 @@ export default [
                 Response: 'readonly',
                 URL: 'readonly',
                 File: 'readonly',
-                FormDataEntryValue: 'readonly'
+                FormDataEntryValue: 'readonly',
+                btoa: 'readonly'
             }
         },
         plugins: {

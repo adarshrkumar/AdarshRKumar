@@ -3,7 +3,12 @@ import rss from '@astrojs/rss'
 import { getPostsForRSS } from '../lib/get-posts'
 import { cleanAboutContent } from '../lib/get-raw-about-content'
 import sanitizeMD from '../lib/sanitize-md'
-import type { AstroContext } from '../lib/types'
+
+interface AstroContext {
+    site: string | URL;
+    trailingSlash: boolean;
+    [key: string]: URL | string | boolean | undefined;
+}
 
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))

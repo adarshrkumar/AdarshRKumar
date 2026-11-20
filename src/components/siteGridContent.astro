@@ -1,7 +1,16 @@
 ---
-import type { GridOptions } from '../lib/types'
-
 import '../styles/components/grid.scss'
+
+interface GridOptions {
+    min?: string;
+    max?: string;
+    'max-width'?: string;
+    keys?: string[];
+    values?: {
+        min?: string;
+        max?: string;
+    };
+}
 
 const { id, classItems, options } = Astro.props
 

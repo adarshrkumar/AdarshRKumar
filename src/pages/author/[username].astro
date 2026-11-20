@@ -1,9 +1,16 @@
 ---
 import authors from '../../lib/authors'
-import type { Author } from '../../lib/types'
 
 import Layout from '../../layouts/Layout.astro'
 import '../../styles/pages/author.scss'
+
+interface Author {
+    displayName: string;
+    bio: string;
+    pfp?: {
+        filename: string;
+    };
+}
 
 const { username } = Astro.params;
 const author: Author = authors[username as keyof typeof authors];

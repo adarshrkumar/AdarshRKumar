@@ -1,9 +1,62 @@
-// Instagram data fetching utilities
-/* global btoa */
+export interface InstagramProfile {
+    full_name: string;
+    biography: string;
+    profile_pic_url: string;
+    profile_pic_url_hd?: string;
+    edge_followed_by: { count: number };
+    edge_follow: { count: number };
+    edge_owner_to_timeline_media: { count: number };
+    username?: string;
+    is_verified?: boolean;
+}
 
-import type { InflactMediaItem, InflactEndpoints, InstagramData, InstagramMediaNode, InstagramProfile, InstagramStory } from './types';
+export interface InstagramMediaNode {
+    display_url: string;
+    shortcode: string;
+    edge_media_to_caption?: { edges: Array<{ node: { text: string } }> };
+    taken_at_timestamp?: number;
+    is_video: boolean;
+    video_url?: string;
+    thumbnail_src?: string;
+    edge_liked_by?: { count: number };
+    edge_media_to_comment?: { count: number };
+}
 
-// API configuration (tokens may expire and need refreshing)
+interface InflactMediaItem {
+    id?: string;
+    shortCode?: string;
+    shortcode?: string;
+    imageUrl?: string;
+    display_url?: string;
+    mediaType?: number;
+    is_video?: boolean;
+    caption?: string;
+    createdAt?: number;
+    taken_at_timestamp?: number;
+    thumbnail_src?: string;
+    video_url?: string;
+    edge_media_to_caption?: { edges: Array<{ node: { text: string } }> };
+    edge_liked_by?: { count: number };
+    edge_media_to_comment?: { count: number };
+}
+
+type InflactEndpoints = 'profile' | 'posts' | 'reels' | 'stories';
+
+export interface InstagramStory {
+    image_versions2?: { candidates: Array<{ url: string }> };
+    video_versions?: Array<{ url: string }>;
+    taken_at?: number;
+    id?: string;
+}
+
+export interface InstagramData {
+    profile: InstagramProfile | null;
+    posts: InstagramMediaNode[];
+    reels: InstagramMediaNode[];
+    stories: InstagramStory[];
+    error: string | null;
+}
+
 const INSTAGRAM_USERNAME = 'adarsh.r.kumar';
 const FORM_BOUNDARY = '----WebKitFormBoundaryhvlGBNAlLf6A7hTO';
 const CLIENT_SIGNATURE = 'e7a80dcbf2c4c0c89fcc7bf4672f6bcfad307873aa6dbd95b4f219b4e1316476';
@@ -13,13 +66,10 @@ const CLIENT_TOKEN = btoa(JSON.stringify({
     "nonce": "cab9791b3287051b3787552f2750cea0"
 }))
 
-// Helper functions
-
 // Recursively search for media edges in API response
 function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
 
-    // Check for edge_owner_to_timeline_media or edge_felix_video_timeline patterns
     const entries = Object.entries(obj);
     for (let i = 0; i < entries.length; i++) {
         if ((entries[i][0].startsWith('edge_') && entries[i][0].includes('media')) || entries[i][0].startsWith('edge_felix')) {
@@ -42,7 +92,6 @@ function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
     return [];
 }
 
-// Normalize a flat reel/post item (inflact format) into InstagramMediaNode
 function normalizeMediaNode(item: InflactMediaItem): InstagramMediaNode {
     return {
         display_url: item.display_url || item.imageUrl || item.thumbnail_src || '',
@@ -59,15 +108,12 @@ function normalizeMediaNode(item: InflactMediaItem): InstagramMediaNode {
     };
 }
 
-// Extract media nodes from API response data
 function extractMediaNodes(data: object): InstagramMediaNode[] {
     if (!data || typeof data !== 'object') return [];
 
-    // Try to find edges recursively in the response (graph API format)
     const edges = findEdges(data);
     if (edges.length > 0) return edges;
 
-    // Handle inflact flat array format (e.g. data.reels, data.posts)
     const entries = Object.entries(data);
     for (let i = 0; i < entries.length; i++) {
         const val = entries[i][1];
@@ -78,13 +124,11 @@ function extractMediaNodes(data: object): InstagramMediaNode[] {
         }
     }
 
-    // Fallback: if data is an array of nodes directly
     if (Array.isArray(data)) return data.map(normalizeMediaNode);
 
     return [];
 }
 
-// Main function: fetch all Instagram data resiliently
 export async function getInstagramData(): Promise<InstagramData> {
     try {
         const endpoints: (InflactEndpoints)[] = ['profile', 'posts', 'reels', 'stories'];
@@ -116,12 +160,9 @@ export async function getInstagramData(): Promise<InstagramData> {
             if (result.status === 'fulfilled' && result.value) data[endpoints[i]] = result.value;
         });
 
-        // Extract profile
         let profile: InstagramProfile | null = null;
 
-        // Extract posts
-        const postsData = data && typeof data === 'object' && 'posts' in data ? data.posts : null;
-        const posts = postsData ? extractMediaNodes(postsData) : [];
+        const posts = 'posts' in data ? extractMediaNodes(data.posts) : [];
 
         // Extract reels
         const reelsData = data && typeof data === 'object' && 'reels' in data ? data.reels : null;

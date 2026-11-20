@@ -74,7 +74,7 @@ npx drizzle-kit studio    # Open Drizzle Studio (database GUI)
 
 ### Conventions
 
-- **Types**: Centralized in `src/lib/types.ts`
+- **Types**: No centralized types file. Define a type in the file that uses it. If several files use it, export it from the existing module file for that feature (e.g. `src/lib/youtube.ts`)
 - **Styling**: SCSS in `src/styles/` - `components/`, `pages/`, `globals.scss`, `variables.scss`, `mixins.scss`
 - **CSS Classes**:
   - USE `__` (double underscores) for BEM elements (e.g., `.item__title`, `.card__image`)
@@ -98,7 +98,6 @@ npx drizzle-kit studio    # Open Drizzle Studio (database GUI)
 | ------ | --------- |
 | `src/lib/getPosts.ts` | Post management (dual-source: files + DB) |
 | `src/lib/getPhotos.ts` | Database photo queries |
-| `src/lib/types.ts` | All TypeScript definitions |
 | `src/db/schema.ts` | Database schema (photos + posts tables) |
 | `src/db/initialize.ts` | Database connection setup |
 | `src/layouts/Layout.astro` | Base layout with SEO |

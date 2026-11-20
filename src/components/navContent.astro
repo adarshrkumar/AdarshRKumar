@@ -1,5 +1,10 @@
 ---
-import type { NavItem } from '../lib/types'
+interface NavItem {
+    name: string;
+    url: string;
+    target?: string;
+    primaryCls?: string;
+}
 
 var { items } = Astro.props
 

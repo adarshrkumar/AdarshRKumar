@@ -1,4 +1,7 @@
-import type { PageImport } from './types';
+interface PageImport {
+    url: string;
+    [key: string]: string | undefined;
+}
 
 export default function getAllSitePages(): PageImport[] {
     const items = import.meta.glob('../pages/*.astro', { eager: true })

@@ -1,7 +1,29 @@
 import db from '../db'
 import { posts as postsTable } from '../db/schema'
 
-import type { Post, DBPost } from './types'
+interface Post {
+    file: string;
+    frontmatter: {
+        title?: string;
+        author?: string;
+        date?: string;
+        pubDate?: string;
+        description?: string;
+    };
+    rawContent: () => string;
+    compiledContent?: () => string;
+}
+
+interface DBPost {
+    id: string;
+    slug: string;
+    title: string;
+    content: string;
+    author: string;
+    categories: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
 export function extractSlugFromFilePath(filePath: string): string {
     const normalizedPath = filePath.replace(/\\/g, '/')

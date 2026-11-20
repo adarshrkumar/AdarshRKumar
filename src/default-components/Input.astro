@@ -7,10 +7,11 @@ import '../styles/components/default-inputs.scss'
 export interface Props extends Omit<HTMLAttributes<'input'>, 'type'> {
     align?: 'left' | 'center' | 'right';
     label?: HTMLString | string;
-    type?: HTMLAttributes<'input'>['type'];
+    type?: HTMLAttributes<'input'>['type'] | 'honeypot' | 'textarea';
 }
 
-const { id, type, label, ...attrs } = Astro.props
+let { type } = Astro.props
+const { id, label, type: _, ...attrs } = Astro.props
 
 const valueInputs = [
     'button',
@@ -21,7 +22,9 @@ const valueInputs = [
 
 let groupStyle = ''
 
-if ((type as typeof type | 'honeypot') === 'honeypot') groupStyle += 'display:none;visibility:hidden'
+if (type === 'honeypot') groupStyle += 'display:none;visibility:hidden'
+
+if (type === 'honeypot' || type === 'textarea') type = 'text'
 
 // Pre-render slot content for value inputs
 const slotContent = await Astro.slots.render('default')

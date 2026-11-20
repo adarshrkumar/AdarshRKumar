@@ -2,12 +2,34 @@
 import { getImage } from 'astro:assets'
 
 import { getAllPhotos } from '../lib/get-photos'
-import type { PhotoItem } from '../lib/types'
 
 import '../styles/pages/photos.scss'
 import SiteGridContent from '../components/siteGridContent.astro'
 import AnimatedCard from '../components/motion/AnimatedCard.astro'
 import Layout from '../layouts/Layout.astro'
+
+interface PhotoMetadata {
+    title?: string;
+    location?: string;
+    info?: string;
+    fullname?: string;
+    name?: string;
+    category?: string;
+    uploader?: string;
+}
+
+interface PhotoImport {
+    src: string;
+    [key: string]: string | undefined;
+}
+
+interface PhotoItem {
+    src?: string;
+    alt?: string;
+    fullname?: string;
+    import?: PhotoImport;
+    data?: PhotoMetadata;
+}
 
 // Fetch photos from database instead of filesystem
 const dbPhotos = await getAllPhotos()
