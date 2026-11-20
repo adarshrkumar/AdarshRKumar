@@ -68,7 +68,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         {
             "name": "Claude Code",
             "proficiency": 80,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.png",
+            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.svg",
             "skill_url": "https://claude.ai"
         },
         {
