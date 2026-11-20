@@ -26,7 +26,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
     "Other Tools": [
         "<a href='https://code.visualstudio.com'>VS Code</a>",
         "<a href='https://cursor.com'>Cursor</a>",
-        "<a href='https://git-scm.com'>Git</a>, <a href='https://github.com'>GitHub</a>",
+        "<a href='https://git-scm.com'>Git</a>", "<a href='https://github.com'>GitHub</a>",
         "<a href='https://claude.ai'>Claude Code</a>",
         "<a href='https://antigravity.google'>Antigravity</a>",
         "<a href='https://firebase.com'>Firebase</a>",
@@ -37,27 +37,27 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
     ],
     "Web Development - Front-End": [
         "<a href='https://en.wikipedia.org/wiki/HTML'>HTML</a>",
-        "<a href='https://en.wikipedia.org/wiki/CSS'>CSS</a>, <a href='https://sass-lang.com'>SCSS</a>",
+        "<a href='https://en.wikipedia.org/wiki/CSS'>CSS</a>", "<a href='https://sass-lang.com'>SCSS</a>",
         "<a href='https://en.wikipedia.org/wiki/JavaScript'>JavaScript</a>",
         "<a href='https://www.typescriptlang.org'>TypeScript</a>",
         "<a href='https://en.wikipedia.org/wiki/SVG'>SVG</a>"
     ],
     "Web Development - Back End": [
-        "<a href='https://nodejs.org'>Node.js</a>, <a href='https://npmjs.com'>npm</a>",
+        "<a href='https://nodejs.org'>Node.js</a>", "<a href='https://npmjs.com'>npm</a>",
         "<a href='https://expressjs.com'>Express.js</a>",
         "<a href='https://astro.build'>Astro</a>",
         "<a href='https://php.net'>PHP</a>",
         "<a href='https://discord.js.org'>Discord.js</a>",
-        "<a href='https://react.dev'>React</a>, <a href='https://nextjs.org'>Next.js</a>"
+        "<a href='https://react.dev'>React</a>", "<a href='https://nextjs.org'>Next.js</a>"
     ],
     "Other Languages": [
         "<a href='https://www.markdownguide.org'>Markdown</a>",
         "<a href='https://python.org'>Python</a>",
         "<a href='https://en.wikipedia.org/wiki/Regular_expression'>RegEx</a>",
-        "<a href='https://palletsprojects.com/p/flask/'>Flask</a>, <a href='https://djangoproject.com'>Django</a>",
+        "<a href='https://palletsprojects.com/p/flask/'>Flask</a>", "<a href='https://djangoproject.com'>Django</a>",
         "<a href='https://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a>",
         "<a href='https://en.wikipedia.org/wiki/CI/CD'>C</a>",
-        "<a href='https://en.wikipedia.org/wiki/Batch_file'>Batch</a>, <a href='https://en.wikipedia.org/wiki/PowerShell'>PowerShell</a>",
+        "<a href='https://en.wikipedia.org/wiki/Batch_file'>Batch</a>", "<a href='https://en.wikipedia.org/wiki/PowerShell'>PowerShell</a>",
         "<a href='https://cplusplus.com'>C++</a>"
     ]
 }

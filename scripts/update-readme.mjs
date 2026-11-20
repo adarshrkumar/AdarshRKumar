@@ -9,12 +9,10 @@ const readmePath = path.join(process.cwd(), 'README.md');
 
 // Helper functions
 function toStrippedJson(data) {
-    return JSON.stringify(Object.fromEntries(Object.entries(data).map(([category, items]) => [
-        category,
-        items
-            .toSorted((a, b) => Math.max(...[b].flat().map(item => item.proficiency ?? 0)) - Math.max(...[a].flat().map(item => item.proficiency ?? 0)))
-            .map(entry => [entry].flat().map(item => `<a href='${item.skill_url ?? item.social_url}'>${item.name}</a>`).join(', '))
-    ])), null, 4);
+    return `{\n${Object.entries(data).map(([category, items]) => `    ${JSON.stringify(category)}: [\n${items
+        .toSorted((a, b) => Math.max(...[b].flat().map(item => item.proficiency ?? 0)) - Math.max(...[a].flat().map(item => item.proficiency ?? 0)))
+        .map(entry => `        ${[entry].flat().map(item => `"<a href='${item.skill_url ?? item.social_url}'>${item.name}</a>"`).join(', ')}`)
+        .join(',\n')}\n    ]`).join(',\n')}\n}`;
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
