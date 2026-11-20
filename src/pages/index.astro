@@ -9,14 +9,9 @@ import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import Layout from '../layouts/Layout.astro'
 
-const readmeFile = await import('../../README.md')
-const readmeContent = await readmeFile.compiledContent()
+const readmeContent = await (await import('../../README.md')).compiledContent()
 
 const $ = cheerio.load(readmeContent);
-
-const firstH1 = $('h1').first();
-const firstH1Text = firstH1.text().trim();
-if (firstH1Text === 'Adarsh R. Kumar') firstH1.remove();
 
 $('table').attr('cellspacing', '0')
 
@@ -27,17 +22,13 @@ imgs.each((_i, img) => {
 })
 
 const newReadmeContent = $.html()
-
-const firstPara = $.html($('p').first()).trim();
 ---
 
 <Layout title="" pageType="home">
     <!-- <Hero /> -->
-
     <FadeIn direction="up" duration={0.6}>
-        <div class="readme" set:html={newReadmeContent.replace(firstPara ?? '', `<div class="readme__fancy-column"><div><h1>Adarsh R. Kumar</h1>${firstPara}</div></div>`)} />
+        <div class="readme" set:html={newReadmeContent} />
     </FadeIn>
-
     <section class="section pHighlights">
         <FadeIn delay={0.1} direction="up">
             <AnimatedTitle as="h2" class="section-title">
@@ -46,7 +37,6 @@ const firstPara = $.html($('p').first()).trim();
         </FadeIn>
         <PortfolioHighlights />
     </section>
-
     <section class="section bFeatures">
         <FadeIn delay={0.2} direction="up">
             <AnimatedTitle as="h2" class="section-title">

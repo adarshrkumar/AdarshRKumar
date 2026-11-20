@@ -120,11 +120,9 @@ const formFields: Record<string, FormField> = {
                 <p class="about__tagline">Web Developer • Photographer • Tech Enthusiast</p>
             </div>
         </FadeIn>
-
         <FadeIn delay={0.1} direction="up" duration={0.6}>
             <div class="about__bio" set:html={aboutContent} />
         </FadeIn>
-
         <FadeIn delay={0.2} direction="up" duration={0.6}>
             <section class="about__section">
                 <h2 class="about__section-title">Skills & Technologies</h2>
@@ -143,7 +141,6 @@ const formFields: Record<string, FormField> = {
                 </div>
             </section>
         </FadeIn>
-
         <FadeIn delay={0.3} direction="up" duration={0.6}>
             <section class="about__section">
                 <h2 class="about__section-title">Interests & Hobbies</h2>
@@ -164,7 +161,6 @@ const formFields: Record<string, FormField> = {
                 </div>
             </section>
         </FadeIn>
-
         <FadeIn delay={0.4} direction="up" duration={0.6}>
             <div class="about__cta">
                 {ctaButtons.map(button => (
@@ -174,7 +170,6 @@ const formFields: Record<string, FormField> = {
                 ))}
             </div>
         </FadeIn>
-
         <FadeIn delay={0.5} direction="up" duration={0.6}>
             <section class="about__section">
                 <h2 class="about__section-title">Get in Touch</h2>
@@ -190,7 +185,6 @@ const formFields: Record<string, FormField> = {
                     >
                         {formFields.name.label}
                     </Input>
-
                     <Input
                         type={formFields.email.type as HTMLAttributes<'input'>['type']}
                         name={formFields.email.name}
@@ -201,11 +195,9 @@ const formFields: Record<string, FormField> = {
                     >
                         {formFields.email.label}
                     </Input>
-
                     <Input type={formFields.subject.type as HTMLAttributes<'input'>['type']} name={formFields.subject.name} id={formFields.subject.id} required={formFields.subject.required}>
                         {formFields.subject.label}
                     </Input>
-
                     <TextArea
                         label={formFields.message.label}
                         rows="1"
@@ -214,7 +206,6 @@ const formFields: Record<string, FormField> = {
                         placeholder={formFields.message.placeholder}
                         required={formFields.message.required}
                     />
-
                     <Input
                         type={formFields.submit.type as HTMLAttributes<'input'>['type']}
                         value={formFields.submit.value}
