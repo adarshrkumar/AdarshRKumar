@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node ~/.claude/hooks/index.js --git-mode=all",
+            "command": "node ~/.claude/hooks/index.js",
             "timeout": 20
           }
         ]
