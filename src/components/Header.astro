@@ -27,9 +27,6 @@ if (currentPath.endsWith('/') && currentPath !== '/') currentPath = currentPath.
     </nav>
     <ThemeSwitcher defaultTheme="system" />
 </header>
-
-<!-- Header Script -->
-
 <script>
     var hideHeader = (new URLSearchParams(location.search)).get('hideHeader') === 'true';
     if (hideHeader) {

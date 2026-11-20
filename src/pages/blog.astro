@@ -5,7 +5,6 @@ import sanitizeMD from '../lib/sanitize-md'
 import SiteGridContent from '../components/SiteGridContent.astro'
 import Layout from '../layouts/Layout.astro'
 
-// Get posts with all processing done
 const postsWithMetadata = await getPostsForDisplay(Astro.site)
 
 ---
@@ -14,12 +13,10 @@ const postsWithMetadata = await getPostsForDisplay(Astro.site)
     <SiteGridContent classItems="posts" options={{ min: '18rem' }}>
         {
             postsWithMetadata.map(async post => {
-                // Process text content for preview
                 const rawTextContent = sanitizeMD(post.rawContent())
                 const cleanedTextContent = cleanTextContent(rawTextContent)
                 const previewContent = createPreviewContent(cleanedTextContent)
 
-                // Check if we have content to display
                 const hasContent = !!(post.frontmatter.title || cleanedTextContent)
                 const hasTitle = !!post.frontmatter.title
                 const hasPreview = !!previewContent

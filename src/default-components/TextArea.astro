@@ -4,13 +4,11 @@ import type { HTMLAttributes } from 'astro/types'
 
 import '../styles/components/default-inputs.scss'
 
-// Type definitions
 export interface Props extends HTMLAttributes<'textarea'> {
     align?: 'left' | 'center' | 'right';
     label?: HTMLString | string;
 }
 
-// Component props and configuration
 const { id, label } = Astro.props
 
 const { ...attrs } = Astro.props

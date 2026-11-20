@@ -35,7 +35,6 @@ export const GET: APIRoute = async ({ url }) => {
         if (categories) conditions.push(like(posts.categories, `%${categories}%`));
         if (videoId) conditions.push(eq(posts.videoId, videoId));
 
-        // If no parameters provided, return error
         if (conditions.length === 0) {
             return new Response(
                 JSON.stringify({

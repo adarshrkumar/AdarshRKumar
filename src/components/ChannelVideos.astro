@@ -4,27 +4,22 @@ import type { RSSResponse } from '../lib/youtube'
 import LargeFrame from '../components/LargeFrame.astro'
 import '../styles/pages/youtube.scss'
 
-// Get component props
-const { id: channelId, vidsPerChannel } = Astro.props
+const maxVideosPerChannel = Astro.props.vidsPerChannel || 'all'
 
-// Set default videos per channel
-const maxVideosPerChannel = vidsPerChannel || 'all'
-
-// Fetch channel data
 let channel: { feed: RSSResponse; videos: Array<{ link?: string; title?: string }> } = { feed: { status: 'error' }, videos: [] }
 
 try {
     const apiKey = 'MDNyZ2p6bjJyZ21jYWpqOXR2aTNkbmNncW00NTBqMThxaDllenNoZA=='
-    const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+    const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${Astro.props.id}`
     const rssUrl = `https://api.rss2json.com/v1/api.json?api_key=${atob(apiKey)}&rss_url=${encodeURIComponent(channelURL)}`
 
     const response = await fetch(rssUrl)
     const result = await response.json()
 
     if (result && result.status === 'ok' && result.feed && result.items && result.items.length > 0) channel = result
-    else console.warn(`No valid videos found for channel: ${channelId}`)
+    else console.warn(`No valid videos found for channel: ${Astro.props.id}`)
 } catch (error) {
-    console.error(`Error fetching videos for channel ${channelId}:`, error)
+    console.error(`Error fetching videos for channel ${Astro.props.id}:`, error)
 }
 
 ---

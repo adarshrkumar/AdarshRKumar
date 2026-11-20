@@ -12,10 +12,6 @@ import Input from '../default-components/Input.astro'
 import TextArea from '../default-components/TextArea.astro'
 import Layout from '../layouts/Layout.astro'
 
-const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = (await aboutFile.compiledContent())?.replaceAll('{ age }', age.toString())
-
-// Skills data
 const skillsData = (await import('../../content/skills.json')).default
 
 const skills = Object.entries(skillsData).map(([category, skillList]) => {
@@ -28,7 +24,6 @@ const skills = Object.entries(skillsData).map(([category, skillList]) => {
     };
 }).filter(Boolean);
 
-// Add the Databases card which is not in the JSON
 skills.push({
     name: 'Databases',
     icon: '🗄️',
@@ -38,7 +33,6 @@ skills.push({
     ]
 });
 
-// Interests data
 const interests = [
     { name: 'Photography', icon: '📸', link: '/photography/' },
     { name: 'History', icon: '📚', link: null },
@@ -48,7 +42,6 @@ const interests = [
     { name: 'Astronomy', icon: '🔭', link: null }
 ]
 
-// CTA buttons
 const ctaButtons = [
     { text: 'View Portfolio', link: '/work/portfolio/', primary: true },
     { text: 'Read Blog', link: '/posts/', primary: false },
@@ -63,7 +56,6 @@ interface FormConfig {
     className: string;
 }
 
-// Contact form configuration
 const formConfig: FormConfig = {
     action: 'https://docs.google.com/forms/d/e/1FAIpQLSfleYNKUZ6MfijVAEwcIT1Gga4aOhrElpEdayw3_z_vLrs1GA/formResponse',
     method: 'POST',
@@ -139,7 +131,7 @@ const formFields: Record<string, FormField> = {
             </div>
         </FadeIn>
         <FadeIn delay={0.1} direction="up" duration={0.6}>
-            <div class="about__bio" set:html={aboutContent} />
+            <div class="about__bio" set:html={(await (await import('../../content/aboutContent.md')).compiledContent())?.replaceAll('{ age }', age.toString())} />
         </FadeIn>
         <FadeIn delay={0.2} direction="up" duration={0.6}>
             <section class="about__section">

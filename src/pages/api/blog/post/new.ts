@@ -9,7 +9,6 @@ const corsHeaders = {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
-// Handle OPTIONS preflight request
 export const OPTIONS: APIRoute = async () => {
     return new Response(null, {
         status: 204,
@@ -67,10 +66,10 @@ export const POST: APIRoute = async ({ request }) => {
         if (!slug) {
             slug = (typeof title === 'string' ? title : '')
                 .toLowerCase()
-                .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-                .replace(/\s+/g, '-')         // Replace spaces with hyphens
-                .replace(/-+/g, '-')          // Replace multiple hyphens with single hyphen
-                .replace(/^-|-$/g, '');       // Remove leading/trailing hyphens
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
         }
 
         const slugRegex = /^[a-z0-9-]+$/;

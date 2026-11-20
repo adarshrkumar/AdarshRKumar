@@ -10,7 +10,6 @@ interface Props {
 
 const { index = 0, class: className = '', href, target } = Astro.props
 
-// Calculate delay based on index (max 0.4s)
 const delay = Math.min(index * 0.08, 0.4)
 ---
 
@@ -42,9 +41,7 @@ const delay = Math.min(index * 0.08, 0.4)
         cards.forEach(card => observer.observe(card))
     }
 
-    // Run on initial load
     initAnimatedCards()
 
-    // Re-run on Astro page transitions
     document.addEventListener('astro:page-load', initAnimatedCards)
 </script>

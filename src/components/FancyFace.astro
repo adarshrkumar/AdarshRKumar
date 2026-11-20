@@ -3,25 +3,13 @@ import '../styles/components/fancy-face.scss'
 ---
 <div class="face-tracker" id="face" data-base-path="/faces/" data-debug="false"></div>
 <script is:inline defer>
-    // Grid configuration (must match your generated images)
     const P_MIN = -15;
     const P_MAX = 15;
     const STEP = 3;
     const SIZE = 256;
 
-    function clamp(value, min, max) {
-        return Math.max(min, Math.min(max, value));
-    }
-
-    function quantizeToGrid(val) {
-        const raw = P_MIN + (val + 1) * (P_MAX - P_MIN) / 2; // [-1,1] -> [-15,15]
-        const snapped = Math.round(raw / STEP) * STEP;
-        return clamp(snapped, P_MIN, P_MAX);
-    }
-
     function sanitize(val) {
-        const str = Number(val).toFixed(1); // force one decimal, e.g. 0 -> 0.0
-        return str.replace('-', 'm').replace('.', 'p');
+        return parseFloat(val).toFixed(1).replace('-', 'm').replace('.', 'p');
     }
 
     if (!window.matchMedia('(pointer: coarse)').matches) {
@@ -50,8 +38,12 @@ import '../styles/components/fancy-face.scss'
                     const nx = (clientX - centerX) / (rect.width / 2);
                     const ny = (centerY - clientY) / (rect.height / 2);
 
-                    const clampedX = clamp(nx, -1, 1);
-                    const clampedY = clamp(ny, -1, 1);
+                    const clampedX = Math.max(-1, Math.min(1, nx));
+                    const clampedY = Math.max(-1, Math.min(1, ny));
+
+                    function quantizeToGrid(val) {
+                        return Math.max(P_MIN, Math.min(P_MAX, Math.round(P_MIN + (val + 1) * (P_MAX - P_MIN) / 2 / STEP) * STEP));
+                    }
 
                     const px = quantizeToGrid(clampedX);
                     const py = quantizeToGrid(clampedY);
@@ -62,11 +54,9 @@ import '../styles/components/fancy-face.scss'
                     if (debugEl) debugEl.innerHTML = `Mouse: (${Math.round(clientX - rect.left)}, ${Math.round(clientY - rect.top)})<br/>Image: ${filename}`;
                 }
 
-                // Track pointer anywhere on the page
                 window.addEventListener('mousemove', e => setFromClient(e.clientX, e.clientY));
                 window.addEventListener('touchmove', e => e.touches && e.touches.length > 0 && setFromClient(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
 
-                // Initialize at center
                 const rect = container.getBoundingClientRect();
                 setFromClient(rect.left + rect.width / 2, rect.top + rect.height / 2);
             });

@@ -8,7 +8,6 @@ interface VideoItem {
 export default async function getChannelsInfo(channelIds: string[]): Promise<VideoItem[]> {
     const allVideoItems: VideoItem[] = []
 
-    // Process each channel
     const channelPromises = channelIds.map(async channelId => {
         try {
             const channelURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
@@ -27,10 +26,8 @@ export default async function getChannelsInfo(channelIds: string[]): Promise<Vid
         }
     })
 
-    // Wait for all channel requests to complete
     const channelResults = await Promise.all(channelPromises)
 
-    // Flatten the results
     channelResults.forEach(videos => allVideoItems.push(...videos))
 
     return allVideoItems

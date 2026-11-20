@@ -1,4 +1,3 @@
-// Author data configuration
 const authors = {
     'adarshrkumar': {
         'displayName': 'Adarsh R. Kumar',

@@ -35,7 +35,6 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
     return `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
 }
 
-// Load all potential app sources
 const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item))
 const projectItems = Object.values(import.meta.glob('../../content/work/projects/*/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item))
 
@@ -43,7 +42,6 @@ const webApps =
     filterVisibleContentItems([...portfolioItems, ...projectItems])
     .filter(item => appsList.includes((getFName(item.file).endsWith('.md') ? getFName(item.file).slice(0, -'.md'.length) : getFName(item.file)).toLowerCase()))
 
-// Deduplicate by name
 const uniqueApps = Array.from(new Map(webApps.map(item => [item.frontmatter.name, item])).values())
     .sort((a, b) => a.frontmatter.name.localeCompare(b.frontmatter.name))
 

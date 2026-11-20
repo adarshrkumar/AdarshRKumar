@@ -26,14 +26,12 @@ interface DBPost {
 }
 
 export function extractSlugFromFilePath(filePath: string): string {
-    const normalizedPath = filePath.replace(/\\/g, '/')
+    let slug = filePath.replace(/\\/g, '/')
 
     const postsMarker = '/content/blog/posts/'
-    let slug = normalizedPath
-
     const postsIndex = slug.indexOf(postsMarker)
     if (postsIndex !== -1) slug = slug.slice(postsIndex + postsMarker.length)
-    else slug = normalizedPath.split('/').pop() || ''
+    else slug = slug.split('/').pop() || ''
 
     if (slug.endsWith('.md')) slug = slug.slice(0, -'.md'.length)
 
@@ -56,7 +54,6 @@ export function cleanTextContent(text: string): string {
 export function createPreviewContent(text: string, maxLength: number = 50): string {
     if (text.length > maxLength) text = text.slice(0, maxLength)
 
-    // Characters to trim from the end
     const trimChars = [' ', ',', ':', '(', '[', '{', '|', '~', '@', '*', '+', '=', '-', '^']
 
     while (trimChars.some(char => text.endsWith(char))) text = text.slice(0, -1)

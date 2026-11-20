@@ -1,0 +1,62 @@
+---
+import type { PortfolioItem } from '../lib/filter-visible-content-items'
+import getFName from '../lib/get-fname'
+import sanitizeMD from '../lib/sanitize-md'
+
+import SiteGridContent from './SiteGridContent.astro'
+
+var highlights = ['commonps', 'pscode-syntax-highlighter', 'ai-scholarly-mode', 'imageresize', 'SMCAS']
+const ports = import.meta.glob('../../content/work/portfolio/**/*.md', { eager: true })
+
+var items: PortfolioItem[] = []
+
+highlights.forEach(name => {
+    const filename = name.endsWith('.md') ? name : `${name}.md`
+    var res = Object.values(ports).filter((item): item is PortfolioItem => {
+        if (item && typeof item === 'object' && 'file' in item && 'frontmatter' in item) {
+            const fileName = typeof item.file === 'string' ? item.file : String(item.file)
+            return getFName(fileName) === filename
+        }
+        return false
+    })
+    if (res.length > 0) res.forEach(r => items.push(r));
+});
+
+---
+<SiteGridContent classItems="portfolio wrap" options={{ 'max-width': '1200px' }}>
+    {
+        items.map(async (item, _i2) => {
+            var target = '_blank'
+            var url = item.frontmatter.url
+            if (url.startsWith('//')) url = `https:${url}`
+
+            var domain = url
+            if (domain.includes('://')) {
+                domain = domain.split('://')[1]
+                if (domain.includes('/')) domain = domain.split('/')[0]
+                if (domain.startsWith('www.')) domain = domain.slice('www.'.length)
+                domain = `https://${domain}`
+            }
+
+            if (!url.includes(':') || domain === Astro.site?.toString()) target = '_self'
+
+            let fullUrl = url
+            if (url.startsWith('/')) {
+                const baseUrl = Astro.site?.toString() || 'https://adarshrkumar.dev'
+                fullUrl = `${baseUrl.replace(/\/$/, '')}${url}`
+            }
+
+            var imageSize = 512
+            var image_url = item.frontmatter.image || `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
+            return (
+                <a href={url} target={target} class="item">
+                    <img src={image_url} alt={`Screenshot of ${item.frontmatter.name} project`} alt="" class="item__img" style={`--placeholder: url('${item.frontmatter.image ? image_url : `${image_url}&image_quality=${50}`}')`} />
+                    <div class="item__info">
+                        <h3 class="item__title">{item.frontmatter.name}</h3>
+                        <p class="item__content">{sanitizeMD(item.rawContent())}</p>
+                    </div>
+                </a>
+            )
+        })
+    }
+</SiteGridContent>

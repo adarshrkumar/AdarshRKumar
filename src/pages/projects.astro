@@ -1,4 +1,5 @@
 ---
+import determineLinkTarget from '../lib/determine-link-target'
 import { filterVisibleContentItems, type PortfolioItem } from '../lib/filter-visible-content-items'
 import sanitizeMD from '../lib/sanitize-md'
 
@@ -15,31 +16,7 @@ interface ProjectCategoryConfig {
     items: PortfolioItem[];
 }
 
-// Helper function to determine link target based on URL
-function determineLinkTarget(url: string, siteUrl: string | URL | undefined): string {
-    let target = '_blank'
-
-    // Handle protocol-relative URLs
-    if (url.startsWith('//')) url = `https:${url}`;
-
-    // Extract domain from URL
-    let domain = url
-    if (domain.includes('://')) {
-        domain = domain.split('://')[1]
-        if (domain.includes('/')) domain = domain.split('/')[0];
-        if (domain.startsWith('www.')) domain = domain.slice('www.'.length);
-        domain = `https://${domain}`
-    }
-
-    // Check if it's an internal link
-    if (!url.includes(':') || domain === siteUrl?.toString()) target = '_self';
-
-    return target
-}
-
-// Helper function to generate screenshot image URL
 function generateScreenshotUrl(url: string, imageSize: number = 512): string {
-    // Handle relative URLs by prefixing with site URL
     let fullUrl = url
     if (url.startsWith('/')) {
         const baseUrl = Astro.site?.toString() || 'https://adarshrkumar.dev'
@@ -49,16 +26,13 @@ function generateScreenshotUrl(url: string, imageSize: number = 512): string {
     return `https://webshot.adarshrkumar.dev/api/take?url=${encodeURIComponent(fullUrl)}&viewport_width=${imageSize}&viewport_height=${imageSize}`
 }
 
-// Load portfolio items that have projectsCategory field
 const portfolioItems = Object.values(import.meta.glob('../../content/work/portfolio/*.md', { eager: true })).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item))
 const portfolioWithCategory = portfolioItems.filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory))
 
-// Helper to get portfolio items for a specific category
 function getPortfolioItemsForCategory(categoryId: string): PortfolioItem[] {
     return portfolioWithCategory.filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'frontmatter' in item && typeof item.frontmatter === 'object' && item.frontmatter !== null && 'projectsCategory' in item.frontmatter && item.frontmatter.projectsCategory === categoryId))
 }
 
-// Project categories configuration
 const projectCategories: ProjectCategoryConfig[] = [
     {
         id: 'games',

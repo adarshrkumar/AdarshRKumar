@@ -6,15 +6,10 @@ import { findPostById } from '../../lib/get-posts'
 import Layout from '../../layouts/Layout.astro'
 import '../../styles/pages/post.scss'
 
-// Get post ID from URL parameters
-const { id: postId = '' } = Astro.params;
-
-// Find the specific post
-const currentPost = await findPostById(postId);
+const currentPost = await findPostById(Astro.params.id);
 
 if (!currentPost) return Astro.redirect('/404');
 
-// Get author information
 const authorUsername = currentPost.frontmatter.author;
 const authorInfo = authors[authorUsername as keyof typeof authors];
 

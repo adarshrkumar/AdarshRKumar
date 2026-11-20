@@ -66,7 +66,6 @@ const CLIENT_TOKEN = btoa(JSON.stringify({
     "nonce": "cab9791b3287051b3787552f2750cea0"
 }))
 
-// Recursively search for media edges in API response
 function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
     if (!obj || typeof obj !== 'object' || depth > 6) return [];
 
@@ -81,7 +80,6 @@ function findEdges(obj: object, depth = 0): InstagramMediaNode[] {
         }
     }
 
-    // Recurse into nested objects
     for (const val of Object.values(obj)) {
         if (val && typeof val === 'object' && !Array.isArray(val)) {
             const result = findEdges(val, depth + 1);
@@ -133,7 +131,6 @@ export async function getInstagramData(): Promise<InstagramData> {
     try {
         const endpoints: (InflactEndpoints)[] = ['profile', 'posts', 'reels', 'stories'];
         const results = await Promise.allSettled(
-            // Fetch a single Instagram endpoint from inflact API
             endpoints.map(async endpoint => {
                 const response = await fetch(`https://inflact.com/downloader/api/viewer/${endpoint}/?lang=en`, {
                     method: 'POST',
@@ -164,11 +161,9 @@ export async function getInstagramData(): Promise<InstagramData> {
 
         const posts = 'posts' in data ? extractMediaNodes(data.posts) : [];
 
-        // Extract reels
         const reelsData = data && typeof data === 'object' && 'reels' in data ? data.reels : null;
         const reels = reelsData ? extractMediaNodes(reelsData) : [];
 
-        // Extract stories
         let stories: InstagramStory[] = [];
         const storiesData = data && typeof data === 'object' && 'stories' in data ? data.stories : null;
         if (storiesData && typeof storiesData === 'object') {
@@ -190,13 +185,11 @@ export async function getInstagramData(): Promise<InstagramData> {
     }
 }
 
-// Extract caption text from a media node
 export function getInstagramCaption(node: InstagramMediaNode): string {
     if (node.edge_media_to_caption?.edges && node.edge_media_to_caption?.edges.length > 0) return node.edge_media_to_caption?.edges[0].node.text;
     return '';
 }
 
-// Format Instagram timestamp to readable date
 export function formatInstagramDate(timestamp: number | undefined): string {
     if (!timestamp) return '';
     return new Date(timestamp * 1000).toLocaleDateString('en-US', {

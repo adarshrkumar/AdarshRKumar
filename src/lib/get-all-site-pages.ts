@@ -9,13 +9,11 @@ export default function getAllSitePages(): PageImport[] {
 
     const links: { url: string; name: string, target?: string, primaryCls?: string }[] = []
 
-    // Add Home page first
     pages.forEach(page => {
         var link = getLink(page)
         if (link && link.name === 'Home') links.push(link)
     })
 
-    // Add other pages
     pages.forEach(page => {
         var link = getLink(page)
         if (link && link.name !== 'Home' && link.url) links.push(link)
@@ -26,7 +24,6 @@ export default function getAllSitePages(): PageImport[] {
     function getLink(link: PageImport) {
         var lPath = link.url
 
-        // Handle empty string URL (index.astro)
         if (lPath === '') return { url: '/', name: 'Home' }
 
         if (!lPath) return null
@@ -48,7 +45,6 @@ export default function getAllSitePages(): PageImport[] {
         else if (lPath === 'home' || !lPath) lPath = '/'
         else if (lPath && !lPath.includes('://') && !lPath.startsWith('/') && !lPath.endsWith('/')) lPath = `/${lPath}/`
 
-        // Don't remove trailing slash from home page
         if (lPath.endsWith('/') && lPath !== '/') lPath = lPath.slice(0, -1)
 
         return { url: lPath, name }

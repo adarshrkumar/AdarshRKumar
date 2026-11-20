@@ -6,17 +6,14 @@ import Layout from '../layouts/Layout.astro'
 <Layout title="Coming Soon" classItems="is-soon">
     <p>This site is under development right now, I will put something here soon!</p>
     <p>In the meantime, you can email me at: <a href="mailto:adarshrkumar+site@aol.com">adarshrkumar+site@aol.com</a>.</p>
-    <!-- <hr> -->
-    <!-- <h1>Credits: </h1> -->
-    <!-- <p>Main Contributer: <a href="https://solo.to/adarshrkumar">adarshrkumar</a></p> -->
     <script is:inline>
         var img = document.querySelector('.logo')
         var operation
         setInterval(() => {
-            if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === 0) operation = '+'
-            else if (Number(img.getAttribute('style').split('left: ')[1].split('px')[0]) === (window.innerWidth - 125)) operation = '-'
-            if (operation === '+') img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])+1}px;`)
-            else if (operation === '-') img.setAttribute('style', `left: ${Number(img.getAttribute('style').split('left: ')[1].split('px')[0])-1}px;`)
+            if (parseInt(img.getAttribute('style').split('left: ')[1].split('px')[0]) === 0) operation = '+'
+            else if (parseInt(img.getAttribute('style').split('left: ')[1].split('px')[0]) === (window.innerWidth - 125)) operation = '-'
+            if (operation === '+') img.setAttribute('style', `left: ${parseInt(img.getAttribute('style').split('left: ')[1].split('px')[0])+1}px;`)
+            else if (operation === '-') img.setAttribute('style', `left: ${parseInt(img.getAttribute('style').split('left: ')[1].split('px')[0])-1}px;`)
         }, 50)
     </script>
 </Layout>

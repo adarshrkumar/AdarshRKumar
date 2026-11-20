@@ -4,22 +4,16 @@ import sanitizeMD from '../lib/sanitize-md'
 
 import SiteGridContent from '../components/SiteGridContent.astro'
 
-// Configuration
 const featuredPostSlugs = ['a-drive-for-mac-issue', 'hello-world', 'nodebooks']
-
-// Get featured posts with all processing done
-const featuredPosts = await getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)
 
 ---
 <SiteGridContent classItems="posts" options={{ 'max-width': '1200px' }}>
     {
-        featuredPosts.map(async post => {
-            // Process text content for preview
+        (await getFeaturedPostsForDisplay(featuredPostSlugs, Astro.site)).map(async post => {
             const rawTextContent = sanitizeMD(post.rawContent())
             const cleanedTextContent = cleanTextContent(rawTextContent)
             const previewContent = createPreviewContent(cleanedTextContent)
 
-            // Check if we have content to display
             const hasContent = !!(post.frontmatter.title || cleanedTextContent)
             const hasTitle = !!post.frontmatter.title
             const hasPreview = !!previewContent

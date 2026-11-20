@@ -26,7 +26,6 @@ if (type === 'honeypot') groupStyle += 'display:none;visibility:hidden'
 
 if (type === 'honeypot' || type === 'textarea') type = 'text'
 
-// Pre-render slot content for value inputs
 const slotContent = await Astro.slots.render('default')
 const hasSlotContent = slotContent && !valueInputs.includes(type ?? '')
 const shouldShowformGroup = ((hasSlotContent || (valueInputs.includes(type ?? '') && label)) && type !== 'hidden')

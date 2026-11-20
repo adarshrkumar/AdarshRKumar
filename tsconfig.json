@@ -1,19 +1,14 @@
 {
-    // Extend Astro's base TypeScript configuration
     "extends": "astro/tsconfigs/base",
     "moduleResolution": "nodenext",
     "compilerOptions": {
-        // Enable strict type checking
         "strict": true,
-        "strictNullChecks": true, // Add if using `base` template
-        "allowJs": true, // Required, and included with all Astro templates
-        // Module and target settings for top-level await support
+        "strictNullChecks": true,
+        "allowJs": true,
         "module": "ESNext",
         "target": "ESNext",
-        // JSX settings for Astro
         "jsx": "preserve",
         "jsxImportSource": "astro"
     },
-    // Exclude build directories and dependencies
     "exclude": ["node_modules", "dist"]
 }

@@ -8,12 +8,8 @@ export const photos = pgTable('photos', {
     category: varchar('category', { length: 100 }).notNull(),
     title: text('title').notNull(),
     uploader: varchar('uploader', { length: 100 }).notNull(),
-
-    // Image object with key and url
     imageKey: text('image_key').notNull(),
     imageUrl: text('image_url').notNull(),
-
-    // Timestamps
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
@@ -25,9 +21,7 @@ export const posts = pgTable('posts', {
     content: text('content').notNull(),
     videoId: varchar('video_id', { length: 100 }),
     author: varchar('author', { length: 100 }).notNull(),
-    categories: text('categories').notNull(), // Comma-separated categories
-
-    // Timestamps
+    categories: text('categories').notNull(),
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

@@ -1,12 +1,9 @@
-// Photo fetching utilities for database-backed photo gallery
-
 import { eq, desc } from 'drizzle-orm';
 import db from '../db';
 import { photos, type Photo } from '../db/schema';
 
 // Helper functions
 
-// Get all photos from database, sorted by creation date (newest first)
 export async function getAllPhotos(): Promise<Photo[]> {
     try {
         const allPhotos = await db
@@ -20,7 +17,6 @@ export async function getAllPhotos(): Promise<Photo[]> {
     }
 }
 
-// Get photos by category
 export async function getPhotosByCategory(category: string): Promise<Photo[]> {
     try {
         const categoryPhotos = await db
@@ -35,7 +31,6 @@ export async function getPhotosByCategory(category: string): Promise<Photo[]> {
     }
 }
 
-// Get a single photo by name
 export async function getPhotoByName(name: string): Promise<Photo | null> {
     try {
         const result = await db
@@ -50,7 +45,6 @@ export async function getPhotoByName(name: string): Promise<Photo | null> {
     }
 }
 
-// Get all unique categories from photos
 export async function getPhotoCategories(): Promise<string[]> {
     try {
         const allPhotos = await db.select().from(photos);
@@ -62,7 +56,6 @@ export async function getPhotoCategories(): Promise<string[]> {
     }
 }
 
-// Format photo for display (helper to match existing PhotoItem interface)
 export function formatPhotoForDisplay(photo: Photo) {
     return {
         src: photo.imageUrl,

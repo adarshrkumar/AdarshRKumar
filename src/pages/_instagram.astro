@@ -25,7 +25,6 @@ function formatCount(count: number): string {
     return count.toString()
 }
 
-// Data fetching
 const { profile, posts, reels, stories, error } = await getInstagramData()
 const hasContent = profile || posts.length > 0 || reels.length > 0
 const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
@@ -159,9 +158,7 @@ const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
         )}
     </div>
 </Layout>
-
 <script>
-    // Handle lazy loading state for images
     document.addEventListener('astro:page-load', () => {
         const images = document.querySelectorAll<HTMLImageElement>('.instagram__post-img, .instagram__reel-img');
 

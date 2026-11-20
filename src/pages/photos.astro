@@ -31,36 +31,29 @@ interface PhotoItem {
     data?: PhotoMetadata;
 }
 
-// Fetch photos from database instead of filesystem
-const dbPhotos = await getAllPhotos()
-
-// Format photos to match the existing PhotoItem structure
-const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
-    src: photo.imageUrl,
-    alt: photo.title || photo.name,
-    fullname: photo.fullname,
-    import: { src: photo.imageUrl },
-    data: {
-        title: photo.title,
-        fullname: photo.fullname,
-        name: photo.name,
-        category: photo.category,
-        uploader: photo.uploader,
-    }
-}))
-
 ---
 
 <Layout title="Photos">
     <SiteGridContent classItems="photos" options={{min: '18rem'}}>
         {
-            photosWithMetadata.map(async (photo, index) => {
-                // Skip photos without source
+            (await getAllPhotos()).map(async (p, i) => {
+                const photo: PhotoItem = {
+                    src: p.imageUrl,
+                    alt: p.title || p.name,
+                    fullname: p.fullname,
+                    import: { src: p.imageUrl },
+                    data: {
+                        title: p.title,
+                        fullname: p.fullname,
+                        name: p.name,
+                        category: p.category,
+                        uploader: p.uploader,
+                    }
+                }
                 if (!photo.src) return ''
 
                 const photoData = photo.data
 
-                // Generate Astro's native resized image URL
                 const optimizedImage = await getImage({
                     src: photo.import?.src || photo.src || '',
                     width: 400,
@@ -69,13 +62,12 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
                     quality: 85
                 })
 
-                // Check if we have metadata to display
                 const hasMetadata = !!(photoData?.title || photoData?.info)
                 const hasTitle = !!photoData?.title
                 const hasLocation = !!photoData?.location
 
                 return (
-                    <AnimatedCard index={index} class="item photos__item">
+                    <AnimatedCard index={i} class="item photos__item">
                         <label style="display: contents;">
                             <input type="checkbox" class="photos__checkbox" />
                             <img class="photos__img loading" src={photo.src || ''} alt={photo.alt || photoData?.title || `Photo: ${photo.fullname}`} loading="lazy" decoding="async" style={`--placeholder: url('${optimizedImage.src}');`} />
@@ -96,26 +88,21 @@ const photosWithMetadata: PhotoItem[] = dbPhotos.map(photo => ({
         }
     </SiteGridContent>
 </Layout>
-
 <script>
-    // Handle lazy loading state for images
     document.addEventListener('astro:page-load', () => {
         const images = document.querySelectorAll<HTMLImageElement>('.photos__img');
 
         images.forEach(img => {
-            // Check if image is already loaded (cached)
             if (img.complete && img.naturalHeight !== 0) {
                 img.classList.remove('loading');
                 img.classList.add('loaded');
             }
             else {
-                // Add load event listener
                 img.addEventListener('load', () => {
                     img.classList.remove('loading');
                     img.classList.add('loaded');
                 });
 
-                // Handle error case
                 img.addEventListener('error', () => {
                     img.classList.remove('loading');
                     console.warn('Image failed to load:', img.src);

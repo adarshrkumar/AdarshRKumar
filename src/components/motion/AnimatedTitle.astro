@@ -12,7 +12,6 @@ const { class: className = '', as: Tag = 'h2' } = Astro.props
 <Tag class:list={['animated-title', className]} data-animate="title">
     <slot />
 </Tag>
-
 <script>
     function initAnimatedTitles() {
         const titles = document.querySelectorAll('[data-animate="title"]')
@@ -35,9 +34,7 @@ const { class: className = '', as: Tag = 'h2' } = Astro.props
         titles.forEach(title => observer.observe(title))
     }
 
-    // Run on initial load
     initAnimatedTitles()
 
-    // Re-run on Astro page transitions
     document.addEventListener('astro:page-load', initAnimatedTitles)
 </script>
