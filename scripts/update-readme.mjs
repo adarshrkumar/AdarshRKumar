@@ -13,7 +13,7 @@ export default async function updateReadme() {
         await fs.writeFile(
             readmePath,
             (await fs.readFile(templatePath, 'utf-8'))
-                .replace('{skills}', `\`\`\`json\n${JSON.stringify(await fs.readJson(skillsPath), null, 4)}\n\`\`\``),
+                .replace('{skills}', `\`\`\`json\n${JSON.stringify(await fs.readJson(skillsPath), (_key, value) => Array.isArray(value) ? value.toSorted((a, b) => Math.max(...[b].flat().map(skill => skill.proficiency)) - Math.max(...[a].flat().map(skill => skill.proficiency))) : value, 4)}\n\`\`\``),
             'utf-8'
         );
     } catch (error) {

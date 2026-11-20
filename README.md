@@ -20,12 +20,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 {
     "Design Softwares": [
         {
-            "name": "Figma",
-            "proficiency": 80,
-            "icon_url": "https://skillicons.dev/icons?i=figma",
-            "skill_url": "https://figma.com"
-        },
-        {
             "name": "Canva",
             "proficiency": 100,
             "icon_url": "https://adarshrkumar.dev/assets/readme/Canva.png",
@@ -36,9 +30,53 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
             "proficiency": 100,
             "icon_url": "https://adarshrkumar.dev/assets/readme/OnShape.png",
             "skill_url": "https://onshape.com"
+        },
+        {
+            "name": "Figma",
+            "proficiency": 80,
+            "icon_url": "https://skillicons.dev/icons?i=figma",
+            "skill_url": "https://figma.com"
         }
     ],
     "Other Tools": [
+        {
+            "name": "VS Code",
+            "proficiency": 100,
+            "icon_url": "https://skillicons.dev/icons?i=vscode",
+            "skill_url": "https://code.visualstudio.com"
+        },
+        {
+            "name": "Cursor",
+            "proficiency": 99,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.png",
+            "skill_url": "https://cursor.com"
+        },
+        [
+            {
+                "name": "GitHub",
+                "proficiency": 95,
+                "icon_url": "https://skillicons.dev/icons?i=github",
+                "skill_url": "https://github.com"
+            },
+            {
+                "name": "Git",
+                "proficiency": 75,
+                "icon_url": "https://skillicons.dev/icons?i=git",
+                "skill_url": "https://git-scm.com"
+            }
+        ],
+        {
+            "name": "Claude Code",
+            "proficiency": 80,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.png",
+            "skill_url": "https://claude.ai"
+        },
+        {
+            "name": "Antigravity",
+            "proficiency": 60,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.png",
+            "skill_url": "https://antigravity.google"
+        },
         {
             "name": "Firebase",
             "proficiency": 50,
@@ -52,26 +90,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
             "skill_url": "https://cloud.google.com"
         },
         {
-            "name": "Vercel",
-            "proficiency": 25,
-            "icon_url": "https://skillicons.dev/icons?i=vercel",
-            "skill_url": "https://vercel.com"
-        },
-        [
-            {
-                "name": "Git",
-                "proficiency": 75,
-                "icon_url": "https://skillicons.dev/icons?i=git",
-                "skill_url": "https://git-scm.com"
-            },
-            {
-                "name": "GitHub",
-                "proficiency": 95,
-                "icon_url": "https://skillicons.dev/icons?i=github",
-                "skill_url": "https://github.com"
-            }
-        ],
-        {
             "name": "GitHub Actions",
             "proficiency": 45,
             "icon_url": "https://skillicons.dev/icons?i=githubactions",
@@ -84,28 +102,10 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
             "skill_url": "https://visualstudio.com"
         },
         {
-            "name": "VS Code",
-            "proficiency": 100,
-            "icon_url": "https://skillicons.dev/icons?i=vscode",
-            "skill_url": "https://code.visualstudio.com"
-        },
-        {
-            "name": "Cursor",
-            "proficiency": 99,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.png",
-            "skill_url": "https://cursor.com"
-        },
-        {
-            "name": "Claude Code",
-            "proficiency": 80,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.png",
-            "skill_url": "https://claude.ai"
-        },
-        {
-            "name": "Antigravity",
-            "proficiency": 60,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.png",
-            "skill_url": "https://antigravity.google"
+            "name": "Vercel",
+            "proficiency": 25,
+            "icon_url": "https://skillicons.dev/icons?i=vercel",
+            "skill_url": "https://vercel.com"
         }
     ],
     "Web Development - Front-End": [
@@ -149,12 +149,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         }
     ],
     "Web Development - Back End": [
-        {
-            "name": "PHP",
-            "proficiency": 75,
-            "icon_url": "https://skillicons.dev/icons?i=php",
-            "skill_url": "https://php.net"
-        },
         [
             {
                 "name": "Node.js",
@@ -175,6 +169,24 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
             "icon_url": "https://skillicons.dev/icons?i=express",
             "skill_url": "https://expressjs.com"
         },
+        {
+            "name": "Astro",
+            "proficiency": 90,
+            "icon_url": "https://skillicons.dev/icons?i=astro",
+            "skill_url": "https://astro.build"
+        },
+        {
+            "name": "PHP",
+            "proficiency": 75,
+            "icon_url": "https://skillicons.dev/icons?i=php",
+            "skill_url": "https://php.net"
+        },
+        {
+            "name": "Discord.js",
+            "proficiency": 50,
+            "icon_url": "https://skillicons.dev/icons?i=discordjs",
+            "skill_url": "https://discord.js.org"
+        },
         [
             {
                 "name": "React",
@@ -188,46 +200,26 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
                 "icon_url": "https://skillicons.dev/icons?i=nextjs",
                 "skill_url": "https://nextjs.org"
             }
-        ],
-        {
-            "name": "Astro",
-            "proficiency": 90,
-            "icon_url": "https://skillicons.dev/icons?i=astro",
-            "skill_url": "https://astro.build"
-        },
-        {
-            "name": "Discord.js",
-            "proficiency": 50,
-            "icon_url": "https://skillicons.dev/icons?i=discordjs",
-            "skill_url": "https://discord.js.org"
-        }
+        ]
     ],
     "Other Languages": [
         {
-            "name": "Bash",
-            "proficiency": 60,
-            "icon_url": "https://skillicons.dev/icons?i=bash",
-            "skill_url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
+            "name": "Markdown",
+            "proficiency": 100,
+            "icon_url": "https://skillicons.dev/icons?i=md",
+            "skill_url": "https://www.markdownguide.org"
         },
-        [
-            {
-                "name": "Batch",
-                "proficiency": 40,
-                "icon_url": "https://skillicons.dev/icons?i=batch",
-                "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
-            },
-            {
-                "name": "PowerShell",
-                "proficiency": 30,
-                "icon_url": "https://skillicons.dev/icons?i=powershell",
-                "skill_url": "https://en.wikipedia.org/wiki/PowerShell"
-            }
-        ],
         {
             "name": "Python",
             "proficiency": 70,
             "icon_url": "https://skillicons.dev/icons?i=py",
             "skill_url": "https://python.org"
+        },
+        {
+            "name": "RegEx",
+            "proficiency": 70,
+            "icon_url": "https://skillicons.dev/icons?i=regex",
+            "skill_url": "https://en.wikipedia.org/wiki/Regular_expression"
         },
         [
             {
@@ -244,28 +236,36 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
             }
         ],
         {
+            "name": "Bash",
+            "proficiency": 60,
+            "icon_url": "https://skillicons.dev/icons?i=bash",
+            "skill_url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
+        },
+        {
             "name": "C",
             "proficiency": 50,
             "icon_url": "https://skillicons.dev/icons?i=c",
             "skill_url": "https://en.wikipedia.org/wiki/CI/CD"
         },
+        [
+            {
+                "name": "Batch",
+                "proficiency": 40,
+                "icon_url": "https://skillicons.dev/icons?i=batch",
+                "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
+            },
+            {
+                "name": "PowerShell",
+                "proficiency": 30,
+                "icon_url": "https://skillicons.dev/icons?i=powershell",
+                "skill_url": "https://en.wikipedia.org/wiki/PowerShell"
+            }
+        ],
         {
             "name": "C++",
             "proficiency": 30,
             "icon_url": "https://skillicons.dev/icons?i=cpp",
             "skill_url": "https://cplusplus.com"
-        },
-        {
-            "name": "Markdown",
-            "proficiency": 100,
-            "icon_url": "https://skillicons.dev/icons?i=md",
-            "skill_url": "https://www.markdownguide.org"
-        },
-        {
-            "name": "RegEx",
-            "proficiency": 70,
-            "icon_url": "https://skillicons.dev/icons?i=regex",
-            "skill_url": "https://en.wikipedia.org/wiki/Regular_expression"
         }
     ]
 }
