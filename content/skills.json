@@ -224,18 +224,20 @@
                 "skill_url": "https://djangoproject.com"
             }
         ],
-        {
-            "name": "C",
-            "proficiency": 50,
-            "icon_url": "https://skillicons.dev/icons?i=c",
-            "skill_url": "https://en.wikipedia.org/wiki/CI/CD"
-        },
-        {
-            "name": "C++",
-            "proficiency": 30,
-            "icon_url": "https://skillicons.dev/icons?i=cpp",
-            "skill_url": "https://cplusplus.com"
-        },
+        [
+            {
+                "name": "C",
+                "proficiency": 50,
+                "icon_url": "https://skillicons.dev/icons?i=c",
+                "skill_url": "https://en.wikipedia.org/wiki/CI/CD"
+            },
+            {
+                "name": "C++",
+                "proficiency": 30,
+                "icon_url": "https://skillicons.dev/icons?i=cpp",
+                "skill_url": "https://cplusplus.com"
+            }
+        ],
         {
             "name": "Markdown",
             "proficiency": 100,
