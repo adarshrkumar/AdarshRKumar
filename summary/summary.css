@@ -1,6 +1,7 @@
 :root {
     color-scheme: light dark;
-    --bg: #ffffff;
+
+    --bg: #fff;
     --text: #1f2328;
     --text-muted: #656d76;
     --accent: #0969da;
@@ -20,32 +21,32 @@
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
+    margin: 0 auto;
     padding: 2rem;
     max-width: 600px;
-    margin: 0 auto;
+    color: var(--text);
+    background: var(--bg);
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
 }
 
 h1 {
-    font-size: 2rem;
     margin-bottom: 0.5rem;
+    font-size: 2rem;
 }
 
 h2 {
-    font-size: 1rem;
-    color: var(--accent);
     margin-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
     padding-bottom: 0.25rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
 }
 
 section {
@@ -70,8 +71,8 @@ a:hover {
 }
 
 .tagline {
-    color: var(--text-muted);
     margin-bottom: 1.5rem;
+    color: var(--text-muted);
 }
 
 .skills {
@@ -81,8 +82,8 @@ a:hover {
 }
 
 .skill {
-    background: var(--skill-bg);
     padding: 0.25rem 0.75rem;
+    background: var(--skill-bg);
     border-radius: 1rem;
     font-size: 0.875rem;
 }

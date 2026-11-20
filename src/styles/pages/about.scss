@@ -57,7 +57,7 @@ $padding: #{$content-spacing * 2};
             text-decoration: none;
             transition: border-color $transition-base $transition-timing;
 
-            &:hover {
+            &:hover, &:focus-visible {
                 border-color: var(--link-color);
             }
         }

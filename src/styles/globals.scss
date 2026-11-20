@@ -255,7 +255,10 @@ h6 {
 
 .heading-link {
     color: inherit;
-    text-decoration: none;
+
+    &:not(:hover, :focus-visible) {
+        text-decoration: none;
+    }
 
     &:hover {
         color: $accent-color;
