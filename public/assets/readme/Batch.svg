@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="960" viewBox="5 5 920 920">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="960" viewBox="15 15 900 900">
     <defs>
         <linearGradient id="frame" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#e6e9ec"/>
@@ -11,7 +11,7 @@
             <stop offset="1" stop-color="#000000" stop-opacity="0"/>
         </radialGradient>
     </defs>
-    <rect x="15" y="95" width="900" height="740" rx="60" fill="url(#frame)" stroke="#8d949b" stroke-width="10"/>
+    <rect x="15" y="95" width="900" height="740" rx="60" fill="url(#frame)"/>
     <circle cx="680" cy="132" r="10" fill="#3f74b5"/>
     <circle cx="765" cy="132" r="10" fill="#3f74b5"/>
     <circle cx="845" cy="132" r="10" fill="#3f74b5"/>
