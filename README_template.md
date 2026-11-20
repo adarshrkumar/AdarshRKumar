@@ -24,14 +24,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 
 ## Social Media
 
-- [Discord](https://discord.com/users/adarshrkumar)
-- [Gmail](mailto:adarshrkumar@aol.com)
-- [Instagram](https://instagram.com/adarsh.r.kumar)
-- [LinkedIn](https://linkedin.com/in/adarshrkumar)
-- [StackOverflow](https://stackoverflow.com/adarshrkumar)
-- [TikTok](https://tiktok.com/@adarsh.r.kumar)
-- [X](https://x.com/adarshrkumar)
-- [YouTube](https://youtube.com/@adarshrtech)
+{socials}
 
 🌱 I’m currently working with HTML, CSS, JS, [Python](https://python.org), C, and [Astro](https://astro.build)!  
 💞️ I’m looking to collaborate on ...  

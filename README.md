@@ -19,254 +19,46 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 ```json
 {
     "Design Softwares": [
-        {
-            "name": "Canva",
-            "proficiency": 100,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Canva.svg",
-            "skill_url": "https://canva.com"
-        },
-        {
-            "name": "OnShape",
-            "proficiency": 100,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/OnShape.svg",
-            "skill_url": "https://onshape.com"
-        },
-        {
-            "name": "Figma",
-            "proficiency": 80,
-            "icon_url": "https://skillicons.dev/icons?i=figma",
-            "skill_url": "https://figma.com"
-        }
+        "<a href='https://canva.com'>Canva</a>",
+        "<a href='https://onshape.com'>OnShape</a>",
+        "<a href='https://figma.com'>Figma</a>"
     ],
     "Other Tools": [
-        {
-            "name": "VS Code",
-            "proficiency": 100,
-            "icon_url": "https://skillicons.dev/icons?i=vscode",
-            "skill_url": "https://code.visualstudio.com"
-        },
-        {
-            "name": "Cursor",
-            "proficiency": 99,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.svg",
-            "skill_url": "https://cursor.com"
-        },
-        [
-            {
-                "name": "GitHub",
-                "proficiency": 95,
-                "icon_url": "https://skillicons.dev/icons?i=github",
-                "skill_url": "https://github.com"
-            },
-            {
-                "name": "Git",
-                "proficiency": 75,
-                "icon_url": "https://skillicons.dev/icons?i=git",
-                "skill_url": "https://git-scm.com"
-            }
-        ],
-        {
-            "name": "Claude Code",
-            "proficiency": 80,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.svg",
-            "skill_url": "https://claude.ai"
-        },
-        {
-            "name": "Antigravity",
-            "proficiency": 60,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.svg",
-            "skill_url": "https://antigravity.google"
-        },
-        {
-            "name": "Firebase",
-            "proficiency": 50,
-            "icon_url": "https://skillicons.dev/icons?i=firebase",
-            "skill_url": "https://firebase.com"
-        },
-        {
-            "name": "Google Cloud",
-            "proficiency": 50,
-            "icon_url": "https://skillicons.dev/icons?i=gcp",
-            "skill_url": "https://cloud.google.com"
-        },
-        {
-            "name": "GitHub Actions",
-            "proficiency": 45,
-            "icon_url": "https://skillicons.dev/icons?i=githubactions",
-            "skill_url": "https://github.com/actions"
-        },
-        {
-            "name": "Visual Studio",
-            "proficiency": 45,
-            "icon_url": "https://skillicons.dev/icons?i=visualstudio",
-            "skill_url": "https://visualstudio.com"
-        },
-        {
-            "name": "Vercel",
-            "proficiency": 25,
-            "icon_url": "https://skillicons.dev/icons?i=vercel",
-            "skill_url": "https://vercel.com"
-        }
+        "<a href='https://code.visualstudio.com'>VS Code</a>",
+        "<a href='https://cursor.com'>Cursor</a>",
+        "<a href='https://git-scm.com'>Git</a>, <a href='https://github.com'>GitHub</a>",
+        "<a href='https://claude.ai'>Claude Code</a>",
+        "<a href='https://antigravity.google'>Antigravity</a>",
+        "<a href='https://firebase.com'>Firebase</a>",
+        "<a href='https://cloud.google.com'>Google Cloud</a>",
+        "<a href='https://github.com/actions'>GitHub Actions</a>",
+        "<a href='https://visualstudio.com'>Visual Studio</a>",
+        "<a href='https://vercel.com'>Vercel</a>"
     ],
     "Web Development - Front-End": [
-        {
-            "name": "HTML",
-            "proficiency": 99,
-            "icon_url": "https://skillicons.dev/icons?i=html",
-            "skill_url": "https://en.wikipedia.org/wiki/HTML"
-        },
-        [
-            {
-                "name": "CSS",
-                "proficiency": 95,
-                "icon_url": "https://skillicons.dev/icons?i=css",
-                "skill_url": "https://en.wikipedia.org/wiki/CSS"
-            },
-            {
-                "name": "SCSS",
-                "proficiency": 80,
-                "icon_url": "https://skillicons.dev/icons?i=scss",
-                "skill_url": "https://sass-lang.com"
-            }
-        ],
-        {
-            "name": "JavaScript",
-            "proficiency": 90,
-            "icon_url": "https://skillicons.dev/icons?i=js",
-            "skill_url": "https://en.wikipedia.org/wiki/JavaScript"
-        },
-        {
-            "name": "TypeScript",
-            "proficiency": 80,
-            "icon_url": "https://skillicons.dev/icons?i=ts",
-            "skill_url": "https://www.typescriptlang.org"
-        },
-        {
-            "name": "SVG",
-            "proficiency": 75,
-            "icon_url": "https://skillicons.dev/icons?i=svg",
-            "skill_url": "https://en.wikipedia.org/wiki/SVG"
-        }
+        "<a href='https://en.wikipedia.org/wiki/HTML'>HTML</a>",
+        "<a href='https://en.wikipedia.org/wiki/CSS'>CSS</a>, <a href='https://sass-lang.com'>SCSS</a>",
+        "<a href='https://en.wikipedia.org/wiki/JavaScript'>JavaScript</a>",
+        "<a href='https://www.typescriptlang.org'>TypeScript</a>",
+        "<a href='https://en.wikipedia.org/wiki/SVG'>SVG</a>"
     ],
     "Web Development - Back End": [
-        [
-            {
-                "name": "Node.js",
-                "proficiency": 90,
-                "icon_url": "https://skillicons.dev/icons?i=nodejs",
-                "skill_url": "https://nodejs.org"
-            },
-            {
-                "name": "npm",
-                "proficiency": 90,
-                "icon_url": "https://skillicons.dev/icons?i=npm",
-                "skill_url": "https://npmjs.com"
-            }
-        ],
-        {
-            "name": "Express.js",
-            "proficiency": 90,
-            "icon_url": "https://skillicons.dev/icons?i=express",
-            "skill_url": "https://expressjs.com"
-        },
-        {
-            "name": "Astro",
-            "proficiency": 90,
-            "icon_url": "https://skillicons.dev/icons?i=astro",
-            "skill_url": "https://astro.build"
-        },
-        {
-            "name": "PHP",
-            "proficiency": 75,
-            "icon_url": "https://skillicons.dev/icons?i=php",
-            "skill_url": "https://php.net"
-        },
-        {
-            "name": "Discord.js",
-            "proficiency": 50,
-            "icon_url": "https://skillicons.dev/icons?i=discordjs",
-            "skill_url": "https://discord.js.org"
-        },
-        [
-            {
-                "name": "React",
-                "proficiency": 40,
-                "icon_url": "https://skillicons.dev/icons?i=react",
-                "skill_url": "https://react.dev"
-            },
-            {
-                "name": "Next.js",
-                "proficiency": 40,
-                "icon_url": "https://skillicons.dev/icons?i=nextjs",
-                "skill_url": "https://nextjs.org"
-            }
-        ]
+        "<a href='https://nodejs.org'>Node.js</a>, <a href='https://npmjs.com'>npm</a>",
+        "<a href='https://expressjs.com'>Express.js</a>",
+        "<a href='https://astro.build'>Astro</a>",
+        "<a href='https://php.net'>PHP</a>",
+        "<a href='https://discord.js.org'>Discord.js</a>",
+        "<a href='https://react.dev'>React</a>, <a href='https://nextjs.org'>Next.js</a>"
     ],
     "Other Languages": [
-        {
-            "name": "Markdown",
-            "proficiency": 100,
-            "icon_url": "https://skillicons.dev/icons?i=md",
-            "skill_url": "https://www.markdownguide.org"
-        },
-        {
-            "name": "Python",
-            "proficiency": 70,
-            "icon_url": "https://skillicons.dev/icons?i=py",
-            "skill_url": "https://python.org"
-        },
-        {
-            "name": "RegEx",
-            "proficiency": 70,
-            "icon_url": "https://skillicons.dev/icons?i=regex",
-            "skill_url": "https://en.wikipedia.org/wiki/Regular_expression"
-        },
-        [
-            {
-                "name": "Flask",
-                "proficiency": 65,
-                "icon_url": "https://skillicons.dev/icons?i=flask",
-                "skill_url": "https://palletsprojects.com/p/flask/"
-            },
-            {
-                "name": "Django",
-                "proficiency": 65,
-                "icon_url": "https://skillicons.dev/icons?i=django",
-                "skill_url": "https://djangoproject.com"
-            }
-        ],
-        {
-            "name": "Bash",
-            "proficiency": 60,
-            "icon_url": "https://skillicons.dev/icons?i=bash",
-            "skill_url": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
-        },
-        {
-            "name": "C",
-            "proficiency": 50,
-            "icon_url": "https://skillicons.dev/icons?i=c",
-            "skill_url": "https://en.wikipedia.org/wiki/CI/CD"
-        },
-        [
-            {
-                "name": "Batch",
-                "proficiency": 40,
-                "icon_url": "https://adarshrkumar.dev/assets/readme/Batch.svg",
-                "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
-            },
-            {
-                "name": "PowerShell",
-                "proficiency": 30,
-                "icon_url": "https://skillicons.dev/icons?i=powershell",
-                "skill_url": "https://en.wikipedia.org/wiki/PowerShell"
-            }
-        ],
-        {
-            "name": "C++",
-            "proficiency": 30,
-            "icon_url": "https://skillicons.dev/icons?i=cpp",
-            "skill_url": "https://cplusplus.com"
-        }
+        "<a href='https://www.markdownguide.org'>Markdown</a>",
+        "<a href='https://python.org'>Python</a>",
+        "<a href='https://en.wikipedia.org/wiki/Regular_expression'>RegEx</a>",
+        "<a href='https://palletsprojects.com/p/flask/'>Flask</a>, <a href='https://djangoproject.com'>Django</a>",
+        "<a href='https://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a>",
+        "<a href='https://en.wikipedia.org/wiki/CI/CD'>C</a>",
+        "<a href='https://en.wikipedia.org/wiki/Batch_file'>Batch</a>, <a href='https://en.wikipedia.org/wiki/PowerShell'>PowerShell</a>",
+        "<a href='https://cplusplus.com'>C++</a>"
     ]
 }
 ```
@@ -277,14 +69,20 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 
 ## Social Media
 
-- [Discord](https://discord.com/users/adarshrkumar)
-- [Gmail](mailto:adarshrkumar@aol.com)
-- [Instagram](https://instagram.com/adarsh.r.kumar)
-- [LinkedIn](https://linkedin.com/in/adarshrkumar)
-- [StackOverflow](https://stackoverflow.com/adarshrkumar)
-- [TikTok](https://tiktok.com/@adarsh.r.kumar)
-- [X](https://x.com/adarshrkumar)
-- [YouTube](https://youtube.com/@adarshrtech)
+```json
+{
+    "Social Media": [
+        "<a href='https://discord.com/users/adarshrkumar'>Discord</a>",
+        "<a href='mailto:adarshrkumar@aol.com'>Gmail</a>",
+        "<a href='https://instagram.com/adarsh.r.kumar'>Instagram</a>",
+        "<a href='https://linkedin.com/in/adarshrkumar'>LinkedIn</a>",
+        "<a href='https://stackoverflow.com/adarshrkumar'>StackOverflow</a>",
+        "<a href='https://tiktok.com/@adarsh.r.kumar'>TikTok</a>",
+        "<a href='https://x.com/adarshrkumar'>X</a>",
+        "<a href='https://youtube.com/@adarshrtech'>YouTube</a>"
+    ]
+}
+```
 
 🌱 I’m currently working with HTML, CSS, JS, [Python](https://python.org), C, and [Astro](https://astro.build)!  
 💞️ I’m looking to collaborate on ...  
