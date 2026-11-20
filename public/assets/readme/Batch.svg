@@ -11,10 +11,10 @@
             <stop offset="1" stop-color="#000000" stop-opacity="0"/>
         </radialGradient>
     </defs>
-    <rect x="15" y="95" width="900" height="740" rx="60" fill="url(#frame)"/>
-    <circle cx="680" cy="132" r="10" fill="#3f74b5"/>
-    <circle cx="765" cy="132" r="10" fill="#3f74b5"/>
-    <circle cx="845" cy="132" r="10" fill="#3f74b5"/>
+    <rect x="15" y="95" width="900" height="740" rx="173" fill="url(#frame)"/>
+    <circle cx="630" cy="132" r="10" fill="#3f74b5"/>
+    <circle cx="695" cy="132" r="10" fill="#3f74b5"/>
+    <circle cx="760" cy="132" r="10" fill="#3f74b5"/>
     <rect x="60" y="180" width="800" height="600" rx="22" fill="#000000" stroke="#4f555a" stroke-width="6"/>
     <rect x="60" y="180" width="800" height="600" rx="22" fill="url(#glare)"/>
     <g fill="none" stroke="#f4f4f4" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
