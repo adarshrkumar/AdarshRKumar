@@ -1,0 +1,34 @@
+@use '../variables/globals.scss' as *;
+
+.code-block {
+    padding: $content-spacing;
+    border-radius: $border-radius-section;
+    white-space: unset;
+
+    .code-line {
+        display: flex;
+        gap: $content-spacing;
+
+        .line-number {
+            min-width: calc(var(--last-line-number-length) * 1ch);
+            text-align: right;
+        }
+
+        .line {
+            white-space: pre-wrap;
+
+            a {
+                color: inherit;
+
+                &:not(:hover, :focus-visible) {
+                    text-decoration: none;
+                }
+            }
+
+            .code-icon {
+                height: 1em;
+                vertical-align: middle;
+            }
+        }
+    }
+}

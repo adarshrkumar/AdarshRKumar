@@ -1,0 +1,22 @@
+---
+import * as cheerio from 'cheerio';
+
+import '../styles/components/code.scss';
+
+const slotContent = await Astro.slots.render('default');
+
+const $ = cheerio.load(slotContent);
+const preStyles = $('pre').attr('style') || '';
+const lines = $('pre code').html()?.split('\n');
+const lastLineIndexLength = (lines!.length - 1 || 0).toString().length;
+---
+<pre class="code-block" style={preStyles}>
+    <code style={`--last-line-number-length: ${lastLineIndexLength}`}>
+        {lines?.map((l, i) => (
+            <div class="code-line" data-line-number={i + 1}>
+                <span class="line-number">{i + 1}</span>
+                <Fragment set:html={l} />
+            </div>
+        ))}
+    </code>
+</pre>
