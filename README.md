@@ -22,7 +22,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         {
             "name": "Canva",
             "proficiency": 100,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Canva.png",
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Canva.svg",
             "skill_url": "https://canva.com"
         },
         {
