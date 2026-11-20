@@ -38,8 +38,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
     "Web Development - Front-End": [
         "<a href='https://en.wikipedia.org/wiki/HTML'>HTML</a>",
         "<a href='https://en.wikipedia.org/wiki/CSS'>CSS</a>", "<a href='https://sass-lang.com'>SCSS</a>",
-        "<a href='https://en.wikipedia.org/wiki/JavaScript'>JavaScript</a>",
-        "<a href='https://www.typescriptlang.org'>TypeScript</a>",
+        "<a href='https://en.wikipedia.org/wiki/JavaScript'>JavaScript</a>", "<a href='https://www.typescriptlang.org'>TypeScript</a>",
         "<a href='https://en.wikipedia.org/wiki/SVG'>SVG</a>"
     ],
     "Web Development - Back End": [

@@ -110,18 +110,20 @@
                 "skill_url": "https://sass-lang.com"
             }
         ],
-        {
-            "name": "JavaScript",
-            "proficiency": 90,
-            "icon_url": "https://skillicons.dev/icons?i=js",
-            "skill_url": "https://en.wikipedia.org/wiki/JavaScript"
-        },
-        {
-            "name": "TypeScript",
-            "proficiency": 80,
-            "icon_url": "https://skillicons.dev/icons?i=ts",
-            "skill_url": "https://www.typescriptlang.org"
-        },
+        [
+            {
+                "name": "JavaScript",
+                "proficiency": 90,
+                "icon_url": "https://skillicons.dev/icons?i=js",
+                "skill_url": "https://en.wikipedia.org/wiki/JavaScript"
+            },
+            {
+                "name": "TypeScript",
+                "proficiency": 80,
+                "icon_url": "https://skillicons.dev/icons?i=ts",
+                "skill_url": "https://www.typescriptlang.org"
+            }
+        ],
         {
             "name": "SVG",
             "proficiency": 75,
