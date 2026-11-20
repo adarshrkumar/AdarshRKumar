@@ -45,7 +45,6 @@ const keywordsData = await import('../../content/siteKeywords.json')
 const keywordsArray = keywordsData.default.map(keyword => keyword.replaceAll('{ age }', age.toString()))
 const keywords = keywordsArray.join(', ')
 ---
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

@@ -8,7 +8,6 @@ import Layout from '../layouts/Layout.astro'
 const postsWithMetadata = await getPostsForDisplay(Astro.site)
 
 ---
-
 <Layout title="Blog">
     <SiteGridContent classItems="posts" options={{ min: '18rem' }}>
         {

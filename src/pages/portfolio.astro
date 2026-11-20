@@ -21,7 +21,6 @@ const portfolioItemsObj = import.meta.glob('../../content/work/portfolio/*.md', 
 const portfolioItems: PortfolioItem[] = filterVisibleContentItems(Object.values(portfolioItemsObj).filter((item): item is PortfolioItem => !!(item && typeof item === 'object' && 'file' in item && 'frontmatter' in item)))
 
 ---
-
 <Layout title="Portfolio">
     <SiteGridContent classItems="portfolio wrap" options={{ min: '18rem' }}>
         {

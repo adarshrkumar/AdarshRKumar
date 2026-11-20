@@ -12,7 +12,6 @@ const { index = 0, class: className = '', href, target } = Astro.props
 
 const delay = Math.min(index * 0.08, 0.4)
 ---
-
 {href ? (
     <a href={href} target={target} class="animated-card__link">
         <div class:list={['animated-card', className]} style={`animation-delay: ${delay}s;`} data-animate="card">

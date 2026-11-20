@@ -16,7 +16,6 @@ const { username } = Astro.params;
 const author: Author = authors[username as keyof typeof authors];
 
 ---
-
 <Layout title={author.displayName} pageType="author" classItems="ignorepadding">
     {(author.pfp && author.pfp.filename) && (
         <div class="author__pfp">

@@ -1,6 +1,4 @@
 <!-- markdownlint-disable MD041 -->
-
-<!-- About page content -->
 Hi, I'm Adarsh R. Kumar, a College Student at [SCU](https://scu.edu).  
 I am a web developer, programmer, 3D modeler, tech enthusiast, photographer, and history enthusiast.  
 I created this site to share my journey, showcase my projects, and other things alike.  

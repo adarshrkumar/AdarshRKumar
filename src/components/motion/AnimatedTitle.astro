@@ -8,7 +8,6 @@ export interface Props {
 
 const { class: className = '', as: Tag = 'h2' } = Astro.props
 ---
-
 <Tag class:list={['animated-title', className]} data-animate="title">
     <slot />
 </Tag>

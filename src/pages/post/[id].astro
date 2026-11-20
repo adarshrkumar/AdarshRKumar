@@ -1,5 +1,4 @@
 ---
-
 import authors from '../../lib/authors'
 import { findPostById } from '../../lib/get-posts'
 
@@ -14,7 +13,6 @@ const authorUsername = currentPost.frontmatter.author;
 const authorInfo = authors[authorUsername as keyof typeof authors];
 
 ---
-
 <Layout title={currentPost.frontmatter.title} pageType="post" author={authorInfo.displayName} classItems="ignorepadding">
     <section class="post__info">
         <a href={`/author/${authorUsername}`} class="author">{authorInfo.displayName}</a> | <span class="date">{currentPost.frontmatter.date}</span>

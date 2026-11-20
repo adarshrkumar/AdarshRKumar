@@ -29,7 +29,6 @@ const { profile, posts, reels, stories, error } = await getInstagramData()
 const hasContent = profile || posts.length > 0 || reels.length > 0
 const profileUrl = 'https://www.instagram.com/adarsh.r.kumar/'
 ---
-
 <Layout title="Instagram">
     <div class="instagram">
         {!hasContent ? (
