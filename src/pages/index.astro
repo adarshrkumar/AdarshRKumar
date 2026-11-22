@@ -1,32 +1,20 @@
 ---
-import * as cheerio from 'cheerio'
-
-import '../styles/pages/index.scss'
 import FeaturedArticles from '../components/FeaturedArticles.astro'
 import _Hero from '../components/Hero.astro'
 import PortfolioHighlights from '../components/PortfolioHighlights.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import Layout from '../layouts/Layout.astro'
+import renderReadme from '../lib/render-readme'
+import '../styles/pages/index.scss'
+import '../styles/components/code.scss'
 
-const readmeContent = await (await import('../../README_site.md')).compiledContent()
-
-const $ = cheerio.load(readmeContent);
-
-$('table').attr('cellspacing', '0')
-
-const imgs = $('img');
-imgs.each((_i, img) => {
-    const src = $(img).attr('src');
-    if (src && src.startsWith('./public/')) $(img).attr('src', src.replace('./public/', '/'))
-})
-
-const newReadmeContent = $.html()
+const readmeContent = await renderReadme()
 ---
 <Layout title="" pageType="home">
     <!-- <Hero /> -->
     <FadeIn direction="up" duration={0.6}>
-        <div class="readme" set:html={newReadmeContent} />
+        <div class="readme" set:html={readmeContent.map(({ html }) => html).join('')} />
     </FadeIn>
     <section class="section pHighlights">
         <FadeIn delay={0.1} direction="up">

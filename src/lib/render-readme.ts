@@ -4,7 +4,7 @@ import skills from '../../content/skills.json';
 import socials from '../../content/socials.json';
 
 export default async function renderReadme(): Promise<{ tag: string; html: string }[]> {
-    const $ = cheerio.load(await (await import('../../README.md')).compiledContent());
+    const $ = cheerio.load(await (await import('../../README_site.md')).compiledContent());
 
     $('table').attr('cellspacing', '0');
 
