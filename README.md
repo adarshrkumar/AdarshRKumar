@@ -44,7 +44,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 - **Web Development - Back End**
   - [Astro](https://astro.build)
   - [Node.js](https://nodejs.org)
-  - [npm](https://npmjs.com)
   - [Express.js](https://expressjs.com)
   - [PHP](https://php.net)
   - [Discord.js](https://discord.js.org)

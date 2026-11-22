@@ -153,20 +153,12 @@
             "icon_url": "https://skillicons.dev/icons?i=php",
             "skill_url": "https://php.net"
         },
-        [
-            {
-                "name": "Node.js",
-                "proficiency": 90,
-                "icon_url": "https://skillicons.dev/icons?i=nodejs",
-                "skill_url": "https://nodejs.org"
-            },
-            {
-                "name": "npm",
-                "proficiency": 90,
-                "icon_url": "https://skillicons.dev/icons?i=npm",
-                "skill_url": "https://npmjs.com"
-            }
-        ],
+        {
+            "name": "Node.js",
+            "proficiency": 90,
+            "icon_url": "https://skillicons.dev/icons?i=nodejs",
+            "skill_url": "https://nodejs.org"
+        },
         {
             "name": "Express.js",
             "proficiency": 90,
