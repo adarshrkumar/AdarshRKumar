@@ -27,7 +27,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
 export default async function updateReadme() {
     try {
         const templateContent = await fs.readFile(templatePath, 'utf-8');
-        const skills = await fs.readJson(skillsPath);
+        const skills = Object.fromEntries(Object.entries(await fs.readJson(skillsPath)).map(([category, items]) => [
+            category,
+            items.map(item => Array.isArray(item) ? item.filter(skill => skill.hidden !== true) : item)
+                .filter(item => Array.isArray(item) ? item.length : item.hidden !== true),
+        ]));
         const socials = await fs.readJson(socialsPath);
 
         const mainReadmeContent = templateContent
