@@ -27,8 +27,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
 export default async function updateReadme() {
     try {
         const mainReadmeContent = (await fs.readFile(templatePath, 'utf-8'))
-            .replace('{skills}', `\`\`\`json\n${toStrippedJson(await fs.readJson(skillsPath))}\n\`\`\``)
-            .replace('{socials}', `\`\`\`json\n${toStrippedJson(await fs.readJson(socialsPath))}\n\`\`\``);
+            .replace('{skills}', Object.entries(await fs.readJson(skillsPath)).map(([category, items]) => `- **${category}**\n${items.flatMap(item => [item].flat()).map(item => `  - [${item.name}](${item.skill_url})`).join('\n')}`).join('\n'))
+            .replace('{socials}', (await fs.readJson(socialsPath)).map(item => `- [${item.name}](${item.social_url})`).join('\n'));
 
         const siteReadmeContent = (await fs.readFile(templatePath, 'utf-8'))
             .replace('{skills}', `\`\`\`json\n${toStrippedJson(await fs.readJson(skillsPath))}\n\`\`\``)
