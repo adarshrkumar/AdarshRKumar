@@ -29,8 +29,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         "<a href='https://cursor.com'>Cursor</a>",
         "<a href='https://antigravity.google'>Codex</a>",
         "<a href='https://antigravity.google'>Antigravity</a>",
-        "<a href='https://antigravity.google'>Kiro</a>",
-        "<a href='https://visualstudio.com'>Visual Studio</a>"
+        "<a href='https://antigravity.google'>Kiro</a>"
     ],
     "Other Tools": [
         "<a href='https://git-scm.com'>Git</a>", "<a href='https://github.com'>GitHub</a>",
@@ -54,10 +53,9 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         "<a href='https://react.dev'>React</a>", "<a href='https://nextjs.org'>Next.js</a>"
     ],
     "Other Languages": [
-        "<a href='https://www.markdownguide.org'>Markdown</a>",
         "<a href='https://python.org'>Python</a>",
         "<a href='https://en.wikipedia.org/wiki/Regular_expression'>RegEx</a>",
-        "<a href='https://palletsprojects.com/p/flask/'>Flask</a>", "<a href='https://djangoproject.com'>Django</a>",
+        "<a href='https://palletsprojects.com/p/flask/'>Flask</a>",
         "<a href='https://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a>",
         "<a href='https://en.wikipedia.org/wiki/CI/CD'>C</a>", "<a href='https://cplusplus.com'>C++</a>",
         "<a href='https://en.wikipedia.org/wiki/Batch_file'>Batch</a>", "<a href='https://en.wikipedia.org/wiki/PowerShell'>PowerShell</a>"

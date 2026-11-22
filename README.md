@@ -27,7 +27,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
   - [Codex](https://antigravity.google)
   - [Antigravity](https://antigravity.google)
   - [Kiro](https://antigravity.google)
-  - [Visual Studio](https://visualstudio.com)
 - **Other Tools**
   - [Git](https://git-scm.com)
   - [GitHub](https://github.com)
@@ -52,11 +51,9 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
   - [React](https://react.dev)
   - [Next.js](https://nextjs.org)
 - **Other Languages**
-  - [Markdown](https://www.markdownguide.org)
   - [Python](https://python.org)
   - [RegEx](https://en.wikipedia.org/wiki/Regular_expression)
   - [Flask](https://palletsprojects.com/p/flask/)
-  - [Django](https://djangoproject.com)
   - [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
   - [C](https://en.wikipedia.org/wiki/CI/CD)
   - [C++](https://cplusplus.com)

@@ -21,6 +21,7 @@
     ],
     "IDEs / Agents": [
         {
+            "hidden": true,
             "name": "Visual Studio",
             "proficiency": 19,
             "icon_url": "https://skillicons.dev/icons?i=visualstudio",
@@ -234,6 +235,7 @@
                 "skill_url": "https://palletsprojects.com/p/flask/"
             },
             {
+                "hidden": true,
                 "name": "Django",
                 "proficiency": 65,
                 "icon_url": "https://skillicons.dev/icons?i=django",
@@ -255,6 +257,7 @@
             }
         ],
         {
+            "hidden": true,
             "name": "Markdown",
             "proficiency": 100,
             "icon_url": "https://skillicons.dev/icons?i=md",
