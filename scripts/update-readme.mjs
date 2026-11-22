@@ -5,7 +5,8 @@ import { fileURLToPath } from 'url';
 const skillsPath = path.join(process.cwd(), 'content', 'skills.json');
 const socialsPath = path.join(process.cwd(), 'content', 'socials.json');
 const templatePath = path.join(process.cwd(), 'README_template.md');
-const readmePath = path.join(process.cwd(), 'README.md');
+const mainReadmePath = path.join(process.cwd(), 'README.md');
+const siteReadmePath = path.join(process.cwd(), 'README_site.md');
 
 // Helper functions
 function toStrippedLines(items, indent) {
@@ -25,15 +26,15 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
 
 export default async function updateReadme() {
     try {
-        await fs.writeFile(
-            readmePath,
-            (await fs.readFile(templatePath, 'utf-8'))
-                .replace('{skills}', `\`\`\`json\n${toStrippedJson(await fs.readJson(skillsPath))}\n\`\`\``)
-                .replace('{socials}', `\`\`\`json\n${toStrippedJson(await fs.readJson(socialsPath))}\n\`\`\``),
-            'utf-8'
-        );
+        const readmeContent = (await fs.readFile(templatePath, 'utf-8'))
+            .replace('{skills}', `\`\`\`json\n${toStrippedJson(await fs.readJson(skillsPath))}\n\`\`\``)
+            .replace('{socials}', `\`\`\`json\n${toStrippedJson(await fs.readJson(socialsPath))}\n\`\`\``);
+
+        await fs.writeFile(mainReadmePath, readmeContent, 'utf-8');
+
+        await fs.writeFile(siteReadmePath, readmeContent, 'utf-8');
     } catch (error) {
-        console.error('❌ Error updating README.md:', error);
+        console.error('❌ Error updating README.md and README_site.md:', error);
         process.exit(1);
     }
 }

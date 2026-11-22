@@ -9,7 +9,7 @@ import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import Layout from '../layouts/Layout.astro'
 
-const readmeContent = await (await import('../../README.md')).compiledContent()
+const readmeContent = await (await import('../../README_site.md')).compiledContent()
 
 const $ = cheerio.load(readmeContent);
 
