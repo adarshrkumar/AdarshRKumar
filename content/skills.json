@@ -19,6 +19,50 @@
             "skill_url": "https://onshape.com"
         }
     ],
+    "IDEs / Agents": [
+        {
+            "name": "Visual Studio",
+            "proficiency": 19,
+            "icon_url": "https://skillicons.dev/icons?i=visualstudio",
+            "skill_url": "https://visualstudio.com"
+        },
+        {
+            "name": "VS Code",
+            "proficiency": 100,
+            "icon_url": "https://skillicons.dev/icons?i=vscode",
+            "skill_url": "https://code.visualstudio.com"
+        },
+        {
+            "name": "Claude Code",
+            "proficiency": 99,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.svg",
+            "skill_url": "https://claude.ai"
+        },
+        {
+            "name": "Cursor",
+            "proficiency": 80,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.svg",
+            "skill_url": "https://cursor.com"
+        },
+        {
+            "name": "Codex",
+            "proficiency": 60,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Codex.svg",
+            "skill_url": "https://antigravity.google"
+        },
+        {
+            "name": "Antigravity",
+            "proficiency": 40,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.svg",
+            "skill_url": "https://antigravity.google"
+        },
+        {
+            "name": "Kiro",
+            "proficiency": 20,
+            "icon_url": "https://adarshrkumar.dev/assets/readme/Kiro.svg",
+            "skill_url": "https://antigravity.google"
+        }
+    ],
     "Other Tools": [
         {
             "name": "Firebase",
@@ -57,36 +101,6 @@
             "proficiency": 45,
             "icon_url": "https://skillicons.dev/icons?i=githubactions",
             "skill_url": "https://github.com/actions"
-        },
-        {
-            "name": "Visual Studio",
-            "proficiency": 45,
-            "icon_url": "https://skillicons.dev/icons?i=visualstudio",
-            "skill_url": "https://visualstudio.com"
-        },
-        {
-            "name": "VS Code",
-            "proficiency": 100,
-            "icon_url": "https://skillicons.dev/icons?i=vscode",
-            "skill_url": "https://code.visualstudio.com"
-        },
-        {
-            "name": "Cursor",
-            "proficiency": 99,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Cursor.svg",
-            "skill_url": "https://cursor.com"
-        },
-        {
-            "name": "Claude Code",
-            "proficiency": 80,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/ClaudeCode.svg",
-            "skill_url": "https://claude.ai"
-        },
-        {
-            "name": "Antigravity",
-            "proficiency": 60,
-            "icon_url": "https://adarshrkumar.dev/assets/readme/Antigravity.svg",
-            "skill_url": "https://antigravity.google"
         }
     ],
     "Web Development - Front-End": [

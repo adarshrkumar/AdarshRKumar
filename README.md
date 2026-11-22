@@ -20,17 +20,20 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
   - [Canva](https://canva.com)
   - [OnShape](https://onshape.com)
   - [Figma](https://figma.com)
-- **Other Tools**
+- **IDEs / Agents**
   - [VS Code](https://code.visualstudio.com)
+  - [Claude Code](https://claude.ai)
   - [Cursor](https://cursor.com)
+  - [Codex](https://antigravity.google)
+  - [Antigravity](https://antigravity.google)
+  - [Kiro](https://antigravity.google)
+  - [Visual Studio](https://visualstudio.com)
+- **Other Tools**
   - [Git](https://git-scm.com)
   - [GitHub](https://github.com)
-  - [Claude Code](https://claude.ai)
-  - [Antigravity](https://antigravity.google)
   - [Firebase](https://firebase.com)
   - [Google Cloud](https://cloud.google.com)
   - [GitHub Actions](https://github.com/actions)
-  - [Visual Studio](https://visualstudio.com)
   - [Vercel](https://vercel.com)
 - **Web Development - Front-End**
   - [HTML](https://en.wikipedia.org/wiki/HTML)

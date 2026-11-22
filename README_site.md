@@ -23,16 +23,20 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         "<a href='https://onshape.com'>OnShape</a>",
         "<a href='https://figma.com'>Figma</a>"
     ],
-    "Other Tools": [
+    "IDEs / Agents": [
         "<a href='https://code.visualstudio.com'>VS Code</a>",
-        "<a href='https://cursor.com'>Cursor</a>",
-        "<a href='https://git-scm.com'>Git</a>", "<a href='https://github.com'>GitHub</a>",
         "<a href='https://claude.ai'>Claude Code</a>",
+        "<a href='https://cursor.com'>Cursor</a>",
+        "<a href='https://antigravity.google'>Codex</a>",
         "<a href='https://antigravity.google'>Antigravity</a>",
+        "<a href='https://antigravity.google'>Kiro</a>",
+        "<a href='https://visualstudio.com'>Visual Studio</a>"
+    ],
+    "Other Tools": [
+        "<a href='https://git-scm.com'>Git</a>", "<a href='https://github.com'>GitHub</a>",
         "<a href='https://firebase.com'>Firebase</a>",
         "<a href='https://cloud.google.com'>Google Cloud</a>",
         "<a href='https://github.com/actions'>GitHub Actions</a>",
-        "<a href='https://visualstudio.com'>Visual Studio</a>",
         "<a href='https://vercel.com'>Vercel</a>"
     ],
     "Web Development - Front-End": [
