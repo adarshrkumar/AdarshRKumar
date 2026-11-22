@@ -1,20 +1,27 @@
 ---
+import * as cheerio from 'cheerio'
+
+import renderReadme from '../lib/render-readme'
+
+import Code from '../components/Code.astro'
 import FeaturedArticles from '../components/FeaturedArticles.astro'
-import _Hero from '../components/Hero.astro'
 import PortfolioHighlights from '../components/PortfolioHighlights.astro'
 import AnimatedTitle from '../components/motion/AnimatedTitle.astro'
 import FadeIn from '../components/motion/FadeIn.astro'
 import Layout from '../layouts/Layout.astro'
-import renderReadme from '../lib/render-readme'
 import '../styles/pages/index.scss'
-import '../styles/components/code.scss'
 
-const readmeContent = await renderReadme()
+const $ = cheerio.load((await renderReadme()).map(({ html }) => html).join(''))
 ---
 <Layout title="" pageType="home">
     <!-- <Hero /> -->
     <FadeIn direction="up" duration={0.6}>
-        <div class="readme" set:html={readmeContent.map(({ html }) => html).join('')} />
+        <div class="readme">
+            {$('body').contents().toArray().map(node => 'name' in node && node.name === 'pre'
+                ? <Code><Fragment set:html={$.html(node)} /></Code>
+                : <Fragment set:html={$.html(node)} />
+            )}
+        </div>
     </FadeIn>
     <section class="section pHighlights">
         <FadeIn delay={0.1} direction="up">
