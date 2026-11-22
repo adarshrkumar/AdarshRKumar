@@ -209,12 +209,14 @@
         },
         [
             {
+                "hidden": true,
                 "name": "Batch",
                 "proficiency": 40,
                 "icon_url": "https://adarshrkumar.dev/assets/readme/Batch.svg",
                 "skill_url": "https://en.wikipedia.org/wiki/Batch_file"
             },
             {
+                "hidden": true,
                 "name": "PowerShell",
                 "proficiency": 30,
                 "icon_url": "https://skillicons.dev/icons?i=powershell",

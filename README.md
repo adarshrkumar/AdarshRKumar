@@ -57,8 +57,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
   - [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
   - [C](https://en.wikipedia.org/wiki/CI/CD)
   - [C++](https://cplusplus.com)
-  - [Batch](https://en.wikipedia.org/wiki/Batch_file)
-  - [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
 
 ## Social Media
 

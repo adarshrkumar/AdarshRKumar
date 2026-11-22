@@ -57,8 +57,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         "<a href='https://en.wikipedia.org/wiki/Regular_expression'>RegEx</a>",
         "<a href='https://palletsprojects.com/p/flask/'>Flask</a>",
         "<a href='https://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a>",
-        "<a href='https://en.wikipedia.org/wiki/CI/CD'>C</a>", "<a href='https://cplusplus.com'>C++</a>",
-        "<a href='https://en.wikipedia.org/wiki/Batch_file'>Batch</a>", "<a href='https://en.wikipedia.org/wiki/PowerShell'>PowerShell</a>"
+        "<a href='https://en.wikipedia.org/wiki/CI/CD'>C</a>", "<a href='https://cplusplus.com'>C++</a>"
     ]
 }
 ```
