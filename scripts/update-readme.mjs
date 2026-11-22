@@ -26,13 +26,17 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
 
 export default async function updateReadme() {
     try {
-        const readmeContent = (await fs.readFile(templatePath, 'utf-8'))
+        const mainReadmeContent = (await fs.readFile(templatePath, 'utf-8'))
             .replace('{skills}', `\`\`\`json\n${toStrippedJson(await fs.readJson(skillsPath))}\n\`\`\``)
             .replace('{socials}', `\`\`\`json\n${toStrippedJson(await fs.readJson(socialsPath))}\n\`\`\``);
 
-        await fs.writeFile(mainReadmePath, readmeContent, 'utf-8');
+        const siteReadmeContent = (await fs.readFile(templatePath, 'utf-8'))
+            .replace('{skills}', `\`\`\`json\n${toStrippedJson(await fs.readJson(skillsPath))}\n\`\`\``)
+            .replace('{socials}', `\`\`\`json\n${toStrippedJson(await fs.readJson(socialsPath))}\n\`\`\``);
 
-        await fs.writeFile(siteReadmePath, readmeContent, 'utf-8');
+        await fs.writeFile(mainReadmePath, mainReadmeContent, 'utf-8');
+
+        await fs.writeFile(siteReadmePath, siteReadmeContent, 'utf-8');
     } catch (error) {
         console.error('❌ Error updating README.md and README_site.md:', error);
         process.exit(1);
