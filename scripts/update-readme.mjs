@@ -26,13 +26,17 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
 
 export default async function updateReadme() {
     try {
-        const mainReadmeContent = (await fs.readFile(templatePath, 'utf-8'))
-            .replace('{skills}', Object.entries(await fs.readJson(skillsPath)).map(([category, items]) => `- **${category}**\n${items.flatMap(item => [item].flat()).map(item => `  - [${item.name}](${item.skill_url})`).join('\n')}`).join('\n'))
-            .replace('{socials}', (await fs.readJson(socialsPath)).map(item => `- [${item.name}](${item.social_url})`).join('\n'));
+        const templateContent = await fs.readFile(templatePath, 'utf-8');
+        const  skills = await fs.readJson( skillsPath);
+        const socials = await fs.readJson(socialsPath);
 
-        const siteReadmeContent = (await fs.readFile(templatePath, 'utf-8'))
-            .replace('{skills}', `\`\`\`json\n${toStrippedJson(await fs.readJson(skillsPath))}\n\`\`\``)
-            .replace('{socials}', `\`\`\`json\n${toStrippedJson(await fs.readJson(socialsPath))}\n\`\`\``);
+        const mainReadmeContent = templateContent
+            .replace('{skills}', Object.entries(skills).map(([category, items]) => `- **${category}**\n${items.flatMap(item => [item].flat()).map(item => `  - [${item.name}](${item.skill_url})`).join('\n')}`).join('\n'))
+            .replace('{socials}', socials.map(item => `- [${item.name}](${item.social_url})`).join('\n'));
+
+        const siteReadmeContent = templateContent
+            .replace('{skills}', `\`\`\`json\n${toStrippedJson(skills)}\n\`\`\``)
+            .replace('{socials}', `\`\`\`json\n${toStrippedJson(socials)}\n\`\`\``);
 
         await fs.writeFile(mainReadmePath, mainReadmeContent, 'utf-8');
 
