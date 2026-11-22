@@ -27,9 +27,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
         "<a href='https://code.visualstudio.com'>VS Code</a>",
         "<a href='https://claude.ai'>Claude Code</a>",
         "<a href='https://cursor.com'>Cursor</a>",
-        "<a href='https://antigravity.google'>Codex</a>",
-        "<a href='https://antigravity.google'>Antigravity</a>",
-        "<a href='https://antigravity.google'>Kiro</a>"
+        "<a href='https://antigravity.google'>Antigravity</a>"
     ],
     "Other Tools": [
         "<a href='https://git-scm.com'>Git</a>", "<a href='https://github.com'>GitHub</a>",

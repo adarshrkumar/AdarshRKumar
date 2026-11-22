@@ -24,9 +24,7 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
   - [VS Code](https://code.visualstudio.com)
   - [Claude Code](https://claude.ai)
   - [Cursor](https://cursor.com)
-  - [Codex](https://antigravity.google)
   - [Antigravity](https://antigravity.google)
-  - [Kiro](https://antigravity.google)
 - **Other Tools**
   - [Git](https://git-scm.com)
   - [GitHub](https://github.com)

@@ -46,6 +46,7 @@
             "skill_url": "https://cursor.com"
         },
         {
+            "hidden": true,
             "name": "Codex",
             "proficiency": 60,
             "icon_url": "https://adarshrkumar.dev/assets/readme/Codex.svg",
@@ -58,6 +59,7 @@
             "skill_url": "https://antigravity.google"
         },
         {
+            "hidden": true,
             "name": "Kiro",
             "proficiency": 20,
             "icon_url": "https://adarshrkumar.dev/assets/readme/Kiro.svg",
