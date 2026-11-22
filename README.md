@@ -60,10 +60,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
   - [Markdown](https://www.markdownguide.org)
   - [RegEx](https://en.wikipedia.org/wiki/Regular_expression)
 
-## GitHub Stats
-
-![GitHub Stats](./public/github/stats.svg)
-
 ## Social Media
 
 - [Discord](https://discord.com/users/adarshrkumar)

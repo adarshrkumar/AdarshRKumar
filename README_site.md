@@ -61,10 +61,6 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 }
 ```
 
-## GitHub Stats
-
-![GitHub Stats](./public/github/stats.svg)
-
 ## Social Media
 
 ```json
