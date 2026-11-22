@@ -17,21 +17,21 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
 ## Skills
 
 - **Design Softwares**
-  - [Figma](https://figma.com)
   - [Canva](https://canva.com)
   - [OnShape](https://onshape.com)
+  - [Figma](https://figma.com)
 - **Other Tools**
-  - [Firebase](https://firebase.com)
-  - [Google Cloud](https://cloud.google.com)
-  - [Vercel](https://vercel.com)
-  - [Git](https://git-scm.com)
-  - [GitHub](https://github.com)
-  - [GitHub Actions](https://github.com/actions)
-  - [Visual Studio](https://visualstudio.com)
   - [VS Code](https://code.visualstudio.com)
   - [Cursor](https://cursor.com)
+  - [Git](https://git-scm.com)
+  - [GitHub](https://github.com)
   - [Claude Code](https://claude.ai)
   - [Antigravity](https://antigravity.google)
+  - [Firebase](https://firebase.com)
+  - [Google Cloud](https://cloud.google.com)
+  - [GitHub Actions](https://github.com/actions)
+  - [Visual Studio](https://visualstudio.com)
+  - [Vercel](https://vercel.com)
 - **Web Development - Front-End**
   - [HTML](https://en.wikipedia.org/wiki/HTML)
   - [CSS](https://en.wikipedia.org/wiki/CSS)
@@ -40,25 +40,25 @@ Hey, I’m Adarsh, an Electrical and Computer Engineering student at [SCU](https
   - [TypeScript](https://www.typescriptlang.org)
   - [SVG](https://en.wikipedia.org/wiki/SVG)
 - **Web Development - Back End**
-  - [PHP](https://php.net)
+  - [Astro](https://astro.build)
   - [Node.js](https://nodejs.org)
   - [npm](https://npmjs.com)
   - [Express.js](https://expressjs.com)
+  - [PHP](https://php.net)
+  - [Discord.js](https://discord.js.org)
   - [React](https://react.dev)
   - [Next.js](https://nextjs.org)
-  - [Astro](https://astro.build)
-  - [Discord.js](https://discord.js.org)
 - **Other Languages**
-  - [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
-  - [Batch](https://en.wikipedia.org/wiki/Batch_file)
-  - [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
+  - [Markdown](https://www.markdownguide.org)
   - [Python](https://python.org)
+  - [RegEx](https://en.wikipedia.org/wiki/Regular_expression)
   - [Flask](https://palletsprojects.com/p/flask/)
   - [Django](https://djangoproject.com)
+  - [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
   - [C](https://en.wikipedia.org/wiki/CI/CD)
   - [C++](https://cplusplus.com)
-  - [Markdown](https://www.markdownguide.org)
-  - [RegEx](https://en.wikipedia.org/wiki/Regular_expression)
+  - [Batch](https://en.wikipedia.org/wiki/Batch_file)
+  - [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
 
 ## Social Media
 

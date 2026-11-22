@@ -31,7 +31,7 @@ export default async function updateReadme() {
         const socials = await fs.readJson(socialsPath);
 
         const mainReadmeContent = templateContent
-            .replace('{skills}', Object.entries(skills).map(([category, items]) => `- **${category}**\n${items.flatMap(item => [item].flat()).map(item => `  - [${item.name}](${item.skill_url})`).join('\n')}`).join('\n'))
+            .replace('{skills}', Object.entries(skills).map(([category, items]) => `- **${category}**\n${items.toSorted((a, b) => Math.max(...[b].flat().map(item => item.proficiency ?? 0)) - Math.max(...[a].flat().map(item => item.proficiency ?? 0))).flatMap(item => [item].flat()).map(item => `  - [${item.name}](${item.skill_url})`).join('\n')}`).join('\n'))
             .replace('{socials}', socials.map(item => `- [${item.name}](${item.social_url})`).join('\n'));
 
         const siteReadmeContent = templateContent
