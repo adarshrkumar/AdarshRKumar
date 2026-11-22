@@ -27,7 +27,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) await updateReadme();
 export default async function updateReadme() {
     try {
         const templateContent = await fs.readFile(templatePath, 'utf-8');
-        const  skills = await fs.readJson( skillsPath);
+        const skills = await fs.readJson(skillsPath);
         const socials = await fs.readJson(socialsPath);
 
         const mainReadmeContent = templateContent
