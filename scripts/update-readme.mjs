@@ -2,9 +2,9 @@ import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const skillsPath = path.join(process.cwd(), 'content', 'skills.json');
-const socialsPath = path.join(process.cwd(), 'content', 'socials.json');
-const templatePath = path.join(process.cwd(), 'README_template.md');
+const     skillsPath = path.join(process.cwd(), 'content',  'skills.json');
+const    socialsPath = path.join(process.cwd(), 'content', 'socials.json');
+const   templatePath = path.join(process.cwd(), 'README_template.md');
 const mainReadmePath = path.join(process.cwd(), 'README.md');
 const siteReadmePath = path.join(process.cwd(), 'README_site.md');
 
