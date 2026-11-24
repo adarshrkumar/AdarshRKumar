@@ -31,15 +31,14 @@ export default async function updateReadme() {
             items.map(item => Array.isArray(item) ? item.filter(skill => skill.hidden !== true) : item)
                 .filter(item => Array.isArray(item) ? item.length : item.hidden !== true),
         ]));
-        const socials = fs.readJsonSync(socialsPath);
 
         const mainReadmeContent = fs.readFileSync(templatePath, 'utf-8')
             .replace('{skills}', Object.entries(skills).map(([category, items]) => `- **${category}**\n${items.toSorted((a, b) => Math.max(...[b].flat().map(item => item.proficiency ?? 0)) - Math.max(...[a].flat().map(item => item.proficiency ?? 0))).flatMap(item => [item].flat()).map(item => `  - [${item.name}](${item.skill_url})`).join('\n')}`).join('\n'))
-            .replace('{socials}', socials.map(item => `- [${item.name}](${item.social_url})`).join('\n'));
+            .replace('{socials}', fs.readJsonSync(socialsPath).map(item => `- [${item.name}](${item.social_url})`).join('\n'));
 
         const siteReadmeContent = fs.readFileSync(templatePath, 'utf-8')
             .replace('{skills}', `\`\`\`json\n${toStrippedJson(skills)}\n\`\`\``)
-            .replace('{socials}', `\`\`\`json\n${toStrippedJson(socials)}\n\`\`\``);
+            .replace('{socials}', `\`\`\`json\n${toStrippedJson(fs.readJsonSync(socialsPath))}\n\`\`\``);
 
         fs.writeFileSync(mainReadmePath, mainReadmeContent, 'utf-8');
 
