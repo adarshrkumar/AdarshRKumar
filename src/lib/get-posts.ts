@@ -12,6 +12,9 @@ interface Post {
     };
     rawContent: () => string;
     compiledContent?: () => string;
+    slug?: string;
+    url?: string;
+    screenshotImage?: ReturnType<typeof generateScreenshotImage>;
 }
 
 interface DBPost {
@@ -107,11 +110,11 @@ export function getLocalPosts(): Post[] {
     return publishedPosts
 }
 
-export async function getPosts(): Promise<Post[]> {
-    return [...getLocalPosts(), ...(await getDBPosts())].sort((a, b) => getPostCreatedDate(b).getTime() - getPostCreatedDate(a).getTime())
+export async function getPosts(siteUrl?: string | URL): Promise<Post[]> {
+    return addDisplayMetadata([...getLocalPosts(), ...(await getDBPosts())].sort((a, b) => getPostCreatedDate(b).getTime() - getPostCreatedDate(a).getTime()), siteUrl)
 }
 
-function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
+export function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     const siteLocation = {
         protocol: 'https:',
         host: siteUrl ? new URL(siteUrl).host : '',
@@ -131,12 +134,8 @@ function addDisplayMetadata(posts: Post[], siteUrl?: string | URL) {
     })
 }
 
-export async function getPostsForDisplay(siteUrl?: string | URL) {
-    return addDisplayMetadata(await getPosts(), siteUrl)
-}
-
-export async function getFeaturedPosts(featuredSlugs: string[]) {
-    const allPosts = await getPosts()
+export async function getFeaturedPosts(featuredSlugs: string[], siteUrl?: string | URL): Promise<Post[]> {
+    const allPosts = await getPosts(siteUrl)
     const featuredPosts: Post[] = []
 
     featuredSlugs.forEach(targetSlug => {
@@ -148,10 +147,6 @@ export async function getFeaturedPosts(featuredSlugs: string[]) {
     })
 
     return featuredPosts
-}
-
-export async function getFeaturedPostsForDisplay(featuredSlugs: string[], siteUrl?: string | URL) {
-    return addDisplayMetadata(await getFeaturedPosts(featuredSlugs), siteUrl)
 }
 
 export async function findPostById(postId: string | undefined): Promise<Post | undefined> {

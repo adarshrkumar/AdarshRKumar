@@ -1,35 +1,27 @@
 ---
-import { getPostsForDisplay, cleanTextContent, createPreviewContent } from '../lib/get-posts'
+import { getPosts, cleanTextContent, createPreviewContent } from '../lib/get-posts'
 import sanitizeMD from '../lib/sanitize-md'
 
 import SiteGridContent from '../components/SiteGridContent.astro'
 import Layout from '../layouts/Layout.astro'
 
-const postsWithMetadata = await getPostsForDisplay(Astro.site)
-
 ---
 <Layout title="Blog">
     <SiteGridContent classItems="posts" options={{ min: '18rem' }}>
         {
-            postsWithMetadata.map(async post => {
-                const rawTextContent = sanitizeMD(post.rawContent())
-                const cleanedTextContent = cleanTextContent(rawTextContent)
-                const previewContent = createPreviewContent(cleanedTextContent)
-
-                const hasContent = !!(post.frontmatter.title || cleanedTextContent)
-                const hasTitle = !!post.frontmatter.title
-                const hasPreview = !!previewContent
+            (await getPosts(Astro.site)).map(async post => {
+                const cleanedTextContent = cleanTextContent(sanitizeMD(post.rawContent()))
 
                 return (
                     <a href={`/post/${post.slug}`} class="item">
-                        <img class="item__img" src={post.screenshotImage.src} alt={post.screenshotImage.alt} style={`--placeholder: url('${post.screenshotImage.placeholder}')`} />
-                        {hasContent && (
+                        <img class="item__img" src={post.screenshotImage!.src} alt={post.screenshotImage!.alt} style={`--placeholder: url('${post.screenshotImage!.placeholder}')`} />
+                        {(post.frontmatter.title || cleanedTextContent) && (
                             <div class="item__info">
-                                {hasTitle && (
+                                {post.frontmatter.title && (
                                     <h3 class="item__title">{post.frontmatter.title}</h3>
                                 )}
-                                {hasPreview && (
-                                    <p class="item__content">{previewContent}</p>
+                                {createPreviewContent(cleanedTextContent) && (
+                                    <p class="item__content">{createPreviewContent(cleanedTextContent)}</p>
                                 )}
                             </div>
                         )}
