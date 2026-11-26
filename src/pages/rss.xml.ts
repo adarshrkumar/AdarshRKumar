@@ -5,13 +5,10 @@ import { getPostsForRSS } from '../lib/get-posts'
 import { cleanAboutContent } from '../lib/get-raw-about-content'
 import sanitizeMD from '../lib/sanitize-md'
 
-const aboutFile = await import('../../content/aboutContent.md')
-const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
-
 export async function GET(context: APIContext) {
     return rss({
         title: 'Adarsh R. Kumar',
-        description: aboutContent,
+        description: cleanAboutContent(sanitizeMD((await import('../../content/aboutContent.md')).rawContent())),
         site: context.site ?? context.url.origin,
         items: (await getPostsForRSS()).map(post => {
             return {
