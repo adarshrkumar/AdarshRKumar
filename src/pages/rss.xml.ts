@@ -1,24 +1,18 @@
 import rss from '@astrojs/rss'
+import type { APIContext } from 'astro'
 
 import { getPostsForRSS } from '../lib/get-posts'
 import { cleanAboutContent } from '../lib/get-raw-about-content'
 import sanitizeMD from '../lib/sanitize-md'
 
-interface AstroContext {
-    site: string | URL;
-    trailingSlash: boolean;
-    [key: string]: URL | string | boolean | undefined;
-}
-
 const aboutFile = await import('../../content/aboutContent.md')
 const aboutContent = cleanAboutContent(sanitizeMD(aboutFile.rawContent()))
 
-export async function GET(context: AstroContext) {
+export async function GET(context: APIContext) {
     return rss({
         title: 'Adarsh R. Kumar',
         description: aboutContent,
-        site: context.site,
-        trailingSlash: context.trailingSlash,
+        site: context.site ?? context.url.origin,
         items: (await getPostsForRSS()).map(post => {
             return {
                 title: post.frontmatter.title || 'Untitled',
